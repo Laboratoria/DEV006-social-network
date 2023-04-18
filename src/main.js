@@ -1,5 +1,19 @@
 // Este es el punto de entrada de tu aplicacion
 
-import { myFunction } from './lib/index.js';
+import { login } from './view/login.js';
 
-myFunction();
+const main = document.getElementById('main');
+const btnLoginHome = document.getElementById('btnLoginhome');
+const txtEmail = document.getElementById("txtEmail");
+const txtPassword = document.getElementById('txtPassword');
+const btnLogin = document.getElementById('btnLogin');
+const btnSignup = document.getElementById('btnSignup');
+const btnLogout = document.getElementById('btnLogout');
+
+btnLoginHome.addEventListener("click", () =>{
+    main.innerHTML= login();
+
+    
+
+
+})
