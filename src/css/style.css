@@ -1,0 +1,160 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html{
+    font-size: 62.5%;
+}
+
+body {
+    height:100vh;
+    background-color: #F0DBDB;
+    font-family: 'Nunito', sans-serif;
+    
+}
+
+@media screen and (max-width:750px){
+.bodyimg {
+
+    background-color: rgba(255, 255, 255, 0.5);
+    background-image: url(../img/wallpaper.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed ;
+    height:100vh;
+}
+
+h1{
+    font-family: 'Acme', sans-serif;
+    font-size: 24px;
+    margin: 5%;
+
+}
+
+
+nav {
+    background-color: #EA907A;
+    height: 44px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+nav ul{
+    list-style: none;
+
+
+}
+nav ul li{
+    display: inline-block;
+    
+}
+
+nav ul li a{
+    display: block;
+    text-decoration: none;
+    color:#DE6D5B;
+    background-color: white;
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    margin: 1rem;
+    font-weight:700;
+}
+
+header img{
+
+    position: absolute;
+    width: 42px;
+    height: 40px;
+    left: 10px;
+    top: 3px;
+}
+
+.welcomemessage{
+    font-size: 15px;
+    background-color:  rgba(240, 219, 219, 0.7) ;
+    width: 288px;
+    height: 81px;
+    text-align: center;
+    margin: 5%;
+    border-radius: 5px;
+    padding: 3%;
+} 
+
+
+.photopets img{
+    width: 119px;
+    height: 105px;
+    left: 29px;
+    top: 185px;
+    margin: 5% 5% 0% 5%;
+}
+
+.contenedorcards div input{
+    width: 19px;
+    height: 19px;
+}
+.contenedorcards .cardpet{
+    width: 135px;
+    height: 141px;
+    background-color: #F0DBDB;
+    left: 174px;
+    top: 178px;
+    border-radius: 5px;
+  
+}
+
+h3 {
+    font-size: 12px;
+    
+    margin: 0;
+    
+}
+
+.contenedorcards{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    justify-content: center;
+    
+
+
+}
+
+.interactionpets{
+    display: grid;
+    grid-template-columns: 3fr 1fr 1fr;
+        
+}
+
+.testimonies{
+    font-family: 'Acme', sans-serif;
+    font-size: 14px;
+    margin-top: 10px;
+    margin: 10px;
+}
+
+.menssagetesti{
+    background-color: #F0DBDB;
+    border-radius: 5px;
+    margin: 8px 10px;
+    font-size: 12px;
+    padding: 7px;
+
+}
+
+footer {
+
+    background-color: #EA907A;
+    height: 40px;
+    color:white;    
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+
+}
+
+}
