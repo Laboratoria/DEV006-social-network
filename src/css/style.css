@@ -145,7 +145,6 @@ h3 {
 }
 
 footer {
-
     background-color: #EA907A;
     height: 40px;
     color:white;    
@@ -156,5 +155,45 @@ footer {
     padding: 10px;
 
 }
+/* formulario de login */
+form{
+    background-color: white;
+    margin: 3rem;
+    text-align: center;
+    padding: 1rem;
+}
 
+form input{
+    border-radius: 5px;
+    border-color: #EA907A;
+    background-color: white;
+    width: 165px;
+    height: 34px;
+
+}
+form h2{
+    font-size: 32px;
+}
+#btnLogin{
+    border-radius: 5px;
+    background-color: #F5EBE0;
+    border-color: #EA907A;
+    color: #EA907A;
+    width: 186px;
+    height: 25px;
+}
+#btnLogin:hover{
+    background-color: #EA907A;
+    border-color: #F5EBE0;
+    color: #F5EBE0;
+}
+#forgotPassword{
+    font-size: 12px;
+}
+form ul{
+    list-style: none;
+}
+.group{
+    margin-bottom: 1rem;
+}
 }

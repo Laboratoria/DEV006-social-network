@@ -1,35 +1,29 @@
 export const login = () => {
-return 
-`<div id="login">
+return `<div id="login">
 <div class="header">
-  <h1>Getting Started with Firebase Auth</h1>
+  <h1> Be My Friend</h1>
 </div>
-<form>
+<form action="#" method="POST">
+    <h2>Log in</h2>
   <div class="group">
-    <input id="txtEmail" type="email">
-    <label>Email</label>
+    <input id="txtEmail" type="email" placeholder="Email">
   </div>
   <div class="group">
-    <input id="txtPassword" type="password">
-    <label>Password</label>
-  </div>
-  <div id="divLoginError" class="group">
-    <div id="lblLoginErrorMessage" class="errorlabel">Error message</div>
+    <input id="txtPassword" type="password" placeholder="Password">
   </div>
   <button id="btnLogin" type="button" class="button buttonBlue">Log in</button>
-  <button id="btnSignup" type="button" class="button buttonBlue">Sign up</button>
-</form>
-</div>
-
-<div id="app">
-<div class="header">
-  <h1>Welcome to Your Amazing App</h1>
-</div>
-<form>
-  <div class="group">
-    <div id="lblAuthState" class="authlabel"></div>
-  </div>
-  <button id="btnLogout" type="button" class="button buttonBlue">Log out</button>
+  <ul>
+    <li id="forgotPassword">
+      <a href="#">Forgot Password?</a>
+    </li>
+  </ul>
+  <h4>or log in with</h4>
+  <ul>
+    <li>
+      <a>Need an account?</a>
+      <a href="#" id="btnSignup" type="submit" class="button buttonBlue"> Sing up</a>
+    </li>
+  </ul>
 </form>
 </div>`
 };
