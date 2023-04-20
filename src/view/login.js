@@ -1,30 +1,40 @@
 export const login = () => {
-return `<div id="login">
-<div class="header">
-  <h1> Be My Friend</h1>
-</div>
-<form action="#" method="POST">
-    <h2>Log In</h2>
-  <div class="group">
-    <input id="txtEmail" type="email" placeholder="Email">
+  return  ` <div id="login">
+  <div class="header">
+    <h1>Getting Started with Firebase Auth</h1>
   </div>
-  <div class="group">
-    <input id="txtPassword" type="password" placeholder="Password">
+  <form>
+    <div class="group">
+      <input id="txtEmail" type="email">
+      <label>Email</label>
+    </div>
+    <div class="group">
+      <input id="txtPassword" type="password">
+      <label>Password</label>
+    </div>
+    <div id="divLoginError" class="group">
+      <div id="lblLoginErrorMessage" class="errorlabel">Error message</div>
+    </div>
+    <button id="btnLogin" type="button" class="button buttonBlue">Log in</button>
+    <button id="btnSignup" type="button" class="button buttonBlue">Sign up</button>
+  </form>
   </div>
-  <button id="btnLogin" type="button" class="button buttonBlue">Log In</button>
-  <ul>
-    <li id="forgotPassword">
-      <a href="#">Forgot Password?</a>
-    </li>
-  </ul>
-  <h4 class="logInWith">or log in with</h4><hr>
-  <button class="btnGoogle"><img src="../img/googleplus.png">Google</button>
-  <ul>
-    <li>
-      <a>Need an account?</a>
-      <a href="#" id="btnSignup" type="submit" class="button buttonBlue">Sign Up</a>
-    </li>
-  </ul>
-</form>
-</div>`
-};
+  
+  <div id="app">
+  <div class="header">
+    <h1>Welcome to Your Amazing App</h1>
+  </div>
+  <form>
+    <div class="group">
+      <div id="lblAuthState" class="authlabel"></div>
+    </div>
+    <button id="btnLogout" type="button" class="button buttonBlue">Log out</button>
+  </form>
+  </div>`
+  };
+  
+  const txtEmail = document.getElementById("txtEmail");
+  const txtPassword = document.getElementById('txtPassword');
+  const btnLogin = document.getElementById('btnLogin');
+  const btnSignup = document.getElementById('btnSignup');
+  const btnLogout = document.getElementById('btnLogout');
