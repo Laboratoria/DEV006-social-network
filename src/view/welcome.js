@@ -1,68 +1,136 @@
 export const welcome = () => {
-    const body= document.getElementById("body")
-    body.innerHTML= `<header>
-    <img src="img/logo.png">
-    <nav>    
-      <ul>
-        <button id="btnLoginhome">
-          <a  href="#">Log In</a>
-        </button>
-        <li>
-          <a href="#">Sign Up</a>
-        </li>
-      </ul> 
-    </nav>
-   </header>
-   <main id="main">
-  
-    <h1> Be My Friend</h1>
-    <p class="welcomemessage">Welcome <br>
-      Your next friend is waiting for you. Check animals available to adopt!
-    </p>
-    <section class="contenedorcards">
-      <div class="cardpet">      
-        <div class="photopets">
-          <img src="img/TOM.jpg">
-        </div>
-        <div class="interactionpets">
-          <h3>TOM</h3>
-          <input type="image" src="img/match.png" alt="logomatch">
-          <input type="image" src="img/megusta.png" alt="logomegusta">
-        </div>
-      </div>
-    
-  
-      <div class="cardpet">      
-        <div class="photopets">
-        <img src="img/Bob.png">
-        </div>
-        <div class="interactionpets">
-        <h3>BOB</h3>
-        <input type="image" src="img/match.png" alt="logomatch">
-        <input type="image" src="img/megusta.png" alt="logomegusta">
-        </div>
-      </div>
-    </section>
-  
-    <section class="contenedortestimonios">
-      <h2 class="testimonies">Testimonies</h2>
-      <div class="menssagetesti">
-        <p>“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...”
-  
-          -Name, City</p>
-      </div>
-  
-      <div class="menssagetesti">
-        <p>“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...”
-  
-          -Name, City</p>
-      </div>
-    </section>
-  
-   </main>
-   <footer>
-    <p>CopyRight  Marissa-Gabriela-Rebeca  Contáctanos</p>
-   </footer>
-   </div>`
-    console.log("hola")
- }
+    const body= document.getElementById("root")
+    body.innerHTML= "";
+
+    const bodyimg = document.createElement("div");
+    bodyimg.setAttribute("class", "bodyimg");
+
+    const header = document.createElement("header");
+
+    const logoImg = document.createElement("img");
+    logoImg.setAttribute("src", "img/logo.png");
+
+    const nav = document.createElement('nav');
+
+    const ul = document.createElement('ul');
+
+    const btnLoginHome = document.createElement('li');
+    btnLoginHome.setAttribute('id', 'btnLoginHome');
+
+    const loginLink = document.createElement('a');
+    loginLink.setAttribute('href','#');
+    loginLink.textContent = 'Log In';
+
+    const signUpLink = document.createElement('li');
+
+    const signUp = document.createElement('a');
+    signUp.setAttribute('href','#');;
+    signUp.textContent = 'Sign Up';
+
+    const main = document.createElement('main');
+    main.setAttribute('id', 'main');
+
+    const h1 = document.createElement('h1');
+    h1.textContent = 'Be My Friend';
+
+    const welcomeMessage = document.createElement('p');
+    welcomeMessage.setAttribute('class','welcomemessage');
+    welcomeMessage.innerHTML = 'Welcome <br>Your next friend is waiting for you. Check animals available to adopt!';
+
+
+    const sectionCards = document.createElement('section');
+    sectionCards.setAttribute('class','contenedorcards');
+
+    const cardPet1 = document.createElement('div');
+    cardPet1.setAttribute('class','cardpet');
+
+    const photoPets1 = document.createElement('div');
+    photoPets1.setAttribute('class','photopets');
+
+    const img1 = document.createElement('img');
+    img1.setAttribute('src','img/TOM.jpg');
+
+    const interactionPets1 = document.createElement('div');
+    interactionPets1.setAttribute('class','interactionpets');
+
+    const h3Pet1 = document.createElement('h3');
+    h3Pet1.textContent = 'TOM';
+
+    const inputLike1 = document.createElement('input');
+    inputLike1.setAttribute('type','image');
+    inputLike1.setAttribute('src','img/megusta.png');
+    inputLike1.setAttribute('alt','logomegusta');
+
+    const inputMatch1 = document.createElement('input');
+    inputMatch1.setAttribute('type','image');
+    inputMatch1.setAttribute('src','img/matchvacio.png');
+    inputMatch1.setAttribute('alt','logomatch');
+
+    const cardPet2 = document.createElement('div');
+    cardPet2.setAttribute('class','cardpet');
+
+    const photoPets2 = document.createElement('div');
+    photoPets2.setAttribute('class','photopets');
+
+    const img2 = document.createElement('img');
+    img2.setAttribute('src','img/Bob.png');
+
+    const interactionPets2 = document.createElement('div');
+    interactionPets2.setAttribute('class','interactionpets');
+
+    const h3Pet2 = document.createElement('h3');
+    h3Pet2.textContent = 'BOB';
+
+    const inputLike2 = document.createElement('input');
+    inputLike2.setAttribute('type','image');
+    inputLike2.setAttribute('src','img/megusta.png');
+    inputLike2.setAttribute('alt','logomegusta');
+
+    const inputMatch2 = document.createElement('input');
+    inputMatch2.setAttribute('type','image');
+    inputMatch2.setAttribute('src','img/matchvacio.png');
+    inputMatch2.setAttribute('alt','logomatch');
+
+    const sectionTestimonies = document.createElement('section');
+    sectionTestimonies.setAttribute('class','contenedortestimonios');
+
+    const h2Testimonies = document.createElement('h2');
+    h2Testimonies.setAttribute('class','testimonies');
+    h2Testimonies.textContent = 'Testimonies';
+
+    const messageTestimony1 = document.createElement('div');
+    messageTestimony1.setAttribute('class','menssagetesti');
+
+    const pTestimony1 = document.createElement('p');
+    pTestimony1.textContent = '“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...”<br>-Name, City';
+
+    const messageTestimony2 = document.createElement('div');
+    messageTestimony2.setAttribute('class','menssagetesti');
+
+    const pTestimony2 = document.createElement('p');
+    pTestimony2.textContent = '“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...”<br>-Name, City';
+
+    const footer = document.createElement('footer');
+    const pFooter = document.createElement('p');
+    pFooter.textContent = "CopyRight  Marissa-Gabriela-Rebeca  Contáctanos";
+
+    body.append(bodyimg)
+    bodyimg.append(header,main,footer);
+    header.append(logoImg,nav);
+    nav.append(ul);
+    ul.append(btnLoginHome, signUpLink);
+    btnLoginHome.append(loginLink);
+    signUpLink.append(signUp);
+    main.append(h1,welcomeMessage,sectionCards,sectionTestimonies);
+    sectionCards.append(cardPet1,cardPet2);
+    cardPet1.append(photoPets1,interactionPets1);
+    photoPets1.append(img1);
+    interactionPets1.append(h3Pet1,inputLike1,inputMatch1);
+    cardPet2.append(photoPets2,interactionPets2);
+    photoPets2.append(img2);
+    interactionPets2.append(h3Pet2,inputLike2,inputMatch2);
+    sectionTestimonies.append(h2Testimonies,messageTestimony1,messageTestimony2);
+    messageTestimony1.append(pTestimony1);
+    messageTestimony2.append(pTestimony2);
+    footer.append(pFooter);
+}

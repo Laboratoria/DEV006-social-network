@@ -3,8 +3,9 @@ welcome();
 
 import  { login } from './view/login.js';
 
-const body = document.getElementById('body');
-const btnLoginHome = document.getElementById('btnLoginhome');
+const body = document.getElementById('root');
+
+const btnLoginHome = document.getElementById('btnLoginHome');
 btnLoginHome.addEventListener("click", () =>{
 
   body.innerHTML= login();
