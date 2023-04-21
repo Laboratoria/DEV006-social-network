@@ -9,7 +9,6 @@ export const login = () => {
   const logindiv = document.createElement('div');
   logindiv.setAttribute('id','login')
   logindiv.setAttribute('class','login')
-  console.log(logindiv)
   const header = document.createElement("header");
 
   const logoImg = document.createElement("img");

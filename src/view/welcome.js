@@ -1,4 +1,4 @@
-export const welcome = () => {
+export let welcome = () => {
     const body= document.getElementById("root")
     body.innerHTML= "";
 
@@ -18,7 +18,7 @@ export const welcome = () => {
     btnLoginHome.setAttribute('id', 'btnLoginHome');
 
     const loginLink = document.createElement('a');
-    loginLink.setAttribute('href','#');
+    loginLink.setAttribute('href','#/login');
     loginLink.textContent = 'Log In';
 
     const signUpLink = document.createElement('li');
