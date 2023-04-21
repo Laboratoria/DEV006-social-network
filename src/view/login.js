@@ -51,10 +51,11 @@ export const login = () => {
   txtPassword.setAttribute('type', 'password')
   txtPassword.setAttribute('placeholder', 'Password')
 
-  const btnLogin = document.createElement('button')
-  btnLogin.setAttribute('id', 'btnLogin')
-  btnLogin.setAttribute('type', 'button')
-  btnLogin.setAttribute('class', 'button')
+  const btnLogin = document.createElement('button');
+  btnLogin.setAttribute('id', 'btnLogin');
+  btnLogin.setAttribute('type', 'button');
+  btnLogin.setAttribute('class', 'button');
+  btnLogin.setAttribute('href', '/loginuser');
   btnLogin.textContent ='Log In';
 
   const ulPassword = document.createElement('ul');
@@ -109,8 +110,7 @@ export const login = () => {
   liAccount.append(aAccount)
   };
   
-  const txtEmail = document.getElementById("txtEmail");
-  const txtPassword = document.getElementById('txtPassword');
+
   const btnLogin = document.getElementById('btnLogin');
   const btnSignup = document.getElementById('btnSignup');
   const btnLogout = document.getElementById('btnLogout');
