@@ -1,7 +1,7 @@
 export const welcome = () => {
     const body= document.getElementById("root")
     body.innerHTML= "";
-
+    
     const bodyimg = document.createElement("div");
     bodyimg.setAttribute("class", "bodyimg");
 
@@ -18,7 +18,7 @@ export const welcome = () => {
     btnLoginHome.setAttribute('id', 'btnLoginHome');
 
     const loginLink = document.createElement('a');
-    loginLink.setAttribute('href','#');
+    loginLink.setAttribute('href','#/login');
     loginLink.textContent = 'Log In';
 
     const signUpLink = document.createElement('li');
@@ -110,12 +110,8 @@ export const welcome = () => {
     const pTestimony2 = document.createElement('p');
     pTestimony2.textContent = '“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...”<br>-Name, City';
 
-    const footer = document.createElement('footer');
-    const pFooter = document.createElement('p');
-    pFooter.textContent = "CopyRight  Marissa-Gabriela-Rebeca  Contáctanos";
-
     body.append(bodyimg)
-    bodyimg.append(header,main,footer);
+    bodyimg.append(header,main);
     header.append(logoImg,nav);
     nav.append(ul);
     ul.append(btnLoginHome, signUpLink);
@@ -132,5 +128,4 @@ export const welcome = () => {
     sectionTestimonies.append(h2Testimonies,messageTestimony1,messageTestimony2);
     messageTestimony1.append(pTestimony1);
     messageTestimony2.append(pTestimony2);
-    footer.append(pFooter);
 }
