@@ -13,21 +13,28 @@ const router = (route) =>{
         login();
         footer();  
         break;
-        }
+    }
     default:
     console.log('error');
     break;        
     }
 }
 
-window.addEventListener('popstate', ()=>{
-    router(window.location.pathname)
-}) 
+// window.addEventListener('popstate', ()=>{
+//     router(window.location.pathname)
+// }) 
 
-/* document.addEventListener('DOMContentLoaded', function() {
-    if (window.location.pathname.length <= 1) { // Verificar si la longitud es menor o igual a 1
-      router('/');
-    } else {
-      router(window.location.pathname);
-    }
-  }); */
+// function navigateTo(url) {
+//   window.history.pushState(null, null, url);
+//   router(url);
+// }
+//   // Ejemplo de uso: 
+// navigateTo('/');
+
+window.addEventListener('DOMContentLoaded', function() {
+  if (window.location.pathname.length <= 1) { // Verificar si la longitud es menor o igual a 1
+    router('/');
+  } else {
+    router(window.location.pathname);
+  }
+}); 
