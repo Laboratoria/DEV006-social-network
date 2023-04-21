@@ -22,7 +22,7 @@ export const login = () => {
   btnHome.setAttribute('id', 'Home');
 
   const homeLink = document.createElement('a');
-  homeLink.setAttribute('href','#');
+  homeLink.setAttribute('href','#/welcome');
   homeLink.textContent = 'Home';
 
   const h1 = document.createElement('h1');
@@ -91,13 +91,10 @@ export const login = () => {
   aAccount.setAttribute('class','button')
   aAccount.textContent = 'Sign Up'
 
-  const footer = document.createElement('footer');
-  const pFooter = document.createElement('p');
-  pFooter.textContent = "CopyRight  Marissa-Gabriela-Rebeca  Contáctanos";
-
+  
   body.append(bodyimg);
   bodyimg.append(logindiv);
-  logindiv.append(header,h1,form,footer)
+  logindiv.append(header,h1,form)
   header.append(logoImg,nav)
   nav.append(ul)
   ul.append(btnHome)
@@ -110,7 +107,6 @@ export const login = () => {
   liPassword.append(aPassword)
   ulAccount.append(liAccount)
   liAccount.append(aAccount)
-  footer.append(pFooter)
   };
   
   const txtEmail = document.getElementById("txtEmail");

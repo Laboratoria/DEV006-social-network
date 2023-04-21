@@ -102,20 +102,18 @@ export let welcome = () => {
     messageTestimony1.setAttribute('class','menssagetesti');
 
     const pTestimony1 = document.createElement('p');
-    pTestimony1.textContent = '“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...”<br>-Name, City';
+    pTestimony1.innerHTML = '“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...”<br>-Name, City';
 
     const messageTestimony2 = document.createElement('div');
     messageTestimony2.setAttribute('class','menssagetesti');
 
     const pTestimony2 = document.createElement('p');
-    pTestimony2.textContent = '“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...”<br>-Name, City';
+    pTestimony2.innerHTML = '“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...”<br>-Name, City';
 
-    const footer = document.createElement('footer');
-    const pFooter = document.createElement('p');
-    pFooter.textContent = "CopyRight  Marissa-Gabriela-Rebeca  Contáctanos";
+    
 
     body.append(bodyimg)
-    bodyimg.append(header,main,footer);
+    bodyimg.append(header,main);
     header.append(logoImg,nav);
     nav.append(ul);
     ul.append(btnLoginHome, signUpLink);
@@ -132,5 +130,5 @@ export let welcome = () => {
     sectionTestimonies.append(h2Testimonies,messageTestimony1,messageTestimony2);
     messageTestimony1.append(pTestimony1);
     messageTestimony2.append(pTestimony2);
-    footer.append(pFooter);
+   
 }
