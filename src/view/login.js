@@ -22,7 +22,7 @@ export const login = () => {
   btnHome.setAttribute('id', 'Home');
 
   const homeLink = document.createElement('a');
-  homeLink.setAttribute('href','#/welcome');
+  homeLink.setAttribute('href','/');
   homeLink.textContent = 'Home';
 
   const h1 = document.createElement('h1');

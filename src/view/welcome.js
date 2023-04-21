@@ -18,7 +18,7 @@ export let welcome = () => {
     btnLoginHome.setAttribute('id', 'btnLoginHome');
 
     const loginLink = document.createElement('a');
-    loginLink.setAttribute('href','#/login');
+    loginLink.setAttribute('href','/login');
     loginLink.textContent = 'Log In';
 
     const signUpLink = document.createElement('li');

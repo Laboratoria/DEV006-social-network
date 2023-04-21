@@ -4,17 +4,12 @@ import { footer } from './view/footer.js'
 
 const router = (route) =>{
   switch(route){
-    case '#/':{
+    case '/':{
         welcome();
         footer();
         break; 
     }
-    case '#/welcome':{
-        welcome();
-        footer()
-        break;
-    }  
-    case '#/login':{ 
+    case '/login':{ 
         login();
         footer();  
         break;
@@ -25,14 +20,14 @@ const router = (route) =>{
     }
 }
 
-window.addEventListener('hashchange', ()=>{
-    router(window.location.hash)
-})
+window.addEventListener('popstate', ()=>{
+    router(window.location.pathname)
+}) 
 
-document.addEventListener('DOMContentLoaded', function() {
+/* document.addEventListener('DOMContentLoaded', function() {
     if (window.location.pathname.length <= 1) { // Verificar si la longitud es menor o igual a 1
-      router('#/');
+      router('/');
     } else {
-      router(window.location.hash);
+      router(window.location.pathname);
     }
-  });
+  }); */
