@@ -1,4 +1,4 @@
-export const welcome = () => {
+export let welcome = () => {
     const body= document.getElementById("root")
     body.innerHTML= "";
     
@@ -18,7 +18,7 @@ export const welcome = () => {
     btnLoginHome.setAttribute('id', 'btnLoginHome');
 
     const loginLink = document.createElement('a');
-    loginLink.setAttribute('href','#/login');
+    loginLink.setAttribute('href','/login');
     loginLink.textContent = 'Log In';
 
     const signUpLink = document.createElement('li');
@@ -102,13 +102,15 @@ export const welcome = () => {
     messageTestimony1.setAttribute('class','menssagetesti');
 
     const pTestimony1 = document.createElement('p');
-    pTestimony1.textContent = '“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...”<br>-Name, City';
+    pTestimony1.innerHTML = '“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...”<br>-Name, City';
 
     const messageTestimony2 = document.createElement('div');
     messageTestimony2.setAttribute('class','menssagetesti');
 
     const pTestimony2 = document.createElement('p');
-    pTestimony2.textContent = '“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...”<br>-Name, City';
+    pTestimony2.innerHTML = '“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...”<br>-Name, City';
+
+    
 
     body.append(bodyimg)
     bodyimg.append(header,main);
@@ -128,4 +130,5 @@ export const welcome = () => {
     sectionTestimonies.append(h2Testimonies,messageTestimony1,messageTestimony2);
     messageTestimony1.append(pTestimony1);
     messageTestimony2.append(pTestimony2);
+   
 }

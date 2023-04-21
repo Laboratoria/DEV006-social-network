@@ -23,7 +23,7 @@ export const login = () => {
   btnHome.setAttribute('id', 'Home');
 
   const homeLink = document.createElement('a');
-  homeLink.setAttribute('href','');
+  homeLink.setAttribute('href','/');
   homeLink.textContent = 'Home';
 
   const h1 = document.createElement('h1');
@@ -52,10 +52,11 @@ export const login = () => {
   txtPassword.setAttribute('type', 'password')
   txtPassword.setAttribute('placeholder', 'Password')
 
-  const btnLogin = document.createElement('button')
-  btnLogin.setAttribute('id', 'btnLogin')
-  btnLogin.setAttribute('type', 'button')
-  btnLogin.setAttribute('class', 'button')
+  const btnLogin = document.createElement('button');
+  btnLogin.setAttribute('id', 'btnLogin');
+  btnLogin.setAttribute('type', 'button');
+  btnLogin.setAttribute('class', 'button');
+  btnLogin.setAttribute('href', '/loginuser');
   btnLogin.textContent ='Log In';
 
   const ulPassword = document.createElement('ul');
@@ -92,10 +93,7 @@ export const login = () => {
   aAccount.setAttribute('class','button')
   aAccount.textContent = 'Sign Up'
 
-/*   const footer = document.createElement('footer');
-  const pFooter = document.createElement('p');
-  pFooter.textContent = "CopyRight  Marissa-Gabriela-Rebeca  Contáctanos"; */
-
+  
   body.append(bodyimg);
   bodyimg.append(logindiv);
   logindiv.append(header,h1,form)
@@ -111,11 +109,9 @@ export const login = () => {
   liPassword.append(aPassword)
   ulAccount.append(liAccount)
   liAccount.append(aAccount)
-/*   footer.append(pFooter) */
   };
   
-  const txtEmail = document.getElementById("txtEmail");
-  const txtPassword = document.getElementById('txtPassword');
+
   const btnLogin = document.getElementById('btnLogin');
   const btnSignup = document.getElementById('btnSignup');
   const btnLogout = document.getElementById('btnLogout');
