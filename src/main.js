@@ -1,32 +1,27 @@
 import { welcome } from './view/welcome.js';
-import  { login } from './view/login.js';
-import {footer} from './view/footer.js'
-
-/* welcome();
-footer(); */
-
-const body = document.getElementById('root'); 
-
+import { login } from './view/login.js';
+import { footer } from './view/footer.js'
 
 const router = (route) =>{
-    switch(route){
-        case '':{
-            welcome();
-            footer() 
+  switch(route){
+    case '#/':{
+        welcome();
+        footer();
+        break; 
+    }
+    case '#/welcome':{
+        welcome();
+        footer()
+        break;
+    }  
+    case '#/login':{ 
+        login();
+        footer();  
+        break;
         }
-        case '#/welcome':{
-            welcome();
-            footer()
-        
-            return console.log('welcome')
-        }  
-        case '#/login':{ 
-            login()
-            footer()
-         
-        }
-        default:
-            return console.log('error')        
+    default:
+    console.log('error');
+    break;        
     }
 }
 
@@ -34,5 +29,10 @@ window.addEventListener('hashchange', ()=>{
     router(window.location.hash)
 })
 
-
-
+document.addEventListener('DOMContentLoaded', function() {
+    if (window.location.pathname.length <= 1) { // Verificar si la longitud es menor o igual a 1
+      router('#/');
+    } else {
+      router(window.location.hash);
+    }
+  });
