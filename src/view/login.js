@@ -1,3 +1,6 @@
+import { LoginUser } from '../lib/index.js';
+import { createUser } from '../lib/index.js';
+
 export const login = () => {
   
   const body= document.getElementById("root")
@@ -56,7 +59,7 @@ export const login = () => {
   btnLogin.setAttribute('id', 'btnLogin');
   btnLogin.setAttribute('type', 'button');
   btnLogin.setAttribute('class', 'button');
-  btnLogin.setAttribute('href', '/loginuser');
+  btnLogin.addEventListener('click', LoginUser);
   btnLogin.textContent ='Log In';
 
   const ulPassword = document.createElement('ul');
@@ -91,6 +94,7 @@ export const login = () => {
   aAccount.setAttribute('id','btnSignup')
   aAccount.setAttribute('type','submit')
   aAccount.setAttribute('class','button')
+  aAccount.addEventListener('click', createUser );
   aAccount.textContent = 'Sign Up'
 
   

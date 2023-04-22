@@ -1,10 +1,8 @@
 import { welcome } from './view/welcome.js';
 import { login } from './view/login.js';
 import {footer} from './view/footer.js'
-import { LoginUser } from './lib/index.js';
 
-const txtEmail = document.getElementById("txtEmail");
-const txtPassword = document.getElementById('txtPassword');
+
 
 const router = (route) =>{
   switch(route){
@@ -17,9 +15,6 @@ const router = (route) =>{
         login();
         footer();  
         break;
-    }
-    case '/loginuser': {
-        LoginUser(txtEmail.value, txtPassword.value);
     }
     default:
     console.log('error');
@@ -38,13 +33,17 @@ const router = (route) =>{
 //   // Ejemplo de uso: 
 // navigateTo('/');
 
-window.addEventListener('popstate', ()=>{
-    router(window.location.pathname)
-})
-window.addEventListener('DOMContentLoaded', function() {
-  if (window.location.pathname.length <= 1) { // Verificar si la longitud es menor o igual a 1
-    router('/');
-  } else {
-    router(window.location.pathname);
+document.addEventListener("click", (e)=> {
+/*   const { target } = e; */
+  if (!e.target.matches("a")) {
+    return;
   }
-}); 
+  e.preventDefault();
+  
+  console.log(e.target.pathname);
+  router(e.target.pathname);
+  window.history.pushState({}, "", e.target.href);
+});
+
+
+router(window.location.pathname);

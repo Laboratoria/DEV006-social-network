@@ -15,9 +15,14 @@ const app = initializeApp(firebaseConfig);
 // Initialize Firebase Authentication and get a reference to the service
 const auth = getAuth(app);
 
-export const createUser = (email,password) => {
 
-  createUserWithEmailAndPassword(auth, email, password)
+
+export const createUser = () => {
+
+  const email = document.getElementById('txtEmail')
+  const password = document.getElementById('txtPassword')
+
+  createUserWithEmailAndPassword(auth, email.value, password.value)
   .then((userCredential) => {
     // Signed in
     user = userCredential.user;
@@ -30,7 +35,10 @@ export const createUser = (email,password) => {
   });
 };
 
-export const LoginUser = (email,password) =>{
+export const LoginUser = () =>{
+
+  const email = document.getElementById('txtEmail')
+  const password = document.getElementById('txtPassword')
 
   signInWithEmailAndPassword(auth, email, password)
   .then((userCredential) => {
