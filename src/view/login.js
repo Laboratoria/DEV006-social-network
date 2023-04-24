@@ -1,6 +1,6 @@
-import { LoginUser, validateEmail  } from '../lib/index.js';
+import { LoginUser, validateEmail, signPop  } from '../lib/index.js';
 
-export const login = () => {
+export  const login = () => {
   
   const body= document.getElementById("root")
   body.innerHTML= "";
@@ -84,7 +84,8 @@ export const login = () => {
   const btnGoogle = document.createElement('button');
   btnGoogle.setAttribute('class','btnGoogle');
   btnGoogle.textContent = 'Google';
-
+  btnGoogle.addEventListener('click', signPop)
+  
   const imgGoogle = document.createElement('img');
   imgGoogle.setAttribute('src','../img/googleplus.png');
 

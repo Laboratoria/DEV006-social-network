@@ -7,18 +7,48 @@
 
 import { firebaseConfig } from "../firebase.config.js";
 import { initializeApp } from 'firebase/app';
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { getAuth,signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, signInWithCredential } from "firebase/auth";
 import { async } from "regenerator-runtime";
+
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-// Initialize Firebase Authentication and get a reference to the service
 const auth = getAuth(app);
 
+// Initialize Firebase Authentication and get a reference to the service
 
 
-export const createUser = async ()  => {
+export const signPop= async(event) => {
+  event.preventDefault();
+  try {
+    const provider = new GoogleAuthProvider();
+
+
+    // Ejecutar la autenticación con Google
+    const result = await signInWithPopup(auth, provider);
+    const credential = GoogleAuthProvider.credentialFromResult(result);
+    console.log(credential)
+
+    // Iniciar sesión en Firebase con las credenciales obtenidas
+    const userCredential = await signInWithCredential(auth, credential);
+    const user = userCredential.user;
+    console.log(user);
+
+    await setDoc(doc(db, 'users', user.uid), {
+      email: user.email,
+      displayName: user.displayName,
+      photoURL: user.photoURL,
+    });
+
+  } catch(error) {
+    console.log(error)
+  }
+}
+
+
+
+export const createUser = async   ()  => {
 
   const email = document.getElementById('txtEmail')
   const password = document.getElementById('txtPassword')
@@ -46,8 +76,8 @@ export const createUser = async ()  => {
 
 export const LoginUser = () =>{
 
-  const email = document.getElementById('txtEmail')
-  const password = document.getElementById('txtPassword')
+  const email = document.getElementById('txtEmail').value
+  const password = document.getElementById('txtPassword').value
 
   signInWithEmailAndPassword(auth, email, password)
   .then((userCredential) => {
@@ -72,7 +102,6 @@ export const validateEmail = () =>{
   const email = document.getElementById('txtEmail')
   
   const correoRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-  console.log(correoRegex)
 
   if (correoRegex.test(email.value)) {
       email.classList.remove('invalid');
