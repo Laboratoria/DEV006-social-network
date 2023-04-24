@@ -78,18 +78,44 @@ export const LoginUser = () =>{
 
   const email = document.getElementById('txtEmail').value
   const password = document.getElementById('txtPassword').value
+  const correoRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
   signInWithEmailAndPassword(auth, email, password)
   .then((userCredential) => {
     // Signed in
     const user = userCredential.user;
     // ...
+    if (correoRegex.test(email)) {
+      emailInput.classList.remove('invalid');
+      emailInput.classList.add('valid');
+      document.getElementById('spanErrorEmail').textContent = '';
+    }
   })
   .catch((error) => {
     const errorCode = error.code;
     console.log(errorCode)
     const errorMessage = error.message;
     console.log(errorMessage)
+
+    const emailInput = document.getElementById('txtEmail')
+  
+    if (!correoRegex.test(email)){
+      emailInput.classList.remove('valid');
+      emailInput.classList.add('invalid');
+      document.getElementById('spanErrorEmail').textContent = 'Please enter a valid email.';
+    } else if (errorCode === 'auth/user-not-found') {
+      emailInput.classList.remove('valid');
+      emailInput.classList.add('invalid');
+      document.getElementById('spanErrorEmail').textContent = 'User not found';
+    } 
+
+    const passwordInput = document.getElementById('txtPassword');
+
+    if (errorCode === 'auth/wrong-password') {
+      passwordInput.classList.remove('valid');
+      passwordInput.classList.add('invalid');
+      document.getElementById('spanErrorPassword').textContent = 'Wrong password'
+    }
   });
 };
 
@@ -99,19 +125,7 @@ export const logout = async () => {
 }
 
 export const validateEmail = () =>{
-  const email = document.getElementById('txtEmail')
-  
-  const correoRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
-  if (correoRegex.test(email.value)) {
-      email.classList.remove('invalid');
-      email.classList.add('valid');
-      document.getElementById('spanErrorEmail').textContent = '';
-  } else {
-    email.classList.remove('valid');
-    email.classList.add('invalid');
-    document.getElementById('spanErrorEmail').textContent = 'Please enter a valid email.';
-  }
 
 };
 

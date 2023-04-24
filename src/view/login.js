@@ -59,6 +59,9 @@ export  const login = () => {
   txtPassword.setAttribute('type', 'password')
   txtPassword.setAttribute('placeholder', 'Password')
 
+  const spanErrorPassword = document.createElement('span')
+  spanErrorPassword.setAttribute('id','spanErrorPassword')
+
   const btnLogin = document.createElement('button');
   btnLogin.setAttribute('id', 'btnLogin');
   btnLogin.setAttribute('type', 'button');
@@ -109,7 +112,7 @@ export  const login = () => {
   nav.append(ul)
   ul.append(btnHome)
   btnHome.append(homeLink)
-  form.append(h2,group1,spanErrorEmail,group2,btnLogin,ulPassword,h4,hr,btnGoogle,ulAccount)
+  form.append(h2,group1,spanErrorEmail,group2, spanErrorPassword, btnLogin,ulPassword,h4,hr,btnGoogle,ulAccount)
   btnGoogle.append(imgGoogle)
   group1.append(txtEmail)
   group2.append(txtPassword)
