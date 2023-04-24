@@ -1,5 +1,4 @@
-import { LoginUser } from '../lib/index.js';
-import { createUser } from '../lib/index.js';
+import { LoginUser, validateEmail  } from '../lib/index.js';
 
 export const login = () => {
   
@@ -46,6 +45,11 @@ export const login = () => {
   txtEmail.setAttribute('id', 'txtEmail')
   txtEmail.setAttribute('type', 'email')
   txtEmail.setAttribute('placeholder', 'Email')
+  txtEmail.addEventListener('blur', validateEmail);
+  
+
+  const spanErrorEmail = document.createElement('span')
+  spanErrorEmail.setAttribute('id','spanErrorEmail')
 
   const group2 = document.createElement('div')
   group2.setAttribute('class','group')
@@ -90,11 +94,10 @@ export const login = () => {
   liAccount.textContent ='Need an account? '
 
   const aAccount = document.createElement('a')
-  aAccount.setAttribute('href','#')
+  aAccount.setAttribute('href','/register')
   aAccount.setAttribute('id','btnSignup')
   aAccount.setAttribute('type','submit')
   aAccount.setAttribute('class','button')
-  aAccount.addEventListener('click', createUser );
   aAccount.textContent = 'Sign Up'
 
   
@@ -105,7 +108,7 @@ export const login = () => {
   nav.append(ul)
   ul.append(btnHome)
   btnHome.append(homeLink)
-  form.append(h2,group1,group2,btnLogin,ulPassword,h4,hr,btnGoogle,ulAccount)
+  form.append(h2,group1,spanErrorEmail,group2,btnLogin,ulPassword,h4,hr,btnGoogle,ulAccount)
   btnGoogle.append(imgGoogle)
   group1.append(txtEmail)
   group2.append(txtPassword)

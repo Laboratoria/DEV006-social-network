@@ -1,3 +1,5 @@
+import { login } from "./login";
+
 export let welcome = () => {
     const body= document.getElementById("root")
     body.innerHTML= "";
@@ -24,7 +26,7 @@ export let welcome = () => {
     const signUpLink = document.createElement('li');
 
     const signUp = document.createElement('a');
-    signUp.setAttribute('href','#');;
+    signUp.setAttribute('href','/register');;
     signUp.textContent = 'Sign Up';
 
     const main = document.createElement('main');
@@ -60,11 +62,19 @@ export let welcome = () => {
     inputLike1.setAttribute('type','image');
     inputLike1.setAttribute('src','img/megusta.png');
     inputLike1.setAttribute('alt','logomegusta');
+    inputLike1.addEventListener('click',login)
+    inputLike1.addEventListener('mouseover', function() {
+        this.src = "img/megustarojo.png";
+    });
 
     const inputMatch1 = document.createElement('input');
     inputMatch1.setAttribute('type','image');
     inputMatch1.setAttribute('src','img/matchvacio.png');
     inputMatch1.setAttribute('alt','logomatch');
+    inputMatch1.addEventListener('click',login)
+    inputMatch1.addEventListener('mouseover', function() {
+        this.src = "img/match.png";
+    });
 
     const cardPet2 = document.createElement('div');
     cardPet2.setAttribute('class','cardpet');
@@ -85,11 +95,19 @@ export let welcome = () => {
     inputLike2.setAttribute('type','image');
     inputLike2.setAttribute('src','img/megusta.png');
     inputLike2.setAttribute('alt','logomegusta');
+    inputLike2.addEventListener('click',login)
+    inputLike2.addEventListener('mouseover', function() {
+        this.src = "img/megustarojo.png";
+    });
 
     const inputMatch2 = document.createElement('input');
     inputMatch2.setAttribute('type','image');
     inputMatch2.setAttribute('src','img/matchvacio.png');
     inputMatch2.setAttribute('alt','logomatch');
+    inputMatch2.addEventListener('click',login)
+    inputMatch2.addEventListener('mouseover', function() {
+        this.src = "img/match.png";
+    });
 
     const sectionTestimonies = document.createElement('section');
     sectionTestimonies.setAttribute('class','contenedortestimonios');

@@ -1,6 +1,7 @@
 import { welcome } from './view/welcome.js';
 import { login } from './view/login.js';
 import {footer} from './view/footer.js'
+import { register } from './view/register.js';
 
 
 
@@ -16,6 +17,11 @@ const router = (route) =>{
         footer();  
         break;
     }
+    case '/register':{ 
+      register();
+      footer();  
+      break;
+  }
     default:
     console.log('error');
     break;        
@@ -33,16 +39,15 @@ const router = (route) =>{
 //   // Ejemplo de uso: 
 // navigateTo('/');
 
-document.addEventListener("click", (e)=> {
+document.addEventListener("click", (evento)=> {
 /*   const { target } = e; */
-  if (!e.target.matches("a")) {
+  if (!evento.target.matches("a")) {
     return;
   }
-  e.preventDefault();
+  evento.preventDefault();
   
-  console.log(e.target.pathname);
-  router(e.target.pathname);
-  window.history.pushState({}, "", e.target.href);
+  router(evento.target.pathname);
+  window.history.pushState({}, "", evento.target.href);
 });
 
 

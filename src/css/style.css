@@ -95,6 +95,7 @@ header img{
     width: 19px;
     height: 19px;
 }
+
 .contenedorcards .cardpet{
     width: 135px;
     height: 141px;
@@ -156,6 +157,25 @@ footer {
 
 }
 /* formulario de login */
+#txtEmail.valid {
+    border: 2px solid green;
+}
+
+#txtEmail.invalid {
+    border: 2px solid red;
+    color: red;
+    font-style: italic;
+}
+#txtPassword.valid {
+    border: 2px solid green;
+}
+
+#txtPassword.invalid {
+    border: 2px solid red;
+    color: red;
+    font-style: italic;
+}
+
 form{
     width: 75vw;
     height: 60vh;
