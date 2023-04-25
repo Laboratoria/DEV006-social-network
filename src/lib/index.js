@@ -7,7 +7,7 @@
 
 import { firebaseConfig } from "../firebase.config.js";
 import { initializeApp } from 'firebase/app';
-import { getAuth,signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, signInWithCredential, sendPasswordResetEmail } from "firebase/auth";
+import { getAuth,signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithCredential } from "firebase/auth";
 
 
 // Initialize Firebase
@@ -54,13 +54,10 @@ export const createUser = async   ()  => {
   const spanPassword = document.getElementById('spanErrorPassword')
   try {
     const userCredential = await createUserWithEmailAndPassword(auth, email.value, password.value)
-    console.log(userCredential)
     
   } catch (error) {
     const errorCode = error.code;
-    console.log(errorCode)
     const errorMessage = error.message;
-    console.log(errorMessage)
 
     if(errorCode === 'auth/email-already-in-use'){
       spanEmail.textContent = 'Email in use'
@@ -72,60 +69,35 @@ export const createUser = async   ()  => {
   }
 };
 
-export const LoginUser = () =>{
+export const LoginUser = () => {
+  const emailInput = document.getElementById('txtEmail');
+  const passwordInput = document.getElementById('txtPassword');
 
-  const email = document.getElementById('txtEmail').value
-  const password = document.getElementById('txtPassword').value
-  const correoRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  const email = emailInput.value;
+  const password = passwordInput.value;
 
   signInWithEmailAndPassword(auth, email, password)
-  .then((userCredential) => {
-    // Signed in
-    const user = userCredential.user;
-    // ...
-    if (correoRegex.test(email)) {
-      emailInput.classList.remove('invalid');
-      emailInput.classList.add('valid');
-      document.getElementById('spanErrorEmail').textContent = '';
-    }
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    console.log(errorCode)
-    const errorMessage = error.message;
-    console.log(errorMessage)
+    .then((userCredential) => {
+      // Signed in
+      const user = userCredential.user;
+      console.log(user)
 
-    const emailInput = document.getElementById('txtEmail')
-  
-    if (!correoRegex.test(email)){
-      emailInput.classList.remove('valid');
-      emailInput.classList.add('invalid');
-      document.getElementById('spanErrorEmail').textContent = 'Please enter a valid email.';
-    } else if (errorCode === 'auth/user-not-found') {
-      emailInput.classList.remove('valid');
-      emailInput.classList.add('invalid');
-      document.getElementById('spanErrorEmail').textContent = 'User not found';
-    } 
+      // ...
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
 
-    const passwordInput = document.getElementById('txtPassword');
-
-    if (errorCode === 'auth/wrong-password') {
-      passwordInput.classList.remove('valid');
-      passwordInput.classList.add('invalid');
-      document.getElementById('spanErrorPassword').textContent = 'Wrong password'
-    }
-  });
+      if (errorCode === 'auth/user-not-found') {
+        emailInput.classList.add('invalid');
+        document.getElementById('spanErrorEmail').textContent = 'User not found';
+      } else if (errorCode === 'auth/wrong-password') {
+        passwordInput.classList.add('invalid');
+        document.getElementById('spanErrorPassword').textContent = 'Wrong password';
+      }
+    });
 };
 
-// Log out
-export const logout = async () => {
-  await signOut(auth);
-}
-
-export const validateEmail = () =>{
-
-
-};
 
 export const securePassword = () =>{
   const password = document.getElementById('txtPassword')
@@ -144,19 +116,19 @@ export const securePassword = () =>{
 
 };
 
-export const resetPassword = () =>{
-const email = document.getElementById('txtEmail')
-sendPasswordResetEmail(auth, email)
-console.log(sendPasswordResetEmail)
-  .then(() => {
-    // Password reset email sent!
-    // ..
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    console.log(errorCode)
-    const errorMessage = error.message;
-    console.log(errorMessage)
-    // ..
-  });
+export const validateEmail = () =>{
+
+  const email = document.getElementById('txtEmail')
+  const correoRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
+  if (correoRegex.test(email.value)) {
+      email.classList.remove('invalid');
+      email.classList.add('valid');
+      document.getElementById('spanErrorEmail').textContent = '';
+  } else {
+    email.classList.remove('valid');
+    email.classList.add('invalid');
+    document.getElementById('spanErrorEmail').textContent = 'Please enter a valid email.';
+  }
+
 }
