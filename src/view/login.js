@@ -1,4 +1,4 @@
-import { LoginUser, validateEmail, signPop  } from '../lib/index.js';
+import { LoginUser, validateEmail, signPop , resetPassword } from '../lib/index.js';
 
 export  const login = () => {
   
@@ -77,6 +77,7 @@ export  const login = () => {
   const aPassword = document.createElement('a');
   aPassword.setAttribute('href','#');
   aPassword.textContent = 'Forgot Password?'
+  aPassword.addEventListener('click', resetPassword);
 
   const h4 = document.createElement('h4');
   h4.textContent = 'or log in with';

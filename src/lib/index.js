@@ -7,8 +7,7 @@
 
 import { firebaseConfig } from "../firebase.config.js";
 import { initializeApp } from 'firebase/app';
-import { getAuth,signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, signInWithCredential } from "firebase/auth";
-import { async } from "regenerator-runtime";
+import { getAuth,signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, signInWithCredential, sendPasswordResetEmail } from "firebase/auth";
 
 
 // Initialize Firebase
@@ -21,9 +20,8 @@ const auth = getAuth(app);
 
 export const signPop= async(event) => {
   event.preventDefault();
+const provider = new GoogleAuthProvider();
   try {
-    const provider = new GoogleAuthProvider();
-
 
     // Ejecutar la autenticación con Google
     const result = await signInWithPopup(auth, provider);
@@ -145,3 +143,20 @@ export const securePassword = () =>{
   }
 
 };
+
+export const resetPassword = () =>{
+const email = document.getElementById('txtEmail')
+sendPasswordResetEmail(auth, email)
+console.log(sendPasswordResetEmail)
+  .then(() => {
+    // Password reset email sent!
+    // ..
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    console.log(errorCode)
+    const errorMessage = error.message;
+    console.log(errorMessage)
+    // ..
+  });
+}

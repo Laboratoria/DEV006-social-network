@@ -66,6 +66,9 @@ export let welcome = () => {
     inputLike1.addEventListener('mouseover', function() {
         this.src = "img/megustarojo.png";
     });
+    inputLike1.addEventListener('mouseout', function() {
+        this.src = "img/megusta.png";
+    });
 
     const inputMatch1 = document.createElement('input');
     inputMatch1.setAttribute('type','image');
@@ -74,6 +77,9 @@ export let welcome = () => {
     inputMatch1.addEventListener('click',login)
     inputMatch1.addEventListener('mouseover', function() {
         this.src = "img/match.png";
+    });
+    inputMatch1.addEventListener('mouseout', function() {
+        this.src = "img/matchvacio.png";
     });
 
     const cardPet2 = document.createElement('div');
@@ -99,6 +105,9 @@ export let welcome = () => {
     inputLike2.addEventListener('mouseover', function() {
         this.src = "img/megustarojo.png";
     });
+    inputLike2.addEventListener('mouseout', function() {
+        this.src = "img/megusta.png";
+    });
 
     const inputMatch2 = document.createElement('input');
     inputMatch2.setAttribute('type','image');
@@ -108,7 +117,9 @@ export let welcome = () => {
     inputMatch2.addEventListener('mouseover', function() {
         this.src = "img/match.png";
     });
-
+    inputMatch2.addEventListener('mouseout', function() {
+        this.src = "img/matchvacio.png";
+    });
     const sectionTestimonies = document.createElement('section');
     sectionTestimonies.setAttribute('class','contenedortestimonios');
 
@@ -148,5 +159,4 @@ export let welcome = () => {
     sectionTestimonies.append(h2Testimonies,messageTestimony1,messageTestimony2);
     messageTestimony1.append(pTestimony1);
     messageTestimony2.append(pTestimony2);
-   
 }
