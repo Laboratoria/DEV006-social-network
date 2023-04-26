@@ -67,6 +67,9 @@ export  const login = () => {
   btnLogin.addEventListener('click', LoginUser);
   btnLogin.textContent ='Log In';
 
+  const containerLogin = document.createElement('div');
+  containerLogin.classList.add('containerLogin');
+
   const ulPassword = document.createElement('ul');
 
   const liPassword = document.createElement('li');
@@ -110,10 +113,13 @@ export  const login = () => {
   nav.append(ul)
   ul.append(btnHome)
   btnHome.append(homeLink)
-  form.append(h2,group1,spanErrorEmail,group2, spanErrorPassword, btnLogin,ulPassword,h4,hr,btnGoogle,ulAccount)
+  form.append(h2, group1, group2, btnLogin, containerLogin);
+
+  containerLogin.append(ulPassword, h4, hr, btnGoogle, ulAccount)
+
   btnGoogle.append(imgGoogle)
-  group1.append(txtEmail)
-  group2.append(txtPassword)
+  group1.append(txtEmail, spanErrorEmail);
+  group2.append(txtPassword, spanErrorPassword);
   ulPassword.append(liPassword)
   liPassword.append(aPassword)
   ulAccount.append(liAccount)
