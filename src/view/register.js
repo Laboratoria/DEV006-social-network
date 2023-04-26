@@ -32,11 +32,10 @@ const h1 = document.createElement('h1');
 h1.textContent = 'Be My Friend';
 
 const form = document.createElement('form');
-form.setAttribute('action','#')
-form.setAttribute('method','POST')
 
 const h2 = document.createElement('h2');
 h2.textContent = 'Register';
+
 
 const group1 = document.createElement('div');
 group1.setAttribute('class','group')
