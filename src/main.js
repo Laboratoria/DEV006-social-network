@@ -1,27 +1,27 @@
-import { welcome } from "./view/welcome.js";
-import { login } from "./view/login.js";
-import { footer } from "./view/footer.js";
-import { register } from "./view/register.js";
+import { welcome } from './view/welcome.js';
+import { login } from './view/login.js';
+import { footer } from './view/footer.js';
+import { register } from './view/register.js';
 
 const router = (route) => {
   switch (route) {
-    case "/": {
+    case '/': {
       welcome();
       footer();
       break;
     }
-    case "/login": {
+    case '/login': {
       login();
       footer();
       break;
     }
-    case "/register": {
+    case '/register': {
       register();
       footer();
       break;
     }
     default:
-      console.log("error");
+      console.log('error');
       break;
   }
 };
@@ -37,15 +37,15 @@ const router = (route) => {
 //   // Ejemplo de uso:
 // navigateTo('/');
 
-document.addEventListener("click", (evento) => {
+document.addEventListener('click', (evento) => {
   /*   const { target } = e; */
-  if (!evento.target.matches("a")) {
+  if (!evento.target.matches('a')) {
     return;
   }
   evento.preventDefault();
 
   router(evento.target.pathname);
-  window.history.pushState({}, "", evento.target.href);
+  window.history.pushState({}, '', evento.target.href);
 });
 
 router(window.location.pathname);

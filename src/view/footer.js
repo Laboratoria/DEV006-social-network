@@ -1,10 +1,10 @@
 export const footer = () => {
-  const body= document.getElementById("root")
+  const body = document.getElementById('root');
 
-  const footer = document.createElement('footer');
+  const footerElement = document.createElement('footer');
   const pFooter = document.createElement('p');
-  pFooter.textContent = "CopyRight  Marissa-Gabriela-Rebeca  Contáctanos";
+  pFooter.textContent = 'CopyRight  Marissa-Gabriela-Rebeca  Contáctanos';
 
-  body.append(footer);
+  body.append(footerElement);
   footer.append(pFooter);
-}
+};
