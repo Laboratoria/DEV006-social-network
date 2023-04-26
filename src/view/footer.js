@@ -6,5 +6,5 @@ export const footer = () => {
   pFooter.textContent = 'CopyRight  Marissa-Gabriela-Rebeca  Contáctanos';
 
   body.append(footerElement);
-  footer.append(pFooter);
+  footerElement.append(pFooter);
 };
