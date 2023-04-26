@@ -96,9 +96,9 @@ export const LoginUser = () => {
     });
 };
 
+// Validación de contraseña segura
 export const securePassword = () => {
   const password = document.getElementById('txtPassword');
-  const passwordAgain = document.getElementById('txtPasswordAgain');
   const paswordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&#.$($)$-$_])[A-Za-z\d$@$!%*?&#.$($)$-$_][^\s]{6,15}$/;
 
   if (paswordRegex.test(password.value)) {
@@ -112,6 +112,8 @@ export const securePassword = () => {
   }
 };
 
+
+// Validación de que las contraseñas coincidan
 export const validatePassowrds = () => {
   const passwordValue = document.getElementById('txtPassword').value;
   const passwordAgain = document.getElementById('txtPasswordAgain');
@@ -129,8 +131,8 @@ export const validatePassowrds = () => {
   }
 };
 
+// Validación de que sea email
 export const validateEmail = () =>{
-
   const email = document.getElementById('txtEmail')
   const correoRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
@@ -143,5 +145,4 @@ export const validateEmail = () =>{
     email.classList.add('invalid');
     document.getElementById('spanErrorEmail').textContent = 'Please enter a valid email.';
   }
-
 }

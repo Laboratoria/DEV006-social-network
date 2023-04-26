@@ -1,25 +1,24 @@
-import { createUser, securePassword, validateEmail, validatePassowrds } from "../lib/index.js";
+import { createUser, securePassword, validateEmail, validatePassowrds } from '../lib/index.js';
 
 export const register = () => {
+  const body = document.getElementById('root');
+  body.innerHTML = '';
 
-    const body = document.getElementById("root")
-    body.innerHTML = "";
+  const bodyimg = document.createElement('div');
+  bodyimg.setAttribute('class', 'bodyimg');
 
-    const bodyimg = document.createElement("div");
-    bodyimg.setAttribute("class", "bodyimg");
+  const registerdiv = document.createElement('div');
+  registerdiv.setAttribute('id', 'register');
+  registerdiv.setAttribute('class', 'register');
 
-    const registerdiv = document.createElement('div');
-    registerdiv.setAttribute('id', 'register')
-    registerdiv.setAttribute('class', 'register')
+  const header = document.createElement('header');
 
-    const header = document.createElement("header");
+  const logoImg = document.createElement('img');
+  logoImg.setAttribute('src', 'img/logo.png');
 
-    const logoImg = document.createElement("img");
-    logoImg.setAttribute("src", "img/logo.png");
+  const nav = document.createElement('nav');
 
-    const nav = document.createElement('nav');
-
-    const ul = document.createElement('ul');
+  const ul = document.createElement('ul');
 
     const btnHome = document.createElement('li');
     btnHome.setAttribute('id', 'Home');
@@ -60,30 +59,30 @@ export const register = () => {
     const txtEmailLabel = document.createElement('label');
     txtEmailLabel.setAttribute('for', 'txtEmail');
     txtEmailLabel.textContent = 'Email';
-    txtEmailLabel.classList.add('labelQuestions')
+    txtEmailLabel.classList.add('labelQuestions');
 
     const txtEmail = document.createElement('input');
-    txtEmail.setAttribute('id', 'txtEmail')
-    txtEmail.setAttribute('type', 'email')
-    txtEmail.setAttribute('placeholder', 'Email')
+    txtEmail.setAttribute('id', 'txtEmail');
+    txtEmail.setAttribute('type', 'email');
+    txtEmail.setAttribute('placeholder', 'Email');
     txtEmail.addEventListener('blur', validateEmail);
 
-    const spanErrorEmail = document.createElement('span')
+    const spanErrorEmail = document.createElement('span');
     spanErrorEmail.setAttribute('id', 'spanErrorEmail');
 
     const txtPasswordLabel = document.createElement('label');
     txtPasswordLabel.setAttribute('for', 'txtPassword');
     txtPasswordLabel.textContent = 'Password';
-    txtPasswordLabel.classList.add('labelQuestions')
+    txtPasswordLabel.classList.add('labelQuestions');
 
     const txtPassword = document.createElement('input');
-    txtPassword.setAttribute('id', 'txtPassword')
-    txtPassword.setAttribute('type', 'password')
-    txtPassword.setAttribute('placeholder', 'Password')
+    txtPassword.setAttribute('id', 'txtPassword');
+    txtPassword.setAttribute('type', 'password');
+    txtPassword.setAttribute('placeholder', 'Password');
     txtPassword.addEventListener('keyup', securePassword);
 
-    const spanErrorPassword = document.createElement('span')
-    spanErrorPassword.setAttribute('id', 'spanErrorPassword')
+    const spanErrorPassword = document.createElement('span');
+    spanErrorPassword.setAttribute('id', 'spanErrorPassword');
 
     const txtPasswordAgainLabel = document.createElement('label');
     txtPasswordAgainLabel.setAttribute('for', 'txtPasswordAgain');
@@ -95,7 +94,7 @@ export const register = () => {
     txtPasswordAgain.setAttribute('type', 'password');
     txtPasswordAgain.setAttribute('placeholder', 'Password (again)');
     txtPasswordAgain.addEventListener('blur', validatePassowrds);
-    
+
     const spanErrorPasswordAgain = document.createElement('span');
     spanErrorPasswordAgain.setAttribute('id', 'spanErrorPasswordAgain');
 
@@ -105,7 +104,6 @@ export const register = () => {
     btnRegister.setAttribute('class', 'button');
     btnRegister.addEventListener('click', createUser);
     btnRegister.textContent = 'Sign Up';
-
 
     body.append(bodyimg);
     bodyimg.append(registerdiv);

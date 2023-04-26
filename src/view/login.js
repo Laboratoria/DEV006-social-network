@@ -1,16 +1,15 @@
 import { LoginUser, validateEmail, signPop } from '../lib/index.js';
 
-export  const login = () => {
-  
-  const body= document.getElementById("root")
-  body.innerHTML= "";
+export const login = () => {
+  const body = document.getElementById("root")
+  body.innerHTML = "";
 
   const bodyimg = document.createElement("div");
   bodyimg.setAttribute("class", "bodyimg");
 
   const logindiv = document.createElement('div');
-  logindiv.setAttribute('id','login')
-  logindiv.setAttribute('class','login')
+  logindiv.setAttribute('id', 'login')
+  logindiv.setAttribute('class', 'login')
 
   const header = document.createElement("header");
 
@@ -25,7 +24,7 @@ export  const login = () => {
   btnHome.setAttribute('id', 'Home');
 
   const homeLink = document.createElement('a');
-  homeLink.setAttribute('href','/');
+  homeLink.setAttribute('href', '/');
   homeLink.textContent = 'Home';
 
   const h1 = document.createElement('h1');
@@ -37,7 +36,7 @@ export  const login = () => {
   h2.textContent = 'Log In';
 
   const group1 = document.createElement('div');
-  group1.setAttribute('class','group')
+  group1.setAttribute('class', 'group')
 
   const txtEmail = document.createElement('input');
   txtEmail.setAttribute('id', 'txtEmail')
@@ -46,10 +45,10 @@ export  const login = () => {
   txtEmail.addEventListener('blur', validateEmail);
 
   const spanErrorEmail = document.createElement('span')
-  spanErrorEmail.setAttribute('id','spanErrorEmail')
+  spanErrorEmail.setAttribute('id', 'spanErrorEmail')
 
   const group2 = document.createElement('div')
-  group2.setAttribute('class','group')
+  group2.setAttribute('class', 'group')
 
   const txtPassword = document.createElement('input');
   txtPassword.setAttribute('id', 'txtPassword')
@@ -57,14 +56,14 @@ export  const login = () => {
   txtPassword.setAttribute('placeholder', 'Password')
 
   const spanErrorPassword = document.createElement('span')
-  spanErrorPassword.setAttribute('id','spanErrorPassword')
+  spanErrorPassword.setAttribute('id', 'spanErrorPassword')
 
   const btnLogin = document.createElement('button');
   btnLogin.setAttribute('id', 'btnLogin');
   btnLogin.setAttribute('type', 'button');
   btnLogin.setAttribute('class', 'button');
   btnLogin.addEventListener('click', LoginUser);
-  btnLogin.textContent ='Log In';
+  btnLogin.textContent = 'Log In';
 
   const containerLogin = document.createElement('div');
   containerLogin.classList.add('containerLogin');
@@ -72,43 +71,43 @@ export  const login = () => {
   const ulPassword = document.createElement('ul');
 
   const liPassword = document.createElement('li');
-  liPassword.setAttribute('id','forgotPassword');
+  liPassword.setAttribute('id', 'forgotPassword');
 
   const aPassword = document.createElement('a');
-  aPassword.setAttribute('href','#');
+  aPassword.setAttribute('href', '#');
   aPassword.textContent = 'Forgot Password?'
 
   const h4 = document.createElement('h4');
   h4.textContent = 'or log in with';
-  h4.setAttribute('class','logInWith');
+  h4.setAttribute('class', 'logInWith');
 
   const hr = document.createElement('hr');
 
   const btnGoogle = document.createElement('button');
-  btnGoogle.setAttribute('class','btnGoogle');
+  btnGoogle.setAttribute('class', 'btnGoogle');
   btnGoogle.textContent = 'Google';
   btnGoogle.addEventListener('click', signPop)
-  
+
   const imgGoogle = document.createElement('img');
-  imgGoogle.setAttribute('src','../img/googleplus.png');
+  imgGoogle.setAttribute('src', '../img/googleplus.png');
 
   const ulAccount = document.createElement('ul');
 
   const liAccount = document.createElement('li');
-  liAccount.textContent ='Need an account? '
+  liAccount.textContent = 'Need an account? '
 
   const aAccount = document.createElement('a')
-  aAccount.setAttribute('href','/register')
-  aAccount.setAttribute('id','btnSignup')
-  aAccount.setAttribute('type','submit')
-  aAccount.setAttribute('class','button')
+  aAccount.setAttribute('href', '/register')
+  aAccount.setAttribute('id', 'btnSignup')
+  aAccount.setAttribute('type', 'submit')
+  aAccount.setAttribute('class', 'button')
   aAccount.textContent = 'Sign Up'
 
-  
+
   body.append(bodyimg);
   bodyimg.append(logindiv);
-  logindiv.append(header,h1,form)
-  header.append(logoImg,nav)
+  logindiv.append(header, h1, form)
+  header.append(logoImg, nav)
   nav.append(ul)
   ul.append(btnHome)
   btnHome.append(homeLink)
@@ -123,9 +122,9 @@ export  const login = () => {
   liPassword.append(aPassword)
   ulAccount.append(liAccount)
   liAccount.append(aAccount)
-  };
-  
+};
 
-  const btnLogin = document.getElementById('btnLogin');
-  const btnSignup = document.getElementById('btnSignup');
-  const btnLogout = document.getElementById('btnLogout');
+
+const btnLogin = document.getElementById('btnLogin');
+const btnSignup = document.getElementById('btnSignup');
+const btnLogout = document.getElementById('btnLogout');
