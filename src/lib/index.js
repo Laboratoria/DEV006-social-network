@@ -1,14 +1,15 @@
 // aqui exportaras las funciones que necesites
 
-/*export const myFunction = () => {
-  // aqui tu codigo
-  console.log('Hola mundo!');
-};*/
-
-import { firebaseConfig } from "../firebase.config.js";
 import { initializeApp } from 'firebase/app';
-import { getAuth,signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithCredential } from "firebase/auth";
-
+import {
+  getAuth,
+  signInWithPopup,
+  GoogleAuthProvider,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signInWithCredential,
+} from 'firebase/auth';
+import { firebaseConfig } from '../firebase.config.js';
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
@@ -17,41 +18,32 @@ const auth = getAuth(app);
 
 // Initialize Firebase Authentication and get a reference to the service
 
-
-export const signPop= async(event) => {
+export const signPop = async (event) => {
   event.preventDefault();
-const provider = new GoogleAuthProvider();
+  const provider = new GoogleAuthProvider();
   try {
-
     // Ejecutar la autenticación con Google
     const result = await signInWithPopup(auth, provider);
     const credential = GoogleAuthProvider.credentialFromResult(result);
-    console.log(credential)
+    console.log(credential);
 
     // Iniciar sesión en Firebase con las credenciales obtenidas
     const userCredential = await signInWithCredential(auth, credential);
     const user = userCredential.user;
     console.log(user);
-
-    await setDoc(doc(db, 'users', user.uid), {
-      email: user.email,
-      displayName: user.displayName,
-      photoURL: user.photoURL,
-    });
-
-  } catch(error) {
-    console.log(error)
+  } catch (error) {
+    console.log(error);
   }
-}
+};
 
-export const createUser = async   ()  => {
-  const email = document.getElementById('txtEmail')
-  const password = document.getElementById('txtPassword')
-  const spanEmail = document.getElementById('spanErrorEmail')
-  const spanPassword = document.getElementById('spanErrorPassword')
+export const createUser = async () => {
+  const email = document.getElementById('txtEmail');
+  const password = document.getElementById('txtPassword');
+  const spanEmail = document.getElementById('spanErrorEmail');
+  const spanPassword = document.getElementById('spanErrorPassword');
   const spanCreateUser = document.getElementById('spanCreateUser');
   try {
-    const userCredential = await createUserWithEmailAndPassword(auth, email.value, password.value)
+    const userCredential = await createUserWithEmailAndPassword(auth, email.value, password.value);
     console.log(userCredential);
 
     spanCreateUser.style.display = 'flex';
@@ -59,13 +51,13 @@ export const createUser = async   ()  => {
   } catch (error) {
     const errorCode = error.code;
     const errorMessage = error.message;
-
-    if(errorCode === 'auth/email-already-in-use'){
-      spanEmail.textContent = 'Email in use'
-    }else if (errorCode === 'auth/invalid-email'){
-      spanEmail.textContent = 'Invalid Email'
-    }else if(errorCode === 'auth/weak-password'){
-      spanPassword.textContent = 'Password is too weak'
+    console.log(errorMessage);
+    if (errorCode === 'auth/email-already-in-use') {
+      spanEmail.textContent = 'Email in use';
+    } else if (errorCode === 'auth/invalid-email') {
+      spanEmail.textContent = 'Invalid Email';
+    } else if (errorCode === 'auth/weak-password') {
+      spanPassword.textContent = 'Password is too weak';
     }
   }
 };
@@ -81,14 +73,14 @@ export const LoginUser = () => {
     .then((userCredential) => {
       // Signed in
       const user = userCredential.user;
-      console.log(email)
+      console.log(user);
 
       // ...
     })
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
-
+      console.log(errorMessage);
       if (errorCode === 'auth/user-not-found') {
         emailInput.classList.add('invalid');
         document.getElementById('spanErrorEmail').textContent = 'User not found';
@@ -115,7 +107,6 @@ export const securePassword = () => {
   }
 };
 
-
 // Validación de que las contraseñas coincidan
 export const validatePassowrds = () => {
   const passwordValue = document.getElementById('txtPassword').value;
@@ -123,7 +114,7 @@ export const validatePassowrds = () => {
   const passwordAgainValue = passwordAgain.value;
   const spanErrorPasswordAgain = document.getElementById('spanErrorPasswordAgain');
 
-  if(passwordValue !== passwordAgainValue) { 
+  if (passwordValue !== passwordAgainValue) {
     passwordAgain.classList.remove('valid');
     passwordAgain.classList.add('invalid');
     spanErrorPasswordAgain.textContent = 'Passwords are different.';
@@ -135,17 +126,17 @@ export const validatePassowrds = () => {
 };
 
 // Validación de que sea email
-export const validateEmail = () =>{
-  const email = document.getElementById('txtEmail')
-  const correoRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+export const validateEmail = () => {
+  const email = document.getElementById('txtEmail');
+  const correoRegex = /^\w+([.-]?\w+)@\w+([.-]?\w+)(.\w{2,3})+$/;
 
   if (correoRegex.test(email.value)) {
-      email.classList.remove('invalid');
-      email.classList.add('valid');
-      document.getElementById('spanErrorEmail').textContent = '';
+    email.classList.remove('invalid');
+    email.classList.add('valid');
+    document.getElementById('spanErrorEmail').textContent = '';
   } else {
     email.classList.remove('valid');
     email.classList.add('invalid');
     document.getElementById('spanErrorEmail').textContent = 'Please enter a valid email.';
   }
-}
+};
