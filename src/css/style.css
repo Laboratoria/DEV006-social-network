@@ -23,7 +23,7 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed ;
-    height:100vh;
+    height:130vh;
 }
 
 h1{
@@ -251,7 +251,7 @@ form ul{
     margin-bottom: 1rem;
 }
 
-/* Formato para web */
+/* Welcome */
 .bodyimg {
 
     background-color: rgba(255, 255, 255, 0.5);
@@ -259,7 +259,7 @@ form ul{
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed ;
-    height:100vh;
+    height:160vh;
 }
 
 h1{
@@ -392,7 +392,7 @@ footer {
     padding: 10px;
 
 }
-/* formulario de login */
+/* formulario de signup */
 #txtEmail.valid {
     border: 2px solid green;
 }
@@ -413,8 +413,8 @@ footer {
 }
 
 form{
-    width: 75vw;
-    height: 60vh;
+    width: 75vw;;
+    height: 120vh;
     margin: 4rem;
     background-color: white;
     text-align: center;
@@ -436,7 +436,8 @@ form input{
 form h2{
     font-size: 32px;
 }
-#btnLogin{
+
+#btnRegister{
     border-radius: 5px;
     background-color: #F5EBE0;
     border-color: #EA907A;
@@ -445,35 +446,4 @@ form h2{
     height: 34px;
 }
 
-#btnLogin:hover{
-    background-color: #EA907A;
-    border-color: #F5EBE0;
-    color: #F5EBE0;
-}
-#forgotPassword{
-    font-size: 12px;
-}
 
-.logInWith {
-    position: relative;
-    top: 7px;
-    right: -21vw;
-    background-color: white;
-    width: 70px;
-}
-
-.btnGoogle {
-    background-color: white;
-    color: black;
-    border: 1px solid gray;
-    border-radius: 5px;
-    font-family: 'Nunito';
-    margin-top: 8px;
-    padding: 1px 4px;
-    display: flex;
-    align-content: center;
-    align-items: center;
-    position: relative;
-    right: -65px;
-    box-shadow: 0px 3px 3px gray;
-}

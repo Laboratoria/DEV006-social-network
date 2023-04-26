@@ -140,8 +140,78 @@ const foodAllergyInput = document.createElement('input');
 foodAllergyInput.setAttribute('type', 'checkbox');
 foodAllergyInput.setAttribute('id', 'foodAllergy');
 
+const checkAnimalsLooking = document.createElement('label');
+checkAnimalsLooking.setAttribute('for', 'checkAnimalsLooking');
+checkAnimalsLooking.textContent = 'What animals are you loooking for?';
+
+const dogLabel = document.createElement('label');
+dogLabel.setAttribute('for', 'dog');
+dogLabel.textContent = 'Dog';
+
+const dogInput = document.createElement('input');
+dogInput.setAttribute('type', 'checkbox');
+dogInput.setAttribute('id', 'dog');
+
+const catLabel = document.createElement('label');
+catLabel.setAttribute('for', 'cat');
+catLabel.textContent = 'Cat';
+
+const catInput = document.createElement('input');
+catInput.setAttribute('type', 'checkbox');
+catInput.setAttribute('id', 'cat');
+
+const hamsterLabel = document.createElement('label');
+hamsterLabel.setAttribute('for', 'hamster');
+hamsterLabel.textContent = 'Hamster';
+
+const hamsterInput = document.createElement('input');
+hamsterInput.setAttribute('type', 'checkbox');
+hamsterInput.setAttribute('id', 'hamster');
+
+const rabbitLabel = document.createElement('label');
+rabbitLabel.setAttribute('for', 'rabbit');
+rabbitLabel.textContent = 'Rabbit';
+
+const rabbitInput = document.createElement('input');
+rabbitInput.setAttribute('type', 'checkbox');
+rabbitInput.setAttribute('id', 'rabbit');
+
+const parrotLabel = document.createElement('label');
+parrotLabel.setAttribute('for', 'parrot');
+parrotLabel.textContent = 'Parrot';
+
+const parrotInput = document.createElement('input');
+parrotInput.setAttribute('type', 'checkbox');
+parrotInput.setAttribute('id', 'parrot');
+
+const othersLabel = document.createElement('label');
+othersLabel.setAttribute('for', 'others');
+othersLabel.textContent = 'Others';
+
+const othersInput = document.createElement('input');
+othersInput.setAttribute('type', 'checkbox');
+othersInput.setAttribute('id', 'others');
+
+const profilePictureLabel = document.createElement('label');
+profilePictureLabel.setAttribute('for', 'profilePicture');
+profilePictureLabel.textContent = 'Profile Picture'
+
+const profilePictureInput= document.createElement('input');
+profilePictureInput.setAttribute('type', 'text');
+profilePictureInput.setAttribute('placeholder', 'Add .jpg, .png');
+profilePictureInput.setAttribute('id', 'profilePicture');
+profilePictureInput.setAttribute('src','../img/icon _camera_.png');
+
+/* const imgIconCamera = document.createElement('img');
+imgIconCamera.setAttribute('src','../img/icon _camera_.png'); */
+
+
 // const group1 = document.createElement('div');
 // group1.setAttribute('class','group')
+
+const txtEmailLabel = document.createElement('label');
+txtEmailLabel.setAttribute('for', 'profilePicture');
+txtEmailLabel.textContent = 'Email'
 
 const txtEmail = document.createElement('input');
 txtEmail.setAttribute('id', 'txtEmail')
@@ -154,21 +224,29 @@ spanErrorEmail.setAttribute('id','spanErrorEmail')
 // const group2 = document.createElement('div')
 // group2.setAttribute('class','group')
 
+const txtPasswordLabel = document.createElement('label');
+txtPasswordLabel.setAttribute('for', 'txtPassword');
+txtPasswordLabel.textContent = 'Password'
+
 const txtPassword = document.createElement('input');
 txtPassword.setAttribute('id', 'txtPassword')
 txtPassword.setAttribute('type', 'password')
 txtPassword.setAttribute('placeholder', 'Password')
 txtPassword.addEventListener('keyup', securePassword);
 
+const txtPasswordAgainLabel = document.createElement('label');
+txtPasswordAgainLabel.setAttribute('for', 'txtPasswordAgain');
+txtPasswordAgainLabel.textContent = 'Password Again'
+
 const txtPasswordAgain = document.createElement('input');
 txtPasswordAgain.setAttribute('id', 'txtPasswordAgain')
 txtPasswordAgain.setAttribute('type', 'password')
-txtPasswordAgain.setAttribute('placeholder', 'Password (again)')
-// txtPasswordAgain.addEventListener('keyup', securePassword); Pendiente función para coincidir con contraseña
+txtPasswordAgain.setAttribute('placeholder', 'Password Again')
+//txtPasswordAgain.addEventListener('keyup', securePassword); Pendiente función para coincidir con contraseña */
 
 const spanErrorPassword = document.createElement('span')
 spanErrorPassword.setAttribute('id','spanErrorPassword')
-
+   
 const btnRegister = document.createElement('button');
 btnRegister.setAttribute('id', 'btnRegister');
 btnRegister.setAttribute('type', 'button');
@@ -184,8 +262,9 @@ header.append(logoImg,nav)
 nav.append(ul)
 ul.append(btnHome)
 btnHome.append(homeLink)
-form.append(h2, userNameLabel, userName, lastNameLabel, lastName, birthdayLabel, birthday, doYouHavePetsLabel, yesPetsLabel, yesPets, noPetsLabel, noPets, checkAllergies, txtEmail, spanErrorEmail, txtPassword, spanErrorPassword, txtPasswordAgain, btnRegister)
-
+form.append(h2, userNameLabel, userName, lastNameLabel, lastName, birthdayLabel, birthday, doYouHavePetsLabel, yesPetsLabel, yesPets, noPetsLabel, noPets, checkAllergies, checkAnimalsLooking, profilePictureLabel, profilePictureInput, txtEmailLabel, txtEmail, spanErrorEmail, txtPasswordLabel, txtPassword, spanErrorPassword, txtPasswordAgainLabel, txtPasswordAgain, btnRegister)
 checkAllergies.append(petAllergyLabel, petAllergyInput, pollenAllergyLabel, pollenAllergyInput, dustAllergyLabel, dustAllergyInput, moldAllergyLabel, moldAllergyInput, insectAllergyLabel, insectAllergyInput, foodAllergyLabel, foodAllergyInput);
+checkAnimalsLooking.append(dogLabel, dogInput, catLabel, catInput, hamsterLabel, hamsterInput, rabbitLabel, rabbitInput, parrotLabel, parrotInput, othersLabel, othersInput)
+/* profilePictureInput.append(imgIconCamera) */
 };
     
