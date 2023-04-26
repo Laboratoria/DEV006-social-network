@@ -15,6 +15,7 @@ export const login = () => {
 
   const logoImg = document.createElement('img');
   logoImg.setAttribute('src', 'img/logo.png');
+  logoImg.setAttribute('alt', 'This is the logo. It is a dog paw inside a heart.')
 
   const nav = document.createElement('nav');
 
@@ -90,6 +91,8 @@ export const login = () => {
 
   const imgGoogle = document.createElement('img');
   imgGoogle.setAttribute('src', '../img/googleplus.png');
+  imgGoogle.setAttribute('alt', 'This is the G logo from Google. It is inside the Google log in button.');
+  
 
   const ulAccount = document.createElement('ul');
 

@@ -197,20 +197,21 @@ body {
 
     #btnLogin {
         border-radius: 5px;
-        background-color: #F5EBE0;
-        border-color: #EA907A;
-        color: #6E0707;
-        width: 165px;
+        background-color: #4285F4;
+        border-color: #4285F4;
+        color: #ffffff;
+        width: 85%;
         height: 34px;
         display: block;
         margin: auto;
         font-size: 15px;
+        font-weight:500;
     }
 
     #btnLogin:hover {
-        background-color: #EA907A;
-        border-color: #F5EBE0;
-        color: #F5EBE0;
+        background-color: #acccff;
+        border-color: #acccff;
+        color: #292D32;
     }
 
     #forgotPassword {
@@ -362,7 +363,7 @@ h3 {
 
 .testimonies{
     font-family: 'Acme', sans-serif;
-    font-size: 14px;
+    font-size: 2.4rem;
     margin-top: 10px;
     margin: 10px;
     color: #292D32;
@@ -469,11 +470,17 @@ form h2{
 
 #btnRegister{
     border-radius: 5px;
-    background-color: #F5EBE0;
-    border-color: #EA907A;
-    color: #EA907A;
-    width: 165px;
+    background-color: #4285F4;
+    border-color: #4285F4;
+    color: #ffffff;
+    width: 85%;
     height: 34px;
     margin: auto;
     display: block;
+}
+
+#btnRegister:hover {
+    background-color: #acccff;
+    border-color: #acccff;
+    color: #292D32;
 }
