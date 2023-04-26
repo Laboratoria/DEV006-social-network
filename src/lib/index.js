@@ -37,13 +37,13 @@ export const signPop = async (event) => {
 };
 
 export const createUser = async () => {
-  const email = document.getElementById('txtEmail')
-  const password = document.getElementById('txtPassword')
-  const spanEmail = document.getElementById('spanErrorEmail')
-  const spanPassword = document.getElementById('spanErrorPassword')
+  const email = document.getElementById('txtEmail');
+  const password = document.getElementById('txtPassword');
+  const spanEmail = document.getElementById('spanErrorEmail');
+  const spanPassword = document.getElementById('spanErrorPassword');
   const spanCreateUser = document.getElementById('spanCreateUser');
   try {
-    const userCredential = await createUserWithEmailAndPassword(auth, email.value, password.value)
+    const userCredential = await createUserWithEmailAndPassword(auth, email.value, password.value);
     console.log(userCredential);
 
     spanCreateUser.style.display = 'flex';
@@ -128,7 +128,7 @@ export const validatePassowrds = () => {
 // Validación de que sea email
 export const validateEmail = () => {
   const email = document.getElementById('txtEmail');
-  const correoRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  const correoRegex = /^\w+([.-]?\w+)@\w+([.-]?\w+)(.\w{2,3})+$/;
 
   if (correoRegex.test(email.value)) {
     email.classList.remove('invalid');

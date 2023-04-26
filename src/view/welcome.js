@@ -130,8 +130,7 @@ export const welcome = () => {
   messageTestimony1.setAttribute('class', 'menssagetesti');
 
   const pTestimony1 = document.createElement('p');
-  pTestimony1.innerHTML =
-  '“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...”<br>-Name, City';
+  pTestimony1.innerHTML = '“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...”<br>-Name, City';
 
   const messageTestimony2 = document.createElement('div');
   messageTestimony2.setAttribute('class', 'menssagetesti');

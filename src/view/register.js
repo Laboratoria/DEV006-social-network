@@ -111,7 +111,6 @@ export const register = () => {
   btnRegister.textContent = 'Sign Up';
   const spanCreateUser = document.createElement('span');
   spanCreateUser.setAttribute('id', 'spanCreateUser');
-  
   body.append(bodyimg);
   bodyimg.append(registerdiv);
   registerdiv.append(header, h1, form);
