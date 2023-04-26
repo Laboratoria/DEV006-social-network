@@ -39,7 +39,7 @@ export const register = () => {
   const form = document.createElement('form');
 
   const h2 = document.createElement('h2');
-  h2.textContent = 'Register';
+  h2.textContent = 'Sign Up';
 
   const userNameLabel = document.createElement('label');
   userNameLabel.setAttribute('for', 'userName');
@@ -109,7 +109,9 @@ export const register = () => {
   btnRegister.setAttribute('class', 'button');
   btnRegister.addEventListener('click', createUser);
   btnRegister.textContent = 'Sign Up';
-
+  const spanCreateUser = document.createElement('span');
+  spanCreateUser.setAttribute('id', 'spanCreateUser');
+  
   body.append(bodyimg);
   bodyimg.append(registerdiv);
   registerdiv.append(header, h1, form);
@@ -133,5 +135,6 @@ export const register = () => {
     txtPasswordAgain,
     spanErrorPasswordAgain,
     btnRegister,
+    spanCreateUser,
   );
 };

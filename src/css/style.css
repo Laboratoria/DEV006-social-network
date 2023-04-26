@@ -412,6 +412,22 @@ footer {
     font-style: italic;
 }
 
+#spanCreateUser {
+    font-size: 2rem;
+    font-weight: 700;
+    border-radius: 8px;
+    background-color: #10a70eb8;
+    background-color: #DBF0E6;
+    margin: 2rem auto;
+    height: 4rem;
+    padding: 1rem;
+    box-shadow: 1px 1px 4px gray;
+    color: #315B22;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
 form {
     width: 75vw;
     height: 75%;
