@@ -45,14 +45,17 @@ const provider = new GoogleAuthProvider();
 }
 
 export const createUser = async   ()  => {
-
   const email = document.getElementById('txtEmail')
   const password = document.getElementById('txtPassword')
   const spanEmail = document.getElementById('spanErrorEmail')
   const spanPassword = document.getElementById('spanErrorPassword')
+  const spanCreateUser = document.getElementById('spanCreateUser');
   try {
     const userCredential = await createUserWithEmailAndPassword(auth, email.value, password.value)
-    
+    console.log(userCredential);
+
+    spanCreateUser.style.display = 'flex';
+    spanCreateUser.textContent = 'You have successfully signed up!';
   } catch (error) {
     const errorCode = error.code;
     const errorMessage = error.message;
