@@ -44,7 +44,6 @@ export  const login = () => {
   txtEmail.setAttribute('type', 'email')
   txtEmail.setAttribute('placeholder', 'Email')
   txtEmail.addEventListener('blur', validateEmail);
-  
 
   const spanErrorEmail = document.createElement('span')
   spanErrorEmail.setAttribute('id','spanErrorEmail')

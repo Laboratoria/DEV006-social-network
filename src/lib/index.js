@@ -44,8 +44,6 @@ const provider = new GoogleAuthProvider();
   }
 }
 
-
-
 export const createUser = async   ()  => {
 
   const email = document.getElementById('txtEmail')
@@ -98,22 +96,37 @@ export const LoginUser = () => {
     });
 };
 
-
-export const securePassword = () =>{
-  const password = document.getElementById('txtPassword')
-  
+export const securePassword = () => {
+  const password = document.getElementById('txtPassword');
+  const passwordAgain = document.getElementById('txtPasswordAgain');
   const paswordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&#.$($)$-$_])[A-Za-z\d$@$!%*?&#.$($)$-$_][^\s]{6,15}$/;
 
   if (paswordRegex.test(password.value)) {
-      password.classList.remove('invalid');
-      password.classList.add('valid');
-      document.getElementById('spanErrorPassword').textContent = '';
+    password.classList.remove('invalid');
+    password.classList.add('valid');
+    document.getElementById('spanErrorPassword').textContent = '';
   } else {
     password.classList.remove('valid');
     password.classList.add('invalid');
     document.getElementById('spanErrorPassword').textContent = 'Please enter a strong password that contains 6 to 15 characters, at least one uppercase letter, one lowercase letter, one digit, and one special character. Please make sure there are no spaces.';
   }
+};
 
+export const validatePassowrds = () => {
+  const passwordValue = document.getElementById('txtPassword').value;
+  const passwordAgain = document.getElementById('txtPasswordAgain');
+  const passwordAgainValue = passwordAgain.value;
+  const spanErrorPasswordAgain = document.getElementById('spanErrorPasswordAgain');
+
+  if(passwordValue !== passwordAgainValue) { 
+    passwordAgain.classList.remove('valid');
+    passwordAgain.classList.add('invalid');
+    spanErrorPasswordAgain.textContent = 'Passwords are different.';
+  } else {
+    passwordAgain.classList.remove('invalid');
+    passwordAgain.classList.add('valid');
+    spanErrorPasswordAgain.textContent = '';
+  }
 };
 
 export const validateEmail = () =>{
