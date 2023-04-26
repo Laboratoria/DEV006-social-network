@@ -52,8 +52,8 @@ body {
     nav ul li a {
         display: block;
         text-decoration: none;
-        color: #DE6D5B;
-        background-color: white;
+        color: #6E0707;
+        background: rgba(245, 235, 224, 0.5);
         border-radius: 5px;
         padding: 0.5rem 1rem;
         margin: 1rem;
@@ -191,18 +191,20 @@ body {
     }
 
     form h2 {
-        font-size: 32px;
+        color: #6E0707;
+        font-size: 24px;
     }
 
     #btnLogin {
         border-radius: 5px;
         background-color: #F5EBE0;
         border-color: #EA907A;
-        color: #EA907A;
+        color: #6E0707;
         width: 165px;
         height: 34px;
         display: block;
         margin: auto;
+        font-size: 15px;
     }
 
     #btnLogin:hover {
@@ -267,8 +269,9 @@ form ul{
 
 h1 {
     font-family: 'Acme', sans-serif;
-    font-size: 30px;
+    font-size: 32px;
     margin: 5%;
+    color:#292D32;
 }
 
 nav {
@@ -289,12 +292,13 @@ nav ul li{
 nav ul li a{
     display: block;
     text-decoration: none;
-    color:#DE6D5B;
-    background-color: white;
+    color: #6E0707;
+    background: rgba(245, 235, 224, 0.5);
     border-radius: 5px;
     padding: 0.5rem 1rem;
     margin: 1rem;
     font-weight:700;
+    font-size: 15px;
 }
 
 header img{
@@ -361,6 +365,7 @@ h3 {
     font-size: 14px;
     margin-top: 10px;
     margin: 10px;
+    color: #292D32;
 }
 
 .menssagetesti{
@@ -445,7 +450,7 @@ form input{
 }
 
 form h2{
-    font-size: 3.2rem;
+    font-size: 24px;
     text-align: center;
 }
 
