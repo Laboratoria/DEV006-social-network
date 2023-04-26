@@ -1,4 +1,4 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -15,232 +15,263 @@ body {
     
 }
 
-@media screen and (max-width:750px){
-.bodyimg {
+@media screen and (max-width:750px) {
+    .bodyimg {
 
-    background-color: rgba(255, 255, 255, 0.5);
-    background-image: url(../img/wallpaper.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed ;
-    height:100vh;
-}
+        background-color: rgba(255, 255, 255, 0.5);
+        background-image: url(../img/wallpaper.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
+        height: 130vh;
+    }
 
-h1{
-    font-family: 'Acme', sans-serif;
-    font-size: 24px;
-    margin: 5%;
+    h1 {
+        font-family: 'Acme', sans-serif;
+        font-size: 24px;
+        margin: 5%;
 
-}
-
-
-nav {
-    background-color: #EA907A;
-    height: 44px;
-    display: flex;
-    justify-content: flex-end;
-}
-
-nav ul{
-    list-style: none;
+    }
 
 
-}
-nav ul li{
-    display: inline-block;
-    
-}
+    nav {
+        background-color: #EA907A;
+        height: 44px;
+        display: flex;
+        justify-content: flex-end;
+    }
 
-nav ul li a{
-    display: block;
-    text-decoration: none;
-    color:#DE6D5B;
-    background-color: white;
-    border-radius: 5px;
-    padding: 0.5rem 1rem;
-    margin: 1rem;
-    font-weight:700;
-}
-
-header img{
-
-    position: absolute;
-    width: 42px;
-    height: 40px;
-    left: 10px;
-    top: 3px;
-}
-
-.welcomemessage{
-    font-size: 15px;
-    background-color:  rgba(240, 219, 219, 0.7) ;
-    width: 288px;
-    height: 81px;
-    text-align: center;
-    margin: 5%;
-    border-radius: 5px;
-    padding: 3%;
-} 
+    nav ul {
+        list-style: none;
 
 
-.photopets img{
-    width: 119px;
-    height: 105px;
-    left: 29px;
-    top: 185px;
-    margin: 5% 5% 0% 5%;
-}
+    }
 
-.contenedorcards div input{
-    width: 19px;
-    height: 19px;
-}
+    nav ul li {
+        display: inline-block;
 
-.contenedorcards .cardpet{
-    width: 135px;
-    height: 141px;
-    background-color: #F0DBDB;
-    left: 174px;
-    top: 178px;
-    border-radius: 5px;
-  
-}
+    }
 
-h3 {
-    font-size: 12px;
-    
-    margin: 0;
-    
-}
+    nav ul li a {
+        display: block;
+        text-decoration: none;
+        color: #DE6D5B;
+        background-color: white;
+        border-radius: 5px;
+        padding: 0.5rem 1rem;
+        margin: 1rem;
+        font-weight: 700;
+    }
 
-.contenedorcards{
-    display: flex;
-    flex-direction: row;
-    gap: 20px;
-    justify-content: center;
-    
+    header img {
+
+        position: absolute;
+        width: 42px;
+        height: 40px;
+        left: 10px;
+        top: 3px;
+    }
+
+    .welcomemessage {
+        font-size: 15px;
+        background-color: rgba(240, 219, 219, 0.7);
+        width: 288px;
+        height: 81px;
+        text-align: center;
+        margin: 5%;
+        border-radius: 5px;
+        padding: 3%;
+    }
 
 
-}
+    .photopets img {
+        width: 119px;
+        height: 105px;
+        left: 29px;
+        top: 185px;
+        margin: 5% 5% 0% 5%;
+    }
 
-.interactionpets{
-    display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
-        
-}
+    .contenedorcards div input {
+        width: 19px;
+        height: 19px;
+    }
 
-.testimonies{
-    font-family: 'Acme', sans-serif;
-    font-size: 14px;
-    margin-top: 10px;
-    margin: 10px;
-}
+    .contenedorcards .cardpet {
+        width: 135px;
+        height: 141px;
+        background-color: #F0DBDB;
+        left: 174px;
+        top: 178px;
+        border-radius: 5px;
 
-.menssagetesti{
-    background-color: #F0DBDB;
-    border-radius: 5px;
-    margin: 8px 10px;
-    font-size: 12px;
-    padding: 7px;
+    }
 
-}
+    h3 {
+        font-size: 12px;
 
-footer {
-    background-color: #EA907A;
-    height: 40px;
-    color:white;    
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    text-align: center;
-    padding: 10px;
+        margin: 0;
 
-}
-/* formulario de login */
-#txtEmail.valid {
-    border: 2px solid green;
-}
+    }
 
-#txtEmail.invalid {
-    border: 2px solid red;
-    color: red;
-    font-style: italic;
-}
-#txtPassword.valid {
-    border: 2px solid green;
-}
+    .contenedorcards {
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+        justify-content: center;
 
-#txtPassword.invalid {
-    border: 2px solid red;
-    color: red;
-    font-style: italic;
-}
 
-form{
-    width: 75vw;
-    height: 60vh;
-    margin: 4rem;
-    background-color: white;
-    text-align: center;
-    padding: 1rem;
-    /* display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center; */
-}
 
-form input{
-    border-radius: 5px;
-    border-color: #EA907A;
-    background-color: white;
-    width: 165px;
-    height: 34px;
+    }
 
-}
-form h2{
-    font-size: 32px;
-}
-#btnLogin{
-    border-radius: 5px;
-    background-color: #F5EBE0;
-    border-color: #EA907A;
-    color: #EA907A;
-    width: 165px;
-    height: 34px;
-}
+    .interactionpets {
+        display: grid;
+        grid-template-columns: 1fr 2fr 1fr;
 
-#btnLogin:hover{
-    background-color: #EA907A;
-    border-color: #F5EBE0;
-    color: #F5EBE0;
-}
-#forgotPassword{
-    font-size: 12px;
-}
+    }
 
-.logInWith {
-    position: relative;
-    top: 7px;
-    right: -21vw;
-    background-color: white;
-    width: 70px;
-}
+    .testimonies {
+        font-family: 'Acme', sans-serif;
+        font-size: 14px;
+        margin-top: 10px;
+        margin: 10px;
+    }
 
-.btnGoogle {
-    background-color: white;
-    color: black;
-    border: 1px solid gray;
-    border-radius: 5px;
-    font-family: 'Nunito';
-    margin-top: 8px;
-    padding: 1px 4px;
-    display: flex;
-    align-content: center;
-    align-items: center;
-    position: relative;
-    right: -65px;
-    box-shadow: 0px 3px 3px gray;
-}
+    .menssagetesti {
+        background-color: #F0DBDB;
+        border-radius: 5px;
+        margin: 8px 10px;
+        font-size: 12px;
+        padding: 7px;
+
+    }
+
+    footer {
+        background-color: #EA907A;
+        height: 40px;
+        color: white;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        text-align: center;
+        padding: 10px;
+
+    }
+
+    /* formulario de login */
+    #txtEmail.valid {
+        border: 2px solid green;
+    }
+
+    #txtEmail.invalid {
+        border: 2px solid red;
+        color: red;
+        font-style: italic;
+    }
+
+    #txtPassword.valid {
+        border: 2px solid green;
+    }
+
+    #txtPassword.invalid {
+        border: 2px solid red;
+        color: red;
+        font-style: italic;
+    }
+
+    form input {
+        border-radius: 5px;
+        border-color: #EA907A;
+        background-color: white;
+        display: block;
+        width: 85%;
+        min-height: 4vh;
+        margin: 1rem auto;
+    }
+
+    .radioAndCheckbox {
+        width: unset;
+        display: unset;
+        vertical-align: middle;
+    }
+
+    .labelQuestions {
+        display: block;
+        font-size: 1.7rem;
+        margin: auto 8%;
+    }
+
+    .labelQuestions label {
+        display: block;
+        /* width: 90%;
+        text-align: left; */
+    }
+
+    .labelQuestions input {
+        display: unset;
+        margin: 0 1.5rem;
+        width: 18px;
+    }
+
+    form .answerOption {
+        font-size: 1.5rem;
+    }
+
+    form h2 {
+        font-size: 32px;
+    }
+
+    #btnLogin {
+        border-radius: 5px;
+        background-color: #F5EBE0;
+        border-color: #EA907A;
+        color: #EA907A;
+        width: 165px;
+        height: 34px;
+        display: block;
+        margin: auto;
+    }
+
+    #btnLogin:hover {
+        background-color: #EA907A;
+        border-color: #F5EBE0;
+        color: #F5EBE0;
+    }
+
+    #forgotPassword {
+        font-size: 12px;
+    }
+
+    hr {
+        width: 100%;
+    }
+
+    .logInWith {
+        background-color: white;
+        width: 105px;
+        position: relative;
+        top: 18px;
+        text-align: center;
+        font-weight: unset;
+    }
+
+    .btnGoogle {
+        width: 15rem;
+        height: 4rem;
+        background-color: white;
+        color: black;
+        border: 1px solid gray;
+        border-radius: 5px;
+        font-family: 'Nunito';
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin-top: 8px;
+        display: flex;
+        align-items: center;
+        flex-direction: row-reverse;
+        justify-content: center;
+        box-shadow: 0px 3px 3px gray;
+    }
 }
 
 form ul{
@@ -251,7 +282,7 @@ form ul{
     margin-bottom: 1rem;
 }
 
-/* Formato para web */
+/* Welcome */
 .bodyimg {
 
     background-color: rgba(255, 255, 255, 0.5);
@@ -259,14 +290,13 @@ form ul{
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed ;
-    height:100vh;
+    height:160vh;
 }
 
 h1{
     font-family: 'Acme', sans-serif;
     font-size: 30px;
     margin: 5%;
-
 }
 
 
@@ -283,8 +313,7 @@ nav ul{
 }
 
 nav ul li{
-    display: inline-block;
-    
+    display: inline-block; 
 }
 
 nav ul li a{
@@ -344,9 +373,7 @@ header img{
 
 h3 {
     font-size: 12px;
-    
     margin: 0;
-    
 }
 
 .contenedorcards{
@@ -354,15 +381,11 @@ h3 {
     flex-direction: row;
     gap: 20px;
     justify-content: center;
-    
-
-
 }
 
 .interactionpets{
     display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
-        
+    grid-template-columns: 1fr 2fr 1fr;       
 }
 
 .testimonies{
@@ -392,7 +415,7 @@ footer {
     padding: 10px;
 
 }
-/* formulario de login */
+/* formulario de signup */
 #txtEmail.valid {
     border: 2px solid green;
 }
@@ -412,68 +435,49 @@ footer {
     font-style: italic;
 }
 
-form{
+form {
     width: 75vw;
-    height: 60vh;
-    margin: 4rem;
+    height: 75%;
+    margin: 4rem auto;
     background-color: white;
-    text-align: center;
     padding: 1rem;
-    /* display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center; */
+    border-radius: 15px;
+    box-shadow: 0px 0px 5px gray;
 }
 
 form input{
     border-radius: 5px;
     border-color: #EA907A;
     background-color: white;
-    width: 165px;
-    height: 34px;
+    /* width: 165px;
+    height: 34px; */
 
 }
 form h2{
-    font-size: 32px;
+    font-size: 3.2rem;
+    text-align: center;
 }
-#btnLogin{
+
+.containerLogin {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    height: 20vh;
+    font-size: 1.6rem;
+}
+
+#spanErrorEmail, #spanErrorPassword {
+    font-size: 1.1rem;
+}
+
+#btnRegister{
     border-radius: 5px;
     background-color: #F5EBE0;
     border-color: #EA907A;
     color: #EA907A;
     width: 165px;
     height: 34px;
-}
-
-#btnLogin:hover{
-    background-color: #EA907A;
-    border-color: #F5EBE0;
-    color: #F5EBE0;
-}
-#forgotPassword{
-    font-size: 12px;
-}
-
-.logInWith {
-    position: relative;
-    top: 7px;
-    right: -21vw;
-    background-color: white;
-    width: 70px;
-}
-
-.btnGoogle {
-    background-color: white;
-    color: black;
-    border: 1px solid gray;
-    border-radius: 5px;
-    font-family: 'Nunito';
-    margin-top: 8px;
-    padding: 1px 4px;
-    display: flex;
-    align-content: center;
-    align-items: center;
-    position: relative;
-    right: -65px;
-    box-shadow: 0px 3px 3px gray;
+    margin: auto;
+    display: block;
 }

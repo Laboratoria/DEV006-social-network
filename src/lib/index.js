@@ -80,7 +80,7 @@ export const LoginUser = () => {
     .then((userCredential) => {
       // Signed in
       const user = userCredential.user;
-      console.log(user)
+      console.log(email)
 
       // ...
     })
