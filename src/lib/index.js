@@ -47,11 +47,12 @@ export const signPop = async (event) => {
   }
 };
 
-export const createUser = async () => {
-  const email = document.getElementById("txtEmail");
-  const password = document.getElementById("txtPassword");
-  const spanEmail = document.getElementById("spanErrorEmail");
-  const spanPassword = document.getElementById("spanErrorPassword");
+export const createUser = async   ()  => {
+
+  const email = document.getElementById('txtEmail')
+  const password = document.getElementById('txtPassword')
+  const spanEmail = document.getElementById('spanErrorEmail')
+  const spanPassword = document.getElementById('spanErrorPassword')
   try {
     const userCredential = await createUserWithEmailAndPassword(
       auth,
@@ -103,16 +104,15 @@ export const LoginUser = () => {
     });
 };
 
+// Validación de contraseña segura
 export const securePassword = () => {
-  const password = document.getElementById("txtPassword");
-
-  const paswordRegex =
-    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&#.$($)$-$_])[A-Za-z\d$@$!%*?&#.$($)$-$_][^\s]{6,15}$/;
+  const password = document.getElementById('txtPassword');
+  const paswordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&#.$($)$-$_])[A-Za-z\d$@$!%*?&#.$($)$-$_][^\s]{6,15}$/;
 
   if (paswordRegex.test(password.value)) {
-    password.classList.remove("invalid");
-    password.classList.add("valid");
-    document.getElementById("spanErrorPassword").textContent = "";
+    password.classList.remove('invalid');
+    password.classList.add('valid');
+    document.getElementById('spanErrorPassword').textContent = '';
   } else {
     password.classList.remove("valid");
     password.classList.add("invalid");
@@ -121,8 +121,28 @@ export const securePassword = () => {
   }
 };
 
-export const validateEmail = () => {
-  const email = document.getElementById("txtEmail");
+
+// Validación de que las contraseñas coincidan
+export const validatePassowrds = () => {
+  const passwordValue = document.getElementById('txtPassword').value;
+  const passwordAgain = document.getElementById('txtPasswordAgain');
+  const passwordAgainValue = passwordAgain.value;
+  const spanErrorPasswordAgain = document.getElementById('spanErrorPasswordAgain');
+
+  if(passwordValue !== passwordAgainValue) { 
+    passwordAgain.classList.remove('valid');
+    passwordAgain.classList.add('invalid');
+    spanErrorPasswordAgain.textContent = 'Passwords are different.';
+  } else {
+    passwordAgain.classList.remove('invalid');
+    passwordAgain.classList.add('valid');
+    spanErrorPasswordAgain.textContent = '';
+  }
+};
+
+// Validación de que sea email
+export const validateEmail = () =>{
+  const email = document.getElementById('txtEmail')
   const correoRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
   if (correoRegex.test(email.value)) {
@@ -135,4 +155,4 @@ export const validateEmail = () => {
     document.getElementById("spanErrorEmail").textContent =
       "Please enter a valid email.";
   }
-};
+}

@@ -1,10 +1,11 @@
+/* Quitar estilos default */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-html{
+html {
     font-size: 62.5%;
 }
 
@@ -12,12 +13,11 @@ body {
     height:100vh;
     background-color: #F0DBDB;
     font-family: 'Nunito', sans-serif;
-    
 }
 
 @media screen and (max-width:750px) {
+    /* Wallpaper */
     .bodyimg {
-
         background-color: rgba(255, 255, 255, 0.5);
         background-image: url(../img/wallpaper.png);
         background-repeat: no-repeat;
@@ -26,14 +26,14 @@ body {
         height: 130vh;
     }
 
+    /* Título app */
     h1 {
         font-family: 'Acme', sans-serif;
         font-size: 24px;
         margin: 5%;
-
     }
 
-
+    /* Barra de navegación */
     nav {
         background-color: #EA907A;
         height: 44px;
@@ -43,13 +43,10 @@ body {
 
     nav ul {
         list-style: none;
-
-
     }
 
     nav ul li {
         display: inline-block;
-
     }
 
     nav ul li a {
@@ -63,8 +60,8 @@ body {
         font-weight: 700;
     }
 
+    /* Logo */
     header img {
-
         position: absolute;
         width: 42px;
         height: 40px;
@@ -72,6 +69,7 @@ body {
         top: 3px;
     }
 
+    /* Mensaje de bienvenida */
     .welcomemessage {
         font-size: 15px;
         background-color: rgba(240, 219, 219, 0.7);
@@ -83,7 +81,7 @@ body {
         padding: 3%;
     }
 
-
+    /* Tarjetas de mascotas */
     .photopets img {
         width: 119px;
         height: 105px;
@@ -109,9 +107,7 @@ body {
 
     h3 {
         font-size: 12px;
-
         margin: 0;
-
     }
 
     .contenedorcards {
@@ -119,17 +115,14 @@ body {
         flex-direction: row;
         gap: 20px;
         justify-content: center;
-
-
-
     }
 
     .interactionpets {
         display: grid;
         grid-template-columns: 1fr 2fr 1fr;
-
     }
 
+    /* Testimonios  */
     .testimonies {
         font-family: 'Acme', sans-serif;
         font-size: 14px;
@@ -158,27 +151,7 @@ body {
 
     }
 
-    /* formulario de login */
-    #txtEmail.valid {
-        border: 2px solid green;
-    }
-
-    #txtEmail.invalid {
-        border: 2px solid red;
-        color: red;
-        font-style: italic;
-    }
-
-    #txtPassword.valid {
-        border: 2px solid green;
-    }
-
-    #txtPassword.invalid {
-        border: 2px solid red;
-        color: red;
-        font-style: italic;
-    }
-
+    /*Formulario de login */
     form input {
         border-radius: 5px;
         border-color: #EA907A;
@@ -284,7 +257,6 @@ form ul{
 
 /* Welcome */
 .bodyimg {
-
     background-color: rgba(255, 255, 255, 0.5);
     background-image: url(../img/wallpaper.png);
     background-repeat: no-repeat;
@@ -293,12 +265,11 @@ form ul{
     height:160vh;
 }
 
-h1{
+h1 {
     font-family: 'Acme', sans-serif;
     font-size: 30px;
     margin: 5%;
 }
-
 
 nav {
     background-color: #EA907A;
@@ -309,7 +280,6 @@ nav {
 
 nav ul{
     list-style: none;
-
 }
 
 nav ul li{
@@ -347,7 +317,6 @@ header img{
     padding: 3%;
 } 
 
-
 .photopets img{
     width: 119px;
     height: 105px;
@@ -368,7 +337,6 @@ header img{
     left: 174px;
     top: 178px;
     border-radius: 5px;
-  
 }
 
 h3 {
@@ -401,7 +369,6 @@ h3 {
     margin: 8px 10px;
     font-size: 12px;
     padding: 7px;
-
 }
 
 footer {
@@ -413,9 +380,9 @@ footer {
     width: 100%;
     text-align: center;
     padding: 10px;
-
 }
-/* formulario de signup */
+
+/*Validaciones de correo y contraseñas*/
 #txtEmail.valid {
     border: 2px solid green;
 }
@@ -435,6 +402,16 @@ footer {
     font-style: italic;
 }
 
+#txtPasswordAgain.valid {
+    border: 2px solid green;
+}
+
+#txtPasswordAgain.invalid {
+    border: 2px solid red;
+    color: red;
+    font-style: italic;
+}
+
 form {
     width: 75vw;
     height: 75%;
@@ -449,10 +426,8 @@ form input{
     border-radius: 5px;
     border-color: #EA907A;
     background-color: white;
-    /* width: 165px;
-    height: 34px; */
-
 }
+
 form h2{
     font-size: 3.2rem;
     text-align: center;
