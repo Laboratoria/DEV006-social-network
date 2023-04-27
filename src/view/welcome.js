@@ -11,6 +11,7 @@ export const welcome = () => {
 
   const logoImg = document.createElement('img');
   logoImg.setAttribute('src', 'img/logo.png');
+  logoImg.setAttribute('alt', 'This is the logo. It is a dog paw inside a heart.');
 
   const nav = document.createElement('nav');
 
@@ -50,6 +51,8 @@ export const welcome = () => {
 
   const img1 = document.createElement('img');
   img1.setAttribute('src', 'img/TOM.jpg');
+  img1.setAttribute('alt', 'A happy dog jumping in the garden');
+  
 
   const interactionPets1 = document.createElement('div');
   interactionPets1.setAttribute('class', 'interactionpets');
@@ -60,7 +63,7 @@ export const welcome = () => {
   const inputLike1 = document.createElement('input');
   inputLike1.setAttribute('type', 'image');
   inputLike1.setAttribute('src', 'img/megusta.png');
-  inputLike1.setAttribute('alt', 'logomegusta');
+  inputLike1.setAttribute('alt', 'Heart icon to like the pet');
   inputLike1.addEventListener('click', login);
   inputLike1.addEventListener('mouseover', function () {
     this.src = 'img/megustarojo.png';
@@ -72,7 +75,7 @@ export const welcome = () => {
   const inputMatch1 = document.createElement('input');
   inputMatch1.setAttribute('type', 'image');
   inputMatch1.setAttribute('src', 'img/matchvacio.png');
-  inputMatch1.setAttribute('alt', 'logomatch');
+  inputMatch1.setAttribute('alt','This footprint icon is to match with a pet, it means you want to adopt it.');
   inputMatch1.addEventListener('click', login);
   inputMatch1.addEventListener('mouseover', function () {
     this.src = 'img/match.png';
@@ -89,6 +92,7 @@ export const welcome = () => {
 
   const img2 = document.createElement('img');
   img2.setAttribute('src', 'img/Bob.png');
+  img2.setAttribute('alt', 'A kitten sitting on the couch');
 
   const interactionPets2 = document.createElement('div');
   interactionPets2.setAttribute('class', 'interactionpets');
@@ -99,7 +103,7 @@ export const welcome = () => {
   const inputLike2 = document.createElement('input');
   inputLike2.setAttribute('type', 'image');
   inputLike2.setAttribute('src', 'img/megusta.png');
-  inputLike2.setAttribute('alt', 'logomegusta');
+  inputLike2.setAttribute('alt', 'Heart icon to like the pet');
   inputLike2.addEventListener('click', login);
   inputLike2.addEventListener('mouseover', function () {
     this.src = 'img/megustarojo.png';
@@ -111,7 +115,7 @@ export const welcome = () => {
   const inputMatch2 = document.createElement('input');
   inputMatch2.setAttribute('type', 'image');
   inputMatch2.setAttribute('src', 'img/matchvacio.png');
-  inputMatch2.setAttribute('alt', 'logomatch');
+  inputMatch2.setAttribute('alt', 'This footprint icon is to match with a pet, it means you want to adopt it.');
   inputMatch2.addEventListener('click', login);
   inputMatch2.addEventListener('mouseover', function () {
     this.src = 'img/match.png';

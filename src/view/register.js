@@ -20,6 +20,7 @@ export const register = () => {
 
   const logoImg = document.createElement('img');
   logoImg.setAttribute('src', 'img/logo.png');
+  logoImg.setAttribute('alt','This is the logo. It is a dog paw inside a heart.')
 
   const nav = document.createElement('nav');
 

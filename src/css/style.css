@@ -333,6 +333,7 @@ header img{
 .contenedorcards div input{
     width: 19px;
     height: 19px;
+    margin-left: 5px;
 }
 
 .contenedorcards .cardpet{
@@ -346,7 +347,7 @@ header img{
 
 h3 {
     font-size: 12px;
-    margin: 0;
+    margin-left: 10px;
 }
 
 .contenedorcards{
@@ -386,6 +387,7 @@ footer {
     width: 100%;
     text-align: center;
     padding: 10px;
+    font-size: 12px;
 }
 
 /*Validaciones de correo y contraseñas*/
