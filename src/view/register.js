@@ -5,10 +5,11 @@ import {
   validatePassowrds,
 } from '../lib/index.js';
 
+import {
+  footer
+} from './footer.js'
+
 export const register = (navigateTo) => {
-  /* const body = document.getElementById('root');
-  body.innerHTML = '';
- */
   const bodyimg = document.createElement('div');
   bodyimg.setAttribute('class', 'bodyimg');
 
@@ -122,11 +123,14 @@ export const register = (navigateTo) => {
   btnRegister.textContent = 'Sign Up';
 
   form.addEventListener('submit', createUser);
+  // btnRegister.addEventListener('click', () => {
+  //   navigateTo('/error');
+  // })
 
   const spanCreateUser = document.createElement('span');
   spanCreateUser.setAttribute('id', 'spanCreateUser');
-  /* body.append(bodyimg); */
-  bodyimg.append(registerdiv);
+  
+  bodyimg.append(registerdiv, footer());
   registerdiv.append(header, h1, form);
   header.append(logoImg, nav);
   nav.append(ul);
@@ -152,5 +156,3 @@ export const register = (navigateTo) => {
   );
   return bodyimg;
 };
-
-

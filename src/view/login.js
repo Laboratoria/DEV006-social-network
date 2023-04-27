@@ -1,4 +1,10 @@
-import { LoginUser, validateEmail, signPop } from '../lib/index.js';
+import { 
+  LoginUser, 
+  validateEmail, 
+  signPop 
+} from '../lib/index.js';
+
+import { footer } from './footer.js';
 
 export const login = (navigateTo) => {
   /* const body = document.getElementById('root');
@@ -109,8 +115,7 @@ export const login = (navigateTo) => {
   aAccount.addEventListener('click', () => {
     navigateTo('/register')});
 
-  /* body.append(bodyimg); */
-  bodyimg.append(logindiv);
+  bodyimg.append(logindiv, footer());
   logindiv.append(header, h1, form);
   header.append(logoImg, nav);
   nav.append(ul);
