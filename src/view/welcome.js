@@ -1,8 +1,9 @@
 import { login } from './login';
+import { footer } from './footer';
 
-export const welcome = () => {
-  const body = document.getElementById('root');
-  body.innerHTML = '';
+export const welcome = (navigateTo) => {
+  /* const body = document.getElementById('root');
+  body.innerHTML = ''; */
 
   const bodyimg = document.createElement('div');
   bodyimg.setAttribute('class', 'bodyimg');
@@ -21,14 +22,16 @@ export const welcome = () => {
   btnLoginHome.setAttribute('id', 'btnLoginHome');
 
   const loginLink = document.createElement('a');
-  loginLink.setAttribute('href', '/login');
   loginLink.textContent = 'Log In';
+  loginLink.addEventListener('click', () => {
+    navigateTo('/login')});
 
   const signUpLink = document.createElement('li');
 
   const signUp = document.createElement('a');
-  signUp.setAttribute('href', '/register');
   signUp.textContent = 'Sign Up';
+  signUp.addEventListener('click', () => {
+    navigateTo('/register')});
 
   const main = document.createElement('main');
   main.setAttribute('id', 'main');
@@ -142,8 +145,8 @@ export const welcome = () => {
   const pTestimony2 = document.createElement('p');
   pTestimony2.innerHTML = '“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...”<br>-Name, City';
 
-  body.append(bodyimg);
-  bodyimg.append(header, main);
+  /* body.append(bodyimg); */
+  bodyimg.append(header, main,footer());
   header.append(logoImg, nav);
   nav.append(ul);
   ul.append(btnLoginHome, signUpLink);
@@ -164,4 +167,6 @@ export const welcome = () => {
   );
   messageTestimony1.append(pTestimony1);
   messageTestimony2.append(pTestimony2);
+
+  return  bodyimg;
 };
