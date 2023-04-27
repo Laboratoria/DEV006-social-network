@@ -1,9 +1,9 @@
 import { LoginUser, validateEmail, signPop } from '../lib/index.js';
 
-export const login = () => {
-  const body = document.getElementById('root');
+export const login = (navigateTo) => {
+  /* const body = document.getElementById('root');
   body.innerHTML = '';
-
+ */
   const bodyimg = document.createElement('div');
   bodyimg.setAttribute('class', 'bodyimg');
 
@@ -25,8 +25,10 @@ export const login = () => {
   btnHome.setAttribute('id', 'Home');
 
   const homeLink = document.createElement('a');
-  homeLink.setAttribute('href', '/');
   homeLink.textContent = 'Home';
+  homeLink.addEventListener('click', () => {
+    navigateTo('/')});
+  
 
   const h1 = document.createElement('h1');
   h1.textContent = 'Be My Friend';
@@ -100,13 +102,14 @@ export const login = () => {
   liAccount.textContent = 'Need an account? ';
 
   const aAccount = document.createElement('a');
-  aAccount.setAttribute('href', '/register');
   aAccount.setAttribute('id', 'btnSignup');
   aAccount.setAttribute('type', 'submit');
   aAccount.setAttribute('class', 'button');
   aAccount.textContent = 'Sign Up';
+  aAccount.addEventListener('click', () => {
+    navigateTo('/register')});
 
-  body.append(bodyimg);
+  /* body.append(bodyimg); */
   bodyimg.append(logindiv);
   logindiv.append(header, h1, form);
   header.append(logoImg, nav);
@@ -124,4 +127,6 @@ export const login = () => {
   liPassword.append(aPassword);
   ulAccount.append(liAccount);
   liAccount.append(aAccount);
+
+  return bodyimg;
 };

@@ -5,10 +5,10 @@ import {
   validatePassowrds,
 } from '../lib/index.js';
 
-export const register = () => {
-  const body = document.getElementById('root');
+export const register = (navigateTo) => {
+  /* const body = document.getElementById('root');
   body.innerHTML = '';
-
+ */
   const bodyimg = document.createElement('div');
   bodyimg.setAttribute('class', 'bodyimg');
 
@@ -20,6 +20,7 @@ export const register = () => {
 
   const logoImg = document.createElement('img');
   logoImg.setAttribute('src', 'img/logo.png');
+  logoImg.setAttribute('alt','This is the logo. It is a dog paw inside a heart.')
 
   const nav = document.createElement('nav');
 
@@ -29,8 +30,9 @@ export const register = () => {
   btnHome.setAttribute('id', 'Home');
 
   const homeLink = document.createElement('a');
-  homeLink.setAttribute('href', '/');
   homeLink.textContent = 'Home';
+  homeLink.addEventListener('click', () => {
+    navigateTo('/')});
 
   const h1 = document.createElement('h1');
   h1.textContent = 'Be My Friend';
@@ -123,7 +125,7 @@ export const register = () => {
 
   const spanCreateUser = document.createElement('span');
   spanCreateUser.setAttribute('id', 'spanCreateUser');
-  body.append(bodyimg);
+  /* body.append(bodyimg); */
   bodyimg.append(registerdiv);
   registerdiv.append(header, h1, form);
   header.append(logoImg, nav);
@@ -148,4 +150,7 @@ export const register = () => {
     btnRegister,
     spanCreateUser,
   );
+  return bodyimg;
 };
+
+
