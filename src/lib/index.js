@@ -38,10 +38,11 @@ export const signPop = async (event) => {
 
 export const createUser = async () => {
   const email = document.getElementById('txtEmail');
-  const password = document.getElementById('txtPassword');
+  const password = document.getElementById('txtPasswordAgain');
   const spanEmail = document.getElementById('spanErrorEmail');
   const spanPassword = document.getElementById('spanErrorPassword');
   const spanCreateUser = document.getElementById('spanCreateUser');
+
   try {
     const userCredential = await createUserWithEmailAndPassword(auth, email.value, password.value);
     console.log(userCredential);
@@ -65,7 +66,6 @@ export const createUser = async () => {
 export const LoginUser = () => {
   const emailInput = document.getElementById('txtEmail');
   const passwordInput = document.getElementById('txtPassword');
-
   const email = emailInput.value;
   const password = passwordInput.value;
 
