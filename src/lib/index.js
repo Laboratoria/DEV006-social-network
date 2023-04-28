@@ -11,6 +11,7 @@ import {
 } from 'firebase/auth';
 import { firebaseConfig } from '../firebase.config.js';
 
+
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
@@ -36,7 +37,7 @@ export const signPop = async (event) => {
   }
 };
 
-export const createUser = async () => {
+export const createUser = async (navigateTo) => {
   const email = document.getElementById('txtEmail');
   const password = document.getElementById('txtPasswordAgain');
   const spanEmail = document.getElementById('spanErrorEmail');
@@ -47,8 +48,8 @@ export const createUser = async () => {
     const userCredential = await createUserWithEmailAndPassword(auth, email.value, password.value);
     console.log(userCredential);
 
-    spanCreateUser.style.display = 'flex';
-    spanCreateUser.textContent = 'You have successfully signed up!';
+    // spanCreateUser.style.display = 'flex';
+    // spanCreateUser.textContent = 'You have successfully signed up!';
   } catch (error) {
     const errorCode = error.code;
     const errorMessage = error.message;

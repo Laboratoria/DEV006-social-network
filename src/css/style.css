@@ -105,11 +105,6 @@ body {
 
     }
 
-    h3 {
-        font-size: 12px;
-        margin: 0;
-    }
-
     .contenedorcards {
         display: flex;
         flex-direction: row;
@@ -345,9 +340,11 @@ header img{
     border-radius: 5px;
 }
 
-h3 {
-    font-size: 12px;
+.petName {
+    font-size: 1.2rem;
     margin-left: 10px;
+    font-weight: 800;
+    color: #292D32;
 }
 
 .contenedorcards{
@@ -387,7 +384,12 @@ footer {
     width: 100%;
     text-align: center;
     padding: 10px;
-    font-size: 12px;
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+.footerParagraph, .gitHubLinks {
+    color: #292D32;
 }
 
 /*Validaciones de correo y contraseñas*/

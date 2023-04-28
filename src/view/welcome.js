@@ -2,9 +2,6 @@ import { login } from './login';
 import { footer } from './footer';
 
 export const welcome = (navigateTo) => {
-  /* const body = document.getElementById('root');
-  body.innerHTML = ''; */
-
   const bodyimg = document.createElement('div');
   bodyimg.setAttribute('class', 'bodyimg');
 
@@ -60,8 +57,9 @@ export const welcome = (navigateTo) => {
   const interactionPets1 = document.createElement('div');
   interactionPets1.setAttribute('class', 'interactionpets');
 
-  const h3Pet1 = document.createElement('h3');
-  h3Pet1.textContent = 'TOM';
+  const pPet1 = document.createElement('p');
+  pPet1.classList.add('petName');
+  pPet1.textContent = 'TOM';
 
   const inputLike1 = document.createElement('input');
   inputLike1.setAttribute('type', 'image');
@@ -100,8 +98,9 @@ export const welcome = (navigateTo) => {
   const interactionPets2 = document.createElement('div');
   interactionPets2.setAttribute('class', 'interactionpets');
 
-  const h3Pet2 = document.createElement('h3');
-  h3Pet2.textContent = 'BOB';
+  const pPet2 = document.createElement('p');
+  pPet2.classList.add('petName');
+  pPet2.textContent = 'BOB';
 
   const inputLike2 = document.createElement('input');
   inputLike2.setAttribute('type', 'image');
@@ -145,8 +144,7 @@ export const welcome = (navigateTo) => {
   const pTestimony2 = document.createElement('p');
   pTestimony2.innerHTML = '“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...”<br>-Name, City';
 
-  /* body.append(bodyimg); */
-  bodyimg.append(header, main,footer());
+  bodyimg.append(header, main, footer());
   header.append(logoImg, nav);
   nav.append(ul);
   ul.append(btnLoginHome, signUpLink);
@@ -156,10 +154,10 @@ export const welcome = (navigateTo) => {
   sectionCards.append(cardPet1, cardPet2);
   cardPet1.append(photoPets1, interactionPets1);
   photoPets1.append(img1);
-  interactionPets1.append(h3Pet1, inputLike1, inputMatch1);
+  interactionPets1.append(pPet1, inputLike1, inputMatch1);
   cardPet2.append(photoPets2, interactionPets2);
   photoPets2.append(img2);
-  interactionPets2.append(h3Pet2, inputLike2, inputMatch2);
+  interactionPets2.append(pPet2, inputLike2, inputMatch2);
   sectionTestimonies.append(
     h2Testimonies,
     messageTestimony1,
