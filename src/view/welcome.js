@@ -21,14 +21,16 @@ export const welcome = (navigateTo) => {
   const loginLink = document.createElement('a');
   loginLink.textContent = 'Log In';
   loginLink.addEventListener('click', () => {
-    navigateTo('/login')});
+    navigateTo('/login');
+  });
 
   const signUpLink = document.createElement('li');
 
   const signUp = document.createElement('a');
   signUp.textContent = 'Sign Up';
   signUp.addEventListener('click', () => {
-    navigateTo('/register')});
+    navigateTo('/register');
+  });
 
   const main = document.createElement('main');
   main.setAttribute('id', 'main');
@@ -52,7 +54,6 @@ export const welcome = (navigateTo) => {
   const img1 = document.createElement('img');
   img1.setAttribute('src', 'img/TOM.jpg');
   img1.setAttribute('alt', 'A happy dog jumping in the garden');
-  
 
   const interactionPets1 = document.createElement('div');
   interactionPets1.setAttribute('class', 'interactionpets');
@@ -76,7 +77,7 @@ export const welcome = (navigateTo) => {
   const inputMatch1 = document.createElement('input');
   inputMatch1.setAttribute('type', 'image');
   inputMatch1.setAttribute('src', 'img/matchvacio.png');
-  inputMatch1.setAttribute('alt','This footprint icon is to match with a pet, it means you want to adopt it.');
+  inputMatch1.setAttribute('alt', 'This footprint icon is to match with a pet, it means you want to adopt it.');
   inputMatch1.addEventListener('click', login);
   inputMatch1.addEventListener('mouseover', function () {
     this.src = 'img/match.png';
@@ -166,5 +167,5 @@ export const welcome = (navigateTo) => {
   messageTestimony1.append(pTestimony1);
   messageTestimony2.append(pTestimony2);
 
-  return  bodyimg;
+  return bodyimg;
 };

@@ -11,7 +11,6 @@ import {
 } from 'firebase/auth';
 import { firebaseConfig } from '../firebase.config.js';
 
-
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
@@ -26,7 +25,6 @@ export const signPop = async (event) => {
     // Ejecutar la autenticación con Google
     const result = await signInWithPopup(auth, provider);
     const credential = GoogleAuthProvider.credentialFromResult(result);
-    console.log(credential);
 
     // Iniciar sesión en Firebase con las credenciales obtenidas
     const userCredential = await signInWithCredential(auth, credential);
@@ -46,11 +44,9 @@ export const createUser = async () => {
   try {
     const userCredential = await createUserWithEmailAndPassword(auth, email.value, password.value);
     console.log(userCredential);
-
   } catch (error) {
     const errorCode = error.code;
-    const errorMessage = error.message;
-    console.log(errorMessage);
+    // const errorMessage = error.message;
     if (errorCode === 'auth/email-already-in-use') {
       spanEmail.textContent = 'Email in use';
     } else if (errorCode === 'auth/invalid-email') {

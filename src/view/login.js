@@ -1,15 +1,8 @@
-import { 
-  LoginUser, 
-  validateEmail, 
-  signPop 
-} from '../lib/index.js';
+import { LoginUser, validateEmail, signPop } from '../lib/index.js';
 
 import { footer } from './footer.js';
 
 export const login = (navigateTo) => {
-  /* const body = document.getElementById('root');
-  body.innerHTML = '';
- */
   const bodyimg = document.createElement('div');
   bodyimg.setAttribute('class', 'bodyimg');
 
@@ -21,7 +14,7 @@ export const login = (navigateTo) => {
 
   const logoImg = document.createElement('img');
   logoImg.setAttribute('src', 'img/logo.png');
-  logoImg.setAttribute('alt', 'This is the logo. It is a dog paw inside a heart.')
+  logoImg.setAttribute('alt', 'This is the logo. It is a dog paw inside a heart.');
 
   const nav = document.createElement('nav');
 
@@ -33,8 +26,8 @@ export const login = (navigateTo) => {
   const homeLink = document.createElement('a');
   homeLink.textContent = 'Home';
   homeLink.addEventListener('click', () => {
-    navigateTo('/')});
-  
+    navigateTo('/');
+  });
 
   const h1 = document.createElement('h1');
   h1.textContent = 'Be My Friend';
@@ -100,7 +93,6 @@ export const login = (navigateTo) => {
   const imgGoogle = document.createElement('img');
   imgGoogle.setAttribute('src', '../img/googleplus.png');
   imgGoogle.setAttribute('alt', 'This is the G logo from Google. It is inside the Google log in button.');
-  
 
   const ulAccount = document.createElement('ul');
 
@@ -113,7 +105,8 @@ export const login = (navigateTo) => {
   aAccount.setAttribute('class', 'button');
   aAccount.textContent = 'Sign Up';
   aAccount.addEventListener('click', () => {
-    navigateTo('/register')});
+    navigateTo('/register');
+  });
 
   bodyimg.append(logindiv, footer());
   logindiv.append(header, h1, form);

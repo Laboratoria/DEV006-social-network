@@ -5,9 +5,7 @@ import {
   validatePassowrds,
 } from '../lib/index.js';
 
-import {
-  footer
-} from './footer.js'
+import { footer } from './footer.js';
 
 export const register = (navigateTo) => {
   const bodyimg = document.createElement('div');
@@ -21,7 +19,7 @@ export const register = (navigateTo) => {
 
   const logoImg = document.createElement('img');
   logoImg.setAttribute('src', 'img/logo.png');
-  logoImg.setAttribute('alt','This is the logo. It is a dog paw inside a heart.')
+  logoImg.setAttribute('alt', 'This is the logo. It is a dog paw inside a heart.');
 
   const nav = document.createElement('nav');
 
@@ -33,7 +31,8 @@ export const register = (navigateTo) => {
   const homeLink = document.createElement('a');
   homeLink.textContent = 'Home';
   homeLink.addEventListener('click', () => {
-    navigateTo('/')});
+    navigateTo('/');
+  });
 
   const h1 = document.createElement('h1');
   h1.textContent = 'Be My Friend';
@@ -124,13 +123,13 @@ export const register = (navigateTo) => {
   btnRegister.setAttribute('class', 'button');
   btnRegister.textContent = 'Sign Up';
 
-  form.addEventListener('submit', handleSubmit);
-
-  function handleSubmit(event) {
+  function handleSubmit() {
     createUser();
     navigateTo('/error');
-  };
-  
+  }
+
+  form.addEventListener('submit', handleSubmit);
+
   bodyimg.append(registerdiv, footer());
   registerdiv.append(header, h1, form);
   header.append(logoImg, nav);
