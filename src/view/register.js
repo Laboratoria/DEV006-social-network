@@ -55,6 +55,7 @@ export const register = (navigateTo) => {
   userName.setAttribute('id', 'userName');
   userName.required = true;
   userName.setAttribute('aria-required', 'true');
+  userName.setAttribute('pattern', '^[a-zA-Z]{2,}$');
 
   const lastNameLabel = document.createElement('label');
   lastNameLabel.setAttribute('for', 'lastName');
@@ -67,6 +68,7 @@ export const register = (navigateTo) => {
   lastName.setAttribute('id', 'lastName');
   lastName.required = true;
   lastName.setAttribute('aria-required', 'true');
+  lastName.setAttribute('pattern', '^[a-zA-Z]{2,}$');
 
   const txtEmailLabel = document.createElement('label');
   txtEmailLabel.setAttribute('for', 'txtEmail');
@@ -122,13 +124,12 @@ export const register = (navigateTo) => {
   btnRegister.setAttribute('class', 'button');
   btnRegister.textContent = 'Sign Up';
 
-  form.addEventListener('submit', createUser);
-  // btnRegister.addEventListener('click', () => {
-  //   navigateTo('/error');
-  // })
+  form.addEventListener('submit', handleSubmit);
 
-  const spanCreateUser = document.createElement('span');
-  spanCreateUser.setAttribute('id', 'spanCreateUser');
+  function handleSubmit(event) {
+    createUser();
+    navigateTo('/error');
+  };
   
   bodyimg.append(registerdiv, footer());
   registerdiv.append(header, h1, form);
@@ -152,7 +153,6 @@ export const register = (navigateTo) => {
     txtPasswordAgain,
     spanErrorPasswordAgain,
     btnRegister,
-    spanCreateUser,
   );
   return bodyimg;
 };
