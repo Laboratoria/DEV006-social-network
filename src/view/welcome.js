@@ -126,6 +126,91 @@ export const welcome = (navigateTo) => {
   inputMatch2.addEventListener('mouseout', function () {
     this.src = 'img/matchvacio.png';
   });
+
+  //Tarjeta de mascota 3
+  const cardPet3 = document.createElement('div');
+  cardPet3.setAttribute('class', 'cardpet');
+
+  const photoPets3 = document.createElement('div');
+  photoPets3.setAttribute('class', 'photopets');
+
+  const img3 = document.createElement('img');
+  img3.setAttribute('src', 'img/adoptparrot.jpg');
+  img3.setAttribute('alt', 'A happy dog jumping in the garden');
+
+  const interactionPets3 = document.createElement('div');
+  interactionPets3.setAttribute('class', 'interactionpets');
+
+  const pPet3 = document.createElement('p');
+  pPet3.classList.add('petName');
+  pPet3.textContent = 'JUAN';
+
+  const inputLike3 = document.createElement('input');
+  inputLike3.setAttribute('type', 'image');
+  inputLike3.setAttribute('src', 'img/megusta.png');
+  inputLike3.setAttribute('alt', 'Heart icon to like the pet');
+  inputLike3.addEventListener('click', login);
+  inputLike3.addEventListener('mouseover', function () {
+    this.src = 'img/megustarojo.png';
+  });
+  inputLike3.addEventListener('mouseout', function () {
+    this.src = 'img/megusta.png';
+  });
+
+  const inputMatch3 = document.createElement('input');
+  inputMatch3.setAttribute('type', 'image');
+  inputMatch3.setAttribute('src', 'img/matchvacio.png');
+  inputMatch3.setAttribute('alt', 'This footprint icon is to match with a pet, it means you want to adopt it.');
+  inputMatch3.addEventListener('click', login);
+  inputMatch3.addEventListener('mouseover', function () {
+    this.src = 'img/match.png';
+  });
+  inputMatch3.addEventListener('mouseout', function () {
+    this.src = 'img/matchvacio.png';
+  });
+
+  //Tarjeta de mascota 4
+  const cardPet4 = document.createElement('div');
+  cardPet4.setAttribute('class', 'cardpet');
+
+  const photoPets4 = document.createElement('div');
+  photoPets4.setAttribute('class', 'photopets');
+
+  const img4 = document.createElement('img');
+  img4.setAttribute('src', 'img/adoptrabbit.jpg');
+  img4.setAttribute('alt', 'A happy dog jumping in the garden');
+
+  const interactionPets4 = document.createElement('div');
+  interactionPets4.setAttribute('class', 'interactionpets');
+
+  const pPet4 = document.createElement('p');
+  pPet4.classList.add('petName');
+  pPet4.textContent = 'LAURA';
+
+  const inputLike4 = document.createElement('input');
+  inputLike4.setAttribute('type', 'image');
+  inputLike4.setAttribute('src', 'img/megusta.png');
+  inputLike4.setAttribute('alt', 'Heart icon to like the pet');
+  inputLike4.addEventListener('click', login);
+  inputLike4.addEventListener('mouseover', function () {
+    this.src = 'img/megustarojo.png';
+  });
+  inputLike4.addEventListener('mouseout', function () {
+    this.src = 'img/megusta.png';
+  });
+
+  const inputMatch4 = document.createElement('input');
+  inputMatch4.setAttribute('type', 'image');
+  inputMatch4.setAttribute('src', 'img/matchvacio.png');
+  inputMatch4.setAttribute('alt', 'This footprint icon is to match with a pet, it means you want to adopt it.');
+  inputMatch4.addEventListener('click', login);
+  inputMatch4.addEventListener('mouseover', function () {
+    this.src = 'img/match.png';
+  });
+  inputMatch4.addEventListener('mouseout', function () {
+    this.src = 'img/matchvacio.png';
+  });
+
   const sectionTestimonies = document.createElement('section');
   sectionTestimonies.setAttribute('class', 'contenedortestimonios');
 
@@ -134,13 +219,13 @@ export const welcome = (navigateTo) => {
   h2Testimonies.textContent = 'Testimonies';
 
   const messageTestimony1 = document.createElement('div');
-  messageTestimony1.setAttribute('class', 'menssagetesti');
+  messageTestimony1.setAttribute('class', 'messagetesti');
 
   const pTestimony1 = document.createElement('p');
   pTestimony1.innerHTML = '“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...”<br>-Name, City';
 
   const messageTestimony2 = document.createElement('div');
-  messageTestimony2.setAttribute('class', 'menssagetesti');
+  messageTestimony2.setAttribute('class', 'messagetesti');
 
   const pTestimony2 = document.createElement('p');
   pTestimony2.innerHTML = '“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...”<br>-Name, City';
@@ -152,13 +237,24 @@ export const welcome = (navigateTo) => {
   btnLoginHome.append(loginLink);
   signUpLink.append(signUp);
   main.append(h1, welcomeMessage, sectionCards, sectionTestimonies);
-  sectionCards.append(cardPet1, cardPet2);
+  sectionCards.append(cardPet1, cardPet2, cardPet3, cardPet4);
+
   cardPet1.append(photoPets1, interactionPets1);
   photoPets1.append(img1);
   interactionPets1.append(pPet1, inputLike1, inputMatch1);
+
   cardPet2.append(photoPets2, interactionPets2);
   photoPets2.append(img2);
   interactionPets2.append(pPet2, inputLike2, inputMatch2);
+
+  cardPet3.append(photoPets3, interactionPets3);
+  photoPets3.append(img3);
+  interactionPets3.append(pPet3, inputLike3, inputMatch3);
+
+  cardPet4.append(photoPets4, interactionPets4);
+  photoPets4.append(img4);
+  interactionPets4.append(pPet4, inputLike4, inputMatch4);
+
   sectionTestimonies.append(
     h2Testimonies,
     messageTestimony1,

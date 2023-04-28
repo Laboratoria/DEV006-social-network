@@ -17,6 +17,7 @@ body {
 
 .group {
     margin-bottom: 1rem;
+    text-align: center;
 }
 
 /* Welcome view */
@@ -26,7 +27,6 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed ;
-    height:160vh;
 }
 
 /* App title*/
@@ -76,23 +76,15 @@ header img {
 
 /*Welcome message*/
 .welcomemessage {
-    font-size: 15px;
-    background-color:  rgba(240, 219, 219, 0.7) ;
-    width: 288px;
-    height: 81px;
+    font-size: 1.6rem;
+    background-color: rgba(240, 219, 219, 0.7);
+    width: 80vw;
+    height: 12%;
     text-align: center;
-    margin: 5%;
+    margin: 5% auto;
     border-radius: 5px;
     padding: 3%;
 } 
-
-.photopets img{
-    width: 119px;
-    height: 105px;
-    left: 29px;
-    top: 185px;
-    margin: 5% 5% 0% 5%;
-}
 
 /*Log In and Sign Up form inputs*/
 form {
@@ -139,7 +131,7 @@ form ul {
 }
 
 #forgotPassword {
-    font-size: 12px;
+    font-size: 1.4rem;;
 }
 
 hr {
@@ -158,6 +150,7 @@ hr {
 #btnLogin {
     border-radius: 5px;
     background-color: #4285F4;
+    border: #4285F4;
     color: #ffffff;
     width: 85%;
     height: 34px;
@@ -172,9 +165,16 @@ hr {
     color: #292D32;
 }
 
+.labelQuestions {
+    display: block;
+    font-size: 1.7rem;
+    margin: auto 8%;
+}
+
 #btnRegister{
     border-radius: 5px;
     background-color: #4285F4;
+    border: #4285F4;
     color: #ffffff;
     width: 85%;
     height: 34px;
@@ -195,7 +195,6 @@ hr {
     border: 1px solid gray;
     box-shadow: 0px 3px 3px gray;
     border-radius: 5px;
-    font-family: 'Nunito';
     font-size: 1.8rem;
     font-weight: 700;
     margin-top: 8px;
@@ -252,47 +251,62 @@ hr {
 }
 
 /*Pet cards*/
+.contenedorcards div input {
+    width: 2.8rem;
+    height: 2.8rem;
+}
+
 .contenedorcards{
     display: flex;
-    flex-direction: row;
-    gap: 20px;
+    flex-wrap: wrap;
+    gap: 1.2rem;
     justify-content: center;
 }
 
-.contenedorcards .cardpet{
-    width: 135px;
-    height: 141px;
+.contenedorcards .cardpet {
+    width: 28rem;
+    height: 32rem;
     background-color: #F0DBDB;
-    border-radius: 5px;
+    border-radius: 8px;
+    margin: 4% auto;
+}
+
+.photopets img {
+    width: 26rem;
+    height: 25rem;
+    margin: 4%;
+    object-fit: cover;
+    border-radius: 8px;
 }
 
 .petName {
-    font-size: 1.2rem;
-    margin-left: 10px;
+    font-size: 2rem;
+    margin-left: 12px;
     font-weight: 800;
     color: #292D32;
 }
 
 /*Pet cads icons to like and match*/
-.interactionpets{
+.interactionpets {
     display: grid;
-    grid-template-columns: 1fr 2fr 1fr;       
+    grid-template-columns: 1fr 2fr 0.5fr;
 }
 
 /* Testimonies */
 .testimonies{
     font-family: 'Acme', sans-serif;
     font-size: 2.4rem;
-    margin: 10px;
+    margin: 2% 0 0 5%;
     color: #292D32;
 }
 
-.menssagetesti{
+.messagetesti{
     background-color: #F0DBDB;
     border-radius: 5px;
-    margin: 8px 10px;
-    font-size: 12px;
+    margin: 3% auto;
+    font-size: 1.4rem;
     padding: 7px;
+    width: 80vw;
 }
 
 footer {
