@@ -2,8 +2,8 @@ export const footer = () => {
   const footerElement = document.createElement('footer');
 
   const pFooter = document.createElement('p');
-  pFooter.classList.add('footerParagraph')
-  
+  pFooter.classList.add('footerParagraph');
+
   const aGabriela = document.createElement('a');
   aGabriela.textContent = 'Gabriela';
   aGabriela.setAttribute('href', 'https://github.com/gabiestefany24');
@@ -28,7 +28,7 @@ export const footer = () => {
   const spanMarissa = document.createElement('span');
   spanMarissa.append(aMarissa);
 
-  pFooter.append('Created by ', spanGabriela, ', ', spanRebeca, ' and ', spanMarissa, '.')
+  pFooter.append('Created by ', spanGabriela, ', ', spanRebeca, ' and ', spanMarissa, '.');
   footerElement.append(pFooter);
 
   return footerElement;
