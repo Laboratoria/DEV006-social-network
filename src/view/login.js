@@ -1,9 +1,8 @@
 import { LoginUser, validateEmail, signPop } from '../lib/index.js';
 
-export const login = () => {
-  const body = document.getElementById('root');
-  body.innerHTML = '';
+import { footer } from './footer.js';
 
+export const login = (navigateTo) => {
   const bodyimg = document.createElement('div');
   bodyimg.setAttribute('class', 'bodyimg');
 
@@ -15,6 +14,7 @@ export const login = () => {
 
   const logoImg = document.createElement('img');
   logoImg.setAttribute('src', 'img/logo.png');
+  logoImg.setAttribute('alt', 'This is the logo. It is a dog paw inside a heart.');
 
   const nav = document.createElement('nav');
 
@@ -24,8 +24,10 @@ export const login = () => {
   btnHome.setAttribute('id', 'Home');
 
   const homeLink = document.createElement('a');
-  homeLink.setAttribute('href', '/');
   homeLink.textContent = 'Home';
+  homeLink.addEventListener('click', () => {
+    navigateTo('/');
+  });
 
   const h1 = document.createElement('h1');
   h1.textContent = 'Be My Friend';
@@ -90,6 +92,7 @@ export const login = () => {
 
   const imgGoogle = document.createElement('img');
   imgGoogle.setAttribute('src', '../img/googleplus.png');
+  imgGoogle.setAttribute('alt', 'This is the G logo from Google. It is inside the Google log in button.');
 
   const ulAccount = document.createElement('ul');
 
@@ -97,14 +100,16 @@ export const login = () => {
   liAccount.textContent = 'Need an account? ';
 
   const aAccount = document.createElement('a');
-  aAccount.setAttribute('href', '/register');
   aAccount.setAttribute('id', 'btnSignup');
+  aAccount.setAttribute('href', '');
   aAccount.setAttribute('type', 'submit');
   aAccount.setAttribute('class', 'button');
   aAccount.textContent = 'Sign Up';
+  aAccount.addEventListener('click', () => {
+    navigateTo('/register');
+  });
 
-  body.append(bodyimg);
-  bodyimg.append(logindiv);
+  bodyimg.append(logindiv, footer());
   logindiv.append(header, h1, form);
   header.append(logoImg, nav);
   nav.append(ul);
@@ -121,4 +126,6 @@ export const login = () => {
   liPassword.append(aPassword);
   ulAccount.append(liAccount);
   liAccount.append(aAccount);
+
+  return bodyimg;
 };

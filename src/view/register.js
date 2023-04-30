@@ -5,10 +5,9 @@ import {
   validatePassowrds,
 } from '../lib/index.js';
 
-export const register = () => {
-  const body = document.getElementById('root');
-  body.innerHTML = '';
+import { footer } from './footer.js';
 
+export const register = (navigateTo) => {
   const bodyimg = document.createElement('div');
   bodyimg.setAttribute('class', 'bodyimg');
 
@@ -20,6 +19,7 @@ export const register = () => {
 
   const logoImg = document.createElement('img');
   logoImg.setAttribute('src', 'img/logo.png');
+  logoImg.setAttribute('alt', 'This is the logo. It is a dog paw inside a heart.');
 
   const nav = document.createElement('nav');
 
@@ -29,8 +29,10 @@ export const register = () => {
   btnHome.setAttribute('id', 'Home');
 
   const homeLink = document.createElement('a');
-  homeLink.setAttribute('href', '/');
   homeLink.textContent = 'Home';
+  homeLink.addEventListener('click', () => {
+    navigateTo('/');
+  });
 
   const h1 = document.createElement('h1');
   h1.textContent = 'Be My Friend';
@@ -50,6 +52,9 @@ export const register = () => {
   userName.setAttribute('type', 'text');
   userName.setAttribute('placeholder', 'Name');
   userName.setAttribute('id', 'userName');
+  userName.required = true;
+  userName.setAttribute('aria-required', 'true');
+  userName.setAttribute('pattern', '^[a-zA-Z]{2,}$');
 
   const lastNameLabel = document.createElement('label');
   lastNameLabel.setAttribute('for', 'lastName');
@@ -60,6 +65,9 @@ export const register = () => {
   lastName.setAttribute('type', 'text');
   lastName.setAttribute('placeholder', 'Last Name');
   lastName.setAttribute('id', 'lastName');
+  lastName.required = true;
+  lastName.setAttribute('aria-required', 'true');
+  lastName.setAttribute('pattern', '^[a-zA-Z]{2,}$');
 
   const txtEmailLabel = document.createElement('label');
   txtEmailLabel.setAttribute('for', 'txtEmail');
@@ -71,6 +79,8 @@ export const register = () => {
   txtEmail.setAttribute('type', 'email');
   txtEmail.setAttribute('placeholder', 'Email');
   txtEmail.addEventListener('blur', validateEmail);
+  txtEmail.required = true;
+  txtEmail.setAttribute('aria-required', 'true');
 
   const spanErrorEmail = document.createElement('span');
   spanErrorEmail.setAttribute('id', 'spanErrorEmail');
@@ -85,6 +95,8 @@ export const register = () => {
   txtPassword.setAttribute('type', 'password');
   txtPassword.setAttribute('placeholder', 'Password');
   txtPassword.addEventListener('keyup', securePassword);
+  txtPassword.required = true;
+  txtPassword.setAttribute('aria-required', 'true');
 
   const spanErrorPassword = document.createElement('span');
   spanErrorPassword.setAttribute('id', 'spanErrorPassword');
@@ -99,20 +111,26 @@ export const register = () => {
   txtPasswordAgain.setAttribute('type', 'password');
   txtPasswordAgain.setAttribute('placeholder', 'Password (again)');
   txtPasswordAgain.addEventListener('blur', validatePassowrds);
+  txtPasswordAgain.required = true;
+  txtPasswordAgain.setAttribute('aria-required', 'true');
 
   const spanErrorPasswordAgain = document.createElement('span');
   spanErrorPasswordAgain.setAttribute('id', 'spanErrorPasswordAgain');
 
   const btnRegister = document.createElement('button');
   btnRegister.setAttribute('id', 'btnRegister');
-  btnRegister.setAttribute('type', 'button');
+  btnRegister.setAttribute('type', 'submit');
   btnRegister.setAttribute('class', 'button');
-  btnRegister.addEventListener('click', createUser);
   btnRegister.textContent = 'Sign Up';
-  const spanCreateUser = document.createElement('span');
-  spanCreateUser.setAttribute('id', 'spanCreateUser');
-  body.append(bodyimg);
-  bodyimg.append(registerdiv);
+
+  function handleSubmit() {
+    createUser();
+    navigateTo('/error');
+  }
+
+  form.addEventListener('submit', handleSubmit);
+
+  bodyimg.append(registerdiv, footer());
   registerdiv.append(header, h1, form);
   header.append(logoImg, nav);
   nav.append(ul);
@@ -134,6 +152,6 @@ export const register = () => {
     txtPasswordAgain,
     spanErrorPasswordAgain,
     btnRegister,
-    spanCreateUser,
   );
+  return bodyimg;
 };

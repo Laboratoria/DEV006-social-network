@@ -25,7 +25,6 @@ export const signPop = async (event) => {
     // Ejecutar la autenticación con Google
     const result = await signInWithPopup(auth, provider);
     const credential = GoogleAuthProvider.credentialFromResult(result);
-    console.log(credential);
 
     // Iniciar sesión en Firebase con las credenciales obtenidas
     const userCredential = await signInWithCredential(auth, credential);
@@ -38,20 +37,16 @@ export const signPop = async (event) => {
 
 export const createUser = async () => {
   const email = document.getElementById('txtEmail');
-  const password = document.getElementById('txtPassword');
+  const password = document.getElementById('txtPasswordAgain');
   const spanEmail = document.getElementById('spanErrorEmail');
   const spanPassword = document.getElementById('spanErrorPassword');
-  const spanCreateUser = document.getElementById('spanCreateUser');
+
   try {
     const userCredential = await createUserWithEmailAndPassword(auth, email.value, password.value);
     console.log(userCredential);
-
-    spanCreateUser.style.display = 'flex';
-    spanCreateUser.textContent = 'You have successfully signed up!';
   } catch (error) {
     const errorCode = error.code;
-    const errorMessage = error.message;
-    console.log(errorMessage);
+    // const errorMessage = error.message;
     if (errorCode === 'auth/email-already-in-use') {
       spanEmail.textContent = 'Email in use';
     } else if (errorCode === 'auth/invalid-email') {
@@ -65,7 +60,6 @@ export const createUser = async () => {
 export const LoginUser = () => {
   const emailInput = document.getElementById('txtEmail');
   const passwordInput = document.getElementById('txtPassword');
-
   const email = emailInput.value;
   const password = passwordInput.value;
 
