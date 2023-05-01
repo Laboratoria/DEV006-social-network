@@ -101,20 +101,15 @@ export const securePassword = (password, errorSpan) => {
 };
 
 // Validación de que las contraseñas coincidan
-export const validatePassowrds = () => {
-  const passwordValue = document.getElementById('txtPassword').value;
-  const passwordAgain = document.getElementById('txtPasswordAgain');
-  const passwordAgainValue = passwordAgain.value;
-  const spanErrorPasswordAgain = document.getElementById('spanErrorPasswordAgain');
-
-  if (passwordValue !== passwordAgainValue) {
+export const validatePasswords = (password, passwordAgain, errorSpan) => {
+  if (password.value !== passwordAgain.value) {
     passwordAgain.classList.remove('valid');
     passwordAgain.classList.add('invalid');
-    spanErrorPasswordAgain.textContent = 'Passwords are different.';
+    errorSpan.textContent = 'Passwords are different.';
   } else {
     passwordAgain.classList.remove('invalid');
     passwordAgain.classList.add('valid');
-    spanErrorPasswordAgain.textContent = '';
+    errorSpan.textContent = '';
   }
 };
 

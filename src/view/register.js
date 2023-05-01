@@ -2,7 +2,7 @@ import {
   createUser,
   securePassword,
   validateEmail,
-  validatePassowrds,
+  validatePasswords,
 } from '../lib/index.js';
 
 import { footer } from './footer.js';
@@ -113,12 +113,15 @@ export const register = (navigateTo) => {
   txtPasswordAgain.setAttribute('id', 'txtPasswordAgain');
   txtPasswordAgain.setAttribute('type', 'password');
   txtPasswordAgain.setAttribute('placeholder', 'Password (again)');
-  txtPasswordAgain.addEventListener('blur', validatePassowrds);
   txtPasswordAgain.required = true;
   txtPasswordAgain.setAttribute('aria-required', 'true');
 
   const spanErrorPasswordAgain = document.createElement('span');
   spanErrorPasswordAgain.setAttribute('id', 'spanErrorPasswordAgain');
+
+  txtPasswordAgain.addEventListener('blur', () => {
+    validatePasswords(txtPassword, txtPasswordAgain, spanErrorPasswordAgain);
+  });
 
   const btnRegister = document.createElement('button');
   btnRegister.setAttribute('id', 'btnRegister');
