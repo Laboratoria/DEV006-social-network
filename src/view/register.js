@@ -94,12 +94,15 @@ export const register = (navigateTo) => {
   txtPassword.setAttribute('id', 'txtPassword');
   txtPassword.setAttribute('type', 'password');
   txtPassword.setAttribute('placeholder', 'Password');
-  txtPassword.addEventListener('keyup', securePassword);
   txtPassword.required = true;
   txtPassword.setAttribute('aria-required', 'true');
 
   const spanErrorPassword = document.createElement('span');
   spanErrorPassword.setAttribute('id', 'spanErrorPassword');
+
+  txtPassword.addEventListener('keyup', () => {
+    securePassword(txtPassword, spanErrorPassword);
+  });
 
   const txtPasswordAgainLabel = document.createElement('label');
   txtPasswordAgainLabel.setAttribute('for', 'txtPasswordAgain');

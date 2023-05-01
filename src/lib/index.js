@@ -86,18 +86,17 @@ export const LoginUser = () => {
 };
 
 // Validación de contraseña segura
-export const securePassword = () => {
-  const password = document.getElementById('txtPassword');
+export const securePassword = (password, errorSpan) => {
   const paswordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&#.$($)$-$_])[A-Za-z\d$@$!%*?&#.$($)$-$_][^\s]{6,15}$/;
 
   if (paswordRegex.test(password.value)) {
     password.classList.remove('invalid');
     password.classList.add('valid');
-    document.getElementById('spanErrorPassword').textContent = '';
+    errorSpan.textContent = '';
   } else {
     password.classList.remove('valid');
     password.classList.add('invalid');
-    document.getElementById('spanErrorPassword').textContent = 'Please enter a strong password that contains 6 to 15 characters, at least one uppercase letter, one lowercase letter, one digit, and one special character. Please make sure there are no spaces.';
+    errorSpan.textContent = 'Please enter a strong password that contains 6 to 15 characters, at least one uppercase letter, one lowercase letter, one digit, and one special character. Please make sure there are no spaces.';
   }
 };
 
