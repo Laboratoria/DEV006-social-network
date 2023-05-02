@@ -27,6 +27,7 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed ;
+    height: 100%;
 }
 
 /* App title*/
@@ -89,7 +90,6 @@ header img {
 /*Log In and Sign Up form inputs*/
 form {
     width: 75vw;
-    height: 75%;
     margin: 4rem auto;
     background-color: white;
     padding: 1rem;
@@ -115,6 +115,10 @@ form h2{
 form ul {
     list-style: none;
     margin-top: 3px;
+}
+
+.login{
+    height: 100vh;
 }
 
 .containerLogin {
@@ -313,7 +317,6 @@ footer {
     background-color: #EA907A;
     height: 40px;
     color:white;    
-    position: fixed;
     bottom: 0;
     width: 100%;
     text-align: center;

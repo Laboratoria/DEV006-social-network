@@ -1,0 +1,137 @@
+@media screen and (max-width: 1100px) and (min-width: 600px) {
+    /* Wallpaper */
+    .bodyimg {
+        background-color: rgba(255, 255, 255, 0.5);
+        background-image: url(../img/wallpaper.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
+    }
+
+    h1 {
+        font-size: 3.8rem;
+        margin: 2% 5%;
+    }
+
+    nav {
+        height: 8vh;
+    }
+
+    nav ul li a {
+        padding: 0.5rem 1.6rem;
+        font-size: 1.8rem;
+    }
+
+    header img {
+        height: 5.5rem;
+        width: 5.3rem;
+        top: 1px;
+    }
+
+    .welcomemessage {
+        width: 65vw;
+        font-size: 2.2rem;
+        margin: 2% auto;
+        border-radius: 16px;
+    }
+
+    .messagetesti {
+        width: 65vw;
+        font-size: 2.2rem;
+        padding: 16px;
+        margin: 1% auto;
+        border-radius: 16px;
+    }
+
+    .testimonies {
+        font-size: 3.2rem;
+    }
+
+    /*Formulario de login */
+    .login {
+        height: 100%;
+    }
+
+    form {
+        width: 60vw;
+    }
+
+    form h2 {
+        font-size: 4rem;
+    }
+
+    form input {
+        height: 6vh;
+        width: 80%;
+        font-size: 1.8rem;
+        margin: 2rem auto;
+    }
+
+    #spanErrorEmail {
+        font-size: 1.4rem;
+    }
+
+    #forgotPassword {
+        font-size: 1.8rem;
+    }
+
+    .containerLogin {
+        font-size: 1.8rem;
+    }
+
+    .logInWith {
+        width: 127px;
+        top: 12px;
+    }
+
+    .radioAndCheckbox {
+        width: unset;
+        display: unset;
+        vertical-align: middle;
+    }
+
+    .labelQuestions {
+        font-size: 2.2rem;
+        margin: -1rem 10%;
+    }
+
+    .labelQuestions label {
+        display: block;
+    }
+
+    .labelQuestions input {
+        display: unset;
+        margin: 0 1.5rem;
+        width: 18px;
+    }
+
+    form .answerOption {
+        font-size: 1.5rem;
+    }
+
+    #btnLogin {
+        height: 6vh;
+        width: 80%;
+        font-size: 2.2rem;
+    }
+
+    .btnGoogle {
+        font-size: 2.2rem;
+    }
+
+    #btnRegister {
+        height: 6vh;
+        width: 80%;
+        font-size: 2.2rem;
+        margin-bottom: 3rem;
+    }
+
+    footer {
+        height: 8vh;
+    }
+
+    .footerParagraph {
+        font-size: 1.6rem;
+    }
+}
+
