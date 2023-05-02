@@ -114,17 +114,16 @@ export const validatePasswords = (password, passwordAgain, errorSpan) => {
 };
 
 // Validación de que sea email
-export const validateEmail = () => {
-  const email = document.getElementById('txtEmail');
+export const validateEmail = (email, spanErrorEmail) => {
   const correoRegex = /^\w+([.-]?\w+)@\w+([.-]?\w+)(.\w{2,3})+$/;
 
   if (correoRegex.test(email.value)) {
     email.classList.remove('invalid');
     email.classList.add('valid');
-    document.getElementById('spanErrorEmail').textContent = '';
+    spanErrorEmail.textContent = '';
   } else {
     email.classList.remove('valid');
     email.classList.add('invalid');
-    document.getElementById('spanErrorEmail').textContent = 'Please enter a valid email.';
+    spanErrorEmail.textContent = 'Please enter a valid email.';
   }
 };

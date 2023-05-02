@@ -78,12 +78,15 @@ export const register = (navigateTo) => {
   txtEmail.setAttribute('id', 'txtEmail');
   txtEmail.setAttribute('type', 'email');
   txtEmail.setAttribute('placeholder', 'Email');
-  txtEmail.addEventListener('blur', validateEmail);
   txtEmail.required = true;
   txtEmail.setAttribute('aria-required', 'true');
 
   const spanErrorEmail = document.createElement('span');
   spanErrorEmail.setAttribute('id', 'spanErrorEmail');
+
+  txtEmail.addEventListener('blur', () => {
+    validateEmail(txtEmail, spanErrorEmail);
+  });
 
   const txtPasswordLabel = document.createElement('label');
   txtPasswordLabel.setAttribute('for', 'txtPassword');

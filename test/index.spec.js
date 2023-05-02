@@ -1,9 +1,11 @@
 // import { beforeEach } from 'node:test';
-import { securePassword, validatePasswords } from '../src/lib/index.js';
+import { securePassword, validatePasswords, validateEmail } from '../src/lib/index.js';
 
 let password;
 let passwordAgain;
 let errorSpan;
+let email;
+let errorSpanEmail;
 
 beforeAll(() => {
   password = {
@@ -30,6 +32,20 @@ beforeAll(() => {
     id: 'spanErrorPassword',
     textContent: '',
   };
+  email = {
+    value: '',
+    type: 'password',
+    id: 'txtEmail',
+    classList: {
+      contains: jest.fn().mockReturnValue(true),
+      add: jest.fn(),
+      remove: jest.fn(),
+    },
+  };
+  errorSpanEmail = {
+    id: 'spanErrorEmail',
+    textContent: '',
+  };
 });
 
 // Inicia las pruebas
@@ -49,18 +65,33 @@ describe('securePassword', () => {
 });
 
 describe('validatePassword', () => {
-  test('should set class to invalid and clear error span when both password inputs match', () => {
+  test('should set class to valid and clear error span when both password inputs match', () => {
     password.value = 'Abc123$';
     passwordAgain.value = 'Abc1234$';
     validatePasswords(password, passwordAgain, errorSpan);
     expect(passwordAgain.classList.contains('invalid')).toBe(true);
     expect(errorSpan.textContent).toBe('Passwords are different.');
   });
-  test('should set class to valid and set error message when inputs do not match', () => {
+  test('should set class to invalid and set error message when inputs do not match', () => {
     password.value = 'Abc123$';
     passwordAgain.value = 'Abc123$';
     validatePasswords(password, passwordAgain, errorSpan);
     expect(passwordAgain.classList.contains('valid')).toBe(true);
     expect(errorSpan.textContent).toBe('');
+  });
+});
+
+describe('validateEmail', () => {
+  test('should set class to valid and clear error span when valid email', () => {
+    email.value = 'valid@email.com';
+    validateEmail(email, errorSpanEmail);
+    expect(email.classList.contains('valid')).toBe(true);
+    expect(errorSpanEmail.textContent).toBe('');
+  });
+  test('should set class to invalid and clear error span when invalid email', () => {
+    email.value = 'invalid-email';
+    validateEmail(email, errorSpanEmail);
+    expect(email.classList.contains('invalid')).toBe(true);
+    expect(errorSpanEmail.textContent).toBe('Please enter a valid email.');
   });
 });

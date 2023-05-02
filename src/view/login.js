@@ -44,10 +44,13 @@ export const login = (navigateTo) => {
   txtEmail.setAttribute('id', 'txtEmail');
   txtEmail.setAttribute('type', 'email');
   txtEmail.setAttribute('placeholder', 'Email');
-  txtEmail.addEventListener('blur', validateEmail);
 
   const spanErrorEmail = document.createElement('span');
   spanErrorEmail.setAttribute('id', 'spanErrorEmail');
+
+  txtEmail.addEventListener('blur', () => {
+    validateEmail(txtEmail, spanErrorEmail);
+  });
 
   const group2 = document.createElement('div');
   group2.setAttribute('class', 'group');
