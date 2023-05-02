@@ -127,7 +127,7 @@ export const welcome = (navigateTo) => {
     this.src = 'img/matchvacio.png';
   });
 
-  //Tarjeta de mascota 3
+  // Tarjeta de mascota 3
   const cardPet3 = document.createElement('div');
   cardPet3.setAttribute('class', 'cardpet');
 
@@ -169,7 +169,7 @@ export const welcome = (navigateTo) => {
     this.src = 'img/matchvacio.png';
   });
 
-  //Tarjeta de mascota 4
+  // Tarjeta de mascota 4
   const cardPet4 = document.createElement('div');
   cardPet4.setAttribute('class', 'cardpet');
 

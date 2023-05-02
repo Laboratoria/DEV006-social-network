@@ -78,12 +78,15 @@ export const register = (navigateTo) => {
   txtEmail.setAttribute('id', 'txtEmail');
   txtEmail.setAttribute('type', 'email');
   txtEmail.setAttribute('placeholder', 'Email');
-  txtEmail.addEventListener('blur', validateEmail);
   txtEmail.required = true;
   txtEmail.setAttribute('aria-required', 'true');
 
   const spanErrorEmail = document.createElement('span');
   spanErrorEmail.setAttribute('id', 'spanErrorEmail');
+
+  txtEmail.addEventListener('blur', () => {
+    validateEmail(txtEmail, txtEmail.value, spanErrorEmail);
+  });
 
   const txtPasswordLabel = document.createElement('label');
   txtPasswordLabel.setAttribute('for', 'txtPassword');
@@ -94,12 +97,15 @@ export const register = (navigateTo) => {
   txtPassword.setAttribute('id', 'txtPassword');
   txtPassword.setAttribute('type', 'password');
   txtPassword.setAttribute('placeholder', 'Password');
-  txtPassword.addEventListener('keyup', securePassword);
   txtPassword.required = true;
   txtPassword.setAttribute('aria-required', 'true');
 
   const spanErrorPassword = document.createElement('span');
   spanErrorPassword.setAttribute('id', 'spanErrorPassword');
+
+  txtPassword.addEventListener('keyup', () => {
+    securePassword(txtPassword, spanErrorPassword);
+  });
 
   const txtPasswordAgainLabel = document.createElement('label');
   txtPasswordAgainLabel.setAttribute('for', 'txtPasswordAgain');
@@ -110,12 +116,20 @@ export const register = (navigateTo) => {
   txtPasswordAgain.setAttribute('id', 'txtPasswordAgain');
   txtPasswordAgain.setAttribute('type', 'password');
   txtPasswordAgain.setAttribute('placeholder', 'Password (again)');
-  txtPasswordAgain.addEventListener('blur', validatePassowrds);
   txtPasswordAgain.required = true;
   txtPasswordAgain.setAttribute('aria-required', 'true');
 
   const spanErrorPasswordAgain = document.createElement('span');
   spanErrorPasswordAgain.setAttribute('id', 'spanErrorPasswordAgain');
+
+  txtPasswordAgain.addEventListener('blur', () => {
+    validatePassowrds(
+      txtPassword.value,
+      txtPasswordAgain,
+      txtPasswordAgain.value,
+      spanErrorPasswordAgain,
+    );
+  });
 
   const btnRegister = document.createElement('button');
   btnRegister.setAttribute('id', 'btnRegister');
