@@ -2,7 +2,7 @@ import {
   createUser,
   securePassword,
   validateEmail,
-  validatePassowrds,
+  validatePasswords,
 } from '../lib/index.js';
 
 import { footer } from './footer.js';
@@ -85,7 +85,7 @@ export const register = (navigateTo) => {
   spanErrorEmail.setAttribute('id', 'spanErrorEmail');
 
   txtEmail.addEventListener('blur', () => {
-    validateEmail(txtEmail, txtEmail.value, spanErrorEmail);
+    validateEmail(txtEmail, spanErrorEmail);
   });
 
   const txtPasswordLabel = document.createElement('label');
@@ -123,12 +123,7 @@ export const register = (navigateTo) => {
   spanErrorPasswordAgain.setAttribute('id', 'spanErrorPasswordAgain');
 
   txtPasswordAgain.addEventListener('blur', () => {
-    validatePassowrds(
-      txtPassword.value,
-      txtPasswordAgain,
-      txtPasswordAgain.value,
-      spanErrorPasswordAgain,
-    );
+    validatePasswords(txtPassword, txtPasswordAgain, spanErrorPasswordAgain);
   });
 
   const btnRegister = document.createElement('button');

@@ -86,40 +86,35 @@ export const LoginUser = () => {
 };
 
 // Validación de contraseña segura
-export const securePassword = (password, span) => {
+export const securePassword = (password, errorSpan) => {
   const paswordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&#.$($)$-$_])[A-Za-z\d$@$!%*?&#.$($)$-$_][^\s]{6,15}$/;
 
   if (paswordRegex.test(password.value)) {
     password.classList.remove('invalid');
     password.classList.add('valid');
-    span.innerHTML = '';
+    errorSpan.textContent = '';
   } else {
     password.classList.remove('valid');
     password.classList.add('invalid');
-    span.innerHTML = 'Please enter a strong password that contains 6 to 15 characters, at least one uppercase letter, one lowercase letter, one digit, and one special character. Please make sure there are no spaces.';
+    errorSpan.textContent = 'Please enter a strong password that contains 6 to 15 characters, at least one uppercase letter, one lowercase letter, one digit, and one special character. Please make sure there are no spaces.';
   }
 };
 
 // Validación de que las contraseñas coincidan
-export const validatePassowrds = (
-  passwordValue,
-  passwordAgain,
-  passwordAgainValue,
-  spanErrorPasswordAgain,
-) => {
-  if (passwordValue !== passwordAgainValue) {
+export const validatePasswords = (password, passwordAgain, errorSpan) => {
+  if (password.value !== passwordAgain.value) {
     passwordAgain.classList.remove('valid');
     passwordAgain.classList.add('invalid');
-    spanErrorPasswordAgain.textContent = 'Passwords are different.';
+    errorSpan.textContent = 'Passwords are different.';
   } else {
     passwordAgain.classList.remove('invalid');
     passwordAgain.classList.add('valid');
-    spanErrorPasswordAgain.textContent = '';
+    errorSpan.textContent = '';
   }
 };
 
 // Validación de que sea email
-export const validateEmail = (email, emailValue, spanErrorEmail) => {
+export const validateEmail = (email, spanErrorEmail) => {
   const correoRegex = /^\w+([.-]?\w+)@\w+([.-]?\w+)(.\w{2,3})+$/;
 
   if (correoRegex.test(emailValue)) {

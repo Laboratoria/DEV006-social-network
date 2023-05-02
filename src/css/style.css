@@ -130,7 +130,7 @@ form ul {
     font-size: 1.6rem;
 }
 
-#spanErrorEmail, #spanErrorPassword {
+#spanErrorEmail, #spanErrorPassword, #spanErrorPasswordAgain {
     font-size: 1.1rem;
 }
 
