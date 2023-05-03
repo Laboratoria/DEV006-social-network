@@ -1,3 +1,76 @@
-/* @media screen and (max-width: 1100px) and (min-width: 600px) {
-    
-} */
+@media screen and  (min-width: 1101px){
+
+    h1 {
+        font-size: 4rem;
+        margin: 2% 9%;
+    }
+
+    .welcomemessage {
+        font-size: 3rem;
+        margin: -1% auto;
+    } 
+
+    .contenedorcards .cardpet {
+    margin: 2% 1%;
+    gap:0;
+    }
+
+    .testimonies {
+    font-size: 3rem;
+    margin: 2% 9%;
+
+    }
+    .messagetesti p {
+    font-size: 2rem;
+    padding: 3%;
+    margin: -1% auto;
+    }
+
+    form{
+        width: 35vw;
+        margin: 2rem auto;
+    }
+
+    form h2{
+        font-size: 3.2rem;
+    }
+
+    .labelQuestions{
+        font-size: 2.2rem
+    }
+
+    form input{
+        height: 6vh;
+        font-size: 1.8rem;
+    }
+
+    .containerLogin{
+        font-size: 2rem;
+    }
+
+    .login form input{
+        margin: 2rem auto;
+    }
+
+    #btnLogin{
+        height: 6vh;
+        font-size: 1.8rem;
+
+    }
+
+    .logInWith {
+        width: 126px;
+        top:12px;
+    }
+
+    .btnGoogle{
+        width: 18rem;
+        margin-top:12px;
+    }
+
+    #btnRegister{
+        height: 6vh;
+        font-size: 1.8rem;
+        margin: 2rem auto;
+    }
+}
