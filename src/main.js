@@ -1,5 +1,10 @@
-// Este es el punto de entrada de tu aplicacion
+//import { myFunction } from './lib/index.js';
 
-import { myFunction } from './lib/index.js';
+const registerButton = document.getElementById('registerButton');
+const registerSection = document.getElementById('registerSection');
+const welcomeSection = document.getElementById('welcomeSection');
 
-myFunction();
+registerButton.addEventListener('click', () => {
+  registerSection.style.display = 'flex';
+  welcomeSection.style.display = 'none';
+})
