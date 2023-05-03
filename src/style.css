@@ -6,10 +6,10 @@
     width: 70%;
     padding: 15%;
 }
-body {
-    background: linear-gradient(#9a0051, black) fixed;
-    height: 100%;
-    margin: 0px;
+.welcomeSection {
+    background: linear-gradient(#9a0051, black);
+    height: fit-content;
+    width: fit-content;
 }
 .esloganText {
     margin-top: -15%;
@@ -50,8 +50,18 @@ body {
 font-family: 'Advent Pro', sans-serif;
 width: 50%;
 margin-bottom: 3%;
-border: 5px;
-border-style: #510BAB;
-}
+border-style: solid;
+border-color: #510BAB;
+border-width: 1.5px;
 
+}
+#logoRegister {
+    width: 20%;
+    display: flex;
+    align-content:flex-end;
+}
+.registerSection {
+    display: none;
+    background:linear-gradient(#510BAB 50%, white 50%);
+}
 }
