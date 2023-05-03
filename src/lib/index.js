@@ -8,6 +8,8 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signInWithCredential,
+  signOut,
+  onAuthStateChanged,
 } from 'firebase/auth';
 import { firebaseConfig } from '../firebase.config.js';
 
@@ -126,4 +128,24 @@ export const validateEmail = (email, spanErrorEmail) => {
     email.classList.add('invalid');
     spanErrorEmail.textContent = 'Please enter a valid email.';
   }
+};
+
+
+export const salir = () => {
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    // El usuario ha iniciado sesión
+    console.log("ya iniciado"+user)
+      signOut(auth).then(() => {
+        // Sign-out successful.
+        console.log("ya sali")
+      }).catch((error) => {
+        console.log(error)
+        // An error happened.
+      });
+  } else {
+    // El usuario no ha iniciado sesión
+    console.log("no iniciado")
+  }
+});
 };
