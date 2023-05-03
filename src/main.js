@@ -2,12 +2,14 @@ import { welcome } from './view/welcome.js';
 import { login } from './view/login.js';
 import { register } from './view/register.js';
 import { error } from './view/error.js';
+import { wall } from './view/wall.js';
 
 const routes = [
   { path: '/', component: welcome },
   { path: '/login', component: login },
   { path: '/register', component: register },
   { path: '/error', component: error },
+  { path: '/wall', component: wall },
 ];
 
 const defaultRoute = '/';

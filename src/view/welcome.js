@@ -231,8 +231,8 @@ export const welcome = (navigateTo) => {
   pTestimony2.innerHTML = '“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...”<br>-Name, City';
 
   bodyimg.append(header, main, footer());
-  header.append(logoImg, nav);
-  nav.append(ul);
+  header.append(nav);
+  nav.append(logoImg, ul);
   ul.append(btnLoginHome, signUpLink);
   btnLoginHome.append(loginLink);
   signUpLink.append(signUp);

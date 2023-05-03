@@ -134,15 +134,15 @@ export const register = (navigateTo) => {
 
   function handleSubmit() {
     createUser();
-    navigateTo('/error');
+    navigateTo('/wall');
   }
 
   form.addEventListener('submit', handleSubmit);
 
   bodyimg.append(registerdiv, footer());
   registerdiv.append(header, h1, form);
-  header.append(logoImg, nav);
-  nav.append(ul);
+  header.append(nav);
+  nav.append(logoImg, ul);
   ul.append(btnHome);
   btnHome.append(homeLink);
   form.append(

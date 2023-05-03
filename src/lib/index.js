@@ -9,7 +9,7 @@ import {
   signInWithEmailAndPassword,
   signInWithCredential,
   signOut,
-  onAuthStateChanged,
+/*   onAuthStateChanged, */
 } from 'firebase/auth';
 import { firebaseConfig } from '../firebase.config.js';
 
@@ -20,8 +20,9 @@ const auth = getAuth(app);
 
 // Initialize Firebase Authentication and get a reference to the service
 
-export const signPop = async (event) => {
-  event.preventDefault();
+export const signPop = async (/* event */) => {
+/*   event.preventDefault(); */
+
   const provider = new GoogleAuthProvider();
   try {
     // Ejecutar la autenticación con Google
@@ -119,7 +120,7 @@ export const validatePasswords = (password, passwordAgain, errorSpan) => {
 export const validateEmail = (email, spanErrorEmail) => {
   const correoRegex = /^\w+([.-]?\w+)@\w+([.-]?\w+)(.\w{2,3})+$/;
 
-  if (correoRegex.test(emailValue)) {
+  if (correoRegex.test(email.value)) {
     email.classList.remove('invalid');
     email.classList.add('valid');
     spanErrorEmail.textContent = '';
@@ -131,21 +132,14 @@ export const validateEmail = (email, spanErrorEmail) => {
 };
 
 
-export const salir = () => {
-onAuthStateChanged(auth, (user) => {
-  if (user) {
-    // El usuario ha iniciado sesión
-    console.log("ya iniciado"+user)
-      signOut(auth).then(() => {
-        // Sign-out successful.
-        console.log("ya sali")
-      }).catch((error) => {
-        console.log(error)
-        // An error happened.
-      });
-  } else {
-    // El usuario no ha iniciado sesión
-    console.log("no iniciado")
-  }
-});
+export const exit = () => {
+    signOut(auth).then(() => {
+      // Sign-out successful.
+      console.log("ya sali")
+    }).catch((error) => {
+      console.log(error)
+      // An error happened.
+    });
 };
+
+

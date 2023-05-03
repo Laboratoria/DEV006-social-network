@@ -67,8 +67,14 @@ export const login = (navigateTo) => {
   btnLogin.setAttribute('id', 'btnLogin');
   btnLogin.setAttribute('type', 'button');
   btnLogin.setAttribute('class', 'button');
-  btnLogin.addEventListener('click', LoginUser);
   btnLogin.textContent = 'Log In';
+
+  function handleSubmit() {
+    LoginUser();
+    navigateTo('/wall');
+  }
+
+  btnLogin.addEventListener('click', handleSubmit);
 
   const containerLogin = document.createElement('div');
   containerLogin.classList.add('containerLogin');
@@ -91,7 +97,10 @@ export const login = (navigateTo) => {
   const btnGoogle = document.createElement('button');
   btnGoogle.setAttribute('class', 'btnGoogle');
   btnGoogle.textContent = 'Google';
-  btnGoogle.addEventListener('click', signPop);
+  btnGoogle.addEventListener('click', () => {
+    signPop();
+    navigateTo('/wall');
+  });
 
   const imgGoogle = document.createElement('img');
   imgGoogle.setAttribute('src', '../img/googleplus.png');
@@ -114,8 +123,8 @@ export const login = (navigateTo) => {
 
   bodyimg.append(logindiv, footer());
   logindiv.append(header, h1, form);
-  header.append(logoImg, nav);
-  nav.append(ul);
+  header.append(nav);
+  nav.append(logoImg, ul);
   ul.append(btnHome);
   btnHome.append(homeLink);
   form.append(h2, group1, group2, btnLogin, containerLogin);
