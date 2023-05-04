@@ -12,7 +12,6 @@ import {
 /*   onAuthStateChanged, */
 } from 'firebase/auth';
 import { firebaseConfig } from '../firebase.config.js';
-
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
@@ -22,7 +21,6 @@ const auth = getAuth(app);
 
 export const signPop = async (/* event */) => {
 /*   event.preventDefault(); */
-
   const provider = new GoogleAuthProvider();
   try {
     // Ejecutar la autenticación con Google
@@ -71,7 +69,6 @@ export const LoginUser = () => {
       // Signed in
       const user = userCredential.user;
       console.log(user);
-
       // ...
     })
     .catch((error) => {
@@ -85,6 +82,8 @@ export const LoginUser = () => {
         passwordInput.classList.add('invalid');
         document.getElementById('spanErrorPassword').textContent = 'Wrong password';
       }
+      console.log('Error al iniciar sesión:', errorMessage);
+      navigateTo('/');
     });
 };
 
@@ -132,10 +131,12 @@ export const validateEmail = (email, spanErrorEmail) => {
 };
 
 
-export const exit = () => {
+export const exit = (navigateTo) => {
     signOut(auth).then(() => {
       // Sign-out successful.
-      console.log(auth+ "saliendo")
+/* navigateTo para welcome */
+console.log("saliendo")
+      navigateTo('/');
     }).catch((error) => {
       console.log(error)
       // An error happened.

@@ -31,8 +31,7 @@ export const wall = (navigateTo) => {
   navItem.textContent = 'Log Out';
 
   navItem.addEventListener('click', () => {
-    exit();
-    navigateTo('/');
+    exit(navigateTo);
   });
 
   const divMenu = document.createElement('div');
