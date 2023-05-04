@@ -135,7 +135,7 @@ export const validateEmail = (email, spanErrorEmail) => {
 export const exit = () => {
     signOut(auth).then(() => {
       // Sign-out successful.
-      console.log("ya sali")
+      console.log(auth+ "saliendo")
     }).catch((error) => {
       console.log(error)
       // An error happened.
