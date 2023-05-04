@@ -2,6 +2,7 @@ import { login } from './login';
 import { footer } from './footer';
 
 export const welcome = (navigateTo) => {
+  // ------------------------------------------------- Wallpaper
   const bodyimg = document.createElement('div');
   bodyimg.setAttribute('class', 'bodyimg');
 
@@ -42,9 +43,11 @@ export const welcome = (navigateTo) => {
   welcomeMessage.setAttribute('class', 'welcomemessage');
   welcomeMessage.innerHTML = 'Welcome <br>Your next friend is waiting for you. Check animals available to adopt!';
 
+  // ------------------------------------------------- Inicio de tarjetas de animales
   const sectionCards = document.createElement('section');
   sectionCards.setAttribute('class', 'contenedorcards');
 
+  // Tarjeta de mascota 1
   const cardPet1 = document.createElement('div');
   cardPet1.setAttribute('class', 'cardpet');
 
@@ -86,6 +89,7 @@ export const welcome = (navigateTo) => {
     this.src = 'img/matchvacio.png';
   });
 
+  // Tarjeta de mascota 2
   const cardPet2 = document.createElement('div');
   cardPet2.setAttribute('class', 'cardpet');
 
@@ -210,6 +214,7 @@ export const welcome = (navigateTo) => {
   inputMatch4.addEventListener('mouseout', function () {
     this.src = 'img/matchvacio.png';
   });
+  // ------------------------------------------------- Fin de tarjetas
 
   const sectionTestimonies = document.createElement('section');
   sectionTestimonies.setAttribute('class', 'contenedortestimonios');

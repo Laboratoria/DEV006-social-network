@@ -8,9 +8,11 @@ import {
 import { footer } from './footer.js';
 
 export const register = (navigateTo) => {
+  // ------------------------------------------------- Wallpaper
   const bodyimg = document.createElement('div');
   bodyimg.setAttribute('class', 'bodyimg');
 
+  // ------------------------------------------------- Contenedor de sign in/registro
   const registerdiv = document.createElement('div');
   registerdiv.setAttribute('id', 'register');
   registerdiv.setAttribute('class', 'register');
@@ -25,6 +27,7 @@ export const register = (navigateTo) => {
 
   const ul = document.createElement('ul');
 
+  // ------------------------------------------------- Botón de regreso a home/welcome
   const btnHome = document.createElement('li');
   btnHome.setAttribute('id', 'Home');
 
@@ -37,7 +40,7 @@ export const register = (navigateTo) => {
   const h1 = document.createElement('h1');
   h1.textContent = 'Be My Friend';
 
-  // -------------------------------------------------INICIA EL FORMULARIO
+  // ------------------------------------------------- Inicia formulario de registro
   const form = document.createElement('form');
 
   const h2 = document.createElement('h2');
@@ -69,6 +72,7 @@ export const register = (navigateTo) => {
   lastName.setAttribute('aria-required', 'true');
   lastName.setAttribute('pattern', '^[a-zA-Z]{2,}$');
 
+  // ------------------------------------------------- email
   const txtEmailLabel = document.createElement('label');
   txtEmailLabel.setAttribute('for', 'txtEmail');
   txtEmailLabel.textContent = 'Email';
@@ -88,6 +92,7 @@ export const register = (navigateTo) => {
     validateEmail(txtEmail, spanErrorEmail);
   });
 
+  // ------------------------------------------------- contraseñas
   const txtPasswordLabel = document.createElement('label');
   txtPasswordLabel.setAttribute('for', 'txtPassword');
   txtPasswordLabel.textContent = 'Password';
@@ -138,6 +143,8 @@ export const register = (navigateTo) => {
   }
 
   form.addEventListener('submit', handleSubmit);
+
+  // ------------------------------------------------- Fin del formulario de registro
 
   bodyimg.append(registerdiv, footer());
   registerdiv.append(header, h1, form);

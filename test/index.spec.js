@@ -48,7 +48,7 @@ beforeAll(() => {
   };
 });
 
-// Inicia las pruebas
+// Test para contraseña segura
 describe('securePassword', () => {
   test('should set class to valid and clear error span when password is strong', () => {
     password.value = 'Abc123$';
@@ -64,6 +64,7 @@ describe('securePassword', () => {
   });
 });
 
+// Test para que coincidan las contraseñas
 describe('validatePassword', () => {
   test('should set class to valid and clear error span when both password inputs match', () => {
     password.value = 'Abc123$';
@@ -81,6 +82,7 @@ describe('validatePassword', () => {
   });
 });
 
+// Test para email válido
 describe('validateEmail', () => {
   test('should set class to valid and clear error span when valid email', () => {
     email.value = 'valid@email.com';
