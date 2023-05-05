@@ -32,17 +32,18 @@
     <h6>Y se parte de nuestra comunidad.</h6></div>
 
     <div class="registerBox">
-      <h6>Nombre</h6>
-      <input type="text" name="" id="">
-      <h6>Nombre de usuario</h6>
-      <input type="text" name="" id="">
-      <h6>Email</h6>
-      <input type="text" name="" id="">
-      <h6>Contraseña</h6>
-      <input type="text" name="" id="">
-      <h6>Vuelve a ingresar tu contraseña</h6>
-      <input type="text" name="" id="">
-      <button>Crear Cuenta</button>
+      <form>
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" required>
+      
+        <label for="correo">Correo electrónico:</label>
+        <input type="email" id="correo" required>
+      
+        <label for="contraseña">Contraseña:</label>
+        <input type="password" id="contraseña" required>
+      
+        <input type="submit" value="Registrarse" onclick="registrar()">
+      </form>
       <h6>¿Ya tienes una cuenta? Inicia sesión</h6>
       <h6>O ingresa usando:</h6>
       <H2>GOOGLE</H2>
