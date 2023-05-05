@@ -1,11 +1,12 @@
 import { LoginUser, validateEmail, signPop } from '../lib/index.js';
-
 import { footer } from './footer.js';
 
 export const login = (navigateTo) => {
+  // ------------------------------------------------- Wallpaper
   const bodyimg = document.createElement('div');
   bodyimg.setAttribute('class', 'bodyimg');
 
+  // ------------------------------------------------- Contenedor de log in/inicio de sesión
   const logindiv = document.createElement('div');
   logindiv.setAttribute('id', 'login');
   logindiv.setAttribute('class', 'login');
@@ -32,6 +33,7 @@ export const login = (navigateTo) => {
   const h1 = document.createElement('h1');
   h1.textContent = 'Be My Friend';
 
+  // ------------------------------------------------- Inicio de formulario de log in
   const form = document.createElement('form');
 
   const h2 = document.createElement('h2');
@@ -74,9 +76,11 @@ export const login = (navigateTo) => {
   }
 
   btnLogin.addEventListener('click', handleSubmit);
+  // ------------------------------------------------- Fin de formulario
 
-  const containerLogin = document.createElement('div');
-  containerLogin.classList.add('containerLogin');
+  // ------------------------------------------------- Otras opciones de log in
+  const containerLoginOptions = document.createElement('div');
+  containerLoginOptions.classList.add('containerLoginOptions');
 
   const ulPassword = document.createElement('ul');
 
@@ -126,10 +130,8 @@ export const login = (navigateTo) => {
   nav.append(logoImg, ul);
   ul.append(btnHome);
   btnHome.append(homeLink);
-  form.append(h2, group1, group2, btnLogin, containerLogin);
-
-  containerLogin.append(ulPassword, h4, hr, btnGoogle, ulAccount);
-
+  form.append(h2, group1, group2, btnLogin, containerLoginOptions);
+  containerLoginOptions.append(ulPassword, h4, hr, btnGoogle, ulAccount);
   btnGoogle.append(imgGoogle);
   group1.append(txtEmail, spanErrorEmail);
   group2.append(txtPassword, spanErrorPassword);

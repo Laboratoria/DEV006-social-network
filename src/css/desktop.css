@@ -1,8 +1,10 @@
 @media screen and  (min-width: 1101px){
+    /* Logo*/
     header img {
         height: 5.5rem;
         width: 5.3rem;
         top: 1px;
+        margin-left: 10px;
     }
 
     nav {
@@ -14,6 +16,10 @@
         font-size: 1.8rem;
     }
 
+    .wallNav{
+        grid-template-columns: 1fr 9fr 0.5fr;
+    } 
+
     h1 {
         font-size: 4rem;
         margin: 2% 9%;
@@ -24,6 +30,8 @@
         position: relative;
         top:-3vh;
     }
+
+    /* Menú de hamburguesa*/
     .bar {
         width: 50px;
         height: 6px;
@@ -33,6 +41,7 @@
     .hamburger {
         margin: 10px;
     }
+
     .hamburger.active .bar:nth-child(1) {
         transform: translateY(13px) rotate(45deg);
     }
@@ -40,41 +49,40 @@
     .hamburger.active .bar:nth-child(3) {
         transform: translateY(-12px) rotate(-45deg);
     }
+
     .nav-menu {
         top: 10vh;
         width: 20vw;
     }
+
     .nav-item {
         font-size: 1.9rem;
     }
-    header img {
-        margin-left:10px ;
-    }
-    .wallNav{
-        grid-template-columns: 1fr 9fr 0.5fr;
-    }
+    /* Fin de menú de hamburguesa*/
 
+    /* welcome.js*/
     .welcomemessage {
         font-size: 3rem;
         margin: -1% auto;
     } 
 
     .contenedorcards .cardpet {
-    margin: 2% 1%;
-    gap:0;
+        margin: 2% 1%;
+        gap:0;
     }
 
     .testimonies {
-    font-size: 3rem;
-    margin: 2% 9%;
-
+        font-size: 3rem;
+        margin: 2% 9%;
     }
+
     .messagetesti p {
-    font-size: 2rem;
-    padding: 3%;
-    margin: -1% auto;
+        font-size: 2rem;
+        padding: 3%;
+        margin: -1% auto;
     }
 
+    /*login.js y register.js*/
     form{
         width: 35vw;
         margin: 2rem auto;
@@ -93,7 +101,7 @@
         font-size: 1.8rem;
     }
 
-    .containerLogin{
+    .containerLoginOptions{
         font-size: 2rem;
     }
 

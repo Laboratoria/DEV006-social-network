@@ -19,6 +19,7 @@ const auth = getAuth(app);
 
 // Initialize Firebase Authentication and get a reference to the service
 
+// Fx para inicio de sesión con Google
 export const signPop = async (/* event */) => {
 /*   event.preventDefault(); */
   const provider = new GoogleAuthProvider();
@@ -36,6 +37,7 @@ export const signPop = async (/* event */) => {
   }
 };
 
+// Fx para crear usuarix
 export const createUser = async () => {
   const email = document.getElementById('txtEmail');
   const password = document.getElementById('txtPasswordAgain');
@@ -47,7 +49,7 @@ export const createUser = async () => {
     console.log(userCredential);
   } catch (error) {
     const errorCode = error.code;
-    // const errorMessage = error.message;
+    // UI para mostrar errores de validación de email y contraseña débil
     if (errorCode === 'auth/email-already-in-use') {
       spanEmail.textContent = 'Email in use';
     } else if (errorCode === 'auth/invalid-email') {
@@ -58,7 +60,8 @@ export const createUser = async () => {
   }
 };
 
-export const LoginUser = (navigateTo) => {
+// Fx para iniciar sesión (ya registrado)
+export const LoginUser = () => {
   const emailInput = document.getElementById('txtEmail');
   const passwordInput = document.getElementById('txtPassword');
   const email = emailInput.value;
@@ -76,6 +79,7 @@ export const LoginUser = (navigateTo) => {
       const errorCode = error.code;
       const errorMessage = error.message;
       console.log(errorMessage);
+      // UI para usuario no encontrado o contraseña equivocada
       if (errorCode === 'auth/user-not-found') {
         emailInput.classList.add('invalid');
         document.getElementById('spanErrorEmail').textContent = 'User not found';
@@ -86,10 +90,9 @@ export const LoginUser = (navigateTo) => {
     });
 };
 
-// Validación de contraseña segura
+// UI validación de contraseña segura
 export const securePassword = (password, errorSpan) => {
   const paswordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&#.$($)$-$_])[A-Za-z\d$@$!%*?&#.$($)$-$_][^\s]{6,15}$/;
-
   if (paswordRegex.test(password.value)) {
     password.classList.remove('invalid');
     password.classList.add('valid');
@@ -129,17 +132,15 @@ export const validateEmail = (email, spanErrorEmail) => {
   }
 };
 
-
+// Fx para sign out
 export const exit = (navigateTo) => {
-    signOut(auth).then(() => {
-      // Sign-out successful.
-/* navigateTo para welcome */
-console.log("saliendo")
-      navigateTo('/');
-    }).catch((error) => {
-      console.log(error)
-      // An error happened.
-    });
+  signOut(auth).then(() => {
+    // Sign-out successful.
+  /* navigateTo para welcome */
+    console.log('saliendo');
+    navigateTo('/');
+  }).catch((error) => {
+    console.log(error);
+    // An error happened.
+  });
 };
-
-

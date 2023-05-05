@@ -1,11 +1,12 @@
-
-import { footer } from "./footer";
-import { exit } from "../lib/index.js";
+import { footer } from './footer';
+import { exit } from '../lib/index.js';
 
 export const wall = (navigateTo) => {
-    const bodyimg = document.createElement('div');
+  // ------------------------------------------------- Wallpaper
+  const bodyimg = document.createElement('div');
   bodyimg.setAttribute('class', 'bodyimg');
 
+  // ------------------------------------------------- Contenedor de muro/timeline
   const walldiv = document.createElement('div');
   walldiv.setAttribute('id', 'wall');
   walldiv.setAttribute('class', 'wall');
@@ -23,6 +24,7 @@ export const wall = (navigateTo) => {
   h1.setAttribute('class', 'wallH1');
   h1.textContent = 'Be My Friend';
 
+  // ------------------------------------------------- Inicia menú de hamburguesa
   const navMenu = document.createElement('ul');
   navMenu.setAttribute('class', 'nav-menu');
 
@@ -37,8 +39,8 @@ export const wall = (navigateTo) => {
   const divMenu = document.createElement('div');
   divMenu.setAttribute('class', 'hamburger');
   divMenu.addEventListener('click', () => {
-    divMenu.classList.toggle("active");
-    navMenu.classList.toggle("active");
+    divMenu.classList.toggle('active');
+    navMenu.classList.toggle('active');
   });
 
   const span1 = document.createElement('span');
@@ -49,6 +51,7 @@ export const wall = (navigateTo) => {
 
   const span3 = document.createElement('span');
   span3.setAttribute('class', 'bar');
+  // ------------------------------------------------- Termina menú de hamburguesa
 
   const parrafo = document.createElement('p');
   parrafo.textContent = 'post';
@@ -56,14 +59,12 @@ export const wall = (navigateTo) => {
   bodyimg.append(walldiv, parrafo, footer());
   walldiv.append(header);
   header.append(nav);
-  nav.append(logoImg, h1,divMenu, navMenu);
+  nav.append(logoImg, h1, divMenu, navMenu);
   divMenu.append(span1, span2, span3);
   navMenu.append(navItem);
 
-return bodyimg;
-
+  return bodyimg;
 };
-
 
 /* function closeMenu() {
     divMenu.classList.remove("active");
