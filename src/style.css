@@ -2,66 +2,91 @@
 
 @media only screen and (max-width: 425px) {
 
-#logoCinergia {
-    width: 70%;
-    padding: 15%;
-}
-.welcomeSection {
-    background: linear-gradient(#9a0051, black);
-    height: fit-content;
-    width: fit-content;
-}
-.esloganText {
-    margin-top: -15%;
-    text-align: center;
-    font-size: large;
-    color: #d9d9d9;
-    font-family: 'Advent Pro', sans-serif;
-}
+    html,
+    body {
+        margin: 0;
+        height: 100%;
+        overflow: hidden;
+        position: fixed;
+    }
 
-.welcomeBox {
-    background-color: #FFFFFF;
-    border-radius: 10px;
-    margin: 8%;
-    margin-top: 5px;
-    font-family: 'Advent Pro', sans-serif;
-    text-align: center;
-    padding-left: 10%;
-    padding-right: 10%;
-    padding-bottom: 10%;
+    #logoCinergia {
+        width: 70%;
+        padding: 15%;
+    }
 
-}
-.boxText {
-    font-family: 'Advent Pro', sans-serif;
-    font-size: medium;
-    margin-top: -10px;
-}
+    .welcomeBody {
+        background: linear-gradient(#9a0051, black);
+        height: 100%;
+    }
 
-.login {
-    font-family: 'Advent Pro', sans-serif;
-    width: 50%;
-    margin-bottom: 3% ;
-    background-color: #510BAB;
-    border: none;
-    color: #FFFFFF;
-}
+    .welcomeSection {
+        background: linear-gradient(#9a0051, black);
+        height: 100%;
+        width: 100%;
+    }
 
-.register {
-font-family: 'Advent Pro', sans-serif;
-width: 50%;
-margin-bottom: 3%;
-border-style: solid;
-border-color: #510BAB;
-border-width: 1.5px;
+    .esloganText {
+        margin-top: -15%;
+        text-align: center;
+        font-size: x-large;
+        color: #d9d9d9;
+        font-family: 'Advent Pro', sans-serif;
+    }
 
-}
-#logoRegister {
-    width: 20%;
-    display: flex;
-    align-content:flex-end;
-}
-.registerSection {
-    display: none;
-    background:linear-gradient(#510BAB 50%, white 50%);
-}
+    .welcomeBox {
+        background-color: #FFFFFF;
+        border-radius: 10px;
+        margin: 8%;
+        margin-top: 10%;
+        font-family: 'Advent Pro', sans-serif;
+        text-align: center;
+        padding: 5%;
+        margin-bottom: 22%;
+
+    }
+
+    .welcomeText {
+        margin-top: 5%;
+        margin-bottom: 5%;
+    }
+
+    .boxText {
+        font-family: 'Advent Pro', sans-serif;
+        font-size: large;
+        margin-bottom: 10%;
+    }
+
+    .login {
+        font-family: 'Advent Pro', sans-serif;
+        width: 70%;
+        margin-bottom: 3%;
+        background-color: #510BAB;
+        border: none;
+        color: #FFFFFF;
+        font-size: larger;
+        padding: 4%;
+    }
+
+    .register {
+        font-family: 'Advent Pro', sans-serif;
+        width: 70%;
+        margin-bottom: 3%;
+        border-style: solid;
+        border-color: #510BAB;
+        border-width: 1.5px;
+        font-size: larger;
+        padding: 4%;
+    }
+
+    #logoRegister {
+        width: 20%;
+        display: flex;
+        align-content: flex-end;
+    }
+
+    .registerSection {
+        display: none;
+        background: linear-gradient(#510BAB 50%, white 50%);
+    }
 }
