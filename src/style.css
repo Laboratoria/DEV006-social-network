@@ -1,0 +1,64 @@
+
+
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+
+}
+
+.container-app {
+  margin:10%;
+  width: 80%;
+  border-radius: 8%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items:center;
+  text-align: center;
+  background-color: #B4D7EA;
+
+}
+
+body{
+  font-family:"Roboto Condensed";
+  background-color: #0B3954 ;
+}
+
+h1{
+  text-align: center;
+  padding-bottom: 20%;
+}
+
+
+#app {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #087E8B;
+
+}
+
+#app img{
+  width: 50%;
+  height: auto;
+}
+
+label {
+  display: block;
+}
+
+.btnForgotP, .btnSignIn   {
+  display: block;
+  margin-bottom: 2%;  
+}
+
+
+
+.btnGoogle {
+  display: block;
+}
