@@ -11,11 +11,49 @@ import {
   signOut,
 /*   onAuthStateChanged, */
 } from 'firebase/auth';
+import {
+  collection, getFirestore, getDocs, addDoc,
+} from 'firebase/firestore';
 import { firebaseConfig } from '../firebase.config.js';
+
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
 const auth = getAuth(app);
+
+// Initialize Firestore
+
+const dataBase = getFirestore();
+
+// collection reference
+export const colRef = collection(dataBase, 'post');
+
+// get collection data
+getDocs(colRef)
+  .then((snapshot) => {
+    const posts = [];
+    snapshot.docs.forEach((doc) => {
+      posts.push({ ...doc.data(), id: doc.id });
+    });
+    console.log(posts);
+  })
+  .catch((error) => {
+    console.log(error.message);
+  });
+
+  
+
+// adding documents
+export const addPost = (petName, petDescription, formPost) => {
+  const documentAddDoc = addDoc(colRef, {
+    petName: petName.value,
+    description: petDescription.value,
+  })
+    .then(() => {
+      formPost.reset();
+    });
+  console.log(documentAddDoc);
+};
 
 // Initialize Firebase Authentication and get a reference to the service
 
