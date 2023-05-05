@@ -58,7 +58,7 @@ export const createUser = async () => {
   }
 };
 
-export const LoginUser = () => {
+export const LoginUser = (navigateTo) => {
   const emailInput = document.getElementById('txtEmail');
   const passwordInput = document.getElementById('txtPassword');
   const email = emailInput.value;
@@ -70,6 +70,7 @@ export const LoginUser = () => {
       const user = userCredential.user;
       console.log(user);
       // ...
+      navigateTo('/wall');
     })
     .catch((error) => {
       const errorCode = error.code;
@@ -82,8 +83,6 @@ export const LoginUser = () => {
         passwordInput.classList.add('invalid');
         document.getElementById('spanErrorPassword').textContent = 'Wrong password';
       }
-      console.log('Error al iniciar sesión:', errorMessage);
-      navigateTo('/');
     });
 };
 

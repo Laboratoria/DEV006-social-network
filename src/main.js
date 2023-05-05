@@ -45,7 +45,7 @@ window.onpopstate = () => {
 navigateTo(window.location.pathname || defaultRoute);
 
 onAuthStateChanged(auth, (user) => {
-  if (user) { // si hay usuario puede permanecer activo
+  if (user) { // si hay usuario puede permanecer activo(permanece en wall)
     console.log(user)
     navigateTo('/wall');
   } else { // si no lo mantiene o lleva a la página welcome (no se puede ir a wall)

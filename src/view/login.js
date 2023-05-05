@@ -70,8 +70,7 @@ export const login = (navigateTo) => {
   btnLogin.textContent = 'Log In';
 
   function handleSubmit() {
-    LoginUser();
-    navigateTo('/wall');
+    LoginUser(navigateTo);
   }
 
   btnLogin.addEventListener('click', handleSubmit);
