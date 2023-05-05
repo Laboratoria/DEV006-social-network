@@ -1,5 +1,12 @@
-// Este es el punto de entrada de tu aplicacion
+import {home} from "./templates/home.js"
 
-import { myFunction } from './lib/index.js';
 
-myFunction();
+const root = document.getElementById("root");
+
+const routes = [
+    { path: '/', component: home }
+
+]
+//const default= '/';
+
+root.innerHTML= home
