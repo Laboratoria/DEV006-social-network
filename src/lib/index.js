@@ -10,16 +10,23 @@ import {
   signInWithCredential,
   signOut,
 } from 'firebase/auth';
+import {
+  collection, getFirestore, getDocs, addDoc,
+} from 'firebase/firestore';
 import { firebaseConfig } from '../firebase.config.js';
-import { collection, getFirestore, getDocs } from 'firebase/firestore';
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
 const auth = getAuth(app);
 
-const db = getFirestore(app);
-const colRef = collection(db, 'post');
+// Initialize Firestore
 
+const dataBase = getFirestore();
+
+// collection reference
+export const colRef = collection(dataBase, 'post');
+
+// get collection data
 getDocs(colRef)
   .then((snapshot) => {
     const posts = [];
@@ -28,9 +35,24 @@ getDocs(colRef)
     });
     console.log(posts);
   })
-  .catch((err) => {
-    console.log(err.message);
+  .catch((error) => {
+    console.log(error.message);
   });
+
+  
+
+// adding documents
+export const addPost = (petName, petDescription, formPost) => {
+  const documentAddDoc = addDoc(colRef, {
+    petName: petName.value,
+    description: petDescription.value,
+  })
+    .then(() => {
+      formPost.reset();
+    });
+  console.log(documentAddDoc);
+};
+
 // Initialize Firebase Authentication and get a reference to the service
 
 // Fx para inicio de sesión con Google
