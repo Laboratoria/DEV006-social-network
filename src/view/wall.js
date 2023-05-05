@@ -54,7 +54,7 @@ export const wall = (navigateTo) => {
   // ------------------------------------------------- Termina menú de hamburguesa
 
   const parrafo = document.createElement('p');
-  parrafo.textContent = 'post';
+  parrafo.textContent = "post";
 
   bodyimg.append(walldiv, parrafo, footer());
   walldiv.append(header);

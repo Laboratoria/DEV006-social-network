@@ -9,14 +9,28 @@ import {
   signInWithEmailAndPassword,
   signInWithCredential,
   signOut,
-/*   onAuthStateChanged, */
 } from 'firebase/auth';
 import { firebaseConfig } from '../firebase.config.js';
+import { collection, getFirestore, getDocs } from 'firebase/firestore';
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
 const auth = getAuth(app);
 
+const db = getFirestore(app);
+const colRef = collection(db, 'post');
+
+getDocs(colRef)
+  .then((snapshot) => {
+    const posts = [];
+    snapshot.docs.forEach((doc) => {
+      posts.push({ ...doc.data(), id: doc.id });
+    });
+    console.log(posts);
+  })
+  .catch((err) => {
+    console.log(err.message);
+  });
 // Initialize Firebase Authentication and get a reference to the service
 
 // Fx para inicio de sesión con Google
@@ -61,7 +75,7 @@ export const createUser = async () => {
 };
 
 // Fx para iniciar sesión (ya registrado)
-export const LoginUser = () => {
+export const LoginUser = (navigateTo) => {
   const emailInput = document.getElementById('txtEmail');
   const passwordInput = document.getElementById('txtPassword');
   const email = emailInput.value;
