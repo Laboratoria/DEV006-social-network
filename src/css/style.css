@@ -386,6 +386,139 @@ hr {
     width: 80vw;
 }
 
+/*-------------------------------------------------Inicia muro/timeline*/
+.postsSection {
+    max-width: 600px;
+    margin: auto;
+}
+
+/* Tarjetas de posts*/
+.postsSection .postArticle {
+    margin: 3%;
+    background-color: #F0DBDB;
+    box-shadow: 1px 1px 5px 1px gray;
+    border-radius: 16px;
+    padding: 0.8rem 1.2rem;
+}
+
+.postArticle .descriptionPet {
+    background-color: rgba(222, 109, 91, 0.3);
+    margin: 2% 0;
+    border-radius: 10px;
+    border: 1px solid #292D32;
+    font-size: 1.6rem;
+    color: #292d32;
+    line-height: 2.7rem;
+    padding: 0.4rem;
+}
+
+.wallUsername, .namePet {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #292d32;
+}
+
+.postArticle .namePet {
+    font-size: 1.6rem;
+}
+
+/* Reacciones del post*/
+.reactionContainer {
+    display: grid;
+    grid-template-columns: 0.2fr 3fr 0.2fr;
+    grid-column-gap: 4px;
+}
+
+.postArticle .reactionContainer img {
+    width: 2.4rem;
+    height: 2.4rem;
+}
+
+ /* Íconos de navegación*/
+.bodyimg footer {
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 2.4rem 0;
+}
+
+/*-------------------------------------------------Inicia crear publicación/post*/
+.newPostDiv {
+    height: 100vh;
+    background-color: #292D32;
+}
+
+.newPostDiv header nav {
+    background-color: #292D32;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.newPostDiv header nav #pCreatePost {
+    font-size: 2rem;
+    color: white;
+}
+
+.newPostDiv header nav img {
+    width: 2.4rem;
+    height: 2.4rem;
+    object-fit: contain;
+}
+
+.newPostDiv #formpost {
+    background-color: #292D32;
+    box-shadow: unset;
+    display: flex;
+    flex-direction: column;
+}
+
+#formpost .userContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#formpost .profilePic {
+    width: 3.2rem;
+    height: 3.2rem;
+    border-radius: 24px;
+}
+
+#formpost #userName {
+    font-size: 1.8rem;
+    color: white;
+    font-weight: 700;
+    margin-left: 1rem;
+}
+
+#formpost #Post {
+    position: absolute;
+    width: 7.8rem;
+    height: 3rem;
+    left: 24rem;
+    top: 0.8rem;
+    background: #DBA39A;
+    border: 1px solid #EA907A;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 1.6rem;
+    line-height: 20px;
+    letter-spacing: 0.1em;
+    color: #6E0707;
+}
+
+.newPostDiv #formpost input, .newPostDiv #formpost textarea {
+    background-color: #292D32;
+    color: white;
+    border: 2px solid #EA907A;
+    border-radius: 5px;
+    font-size: 2rem;
+    margin: 2% auto;
+    width: 100%;
+}
+
 footer {
     background-color: #EA907A;
     height: 40px;
