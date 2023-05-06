@@ -1,7 +1,6 @@
 import { getDocs, query, orderBy } from 'firebase/firestore';
 import { exit, colRef } from '../lib/index.js';
 
-
 export const wall = (navigateTo) => {
   // ------------------------------------------------- Wallpaper
   const bodyimg = document.createElement('div');
@@ -11,6 +10,9 @@ export const wall = (navigateTo) => {
   const walldiv = document.createElement('div');
   walldiv.setAttribute('id', 'wall');
   walldiv.setAttribute('class', 'wall');
+
+  const postsSection = document.createElement('section');
+  postsSection.setAttribute('class', 'postsSection');
 
   const header = document.createElement('header');
 
@@ -54,33 +56,7 @@ export const wall = (navigateTo) => {
   span3.setAttribute('class', 'bar');
   // ------------------------------------------------- Termina menú de hamburguesa
 
-  const parrafo = document.createElement('p');
-  parrafo.setAttribute('id', '');
-  parrafo.textContent = 'post';
-
-  const q = query(colRef, orderBy('timestamp', 'desc'));
-  getDocs(q)
-    .then((snapshot) => {
-      const posts = [];
-      snapshot.docs.forEach((doc) => {
-        posts.push({ ...doc.data(), id: doc.id });
-      });
-      posts.forEach((post) => {
-        const testDiv = document.createElement('div');
-
-        const namePet = document.createElement('p');
-        namePet.textContent = `${post.petName}`;
-
-        const descrotionPet = document.createElement('p');
-        descrotionPet.textContent = post.description;
-
-        console.log(q)
-
-        /* testDiv.append(namePet, descrotionPet);
-        walldiv.append(testDiv); */
-      });
-    });
-
+  // ------------------------------------------------- Barra de íconos
   const footer = document.createElement('footer');
   footer.setAttribute('id', 'footer');
 
@@ -99,13 +75,57 @@ export const wall = (navigateTo) => {
   const iconProfile = document.createElement('img');
   iconProfile.setAttribute('src', '../img/PROFILE.png');
 
-  bodyimg.append(walldiv, parrafo, footer);
-  walldiv.append(header);
+  bodyimg.append(walldiv, footer);
+  walldiv.append(header, postsSection);
   header.append(nav);
   nav.append(logoImg, h1, divMenu, navMenu);
   divMenu.append(span1, span2, span3);
   navMenu.append(navItem);
   footer.append(iconHome, iconSearch, iconAdd, iconProfile);
+
+  // ------------------------------------------------- Publicaciones/posts
+  // Recuperamos la colección de "post"
+  // Para cada doc de la colección se crea lo siguiente...
+  const q = query(colRef);
+  getDocs(q)
+    .then((snapshot) => {
+      const posts = [];
+      snapshot.docs.forEach((doc) => {
+        posts.push({ ...doc.data(), id: doc.id });
+      });
+      posts.forEach((post) => {
+        const postArticle = document.createElement('article');
+        postArticle.setAttribute('class', 'postArticle');
+
+        const username = document.createElement('span');
+        username.textContent = 'username pendiente';
+        username.setAttribute('class', 'wallUsername');
+
+        const descriptionPet = document.createElement('p');
+        descriptionPet.textContent = post.description;
+        descriptionPet.setAttribute('class', 'descriptionPet');
+
+        const reactionContainer = document.createElement('div');
+        reactionContainer.setAttribute('class', 'reactionContainer');
+
+        const namePet = document.createElement('p');
+        namePet.textContent = post.petName;
+        namePet.setAttribute('class', 'namePet');
+
+        const likeHeart = document.createElement('img');
+        likeHeart.setAttribute('src', 'img/like.png');
+
+        const pawMatch = document.createElement('img');
+        pawMatch.setAttribute('src', 'img/matchvacio.png');
+
+        reactionContainer.append(namePet, likeHeart, pawMatch);
+        postArticle.append(username, descriptionPet, reactionContainer);
+        postsSection.append(postArticle);
+      });
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
 
   return bodyimg;
 };
