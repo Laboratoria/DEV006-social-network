@@ -1,21 +1,20 @@
 
 
 * {
-margin: 0;
+
 padding: 0;
 box-sizing: border-box;
 
 }
 
 .container-app {
+  height: 180vw;
   margin:10%;
   width: 80%;
-  border-radius: 8%;
+  border-radius: 3%;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items:center;
-  text-align: center;
   background-color: #B4D7EA;
 
 }
@@ -23,42 +22,50 @@ box-sizing: border-box;
 body{
   font-family:"Roboto Condensed";
   background-color: #0B3954 ;
+  text-align: center;
 }
 
-h1{
+.title {
   text-align: center;
+  padding-top: 10%;
   padding-bottom: 20%;
-}
-
-
-#app {
-  width: 100%;
-  height: 100%;
   text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  color: #087E8B;
-
 }
 
-#app img{
+
+.app-img{
   width: 50%;
   height: auto;
+  align-self: center;
+
 }
 
-label {
-  display: block;
+.name-email{
+  text-align:left;
 }
 
-.btnForgotP, .btnSignIn   {
+
+
+
+
+.btnSignIn   {
   display: block;
   margin-bottom: 2%;  
+  align-items: center;
+
 }
-
-
 
 .btnGoogle {
   display: block;
+  align-items: center;
 }
+
+.btnForgotP  {
+  margin-bottom: 10%;  
+  text-align: right;
+}
+
+.btnSignUp {
+  text-align: right;
+}
+
