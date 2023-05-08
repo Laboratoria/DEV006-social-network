@@ -33,8 +33,9 @@ export const newpost = (navigateTo) => {
 
   const userName = document.createElement('span');
   userName.setAttribute('id', 'userName');
-  userName.textContent = 'Username pendiente';
+  userName.textContent = "nombre";
 
+  
   const petName = document.createElement('input');
   petName.setAttribute('placeholder', 'Pet name');
   petName.setAttribute('type', 'text');

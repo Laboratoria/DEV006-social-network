@@ -9,9 +9,10 @@ import {
   signInWithEmailAndPassword,
   signInWithCredential,
   signOut,
+  updateProfile,
 } from 'firebase/auth';
 import {
-  collection, getFirestore, getDocs, addDoc,
+  collection, getFirestore, getDocs, addDoc, serverTimestamp//Se importa serveTimestamp para obtener fecha y hora del post
 } from 'firebase/firestore';
 import { firebaseConfig } from '../firebase.config.js';
 // Initialize Firebase
@@ -21,7 +22,7 @@ const auth = getAuth(app);
 
 // Initialize Firestore
 
-const dataBase = getFirestore();
+const dataBase = getFirestore(app);
 
 // collection reference
 export const colRef = collection(dataBase, 'post');
@@ -43,9 +44,12 @@ getDocs(colRef)
 
 // adding documents
 export const addPost = (petName, petDescription, formPost) => {
+  const userName = auth.currentUser.displayName;
   const documentAddDoc = addDoc(colRef, {
     petName: petName.value,
     description: petDescription.value,
+    timestamp: serverTimestamp(),//definimos a timestamp para que se guarde en la colección
+    userid: userName,// definimos userid para guardar el nombre de la persona que publica el post
   })
     .then(() => {
       formPost.reset();
@@ -79,10 +83,14 @@ export const createUser = async () => {
   const password = document.getElementById('txtPasswordAgain');
   const spanEmail = document.getElementById('spanErrorEmail');
   const spanPassword = document.getElementById('spanErrorPassword');
+  const userName = document.getElementById('userName');// input de register donde se guarda el nombre
 
   try {
     const userCredential = await createUserWithEmailAndPassword(auth, email.value, password.value);
-    console.log(userCredential);
+    const username = userName.value;// Obtenemos el valor del input
+    updateProfile(auth.currentUser, {
+      displayName: username,// función de firebase para darle valor al displayName el cual va a ser el nombre del usuario
+    });
   } catch (error) {
     const errorCode = error.code;
     // UI para mostrar errores de validación de email y contraseña débil
