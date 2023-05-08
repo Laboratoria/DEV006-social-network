@@ -32,6 +32,7 @@
         position: relative;
         top:-3px;
     }
+
     /* contenedor de iconos de desktop */
     .containerIcons{
         display: flex;
@@ -41,6 +42,9 @@
     .containerIcons img{
         width: 30px;
         height: 30px;
+    }
+    .newPostDiv section nav img {
+        width: 3.5rem;
     }
     .containerIcons img:hover{
         cursor: pointer;
@@ -137,10 +141,6 @@
     .btnGoogle{
         width: 18rem;
         margin-top:12px;
-    }
-
-    .newPostDiv section nav img {
-        width: 3.5rem;
     }
 
     .newPostDiv section nav #pCreatePost {

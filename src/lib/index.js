@@ -35,7 +35,7 @@ getDocs(colRef)
     snapshot.docs.forEach((doc) => {
       posts.push({ ...doc.data(), id: doc.id });
     });
-    console.log(posts);
+    /* console.log(posts); */
   })
   .catch((error) => {
     console.log(error.message);
@@ -86,8 +86,8 @@ export const createUser = async () => {
   const lastName = document.getElementById('lastName').value;
 
   try {
-    const userCredential = await createUserWithEmailAndPassword(auth, email.value, password.value);
-    const username = userName+" "+lastName;// Obtenemos el valor del input
+    createUserWithEmailAndPassword(auth, email.value, password.value);
+    const username = userName + lastName;// Obtenemos el valor del input
     updateProfile(auth.currentUser, {
       displayName: username,
       // función de firebase para darle valor al displayName el cual va a ser el nombre del usuario

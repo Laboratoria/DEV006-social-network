@@ -39,7 +39,7 @@ h1 {
 
 /* Contenedor de iconos para desktop */
 .containerIcons{
-    display: none;;
+    display: none;
 }
 
 /*Nav bar con Log In y Sign Up*/
@@ -102,6 +102,16 @@ nav ul li a{
     box-shadow:
         0 10px 27px rgba(0, 0, 0, 0.05);
 }
+.bar {
+    border-radius: 10px;
+    display: block;
+    width: 30px;
+    height: 4px;
+    margin: 5px 5px;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    background-color: #292D32;
+}
 .hamburger.active .bar:nth-child(2) {
     opacity: 0;
 }
@@ -129,16 +139,7 @@ nav ul li a{
     margin: 5px;
 }
 
-.bar {
-    border-radius: 10px;
-    display: block;
-    width: 30px;
-    height: 4px;
-    margin: 5px 5px;
-    -webkit-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out;
-    background-color: #292D32;
-}
+
 /* Fin de menú de hamburguesa*/
 
 /* Titulo de wall*/
@@ -443,12 +444,32 @@ hr {
     grid-column-gap: 4px;
 }
 
+.newPostDiv section nav img {
+    width: 2.4rem;
+    height: 2.4rem;
+    object-fit: contain;
+    margin-left: 2rem;
+    cursor: pointer;
+}
+
 .postArticle .reactionContainer img {
     width: 2.4rem;
     height: 2.4rem;
 }
 
  /* Íconos de navegación*/
+ footer {
+    background-color: #EA907A;
+    height: 40px;
+    color:white;    
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
 .bodyimg footer {
     position: fixed;
     display: flex;
@@ -476,16 +497,6 @@ hr {
     margin-left: 2rem;
 }
 
-.newPostDiv section nav img {
-    width: 2.4rem;
-    height: 2.4rem;
-    object-fit: contain;
-    margin-left: 2rem;
-}
-
-.newPostDiv section nav img {
-    cursor: pointer;
-}
 
 .newPostDiv #formpost {
     background-color: #292D32;
@@ -546,17 +557,6 @@ hr {
     width: 100%;
 }
 
-footer {
-    background-color: #EA907A;
-    height: 40px;
-    color:white;    
-    bottom: 0;
-    width: 100%;
-    text-align: center;
-    padding: 10px;
-    font-size: 1.4rem;
-    font-weight: 700;
-}
 .bodyimg footer img:hover{
     cursor: pointer;
 }

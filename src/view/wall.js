@@ -112,7 +112,7 @@ export const wall = (navigateTo) => {
   divMenu.append(span1, span2, span3);
   navMenu.append(navItem);
   footer.append(iconHome, iconSearch, iconAdd, iconProfile);
-  containerIcons.append(iconHome2, iconSearch2, iconAdd2, iconProfile2)
+  containerIcons.append(iconHome2, iconSearch2, iconAdd2, iconProfile2);
 
   // ------------------------------------------------- Publicaciones/posts
   // Recuperamos la colección de "post"

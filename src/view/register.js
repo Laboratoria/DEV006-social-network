@@ -59,7 +59,6 @@ export const register = (navigateTo) => {
   userName.setAttribute('aria-required', 'true');
   userName.setAttribute('pattern', '^[a-zA-Z]{2,}$');
 
-  
   const lastNameLabel = document.createElement('label');
   lastNameLabel.setAttribute('for', 'lastName');
   lastNameLabel.textContent = 'Last Name';
