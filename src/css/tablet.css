@@ -96,12 +96,10 @@
     }
 
     /* Formularios de login y sign up*/
-    .login {
-        height: 100%;
-    }
 
     form {
         width: 60vw;
+        margin-bottom: 5rem;
     }
 
     form h2 {

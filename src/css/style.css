@@ -10,7 +10,6 @@ html {
 }
 
 body {
-    height:100vh;
     background-color: #F0DBDB;
     font-family: 'Nunito', sans-serif;
 }
@@ -38,6 +37,11 @@ h1 {
     color:#292D32;
 }
 
+/* Contenedor de iconos para desktop */
+.containerIcons{
+    display: none;;
+}
+
 /*Nav bar con Log In y Sign Up*/
 nav {
     background-color: #EA907A;
@@ -51,8 +55,11 @@ nav {
     display: grid;
     grid-template-columns: 1fr 4fr 1fr;
     grid-template-rows: 1fr;
-    grid-column-gap: 30px;
+    grid-column-gap: 10px;
     grid-row-gap: 0px;
+}
+.navNewpost{
+    justify-content: unset;
 }
 
 nav ul{
@@ -73,6 +80,7 @@ nav ul li a{
     margin: 1rem;
     font-weight:700;
     font-size: 15px;
+    cursor: pointer;
 }
 
 /* Menú de hamburguesa mobile */
@@ -111,6 +119,9 @@ nav ul li a{
     height: 20px;
     font-size: 1.4rem;
 }
+.nav-item:hover {
+    cursor: pointer;
+}
 
 .hamburger {
     display: block;
@@ -134,7 +145,8 @@ nav ul li a{
 .wallH1{
     font-size: 24px;
     position: relative;
-    top:-0.5vh;
+    top:5px;
+    margin: 0;
 }
 
 /* Logo*/
@@ -162,7 +174,7 @@ header img {
 /* Inputs de forms para log in y sign up*/
 form {
     width: 75vw;
-    margin: 4rem auto;
+    margin: 4rem auto 5rem ;
     background-color: white;
     padding: 1rem;
     border-radius: 15px;
@@ -192,7 +204,9 @@ form ul {
 .login{
     height: 100vh;
 }
-
+.register{
+    margin-bottom: 5rem;
+}
 .containerLoginOptions {
     display: flex;
     flex-direction: column;
@@ -450,18 +464,18 @@ hr {
     background-color: #292D32;
 }
 
-.newPostDiv header nav {
+.newPostDiv section nav {
     background-color: #292D32;
     justify-content: flex-start;
     align-items: center;
 }
 
-.newPostDiv header nav #pCreatePost {
+.newPostDiv section nav #pCreatePost {
     font-size: 2rem;
     color: white;
 }
 
-.newPostDiv header nav img {
+.newPostDiv section nav img {
     width: 2.4rem;
     height: 2.4rem;
     object-fit: contain;
@@ -497,8 +511,8 @@ hr {
     position: absolute;
     width: 7.8rem;
     height: 3rem;
-    left: 24rem;
-    top: 0.8rem;
+    right: 1rem;
+    top: 5rem;
     background: #DBA39A;
     border: 1px solid #EA907A;
     border-radius: 10px;
@@ -529,6 +543,9 @@ footer {
     padding: 10px;
     font-size: 1.4rem;
     font-weight: 700;
+}
+.bodyimg footer img:hover{
+    cursor: pointer;
 }
 
 .footerParagraph, .gitHubLinks {

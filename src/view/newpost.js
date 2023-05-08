@@ -6,7 +6,20 @@ export const newpost = (navigateTo) => {
 
   const header = document.createElement('header');
 
+  const logoImg = document.createElement('img');
+  logoImg.setAttribute('src', 'img/logo.png');
+  logoImg.setAttribute('alt', 'This is the logo. It is a dog paw inside a heart.');
+
   const nav = document.createElement('nav');
+  nav.setAttribute('class', 'navNewpost')
+
+  const h1 = document.createElement('h1');
+  h1.setAttribute('class', 'wallH1');
+  h1.textContent = 'Be My Friend';
+
+  const section = document.createElement('section');
+
+  const navSection = document.createElement('nav');
 
   const hr = document.createElement('hr');
 
@@ -61,9 +74,11 @@ export const newpost = (navigateTo) => {
     }
   });
 
-  newPostDiv.append(header, formPost);
-  header.append(nav, hr);
-  nav.append(iconArrow, pCreatePost);
+  newPostDiv.append(header, section, formPost);
+  header.append(nav)
+  nav.append(logoImg,h1)
+  section.append(navSection, hr);
+  navSection.append(iconArrow, pCreatePost);
   userContainer.append(profilePic, userName);
   formPost.append(userContainer, petName, petDescription, btnPost);
 

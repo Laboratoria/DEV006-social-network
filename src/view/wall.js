@@ -27,6 +27,30 @@ export const wall = (navigateTo) => {
   h1.setAttribute('class', 'wallH1');
   h1.textContent = 'Be My Friend';
 
+  const containerIcons = document.createElement('div');
+  containerIcons.setAttribute('class', 'containerIcons');
+
+  const iconHome2 = document.createElement('img');
+  iconHome2.setAttribute('src', '../img/HOME.png');
+
+  const iconSearch2 = document.createElement('img');
+  iconSearch2.setAttribute('src', '../img/LUPA.png');
+
+  const iconAdd2 = document.createElement('img');
+  iconAdd2.setAttribute('src', '../img/AÑADIRINACTIVO.png');
+  iconAdd2.addEventListener('mouseover', function () {
+    this.src = 'img/AÑADIRACTIVO.png';
+  });
+  iconAdd2.addEventListener('mouseout', function () {
+    this.src = 'img/AÑADIRINACTIVO.png';
+  });
+  iconAdd2.addEventListener('click', () => {
+    navigateTo('/newpost');
+  });
+
+  const iconProfile2 = document.createElement('img');
+  iconProfile2.setAttribute('src', '../img/PROFILE.png');
+
   // ------------------------------------------------- Inicia menú de hamburguesa
   const navMenu = document.createElement('ul');
   navMenu.setAttribute('class', 'nav-menu');
@@ -58,7 +82,7 @@ export const wall = (navigateTo) => {
 
   // ------------------------------------------------- Barra de íconos
   const footer = document.createElement('footer');
-  footer.setAttribute('id', 'footer');
+  footer.setAttribute('id', 'footerWall');
 
   const iconHome = document.createElement('img');
   iconHome.setAttribute('src', '../img/HOME.png');
@@ -68,6 +92,12 @@ export const wall = (navigateTo) => {
 
   const iconAdd = document.createElement('img');
   iconAdd.setAttribute('src', '../img/AÑADIRINACTIVO.png');
+  iconAdd.addEventListener('mouseover', function () {
+    this.src = 'img/AÑADIRACTIVO.png';
+  });
+  iconAdd.addEventListener('mouseout', function () {
+    this.src = 'img/AÑADIRINACTIVO.png';
+  });
   iconAdd.addEventListener('click', () => {
     navigateTo('/newpost');
   });
@@ -78,10 +108,11 @@ export const wall = (navigateTo) => {
   bodyimg.append(walldiv, footer);
   walldiv.append(header, postsSection);
   header.append(nav);
-  nav.append(logoImg, h1, divMenu, navMenu);
+  nav.append(logoImg, h1, containerIcons, divMenu, navMenu);
   divMenu.append(span1, span2, span3);
   navMenu.append(navItem);
   footer.append(iconHome, iconSearch, iconAdd, iconProfile);
+  containerIcons.append(iconHome2, iconSearch2, iconAdd2, iconProfile2)
 
   // ------------------------------------------------- Publicaciones/posts
   // Recuperamos la colección de "post"

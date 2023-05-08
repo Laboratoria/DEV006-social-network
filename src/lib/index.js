@@ -82,11 +82,12 @@ export const createUser = async () => {
   const password = document.getElementById('txtPasswordAgain');
   const spanEmail = document.getElementById('spanErrorEmail');
   const spanPassword = document.getElementById('spanErrorPassword');
-  const userName = document.getElementById('userName');// input de register donde se guarda el nombre
+  const userName = document.getElementById('userName').value;// input de register donde se guarda el nombre
+  const lastName = document.getElementById('lastName').value;
 
   try {
     const userCredential = await createUserWithEmailAndPassword(auth, email.value, password.value);
-    const username = userName.value;// Obtenemos el valor del input
+    const username = userName+" "+lastName;// Obtenemos el valor del input
     updateProfile(auth.currentUser, {
       displayName: username,
       // función de firebase para darle valor al displayName el cual va a ser el nombre del usuario
