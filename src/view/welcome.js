@@ -46,6 +46,9 @@ export const welcome = (navigateTo) => {
   // ------------------------------------------------- Inicio de tarjetas de animales
   const sectionCards = document.createElement('section');
   sectionCards.setAttribute('class', 'contenedorcards');
+  sectionCards.addEventListener('click', () => {
+    navigateTo('/login');
+  });
 
   // Tarjeta de mascota 1
   const cardPet1 = document.createElement('div');
