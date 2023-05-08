@@ -1,4 +1,4 @@
-export const home= `
+export const home = `
 <header>add logo </header>
 <p>Email</p>
 <textarea class="insertInfo" placeholder="example@gmail.com"></textarea>
