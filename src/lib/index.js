@@ -86,7 +86,9 @@ export const createUser = async () => {
   const lastName = document.getElementById('lastName').value;
 
   try {
-    createUserWithEmailAndPassword(auth, email.value, password.value);
+    const userCredetial = await createUserWithEmailAndPassword(auth, email.value, password.value);
+    const user = userCredetial.user;
+    console.log(user);
     const username = userName + lastName;// Obtenemos el valor del input
     updateProfile(auth.currentUser, {
       displayName: username,
