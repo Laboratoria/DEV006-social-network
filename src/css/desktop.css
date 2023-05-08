@@ -11,14 +11,14 @@
     }
 
     nav {
-        height: 10vh;
+        height: 9vh;
     }
 
     nav ul li a {
         padding: 0.5rem 1.6rem;
         font-size: 1.8rem;
     }
-
+    
     .wallNav{
         grid-template-columns: 0.5fr 2fr 6fr 0.5fr;
     } 
@@ -137,6 +137,32 @@
     .btnGoogle{
         width: 18rem;
         margin-top:12px;
+    }
+
+    .newPostDiv section nav img {
+        width: 3.5rem;
+    }
+
+    .newPostDiv section nav #pCreatePost {
+        font-size: 2.4rem;
+    }
+
+    .newPostDiv #formpost {
+        width: 50vw;
+    }
+
+    .userContainer {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    #formpost #Post {
+        font-size: 2.4rem;
+        top: 7.2rem;
+        width: 10rem;
+        height: 4rem;
+        padding: 10px;
     }
 
     #btnRegister{
