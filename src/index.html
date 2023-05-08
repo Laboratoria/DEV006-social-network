@@ -1,53 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="./style.css" />
-  <title>Community of Building</title>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="./style.css" />
+    <script src="./main.js" type="module"></script>
 
-  <div class="container-app">
-  <h1 id="title">Community of Building</h1>
-  <div id="app">
-  <img id="building" src="./images/building.png" alt="BuildingImage">
-  <p>Platform for the neighbors of a community where they can sell, give away and buy whatever they deem convenient. </p>
-</div>
+    <title>Community of Building</title>
+ 
+  </head>
+  <body>
+    <div class="container-app">
+      <h1 id="title">Community of Building</h1>
+      <div id="app">
+        <img id="building" src="./images/building.png" alt="BuildingImage" />
+        <p>
+          Platform for the neighbors of a community where they can sell, give
+          away and buy whatever they deem convenient.
+        </p>
+      </div>
 
-
-<main>
-<label for="email">Email</label> 
-<input type="text" id="email"> 
-<label for="password">Password</label> 
-<input type="text" id="password"> 
-<button class="btnForgotP">Forgot Password</button>
-<button class="btnSignIn">Sign in</button>
-<button id= "button-login" class="btnGoogle">Sign in with Google</button>
-<button>Sign up</button>
-</main>
-</div>
-<script type="module">
-
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-app.js";
-  import { initializeApp } from 'firebase/app';
-  import { getAuth } from 'https://www.gstatic.com/firebasejs/9.19.1/firebase-auth.js'
-  import { getFirestore } from 'https://www.gstatic.com/firebasejs/9.19.1/firebase-firestore.js'
-
-  // Your web app's Firebase configuration
-  const firebaseConfig = {
-    apiKey: "AIzaSyDPY0DEQigOuhm-9XwCql-1hwpBr10oVfg",
-    authDomain: "social-network-6d91d.firebaseapp.com",
-    projectId: "social-network-6d91d",
-    storageBucket: "social-network-6d91d.appspot.com",
-    messagingSenderId: "544585531141",
-    appId: "1:544585531141:web:2654e881027f760ae0c16c"
-  };
-
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-</script>
-  <script type="module" src="main.js"></script>
-</body>
+      <main>
+        <form id="signup-form">
+          <label for="email">Email</label>
+          <input type="text" id="email" />
+          <label for="password">Password</label>
+          <input type="text" id="password" />
+          <button class="btnForgotP">Forgot Password</button>
+          <button type="submit" class="btnSignIn">Sign in</button>
+          <button id="button-login" class="btnGoogle">
+            Sign in with Google
+          </button>
+          <button>Sign up</button>
+        </form>
+      </main>
+    </div>
+  </body>
 </html>
