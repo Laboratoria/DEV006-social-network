@@ -1,5 +1,5 @@
 {
-  "name": "social-network",
+  "name": "install",
   "private": true,
   "version": "1.0.0",
   "description": "Social Network @ Laboratoria",
@@ -32,7 +32,7 @@
     "regenerator-runtime": "^0.13.1",
     "stylelint": "^14.1.0",
     "stylelint-config-recommended": "^6.0.0",
-    "vite": "^3.1.0"
+    "vite": "^3.2.6"
   },
   "engines": {
     "node": ">=16.x"
@@ -41,5 +41,9 @@
     "createdAt": "2023-04-04T20:41:27.023Z",
     "version": "6.1.1",
     "commit": "ee8564d1261b2e9c9842d13f9ac49b2624b2ee74"
-  }
+  },
+  "directories": {
+    "test": "test"
+  },
+  "author": ""
 }
