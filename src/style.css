@@ -1,5 +1,11 @@
 body {
     background: #98DEE9;
+    padding: 5px;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 #root {
@@ -11,37 +17,40 @@ body {
 }
 
 header {
-    height: 220px;
+    height: 250px;
     display:flex;
     align-items: flex-end;
 }
 
 .easygym{
 height: 200px;
-width: auto;
+
 }
 
-p {
-    font-size: 24px;
+label {
+    font-size: 20px;
     color: #0A4D68;
 }
 
 .insertInfo {
     background: #D9D9D9;
-    width: 318px;
-    height: 58px;
+    width: 250px;
+    height: 35px;
     border: 1px solid #000000;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 25px;
     display: flex;
     text-align: center;
+    margin-bottom: 10px;
 }
 
-textarea::placeholder {
-    font-size: 18px;
+
+input::placeholder {
+    font-size: 15px;
   }
 
-.buttons {
+  .button {
+    font-size: 17px;
     background: #279A82;
     width: 230px;
     height: 40px;
@@ -50,3 +59,5 @@ textarea::placeholder {
     border-radius: 25px;
     color: #FFFFFF;
 }
+
+
