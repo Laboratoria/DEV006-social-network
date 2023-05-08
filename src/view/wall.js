@@ -1,4 +1,4 @@
-import { getDocs, query, orderBy} from 'firebase/firestore';
+import { getDocs, query, orderBy } from 'firebase/firestore';
 import { exit, colRef } from '../lib/index.js';
 
 export const wall = (navigateTo) => {
@@ -86,7 +86,7 @@ export const wall = (navigateTo) => {
   // ------------------------------------------------- Publicaciones/posts
   // Recuperamos la colección de "post"
   // Para cada doc de la colección se crea lo siguiente...
-  const q = query(colRef, orderBy('timestamp','desc'));
+  const q = query(colRef, orderBy('timestamp', 'desc'));
   getDocs(q)
     .then((snapshot) => {
       const posts = [];
@@ -98,7 +98,8 @@ export const wall = (navigateTo) => {
         postArticle.setAttribute('class', 'postArticle');
 
         const username = document.createElement('span');
-        username.textContent = post.userid;// obtenemos el valor de userid del display name para que se muestre en el post
+        username.textContent = post.userid;
+        // obtenemos el valor de userid del display name para que se muestre en el post
         username.setAttribute('class', 'wallUsername');
 
         const descriptionPet = document.createElement('p');

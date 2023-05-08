@@ -12,13 +12,14 @@ import {
   updateProfile,
 } from 'firebase/auth';
 import {
-  collection, getFirestore, getDocs, addDoc, serverTimestamp//Se importa serveTimestamp para obtener fecha y hora del post
+  collection, getFirestore, getDocs, addDoc, serverTimestamp,
+  // Se importa serveTimestamp para obtener fecha y hora del post
 } from 'firebase/firestore';
 import { firebaseConfig } from '../firebase.config.js';
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-const auth = getAuth(app);
+export const auth = getAuth(app);
 
 // Initialize Firestore
 
@@ -40,16 +41,14 @@ getDocs(colRef)
     console.log(error.message);
   });
 
-  
-
 // adding documents
 export const addPost = (petName, petDescription, formPost) => {
   const userName = auth.currentUser.displayName;
   const documentAddDoc = addDoc(colRef, {
     petName: petName.value,
     description: petDescription.value,
-    timestamp: serverTimestamp(),//definimos a timestamp para que se guarde en la colección
-    userid: userName,// definimos userid para guardar el nombre de la persona que publica el post
+    timestamp: serverTimestamp(), // definimos a timestamp para que se guarde en la colección
+    userid: userName, // definimos userid para guardar el nombre de la persona que publica el post
   })
     .then(() => {
       formPost.reset();
@@ -89,7 +88,8 @@ export const createUser = async () => {
     const userCredential = await createUserWithEmailAndPassword(auth, email.value, password.value);
     const username = userName.value;// Obtenemos el valor del input
     updateProfile(auth.currentUser, {
-      displayName: username,// función de firebase para darle valor al displayName el cual va a ser el nombre del usuario
+      displayName: username,
+      // función de firebase para darle valor al displayName el cual va a ser el nombre del usuario
     });
   } catch (error) {
     const errorCode = error.code;
