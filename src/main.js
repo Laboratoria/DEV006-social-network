@@ -1,23 +1,16 @@
 /* eslint-disable no-console */
-/* eslint-disable no-dupe-else-if */
-/* eslint-disable no-alert */
-/* eslint-disable no-unused-vars */
-//Importar las vistas 
+// Importar las vistas
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { home } from './pages/home.js';
 import { auth } from './lib/index.js';
-
 
 const root = document.getElementById('root');
 
 const routes = [
   { path: '/', component: home },
-
 ];
-
+home(root);
 // const default= '/';
-
-root.innerHTML = home;
 
 const loginForm = document.querySelector('form');
 
