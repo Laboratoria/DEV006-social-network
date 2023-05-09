@@ -8,9 +8,9 @@ box-sizing: border-box;
 }
 
 .container-app {
-  height: 180vw;
-  margin:10%;
-  width: 80%;
+  height: 190vw;
+  margin: 8% auto;
+  width: 90%;
   border-radius:2%;
   display: flex;
   flex-direction: column;
@@ -20,8 +20,8 @@ box-sizing: border-box;
 }
 
 body{
+  font-family:"Roboto Condensed";
   background-color: #0B3954 ;
-  text-align: center;
 }
 
 .title {
@@ -34,8 +34,15 @@ body{
   text-align: center;
 }
 
+.titleForgot {
+  font-family:"Roboto Condensed";
+  margin: 2% auto;
+  color: #0B3954;
+}
+
 .description-app {
   font-family:"Roboto Condensed";
+  text-align: center;
   line-height: 1.5em;
   font-size: 16px;
   padding: 3%;
@@ -47,22 +54,53 @@ body{
   align-self: center;
 }
 
-.name-email{
-  font-family:"Roboto Condensed";
+.name-email, .name-password {
+  margin-left: 12%;
 }
 
+.return-link {
+  font-family:"Roboto Condensed";
+  color: #00c5db;
+  text-decoration: none;
+  font-size: 20px;
+  margin-left: 2%;
+}
+.formForgot {
+  background-color: #0B3954;
+  border-radius: 10%;
+  color: white;
+  padding: 10% 0;
+  margin: 5%;
+}
+
+.input-email-forgot, .input-password-forgot {
+  width: 80%;
+  border-radius: 5px;
+  height: 0 auto;
+  margin: 2% auto;
+  background-color: #D9D9D9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 .input-email {
-  width: 60%;
+  border-radius: 5px;
+  height: 3.5%;
+  width: 75%;
   margin: 2% auto;
+  background-color: #D9D9D9;
 }
+
 .inputPassword {
-  width: 60%;
+  border-radius: 5px;
+  height: 3.5%;
+  width: 75%;
   margin: 2% auto;
-
+  background-color: #D9D9D9;
 }
 
-.btnSignIn, .buttonLogin, .buttonReturn {
+.btnSignIn, .buttonLogin, .buttonReturn, .btnSend {
   width: 25%;
   height: 4%;
   display: block;
@@ -93,7 +131,6 @@ body{
 }
 
 .btnForgotP, .btnSignUp {
-  margin-bottom: 10%;
   margin-right: 5%;  
   text-align: right;
 }

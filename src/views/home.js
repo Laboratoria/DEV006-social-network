@@ -8,6 +8,7 @@ function home(navigateTo) {
 
   const container = document.createElement('div');
   container.className = 'container-app';
+  container.id = 'container-inputs';
 
   const imageBuilding = document.createElement('img');
   imageBuilding.src = ('./images/building.png');
@@ -23,23 +24,28 @@ function home(navigateTo) {
   const inputEmail = document.createElement('input');
   inputEmail.className = 'input-email';
 
-
   const password = document.createElement('p');
   password.textContent = 'Password';
-
+  password.className = 'name-password';
 
   const inputPassword = document.createElement('input');
   inputPassword.classList.add('inputPassword');
-  inputPassword.className="inputDesign"
-  
+  inputPassword.className = 'inputPassword';
+
   const forgotPassword = document.createElement('a');
   forgotPassword.textContent = 'Forgot Password';
-  forgotPassword.href = 'Sign Up';
+  forgotPassword.href = '/forgotPassword';
   forgotPassword.classList.add('btnForgotP');
+  forgotPassword.addEventListener('click', () => {
+    navigateTo('/forgotPassword');
+  });
 
   const btnSignIn = document.createElement('button');
   btnSignIn.textContent = 'Sign In';
   btnSignIn.classList.add('btnSignIn');
+  btnSignIn.addEventListener('click', () => {
+    navigateTo('/profile');
+  });
 
   const signUp = document.createElement('a');
   signUp.textContent = 'Sign Up';
