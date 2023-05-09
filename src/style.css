@@ -16,16 +16,18 @@ box-sizing: border-box;
   flex-direction: column;
   justify-content: center;
   background-color: #B4D7EA;
+  border:4px solid #00808D;
+  
 
 }
 
 body{
   background-color: #0B3954 ;
-  text-align: center;
+  font-family:"Roboto Condensed";
 }
 
 .title {
-  font-family:"Roboto Condensed";
+  
   color: #00808D;
   font-size: 30px;
   text-align: center;
@@ -62,7 +64,7 @@ body{
 
 }
 
-.btnSignIn, .buttonLogin, .buttonReturn {
+.btnSignIn, .buttonLogin {
   width: 25%;
   height: 4%;
   display: block;
@@ -75,8 +77,14 @@ body{
   font-size: medium;
   text-shadow: 2px 2px 5px rgb(0, 0, 0);
 }
+
 .buttonReturn {
-  width: 38%;
+    font-weight: bolder;
+    font-size:15px;
+    border:none;
+    color:#00808D;
+    background-color:#0B3954;
+    padding:3%;   
 }
 
 .btnGoogle {
@@ -98,4 +106,49 @@ body{
   text-align: right;
 }
 
+.container-formSignUp{
+  border:4px solid #00808D;
+  width: 90%;
+  height: 170vw;
+  margin: 5% auto;
+  border-radius: 30px;
+  background-color: #B4D7EA;
+  display:flex;
+  justify-content: center;
+  flex-direction: column;
+  
 
+}
+
+.parrafo-signUp{
+ 
+  margin-top: 10%;
+  margin-left: 10%;
+  width: 50%;
+  color:#36413e;
+  font-weight: bolder;
+}
+
+.input-userSignUp{
+  width: 80%;
+  height: 36px;
+  margin: 0 auto;
+  text-align: center;
+  border-radius: 10px;
+  background-color: #d9d9d9;
+  border: 1px solid #d9d9d9;
+}
+
+.btn-windowSignUp{
+  width: 80%;
+  height: 6%;
+  border:none;
+  margin-top: 20%;
+  margin-left: 10%;
+  align-items: center;
+  background-color: #FF5A5F;
+  color: white;
+  font-weight: bolder;
+  font-family:"Roboto Condensed";
+  font-size: medium;
+}
