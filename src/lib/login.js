@@ -38,7 +38,7 @@ function login (navigateTo){
     buttonGoogle.addEventListener('click', () => {
         navigateTo('/wall')
     });
-    buttonReturn.textContent = 'Home'
+    buttonReturn.textContent = '.'
     buttonReturn.classList.add('return');
     buttonReturn.addEventListener('click', () => {
         navigateTo('/')
