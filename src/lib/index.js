@@ -86,8 +86,10 @@ export const createUser = async () => {
   const lastName = document.getElementById('lastName').value;
 
   try {
-    createUserWithEmailAndPassword(auth, email.value, password.value);
-    const username = userName + lastName;// Obtenemos el valor del input
+    const userCredetial = await createUserWithEmailAndPassword(auth, email.value, password.value);
+    const user = userCredetial.user;
+    console.log(user);
+    const username = userName + ' ' + lastName;
     updateProfile(auth.currentUser, {
       displayName: username,
       // función de firebase para darle valor al displayName el cual va a ser el nombre del usuario
