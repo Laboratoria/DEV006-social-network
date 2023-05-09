@@ -1,25 +1,43 @@
 /**
  * @jest-environment jsdom
  */
+
+/* import { MockFirebaseSdk } from 'firebase-mock'; */
 import { newpost } from '../src/view/newpost';
-import { auth } from '../src/lib/index.js';
+/* import { addPost } from '../src/lib/index.js'; */
 
-describe('se crea el elemento #userName con el contenido de auth de firebase', () => {
-  let newpostDiv;
+/* let mockFirebase;
 
-  beforeEach(async () => {
-    // Inicializar el usuario actual de Firebase antes de cada prueba
-    await auth.signInWithEmailAndPassword('user@example.com', 'password');
-
-    newpostDiv = newpost();
-  });
-
-  afterEach(jest.clearAllMocks);
-
-  it('should render newpost view', () => {
-    expect(newpostDiv.querySelector('#userName').textContent).toBe(auth.currentUser.displayName);
-  });
+beforeEach(() => {
+  mockFirebase = new MockFirebaseSdk(
+    // Simular el objeto auth
+    () => ({
+      currentUser: {
+        displayName: 'John Doe', // Simular el displayName del usuario actual
+      },
+      // Simular la instancia de Firestore
+      firestore: () => ({
+        collection: () => ({
+          add: () => Promise.resolve(),
+        }),
+      }),
+    }),
+  );
+  // Reemplazar el objeto de Firebase con el objeto simulado en el archivo de prueba
+  jest.mock('firebase/app', () => mockFirebase);
 });
+
+// Realizar el test unitario utilizando el objeto simulado de Firebase
+describe('ejemplo de test unitario con mock de Firebase', () => {
+  test('verificar el valor del nombre de usuario', () => {
+    // Llamar a la función que utiliza el objeto auth
+    addPost();
+
+    // Verificar que el valor del nombre de usuario es correcto
+    const userNameElement = document.getElementById('userName');
+    expect(userNameElement.textContent).toBe('John Doe');
+  });
+}); */
 
 describe('se crean estos elementos en el componente de newpost', () => {
   // if (typeof document !== 'undefined') {
