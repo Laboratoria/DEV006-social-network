@@ -15,22 +15,25 @@ function home(navigateTo) {
 
   const description = document.createElement('p');
   description.textContent = 'Platform for the neighbors of a community where they can sell, give away, buy whatever they deem convenient';
+  description.className = 'description-app';
 
   const email = document.createElement('p');
   email.textContent = 'Email';
-  email.className="name-email"
+  email.className = 'name-email';
 
   const inputEmail = document.createElement('input');
+  inputEmail.className = 'input-email';
 
   const password = document.createElement('p');
   password.textContent = 'Password';
 
   const inputPassword = document.createElement('input');
+  inputPassword.classList.add('inputPassword');
 
   const forgotPassword = document.createElement('a');
   forgotPassword.textContent = 'Forgot Password';
   forgotPassword.href = 'Sign Up';
-  forgotPassword.classList.add('btnForgotP')
+  forgotPassword.classList.add('btnForgotP');
 
   const btnSignIn = document.createElement('button');
   btnSignIn.textContent = 'Sign In';
