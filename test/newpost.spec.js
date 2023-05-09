@@ -2,22 +2,27 @@
  * @jest-environment jsdom
  */
 import { newpost } from '../src/view/newpost';
-import { auth } from '../src/lib/index.js';
+// import { auth } from '../src/lib/index.js';
 
-describe('se crea el elemento #userName con el contenido de auth de firebase', () => {
+describe('newpost', () => {
   let newpostDiv;
+  let currentUserMock;
 
-  beforeEach(async () => {
-    // Inicializar el usuario actual de Firebase antes de cada prueba
-    await auth.signInWithEmailAndPassword('user@example.com', 'password');
-
+  beforeEach(() => {
+    // Hacer el mock del objeto auth de Firebase
+    currentUserMock = {
+      displayName: 'John Doe',
+    };
     newpostDiv = newpost();
   });
 
-  afterEach(jest.clearAllMocks);
+  afterEach(() => {
+    jest.restoreAllMocks();
+    jest.clearAllMocks();
+  });
 
-  it('should render newpost view', () => {
-    expect(newpostDiv.querySelector('#userName').textContent).toBe(auth.currentUser.displayName);
+  it('debería insertar el nombre de usuario en el elemento #userName', () => {
+    expect(newpostDiv.querySelector('#userName').textContent).toBe(currentUserMock.displayName);
   });
 });
 
@@ -55,7 +60,7 @@ describe('se crean estos elementos en el componente de newpost', () => {
   });
 });
 
-describe('newpost', () => {
+describe('newpost second', () => {
   test('should call addPost with correct arguments when form is submitted with non-empty petName and petDescription', () => {
     if (typeof document !== 'undefined') {
     // código que usa el objeto document
