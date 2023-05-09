@@ -1,8 +1,6 @@
 // import { beforeEach } from 'node:test';
 import {
-  securePassword,
-  validatePasswords,
-  validateEmail,
+  securePassword, validatePasswords, validateEmail,
 } from '../src/lib/index.js';
 
 let password;
