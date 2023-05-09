@@ -23,15 +23,13 @@ function home(navigateTo) {
   const inputEmail = document.createElement('input');
   inputEmail.className = 'input-email';
 
-
   const password = document.createElement('p');
   password.textContent = 'Password';
 
-
   const inputPassword = document.createElement('input');
   inputPassword.classList.add('inputPassword');
-  inputPassword.className="inputDesign"
-  
+  inputPassword.className = 'inputDesign';
+
   const forgotPassword = document.createElement('a');
   forgotPassword.textContent = 'Forgot Password';
   forgotPassword.href = 'Sign Up';
@@ -52,6 +50,10 @@ function home(navigateTo) {
 
   signUp.addEventListener('click', () => {
     navigateTo('/signup');
+  });
+
+  btnSignIn.addEventListener('click', () => {
+    navigateTo('/board');
   });
 
   container.append(title, imageBuilding, description, email, inputEmail, password, inputPassword, forgotPassword, btnSignIn, btnGoogle, signUp);

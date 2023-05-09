@@ -91,10 +91,8 @@ export default signup;
     navigateTo('/');
   });
 
-
   container.append(title, inputEmail, inputPass, buttonLogin, buttonReturn);
   section.append(container);
-
 
   return section;
 }
