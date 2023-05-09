@@ -2,12 +2,12 @@
 // import './app/signUp.js';
 
 import home from './views/home.js';
-import login from './views/login.js';
+import signup from './views/signup.js';
 import error from './views/error.js';
 
 const routes = [
   { path: '/', component: home },
-  { path: '/login', component: login },
+  { path: '/signup', component: signup },
   { path: '/error', component: error },
 ];
 
