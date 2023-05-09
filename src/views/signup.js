@@ -28,10 +28,8 @@ function login(navigateTo) {
     navigateTo('/');
   });
 
-
   container.append(title, inputEmail, inputPass, buttonLogin, buttonReturn);
   section.append(container);
-
 
   return section;
 }
