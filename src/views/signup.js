@@ -1,5 +1,6 @@
 function login(navigateTo) {
   const section = document.createElement('section');
+
   const title = document.createElement('h2');
   const buttonReturn = document.createElement('button');
   // const form = document.createElement('form');
@@ -22,12 +23,15 @@ function login(navigateTo) {
 
   buttonReturn.textContent = 'Return to home';
   buttonReturn.classList.add('buttonReturn');
+
   buttonReturn.addEventListener('click', () => {
     navigateTo('/');
   });
 
+
   container.append(title, inputEmail, inputPass, buttonLogin, buttonReturn);
   section.append(container);
+
 
   return section;
 }
