@@ -9,6 +9,9 @@
     "firebase",
     "jest"
   ],
+  "jest": {
+    "testEnvironment": "jsdom"
+  },
   "license": "MIT",
   "scripts": {
     "htmlhint": "htmlhint dist/*.html ",
@@ -43,7 +46,7 @@
     "commit": "ee8564d1261b2e9c9842d13f9ac49b2624b2ee74"
   },
   "dependencies": {
-    "firebase": "^9.19.1"
-  },
-  "testEnvironment": "jsdom"
+    "firebase": "^9.19.1",
+    "jsdom": "^22.0.0"
+  }
 }

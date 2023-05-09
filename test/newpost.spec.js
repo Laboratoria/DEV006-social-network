@@ -1,5 +1,8 @@
+/**
+ * @jest-enviroment jsdom
+**/
 import { newpost } from '../src/view/newpost';
-
+ 
 describe('newpost', () => {
   test('should call addPost with correct arguments when form is submitted with non-empty petName and petDescription', () => {
     if (typeof document !== 'undefined') {
