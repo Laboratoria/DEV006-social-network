@@ -1,8 +1,60 @@
 /**
- * @jest-enviroment jsdom
-**/
+ * @jest-environment jsdom
+ */
 import { newpost } from '../src/view/newpost';
- 
+import { auth } from '../src/lib/index.js';
+
+describe('se crea el elemento #userName con el contenido de auth de firebase', () => {
+  let newpostDiv;
+
+  beforeEach(async () => {
+    // Inicializar el usuario actual de Firebase antes de cada prueba
+    await auth.signInWithEmailAndPassword('user@example.com', 'password');
+
+    newpostDiv = newpost();
+  });
+
+  afterEach(jest.clearAllMocks);
+
+  it('should render newpost view', () => {
+    expect(newpostDiv.querySelector('#userName').textContent).toBe(auth.currentUser.displayName);
+  });
+});
+
+describe('se crean estos elementos en el componente de newpost', () => {
+  // if (typeof document !== 'undefined') {
+  // Generar un test para comprobar que los elementos del formulario se crean correctamente
+  let newpostDiv;
+
+  beforeEach(() => {
+    newpostDiv = newpost();
+  });
+
+  afterEach(jest.clearAllMocks);
+
+  it('should render newpost view', () => {
+    // const newpostDiv = document.createElement('div');
+    // newpostDiv.append(newpost());
+    // El matcher .toBeTruthy() comprueba si los elementos existen
+    expect(newpostDiv).toBeTruthy();
+    expect(newpostDiv.querySelector('header')).toBeTruthy();
+    expect(newpostDiv.querySelector('nav')).toBeTruthy();
+    expect(newpostDiv.querySelector('h1')).toBeTruthy();
+    expect(newpostDiv.querySelector('section')).toBeTruthy();
+    expect(newpostDiv.querySelector('nav')).toBeTruthy();
+    expect(newpostDiv.querySelector('hr')).toBeTruthy();
+    expect(newpostDiv.querySelector('img')).toBeTruthy();
+    expect(newpostDiv.querySelector('#pCreatePost')).toBeTruthy();
+    expect(newpostDiv.querySelector('#formpost')).toBeTruthy();
+    expect(newpostDiv.querySelector('.userContaier')).toBeTruthy();
+    expect(newpostDiv.querySelector('.profilePic')).toBeTruthy();
+    expect(newpostDiv.querySelector('#userName')).toBeTruthy();
+    expect(newpostDiv.querySelector('input')).toBeTruthy();
+    expect(newpostDiv.querySelector('textarea')).toBeTruthy();
+    expect(newpostDiv.querySelector('button')).toBeTruthy();
+  });
+});
+
 describe('newpost', () => {
   test('should call addPost with correct arguments when form is submitted with non-empty petName and petDescription', () => {
     if (typeof document !== 'undefined') {
