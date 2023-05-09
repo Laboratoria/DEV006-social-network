@@ -60,6 +60,10 @@ function home(navigateTo) {
     navigateTo('/signup');
   });
 
+  btnSignIn.addEventListener('click', () => {
+    navigateTo('/board');
+  });
+
   container.append(title, imageBuilding, description, email, inputEmail, password, inputPassword, forgotPassword, btnSignIn, btnGoogle, signUp);
   section.appendChild(container);
   return section;

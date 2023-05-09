@@ -26,7 +26,7 @@ function profile(navigateTo) {
   buttonReturn.href = '//forgotPassword';
   buttonReturn.className = 'return-link';
   buttonReturn.addEventListener('click', () => {
-    navigateTo('/');
+    navigateTo('/board');
   });
 
   btnBoard.textContent = 'Board';
