@@ -1,37 +1,37 @@
 function login(navigateTo) {
   const section = document.createElement('section');
+
+  const title = document.createElement('h2');
   const buttonReturn = document.createElement('button');
-  const containerDos=document.createElement("div");
-  const form = document.createElement('form');
-  const userSignUp=document.createElement("p");
-  const inputUserSignUp = document.createElement('input');
-  const emailSignUp=document.createElement("p");
-  const inputEmailSignUp = document.createElement('input');
-  const passwordSignUp=document.createElement("p");
-  const inputPasswordSignUp = document.createElement('input');
-  const confirmPassword=document.createElement("p");
-  const inputConfirmPasswordSignUp=document.createElement("input");
-  const buttonSignUp = document.createElement('button');
+  // const form = document.createElement('form');
+  const inputEmail = document.createElement('input');
+  const inputPass = document.createElement('input');
+  const buttonLogin = document.createElement('button');
 
-  inputUserSignUp.placeholder = 'Enter user';
-  inputEmailSignUp.placeholder = 'Enter email';
-  inputPasswordSignUp.placeholder="Enter password"
-  inputConfirmPasswordSignUp.placeholder="confirm password"
+  const container = document.createElement('div');
+  container.className = 'container-app';
 
-  userSignUp.textContent="User name";
-  emailSignUp.textContent="E-mail";
-  passwordSignUp.textContent="Password";
-  confirmPassword.textContent="confirm password";
-  buttonSignUp.textContent = 'SignUp';
+  inputEmail.placeholder = 'Write email';
+  inputEmail.className = 'input-email';
+  inputPass.placeholder = 'pass';
+  inputPass.classList.add('inputPassword');
 
+  title.textContent = 'Login';
+  title.className = 'title';
+  buttonLogin.textContent = 'go';
+  buttonLogin.classList.add('buttonLogin');
 
   buttonReturn.textContent = 'Return to home';
+  buttonReturn.classList.add('buttonReturn');
+
   buttonReturn.addEventListener('click', () => {
     navigateTo('/');
   });
 
-  form.append(userSignUp,inputUserSignUp,emailSignUp, inputEmailSignUp,passwordSignUp,inputPasswordSignUp,confirmPassword,inputConfirmPasswordSignUp,buttonSignUp);
-  section.append(buttonReturn,form);
+
+  container.append(title, inputEmail, inputPass, buttonLogin, buttonReturn);
+  section.append(container);
+
 
   return section;
 }
