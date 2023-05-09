@@ -13,7 +13,7 @@ function createAcount(navigateTo) {
   const buttonReturn = document.createElement('button');
 
   logo.src = './img/logoSinfondo.png';
-  logo.classList.add('logo-img');
+  logo.classList.add('logo.img');
 
   title.textContent = 'Welcome to Foodiegram';
   caption.textContent = 'Create Acount';
