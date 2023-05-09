@@ -13,6 +13,7 @@ function createAcount(navigateTo) {
   const buttonReturn = document.createElement('button');
 
   logo.src = './img/logoSinfondo.png';
+  logo.classList.add('logo.img');
 
   title.textContent = 'Welcome to Foodiegram';
   caption.textContent = 'Create Acount';
@@ -37,7 +38,7 @@ function createAcount(navigateTo) {
     navigateTo('/');
   });
 
-  form.append(buttonGoogle, buttonSingUp, inputName, inputEmail, inputPass, inputConfPass);
+  form.append(buttonGoogle, buttonSingUp, inputName, inputEmail, inputPass, inputConfPass, buttonReturn);
   section.append(logo, title, caption, form);
   return section;
 }
