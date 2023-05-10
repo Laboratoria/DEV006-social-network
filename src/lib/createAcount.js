@@ -24,6 +24,7 @@ function createAcount(navigateTo) {
   inputName.placeholder = 'Name';
   inputName.classList.add('name');
   inputEmail.placeholder = 'Email';
+  inputEmail.classList.add('email2');
   inputPass.placeholder = 'Password';
   inputPass.classList.add('password2');
   inputConfPass.placeholder = 'Confirm password';
@@ -41,10 +42,12 @@ function createAcount(navigateTo) {
     navigateTo('/wall');
   });
 
-  buttonReturn.textContent = 'Home';
+  buttonReturn.textContent = '.';
+  buttonReturn.classList.add('return');
   buttonReturn.addEventListener('click', () => {
     navigateTo('/');
   });
+
   form.append(
     inputName,
     inputEmail,

@@ -1,4 +1,3 @@
-
-export function loginFirebase (){
-    // funcion login
+export function loginFirebase() {
+// funcion login
 }
