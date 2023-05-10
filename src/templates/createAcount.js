@@ -13,32 +13,50 @@ function createAcount(navigateTo) {
   const buttonReturn = document.createElement('button');
 
   logo.src = './img/logoSinfondo.png';
-  logo.classList.add('logo.img');
+  logo.classList.add('logoimg');
 
   title.textContent = 'Welcome to Foodiegram';
+  title.classList.add('title');
+
   caption.textContent = 'Create Acount';
+  caption.classList.add('caption');
 
   inputName.placeholder = 'Name';
+  inputName.classList.add('name');
   inputEmail.placeholder = 'Email';
+  inputEmail.classList.add('email2');
   inputPass.placeholder = 'Password';
+  inputPass.classList.add('password2');
   inputConfPass.placeholder = 'Confirm password';
+  inputConfPass.classList.add('confirmPass');
 
   buttonSingUp.textContent = 'Sing Up';
+  buttonSingUp.classList.add('login2');
   buttonSingUp.addEventListener('click', () => {
     navigateTo('/wall');
   });
 
   buttonGoogle.textContent = 'continue with GOOGLE';
+  buttonGoogle.classList.add('google');
   buttonGoogle.addEventListener('click', () => {
     navigateTo('/wall');
   });
 
-  buttonReturn.textContent = 'Home';
+  buttonReturn.textContent = '.';
+  buttonReturn.classList.add('return');
   buttonReturn.addEventListener('click', () => {
     navigateTo('/');
   });
 
-  form.append(buttonGoogle, buttonSingUp, inputName, inputEmail, inputPass, inputConfPass, buttonReturn);
+  form.append(
+    inputName,
+    inputEmail,
+    inputPass,
+    inputConfPass,
+    buttonSingUp,
+    buttonGoogle,
+    buttonReturn,
+  );
   section.append(logo, title, caption, form);
   return section;
 }

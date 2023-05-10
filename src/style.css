@@ -1,79 +1,114 @@
 @media only screen and (max-width: 600px) {
-    body {
-      background-color:#F9F0EE;
-    }
-    .logoimg {
-        position: absolute;
-      width: 278px;
-height: 257px;
-left: 57px;
-top: 20px;
-    }
-    .login {
-        position: absolute;
-        width: 166px;
-        height: 53px;
-        left: 111px;
-        top: 393px;
-        background: #F28E13;
-        border-radius: 50px;
-        border: none;
-        color: #fff;
-        font-family: system-ui;
-        font-weight: 100;
-        font-size: large;
-        font-weight: 600;
-    }
-    .createAcount {
-        top: 462px;
-        position: absolute;
-        width: 244px;
-        height: 53px;
-        left: 72px;
-        background: #F28E13;
-        border-radius: 50px;
-        color: #fff;
-        font-family: system-ui;
-        font-weight: 100;
-        font-size: large;
-        font-weight: 600;
-        border: none;
-    }
-    .title {
-        position: absolute;
-width: 335px;
-height: 44px;
-left: 70px;
-top: 247px;
-    }
-    .caption {
-        position: absolute;
-width: 85px;
-height: 44px;
-left: 152px;
-top: 340px;
-    }
-    .email {
-        position: absolute;
-width: 223px;
-height: 30px;
-left: 44px;
-top: 416px;
-color: #fff;
-background-color: #F9F0EE;
-border:none;
-border-bottom:1px solid #F28E13;
-    }
-    .password{
-        position: absolute;
-        width: 223px;
-        height: 30px;
-        left: 44px;
-        top: 469px;
-        color: #fff;
-        background-color: #F9F0EE;
-        border:none;
-        border-bottom:1px solid #F28E13;
-    }
-
+  body {
+    background-color: #f9f0ee;
   }
+  .logoimg {
+    position: absolute;
+    width: 278px;
+    height: 257px;
+    left: 57px;
+    top: 20px;
+  }
+  .login {
+    position: absolute;
+    width: 166px;
+    height: 53px;
+    left: 111px;
+    top: 393px;
+    background: #f28e13;
+    border-radius: 50px;
+    border: none;
+    color: #fff;
+    font-family: system-ui;
+    font-weight: 100;
+    font-size: large;
+    font-weight: 600;
+  }
+  .createAcount {
+    top: 462px;
+    position: absolute;
+    width: 244px;
+    height: 53px;
+    left: 72px;
+    background: #f28e13;
+    border-radius: 50px;
+    color: #fff;
+    font-family: system-ui;
+    font-weight: 100;
+    font-size: large;
+    font-weight: 600;
+    border: none;
+  }
+  .title {
+    position: absolute;
+    width: 335px;
+    height: 44px;
+    left: 70px;
+    top: 280px;
+  }
+  .caption {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100%;
+  }
+  .email, 
+  .password{
+    position: absolute;
+    width: 223px;
+    height: 30px;
+    left: 44px;
+    color: #fff;
+    background-color: #f9f0ee;
+    border: none;
+    border-bottom: 1px solid #f28e13;
+  }
+  .email{
+    top: 416px;
+  }
+  .password {
+    top: 469px;
+  }
+
+  .login2,
+  .google {
+    top: 520px;
+    position: absolute;
+    width: 244px;
+    height: 53px;
+    left: 72px;
+    background: #f28e13;
+    border-radius: 50px;
+    color: #fff;
+    font-family: system-ui;
+    font-size: large;
+    font-weight: 600;
+    border: none;
+  }
+  .login2 {
+    top: 520px;
+  }
+  .google {
+    top: 600px;
+  }
+
+  .name,
+  .email2,
+  .password2,
+  .confirmPass {
+    color: #fff;
+    background-color: #f9f0ee;
+    border: none;
+    border-bottom: 1px solid #f28e13;
+    margin: 3px;
+    margin-left: 20%;
+  }
+
+  .return {
+    background-image: url("./img/arrow.png");
+    border: none;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+  }
+}
