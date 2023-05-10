@@ -27,22 +27,26 @@ function login(navigateTo) {
   inputPass.placeholder = 'Password';
   inputPass.classList.add('password');
 
-  buttonLogin2.textContent = 'Login';
+  buttonLogin2.textContent = 'Login'
   buttonLogin2.classList.add('login2');
   buttonLogin2.addEventListener('click', () => {
-    navigateTo('/wall');
-    // loginFirebase();
+    navigateTo('/wall')
+    loginFirebase()
   });
-  buttonGoogle.textContent = 'continue with GOOGLE';
+  buttonGoogle.textContent = 'continue with GOOGLE'
   buttonGoogle.classList.add('google');
   buttonGoogle.addEventListener('click', () => {
-    navigateTo('/wall');
+    navigateTo('/wall')
   });
-  buttonReturn.textContent = 'Home';
+  buttonReturn.textContent = '.'
   buttonReturn.classList.add('return');
   buttonReturn.addEventListener('click', () => {
-    navigateTo('/');
+    navigateTo('/')
   });
+
+  form.append(inputEmail, inputPass, buttonLogin2, buttonGoogle, buttonReturn);
+  section.append(logo, title, caption, form);
+  return section;
 
   form.append(inputEmail, inputPass, buttonLogin2, buttonGoogle, buttonReturn);
   section.append(logo, title, caption, form);
