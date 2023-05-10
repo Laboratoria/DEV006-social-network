@@ -17,7 +17,7 @@ export const profile= `
     <textarea class="insertInfo" placeholder="+56900000000"></textarea>
     <p>Password</p>
     <textarea class="insertInfo" type="password" placeholder="Mypassword"></textarea> 
-    <button class="buttons">Keep</button> 
+    <button class="buttons">Create account</button> 
     </div>
   </section>
 `

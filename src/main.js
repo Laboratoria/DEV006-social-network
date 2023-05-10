@@ -1,45 +1,96 @@
-/* eslint-disable no-console */
 // Importar las vistas
-import { createUserWithEmailAndPassword } from 'firebase/auth';
+
 import { home } from './pages/home.js';
-import { auth } from './lib/index.js';
+import { createAccount } from './pages/createAccount.js';
 
 const root = document.getElementById('root');
 
-const routes = [
-  { path: '/', component: home },
-];
-home(root);
-// const default= '/';
+const routes = {
+  '/': home,
+  '/createAccount': createAccount,
+};
 
-const loginForm = document.querySelector('form');
+export const navigateTo = (pathname) => {
+  window.history.pushState({}, pathname, window.location.origin + pathname);
+  root.innerHTML = '';
+  root.appendChild(routes[pathname](navigateTo));
+};
 
-loginForm.addEventListener('submit', async (e) => {
-  e.preventDefault();
+window.onpopstate = () => {
+  root.innerHTML = '';
+  root.appendChild(routes[window.location.pathname](navigateTo));
+};
 
-  const email = loginForm.querySelector('input[type="email"]').value;
-  const password = loginForm.querySelector('input[type="password"]').value;
+navigateTo('/');
 
-  console.log(email, password);
-  // promesa de la funcion, bloque try.. catch debe ir acompañado de async(funcion asyncrona)
-  // await espera que la funcion cumpla con los parametros para ver un resultado o error
-  try {
-    const userCredentials = await createUserWithEmailAndPassword(auth, email, password);
-    console.log(userCredentials);
-  } catch (error) {
-    console.log(error.message);
-    console.log(error.code);
+/*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+export const navigateTo = (pathname) => {
+  /* window.history.pushState(
+    {},
+    pathname,
+    window.location.origin + pathname,
+  );
+  // root.removeChild(root.firstChild);
+  root.innerHTML = '';
+  root.appendChild(routes[pathname](this));
+}; */
 
-    if (error.code === 'auth/email-already-in-use') {
-      alert('Email already in use');
-    } else if (error.code === 'auth/invalid-email') {
-      alert('Invalid email');
-    } else if (error.code === 'auth/weak-password') {
-      alert('Your password must have a minimum of 6 characters ');
-    } else if (error.code === 'auth/invalid-email' && error.code === 'auth/weak-password') {
-      alert('Your email and password are invalid');
-    } else if (error.code) {
-      alert('Something went wrong');
-    }
-  }
-});
+/* const getDefaultComponent = () => {
+// Puedes reemplazar esto con un componente de error personalizado si lo deseas
+  const errorComponent = document.createElement('div');
+  errorComponent.innerText = 'Error: Ruta no encontrada';
+  return errorComponent;
+}; */
+
+/* window.onpopstate = () => {
+  // const component = routes[window.location.pathname] // || getDefaultComponent;
+  const path = window.location.pathname;
+  // root.removeChild(root.firstChild);
+  // root.appendChild(component());
+  navigateTo(path);
+}; */
+
+// navigateTo('/');
+
+// const initialComponent = routes[window.location.pathname] || getDefaultComponent;
+// root.appendChild(initialComponent());
+
+// const routes = (route) => {
+//   root.innerHTML = '';
+
+//   switch (route) {
+//     case './': {
+//       return root.appendChild(home());
+//       break;
+//     }
+//     case './createAccount': {
+//     return root.appendChild(createAccount());
+//     }
+//     // Agrega más casos de rutas aquí si es necesario
+//     default: {
+//       // Puedes agregar una ruta predeterminada o manejar casos no coincidentes
+//       break;
+//     }
+//   }
+// };
+
+// export {routes}
