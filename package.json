@@ -30,6 +30,7 @@
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jest": "^25.3.0",
+    "firebase-mock": "^2.3.2",
     "htmlhint": "^1.0.0",
     "jest": "^27.5.1",
     "regenerator-runtime": "^0.13.1",
@@ -47,6 +48,7 @@
   },
   "dependencies": {
     "firebase": "^9.19.1",
-    "jsdom": "^22.0.0"
+    "jsdom": "^22.0.0",
+    "mockfirebase": "^0.12.0"
   }
 }

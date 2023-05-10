@@ -1,23 +1,48 @@
 /**
  * @jest-environment jsdom
  */
+import { initializeApp } from 'firebase/app';
+/* import { getAuth } from 'firebase/auth';
+import { collection, getFirestore } from 'firebase/firestore'; */
+import { addPost } from '../src/lib/index.js';
 import { newpost } from '../src/view/newpost';
-import { auth } from '../src/lib/index.js';
+import { firebaseConfig } from '../src/firebase.config.js';
 
-describe('se crea el elemento #userName con el contenido de auth de firebase', () => {
-  let newpostDiv;
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
 
-  beforeEach(async () => {
-    // Inicializar el usuario actual de Firebase antes de cada prueba
-    await auth.signInWithEmailAndPassword('user@example.com', 'password');
+// Initialize Auth and Firestore
+/* const auth = getAuth(app);
+const firestore = getFirestore(app); */
 
-    newpostDiv = newpost();
-  });
+// Collection Reference
+/* const postCollection = collection(firestore, 'post'); */
 
-  afterEach(jest.clearAllMocks);
+// Crear un mock de la instancia de Firebase
+jest.mock('../src/firebase.config.js', () => ({
+  initializeApp: jest.fn(),
+  auth: jest.fn(),
+  database: jest.fn(),
+}));
 
-  it('should render newpost view', () => {
-    expect(newpostDiv.querySelector('#userName').textContent).toBe(auth.currentUser.displayName);
+// Realizar el test unitario utilizando el mock de Firebase
+describe('ejemplo de test unitario con mock de Firebase', () => {
+  test('verificar el valor del nombre de usuario', async () => {
+    // Configurar el mock de Firebase
+    const mockUser = {
+      uid: '1234',
+      displayName: 'John Doe',
+    };
+    app.auth.mockReturnValue({
+      currentUser: mockUser,
+    });
+
+    // Llamar a la función que utiliza el objeto auth
+    await addPost();
+
+    // Verificar que el valor del nombre de usuario es correcto
+    const userNameElement = document.getElementById('userName');
+    expect(userNameElement.textContent).toBe(mockUser.displayName);
   });
 });
 

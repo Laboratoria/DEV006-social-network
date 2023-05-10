@@ -12,12 +12,12 @@ import {
   updateProfile,
 } from 'firebase/auth';
 import {
-  collection, getFirestore, getDocs, addDoc, serverTimestamp,
+  collection, getFirestore, getDocs, addDoc, serverTimestamp, deleteDoc, doc
   // Se importa serveTimestamp para obtener fecha y hora del post
 } from 'firebase/firestore';
 import { firebaseConfig } from '../firebase.config.js';
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
+export const app = initializeApp(firebaseConfig);
 
 export const auth = getAuth(app);
 
@@ -40,6 +40,17 @@ getDocs(colRef)
   .catch((error) => {
     console.log(error.message);
   });
+
+export const deleteAddDoc = (id) => {
+  const borrar = doc(colRef, id);
+  return deleteDoc(borrar);
+    .then(() => {
+      console.log("funciona");
+    })
+    .catch((error) => {
+      console.log(error.message);
+    });
+};
 
 // adding documents
 export const addPost = (petName, petDescription, formPost) => {
