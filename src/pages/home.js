@@ -1,3 +1,6 @@
+/*
+* @param [function] navigateTo: metodo para navegar a otra vista
+*/
 export function home(navigateTo) {
   const container = document.createElement('div');
   const header = document.createElement('header');
