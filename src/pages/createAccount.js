@@ -1,8 +1,8 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { auth } from '../lib/firebase.js';
 
-export function createAccount() {
+export function createAccount(navigateTo) {
   // Crear elementos
   const container = document.createElement('div');
   const header = document.createElement('header');
@@ -80,6 +80,18 @@ export function createAccount() {
       } else if (error.code) {
         alert('Something went wrong');
       }
+    }
+  });
+  console.log('hola');
+  continueWithGoogleButton.addEventListener('click', async (e) => {
+    e.preventDefault();
+    const provider = new GoogleAuthProvider();
+
+    try {
+      const credentials = await signInWithPopup(auth, provider);
+      console.log(credentials);
+    } catch (error) {
+      console.log(error);
     }
   });
   return container;
