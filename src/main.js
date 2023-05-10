@@ -1,8 +1,10 @@
-import home from './lib/home.js';
-import login from './lib/login.js';
-import createAcount from './lib/createAcount.js';
-import error from './lib/error.js';
+import './lib/firebase.js';
+import home from './templates/home.js';
+import login from './templates/login.js';
+import createAcount from './templates/createAcount.js';
+import error from './templates/error.js';
 // import navigateTo from './lib/index.js';
+console.log('HOlA')
 
 const routes = [
   { path: '/', component: home },
