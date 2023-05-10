@@ -1,10 +1,4 @@
-//import { myFunction } from './lib/index.js';
+import { welcomePage } from './pages/home.js';
 
-const registerButton = document.getElementById('registerButton');
-const registerSection = document.getElementById('registerSection');
-const welcomeSection = document.getElementById('welcomeSection');
-
-registerButton.addEventListener('click', () => {
-  registerSection.style.display = 'flex';
-  welcomeSection.style.display = 'none';
-})
+const root = document.querySelector('.root');
+root.appendChild(welcomePage());
