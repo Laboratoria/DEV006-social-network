@@ -11,8 +11,12 @@ function signup(navigateTo) {
   const inputEmail = document.createElement('input');
   const inputPassword = document.createElement('input');
   const question = document.createElement('h5');
+  const yes = document.createElement('h5');
+  const no = document.createElement('h5');
+  const checkboxYes = document.createElement('input');
+  const checkboxNo = document.createElement('input');
   const buttonEnterSignup = document.createElement('button');
-  const buttonReturnSignup = document.createElement('button');
+  const buttonReturnSignup = document.createElement('img');
 
   const logo = document.createElement('img');
   const header = document.createElement('div');
@@ -26,9 +30,20 @@ function signup(navigateTo) {
   passwordSignup.textContent = 'Contraseña';
   UserSignup.textContent = 'Nombre de Usuario';
   question.textContent = 'Esta aplicación esta pensada para personas que se identifican como mujeres. Por favor responde: ¿Te identificas como mujer?  ';
+  checkboxYes.type = 'radio';
+  checkboxNo.type = 'radio';
+  checkboxYes.id = 'Yes';
+  checkboxNo.id = 'No';
+  checkboxYes.name = 'checkbox';
+  checkboxNo.name = 'checkbox';
+  yes.textContent = 'Si';
+  no.textContent = 'No';
+  yes.id = 'labelYes';
+  no.id = 'labelNo';
+  buttonReturnSignup.setAttribute('src', 'images/arrow.png');
 
   buttonEnterSignup.textContent = 'Registrarte';
-  buttonReturnSignup.textContent = 'X';
+
   buttonReturnSignup.addEventListener('click', () => {
     navigateTo('/');
   });
@@ -59,10 +74,14 @@ function signup(navigateTo) {
     inputPassword,
     buttonEnterSignup,
     question,
+    checkboxYes,
+    checkboxNo,
+    yes,
+    no,
   );
   sectionForm.append(form);
   sectionHeader.append(header, logo);
-  section.append(sectionHeader, sectionForm, form);
+  section.append(sectionHeader, buttonReturnSignup, sectionForm, form);
 
   return section;
 }
