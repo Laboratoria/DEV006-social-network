@@ -12,7 +12,7 @@ import {
   updateProfile,
 } from 'firebase/auth';
 import {
-  collection, getFirestore, getDocs, addDoc, serverTimestamp, deleteDoc, doc
+  collection, getFirestore, getDocs, addDoc, serverTimestamp, deleteDoc, doc,
   // Se importa serveTimestamp para obtener fecha y hora del post
 } from 'firebase/firestore';
 import { firebaseConfig } from '../firebase.config.js';
@@ -40,18 +40,18 @@ getDocs(colRef)
   .catch((error) => {
     console.log(error.message);
   });
+// delete documents
+export const deletePost = (id) => {
+  const documentDeleteDoc = doc(colRef, id);
 
-export const deleteAddDoc = (id) => {
-  const borrar = doc(colRef, id);
-  return deleteDoc(borrar);
+  return deleteDoc(documentDeleteDoc)
     .then(() => {
-      console.log("funciona");
+      console.log('Funciona Delete');
     })
-    .catch((error) => {
-      console.log(error.message);
+    .catch(() => {
+      console.log('No funciona');
     });
 };
-
 // adding documents
 export const addPost = (petName, petDescription, formPost) => {
   const userName = auth.currentUser.displayName;
@@ -100,7 +100,7 @@ export const createUser = async () => {
     const userCredetial = await createUserWithEmailAndPassword(auth, email.value, password.value);
     const user = userCredetial.user;
     console.log(user);
-    const username = userName + lastName;// Obtenemos el valor del input
+    const username = userName + lastName;
     updateProfile(auth.currentUser, {
       displayName: username,
       // función de firebase para darle valor al displayName el cual va a ser el nombre del usuario

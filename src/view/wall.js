@@ -1,5 +1,5 @@
 import { getDocs, query, orderBy } from 'firebase/firestore';
-import { exit, colRef } from '../lib/index.js';
+import { exit, colRef, deletePost } from '../lib/index.js';
 
 export const wall = (navigateTo) => {
   // ------------------------------------------------- Wallpaper
@@ -127,11 +127,40 @@ export const wall = (navigateTo) => {
       posts.forEach((post) => {
         const postArticle = document.createElement('article');
         postArticle.setAttribute('class', 'postArticle');
+        postArticle.setAttribute('data-id', post.id);
 
         const username = document.createElement('span');
         username.textContent = post.userid;
         // obtenemos el valor de userid del display name para que se muestre en el post
         username.setAttribute('class', 'wallUsername');
+
+        const iconoPoints = document.createElement('img');
+        iconoPoints.setAttribute('src', '../img/menupuntos.png');
+        iconoPoints.setAttribute('id', 'iconoPoints');
+
+        const menuPoints = document.createElement('ul');
+        menuPoints.setAttribute('class', 'menuPoints');
+
+        const iconClose = document.createElement('img');
+        iconClose.setAttribute('src', '../img/trash.png');
+
+        const iconDelete = document.createElement('img');
+        iconDelete.setAttribute('src', '../img/cancel.png');
+
+        const liDelete = document.createElement('li');
+        liDelete.setAttribute('class', 'liDelete');
+        liDelete.textContent = 'Delete';
+        liDelete.addEventListener('click', () => {
+          deletePost(post.id, postsSection);
+          navigateTo('/wall');
+        });
+
+        const iconEdit = document.createElement('img');
+        iconEdit.setAttribute('src', '../img/pencil.png');
+
+        const liEdit = document.createElement('li');
+        liEdit.setAttribute('class', 'liEdit');
+        liEdit.textContent = 'Edit';
 
         const descriptionPet = document.createElement('p');
         descriptionPet.textContent = post.description;
@@ -151,7 +180,8 @@ export const wall = (navigateTo) => {
         pawMatch.setAttribute('src', 'img/matchvacio.png');
 
         reactionContainer.append(namePet, likeHeart, pawMatch);
-        postArticle.append(username, descriptionPet, reactionContainer);
+        postArticle.append(username, iconoPoints, menuPoints, descriptionPet, reactionContainer);
+        menuPoints.append(iconClose, iconDelete, liDelete, iconEdit, liEdit);
         postsSection.append(postArticle);
       });
     })
