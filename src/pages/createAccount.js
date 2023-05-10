@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../lib/firebase.js';
 
@@ -17,6 +18,7 @@ export function createAccount() {
   const continueWithGoogleButton = document.createElement('button');
 
   // Establecer atributos y contenido
+  container.classList.add('container');
   logo.setAttribute('src', './images/logoNameEasygym.png');
   emailLabel.textContent = 'Email';
   emailInput.classList.add('insertInfo');

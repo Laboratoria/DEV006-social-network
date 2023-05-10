@@ -11,7 +11,7 @@ const routes = {
 };
 
 function navigateTo(pathname) {
-  window.history.pushState({}, pathname, window.location.origin + pathname); // Guada el historial
+  window.history.pushState({}, pathname, window.location.origin + pathname); // Guarda el historial
   root.innerHTML = '';
   const view = routes[pathname];
   root.appendChild(view(navigateTo));

@@ -69,6 +69,12 @@ input::placeholder {
 
 /* CSS DE PAGE HOME */
 
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .descriptionPage {
     display: flex;
     flex-direction: column;
