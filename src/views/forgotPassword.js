@@ -14,10 +14,9 @@ function forgotPassword(navigateTo) {
   email.textContent = 'Enter your email:';
   email.className = 'name-email';
 
-  const buttonReturn = document.createElement('a');
+  const buttonReturn = document.createElement('button');
   buttonReturn.textContent = 'Back';
-  buttonReturn.href = '/';
-  buttonReturn.className = 'return-link';
+  buttonReturn.classList.add('buttonReturn');
   buttonReturn.addEventListener('click', () => {
     navigateTo('/');
   });

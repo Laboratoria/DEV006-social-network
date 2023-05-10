@@ -9,16 +9,14 @@ box-sizing: border-box;
 
 .container-app {
   height: 190vw;
-  margin: 8% auto;
+  margin: 2% auto ;
   width: 90%;
-  border-radius:2%;
+  border-radius: 30px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   background-color: #B4D7EA;
   border:4px solid #00808D;
-  
-
 }
 
 body{
@@ -60,13 +58,13 @@ body{
   margin-left: 12%;
 }
 
-.return-link {
+/* .return-link {
   font-family:"Roboto Condensed";
-  color: #00c5db;
+  color: #00bed3;
   text-decoration: none;
   font-size: 20px;
   margin-left: 2%;
-}
+} */
 .formForgot {
   background-color: #0B3954;
   border-radius: 10%;
@@ -102,7 +100,7 @@ body{
   background-color: #D9D9D9;
 }
 
-.btnSignIn, .buttonLogin {
+.btnSignIn, .buttonLogin, .btnSend, .btn-windowSignUp {
   width: 25%;
   height: 4%;
   display: block;
@@ -116,15 +114,25 @@ body{
   text-shadow: 2px 2px 5px rgb(0, 0, 0);
 }
 
-.buttonReturn {
-    font-weight: bolder;
-    font-size:15px;
-    border:none;
-    color:#00808D;
-    background-color:#0B3954;
-    padding:3%;   
+.btn-windowSignUp {
+  margin-top: 10%;
 }
 
+.buttonReturn {
+  color: #00bed3;
+  font-size: 20px;
+  margin-left: 2%;
+    font-weight: bolder;
+    border:none;
+    background-color:#0B3954;
+    padding:3%;
+    margin-bottom: 0;
+}
+
+.homePage {
+  font-size: 22px;
+  color: #0B3954;
+}
 
 .btnGoogle {
   width: 40%;
@@ -148,13 +156,13 @@ body{
 /* Board view */
 
 .container-app-board {
-  height: 932px;
-  padding: 5%;
-  margin:10%;
-  width: 80%;
+  height: 190vw;
+  margin: 2% auto;
+  width: 90%;
   border-radius: 30px;
   background-color: #B4D7EA;
-  border: 6px solid #00808D;
+  border:4px solid #00808D;
+  padding: 5%;
   text-align: end;
   
 }
@@ -230,17 +238,17 @@ body{
  }
 
 .container-formSignUp{
-  border:4px solid #00808D;
+  height: 190vw;
+  margin: 2% auto;
   width: 90%;
-  height: 170vw;
-  margin: 5% auto;
   border-radius: 30px;
-  background-color: #B4D7EA;
-  display:flex;
-  justify-content: center;
+  display: flex;
   flex-direction: column;
-  
-
+  justify-content: start;
+  background-color: #B4D7EA;
+  border:4px solid #00808D;
+  border:4px solid #00808D;
+  display:flex;
 }
 
 .parrafo-signUp{
@@ -262,7 +270,7 @@ body{
   border: 1px solid #d9d9d9;
 }
 
-.btn-windowSignUp{
+/* .btn-windowSignUp{
   width: 80%;
   height: 6%;
   border:none;
@@ -274,5 +282,5 @@ body{
   font-weight: bolder;
   font-family:"Roboto Condensed";
   font-size: medium;
-}
+} */
 

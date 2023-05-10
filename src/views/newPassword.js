@@ -18,10 +18,9 @@ function newPassword(navigateTo) {
   password.className = 'name-password';
   confirmPassword.className = 'name-password';
 
-  const buttonReturn = document.createElement('a');
+  const buttonReturn = document.createElement('button');
   buttonReturn.textContent = 'Back';
-  buttonReturn.href = '//forgotPassword';
-  buttonReturn.className = 'return-link';
+  buttonReturn.classList.add('buttonReturn');
   buttonReturn.addEventListener('click', () => {
     navigateTo('/forgotPassword');
   });

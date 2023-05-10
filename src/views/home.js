@@ -2,6 +2,10 @@
 function home(navigateTo) {
   const section = document.createElement('section');
 
+  const textHome = document.createElement('h1');
+  textHome.textContent = 'Home page';
+  textHome.classList.add('homePage');
+
   const title = document.createElement('h2');
   title.textContent = 'Community of Buildings';
   title.className = 'title';
@@ -49,7 +53,7 @@ function home(navigateTo) {
 
   const signUp = document.createElement('a');
   signUp.textContent = 'Sign Up';
-  signUp.href = 'Sign Up';
+  signUp.href = '/signup';
   signUp.classList.add('btnSignUp');
 
   const btnGoogle = document.createElement('button');
@@ -65,7 +69,7 @@ function home(navigateTo) {
   });
 
   container.append(title, imageBuilding, description, email, inputEmail, password, inputPassword, forgotPassword, btnSignIn, btnGoogle, signUp);
-  section.appendChild(container);
+  section.append(textHome, container);
   return section;
 }
 
