@@ -1,5 +1,27 @@
-// Este es el punto de entrada de tu aplicacion
+// Importar las vistas
 
-import { myFunction } from './lib/index.js';
+import { home } from './pages/home.js';
+import { createAccount } from './pages/createAccount.js';
 
-myFunction();
+const root = document.getElementById('root');
+
+const routes = {
+  '/': home,
+  '/createAccount': createAccount,
+};
+
+function navigateTo(pathname) {
+  window.history.pushState({}, pathname, window.location.origin + pathname); // Guarda el historial
+  root.innerHTML = '';
+  const view = routes[pathname];
+  root.appendChild(view(navigateTo));
+}
+
+window.onpopstate = () => {
+  root.innerHTML = '';
+  const path = window.location.pathname;
+  const view = routes[path];
+  root.appendChild(view(navigateTo));
+};
+
+navigateTo('/');
