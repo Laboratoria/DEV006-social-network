@@ -43,7 +43,7 @@ export const colRef = collection(dataBase, 'post');
 
 onSnapshot(colRef, (snapshot) => {
   const posts = [];
-  snapshot.docs.forEach((doc) => {
+  snapshot.docs.forEach(() => {
     posts.push({ ...doc.data(), id: doc.id });
   });
   console.log(posts);
@@ -71,18 +71,14 @@ export const deletePost = (id) => {
 // });
 
 // adding documents
-export const addPost = (petName, petDescription, formPost) => {
+export const addPost = (petName, petDescription) => {
   const userName = auth.currentUser.displayName;
-  const documentAddDoc = addDoc(colRef, {
-    petName: petName.value,
-    description: petDescription.value,
+  return addDoc(colRef, {
+    petName,
+    description: petDescription,
     timestamp: serverTimestamp(), // definimos a timestamp para que se guarde en la colección
     userid: userName, // definimos userid para guardar el nombre de la persona que publica el post
-  })
-    .then(() => {
-      formPost.reset();
-    });
-  console.log(documentAddDoc);
+  });
 };
 
 // Initialize Firebase Authentication and get a reference to the service

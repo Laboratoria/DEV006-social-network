@@ -1,37 +1,23 @@
 /* *
  * @jest-environment jsdom
  */
-/* import { newpost } from '../src/view/newpost'; */
-/* import { MockFirebaseSdk } from 'firebase-mock'; */
+import { newpost } from '../src/view/newpost';
+// import { addPost } from '../src/lib/index.js';
 
-/* import { addPost } from '../src/lib/index.js'; */
-
-/* let mockFirebase;
-
-beforeEach(() => {
-  mockFirebase = new MockFirebaseSdk(
-    // Simular el objeto auth
-    () => ({
-      currentUser: {
-        displayName: 'John Doe', // Simular el displayName del usuario actual
-      },
-      // Simular la instancia de Firestore
-      firestore: () => ({
-        collection: () => ({
-          add: () => Promise.resolve(),
-        }),
-      }),
-    }),
-  );
-  // Reemplazar el objeto de Firebase con el objeto simulado en el archivo de prueba
-  jest.mock('firebase/app', () => mockFirebase);
-});
+// mock de getAuth se utiliza para crear el contenido de userName
+jest.mock('firebase/auth', () => ({
+  getAuth: () => ({
+    currentUser: {
+      displayName: 'John Doe', // Simular el displayName del usuario actual
+    },
+  }),
+}));
 
 // Realizar el test unitario utilizando el objeto simulado de Firebase
-describe('ejemplo de test unitario con mock de Firebase', () => {
+/* describe('ejemplo de test unitario con mock de Firebase', () => {
   test('verificar el valor del nombre de usuario', () => {
     // Llamar a la función que utiliza el objeto auth
-    addPost();
+    addPost('Fido', 'Perro lindo');
 
     // Verificar que el valor del nombre de usuario es correcto
     const userNameElement = document.getElementById('userName');
@@ -39,21 +25,15 @@ describe('ejemplo de test unitario con mock de Firebase', () => {
   });
 }); */
 
-/* describe('se crean estos elementos en el componente de newpost', () => {
-  // if (typeof document !== 'undefined') {
-  // Generar un test para comprobar que los elementos del formulario se crean correctamente
+// eslint-disable-next-line jest/no-focused-tests
+describe.only('se crean estos elementos en el componente de newpost', () => {
   let newpostDiv;
 
   beforeEach(() => {
     newpostDiv = newpost();
   });
 
-  afterEach(jest.clearAllMocks);
-
   it('should render newpost view', () => {
-    // const newpostDiv = document.createElement('div');
-    // newpostDiv.append(newpost());
-    // El matcher .toBeTruthy() comprueba si los elementos existen
     expect(newpostDiv).toBeTruthy();
     expect(newpostDiv.querySelector('header')).toBeTruthy();
     expect(newpostDiv.querySelector('nav')).toBeTruthy();
@@ -71,11 +51,29 @@ describe('ejemplo de test unitario con mock de Firebase', () => {
     expect(newpostDiv.querySelector('textarea')).toBeTruthy();
     expect(newpostDiv.querySelector('button')).toBeTruthy();
   });
-}); */
 
-/* describe('newpost', () => {
-  test('should call addPost with correct arguments when form is submitted with non-empty
-   petName and petDescription', () => {
+  /* borrar todos los mocks creados por Jest después de cada prueba */
+  afterEach(jest.clearAllMocks);
+});
+
+// jest.mock('firebase/auth', () => ({
+//   getAuth: () => ({
+//     currentUser: {
+//       displayName: 'John Doe', // Simular el displayName del usuario actual
+//     },
+//   }),
+// }));
+
+jest.mock('firebase/firestore', () => ({
+    addDoc: (collection(database, 'post')) => ({
+      petName: 'Fido',
+      description: 'Perro lindo',
+      userid: 'John Doe',
+  }),
+}));
+
+describe('newpost', () => {
+  test('should call addPost with correct arguments when form is submitted with non-empty petName and petDescription', () => {
     // código que usa el objeto document
 
     // Simulamos la función addPost
@@ -104,8 +102,7 @@ describe('ejemplo de test unitario con mock de Firebase', () => {
     expect(addPostMock).toHaveBeenCalledWith('Fido', 'A very good dog', formPost);
   });
 
-  test('should call navigateTo with correct argument when form is submitted with
-  non-empty petName and petDescription', () => {
+  test('should call navigateTo with correct argument when form is submitted with non-empty petName and petDescription', () => {
     // Simulamos la función navigateTo
     const navigateToMock = jest.fn();
     // Creamos el elemento div que devuelve la función newpost
@@ -130,4 +127,4 @@ describe('ejemplo de test unitario con mock de Firebase', () => {
     // Verificamos que la función navigateTo haya sido llamada con el argumento correcto
     expect(navigateToMock).toHaveBeenCalledWith('/wall');
   });
-}); */
+});
