@@ -12,7 +12,7 @@ import {
   updateProfile,
 } from 'firebase/auth';
 import {
-  collection, getFirestore, getDocs, addDoc, serverTimestamp, deleteDoc, doc, onSnapshot
+  collection, getFirestore, addDoc, serverTimestamp, deleteDoc, doc, onSnapshot,
   // Se importa serveTimestamp para obtener fecha y hora del post
 } from 'firebase/firestore';
 import { firebaseConfig } from '../firebase.config.js';
@@ -29,17 +29,26 @@ const dataBase = getFirestore(app);
 export const colRef = collection(dataBase, 'post');
 
 // get collection data
-getDocs(colRef)
-  .then((snapshot) => {
-    const posts = [];
-    snapshot.docs.forEach((doc) => {
-      posts.push({ ...doc.data(), id: doc.id });
-    });
-    /* console.log(posts); */
-  })
-  .catch((error) => {
-    console.log(error.message);
+// getDocs(colRef)
+//   .then((snapshot) => {
+//     const posts = [];
+//     snapshot.docs.forEach((doc) => {
+//       posts.push({ ...doc.data(), id: doc.id });
+//     });
+//     /* console.log(posts); */
+//   })
+//   .catch((error) => {
+//     console.log(error.message);
+//   });
+
+onSnapshot(colRef, (snapshot) => {
+  const posts = [];
+  snapshot.docs.forEach((doc) => {
+    posts.push({ ...doc.data(), id: doc.id });
   });
+  console.log(posts);
+});
+
 // delete documents
 export const deletePost = (id) => {
   const documentDeleteDoc = doc(colRef, id);
@@ -52,14 +61,15 @@ export const deletePost = (id) => {
       console.log('No funciona');
     });
 };
-export const getPost = (callback) => colRef;
-onSnapshot((querySnapshot) => {
-  const posts = [];
-  querySnapshot.forEach((doc) => {
-    posts.push({ ...doc.data(), id: doc.id });
-  });
-  callback(posts);
-});
+// export const getPost = (callback) => colRef;
+// onSnapshot((querySnapshot) => {
+//   const posts = [];
+//   querySnapshot.forEach((doc) => {
+//     posts.push({ ...doc.data(), id: doc.id });
+//   });
+//   callback(posts);
+// });
+
 // adding documents
 export const addPost = (petName, petDescription, formPost) => {
   const userName = auth.currentUser.displayName;
