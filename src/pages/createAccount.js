@@ -55,6 +55,10 @@ export function createAccount(navigateTo) {
 
   // Add event listeners
 
+  linkSignIn.addEventListener('click', () => {
+    navigateTo('/signIn');
+  });
+
   createButton.addEventListener('click', async (e) => {
     e.preventDefault();
 
