@@ -1,13 +1,17 @@
+/* eslint-disable import/named */
+/* eslint-disable no-unused-vars */
 // Importar las vistas
 
 import { home } from './pages/home.js';
 import { createAccount } from './pages/createAccount.js';
+import { signIn } from './pages/signIn.js';
 
 const root = document.getElementById('root');
 
 const routes = {
   '/': home,
   '/createAccount': createAccount,
+  '/signIn': signIn,
 };
 
 function navigateTo(pathname) {
