@@ -12,7 +12,7 @@ import {
   updateProfile,
 } from 'firebase/auth';
 import {
-  collection, getFirestore, getDocs, addDoc, serverTimestamp, deleteDoc, doc,
+  collection, getFirestore, getDocs, addDoc, serverTimestamp, deleteDoc, doc, onSnapshot
   // Se importa serveTimestamp para obtener fecha y hora del post
 } from 'firebase/firestore';
 import { firebaseConfig } from '../firebase.config.js';
@@ -41,12 +41,32 @@ getDocs(colRef)
     console.log(error.message);
   });
 // delete documents
-export const deletePost = (id) => {
+/* export const deletePost = (id) => {
   const documentDeleteDoc = doc(colRef, id);
 
   return deleteDoc(documentDeleteDoc)
     .then(() => {
       console.log('Funciona Delete');
+    })
+    .catch(() => {
+      console.log('No funciona');
+    });
+}; */
+// delete documents
+export const deletePost = (id) => {
+  const documentDeleteDoc = doc(colRef, id);
+  return deleteDoc(documentDeleteDoc)
+    .then(() => {
+      console.log('Funciona Delete');
+      // Actualizar automáticamente el muro después de eliminar el post
+      colRef.onSnapshot((querySnapshot) => {
+        const posts = [];
+        querySnapshot.forEach((doc) => {
+          posts.push({ id: doc.id, ...doc.data() });
+        });
+        // Actualizar el estado del muro con la nueva lista de posts
+        addPost(posts);
+      });
     })
     .catch(() => {
       console.log('No funciona');
@@ -100,7 +120,7 @@ export const createUser = async () => {
     const userCredetial = await createUserWithEmailAndPassword(auth, email.value, password.value);
     const user = userCredetial.user;
     console.log(user);
-    const username = userName + lastName;
+    const username = `${userName} ${lastName}`;
     updateProfile(auth.currentUser, {
       displayName: username,
       // función de firebase para darle valor al displayName el cual va a ser el nombre del usuario

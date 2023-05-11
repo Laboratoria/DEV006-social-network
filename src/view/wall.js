@@ -150,10 +150,6 @@ export const wall = (navigateTo) => {
         const liDelete = document.createElement('li');
         liDelete.setAttribute('class', 'liDelete');
         liDelete.textContent = 'Delete';
-        liDelete.addEventListener('click', () => {
-          deletePost(post.id, postsSection);
-          navigateTo('/wall');
-        });
 
         const iconEdit = document.createElement('img');
         iconEdit.setAttribute('src', '../img/pencil.png');
@@ -179,10 +175,65 @@ export const wall = (navigateTo) => {
         const pawMatch = document.createElement('img');
         pawMatch.setAttribute('src', 'img/matchvacio.png');
 
+        /* Modal para mensaje de confirmación de eliminar post */
+        const modal = document.createElement('dialog');
+        modal.setAttribute('id', 'modal');
+
+        const ulModal = document.createElement('ul');
+        ulModal.setAttribute('class', 'ulModal');
+
+        const pPregunta = document.createElement('p');
+        pPregunta.textContent = 'Are you sure you want to delete this post?';
+
+        const liConfirm = document.createElement('li');
+        liConfirm.setAttribute('class', 'liConfirm');
+        liConfirm.textContent = 'Delete';
+
+        const liCancel = document.createElement('li');
+        liCancel.setAttribute('class', 'liCancel ');
+        liCancel.textContent = 'Cancel';
+        liCancel.addEventListener('click', () => {
+          modal.close();
+        });
+
+        liDelete.addEventListener('click', () => {
+          modal.open = true;
+        });
+
+        /* Mensaje de eliminado confirmado */
+        const modalConfirm = document.createElement('dialog');
+        modalConfirm.setAttribute('id', 'modalConfirm');
+
+        const pDeleted = document.createElement('p');
+        pDeleted.textContent = 'Deleted';
+
+        const imgDeleted = document.createElement('img');
+        imgDeleted.setAttribute('src', '../img/check.png');
+
+        liConfirm.addEventListener('click', () => {
+          modal.close();
+          deletePost(post.id, postsSection);
+          modalConfirm.open = true;
+          setTimeout(() => {
+            modalConfirm.close();
+          }, 3000); // 3000 milisegundos = 3 segundos
+        });
+
         reactionContainer.append(namePet, likeHeart, pawMatch);
-        postArticle.append(username, iconoPoints, menuPoints, descriptionPet, reactionContainer);
+        postArticle.append(
+          username,
+          iconoPoints,
+          menuPoints,
+          descriptionPet,
+          reactionContainer,
+          modal,
+          modalConfirm,
+        );
         menuPoints.append(iconClose, iconDelete, liDelete, iconEdit, liEdit);
         postsSection.append(postArticle);
+        modal.append(pPregunta, ulModal);
+        ulModal.append(liConfirm, liCancel);
+        modalConfirm.append(pDeleted, imgDeleted);
       });
     })
     .catch((err) => {

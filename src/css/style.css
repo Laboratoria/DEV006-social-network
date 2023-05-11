@@ -87,6 +87,24 @@ nav ul li a{
 .nav-menu.active {
     right: 0;
 }
+/* .menuPoints{
+    position: fixed;
+    z-index: 1;
+    right: 200%;
+    top: 4.4rem;
+    flex-direction: column;
+    background-color: #292D32;
+    color: white;
+    width: 30%;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow:
+        0 10px 27px rgba(0, 0, 0, 0.05);
+} */
+
+/* #iconoPoints.active:nth-child(2) {
+    opacity: 0;
+} */
 
 .nav-menu {
     position: fixed;
