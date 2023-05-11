@@ -15,13 +15,13 @@ function home(navigateTo) {
   imgPets.alt = 'icono de huella';
   imgPets.classList.add('img-home');
 
-  btnLogin.textContent = 'Soy Amigo';
+  btnLogin.textContent = 'Ya soy Amigo';
   btnLogin.classList.add('btn-login');
   btnLogin.addEventListener('click', () => {
     navigateTo('/login');
   });
 
-  btnRegister.textContent = 'Quiero unirme';
+  btnRegister.textContent = 'Quiero Unirme';
   btnRegister.classList.add('btn-register');
   btnRegister.addEventListener('click', () => {
     navigateTo('/register');
