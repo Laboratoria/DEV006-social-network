@@ -1,0 +1,11 @@
+/* HOME */
+body {
+    background-image: url('./img/HuelasBl.jpg');
+    object-fit: contain;
+}
+.img-home {
+    width: 30%;
+    height: auto;
+    align-items: center;
+    display: flex;
+}
