@@ -1,3 +1,8 @@
+// import { auth } from './lib/configFireBase.js';
+import { auth } from './lib/configFireBase.js';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+
+
 function signup(navigateTo) {
   // creación//
   const section = document.createElement('section');
@@ -41,14 +46,31 @@ function signup(navigateTo) {
   yes.id = 'labelYes';
   no.id = 'labelNo';
   buttonReturnSignup.setAttribute('src', 'images/arrow.png');
-
+  inputEmail.setAttribute('id', 'inputEmail');
+  inputPassword.setAttribute('id', 'inputPassword');
   buttonEnterSignup.textContent = 'Registrarte';
-
   buttonReturnSignup.addEventListener('click', () => {
     navigateTo('/');
   });
+  buttonEnterSignup.addEventListener('click', (e) => {
+    e.preventDefault();
+    const email = inputEmail.value;
+    const password = inputPassword.value;
+    console.log(email, password);
 
-  // agregar clases//
+    // const signValue= (email, password) =>createUserWithEmailAndPassword(auth, email, password);
+
+    auth
+      .createUserWithEmailAndPassword(email, password)
+      .then((userCredential) => {
+        console.log('signup', userCredential);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  });
+
+  // // agregar clases//
 
   header.classList.add('header');
   logo.classList.add('logo');

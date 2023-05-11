@@ -25,7 +25,6 @@ function login(navigateTo) {
   buttonReturn.addEventListener('click', () => {
     navigateTo('/');
   });
-
   // agregar clases//
   section.classList.add('sectionLogin');
   header.classList.add('header');
@@ -38,11 +37,13 @@ function login(navigateTo) {
   // agregar atributos//
   logo.setAttribute('src', 'images/logo.png');
   buttonReturn.setAttribute('src', 'images/arrow.png');
+  inputEmail.setAttribute.id = 'inputEmail';
+  inputPassword.setAttribute.id = 'inputPassword';
 
   // agrupando las secciones//
   sectionHeader.append(header, logo);
   form.append(emailLogin, inputEmail, passwordLogin, inputPassword);
-  sectionForm.append(form,buttonEnter);
+  sectionForm.append(form, buttonEnter);
   section.append(sectionHeader, buttonReturn, sectionForm);
 
   return section;
