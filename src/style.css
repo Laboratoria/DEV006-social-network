@@ -10,11 +10,6 @@
         position: fixed;
     }
 
-    #logoCinergia {
-        width: 70%;
-        padding: 15%;
-    }
-
     .welcomeBody {
         background: linear-gradient(#9a0051, black);
         height: 100%;
@@ -24,9 +19,19 @@
         background: linear-gradient(#9a0051, black);
         height: 100%;
         width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
     }
 
-    .esloganText {
+    .logo {
+        width: 70%;
+        padding: 15%;
+    }
+
+    .articleLogoTxt {
         margin-top: -15%;
         text-align: center;
         font-size: x-large;
@@ -38,17 +43,10 @@
         background-color: #FFFFFF;
         border-radius: 10px;
         margin: 8%;
-        margin-top: 10%;
         font-family: 'Advent Pro', sans-serif;
         text-align: center;
         padding: 5%;
-        margin-bottom: 22%;
-
-    }
-
-    .welcomeText {
-        margin-top: 5%;
-        margin-bottom: 5%;
+        margin-bottom: 40%;
     }
 
     .boxText {
@@ -57,7 +55,7 @@
         margin-bottom: 10%;
     }
 
-    .login {
+    .signInBtn {
         font-family: 'Advent Pro', sans-serif;
         width: 70%;
         margin-bottom: 3%;
@@ -68,7 +66,7 @@
         padding: 4%;
     }
 
-    .register {
+    .signUpBtn {
         font-family: 'Advent Pro', sans-serif;
         width: 70%;
         margin-bottom: 3%;
