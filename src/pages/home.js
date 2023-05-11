@@ -15,19 +15,14 @@ export const welcomePage = (navigateTo) => {
   const bigLogoTxtArticle = document.createElement('article');
   bigLogoTxtArticle.classList.add('articleLogoTxt');
 
-  const bigLogoTxt = document.createElement('h1');
+  const bigLogoTxt = document.createElement('h3');
 
-  const sloganArticle = document.createElement('article');
-  sloganArticle.classList.add('articleSlogan');
+  const welcomeBox = document.createElement('div');
+  welcomeBox.classList.add('welcomeBox');
 
-  const cinergiaSloganTxt = document.createElement('h2');
+  const cinergiaWelcome = document.createElement('h2');
 
-  const cinergiaSloganSpan = document.createElement('span');
-  cinergiaSloganSpan.classList.add('spanSloganCinergia');
-
-  const signInAndSignUpArticle = document.createElement('article');
-  signInAndSignUpArticle.classList.add('signInAndSignUp');
-  signInAndSignUpArticle.setAttribute('id', 'signInSignUp');
+  const cinergiaSloganTxt = document.createElement('h3');
 
   const btnSignIn = document.createElement('button');
   btnSignIn.classList.add('signInBtn');
@@ -42,24 +37,24 @@ export const welcomePage = (navigateTo) => {
   });
 
   btnSignUp.addEventListener('click', () => {
-    navigateTo('signup');
+    navigateTo('/DEV006-CINERGIA/src/pages/signUp.js');
   });
 
-  bigLogoTxt.textContent = 'Cinergia';
-  cinergiaSloganSpan.textContent = 'Conectadxs por el cine';
+  bigLogoTxt.textContent = 'Conectadxs por el cine';
+  cinergiaWelcome.textContent = 'Bienvenidx a Cinergia';
+  cinergiaSloganTxt.textContent = 'Descubre y comparte todo acerca del cine';
   btnSignIn.textContent = 'Ingresa';
   btnSignUp.textContent = 'Regístrate';
 
   logoArticle.appendChild(logoImg);
   bigLogoTxtArticle.appendChild(bigLogoTxt);
-  cinergiaSloganTxt.appendChild(cinergiaSloganSpan);
-  sloganArticle.appendChild(cinergiaSloganTxt);
-  signInAndSignUpArticle.appendChild(btnSignIn);
-  signInAndSignUpArticle.appendChild(btnSignUp);
   welcomeSection.appendChild(logoArticle);
   welcomeSection.appendChild(bigLogoTxtArticle);
-  welcomeSection.appendChild(cinergiaSloganTxt);
-  welcomeSection.appendChild(signInAndSignUpArticle);
+  welcomeBox.appendChild(cinergiaWelcome);
+  welcomeBox.appendChild(cinergiaSloganTxt);
+  welcomeBox.appendChild(btnSignIn);
+  welcomeBox.appendChild(btnSignUp);
+  welcomeSection.appendChild(welcomeBox);
 
   return welcomeSection;
 };
