@@ -12,12 +12,12 @@ import {
   updateProfile,
 } from 'firebase/auth';
 import {
-  collection, getFirestore, getDocs, addDoc, serverTimestamp, deleteDoc, doc,
+  collection, getFirestore, getDocs, addDoc, serverTimestamp, deleteDoc, doc, onSnapshot
   // Se importa serveTimestamp para obtener fecha y hora del post
 } from 'firebase/firestore';
 import { firebaseConfig } from '../firebase.config.js';
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
+export const app = initializeApp(firebaseConfig);
 
 export const auth = getAuth(app);
 
@@ -52,6 +52,14 @@ export const deletePost = (id) => {
       console.log('No funciona');
     });
 };
+export const getPost = (callback) => colRef;
+onSnapshot((querySnapshot) => {
+  const posts = [];
+  querySnapshot.forEach((doc) => {
+    posts.push({ ...doc.data(), id: doc.id });
+  });
+  callback(posts);
+});
 // adding documents
 export const addPost = (petName, petDescription, formPost) => {
   const userName = auth.currentUser.displayName;
