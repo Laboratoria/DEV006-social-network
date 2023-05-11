@@ -29,17 +29,18 @@ const dataBase = getFirestore(app);
 export const colRef = collection(dataBase, 'post');
 
 // get collection data
-getDocs(colRef)
-  .then((snapshot) => {
-    const posts = [];
-    snapshot.docs.forEach((doc) => {
-      posts.push({ ...doc.data(), id: doc.id });
-    });
-    /* console.log(posts); */
-  })
-  .catch((error) => {
-    console.log(error.message);
-  });
+// getDocs(colRef)
+//   .then((snapshot) => {
+//     const posts = [];
+//     snapshot.docs.forEach((doc) => {
+//       posts.push({ ...doc.data(), id: doc.id });
+//     });
+//     /* console.log(posts); */
+//   })
+//   .catch((error) => {
+//     console.log(error.message);
+//   });
+
 // delete documents
 export const deletePost = (id) => {
   const documentDeleteDoc = doc(colRef, id);
@@ -54,18 +55,14 @@ export const deletePost = (id) => {
 };
 
 // adding documents
-export const addPost = (petName, petDescription, formPost) => {
+export const addPost = (petName, petDescription) => {
   const userName = auth.currentUser.displayName;
-  const documentAddDoc = addDoc(colRef, {
-    petName: petName.value,
-    description: petDescription.value,
+  return addDoc(colRef, {
+    petName,
+    description: petDescription,
     timestamp: serverTimestamp(), // definimos a timestamp para que se guarde en la colección
     userid: userName, // definimos userid para guardar el nombre de la persona que publica el post
-  })
-    .then(() => {
-      formPost.reset();
-    });
-  console.log(documentAddDoc);
+  });
 };
 
 // Initialize Firebase Authentication and get a reference to the service

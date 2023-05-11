@@ -68,9 +68,14 @@ export const newpost = (navigateTo) => {
 
   formPost.addEventListener('submit', (event) => {
     event.preventDefault();
-    if (petName !== '' || petDescription !== '') {
-      addPost(petName, petDescription, formPost);
-      navigateTo('/wall');
+    if (petName.value !== '' || petDescription.value !== '') {
+      addPost(petName.value, petDescription.value).then(() => {
+        formPost.reset();
+        navigateTo('/wall');
+      })
+        .catch((error) => {
+          console.log(error);
+        });
     }
   });
 
