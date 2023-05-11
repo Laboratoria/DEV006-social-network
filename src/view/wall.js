@@ -218,7 +218,9 @@ export const wall = (navigateTo) => {
             modalConfirm.close();
           }, 3000); // 3000 milisegundos = 3 segundos
         });
-
+        iconoPoints.addEventListener('click', () => {
+          menuPoints.classList.toggle('active');
+        });
         reactionContainer.append(namePet, likeHeart, pawMatch);
         postArticle.append(
           username,

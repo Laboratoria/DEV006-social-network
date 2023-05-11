@@ -41,7 +41,7 @@ getDocs(colRef)
     console.log(error.message);
   });
 // delete documents
-/* export const deletePost = (id) => {
+export const deletePost = (id) => {
   const documentDeleteDoc = doc(colRef, id);
 
   return deleteDoc(documentDeleteDoc)
@@ -51,27 +51,15 @@ getDocs(colRef)
     .catch(() => {
       console.log('No funciona');
     });
-}; */
-// delete documents
-export const deletePost = (id) => {
-  const documentDeleteDoc = doc(colRef, id);
-  return deleteDoc(documentDeleteDoc)
-    .then(() => {
-      console.log('Funciona Delete');
-      // Actualizar automáticamente el muro después de eliminar el post
-      colRef.onSnapshot((querySnapshot) => {
-        const posts = [];
-        querySnapshot.forEach((doc) => {
-          posts.push({ id: doc.id, ...doc.data() });
-        });
-        // Actualizar el estado del muro con la nueva lista de posts
-        addPost(posts);
-      });
-    })
-    .catch(() => {
-      console.log('No funciona');
-    });
 };
+export const getPost = (callback) => colRef;
+onSnapshot((querySnapshot) => {
+  const posts = [];
+  querySnapshot.forEach((doc) => {
+    posts.push({ ...doc.data(), id: doc.id });
+  });
+  callback(posts);
+});
 // adding documents
 export const addPost = (petName, petDescription, formPost) => {
   const userName = auth.currentUser.displayName;

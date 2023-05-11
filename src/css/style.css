@@ -87,7 +87,7 @@ nav ul li a{
 .nav-menu.active {
     right: 0;
 }
-/* .menuPoints{
+.menuPoints{
     position: fixed;
     z-index: 1;
     right: 200%;
@@ -100,11 +100,13 @@ nav ul li a{
     text-align: center;
     box-shadow:
         0 10px 27px rgba(0, 0, 0, 0.05);
-} */
-
-/* #iconoPoints.active:nth-child(2) {
-    opacity: 0;
-} */
+}
+.menuPoints.active {
+    right: 0;
+}
+#modal{
+    position: relative;
+}
 
 .nav-menu {
     position: fixed;
