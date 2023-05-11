@@ -211,12 +211,20 @@ export const wall = (navigateTo) => {
         imgDeleted.setAttribute('src', '../img/check.png');
 
         liConfirm.addEventListener('click', () => {
-          modal.close();
+          // Eliminar el post
           deletePost(post.id, postsSection);
+          // Cerrar el modal de confirmación
+          modal.close();
+          // Mostrar el mensaje de eliminado confirmado
           modalConfirm.open = true;
           setTimeout(() => {
             modalConfirm.close();
           }, 3000); // 3000 milisegundos = 3 segundos
+          // Eliminar el elemento del post de la vista
+          const postElement = document.querySelector(`[data-id="${post.id}"]`);
+          if (postElement) {
+            postElement.remove();
+          }
         });
         iconoPoints.addEventListener('click', () => {
           menuPoints.classList.toggle('active');
@@ -229,10 +237,9 @@ export const wall = (navigateTo) => {
           descriptionPet,
           reactionContainer,
           modal,
-          modalConfirm,
         );
         menuPoints.append(iconClose, iconDelete, liDelete, iconEdit, liEdit);
-        postsSection.append(postArticle);
+        postsSection.append(postArticle, modalConfirm);
         modal.append(pPregunta, ulModal);
         ulModal.append(liConfirm, liCancel);
         modalConfirm.append(pDeleted, imgDeleted);
