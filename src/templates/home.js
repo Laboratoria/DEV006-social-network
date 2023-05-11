@@ -8,7 +8,6 @@ function home(navigateTo) {
   logo.src = './img/logoSinfondo.png';
   logo.classList.add('logoimg');
 
-
   buttonLogin.textContent = 'Login';
   buttonLogin.classList.add('login');
   buttonLogin.addEventListener('click', () => {

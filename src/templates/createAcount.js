@@ -48,7 +48,15 @@ function createAcount(navigateTo) {
     navigateTo('/');
   });
 
-  form.append(buttonGoogle, buttonSingUp, inputName, inputEmail, inputPass, inputConfPass, buttonReturn);
+  form.append(
+    inputName,
+    inputEmail,
+    inputPass,
+    inputConfPass,
+    buttonSingUp,
+    buttonGoogle,
+    buttonReturn,
+  );
   section.append(logo, title, caption, form);
   return section;
 }
