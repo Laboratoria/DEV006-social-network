@@ -1,9 +1,6 @@
 import { getDocs, query, orderBy } from 'firebase/firestore';
 import {
-  exit,
-  colRef,
-  deletePost,
-  auth,
+  exit, colRef, deletePost, auth,
 } from '../lib/index.js';
 
 export const wall = (navigateTo) => {
@@ -134,8 +131,8 @@ export const wall = (navigateTo) => {
         postArticle.setAttribute('class', 'postArticle');
         postArticle.setAttribute('data-id', post.id);
 
-        const contenesorUserIcon = document.createElement('div');
-        contenesorUserIcon.setAttribute('class', 'contenedorUserIcon');
+        const divUsersPointsEl = document.createElement('div');
+        divUsersPointsEl.setAttribute('class', 'divUsersPointsEl');
 
         const username = document.createElement('span');
         username.textContent = post.userid;
@@ -149,22 +146,21 @@ export const wall = (navigateTo) => {
         const menuPoints = document.createElement('ul');
         menuPoints.setAttribute('class', 'menuPoints');
 
-        const iconClose = document.createElement('img');
-        iconClose.setAttribute('src', '../img/trash.png');
+        const iconTrash = document.createElement('img');
+        iconTrash.setAttribute('src', '../img/trash.png');
 
-        const iconDelete = document.createElement('img');
-        iconDelete.setAttribute('src', '../img/cancel.png');
+        const iconClose = document.createElement('img');
+        iconClose.setAttribute('src', '../img/cancel.png');
+        iconClose.setAttribute('class', 'icnonClose');
 
         const liDelete = document.createElement('li');
         liDelete.setAttribute('class', 'liDelete');
-        liDelete.textContent = 'Delete';
 
         const iconEdit = document.createElement('img');
         iconEdit.setAttribute('src', '../img/pencil.png');
 
         const liEdit = document.createElement('li');
         liEdit.setAttribute('class', 'liEdit');
-        liEdit.textContent = 'Edit';
 
         const descriptionPet = document.createElement('p');
         descriptionPet.textContent = post.description;
@@ -238,18 +234,21 @@ export const wall = (navigateTo) => {
         iconoPoints.addEventListener('click', () => {
           menuPoints.classList.toggle('active');
         });
-
+        // ------------------------------------------condición para mennu points
         if (post.userid === auth.currentUser.displayName) {
-          postArticle.append(contenesorUserIcon);
-          contenesorUserIcon.append(username, iconoPoints, menuPoints, modal);
-          menuPoints.append(iconClose, iconDelete, liDelete, iconEdit, liEdit);
+          divUsersPointsEl.append(iconoPoints);
+          postArticle.append(menuPoints);
+          liDelete.append(iconTrash, 'Delete');
+          liEdit.append(iconEdit, 'Edit');
+          menuPoints.append(iconClose, liDelete, liEdit);
           modal.append(pPregunta, ulModal);
           ulModal.append(liConfirm, liCancel);
           modalConfirm.append(pDeleted, imgDeleted);
         }
+        divUsersPointsEl.append(username);
         reactionContainer.append(namePet, likeHeart, pawMatch);
         postArticle.append(
-          username,
+          divUsersPointsEl,
           descriptionPet,
           reactionContainer,
         );
