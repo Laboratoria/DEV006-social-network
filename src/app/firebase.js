@@ -5,13 +5,13 @@ import { getAuth } from 'https://www.gstatic.com/firebasejs/9.10.0/firebase-auth
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
-export const firebaseConfig = {
-  apiKey: 'AIzaSyAjszHvaSX05kog1pG39qT0EN7XE8Tqp9o',
-  authDomain: 'mario-fans.firebaseapp.com',
-  projectId: 'mario-fans',
-  storageBucket: 'mario-fans.appspot.com',
-  messagingSenderId: '240809703236',
-  appId: '1:240809703236:web:3f60aaad70c66c200d4911',
+const firebaseConfig = {
+  apiKey: 'AIzaSyChKx6m8BMF91ozD5vqzLFISSYdLPS7tGc',
+  authDomain: 'estamos-perdidos.firebaseapp.com',
+  projectId: 'estamos-perdidos',
+  storageBucket: 'estamos-perdidos.appspot.com',
+  messagingSenderId: '526088555075',
+  appId: '1:526088555075:web:41482ecb775d45cfd6e2f6',
 };
 
 // Initialize Firebase

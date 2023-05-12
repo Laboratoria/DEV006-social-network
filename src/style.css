@@ -145,6 +145,7 @@ body {
     margin: 8% auto;
     width: 80%;
     height: 35px;
+    font-size: 20px;
 }
 
 .confirm-password-input-new-password {
@@ -159,6 +160,7 @@ body {
 .password-input {
     margin: 2% auto;
     margin-bottom: 4%;
+    font-size: 20px;
 }
 
 /* .view-password {
@@ -220,9 +222,7 @@ body {
     align-items: center;
 }
 
-.register-fb-register,
 .register-google-register,
-.login-fb,
 .login-google {
     width: 14%;
     margin-right: 15%;
