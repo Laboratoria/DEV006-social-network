@@ -1,5 +1,10 @@
 import { getDocs, query, orderBy } from 'firebase/firestore';
-import { exit, colRef, deletePost } from '../lib/index.js';
+import {
+  exit,
+  colRef,
+  deletePost,
+  auth,
+} from '../lib/index.js';
 
 export const wall = (navigateTo) => {
   // ------------------------------------------------- Wallpaper
@@ -129,6 +134,9 @@ export const wall = (navigateTo) => {
         postArticle.setAttribute('class', 'postArticle');
         postArticle.setAttribute('data-id', post.id);
 
+        const contenesorUserIcon = document.createElement('div');
+        contenesorUserIcon.setAttribute('class', 'contenedorUserIcon');
+
         const username = document.createElement('span');
         username.textContent = post.userid;
         // obtenemos el valor de userid del display name para que se muestre en el post
@@ -197,6 +205,7 @@ export const wall = (navigateTo) => {
         });
 
         liDelete.addEventListener('click', () => {
+          menuPoints.classList.remove('active');
           modal.open = true;
         });
 
@@ -229,20 +238,22 @@ export const wall = (navigateTo) => {
         iconoPoints.addEventListener('click', () => {
           menuPoints.classList.toggle('active');
         });
+
+        if (post.userid === auth.currentUser.displayName) {
+          postArticle.append(contenesorUserIcon);
+          contenesorUserIcon.append(username, iconoPoints, menuPoints, modal);
+          menuPoints.append(iconClose, iconDelete, liDelete, iconEdit, liEdit);
+          modal.append(pPregunta, ulModal);
+          ulModal.append(liConfirm, liCancel);
+          modalConfirm.append(pDeleted, imgDeleted);
+        }
         reactionContainer.append(namePet, likeHeart, pawMatch);
         postArticle.append(
           username,
-          iconoPoints,
-          menuPoints,
           descriptionPet,
           reactionContainer,
-          modal,
         );
-        menuPoints.append(iconClose, iconDelete, liDelete, iconEdit, liEdit);
         postsSection.append(postArticle, modalConfirm);
-        modal.append(pPregunta, ulModal);
-        ulModal.append(liConfirm, liCancel);
-        modalConfirm.append(pDeleted, imgDeleted);
       });
     })
     .catch((err) => {
