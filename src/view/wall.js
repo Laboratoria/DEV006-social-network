@@ -221,6 +221,16 @@ export const wall = (navigateTo) => {
         const iconCheck = document.createElement('img');
         iconCheck.setAttribute('src', '../img/check.png');
 
+        liEdit.addEventListener('click', () => {
+          // Acceder a los valores necesarios del post
+          const postId = post.id;
+          const petName = post.petName;
+          const description = post.description;
+
+          // Llamar a la función navigateTo y pasar los valores como parámetros
+          navigateTo('/wall', postId, petName, description);
+        });
+
         divUsersPointsEl.append(username);
         reactionContainer.append(namePet, likeHeart, pawMatch);
         postArticle.append(
