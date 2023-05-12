@@ -604,33 +604,33 @@ hr {
 }
 
 
-.newPostDiv #formpost {
+.newPostDiv .formpost {
     background-color: #292D32;
     box-shadow: unset;
     display: flex;
     flex-direction: column;
 }
 
-#formpost .userContainer {
+.formpost .userContainer {
     display: flex;
     flex-direction: row;
     align-items: center;
 }
 
-#formpost .profilePic {
+.formpost .profilePic {
     width: 3.2rem;
     height: 3.2rem;
     border-radius: 24px;
 }
 
-#formpost #userName {
+.formpost .userName {
     font-size: 1.8rem;
     color: white;
     font-weight: 700;
     margin-left: 1rem;
 }
 
-#formpost #Post {
+.formpost #Post {
     position: absolute;
     width: 7.8rem;
     height: 3rem;
@@ -646,14 +646,14 @@ hr {
     color: #6E0707;
 }
 
-#formpost #Post:hover {
+.formpost #Post:hover {
     cursor: pointer;
     background-color: white;
     color: #EA907A;
     border: none;
 }
 
-.newPostDiv #formpost input, .newPostDiv #formpost textarea {
+.newPostDiv .formpost input, .newPostDiv .formpost textarea {
     background-color: #292D32;
     color: white;
     border: 2px solid #EA907A;

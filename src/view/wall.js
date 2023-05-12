@@ -161,6 +161,9 @@ export const wall = (navigateTo) => {
 
         const liEdit = document.createElement('li');
         liEdit.setAttribute('class', 'liEdit');
+        liEdit.addEventListener('click', () => {
+          navigateTo('/editpost');
+        });
 
         const descriptionPet = document.createElement('p');
         descriptionPet.textContent = post.description;

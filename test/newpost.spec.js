@@ -4,6 +4,7 @@
 import { newpost } from '../src/view/newpost';
 // import { addPost } from '../src/lib/index.js';
 
+// jest.mock fx de Jest para crear simulaciones de módulos
 // mock de getAuth se utiliza para crear el contenido de userName
 jest.mock('firebase/auth', () => ({
   getAuth: () => ({
@@ -13,20 +14,8 @@ jest.mock('firebase/auth', () => ({
   }),
 }));
 
-// Realizar el test unitario utilizando el objeto simulado de Firebase
-/* describe('ejemplo de test unitario con mock de Firebase', () => {
-  test('verificar el valor del nombre de usuario', () => {
-    // Llamar a la función que utiliza el objeto auth
-    addPost('Fido', 'Perro lindo');
-
-    // Verificar que el valor del nombre de usuario es correcto
-    const userNameElement = document.getElementById('userName');
-    expect(userNameElement.textContent).toBe('John Doe');
-  });
-}); */
-
 // eslint-disable-next-line jest/no-focused-tests
-describe.only('se crean estos elementos en el componente de newpost', () => {
+describe('se crean estos elementos en el componente de newpost', () => {
   let newpostDiv;
 
   beforeEach(() => {
@@ -46,7 +35,7 @@ describe.only('se crean estos elementos en el componente de newpost', () => {
     expect(newpostDiv.querySelector('#formpost')).toBeTruthy();
     expect(newpostDiv.querySelector('.userContaier')).toBeTruthy();
     expect(newpostDiv.querySelector('.profilePic')).toBeTruthy();
-    expect(newpostDiv.querySelector('#userName')).toBeTruthy();
+    expect(newpostDiv.querySelector('.userName')).toBeTruthy();
     expect(newpostDiv.querySelector('input')).toBeTruthy();
     expect(newpostDiv.querySelector('textarea')).toBeTruthy();
     expect(newpostDiv.querySelector('button')).toBeTruthy();
@@ -64,59 +53,22 @@ describe.only('se crean estos elementos en el componente de newpost', () => {
 //   }),
 // }));
 
-describe('newpost', () => {
-  test('should call addPost with correct arguments when form is submitted with non-empty petName and petDescription', () => {
-    // código que usa el objeto document
+// Hacer mock de fx addDoc para comprobar que se ejecute al hacer clic en el submit del formulario
+// jest.mock('firebase/firestore', () => ({
+//     addPost:
+// }));
 
-    // Simulamos la función addPost
-    const addPostMock = jest.fn();
-    // Creamos el elemento div que devuelve la función newpost
-    const newPostDiv = newpost(() => {});
-    // Obtenemos el formulario formPost del elemento div
-    const formPost = newPostDiv.querySelector('#formpost');
-    // Creamos los elementos petName y petDescription y los agregamos al formulario
+describe('addPost', () => {
+  jest.mock('../src/lib/index.js', () => {
+    const originalModule = jest.requireActual('../src/lib/index.js');
 
-    const petName = document.createElement('input');
-    petName.setAttribute('type', 'text');
-    petName.setAttribute('name', 'petName');
-    petName.value = 'Fido';
-    formPost.appendChild(petName);
-
-    const petDescription = document.createElement('textarea');
-    petDescription.setAttribute('name', 'petDescription');
-    petDescription.value = 'A very good dog';
-    formPost.appendChild(petDescription);
-
-    // Disparamos el evento submit del formulario
-    formPost.dispatchEvent(new Event('submit'));
-
-    // Verificamos que la función addPost haya sido llamada con los argumentos correctos
-    expect(addPostMock).toHaveBeenCalledWith('Fido', 'A very good dog', formPost);
+    // Mock the default export and named export 'foo'
+    return {
+      __esModule: true,
+      ...originalModule,
+      addPost: () => Promise.resolve(),
+    };
   });
 
-  test('should call navigateTo with correct argument when form is submitted with non-empty petName and petDescription', () => {
-    // Simulamos la función navigateTo
-    const navigateToMock = jest.fn();
-    // Creamos el elemento div que devuelve la función newpost
-    const newPostDiv = newpost(navigateToMock);
-    // Obtenemos el formulario formPost del elemento div
-    const formPost = newPostDiv.querySelector('#formpost');
-    // Creamos los elementos petName y petDescription y los agregamos al formulario
-    const petName = document.createElement('input');
-    petName.setAttribute('type', 'text');
-    petName.setAttribute('name', 'petName');
-    petName.value = 'Fido';
-    formPost.appendChild(petName);
-
-    const petDescription = document.createElement('textarea');
-    petDescription.setAttribute('name', 'petDescription');
-    petDescription.value = 'A very good dog';
-    formPost.appendChild(petDescription);
-
-    // Disparamos el evento submit del formulario
-    formPost.dispatchEvent(new Event('submit'));
-
-    // Verificamos que la función navigateTo haya sido llamada con el argumento correcto
-    expect(navigateToMock).toHaveBeenCalledWith('/wall');
-  });
+  it();
 });

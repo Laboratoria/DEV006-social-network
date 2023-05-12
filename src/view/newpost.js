@@ -35,7 +35,7 @@ export const newpost = (navigateTo) => {
 
   const formPost = document.createElement('form');
   formPost.setAttribute('class', 'add');
-  formPost.setAttribute('id', 'formpost');
+  formPost.setAttribute('class', 'formpost');
 
   const userContainer = document.createElement('div');
   userContainer.setAttribute('class', 'userContaier');
@@ -45,7 +45,7 @@ export const newpost = (navigateTo) => {
   profilePic.setAttribute('class', 'profilePic');
 
   const userName = document.createElement('span');
-  userName.setAttribute('id', 'userName');
+  userName.setAttribute('class', 'userName');
   userName.textContent = auth.currentUser.displayName;
 
   const petName = document.createElement('input');
