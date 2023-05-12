@@ -1,3 +1,6 @@
+// import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { auth, create } from '../lib/firebase.js';
+
 function createAcount(navigateTo) {
   const section = document.createElement('section');
   const logo = document.createElement('img');
@@ -11,7 +14,6 @@ function createAcount(navigateTo) {
   const buttonSingUp = document.createElement('button');
   const buttonGoogle = document.createElement('button');
   const buttonReturn = document.createElement('button');
-
   logo.src = './img/logoSinfondo.png';
   logo.classList.add('logoimg');
 
@@ -32,7 +34,7 @@ function createAcount(navigateTo) {
 
   buttonSingUp.textContent = 'Sing Up';
   buttonSingUp.classList.add('login2');
-  buttonSingUp.addEventListener('click', () => {
+  buttonSingUp.addEventListener('submit', () => {
     navigateTo('/wall');
   });
 
@@ -48,6 +50,25 @@ function createAcount(navigateTo) {
     navigateTo('/');
   });
 
+  // autenticar login
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const name = inputName.value;
+    const email = inputEmail.value;
+    const pass = inputPass.value;
+    const confirmpass = inputConfPass.value;
+
+    const userCredentials = await create(
+      auth,
+      name,
+      email,
+      pass,
+      confirmpass,
+    );
+
+    console.log(userCredentials);
+  });
+
   form.append(
     inputName,
     inputEmail,
@@ -57,6 +78,7 @@ function createAcount(navigateTo) {
     buttonGoogle,
     buttonReturn,
   );
+
   section.append(logo, title, caption, form);
   return section;
 }

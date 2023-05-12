@@ -3,7 +3,8 @@ import home from './templates/home.js';
 import login from './templates/login.js';
 import createAcount from './templates/createAcount.js';
 import error from './templates/error.js';
-console.log('HOlA')
+// import navigateTo from './lib/index.js';
+// console.log('HOlA')
 
 const routes = [
   { path: '/', component: home },
