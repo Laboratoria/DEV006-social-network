@@ -9,6 +9,7 @@ function createAcount(navigateTo) {
   const form = document.createElement('form');
   const inputName = document.createElement('input');
   const inputEmail = document.createElement('input');
+  const paragraphEmail = document.createElement('p');
   const inputPass = document.createElement('input');
   const inputConfPass = document.createElement('input');
   const buttonSingUp = document.createElement('button');
@@ -27,6 +28,7 @@ function createAcount(navigateTo) {
   inputName.classList.add('name');
   inputEmail.placeholder = 'Email';
   inputEmail.classList.add('email2');
+  inputEmail.name = 'email';
   inputPass.placeholder = 'Password';
   inputPass.classList.add('password2');
   inputConfPass.placeholder = 'Confirm password';
@@ -49,27 +51,56 @@ function createAcount(navigateTo) {
   buttonReturn.addEventListener('click', () => {
     navigateTo('/');
   });
-
-  // autenticar login
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    //const name = inputName.value;
-    const email = inputEmail.value;
-    const pass = inputPass.value;
-    //const confirmpass = inputConfPass.value;
-
-    const userCredentials = await create(
-      auth,
-      email,
-      pass,
-    );
-
-    console.log(userCredentials);
+  inputEmail.addEventListener('input', (e) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (emailRegex.test(e.target.value)) {
+      console.log('pasa la validación');
+      paragraphEmail.textContent = '';
+    } else {
+      paragraphEmail.textContent = 'Email no es valido';
+    }
   });
+  // autenticar login
+  // form.addEventListener('submit', async (e) => {
+  //   e.preventDefault();
+  //   // const name = inputName.value;
+  //   const email = inputEmail.value;
+  //   const pass = inputPass.value;
+  //   console.log('aja', email, pass);
+  //   // const confirmpass = inputConfPass.value;
+
+  //   function mensaje() {
+  //     const campo = document.forms.form.elements.email;
+  //     console.log(campo, 'emailvalue');
+  //     // if (campo.checkValidity() && campo.validity.patternMismatch) {
+  //     //   campo.setCustomValidity('NO paso');
+  //     // }
+  //   }
+  //   console.log(mensaje());
+  //   try {
+  //     const userCredentials = await create(
+  //       auth,
+  //       email,
+  //       pass,
+  //     );
+  //     console.log(userCredentials);
+  //   } catch (error) {
+  //     if (error.code === 'auth/email-already-in-use') {
+  //       // alert('Email already in use');
+  //       // const formulario1 = document.forms.form;
+  //       mensaje(formulario1);
+  //     } else if (error.code === 'auth/invalid-email') {
+  //       alert('Invalid email');
+  //     } else if (error.code === 'auth/weak-password') {
+  //       alert('Password is too weak');
+  //     }
+  //   }
+  // });
 
   form.append(
     inputName,
     inputEmail,
+    paragraphEmail,
     inputPass,
     inputConfPass,
     buttonSingUp,
