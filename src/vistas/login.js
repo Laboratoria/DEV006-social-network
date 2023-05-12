@@ -1,4 +1,6 @@
 // file login.js
+import { loginUser } from '../lib/auth.js';
+
 function login(navigateTo) {
   const section = document.createElement('section');
   const sectionHeader = document.createElement('section');
@@ -25,6 +27,20 @@ function login(navigateTo) {
   buttonReturn.addEventListener('click', () => {
     navigateTo('/');
   });
+  // Loguearse
+  buttonEnter.addEventListener('click', (e) => {
+    e.preventDefault();
+    const email = inputEmail.value;
+    const password = inputPassword.value;
+    loginUser(email, password)
+      .then(() => {
+        console.log('loggedin');
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  });
+
   // agregar clases//
   section.classList.add('sectionLogin');
   header.classList.add('header');

@@ -1,7 +1,4 @@
-// import { auth } from './lib/configFireBase.js';
-import { auth } from './lib/configFireBase.js';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
-
+import { registerUser } from '../lib/auth.js';
 
 function signup(navigateTo) {
   // creación//
@@ -52,21 +49,18 @@ function signup(navigateTo) {
   buttonReturnSignup.addEventListener('click', () => {
     navigateTo('/');
   });
+
+  // Registro de usuario//
   buttonEnterSignup.addEventListener('click', (e) => {
     e.preventDefault();
     const email = inputEmail.value;
     const password = inputPassword.value;
-    console.log(email, password);
-
-    // const signValue= (email, password) =>createUserWithEmailAndPassword(auth, email, password);
-
-    auth
-      .createUserWithEmailAndPassword(email, password)
-      .then((userCredential) => {
-        console.log('signup', userCredential);
+    registerUser(email, password)
+      .then(() => {
+        console.log('signup');
       })
       .catch((error) => {
-        console.error(error);
+        console.log(error);
       });
   });
 
