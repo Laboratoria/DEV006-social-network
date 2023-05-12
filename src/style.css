@@ -1,90 +1,200 @@
-@import url('https://fonts.googleapis.com/css2?family=Advent+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Advent+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 @media only screen and (max-width: 425px) {
+  html,
+  body {
+    margin: 0;
+    height: 100%;
+    overflow: hidden;
+    position: fixed;
+  }
 
-    html,
-    body {
-        margin: 0;
-        height: 100%;
-        overflow: hidden;
-        position: fixed;
-    }
+  .welcomeBody {
+    background: linear-gradient(#9a0051, black);
+    height: 100%;
+  }
 
-    .welcomeBody {
-        background: linear-gradient(#9a0051, black);
-        height: 100%;
-    }
+  .welcomeSection {
+    background: linear-gradient(#9a0051, black);
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
 
-    .welcomeSection {
-        background: linear-gradient(#9a0051, black);
-        height: 100%;
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        height: 100vh;
-    }
+  .logo {
+    width: 70%;
+    padding: 15%;
+  }
 
-    .logo {
-        width: 70%;
-        padding: 15%;
-    }
+  .articleLogoTxt {
+    margin-top: -15%;
+    text-align: center;
+    font-size: x-large;
+    color: #d9d9d9;
+    font-family: "Advent Pro", sans-serif;
+  }
 
-    .articleLogoTxt {
-        margin-top: -15%;
-        text-align: center;
-        font-size: x-large;
-        color: #d9d9d9;
-        font-family: 'Advent Pro', sans-serif;
-    }
+  .welcomeBox {
+    background-color: #ffffff;
+    border-radius: 10px;
+    margin: 8%;
+    font-family: "Advent Pro", sans-serif;
+    text-align: center;
+    padding: 5%;
+    margin-bottom: 40%;
+  }
 
-    .welcomeBox {
-        background-color: #FFFFFF;
-        border-radius: 10px;
-        margin: 8%;
-        font-family: 'Advent Pro', sans-serif;
-        text-align: center;
-        padding: 5%;
-        margin-bottom: 40%;
-    }
+  .boxText {
+    font-family: "Advent Pro", sans-serif;
+    font-size: large;
+    margin-bottom: 10%;
+  }
 
-    .boxText {
-        font-family: 'Advent Pro', sans-serif;
-        font-size: large;
-        margin-bottom: 10%;
-    }
+  .signInBtn {
+    font-family: "Advent Pro", sans-serif;
+    width: 70%;
+    margin-bottom: 3%;
+    background-color: #510bab;
+    border: none;
+    color: #ffffff;
+    font-size: larger;
+    padding: 4%;
+  }
 
-    .signInBtn {
-        font-family: 'Advent Pro', sans-serif;
-        width: 70%;
-        margin-bottom: 3%;
-        background-color: #510BAB;
-        border: none;
-        color: #FFFFFF;
-        font-size: larger;
-        padding: 4%;
-    }
+  .signUpBtn {
+    font-family: "Advent Pro", sans-serif;
+    width: 70%;
+    margin-bottom: 3%;
+    border-style: solid;
+    border-color: #510bab;
+    border-width: 1.5px;
+    font-size: larger;
+    padding: 4%;
+  }
 
-    .signUpBtn {
-        font-family: 'Advent Pro', sans-serif;
-        width: 70%;
-        margin-bottom: 3%;
-        border-style: solid;
-        border-color: #510BAB;
-        border-width: 1.5px;
-        font-size: larger;
-        padding: 4%;
-    }
+  .articleLogoSignUp {
+    width: 35%;
+    display: flex;
+    margin-top: 1%;
+    margin-left: 81%;
+  }
 
-    #logoRegister {
-        width: 20%;
-        display: flex;
-        align-content: flex-end;
-    }
+  .logoSignUp {
+    width: 50%;
 
-    .registerSection {
-        display: none;
-        background: linear-gradient(#510BAB 50%, white 50%);
-    }
+  }
+  .signUpSection {
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(#510bab 50%, white 50%);
+    font-family: "Advent Pro", sans-serif;
+
+  }
+
+.spanCommunityTxt {
+    color: #ffffff;
+    padding: -12%;
+    text-align: center;
+    margin: 0%;
+  }
+
+  .signUpTxtSpan {
+    color: #ffffff;
+    padding: 0%;
+    text-align: center;
+    margin-bottom: -10%;
+    font-size: x-large;
+}
+
+  .registerBox{
+    background:white;
+    margin: 7%;
+    box-shadow: 0px 0px 10px 5px rgba(0,0,0,0.3);
+    border-radius: 5%;
+    padding: 8%;
+    font-size: 66%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+  .signUpForm {
+    margin: 3%;
+    padding: 1%;
+  }
+  
+  .signUp {
+    margin-bottom: 60%;
+    font-size: 150%;
+    text-align: left;
+  }
+  
+  input {
+    width: 100%;
+    border: 1px solid #510BAB;
+    border-radius: 5px;
+    box-sizing: border-box; /* incluye el ancho del borde y del relleno en el ancho total */
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  input[type="password"]{
+    margin-bottom: 5%;
+    padding: 2%;
+  }
+
+  #readyBtn {
+    background: #510BAB;
+    color: #FFFFFF;
+    padding: 3.5%;
+    border: 1px solid #000000;
+    width: 60%;
+    box-sizing: border-box; /* incluye el ancho del borde y del relleno en el ancho total */
+    font-size: 130%;
+    border-radius: 5px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    margin: 3% auto auto;
+  }
+ .foundAccountDiv {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 5%;
+    justify-content: center;
+  }
+
+  .foundAccount{
+    font-size: 140%;
+    margin: 0%;
+  }
+
+  .foundAccountA{
+    font-size: 130%;
+    color: #510BAB;
+    font-weight: bold;
+    margin-top: 0.3%;
+    margin-left: 3%;  
+  }
+
+  .googleLogo{
+    width: 100%;
+  }
+
+  .googleBtn{
+    width: 16%;
+    background: none;
+    border: none;
+    margin-left: 44%;
+  }
+
+  .googleTxt{
+    margin: 0 auto;
+    padding-bottom: 5%;
+    font-size: 130%;
+  }
 }

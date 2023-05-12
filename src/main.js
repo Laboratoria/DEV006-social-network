@@ -1,4 +1,4 @@
-import { welcomePage } from './pages/home.js';
+import { signUp } from './pages/signUp.js';
 
 const root = document.querySelector('.root');
-root.appendChild(welcomePage());
+root.appendChild(signUp());
