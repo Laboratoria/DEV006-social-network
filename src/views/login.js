@@ -1,3 +1,7 @@
+import { signInFn } from '../app/signinForm';
+import { googleSignInFn } from '../app/googleLogin';
+import { githubSignInFn } from '../app/githubLogin';
+
 function login(navigateTo) {
   const section = document.createElement('section');
   const containerLogin = document.createElement('div');
@@ -13,7 +17,6 @@ function login(navigateTo) {
   const forgotPassword = document.createElement('button');
   const loginWith = document.createElement('p');
   const loginGoogle = document.createElement('img');
-  const loginFb = document.createElement('img');
   const loginGit = document.createElement('img');
   const viewPassword = document.createElement('img');
   const viewAndPassword = document.createElement('span');
@@ -22,6 +25,9 @@ function login(navigateTo) {
   emailInput.id = 'email-input';
   passwordInput.id = 'password-input';
   btnSignIn.id = 'btn-signin';
+  loginGoogle.id = 'loginGoogle';
+  loginGit.id = 'loginGit';
+  btnSignIn.type = 'submit';
 
   viewAndPassword.classList.add('span-password');
   containerLogin.classList.add('container-login');
@@ -36,10 +42,8 @@ function login(navigateTo) {
   forgotPassword.classList.add('forgot-password');
   loginWith.classList.add('login-with');
   loginGoogle.classList.add('login-google');
-  loginFb.classList.add('login-fb');
   loginGit.classList.add('login-git');
   buttonReturn.classList.add('button-return');
-  // viewPassword.classList.add('view-password');
 
   title.textContent = 'Estamos Perdid@s!!!!';
   btnSignIn.textContent = 'Ingresar';
@@ -51,9 +55,10 @@ function login(navigateTo) {
     navigateTo('/forgotPassword');
   });
 
-  // btnSignIn.addEventListener('click', () => {
-  //   navigateTo('/posts');
-  // });
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    signInFn(navigateTo);
+  });
 
   imgLogin.src = ('img/huellaIcono.png');
   imgLogin.alt = 'Imagen huella';
@@ -61,19 +66,13 @@ function login(navigateTo) {
   loginGoogle.src = ('img/google.webp');
   loginGoogle.alt = 'Imagen google';
   loginGoogle.addEventListener('click', () => {
-    navigateTo('/posts');
-  });
-
-  loginFb.src = ('img/fb.png');
-  loginFb.alt = 'Imagen fb';
-  loginFb.addEventListener('click', () => {
-    navigateTo('/posts');
+    googleSignInFn(navigateTo);
   });
 
   loginGit.src = ('img/github.png');
   loginGit.alt = 'Imagen github';
   loginGit.addEventListener('click', () => {
-    navigateTo('/posts');
+    githubSignInFn(navigateTo);
   });
 
   buttonReturn.src = ('img/back.png');
@@ -91,11 +90,9 @@ function login(navigateTo) {
   passwordInput.type = 'password';
   passwordInput.setAttribute('required', 'true');
 
-  // viewAndPassword.appendChild(passwordInput);
-  // viewAndPassword.appendChild(viewPassword);
   containerTitle.append(title, imgLogin);
   form.append(emailInput, passwordInput, forgotPassword, btnSignIn);
-  containerbtnsLogin.append(loginGoogle, loginFb, loginGit);
+  containerbtnsLogin.append(loginGoogle, loginGit);
   containerLogin.append(buttonReturn, containerTitle, form, loginWith, containerbtnsLogin);
   section.appendChild(containerLogin);
 

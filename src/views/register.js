@@ -1,3 +1,5 @@
+import { signUpFn } from '../app/signupForm';
+
 function register(navigateTo) {
   const section = document.createElement('section');
   const containerRegister = document.createElement('div');
@@ -14,7 +16,6 @@ function register(navigateTo) {
   const btnSignUp = document.createElement('button');
   const registerWith = document.createElement('p');
   const registerGoogle = document.createElement('img');
-  const registerFb = document.createElement('img');
   const registerGit = document.createElement('img');
 
   containerRegister.classList.add('container-register');
@@ -31,7 +32,6 @@ function register(navigateTo) {
   btnSignUp.classList.add('btn-sign-up-register');
   registerWith.classList.add('register-with-register');
   registerGoogle.classList.add('register-google-register');
-  registerFb.classList.add('register-fb-register');
   registerGit.classList.add('register-git-register');
 
   form.id = 'signup-form';
@@ -39,9 +39,11 @@ function register(navigateTo) {
   passwordInput.id = 'signup-password';
 
   btnSignUp.type = 'submit';
-  // btnSignUp.addEventListener('click', () => {
-  //   navigateTo('/login');
-  // });
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    signUpFn(navigateTo);
+  });
 
   title.textContent = 'Estamos Perdid@s!!!!';
   btnSignUp.textContent = 'Registrarme';
@@ -74,12 +76,6 @@ function register(navigateTo) {
     navigateTo('/login');
   });
 
-  registerFb.src = ('img/fb.png');
-  registerFb.alt = 'Imagen fb';
-  registerFb.addEventListener('click', () => {
-    navigateTo('/login');
-  });
-
   registerGit.src = ('img/github.png');
   registerGit.alt = 'Imagen github';
   registerGit.addEventListener('click', () => {
@@ -88,7 +84,7 @@ function register(navigateTo) {
 
   containerTitle.append(title, imgPaw);
   form.append(nameInput, emailInput, passwordInput, confirmPasswordInput, btnSignUp);
-  containerRegisterWith.append(registerGoogle, registerFb, registerGit);
+  containerRegisterWith.append(registerGoogle, registerGit);
   containerRegister.append(imgReturn, containerTitle, form, registerWith, containerRegisterWith);
   section.appendChild(containerRegister);
 

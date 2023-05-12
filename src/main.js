@@ -1,5 +1,7 @@
 import './app/signupForm.js';
 import './app/signinForm.js';
+import './app/googleLogin.js';
+import './app/githubLogin.js';
 import home from './views/home.js';
 import login from './views/login.js';
 import error from './views/error.js';
