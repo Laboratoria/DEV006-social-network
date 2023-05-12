@@ -1,17 +1,9 @@
-<<<<<<< HEAD
-=======
 import './lib/firebase.js';
->>>>>>> 12073e9e0b36378fd16dde102939dab70aed0a1c
 import home from './templates/home.js';
 import login from './templates/login.js';
 import createAcount from './templates/createAcount.js';
 import error from './templates/error.js';
-<<<<<<< HEAD
-// import navigateTo from './templates/index.js';
-=======
-// import navigateTo from './lib/index.js';
 console.log('HOlA')
->>>>>>> 12073e9e0b36378fd16dde102939dab70aed0a1c
 
 const routes = [
   { path: '/', component: home },

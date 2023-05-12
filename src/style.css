@@ -111,4 +111,20 @@
     top: 0px;
     left: 0px;
   }
+
+  .img-comida {
+    position: absolute;
+    width: 453px;
+    height: 290px;
+    left: -35px;
+    top: 129px;
+  }
+
+  .textoerror{
+    position: absolute;
+    bottom: 100px;
+    left: 0;
+    right: 0;
+    text-align: center;
+  }
 }
