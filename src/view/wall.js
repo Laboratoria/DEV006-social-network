@@ -1,5 +1,7 @@
 import { getDocs, query, orderBy } from 'firebase/firestore';
-import { exit, colRef, deletePost } from '../lib/index.js';
+import {
+  exit, colRef, deletePost, auth,
+} from '../lib/index.js';
 
 export const wall = (navigateTo) => {
   // ------------------------------------------------- Wallpaper
@@ -129,6 +131,9 @@ export const wall = (navigateTo) => {
         postArticle.setAttribute('class', 'postArticle');
         postArticle.setAttribute('data-id', post.id);
 
+        const divUsersPointsEl = document.createElement('div');
+        divUsersPointsEl.setAttribute('class', 'divUsersPointsEl');
+
         const username = document.createElement('span');
         username.textContent = post.userid;
         // obtenemos el valor de userid del display name para que se muestre en el post
@@ -141,22 +146,21 @@ export const wall = (navigateTo) => {
         const menuPoints = document.createElement('ul');
         menuPoints.setAttribute('class', 'menuPoints');
 
-        const iconClose = document.createElement('img');
-        iconClose.setAttribute('src', '../img/trash.png');
+        const iconTrash = document.createElement('img');
+        iconTrash.setAttribute('src', '../img/trash.png');
 
-        const iconDelete = document.createElement('img');
-        iconDelete.setAttribute('src', '../img/cancel.png');
+        const iconClose = document.createElement('img');
+        iconClose.setAttribute('src', '../img/cancel.png');
+        iconClose.setAttribute('class', 'icnonClose');
 
         const liDelete = document.createElement('li');
         liDelete.setAttribute('class', 'liDelete');
-        liDelete.textContent = 'Delete';
 
         const iconEdit = document.createElement('img');
         iconEdit.setAttribute('src', '../img/pencil.png');
 
         const liEdit = document.createElement('li');
         liEdit.setAttribute('class', 'liEdit');
-        liEdit.textContent = 'Edit';
 
         const descriptionPet = document.createElement('p');
         descriptionPet.textContent = post.description;
@@ -229,20 +233,27 @@ export const wall = (navigateTo) => {
         iconoPoints.addEventListener('click', () => {
           menuPoints.classList.toggle('active');
         });
+        // ------------------------------------------condición para mennu points
+        if (post.userid === auth.currentUser.displayName) {
+          divUsersPointsEl.append(iconoPoints);
+          postArticle.append(menuPoints);
+          liDelete.append(iconTrash, 'Delete');
+          liEdit.append(iconEdit, 'Edit');
+          menuPoints.append(iconClose, liDelete, liEdit);
+          modal.append(pPregunta, ulModal);
+          ulModal.append(liConfirm, liCancel);
+          modalConfirm.append(pDeleted, imgDeleted);
+        }
+        divUsersPointsEl.append(username);
         reactionContainer.append(namePet, likeHeart, pawMatch);
         postArticle.append(
-          username,
-          iconoPoints,
-          menuPoints,
+          divUsersPointsEl,
           descriptionPet,
           reactionContainer,
           modal,
         );
-        menuPoints.append(iconClose, iconDelete, liDelete, iconEdit, liEdit);
+
         postsSection.append(postArticle, modalConfirm);
-        modal.append(pPregunta, ulModal);
-        ulModal.append(liConfirm, liCancel);
-        modalConfirm.append(pDeleted, imgDeleted);
       });
     })
     .catch((err) => {

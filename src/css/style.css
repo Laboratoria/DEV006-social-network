@@ -87,27 +87,6 @@ nav ul li a{
 .nav-menu.active {
     right: 0;
 }
-.menuPoints{
-    position: fixed;
-    z-index: 1;
-    right: 200%;
-    top: 4.4rem;
-    flex-direction: column;
-    background-color: #292D32;
-    color: white;
-    width: 30%;
-    border-radius: 10px;
-    text-align: center;
-    box-shadow:
-        0 10px 27px rgba(0, 0, 0, 0.05);
-}
-.menuPoints.active {
-    right: 0;
-}
-#modal{
-    position: relative;
-}
-
 .nav-menu {
     position: fixed;
     z-index: 1;
@@ -470,6 +449,55 @@ hr {
     object-fit: contain;
     margin-left: 2rem;
     cursor: pointer;
+}
+/* Menu de eliminar y editar post*/
+#divUsersPointsEl{
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: space-between;
+}
+.menuPoints{
+    /* right: fixed; */
+   /*  z-index: 1;
+    top: 40rem;
+    bottom: 100%;
+    flex-direction: column; */
+    background-color: #292D32;
+    color: white;
+    width: 100%;
+    height: 40%;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow:
+        0 10px 27px rgba(0, 0, 0, 0.05);
+    bottom: 100%;
+    position: fixed;
+    z-index: 1;
+    list-style: none;
+    left:0;
+    font-size: 2.4rem;
+}
+.menuPoints.active {
+    /* top:85%; */
+    bottom:0;
+    
+}
+
+.menuPoints .iconClose{
+    position: relative;
+    margin: 20%;
+    right: -40%;
+}
+
+.menuPoints li{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    padding: 10% 20%;
+}
+
+#modal{
+    position: relative;
 }
 
 .postArticle .reactionContainer img {

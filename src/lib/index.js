@@ -12,7 +12,7 @@ import {
   updateProfile,
 } from 'firebase/auth';
 import {
-  collection, getFirestore, getDocs, addDoc, serverTimestamp, deleteDoc, doc,
+  collection, getFirestore, getDocs, addDoc, serverTimestamp, deleteDoc, doc as newdoc,
   // Se importa serveTimestamp para obtener fecha y hora del post
 } from 'firebase/firestore';
 import { firebaseConfig } from '../firebase.config.js';
@@ -43,7 +43,7 @@ getDocs(colRef)
 
 // delete documents
 export const deletePost = (id) => {
-  const documentDeleteDoc = doc(colRef, id);
+  const documentDeleteDoc = newdoc(colRef, id);
 
   return deleteDoc(documentDeleteDoc)
     .then(() => {
