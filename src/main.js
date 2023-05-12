@@ -1,4 +1,5 @@
-// import './app/registerAuth.js';
+import './app/signupForm.js';
+import './app/signinForm.js';
 import home from './views/home.js';
 import login from './views/login.js';
 import error from './views/error.js';

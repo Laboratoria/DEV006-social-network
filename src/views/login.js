@@ -15,7 +15,15 @@ function login(navigateTo) {
   const loginGoogle = document.createElement('img');
   const loginFb = document.createElement('img');
   const loginGit = document.createElement('img');
+  const viewPassword = document.createElement('img');
+  const viewAndPassword = document.createElement('span');
 
+  form.id = 'form-login';
+  emailInput.id = 'email-input';
+  passwordInput.id = 'password-input';
+  btnSignIn.id = 'btn-signin';
+
+  viewAndPassword.classList.add('span-password');
   containerLogin.classList.add('container-login');
   containerTitle.classList.add('container-title');
   containerbtnsLogin.classList.add('container-btns-login');
@@ -31,6 +39,7 @@ function login(navigateTo) {
   loginFb.classList.add('login-fb');
   loginGit.classList.add('login-git');
   buttonReturn.classList.add('button-return');
+  // viewPassword.classList.add('view-password');
 
   title.textContent = 'Estamos Perdid@s!!!!';
   btnSignIn.textContent = 'Ingresar';
@@ -42,9 +51,9 @@ function login(navigateTo) {
     navigateTo('/forgotPassword');
   });
 
-  btnSignIn.addEventListener('click', () => {
-    navigateTo('/posts');
-  });
+  // btnSignIn.addEventListener('click', () => {
+  //   navigateTo('/posts');
+  // });
 
   imgLogin.src = ('img/huellaIcono.png');
   imgLogin.alt = 'Imagen huella';
@@ -73,11 +82,17 @@ function login(navigateTo) {
     navigateTo('/');
   });
 
+  viewPassword.src = ('img/ver.png');
+  viewPassword.alt = 'Imagen ver password';
+
   emailInput.placeholder = 'Email:';
   emailInput.setAttribute('required', 'true');
   passwordInput.placeholder = 'Contraseña:';
+  passwordInput.type = 'password';
   passwordInput.setAttribute('required', 'true');
 
+  // viewAndPassword.appendChild(passwordInput);
+  // viewAndPassword.appendChild(viewPassword);
   containerTitle.append(title, imgLogin);
   form.append(emailInput, passwordInput, forgotPassword, btnSignIn);
   containerbtnsLogin.append(loginGoogle, loginFb, loginGit);
