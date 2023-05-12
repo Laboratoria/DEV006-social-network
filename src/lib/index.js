@@ -56,7 +56,7 @@ export const deletePost = (id) => {
 
 // adding documents
 export const addPost = (petName, petDescription) => {
-  const userName = auth.currentUser.displayName;
+  const userName = getAuth().currentUser.displayName;
   return addDoc(colRef, {
     petName,
     description: petDescription,
