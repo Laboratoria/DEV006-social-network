@@ -58,7 +58,7 @@
     width: 223px;
     height: 30px;
     left: 44px;
-    color: #fff;
+    color: black;
     background-color: #f9f0ee;
     border: none;
     border-bottom: 1px solid #f28e13;
@@ -96,7 +96,7 @@
   .email2,
   .password2,
   .confirmPass {
-    color: #fff;
+    color: black;
     background-color: #f9f0ee;
     border: none;
     border-bottom: 1px solid #f28e13;
