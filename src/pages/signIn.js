@@ -90,6 +90,7 @@ export function signIn(navigateTo) {
         alert('Something went wrong !');
       }
     }
+    navigateTo('/wall')
   });
   continueWithGoogleButton.addEventListener('click', async (e) => {
     e.preventDefault();

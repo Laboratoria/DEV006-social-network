@@ -24,9 +24,20 @@ header {
     align-items: flex-end;
 }
 
-.easygym{
-height: 200px;
-
+nav {
+    height: 7vh;
+    width: 100vw;
+    background: #dfa0a0;
+    display: flex;
+    margin-top: -52px;
+    justify-content: center;
+}
+.refresh{
+    height: 100%;   
+}
+#exit{
+ width: 50px;
+ height: 200px;   
 }
 
 label {
