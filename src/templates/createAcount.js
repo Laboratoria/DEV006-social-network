@@ -53,17 +53,15 @@ function createAcount(navigateTo) {
   // autenticar login
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const name = inputName.value;
+    //const name = inputName.value;
     const email = inputEmail.value;
     const pass = inputPass.value;
-    const confirmpass = inputConfPass.value;
+    //const confirmpass = inputConfPass.value;
 
     const userCredentials = await create(
       auth,
-      name,
       email,
       pass,
-      confirmpass,
     );
 
     console.log(userCredentials);
