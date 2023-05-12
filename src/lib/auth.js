@@ -9,7 +9,7 @@ export async function registerUser(email, password) {
     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
     console.log(userCredential);
   } catch (error) {
-    console.log('error');
+    console.error(error);
   }
 }
 
@@ -18,6 +18,6 @@ export async function loginUser(email, password) {
     const userCredential = await signInWithEmailAndPassword(auth, email, password);
     console.log('loggedin', userCredential);
   } catch (error) {
-    console.log('error');
+    console.log(error);
   }
 }

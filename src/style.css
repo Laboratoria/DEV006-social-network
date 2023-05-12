@@ -218,3 +218,12 @@ font-family: 'Hind Vadodara', sans-serif;
  
 
 }
+
+#showPassword{
+height: 3vh;
+width: 4vw;
+top: -2.8vh;
+left: 17vw;
+position: relative;
+
+}
