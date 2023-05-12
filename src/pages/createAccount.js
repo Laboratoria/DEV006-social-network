@@ -67,6 +67,10 @@ export function createAccount(navigateTo) {
     navigateTo('/signIn');
   });
 
+  linkSignIn.addEventListener('click', () => {
+    navigateTo('/signIn');
+  });
+
   createButton.addEventListener('click', async (e) => {
     e.preventDefault();
     // const name = nameInput.value;
