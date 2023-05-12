@@ -451,12 +451,17 @@ hr {
     cursor: pointer;
 }
 /* Menu de eliminar y editar post*/
-#divUsersPointsEl{
+.divUsersPointsEl{
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: row;
     align-items: center;
     justify-content: space-between;
 }
+
+#iconoPoints {
+    cursor: pointer;
+}
+
 .menuPoints{
     /* right: fixed; */
    /*  z-index: 1;
@@ -467,11 +472,11 @@ hr {
     color: white;
     width: 100%;
     height: 40%;
-    border-radius: 10px;
+    border-radius: 15px 15px 0 0;
     text-align: center;
     box-shadow:
         0 10px 27px rgba(0, 0, 0, 0.05);
-    bottom: 100%;
+    bottom: 200%;
     position: fixed;
     z-index: 1;
     list-style: none;
@@ -486,18 +491,71 @@ hr {
 
 .menuPoints .iconClose{
     position: relative;
-    margin: 20%;
+    margin: 2rem;
     right: -40%;
+    width: 2rem;
+    height: 2rem;
+    cursor: pointer;
 }
 
 .menuPoints li{
     display: grid;
     grid-template-columns: 1fr 2fr;
-    padding: 10% 20%;
+    padding: 2rem 8rem;
+    text-align: left;
+    cursor: pointer;
+}
+
+.menuPoints .liDelete {
+    color: #ff0000;
 }
 
 #modal{
-    position: relative;
+    position: absolute;
+    margin: auto;
+    width: 80%;
+    height: 30%;
+    background: #292D32;
+    border-radius: 15px;
+    border: none;
+    color: #FFFFFF;
+    font-size: 2.4rem;
+    text-align: center;
+    padding: 2.8rem;
+}
+
+#modal p {
+    padding: 1rem;
+}
+
+.ulModal li {
+    list-style: none;
+    padding: 1rem;
+    cursor: pointer;
+}
+
+.ulModal li:nth-child(1) {
+    color: #ff0000;
+}
+
+.postsSection #modalConfirm {
+    position: absolute;
+    margin: auto;
+    width: 80%;
+    height: 16%;
+    padding: 6%;
+    top: 17rem;
+    background: #292D32;
+    border-radius: 15px;
+    border: none;
+    color: #ffffff;
+    font-size: 2.4rem;
+    text-align: center;
+    
+}
+
+#modalConfirm img {
+    margin: 0 1rem;
 }
 
 .postArticle .reactionContainer img {

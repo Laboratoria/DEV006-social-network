@@ -151,7 +151,7 @@ export const wall = (navigateTo) => {
 
         const iconClose = document.createElement('img');
         iconClose.setAttribute('src', '../img/cancel.png');
-        iconClose.setAttribute('class', 'icnonClose');
+        iconClose.setAttribute('class', 'iconClose');
 
         const liDelete = document.createElement('li');
         liDelete.setAttribute('class', 'liDelete');
@@ -187,7 +187,7 @@ export const wall = (navigateTo) => {
         ulModal.setAttribute('class', 'ulModal');
 
         const pPregunta = document.createElement('p');
-        pPregunta.textContent = 'Are you sure you want to delete this post?';
+        pPregunta.textContent = 'Delete this post?';
 
         const liConfirm = document.createElement('li');
         liConfirm.setAttribute('class', 'liConfirm');
@@ -200,8 +200,15 @@ export const wall = (navigateTo) => {
           modal.close();
         });
 
+        // Al escoger Delete en el menú, se abre el primer modal
         liDelete.addEventListener('click', () => {
+          menuPoints.classList.remove('active');
           modal.open = true;
+        });
+
+        // Al hacer clic en el menú de opciones, se cierra
+        iconClose.addEventListener('click', () => {
+          menuPoints.classList.remove('active');
         });
 
         /* Mensaje de eliminado confirmado */
@@ -211,8 +218,28 @@ export const wall = (navigateTo) => {
         const pDeleted = document.createElement('p');
         pDeleted.textContent = 'Deleted';
 
-        const imgDeleted = document.createElement('img');
-        imgDeleted.setAttribute('src', '../img/check.png');
+        const iconCheck = document.createElement('img');
+        iconCheck.setAttribute('src', '../img/check.png');
+
+        divUsersPointsEl.append(username);
+        reactionContainer.append(namePet, likeHeart, pawMatch);
+        postArticle.append(
+          divUsersPointsEl,
+          descriptionPet,
+          reactionContainer,
+        );
+        postsSection.append(postArticle, modal, modalConfirm);
+        modalConfirm.append(pDeleted, iconCheck);
+        // ------------------------------------------condición para menu points
+        if (post.userid === auth.currentUser.displayName) {
+          divUsersPointsEl.append(iconoPoints);
+          postArticle.append(menuPoints);
+          liDelete.append(iconTrash, 'Delete');
+          liEdit.append(iconEdit, 'Edit');
+          menuPoints.append(iconClose, liDelete, liEdit);
+          modal.append(pPregunta, ulModal);
+          ulModal.append(liConfirm, liCancel);
+        }
 
         liConfirm.addEventListener('click', () => {
           // Eliminar el post
@@ -233,27 +260,6 @@ export const wall = (navigateTo) => {
         iconoPoints.addEventListener('click', () => {
           menuPoints.classList.toggle('active');
         });
-        // ------------------------------------------condición para mennu points
-        if (post.userid === auth.currentUser.displayName) {
-          divUsersPointsEl.append(iconoPoints);
-          postArticle.append(menuPoints);
-          liDelete.append(iconTrash, 'Delete');
-          liEdit.append(iconEdit, 'Edit');
-          menuPoints.append(iconClose, liDelete, liEdit);
-          modal.append(pPregunta, ulModal);
-          ulModal.append(liConfirm, liCancel);
-          modalConfirm.append(pDeleted, imgDeleted);
-        }
-        divUsersPointsEl.append(username);
-        reactionContainer.append(namePet, likeHeart, pawMatch);
-        postArticle.append(
-          divUsersPointsEl,
-          descriptionPet,
-          reactionContainer,
-          modal,
-        );
-
-        postsSection.append(postArticle, modalConfirm);
       });
     })
     .catch((err) => {
