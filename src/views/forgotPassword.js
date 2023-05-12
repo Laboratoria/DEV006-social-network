@@ -1,35 +1,49 @@
 function forgotPassword(navigateTo) {
   const section = document.createElement('section');
+  const containerForgotP = document.createElement('div');
+  const containerTitleF = document.createElement('div');
   const title = document.createElement('h2');
-  const buttonReturn = document.createElement('button');
+  const imgPaw = document.createElement('img');
+  const textForgotP = document.createElement('p');
+  const imgReturn = document.createElement('img');
   const form = document.createElement('form');
-  const email = document.createElement('p');
   const emailInput = document.createElement('input');
-  const confirmEmail = document.createElement('p');
-  const ConfirmEmailInput = document.createElement('input');
   const btnSend = document.createElement('button');
 
-  title.textContent = 'Reset your password';
-  email.textContent = 'Email:';
-  confirmEmail.textContent = 'Confirm your email:';
+  containerForgotP.classList.add('container-forgot-password');
+  containerTitleF.classList.add('container-title-forgot-password');
+  title.classList.add('title-forgot-password');
+  imgPaw.classList.add('img-forgot-password');
+  textForgotP.classList.add('text-forgot-password');
+  imgReturn.classList.add('img-return-forgot-password');
+  form.classList.add('form-forgot-password');
+  emailInput.classList.add('email-input');
+  btnSend.classList.add('btn-send-forgot-password');
 
-  buttonReturn.textContent = 'Return';
-  buttonReturn.addEventListener('click', () => {
+  title.textContent = 'Restablece tu contraseña';
+  textForgotP.textContent = 'Recibirás instrucciones para restablecer tu contraseña en el siguiente correo:';
+
+  imgPaw.src = 'img/huellaIcono.png';
+  imgPaw.alt = 'huella';
+
+  imgReturn.src = ('img/back.png');
+  imgReturn.alt = 'Imagen regresar';
+  imgReturn.addEventListener('click', () => {
     navigateTo('/login');
   });
 
-  btnSend.textContent = 'Send';
+  btnSend.textContent = 'Enviar';
   btnSend.addEventListener('click', () => {
     navigateTo('/newPassword');
   });
 
-  emailInput.placeholder = 'example@example.com';
+  emailInput.placeholder = 'Email';
   emailInput.setAttribute('required', 'true');
-  ConfirmEmailInput.placeholder = 'example@example.com';
-  ConfirmEmailInput.setAttribute('required', 'true');
 
-  form.append(email, emailInput, confirmEmail, ConfirmEmailInput);
-  section.append(title, form, btnSend, buttonReturn);
+  containerTitleF.append(title, imgPaw);
+  form.append(emailInput, btnSend);
+  containerForgotP.append(imgReturn, containerTitleF, textForgotP, form);
+  section.appendChild(containerForgotP);
 
   return section;
 }
