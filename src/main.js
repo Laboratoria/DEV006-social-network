@@ -5,6 +5,7 @@ import { register } from './view/register.js';
 import { error } from './view/error.js';
 import { wall } from './view/wall.js';
 import { newpost } from './view/newpost.js';
+import { editPost } from './view/editpost.js';
 
 const auth = getAuth();
 const defaultRoute = '/';
@@ -16,6 +17,8 @@ const routes = [
   { path: '/error', component: error },
   { path: '/wall', component: wall },
   { path: '/newpost', component: newpost },
+  { path: '/editpost', component: editPost },
+
 ];
 
 export function navigateTo(hash) {

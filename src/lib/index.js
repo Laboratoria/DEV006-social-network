@@ -12,7 +12,7 @@ import {
   updateProfile,
 } from 'firebase/auth';
 import {
-  collection, getFirestore, getDocs, addDoc, serverTimestamp, deleteDoc, doc as newdoc,
+  collection, getFirestore, getDocs, addDoc, serverTimestamp, deleteDoc, updateDoc, doc as newdoc,
   // Se importa serveTimestamp para obtener fecha y hora del post
 } from 'firebase/firestore';
 import { firebaseConfig } from '../firebase.config.js';
@@ -40,7 +40,17 @@ getDocs(colRef)
   .catch((error) => {
     console.log(error.message);
   });
+// edit documents
+export const editPosts = (id, petName, petDescription) => {
+  const documentEditDoc = newdoc(colRef, id);
+  const newTimestamp = serverTimestamp();
 
+  return updateDoc(documentEditDoc, {
+    petName,
+    description: petDescription,
+    timestamp: newTimestamp(),
+  });
+};
 // delete documents
 export const deletePost = (id) => {
   const documentDeleteDoc = newdoc(colRef, id);

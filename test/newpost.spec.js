@@ -35,7 +35,7 @@ describe('se crean estos elementos en el componente de newpost', () => {
     expect(newpostDiv.querySelector('#formpost')).toBeTruthy();
     expect(newpostDiv.querySelector('.userContaier')).toBeTruthy();
     expect(newpostDiv.querySelector('.profilePic')).toBeTruthy();
-    expect(newpostDiv.querySelector('#userName')).toBeTruthy();
+    expect(newpostDiv.querySelector('.userName')).toBeTruthy();
     expect(newpostDiv.querySelector('input')).toBeTruthy();
     expect(newpostDiv.querySelector('textarea')).toBeTruthy();
     expect(newpostDiv.querySelector('button')).toBeTruthy();
