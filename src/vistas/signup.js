@@ -1,7 +1,7 @@
 import { registerUser } from '../lib/auth.js';
 
 function signup(navigateTo) {
-  // creación//
+  // creación de elementos//
   const section = document.createElement('section');
   const sectionForm = document.createElement('section');
   const sectionHeader = document.createElement('section');
@@ -19,12 +19,13 @@ function signup(navigateTo) {
   const checkboxNo = document.createElement('input');
   const buttonEnterSignup = document.createElement('button');
   const buttonReturnSignup = document.createElement('img');
-
+  const showPassword = document.createElement('button');
   const logo = document.createElement('img');
   const header = document.createElement('div');
 
   inputEmail.placeholder = 'example@gmail.com';
   inputPassword.placeholder = '***********';
+  showPassword.textContent = 'Mostrar Contraseña';
 
   // agregar atributos//
   logo.setAttribute('src', 'images/logo.png');
@@ -46,6 +47,11 @@ function signup(navigateTo) {
   inputEmail.setAttribute('id', 'inputEmail');
   inputPassword.setAttribute('id', 'inputPassword');
   buttonEnterSignup.textContent = 'Registrarte';
+  inputPassword.setAttribute('type', 'password');
+  inputPassword.setAttribute('src', 'images/ojoOculto.png');
+
+
+
   buttonReturnSignup.addEventListener('click', () => {
     navigateTo('/');
   });
@@ -62,6 +68,15 @@ function signup(navigateTo) {
       .catch((error) => {
         console.log(error);
       });
+  });
+
+  showPassword.addEventListener('click', (e) => {
+    e.preventDefault();
+    if (inputPassword.type === 'password') {
+      inputPassword.type = 'text';
+    } else {
+      inputPassword.type = 'password';
+    }
   });
 
   // // agregar clases//
@@ -94,6 +109,7 @@ function signup(navigateTo) {
     checkboxNo,
     yes,
     no,
+    showPassword,
   );
   sectionForm.append(form);
   sectionHeader.append(header, logo);
