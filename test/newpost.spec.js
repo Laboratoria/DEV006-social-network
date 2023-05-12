@@ -64,14 +64,6 @@ describe.only('se crean estos elementos en el componente de newpost', () => {
 //   }),
 // }));
 
-jest.mock('firebase/firestore', () => ({
-    addDoc: (collection(database, 'post')) => ({
-      petName: 'Fido',
-      description: 'Perro lindo',
-      userid: 'John Doe',
-  }),
-}));
-
 describe('newpost', () => {
   test('should call addPost with correct arguments when form is submitted with non-empty petName and petDescription', () => {
     // código que usa el objeto document
