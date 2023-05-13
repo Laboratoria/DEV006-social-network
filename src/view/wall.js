@@ -161,9 +161,6 @@ export const wall = (navigateTo) => {
 
         const liEdit = document.createElement('li');
         liEdit.setAttribute('class', 'liEdit');
-        liEdit.addEventListener('click', () => {
-          navigateTo('/editpost');
-        });
 
         const descriptionPet = document.createElement('p');
         descriptionPet.textContent = post.description;
@@ -225,13 +222,7 @@ export const wall = (navigateTo) => {
         iconCheck.setAttribute('src', '../img/check.png');
 
         liEdit.addEventListener('click', () => {
-          // Acceder a los valores necesarios del post
-          const postId = post.id;
-          const petName = post.petName;
-          const description = post.description;
-
-          // Llamar a la función navigateTo y pasar los valores como parámetros
-          navigateTo('/wall', postId, petName, description);
+          navigateTo('/editpost');
         });
 
         divUsersPointsEl.append(username);
