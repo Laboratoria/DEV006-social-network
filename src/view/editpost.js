@@ -1,6 +1,5 @@
 // nodos para editar post
-import { getDocs, query } from 'firebase/firestore';
-import { auth, colRef, editPosts } from '../lib/index.js';
+import { auth } from '../lib/index.js';
 
 export const editPost = (navigateTo) => {
   const editPostDiv = document.createElement('div');
@@ -65,24 +64,22 @@ export const editPost = (navigateTo) => {
   userContainer.append(profilePic, userName);
   formPost.append(userContainer, btnSave);
 
-  const q = (colRef) => {
-    const petName = document.createElement('input');
-    petName.setAttribute('placeholder', 'Pet name');
-    petName.setAttribute('type', 'text');
-    petName.setAttribute('name', 'petName');
-    petName.textContent = post.petName;
-    petName.required = true;
+  const petName = document.createElement('input');
+  petName.setAttribute('placeholder', 'Pet name');
+  petName.setAttribute('type', 'text');
+  petName.setAttribute('name', 'petName');
+  petName.textContent = post.petName;
+  petName.required = true;
 
-    const petDescription = document.createElement('textarea');
-    petDescription.setAttribute('placeholder', 'Describe your pet!');
-    petDescription.setAttribute('name', 'petDescription');
-    petDescription.required = true;
-    petDescription.setAttribute('cols', '8');
-    petDescription.setAttribute('rows', '12');
-    petName.textContent = post.petDescription;
+  const petDescription = document.createElement('textarea');
+  petDescription.setAttribute('placeholder', 'Describe your pet!');
+  petDescription.setAttribute('name', 'petDescription');
+  petDescription.required = true;
+  petDescription.setAttribute('cols', '8');
+  petDescription.setAttribute('rows', '12');
+  petName.textContent = post.petDescription;
 
-    formPost.append(petName, petDescription);
-  };
+  formPost.append(petName, petDescription);
   return editPostDiv;
 };
 /* .then(() => {
