@@ -52,11 +52,13 @@ export const newpost = (navigateTo) => {
   petName.setAttribute('placeholder', 'Pet name');
   petName.setAttribute('type', 'text');
   petName.setAttribute('name', 'petName');
+  petName.setAttribute('class', 'petName');
   petName.required = true;
 
   const petDescription = document.createElement('textarea');
   petDescription.setAttribute('placeholder', 'Describe your pet!');
   petDescription.setAttribute('name', 'petDescription');
+  petDescription.setAttribute('class', 'petDescription');
   petDescription.required = true;
   petDescription.setAttribute('cols', '8');
   petDescription.setAttribute('rows', '12');
