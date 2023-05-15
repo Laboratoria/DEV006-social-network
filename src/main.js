@@ -1,4 +1,5 @@
 // Este es el punto de entrada de tu aplicacion
+// eslint-disable-next-line import/no-unresolved
 
 import home from './vistas/home.js';
 import login from './vistas/login.js';
@@ -6,6 +7,7 @@ import error from './vistas/error.js';
 import signup from './vistas/signup.js';
 
 console.log('se carga');
+
 const routes = [
   { path: '/', component: home },
   { path: '/login', component: login },

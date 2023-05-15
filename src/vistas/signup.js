@@ -1,5 +1,7 @@
+import { registerUser } from '../lib/auth.js';
+
 function signup(navigateTo) {
-  // creación//
+  // creación de elementos//
   const section = document.createElement('section');
   const sectionForm = document.createElement('section');
   const sectionHeader = document.createElement('section');
@@ -11,9 +13,13 @@ function signup(navigateTo) {
   const inputEmail = document.createElement('input');
   const inputPassword = document.createElement('input');
   const question = document.createElement('h5');
+  const yes = document.createElement('h5');
+  const no = document.createElement('h5');
+  const checkboxYes = document.createElement('input');
+  const checkboxNo = document.createElement('input');
   const buttonEnterSignup = document.createElement('button');
-  const buttonReturnSignup = document.createElement('button');
-
+  const buttonReturnSignup = document.createElement('img');
+  const showPassword = document.createElement('img');
   const logo = document.createElement('img');
   const header = document.createElement('div');
 
@@ -26,14 +32,54 @@ function signup(navigateTo) {
   passwordSignup.textContent = 'Contraseña';
   UserSignup.textContent = 'Nombre de Usuario';
   question.textContent = 'Esta aplicación esta pensada para personas que se identifican como mujeres. Por favor responde: ¿Te identificas como mujer?  ';
-
+  checkboxYes.type = 'radio';
+  checkboxNo.type = 'radio';
+  checkboxYes.id = 'Yes';
+  checkboxNo.id = 'No';
+  checkboxYes.name = 'checkbox';
+  checkboxNo.name = 'checkbox';
+  yes.textContent = 'Si';
+  no.textContent = 'No';
+  yes.id = 'labelYes';
+  no.id = 'labelNo';
+  buttonReturnSignup.setAttribute('src', 'images/arrow.png');
+  inputEmail.setAttribute('id', 'inputEmail');
+  inputPassword.setAttribute('id', 'inputPassword');
   buttonEnterSignup.textContent = 'Registrarte';
-  buttonReturnSignup.textContent = 'X';
+  inputPassword.setAttribute('type', 'password');
+  inputPassword.setAttribute('src', 'images/ojoOculto.png');
+  showPassword.setAttribute('id', 'showPasswordLogin');
+  showPassword.setAttribute('src', 'images/ojoOculto.png');
+
   buttonReturnSignup.addEventListener('click', () => {
     navigateTo('/');
   });
 
-  // agregar clases//
+  // Registro de usuario//
+  buttonEnterSignup.addEventListener('click', (e) => {
+    e.preventDefault();
+    const email = inputEmail.value;
+    const password = inputPassword.value;
+    registerUser(email, password)
+      .then(() => {
+        console.log('signup');
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  });
+
+  showPassword.addEventListener('click', (e) => {
+    e.preventDefault();
+    if (inputPassword.type === 'password') {
+      inputPassword.type = 'text';
+      showPassword.src = 'images/ojonoOculto.png';
+    } else {
+      inputPassword.type = 'password';
+      showPassword.src = 'images/ojoOculto.png';
+    }
+  });
+  // // agregar clases//
 
   header.classList.add('header');
   logo.classList.add('logo');
@@ -59,10 +105,15 @@ function signup(navigateTo) {
     inputPassword,
     buttonEnterSignup,
     question,
+    checkboxYes,
+    checkboxNo,
+    yes,
+    no,
+    showPassword,
   );
   sectionForm.append(form);
   sectionHeader.append(header, logo);
-  section.append(sectionHeader, sectionForm, form);
+  section.append(sectionHeader, buttonReturnSignup, sectionForm, form);
 
   return section;
 }
