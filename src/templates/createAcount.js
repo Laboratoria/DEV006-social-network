@@ -51,24 +51,6 @@ function createAcount(navigateTo) {
   buttonReturn.addEventListener('click', () => {
     navigateTo('/');
   });
-<<<<<<< HEAD
-
-  // autenticar login
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    // const name = inputName.value;
-    const email = inputEmail.value;
-    const pass = inputPass.value;
-    // const confirmpass = inputConfPass.value;
-
-    const userCredentials = await create(
-      auth,
-      email,
-      pass,
-    );
-
-    console.log(userCredentials);
-=======
   inputEmail.addEventListener('input', (e) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (emailRegex.test(e.target.value)) {
@@ -77,7 +59,6 @@ function createAcount(navigateTo) {
     } else {
       paragraphEmail.textContent = 'Email no es valido';
     }
->>>>>>> 80891cb25f51b8a8e75c7f4870d12a4d50bcaeeb
   });
   // autenticar login
   // form.addEventListener('submit', async (e) => {
