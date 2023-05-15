@@ -554,15 +554,19 @@ hr {
     text-align: center;
     
 }
+.postArticle .reactionContainer img {
+    width: 2.4rem;
+    height: 2.4rem;
+}
+.bodyimg footer img:hover{
+    cursor: pointer;
+}
 
 #modalConfirm img {
     margin: 0 1rem;
 }
 
-.postArticle .reactionContainer img {
-    width: 2.4rem;
-    height: 2.4rem;
-}
+
 
  /* Íconos de navegación*/
  footer {
@@ -664,9 +668,6 @@ hr {
     width: 100%;
 }
 
-.bodyimg footer img:hover{
-    cursor: pointer;
-}
 
 .footerParagraph, .gitHubLinks {
     color: #292D32;
