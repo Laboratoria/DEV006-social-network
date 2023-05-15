@@ -9,7 +9,7 @@
     left: 57px;
     top: 20px;
   }
-  .login {
+  .loginCreateAcount {
     position: absolute;
     width: 166px;
     height: 53px;
@@ -70,7 +70,7 @@
     top: 469px;
   }
 
-  .login2,
+  .login,
   .google {
     top: 520px;
     position: absolute;
@@ -85,7 +85,7 @@
     font-weight: 600;
     border: none;
   }
-  .login2 {
+  .login {
     top: 520px;
   }
   .google {

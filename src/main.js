@@ -3,13 +3,14 @@ import home from './templates/home.js';
 import login from './templates/login.js';
 import createAcount from './templates/createAcount.js';
 import error from './templates/error.js';
-// import navigateTo from './lib/index.js';
+import wall from './templates/wall.js';
 // console.log('HOlA')
 
 const routes = [
   { path: '/', component: home },
   { path: '/login', component: login },
   { path: '/loginCreate', component: createAcount },
+  { path: '/wall', component: wall },
   { path: '/error', component: error },
 ];
 

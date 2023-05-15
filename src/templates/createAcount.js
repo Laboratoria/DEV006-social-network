@@ -28,14 +28,16 @@ function createAcount(navigateTo) {
   inputName.classList.add('name');
   inputEmail.placeholder = 'Email';
   inputEmail.classList.add('email2');
+  inputEmail.type = 'email';
   inputEmail.name = 'email';
   inputPass.placeholder = 'Password';
   inputPass.classList.add('password2');
+  inputPass.type = 'password';
   inputConfPass.placeholder = 'Confirm password';
   inputConfPass.classList.add('confirmPass');
 
   buttonSingUp.textContent = 'Sing Up';
-  buttonSingUp.classList.add('login2');
+  buttonSingUp.classList.add('loginCreateAcount');
   buttonSingUp.addEventListener('submit', () => {
     navigateTo('/wall');
   });
@@ -51,69 +53,52 @@ function createAcount(navigateTo) {
   buttonReturn.addEventListener('click', () => {
     navigateTo('/');
   });
+
   inputEmail.addEventListener('input', (e) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (emailRegex.test(e.target.value)) {
       console.log('pasa la validación');
       paragraph.textContent = '';
     } else {
-      paragraph.textContent = 'Email no es valido';
+      paragraph.textContent = 'Email is not valid';
     }
   });
-  inputPass.addEventListener('change', (e) => {
-    if (e.target.value < 6) {
-      console.log(e.target.value, 'h');
-      paragraph.textContent = '';
-    } else {
-      paragraph.textContent = 'clave mayor a 6 carácteres';
-    }
-  });
-  inputConfPass.addEventListener('change', (e) => {
-    if (e.target.value === inputPass.value) {
-      paragraph.style.display = 'none';
-    } else {
-      paragraph.textContent = 'su clave no concuerda';
-    }
-  });
-  // autenticar login
-  // form.addEventListener('submit', async (e) => {
-  //   e.preventDefault();
-  //   // const name = inputName.value;
-  //   const email = inputEmail.value;
-  //   const pass = inputPass.value;
-  //   console.log('aja', email, pass);
-  //   // const confirmpass = inputConfPass.value;
 
-  //   function mensaje() {
-  //     const campo = document.forms.form.elements.email;
-  //     console.log(campo, 'emailvalue');
-  //     // if (campo.checkValidity() && campo.validity.patternMismatch) {
-  //     //   campo.setCustomValidity('NO paso');
-  //     // }
-  //   }
-  //   console.log(mensaje());
-  //   try {
-  //     const userCredentials = await create(
-  //       auth,
-  //       email,
-  //       pass,
-  //     );
-  //     console.log(userCredentials);
-  //   } catch (error) {
-  //     if (error.code === 'auth/email-already-in-use') {
-  //       // alert('Email already in use');
-  //       // const formulario1 = document.forms.form;
-  //       mensaje(formulario1);
-  //     } else if (error.code === 'auth/invalid-email') {
-  //       alert('Invalid email');
-  //     } else if (error.code === 'auth/weak-password') {
-  //       alert('Password is too weak');
-  //     }
-  //   }
-  // });
+  buttonSingUp.addEventListener('click', async (e) => {
+    e.preventDefault();
+    const email = inputEmail.value;
+    const pass = inputPass.value;
+    const confPass = inputConfPass.value;
+
+    form.appendChild(paragraph);
+    if (pass.length < 6) {
+      paragraph.textContent = 'The password must be at least 6 characters';
+      return;
+    }
+    if (pass !== confPass) {
+      paragraph.textContent = 'Passwords do not match';
+      return;
+    }
+    try {
+      const userCredentials = await create(
+        auth,
+        email,
+        pass,
+      );
+      console.log(userCredentials);
+      navigateTo('/wall');
+    } catch (error) {
+      if (error.code === 'auth/email-already-in-use') {
+        alert('Email already in use');
+      } else if (error.code === 'auth/invalid-email') {
+        alert('Invalid email');
+      } else if (error.code === 'auth/weak-password') {
+        alert('Password is too weak');
+      }
+    }
+  });
 
   form.append(
-    paragraph,
     inputName,
     inputEmail,
     inputPass,
@@ -121,6 +106,7 @@ function createAcount(navigateTo) {
     buttonSingUp,
     buttonGoogle,
     buttonReturn,
+    paragraph,
   );
 
   section.append(logo, title, caption, form);
