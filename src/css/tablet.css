@@ -179,18 +179,28 @@
         margin-bottom: 3rem;
     }
     /* Menu de eliminar y editar post*/
-
-    .menuPoints .iconClose{
-        right: -45%;
+    .menuPoints {
+        position: absolute;
+        left: 200%;
+        z-index: 1;
+        min-height: 20rem;
+        width: 32rem;
+        border-radius: 15px;
     }
 
-    .menuPoints li{
-        padding: 2rem 25rem;
+    .menuPoints.active {
+        top: 3.6rem;
+        left: 24.4rem;
+    }
+
+    .menuPoints .iconClose{
+        margin-bottom: -1rem;
     }
 
     .postsSection #modalConfirm {
         width: 60%;
         height: 25%;
+        z-index: 2;
     }
 
     /* Fin de formularios*/

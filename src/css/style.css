@@ -413,6 +413,7 @@ hr {
     box-shadow: 1px 1px 5px 1px gray;
     border-radius: 16px;
     padding: 0.8rem 1.2rem;
+    position: relative;
 }
 
 .postArticle .descriptionPet {
@@ -486,7 +487,6 @@ hr {
 .menuPoints.active {
     /* top:85%; */
     bottom:0;
-    
 }
 
 .menuPoints .iconClose{
@@ -522,6 +522,7 @@ hr {
     font-size: 2.4rem;
     text-align: center;
     padding: 2.8rem;
+    z-index: 1;
 }
 
 #modal p {
