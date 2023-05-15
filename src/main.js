@@ -1,52 +1,49 @@
-/* eslint-disable no-console */
-/* eslint-disable no-dupe-else-if */
-/* eslint-disable no-alert */
+/* eslint-disable import/named */
 /* eslint-disable no-unused-vars */
-//Importar las vistas 
-import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { home } from './pages/home.js';
-import { auth } from './lib/index.js';
+// Importar las vistas
 
+import { home } from './pages/home.js';
+import { createAccount } from './pages/createAccount.js';
+import { signIn } from './pages/signIn.js';
+import { wall } from './pages/wall.js';
 
 const root = document.getElementById('root');
 
-const routes = [
-  { path: '/', component: home },
+const routes = {
+  '/': home,
+  '/createAccount': createAccount,
+  '/signIn': signIn,
+  '/wall': wall,
+};
 
-];
+function navigateTo(pathname) {
+  /* objeto que proporciona acceso y control sobre el historial de navegación del navegador */
+  /* pushState (state, title, url) es un método del objeto history que permite modificar la URL del navegador sin recargar la página */
+  window.history.pushState({}, pathname, window.location.origin + pathname); // Guarda el historial
+  root.innerHTML = '';
+  const view = routes[pathname];
+  root.appendChild(view(navigateTo));
+}
 
-// const default= '/';
+/* window.onpopstate se utiliza para manejar el evento de cambio en el historial de navegación del navegador */
+window.onpopstate = () => {
+  root.innerHTML = '';
+  const path = window.location.pathname;
+  const view = routes[path];
+  root.appendChild(view(navigateTo));
+};
 
-root.innerHTML = home;
+function reloadPage() {
+  const currentPath = window.location.pathname;
+  localStorage.setItem('currentPage', currentPath);
+  window.location.reload();
+}
 
-const loginForm = document.querySelector('form');
-
-loginForm.addEventListener('submit', async (e) => {
-  e.preventDefault();
-
-  const email = loginForm.querySelector('input[type="email"]').value;
-  const password = loginForm.querySelector('input[type="password"]').value;
-
-  console.log(email, password);
-  // promesa de la funcion, bloque try.. catch debe ir acompañado de async(funcion asyncrona)
-  // await espera que la funcion cumpla con los parametros para ver un resultado o error
-  try {
-    const userCredentials = await createUserWithEmailAndPassword(auth, email, password);
-    console.log(userCredentials);
-  } catch (error) {
-    console.log(error.message);
-    console.log(error.code);
-
-    if (error.code === 'auth/email-already-in-use') {
-      alert('Email already in use');
-    } else if (error.code === 'auth/invalid-email') {
-      alert('Invalid email');
-    } else if (error.code === 'auth/weak-password') {
-      alert('Your password must have a minimum of 6 characters ');
-    } else if (error.code === 'auth/invalid-email' && error.code === 'auth/weak-password') {
-      alert('Your email and password are invalid');
-    } else if (error.code) {
-      alert('Something went wrong');
-    }
-  }
-});
+// Obtener la página actual almacenada en localStorage
+const currentPage = window.location.pathname;
+console.log(currentPage);
+if (currentPage && routes[currentPage]) {
+  navigateTo(currentPage);
+} else {
+  navigateTo('/');
+}
