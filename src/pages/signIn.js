@@ -1,6 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable no-alert */
-import { signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import { signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup,setPersistence, browserLocalPersistence } from 'firebase/auth';
 import { auth } from '../lib/firebase.js';
 
 export function signIn(navigateTo) {
@@ -69,6 +69,16 @@ export function signIn(navigateTo) {
     console.log(email, password);
     // promesa de la funcion, bloque try.. catch debe ir acompañado de async(funcion asyncrona)
     // await espera que la funcion cumpla con los parametros para ver un resultado o error
+    
+    setPersistence(auth, browserLocalPersistence)
+    .then(() => {
+      console.log('Persistence set successfully.');
+      // Continuar con el inicio de sesión
+    })
+    .catch((error) => {
+      console.log('Error setting persistence:', error);
+    });
+
     try {
       const userCredentials = await signInWithEmailAndPassword(auth, email, password);
       console.log(userCredentials);
