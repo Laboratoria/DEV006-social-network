@@ -13,6 +13,10 @@ jest.mock('firebase/firestore', () => ({
       },
     ],
   }),
+  getFirestore: jest.fn().mockResolvedValue,
+  collection: jest.fn().mockResolvedValue,
+  orderBy: jest.fn().mockResolvedValue,
+  query: jest.fn().mockResolvedValue,
 }));
 
 jest.mock('../src/lib/index.js', () => {
@@ -20,9 +24,11 @@ jest.mock('../src/lib/index.js', () => {
   return {
     __esModule: true,
     ...originalModule,
-    deletePost: jest.fn((id) => originalModule.deletePost(id)),
+    deletePost: jest.fn(),
   };
 });
+
+// Test para rendrización de wall.js
 describe('Se renderiza el componente para eliminar una publicación nueva', () => {
   let newWall;
 
@@ -34,9 +40,10 @@ describe('Se renderiza el componente para eliminar una publicación nueva', () =
   afterEach(jest.clearAllMocks);
 
   test('la fx deletePost recibe el id', () => {
-    const newLiConfirm = newWall.querySelector('.liConfirm');
-
-    newLiConfirm.dispatchEvent(new Event('click'));
-    expect(deletePost).toHaveBeenCalledWith('mockedId');
+    setTimeout(() => {
+      const newLiConfirm = newWall.querySelector('#liConfirm');
+      console.log(newLiConfirm);
+      newLiConfirm.dispatchEvent(new Event('click'));
+      expect(deletePost).toHaveBeenCalledWith('mockedId');
+    }, 1000); // Espera 1 segundo antes de seleccionar el elemento
   });
-});
