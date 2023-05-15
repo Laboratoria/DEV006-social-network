@@ -1,8 +1,23 @@
+/**
+ * @jest-environment jsdom
+ */
 // importamos la funcion que vamos a testear
-import { myFunction } from '../src/lib/index';
+import signup from '../src/vistas/signup.js';
 
-describe('myFunction', () => {
-  it('debería ser una función', () => {
-    expect(typeof myFunction).toBe('function');
+describe('signup', () => {
+  it('snapshot', () => {
+    const vista = signup(() => {});
+    const container = document.createElement('div');
+    container.append(vista);
+    expect(container).toMatchSnapshot();
+  });
+  it('back', () => {
+    const navigateTo = jest.fn();
+    const vista = signup(navigateTo);
+    const container = document.createElement('div');
+    container.append(vista);
+    const botonBack = container.querySelector('.buttonReturnSignup');
+    botonBack.click();
+    expect(navigateTo).toHaveBeenCalled();
   });
 });
