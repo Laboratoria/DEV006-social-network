@@ -4,6 +4,7 @@
 // importamos la funcion que vamos a testear
 import signup from '../src/vistas/signup.js';
 
+//Validacion de funcion Snapshot de vista
 describe('signup', () => {
   it('snapshot', () => {
     const vista = signup(() => {});
@@ -11,8 +12,9 @@ describe('signup', () => {
     container.append(vista);
     expect(container).toMatchSnapshot();
   });
+  //Validacion de boton de retorno a la pagina home 
   it('back', () => {
-    const navigateTo = jest.fn();
+    const navigateTo = jest.fn();//(es una funcion mock)
     const vista = signup(navigateTo);
     const container = document.createElement('div');
     container.append(vista);
