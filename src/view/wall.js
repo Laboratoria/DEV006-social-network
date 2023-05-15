@@ -161,9 +161,6 @@ export const wall = (navigateTo) => {
 
         const liEdit = document.createElement('li');
         liEdit.setAttribute('class', 'liEdit');
-        liEdit.addEventListener('click', () => {
-          navigateTo('/editpost');
-        });
 
         const descriptionPet = document.createElement('p');
         descriptionPet.textContent = post.description;
@@ -223,6 +220,10 @@ export const wall = (navigateTo) => {
 
         const iconCheck = document.createElement('img');
         iconCheck.setAttribute('src', '../img/check.png');
+
+        liEdit.addEventListener('click', () => {
+          navigateTo('/editpost');
+        });
 
         divUsersPointsEl.append(username);
         reactionContainer.append(namePet, likeHeart, pawMatch);

@@ -116,7 +116,7 @@
     .formpost #Post {
         font-size: 2rem;
         height: 4.6rem;
-        top: 8.2rem;
+        top: 7rem;
     }
 
     #spanErrorEmail {
@@ -178,6 +178,21 @@
         font-size: 2.2rem;
         margin-bottom: 3rem;
     }
+    /* Menu de eliminar y editar post*/
+
+    .menuPoints .iconClose{
+        right: -45%;
+    }
+
+    .menuPoints li{
+        padding: 2rem 25rem;
+    }
+
+    .postsSection #modalConfirm {
+        width: 60%;
+        height: 25%;
+    }
+
     /* Fin de formularios*/
 
     footer {

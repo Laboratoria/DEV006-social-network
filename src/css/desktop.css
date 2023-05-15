@@ -159,7 +159,7 @@
 
     .formpost #Post {
         font-size: 2.4rem;
-        top: 7.2rem;
+        top: 6.1rem;
         width: 10rem;
         height: 4rem;
         padding: 10px;
@@ -170,6 +170,31 @@
         font-size: 1.8rem;
         margin: 2rem auto;
     }
+
+    /* Menu de eliminar y editar post*/
+    .menuPoints{
+        width: 40%;
+        height: 40%;
+        border-radius: 15px;
+        left: 30%;
+
+    }
+
+    .menuPoints li{
+        padding: 2rem 20rem;
+    }
+    .postsSection #modalConfirm {
+        width: 30%;
+        height: 25%;
+        padding: 5rem;
+    }
+    #modal{
+        top: 20%;
+        width: 30%;
+        height: 30%;
+        padding: 2rem;
+    }
+    /* footer */
     #footerWall{
         display: none;
     }
