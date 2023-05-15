@@ -1,6 +1,6 @@
 // home.js
 
-export const welcomePage = (navigateTo) => {
+const welcomePage = (navigateTo) => {
   const welcomeSection = document.createElement('section');
   welcomeSection.classList.add('welcomeSection');
 
@@ -8,7 +8,7 @@ export const welcomePage = (navigateTo) => {
   logoArticle.classList.add('articleLogo');
 
   const logoImg = document.createElement('img');
-  logoImg.setAttribute('src', '/DEV006-CINERGIA/src/LOGO.png');
+  logoImg.setAttribute('src', './pages/images/LOGO.png');
   logoImg.setAttribute('alt', 'Logo: dos boletos para el cine. Uno morado y uno amarillo. Ambos dicen "Cinergia"');
   logoImg.classList.add('logo');
 
@@ -37,7 +37,7 @@ export const welcomePage = (navigateTo) => {
   });
 
   btnSignUp.addEventListener('click', () => {
-    navigateTo('/DEV006-CINERGIA/src/pages/signUp.js');
+    navigateTo('/signup');
   });
 
   bigLogoTxt.textContent = 'Conectadxs por el cine';
@@ -58,3 +58,4 @@ export const welcomePage = (navigateTo) => {
 
   return welcomeSection;
 };
+export default welcomePage;
