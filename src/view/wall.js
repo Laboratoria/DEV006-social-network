@@ -1,6 +1,6 @@
 import { getDocs, query, orderBy } from 'firebase/firestore';
 import {
-  exit, colRef, deletePost, auth,
+  exit, colRef, deletePost, auth, editPosts,
 } from '../lib/index.js';
 
 export const wall = (navigateTo) => {
@@ -34,12 +34,15 @@ export const wall = (navigateTo) => {
 
   const iconHome2 = document.createElement('img');
   iconHome2.setAttribute('src', '../img/HOME.png');
+  iconHome2.setAttribute('class', 'containerIcons');
 
   const iconSearch2 = document.createElement('img');
   iconSearch2.setAttribute('src', '../img/LUPA.png');
+  iconSearch2.setAttribute('class', 'containerIcons');
 
   const iconAdd2 = document.createElement('img');
   iconAdd2.setAttribute('src', '../img/AÑADIRINACTIVO.png');
+  iconAdd2.setAttribute('class', 'containerIcons');
   iconAdd2.addEventListener('mouseover', function () {
     this.src = 'img/AÑADIRACTIVO.png';
   });
@@ -52,6 +55,7 @@ export const wall = (navigateTo) => {
 
   const iconProfile2 = document.createElement('img');
   iconProfile2.setAttribute('src', '../img/PROFILE.png');
+  iconProfile2.setAttribute('class', 'containerIcons');
 
   // ------------------------------------------------- Inicia menú de hamburguesa
   const navMenu = document.createElement('ul');
@@ -143,11 +147,13 @@ export const wall = (navigateTo) => {
         iconoPoints.setAttribute('src', '../img/menupuntos.png');
         iconoPoints.setAttribute('id', 'iconoPoints');
 
+        // Menú de opciones Delete y Edit
         const menuPoints = document.createElement('ul');
         menuPoints.setAttribute('class', 'menuPoints');
 
         const iconTrash = document.createElement('img');
         iconTrash.setAttribute('src', '../img/trash.png');
+        iconTrash.setAttribute('id', 'iconTrash');
 
         const iconClose = document.createElement('img');
         iconClose.setAttribute('src', '../img/cancel.png');
@@ -158,9 +164,11 @@ export const wall = (navigateTo) => {
 
         const iconEdit = document.createElement('img');
         iconEdit.setAttribute('src', '../img/pencil.png');
+        iconEdit.setAttribute('id', 'iconEdit');
 
         const liEdit = document.createElement('li');
         liEdit.setAttribute('class', 'liEdit');
+        // Termina menú de Delete y Edit
 
         const descriptionPet = document.createElement('p');
         descriptionPet.textContent = post.description;
@@ -187,12 +195,12 @@ export const wall = (navigateTo) => {
         ulModal.setAttribute('class', 'ulModal');
 
         const pPregunta = document.createElement('p');
+        pPregunta.setAttribute('id', 'pPregunta');
         pPregunta.textContent = 'Delete this post?';
 
         const liConfirm = document.createElement('li');
         liConfirm.setAttribute('id', 'liConfirm');
         liConfirm.textContent = 'Delete';
-        console.log(liConfirm);
 
         const liCancel = document.createElement('li');
         liCancel.setAttribute('class', 'liCancel ');
@@ -222,10 +230,6 @@ export const wall = (navigateTo) => {
         const iconCheck = document.createElement('img');
         iconCheck.setAttribute('src', '../img/check.png');
 
-        liEdit.addEventListener('click', () => {
-          navigateTo('/editpost');
-        });
-
         divUsersPointsEl.append(username);
         reactionContainer.append(namePet, likeHeart, pawMatch);
         postArticle.append(
@@ -233,7 +237,7 @@ export const wall = (navigateTo) => {
           descriptionPet,
           reactionContainer,
         );
-        postsSection.append(postArticle, modal, modalConfirm);
+
         modalConfirm.append(pDeleted, iconCheck);
         // ------------------------------------------condición para menu points
         if (post.userid === auth.currentUser.displayName) {
@@ -262,6 +266,55 @@ export const wall = (navigateTo) => {
             postElement.remove();
           }
         });
+
+        /* Modal para editar post */
+        const modalEdit = document.createElement('dialog');
+        modalEdit.setAttribute('id', 'modalEdit');
+
+        const cancelEdit = document.createElement('img');
+        cancelEdit.setAttribute('src', '../img/cancel.png');
+
+        const pEditPost = document.createElement('p');
+        pEditPost.setAttribute('id', 'pEditPost');
+        pEditPost.textContent = 'Edit post';
+
+        const profilePic = document.createElement('img');
+        profilePic.setAttribute('src', '../img/Bob.png');
+        profilePic.setAttribute('class', 'profilePic');
+
+        const userName = document.createElement('span');
+        userName.setAttribute('class', 'userName');
+        userName.textContent = post.userid;
+
+        const formEdit = document.createElement('form');
+        formEdit.setAttribute('id', 'formEdit');
+
+        const inputEditName = document.createElement('input');
+        inputEditName.setAttribute('type', 'text');
+        inputEditName.setAttribute('id', 'inputEditName');
+        inputEditName.value = `${post.petName}`;
+
+        const inputEditDescription = document.createElement('input');
+        inputEditDescription.setAttribute('type', 'text');
+        inputEditDescription.setAttribute('id', 'inputEditDescription');
+        inputEditDescription.value = post.description;
+
+        const buttonEdit = document.createElement('button');
+        buttonEdit.setAttribute('id', 'buttonEdit');
+        buttonEdit.setAttribute('type', 'submit');
+        buttonEdit.textContent = 'Save';
+
+        postsSection.append(postArticle, modal, modalConfirm, modalEdit);
+        modalEdit.append(cancelEdit, pEditPost, profilePic, userName, formEdit);
+        formEdit.append(inputEditName, inputEditDescription, buttonEdit);
+
+        liEdit.addEventListener('click', () => {
+          menuPoints.classList.remove('active');
+          modalEdit.open = true;
+        });
+
+        buttonEdit.addEventListener('click', editPosts(post.id, inputEditName.value, inputEditDescription.value));
+
         iconoPoints.addEventListener('click', () => {
           menuPoints.classList.toggle('active');
         });

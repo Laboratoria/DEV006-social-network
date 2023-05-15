@@ -43,12 +43,11 @@ getDocs(colRef)
 // edit documents
 export const editPosts = (id, petName, petDescription) => {
   const documentEditDoc = newdoc(colRef, id);
-  const newTimestamp = serverTimestamp();
-
+  console.log(petName);
   return updateDoc(documentEditDoc, {
     petName,
     description: petDescription,
-    timestamp: newTimestamp(),
+    timestamp: serverTimestamp(),
   });
 };
 // delete documents

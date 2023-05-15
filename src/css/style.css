@@ -669,3 +669,7 @@ hr {
 .footerParagraph, .gitHubLinks {
     color: #292D32;
 }
+
+#modalEdit {
+    z-index: 1;
+}
