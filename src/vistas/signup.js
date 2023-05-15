@@ -19,13 +19,12 @@ function signup(navigateTo) {
   const checkboxNo = document.createElement('input');
   const buttonEnterSignup = document.createElement('button');
   const buttonReturnSignup = document.createElement('img');
-  const showPassword = document.createElement('button');
+  const showPassword = document.createElement('img');
   const logo = document.createElement('img');
   const header = document.createElement('div');
 
   inputEmail.placeholder = 'example@gmail.com';
   inputPassword.placeholder = '***********';
-  showPassword.textContent = 'Mostrar Contraseña';
 
   // agregar atributos//
   logo.setAttribute('src', 'images/logo.png');
@@ -49,8 +48,8 @@ function signup(navigateTo) {
   buttonEnterSignup.textContent = 'Registrarte';
   inputPassword.setAttribute('type', 'password');
   inputPassword.setAttribute('src', 'images/ojoOculto.png');
-
-
+  showPassword.setAttribute('id', 'showPasswordLogin');
+  showPassword.setAttribute('src', 'images/ojoOculto.png');
 
   buttonReturnSignup.addEventListener('click', () => {
     navigateTo('/');
@@ -74,11 +73,12 @@ function signup(navigateTo) {
     e.preventDefault();
     if (inputPassword.type === 'password') {
       inputPassword.type = 'text';
+      showPassword.src = 'images/ojonoOculto.png';
     } else {
       inputPassword.type = 'password';
+      showPassword.src = 'images/ojoOculto.png';
     }
   });
-
   // // agregar clases//
 
   header.classList.add('header');

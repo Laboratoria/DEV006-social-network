@@ -73,7 +73,7 @@ function login(navigateTo) {
 
   // agrupando las secciones//
   sectionHeader.append(header, logo);
-  form.append(emailLogin, inputEmail, passwordLogin, inputPassword,showPassword);
+  form.append(emailLogin, inputEmail, passwordLogin, inputPassword, showPassword);
   sectionForm.append(form, buttonEnter);
   section.append(sectionHeader, buttonReturn, sectionForm);
 
