@@ -566,16 +566,6 @@ hr {
     margin: 0 1rem;
 }
 
-
-
-.bodyimg footer img:hover{
-    cursor: pointer;
-}
-
-#modalConfirm img {
-    margin: 0 1rem;
-}
-
  /* Íconos de navegación*/
  footer {
     background-color: #EA907A;

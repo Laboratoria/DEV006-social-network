@@ -47,3 +47,4 @@ describe('Se renderiza el componente para eliminar una publicación nueva', () =
       expect(deletePost).toHaveBeenCalledWith('mockedId');
     }, 1000); // Espera 1 segundo antes de seleccionar el elemento
   });
+});
