@@ -190,8 +190,9 @@ export const wall = (navigateTo) => {
         pPregunta.textContent = 'Delete this post?';
 
         const liConfirm = document.createElement('li');
-        liConfirm.setAttribute('class', 'liConfirm');
+        liConfirm.setAttribute('id', 'liConfirm');
         liConfirm.textContent = 'Delete';
+        console.log(liConfirm);
 
         const liCancel = document.createElement('li');
         liCancel.setAttribute('class', 'liCancel ');
