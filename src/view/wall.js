@@ -34,12 +34,15 @@ export const wall = (navigateTo) => {
 
   const iconHome2 = document.createElement('img');
   iconHome2.setAttribute('src', '../img/HOME.png');
+  iconHome2.setAttribute('class', 'containerIcons');
 
   const iconSearch2 = document.createElement('img');
   iconSearch2.setAttribute('src', '../img/LUPA.png');
+  iconSearch2.setAttribute('class', 'containerIcons');
 
   const iconAdd2 = document.createElement('img');
   iconAdd2.setAttribute('src', '../img/AÑADIRINACTIVO.png');
+  iconAdd2.setAttribute('class', 'containerIcons');
   iconAdd2.addEventListener('mouseover', function () {
     this.src = 'img/AÑADIRACTIVO.png';
   });
@@ -52,6 +55,7 @@ export const wall = (navigateTo) => {
 
   const iconProfile2 = document.createElement('img');
   iconProfile2.setAttribute('src', '../img/PROFILE.png');
+  iconProfile2.setAttribute('class', 'containerIcons');
 
   // ------------------------------------------------- Inicia menú de hamburguesa
   const navMenu = document.createElement('ul');
@@ -148,6 +152,7 @@ export const wall = (navigateTo) => {
 
         const iconTrash = document.createElement('img');
         iconTrash.setAttribute('src', '../img/trash.png');
+        iconTrash.setAttribute('id', 'iconTrash');
 
         const iconClose = document.createElement('img');
         iconClose.setAttribute('src', '../img/cancel.png');
@@ -158,6 +163,7 @@ export const wall = (navigateTo) => {
 
         const iconEdit = document.createElement('img');
         iconEdit.setAttribute('src', '../img/pencil.png');
+        iconEdit.setAttribute('id', 'iconEdit');
 
         const liEdit = document.createElement('li');
         liEdit.setAttribute('class', 'liEdit');
@@ -187,6 +193,7 @@ export const wall = (navigateTo) => {
         ulModal.setAttribute('class', 'ulModal');
 
         const pPregunta = document.createElement('p');
+        pPregunta.setAttribute('id', 'pPregunta');
         pPregunta.textContent = 'Delete this post?';
 
         const liConfirm = document.createElement('li');
