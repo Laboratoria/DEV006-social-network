@@ -8,8 +8,10 @@ export async function registerUser(email, password) {
   try {
     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
     console.log(userCredential);
+    return (userCredential);
   } catch (error) {
     console.error(error);
+    return (error);
   }
 }
 
