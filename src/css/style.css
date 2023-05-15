@@ -554,13 +554,17 @@ hr {
     
 }
 
-#modalConfirm img {
-    margin: 0 1rem;
-}
-
 .postArticle .reactionContainer img {
     width: 2.4rem;
     height: 2.4rem;
+}
+
+.bodyimg footer img:hover{
+    cursor: pointer;
+}
+
+#modalConfirm img {
+    margin: 0 1rem;
 }
 
  /* Íconos de navegación*/
@@ -661,10 +665,6 @@ hr {
     font-size: 2rem;
     margin: 2% auto;
     width: 100%;
-}
-
-.bodyimg footer img:hover{
-    cursor: pointer;
 }
 
 .footerParagraph, .gitHubLinks {

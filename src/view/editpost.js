@@ -68,7 +68,7 @@ export const editPost = (navigateTo) => {
   petName.setAttribute('placeholder', 'Pet name');
   petName.setAttribute('type', 'text');
   petName.setAttribute('name', 'petName');
-  petName.textContent = post.petName;
+  /*   petName.textContent = post.petName; */
   petName.required = true;
 
   const petDescription = document.createElement('textarea');
@@ -77,7 +77,7 @@ export const editPost = (navigateTo) => {
   petDescription.required = true;
   petDescription.setAttribute('cols', '8');
   petDescription.setAttribute('rows', '12');
-  petName.textContent = post.petDescription;
+  /*   petName.textContent = post.petDescription; */
 
   formPost.append(petName, petDescription);
   return editPostDiv;
