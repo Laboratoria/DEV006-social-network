@@ -12,6 +12,7 @@ function signup(navigateTo) {
   const inputUser = document.createElement('input');
   const inputEmail = document.createElement('input');
   const inputPassword = document.createElement('input');
+  const errorContainer = document.createElement('div');
   const question = document.createElement('h5');
   const yes = document.createElement('h5');
   const no = document.createElement('h5');
@@ -55,6 +56,10 @@ function signup(navigateTo) {
     navigateTo('/');
   });
 
+  checkboxNo.addEventListener('click', () => {
+    navigateTo('/sorry');
+  });
+
   // Registro de usuario//
   buttonEnterSignup.addEventListener('click', (e) => {
     e.preventDefault();
@@ -65,20 +70,20 @@ function signup(navigateTo) {
         console.log('signup');
       })
       .catch((error) => {
-        console.log(error);
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        if (errorCode === 'auth/invalid-email') {
+          errorContainer.textContent = 'El correo electrónico ingresado no es válido';
+        } else if (errorCode === 'auth/weak-password') {
+          errorContainer.textContent = 'La contraseña ingresada es demasiado débil';
+        } else {
+          errorContainer.textContent = `Se produjo un error durante el registro: ${errorMessage}`;
+        }
+        console.log('hola');
+        return errorContainer;
       });
   });
 
-  showPassword.addEventListener('click', (e) => {
-    e.preventDefault();
-    if (inputPassword.type === 'password') {
-      inputPassword.type = 'text';
-      showPassword.src = 'images/ojonoOculto.png';
-    } else {
-      inputPassword.type = 'password';
-      showPassword.src = 'images/ojoOculto.png';
-    }
-  });
   // // agregar clases//
 
   header.classList.add('header');
@@ -92,10 +97,11 @@ function signup(navigateTo) {
   passwordSignup.classList.add('subTitlesSignup');
   buttonEnterSignup.classList.add('buttonEnterSignup');
   question.classList.add('question');
+  errorContainer.classList.add('errorContainer');
+
+  
 
   // agrupar secciones//
-  // eslint-disable-next-line max-len
-
   form.append(
     UserSignup,
     inputUser,
@@ -111,7 +117,7 @@ function signup(navigateTo) {
     no,
     showPassword,
   );
-  sectionForm.append(form);
+  sectionForm.append(errorContainer, form);
   sectionHeader.append(header, logo);
   section.append(sectionHeader, buttonReturnSignup, sectionForm, form);
 
