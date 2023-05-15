@@ -7,9 +7,9 @@ function createAcount(navigateTo) {
   const title = document.createElement('h1');
   const caption = document.createElement('h2');
   const form = document.createElement('form');
-  const paragraph = document.createElement('p');
   const inputName = document.createElement('input');
   const inputEmail = document.createElement('input');
+  const paragraphEmail = document.createElement('p');
   const inputPass = document.createElement('input');
   const inputConfPass = document.createElement('input');
   const buttonSingUp = document.createElement('button');
@@ -55,24 +55,9 @@ function createAcount(navigateTo) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (emailRegex.test(e.target.value)) {
       console.log('pasa la validación');
-      paragraph.textContent = '';
+      paragraphEmail.textContent = '';
     } else {
-      paragraph.textContent = 'Email no es valido';
-    }
-  });
-  inputPass.addEventListener('change', (e) => {
-    if (e.target.value < 6) {
-      console.log(e.target.value, 'h');
-      paragraph.textContent = '';
-    } else {
-      paragraph.textContent = 'clave mayor a 6 carácteres';
-    }
-  });
-  inputConfPass.addEventListener('change', (e) => {
-    if (e.target.value === inputPass.value) {
-      paragraph.style.display = 'none';
-    } else {
-      paragraph.textContent = 'su clave no concuerda';
+      paragraphEmail.textContent = 'Email no es valido';
     }
   });
   // autenticar login
@@ -113,9 +98,9 @@ function createAcount(navigateTo) {
   // });
 
   form.append(
-    paragraph,
     inputName,
     inputEmail,
+    paragraphEmail,
     inputPass,
     inputConfPass,
     buttonSingUp,
