@@ -247,7 +247,7 @@ export const wall = (navigateTo) => {
 
         liConfirm.addEventListener('click', () => {
           // Eliminar el post
-          deletePost(post.id, postsSection);
+          deletePost(post.id);
           // Cerrar el modal de confirmación
           modal.close();
           // Mostrar el mensaje de eliminado confirmado

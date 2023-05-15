@@ -1,5 +1,5 @@
 // nodos para editar post
-import { auth } from '../lib/index.js';
+/* import { auth } from '../lib/index.js';
 
 export const editPost = (navigateTo) => {
   const editPostDiv = document.createElement('div');
@@ -56,7 +56,7 @@ export const editPost = (navigateTo) => {
 
   /*  formPost.addEventListener('submit', () => {}); */
 
-  editPostDiv.append(header, section, formPost);
+/*  editPostDiv.append(header, section, formPost);
   header.append(nav);
   nav.append(logoImg, h1);
   section.append(navSection, hr);
@@ -80,8 +80,8 @@ export const editPost = (navigateTo) => {
   /*   petName.textContent = post.petDescription; */
 
   formPost.append(petName, petDescription);
-  return editPostDiv;
-};
+  return editPostDiv; */
+/* }; */
 /* .then(() => {
     console.log(`Post ${postId} edited successfully`);
   })
