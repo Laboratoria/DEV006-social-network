@@ -1,7 +1,12 @@
+/* eslint-disable dot-notation */
 import { logoutFn } from '../app/logout.js';
-import { postsFn } from '../app/firestore.js';
+// import { postsFn } from '../app/firestore.js';
 import {
+  savePost,
   onGetPosts,
+  deletePost,
+  getPost,
+  updatePost,
 } from '../app/firebase.js';
 
 function posts(navigateTo) {
@@ -18,7 +23,50 @@ function posts(navigateTo) {
   const imgLogout = document.createElement('img');
   const formPost = document.createElement('form');
   const imgUser = document.createElement('img');
-  const savePost = document.createElement('button');
+  const savingPost = document.createElement('button');
+
+  let editPost = false;
+  let id = '';
+  // window.addEventListener('DOMContentLoaded', async () => {
+  onGetPosts((querySnapshot) => {
+    let html = '';
+
+    querySnapshot.forEach((doc) => {
+      const userPost = doc.data();
+      html += `
+        <section class="user-posts">
+        <div class="btns-post">
+        <button class='btn-delete' data-id="${doc.id}">Borrar</button>
+        <button class='btn-edit' data-id="${doc.id}">Editar</button>
+        </div>
+        <p class="posts">${userPost.post}</p>
+        </section>
+        `;
+    });
+    postsUsers.innerHTML = html;
+
+    const btnsDelete = postsUsers.querySelectorAll('.btn-delete');
+
+    btnsDelete.forEach((btn) => {
+      btn.addEventListener('click', ({ target: { dataset } }) => {
+        deletePost(dataset.id);
+      });
+    });
+    const btnsEdit = postsUsers.querySelectorAll('.btn-edit');
+    btnsEdit.forEach((btn) => {
+      btn.addEventListener('click', async (e) => {
+        const userPost = await getPost(e.target.dataset.id);
+        const task = userPost.data();
+
+        formDoYouWantPost['wantPost'].value = task.post;
+
+        editPost = true;
+        id = userPost.id;
+
+        formDoYouWantPost['savingPost'].innerHTML = 'Actualizar';
+      });
+    });
+  });
 
   containerPosts.id = 'containerPosts';
   containerTitle.id = 'containerTitle';
@@ -32,7 +80,7 @@ function posts(navigateTo) {
   imgLogout.id = 'imgLogout';
   formPost.id = 'formPost';
   imgUser.id = 'imgUser';
-  savePost.id = 'savePost';
+  savingPost.id = 'savingPost';
 
   containerPosts.classList.add('container-posts');
   containerTitle.classList.add('container-title-posts');
@@ -45,32 +93,7 @@ function posts(navigateTo) {
   imgLogout.classList.add('img-logout-posts');
   formPost.classList.add('form-posts');
   imgUser.classList.add('img-user-posts');
-  savePost.classList.add('save-posts');
-
-  window.addEventListener('DOMContentLoaded', async () => {
-    onGetPosts((querySnapshot) => {
-      let html = '';
-
-      querySnapshot.forEach((doc) => {
-        const userPost = doc.data();
-        html += `
-        <div>
-        <p>${userPost.post}</p>
-        <button class='btn-delete' data-id="${doc.id}">Borrar</button>
-        </div>
-        `;
-      });
-      postsUsers.innerHTML = html;
-
-      const btnsDelete = postsUsers.querySelectorAll('.btn-delete');
-
-      btnsDelete.forEach((btn) => {
-        btn.addEventListener('click', (e) => {
-          console.log(e.target.dataset.id);
-        });
-      });
-    });
-  });
+  savingPost.classList.add('saving-posts');
 
   wantPost.rows = 3;
 
@@ -93,17 +116,27 @@ function posts(navigateTo) {
 
   wantPost.placeholder = 'Deseas contarnos algo?';
 
-  savePost.textContent = 'Publicar';
+  savingPost.textContent = 'Publicar';
 
   formDoYouWantPost.addEventListener('submit', (e) => {
     e.preventDefault();
-    postsFn();
+    const postText = formDoYouWantPost['wantPost'].value;
+
+    if (!editPost) {
+      savePost(postText);
+    } else {
+      updatePost(id, { post: postText });
+
+      editPost = false;
+      formDoYouWantPost['savingPost'].innerHTML = 'Publicar';
+    }
+    formDoYouWantPost.reset();
   });
 
   containerTitle.append(imgBack, title, imgLogout);
   formDoYouWantPost.append(containerFormPost, containerBtn);
   containerFormPost.append(imgUser, wantPost);
-  containerBtn.appendChild(savePost);
+  containerBtn.appendChild(savingPost);
   containerPosts.append(containerTitle, formDoYouWantPost, postsUsers);
   section.appendChild(containerPosts);
 
