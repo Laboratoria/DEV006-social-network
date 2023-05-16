@@ -14,6 +14,7 @@ export function wall() {
   // Establecer atributos y contenido
   logoRefresh.setAttribute('src', './images/logoEasygym.png');
   logoRefresh.setAttribute('onclick', 'location.reload()');
+  container.id = 'container';
   divposts.id = 'posts';
   // exitButton.id = 'exit';
   logoRefresh.classList.add('refresh');
@@ -41,7 +42,8 @@ export function wall() {
 
     post.className = 'post';
     avatar.className = 'avatar';
-    publicDate.className = 'header';
+    userName.className = 'userName';
+    publicDate.className = 'publicDate';
     avatar.src = poster.avatar;
     publicDate.setAttribute('datetime', '2023-05-16');
     publicDate.textContent = '16 de mayo de 2023';

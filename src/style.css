@@ -6,7 +6,7 @@ main{
 body {
     height: 100%;
     background: #98DEE9;
-    padding: 5px;
+    
 }
 form{
     display: flex;
@@ -16,8 +16,9 @@ form{
 }
 
 #root {
-    height: 92vh;
-    margin-top: 5%;
+    
+    margin-top: 0;
+    height: 95vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -35,7 +36,6 @@ nav {
     width: 100vw;
     background: #dfa0a0;
     display: flex;
-    margin-top: -52px;
     justify-content: center;
 }
 .refresh{
@@ -87,6 +87,8 @@ input::placeholder {
 /* CSS DE PAGE HOME */
 
 .container{
+    margin-top: 5%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -106,10 +108,6 @@ p {
     color: #0A4D68;
 }
 
-#container{
-    height: 100%;    
-}
-
 #posts {
     display: flex;
     flex-direction: column;
@@ -123,16 +121,32 @@ p {
 }
 
 .post{
-background-color: #FFFFFF;    
+background-color: #FFFFFF;   
+padding: 10px; 
 }
 
 .avatar {
     width: 50px;
     border-radius: 50%;
     margin-left: 0;
+
 }
 
-.infoUser {
+#infoUser {
+    align-items: center;
     display: flex;
-    flex-direction: row;
+}
+
+.userName{
+    margin-top: 5px;
+}
+.publicDate{
+    margin-top: 25px;
+    margin-left: -65px;
+}
+#container{
+    margin-top: 0;
+    padding: 0%;
+    height: 100%;
+    
 }
