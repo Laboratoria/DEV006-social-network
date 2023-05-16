@@ -1,4 +1,5 @@
 /* eslint-disable dot-notation */
+// OTRO coment
 import { logoutFn } from '../app/logout.js';
 // import { postsFn } from '../app/firestore.js';
 import {
