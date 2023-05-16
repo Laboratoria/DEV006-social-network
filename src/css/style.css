@@ -373,7 +373,6 @@ hr {
 .petName {
     font-size: 2rem;
     margin-left: 12px;
-    font-weight: 800;
     color: #292D32;
 }
 
@@ -514,7 +513,7 @@ hr {
     position: absolute;
     margin: auto;
     width: 80%;
-    height: 30%;
+    height: 34%;
     background: #292D32;
     border-radius: 15px;
     border: none;
@@ -542,9 +541,9 @@ hr {
 .postsSection #modalConfirm {
     position: absolute;
     margin: auto;
-    width: 80%;
-    height: 16%;
-    padding: 6%;
+    width: 28rem;
+    height: 10rem;
+    padding: 2rem;
     top: 17rem;
     background: #292D32;
     border-radius: 15px;
@@ -552,7 +551,7 @@ hr {
     color: #ffffff;
     font-size: 2.4rem;
     text-align: center;
-    
+    z-index: 1;
 }
 
 #modalConfirm img {
