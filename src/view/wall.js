@@ -301,7 +301,6 @@ export const wall = (navigateTo) => {
 
         const buttonEdit = document.createElement('button');
         buttonEdit.setAttribute('id', 'buttonEdit');
-        buttonEdit.setAttribute('type', 'submit');
         buttonEdit.textContent = 'Save';
 
         postsSection.append(postArticle, modal, modalConfirm, modalEdit);
@@ -313,7 +312,10 @@ export const wall = (navigateTo) => {
           modalEdit.open = true;
         });
 
-        buttonEdit.addEventListener('click', editPosts(post.id, inputEditName.value, inputEditDescription.value));
+        buttonEdit.addEventListener('click', (event) => {
+          event.preventDefault();
+          editPosts(post.id, inputEditName.value, inputEditDescription.value);
+        });
 
         iconoPoints.addEventListener('click', () => {
           menuPoints.classList.toggle('active');
