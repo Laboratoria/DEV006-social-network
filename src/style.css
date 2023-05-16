@@ -1,3 +1,8 @@
+main{
+    margin: 0;
+    justify-content: center;
+}
+
 body {
     background: #98DEE9;
     padding: 5px;
@@ -98,4 +103,11 @@ p{
     font-size:25px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     color: #0A4D68;
+}
+
+#posts{
+    background: rgb(14, 38, 92)(255, 0, 149);
+    width: 80%;
+    justify-content: center;
+
 }

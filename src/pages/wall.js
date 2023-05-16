@@ -25,22 +25,16 @@ export function wall() {
 
   // Agregar elementos a main
   // main.appendChild(exitButton);
+  main.appendChild(divposts);
 
   // Agregar elementos al contenedor (div) especificado
   container.appendChild(navegator);
   container.appendChild(main);
-  
+
   const getPost = () => getDocs(collection(db, 'Posts'));
 
-  window.addEventListener('DOMContentLoaded', async () => {
-    const querySnapshot = await getPost();
-    querySnapshot.forEach((doc) => {
-      console.log(doc.data());
-    });
-  });
-
   const createPost = (poster) => {
-  // crear que va a mostrar
+    // crear que va a mostrar
     const post = document.createElement('div');
     const header = document.createElement('div');
     const img1 = document.createElement('img');
@@ -56,7 +50,7 @@ export function wall() {
     dateInput.type = poster.fecha;
     img2.src = 'ruta/al/imagen2';
     photoOrVideo.className = 'photoOrVideo';
-    photoOrVideo.textContent = 'foto/video';
+    // photoOrVideo.textContent = 'foto/video';
     descriptionAndLikes.textContent = poster.descripción;
 
     // Armar la estructura del nodo
@@ -66,8 +60,15 @@ export function wall() {
     post.appendChild(header);
     post.appendChild(photoOrVideo);
     post.appendChild(descriptionAndLikes);
-    root.appendChild(post);
+    divposts.appendChild(post);
   };
 
+  window.addEventListener('DOMContentLoaded', async () => {
+    const querySnapshot = await getPost();
+    querySnapshot.forEach((doc) => {
+      const postdata = doc.data();
+      createPost(postdata);
+    });
+  });
   return container;
 }
