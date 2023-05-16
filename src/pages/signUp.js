@@ -1,4 +1,4 @@
-import { registerUser } from '../lib/firebaseAuth';
+import { registerUser } from '../lib/firebaseAuth.js';
 
 const signUp = (navigateTo) => {
   const signUpSection = document.createElement('section');
