@@ -476,7 +476,7 @@ hr {
     text-align: center;
     box-shadow:
         0 10px 27px rgba(0, 0, 0, 0.05);
-    bottom: 200%;
+    bottom: 500%;
     position: fixed;
     z-index: 1;
     list-style: none;
@@ -565,6 +565,62 @@ hr {
     margin: 0 1rem;
 }
 
+/* Modal de edición */
+.modalEdit{
+    position: absolute;
+    margin: 0rem auto;
+    width: 30rem;
+    height: 42rem;
+    background: #292D32;
+    border-radius: 15px;
+    border: none;
+    color: #FFFFFF;
+    font-size: 2.4rem;
+    text-align: center;
+    padding: 2rem;
+    z-index: 1;
+}
+.editContainer{
+   display: flex;
+   flex-direction: row;
+   gap: 1rem;
+}
+.editContainer .iconClose{
+    object-fit: contain;
+    cursor: pointer;
+}
+.editHr{
+    margin: 1rem auto;
+}
+.formEdit{
+    background-color: #292D32;
+    box-shadow: none;
+    width: 100%;
+    margin: unset;
+
+}
+.formEdit #inputEditName, .formEdit #inputEditDescription{
+    background-color: #292D32;
+    color: white;
+    border-color:#EA907A ;
+    padding: 0.5rem;
+}
+#buttonEdit{
+    position: absolute;
+    width: 7.8rem;
+    height: 3rem;
+    right: 2rem;
+    top: 2rem;
+    background: #DBA39A;
+    border: 1px solid #EA907A;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 1.6rem;
+    line-height: 20px;
+    letter-spacing: 0.1em;
+    color: #6E0707;
+}
+
  /* Íconos de navegación*/
  footer {
     background-color: #EA907A;
@@ -619,13 +675,13 @@ hr {
     align-items: center;
 }
 
-.formpost .profilePic {
+.formpost .profilePic, .modalEdit .profilePic {
     width: 3.2rem;
     height: 3.2rem;
     border-radius: 24px;
 }
 
-.formpost .userName {
+.formpost .userName, .modalEdit .userName {
     font-size: 1.8rem;
     color: white;
     font-weight: 700;

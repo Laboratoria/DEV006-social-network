@@ -122,6 +122,7 @@ export const wall = (navigateTo) => {
   // ------------------------------------------------- Publicaciones/posts
   // Recuperamos la colección de los "post"
   getPost((queryData) => {
+    postsSection.innerHTML = '';
     queryData.forEach((post) => {
       const postArticle = document.createElement('article');
       postArticle.setAttribute('class', 'postArticle');
@@ -253,21 +254,25 @@ export const wall = (navigateTo) => {
           modalConfirm.close();
         }, 3000); // 3000 milisegundos = 3 segundos
         // Eliminar el elemento del post de la vista
-        const postElement = document.querySelector(`[data-id="${post.id}"]`);
-        if (postElement) {
-          postElement.remove();
-        }
       });
+
       /* Modal para editar post */
       const modalEdit = document.createElement('dialog');
-      modalEdit.setAttribute('id', 'modalEdit');
+      modalEdit.setAttribute('class', 'modalEdit');
+
+      const editContainer = document.createElement('div');
+      editContainer.setAttribute('class', 'editContainer');
 
       const cancelEdit = document.createElement('img');
       cancelEdit.setAttribute('src', '../img/cancel.png');
+      cancelEdit.setAttribute('class', 'iconClose');
 
       const pEditPost = document.createElement('p');
       pEditPost.setAttribute('id', 'pEditPost');
       pEditPost.textContent = 'Edit post';
+
+      const editHr = document.createElement('hr');
+      editHr.setAttribute('class', 'editHr');
 
       const profilePic = document.createElement('img');
       profilePic.setAttribute('src', '../img/Bob.png');
@@ -275,24 +280,25 @@ export const wall = (navigateTo) => {
 
       const userName = document.createElement('span');
       userName.setAttribute('class', 'userName');
-      userName.value = post.data().userid;
+      userName.textContent = post.data().userid;
 
       const formEdit = document.createElement('form');
-      formEdit.setAttribute('id', 'formEdit');
+      formEdit.setAttribute('class', 'formEdit');
 
       const inputEditName = document.createElement('input');
       inputEditName.setAttribute('type', 'text');
       inputEditName.setAttribute('id', 'inputEditName');
       inputEditName.value = `${post.data().petName}`;
 
-      const inputEditDescription = document.createElement('input');
-      inputEditDescription.setAttribute('type', 'text');
+      const inputEditDescription = document.createElement('textarea');
       inputEditDescription.setAttribute('id', 'inputEditDescription');
+      inputEditDescription.setAttribute('cols', '24');
+      inputEditDescription.setAttribute('rows', '12');
       inputEditDescription.value = post.data().description;
 
       const buttonEdit = document.createElement('button');
       buttonEdit.setAttribute('id', 'buttonEdit');
-      buttonEdit.textContent = 'Save';
+      buttonEdit.textContent = 'SAVE';
 
       liEdit.addEventListener('click', () => {
         menuPoints.classList.remove('active');
@@ -305,13 +311,18 @@ export const wall = (navigateTo) => {
         modalEdit.close();
       });
 
+      cancelEdit.addEventListener('click', () => {
+        modalEdit.close();
+      });
+
       iconoPoints.addEventListener('click', () => {
         menuPoints.classList.toggle('active');
       });
 
       postsSection.append(postArticle, modal, modalConfirm, modalEdit);
-      modalEdit.append(cancelEdit, pEditPost, profilePic, userName, formEdit);
+      modalEdit.append(editContainer, editHr, profilePic, userName, formEdit);
       formEdit.append(inputEditName, inputEditDescription, buttonEdit);
+      editContainer.append(cancelEdit, pEditPost);
     });
   });
 
