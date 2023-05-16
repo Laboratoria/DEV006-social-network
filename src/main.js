@@ -1,3 +1,4 @@
+
 import error from './pages/error.js';
 import welcomePage from './pages/home.js';
 // import signIn from './pages/signIn.js';
@@ -34,3 +35,9 @@ window.onpopstate = () => {
   navigateTo(window.location.pathname);
 };
 navigateTo(window.location.pathname || defaultRoute);
+
+import { signUp } from './pages/signUp.js';
+
+const root = document.querySelector('.root');
+root.appendChild(signUp());
+
