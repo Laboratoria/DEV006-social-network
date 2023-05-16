@@ -25,7 +25,7 @@
     font-weight: 600;
   }
   .createAcount {
-    top: 462px;
+    top: 380px;
     position: absolute;
     width: 244px;
     height: 53px;
@@ -72,7 +72,6 @@
 
   .login,
   .google {
-    top: 520px;
     position: absolute;
     width: 244px;
     height: 53px;
@@ -86,10 +85,10 @@
     border: none;
   }
   .login {
-    top: 520px;
+    top: 540px;
   }
   .google {
-    top: 600px;
+    top: 460px;
   }
 
   .name,

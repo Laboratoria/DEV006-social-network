@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 // import { createAcount } from '../templates/createAcount.js';
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { auth } from './firebase.js';
