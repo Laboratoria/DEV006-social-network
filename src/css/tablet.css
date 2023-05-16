@@ -34,6 +34,11 @@
         font-size: 3.2rem;
     }
 
+    #modal {
+        height: 34%;
+        width: 40%;
+    }
+
     /* IINICIA MENÚ HAMBURGUESA*/
     /* Líneas de menú hamburguesa*/
     .bar {
@@ -116,7 +121,7 @@
     .formpost #Post {
         font-size: 2rem;
         height: 4.6rem;
-        top: 7rem;
+        top: 8rem;
     }
 
     #spanErrorEmail {
@@ -181,7 +186,6 @@
     /* Menu de eliminar y editar post*/
     .menuPoints {
         position: absolute;
-        left: 200%;
         z-index: 1;
         min-height: 20rem;
         width: 32rem;
@@ -198,9 +202,10 @@
     }
 
     .postsSection #modalConfirm {
-        width: 60%;
-        height: 25%;
-        z-index: 2;
+        width: 32rem;
+        height: 12rem;
+        z-index: 1;
+        padding: 2rem;
     }
 
     /* Fin de formularios*/

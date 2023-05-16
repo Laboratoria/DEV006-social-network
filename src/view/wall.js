@@ -1,6 +1,5 @@
-import { getDocs, query, orderBy } from 'firebase/firestore';
 import {
-  exit, colRef, deletePost, auth, editPosts,
+  exit, deletePost, auth, editPosts, getPost,
 } from '../lib/index.js';
 
 export const wall = (navigateTo) => {
@@ -121,214 +120,203 @@ export const wall = (navigateTo) => {
   containerIcons.append(iconHome2, iconSearch2, iconAdd2, iconProfile2);
 
   // ------------------------------------------------- Publicaciones/posts
-  // Recuperamos la colección de "post"
-  // Para cada doc de la colección se crea lo siguiente...
-  const q = query(colRef, orderBy('timestamp', 'desc'));
-  getDocs(q)
-    .then((snapshot) => {
-      const posts = [];
-      snapshot.docs.forEach((doc) => {
-        posts.push({ ...doc.data(), id: doc.id });
+  // Recuperamos la colección de los "post"
+  getPost((queryData) => {
+    queryData.forEach((post) => {
+      const postArticle = document.createElement('article');
+      postArticle.setAttribute('class', 'postArticle');
+      postArticle.setAttribute('data-id', post.id);
+
+      const divUsersPointsEl = document.createElement('div');
+      divUsersPointsEl.setAttribute('class', 'divUsersPointsEl');
+
+      const username = document.createElement('span');
+      username.textContent = post.data().userid;
+      // obtenemos el valor de userid del display name para que se muestre en el post
+      username.setAttribute('class', 'wallUsername');
+
+      const iconoPoints = document.createElement('img');
+      iconoPoints.setAttribute('src', '../img/menupuntos.png');
+      iconoPoints.setAttribute('id', 'iconoPoints');
+
+      // Menú de opciones Delete y Edit
+      const menuPoints = document.createElement('ul');
+      menuPoints.setAttribute('class', 'menuPoints');
+
+      const iconTrash = document.createElement('img');
+      iconTrash.setAttribute('src', '../img/trash.png');
+      iconTrash.setAttribute('id', 'iconTrash');
+
+      const iconClose = document.createElement('img');
+      iconClose.setAttribute('src', '../img/cancel.png');
+      iconClose.setAttribute('class', 'iconClose');
+
+      const liDelete = document.createElement('li');
+      liDelete.setAttribute('class', 'liDelete');
+
+      const iconEdit = document.createElement('img');
+      iconEdit.setAttribute('src', '../img/pencil.png');
+      iconEdit.setAttribute('id', 'iconEdit');
+
+      const liEdit = document.createElement('li');
+      liEdit.setAttribute('class', 'liEdit');
+      // Termina menú de Delete y Edit
+
+      const descriptionPet = document.createElement('p');
+      descriptionPet.textContent = post.data().description;
+      descriptionPet.setAttribute('class', 'descriptionPet');
+
+      const reactionContainer = document.createElement('div');
+      reactionContainer.setAttribute('class', 'reactionContainer');
+
+      const namePet = document.createElement('p');
+      namePet.textContent = post.data().petName;
+      namePet.setAttribute('class', 'namePet');
+
+      const likeHeart = document.createElement('img');
+      likeHeart.setAttribute('src', 'img/like.png');
+
+      const pawMatch = document.createElement('img');
+      pawMatch.setAttribute('src', 'img/matchvacio.png');
+
+      /* Modal para mensaje de confirmación de eliminar post */
+      const modal = document.createElement('dialog');
+      modal.setAttribute('id', 'modal');
+
+      const ulModal = document.createElement('ul');
+      ulModal.setAttribute('class', 'ulModal');
+
+      const pPregunta = document.createElement('p');
+      pPregunta.setAttribute('id', 'pPregunta');
+      pPregunta.textContent = 'Delete this post?';
+
+      const liConfirm = document.createElement('li');
+      liConfirm.setAttribute('id', 'liConfirm');
+      liConfirm.textContent = 'Delete';
+
+      const liCancel = document.createElement('li');
+      liCancel.setAttribute('class', 'liCancel ');
+      liCancel.textContent = 'Cancel';
+      liCancel.addEventListener('click', () => {
+        modal.close();
       });
-      posts.forEach((post) => {
-        const postArticle = document.createElement('article');
-        postArticle.setAttribute('class', 'postArticle');
-        postArticle.setAttribute('data-id', post.id);
 
-        const divUsersPointsEl = document.createElement('div');
-        divUsersPointsEl.setAttribute('class', 'divUsersPointsEl');
+      // Al escoger Delete en el menú, se abre el primer modal
+      liDelete.addEventListener('click', () => {
+        menuPoints.classList.remove('active');
+        modal.open = true;
+      });
 
-        const username = document.createElement('span');
-        username.textContent = post.userid;
-        // obtenemos el valor de userid del display name para que se muestre en el post
-        username.setAttribute('class', 'wallUsername');
+      // Al hacer clic en el menú de opciones, se cierra
+      iconClose.addEventListener('click', () => {
+        menuPoints.classList.remove('active');
+      });
 
-        const iconoPoints = document.createElement('img');
-        iconoPoints.setAttribute('src', '../img/menupuntos.png');
-        iconoPoints.setAttribute('id', 'iconoPoints');
+      /* Mensaje de eliminado confirmado */
+      const modalConfirm = document.createElement('dialog');
+      modalConfirm.setAttribute('id', 'modalConfirm');
 
-        // Menú de opciones Delete y Edit
-        const menuPoints = document.createElement('ul');
-        menuPoints.setAttribute('class', 'menuPoints');
+      const pDeleted = document.createElement('p');
+      pDeleted.textContent = 'Deleted';
 
-        const iconTrash = document.createElement('img');
-        iconTrash.setAttribute('src', '../img/trash.png');
-        iconTrash.setAttribute('id', 'iconTrash');
+      const iconCheck = document.createElement('img');
+      iconCheck.setAttribute('src', '../img/check.png');
 
-        const iconClose = document.createElement('img');
-        iconClose.setAttribute('src', '../img/cancel.png');
-        iconClose.setAttribute('class', 'iconClose');
+      divUsersPointsEl.append(username);
+      reactionContainer.append(namePet, likeHeart, pawMatch);
+      postArticle.append(
+        divUsersPointsEl,
+        descriptionPet,
+        reactionContainer,
+      );
 
-        const liDelete = document.createElement('li');
-        liDelete.setAttribute('class', 'liDelete');
+      modalConfirm.append(pDeleted, iconCheck);
+      // ------------------------------------------condición para menu points
+      if (post.data().userid === auth.currentUser.displayName) {
+        divUsersPointsEl.append(iconoPoints);
+        postArticle.append(menuPoints);
+        liDelete.append(iconTrash, 'Delete');
+        liEdit.append(iconEdit, 'Edit');
+        menuPoints.append(iconClose, liDelete, liEdit);
+        modal.append(pPregunta, ulModal);
+        ulModal.append(liConfirm, liCancel);
+      }
 
-        const iconEdit = document.createElement('img');
-        iconEdit.setAttribute('src', '../img/pencil.png');
-        iconEdit.setAttribute('id', 'iconEdit');
-
-        const liEdit = document.createElement('li');
-        liEdit.setAttribute('class', 'liEdit');
-        // Termina menú de Delete y Edit
-
-        const descriptionPet = document.createElement('p');
-        descriptionPet.textContent = post.description;
-        descriptionPet.setAttribute('class', 'descriptionPet');
-
-        const reactionContainer = document.createElement('div');
-        reactionContainer.setAttribute('class', 'reactionContainer');
-
-        const namePet = document.createElement('p');
-        namePet.textContent = post.petName;
-        namePet.setAttribute('class', 'namePet');
-
-        const likeHeart = document.createElement('img');
-        likeHeart.setAttribute('src', 'img/like.png');
-
-        const pawMatch = document.createElement('img');
-        pawMatch.setAttribute('src', 'img/matchvacio.png');
-
-        /* Modal para mensaje de confirmación de eliminar post */
-        const modal = document.createElement('dialog');
-        modal.setAttribute('id', 'modal');
-
-        const ulModal = document.createElement('ul');
-        ulModal.setAttribute('class', 'ulModal');
-
-        const pPregunta = document.createElement('p');
-        pPregunta.setAttribute('id', 'pPregunta');
-        pPregunta.textContent = 'Delete this post?';
-
-        const liConfirm = document.createElement('li');
-        liConfirm.setAttribute('id', 'liConfirm');
-        liConfirm.textContent = 'Delete';
-
-        const liCancel = document.createElement('li');
-        liCancel.setAttribute('class', 'liCancel ');
-        liCancel.textContent = 'Cancel';
-        liCancel.addEventListener('click', () => {
-          modal.close();
-        });
-
-        // Al escoger Delete en el menú, se abre el primer modal
-        liDelete.addEventListener('click', () => {
-          menuPoints.classList.remove('active');
-          modal.open = true;
-        });
-
-        // Al hacer clic en el menú de opciones, se cierra
-        iconClose.addEventListener('click', () => {
-          menuPoints.classList.remove('active');
-        });
-
-        /* Mensaje de eliminado confirmado */
-        const modalConfirm = document.createElement('dialog');
-        modalConfirm.setAttribute('id', 'modalConfirm');
-
-        const pDeleted = document.createElement('p');
-        pDeleted.textContent = 'Deleted';
-
-        const iconCheck = document.createElement('img');
-        iconCheck.setAttribute('src', '../img/check.png');
-
-        divUsersPointsEl.append(username);
-        reactionContainer.append(namePet, likeHeart, pawMatch);
-        postArticle.append(
-          divUsersPointsEl,
-          descriptionPet,
-          reactionContainer,
-        );
-
-        modalConfirm.append(pDeleted, iconCheck);
-        // ------------------------------------------condición para menu points
-        if (post.userid === auth.currentUser.displayName) {
-          divUsersPointsEl.append(iconoPoints);
-          postArticle.append(menuPoints);
-          liDelete.append(iconTrash, 'Delete');
-          liEdit.append(iconEdit, 'Edit');
-          menuPoints.append(iconClose, liDelete, liEdit);
-          modal.append(pPregunta, ulModal);
-          ulModal.append(liConfirm, liCancel);
+      liConfirm.addEventListener('click', () => {
+        // Eliminar el post
+        deletePost(post.id);
+        // Cerrar el modal de confirmación
+        modal.close();
+        // Mostrar el mensaje de eliminado confirmado
+        modalConfirm.open = true;
+        setTimeout(() => {
+          modalConfirm.close();
+        }, 3000); // 3000 milisegundos = 3 segundos
+        // Eliminar el elemento del post de la vista
+        const postElement = document.querySelector(`[data-id="${post.id}"]`);
+        if (postElement) {
+          postElement.remove();
         }
-
-        liConfirm.addEventListener('click', () => {
-          // Eliminar el post
-          deletePost(post.id);
-          // Cerrar el modal de confirmación
-          modal.close();
-          // Mostrar el mensaje de eliminado confirmado
-          modalConfirm.open = true;
-          setTimeout(() => {
-            modalConfirm.close();
-          }, 3000); // 3000 milisegundos = 3 segundos
-          // Eliminar el elemento del post de la vista
-          const postElement = document.querySelector(`[data-id="${post.id}"]`);
-          if (postElement) {
-            postElement.remove();
-          }
-        });
-
-        /* Modal para editar post */
-        const modalEdit = document.createElement('dialog');
-        modalEdit.setAttribute('id', 'modalEdit');
-
-        const cancelEdit = document.createElement('img');
-        cancelEdit.setAttribute('src', '../img/cancel.png');
-
-        const pEditPost = document.createElement('p');
-        pEditPost.setAttribute('id', 'pEditPost');
-        pEditPost.textContent = 'Edit post';
-
-        const profilePic = document.createElement('img');
-        profilePic.setAttribute('src', '../img/Bob.png');
-        profilePic.setAttribute('class', 'profilePic');
-
-        const userName = document.createElement('span');
-        userName.setAttribute('class', 'userName');
-        userName.textContent = post.userid;
-
-        const formEdit = document.createElement('form');
-        formEdit.setAttribute('id', 'formEdit');
-
-        const inputEditName = document.createElement('input');
-        inputEditName.setAttribute('type', 'text');
-        inputEditName.setAttribute('id', 'inputEditName');
-        inputEditName.value = `${post.petName}`;
-
-        const inputEditDescription = document.createElement('input');
-        inputEditDescription.setAttribute('type', 'text');
-        inputEditDescription.setAttribute('id', 'inputEditDescription');
-        inputEditDescription.value = post.description;
-
-        const buttonEdit = document.createElement('button');
-        buttonEdit.setAttribute('id', 'buttonEdit');
-        buttonEdit.textContent = 'Save';
-
-        postsSection.append(postArticle, modal, modalConfirm, modalEdit);
-        modalEdit.append(cancelEdit, pEditPost, profilePic, userName, formEdit);
-        formEdit.append(inputEditName, inputEditDescription, buttonEdit);
-
-        liEdit.addEventListener('click', () => {
-          menuPoints.classList.remove('active');
-          modalEdit.open = true;
-        });
-
-        buttonEdit.addEventListener('click', (event) => {
-          event.preventDefault();
-          editPosts(post.id, inputEditName.value, inputEditDescription.value);
-        });
-
-        iconoPoints.addEventListener('click', () => {
-          menuPoints.classList.toggle('active');
-        });
       });
-    })
-    .catch((err) => {
-      console.log(err.message);
+      /* Modal para editar post */
+      const modalEdit = document.createElement('dialog');
+      modalEdit.setAttribute('id', 'modalEdit');
+
+      const cancelEdit = document.createElement('img');
+      cancelEdit.setAttribute('src', '../img/cancel.png');
+
+      const pEditPost = document.createElement('p');
+      pEditPost.setAttribute('id', 'pEditPost');
+      pEditPost.textContent = 'Edit post';
+
+      const profilePic = document.createElement('img');
+      profilePic.setAttribute('src', '../img/Bob.png');
+      profilePic.setAttribute('class', 'profilePic');
+
+      const userName = document.createElement('span');
+      userName.setAttribute('class', 'userName');
+      userName.value = post.data().userid;
+
+      const formEdit = document.createElement('form');
+      formEdit.setAttribute('id', 'formEdit');
+
+      const inputEditName = document.createElement('input');
+      inputEditName.setAttribute('type', 'text');
+      inputEditName.setAttribute('id', 'inputEditName');
+      inputEditName.value = `${post.data().petName}`;
+
+      const inputEditDescription = document.createElement('input');
+      inputEditDescription.setAttribute('type', 'text');
+      inputEditDescription.setAttribute('id', 'inputEditDescription');
+      inputEditDescription.value = post.data().description;
+
+      const buttonEdit = document.createElement('button');
+      buttonEdit.setAttribute('id', 'buttonEdit');
+      buttonEdit.textContent = 'Save';
+
+      liEdit.addEventListener('click', () => {
+        menuPoints.classList.remove('active');
+        modalEdit.open = true;
+      });
+
+      buttonEdit.addEventListener('click', (evento) => {
+        evento.preventDefault();
+        editPosts(post.id, inputEditName.value, inputEditDescription.value);
+        modalEdit.close();
+      });
+
+      iconoPoints.addEventListener('click', () => {
+        menuPoints.classList.toggle('active');
+      });
+
+      postsSection.append(postArticle, modal, modalConfirm, modalEdit);
+      modalEdit.append(cancelEdit, pEditPost, profilePic, userName, formEdit);
+      formEdit.append(inputEditName, inputEditDescription, buttonEdit);
     });
+  });
 
   return bodyimg;
 };
-
 /* function closeMenu() {
     divMenu.classList.remove("active");
     navMenu.classList.remove("active");
