@@ -8,9 +8,7 @@ export function wall() {
   // Crear elementos
   const container = document.createElement('div');
   const navegator = document.createElement('nav');
-  const main = document.createElement('main');
   const logoRefresh = document.createElement('img');
-  // const exitButton = document.createElement('button');
   const divposts = document.createElement('div');
 
   // Establecer atributos y contenido
@@ -23,42 +21,41 @@ export function wall() {
   // Agregar elementos a nav
   navegator.appendChild(logoRefresh);
 
-  // Agregar elementos a main
-  // main.appendChild(exitButton);
-  main.appendChild(divposts);
-
   // Agregar elementos al contenedor (div) especificado
   container.appendChild(navegator);
-  container.appendChild(main);
+  container.appendChild(divposts);
 
   const getPost = () => getDocs(collection(db, 'Posts'));
 
   const createPost = (poster) => {
     // crear que va a mostrar
     const post = document.createElement('div');
-    const header = document.createElement('div');
-    const img1 = document.createElement('img');
-    const dateInput = document.createElement('input');
-    const img2 = document.createElement('img');
-    const photoOrVideo = document.createElement('div');
+    const infoUser = document.createElement('div');
+    const avatar = document.createElement('img');
+    const publicDate = document.createElement('time');
+    const userName = document.createElement('h5');
+    const imagenPost = document.createElement('img');
     const descriptionAndLikes = document.createElement('p');
 
     // Establecer las propiedades de los elementos
+
     post.className = 'post';
-    header.className = 'header';
-    img1.src = poster.avatar;
-    dateInput.type = poster.fecha;
-    img2.src = 'ruta/al/imagen2';
-    photoOrVideo.className = 'photoOrVideo';
-    // photoOrVideo.textContent = 'foto/video';
+    avatar.className = 'avatar';
+    publicDate.className = 'header';
+    avatar.src = poster.avatar;
+    publicDate.setAttribute('datetime', '2023-05-16');
+    publicDate.textContent = '16 de mayo de 2023';
+    publicDate.type = poster.fecha;
+    userName.textContent = 'user email';
+    imagenPost.src = 'ruta/al/imagen2';
     descriptionAndLikes.textContent = poster.descripción;
 
     // Armar la estructura del nodo
-    header.appendChild(img1);
-    header.appendChild(dateInput);
-    header.appendChild(img2);
-    post.appendChild(header);
-    post.appendChild(photoOrVideo);
+    infoUser.id = 'infoUser';
+    infoUser.appendChild(avatar);
+    infoUser.appendChild(userName);
+    infoUser.appendChild(publicDate);
+    post.appendChild(infoUser);
     post.appendChild(descriptionAndLikes);
     divposts.appendChild(post);
   };
