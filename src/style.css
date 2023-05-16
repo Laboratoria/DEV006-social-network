@@ -82,6 +82,7 @@ body {
 
 /* LOGIN, FORGOT PASSWORD, NEW PASSWORD */
 
+.container-posts,
 .container-register,
 .container-new-password,
 .container-forgot-password,
@@ -96,6 +97,7 @@ body {
     margin: 2% auto;
 }
 
+.img-back-posts,
 .img-return-register,
 .img-return-new-password,
 .img-return-forgot-password,
@@ -163,10 +165,6 @@ body {
     font-size: 20px;
 }
 
-/* .view-password {
-    width: 7%;
-} */
-
 ::placeholder {
     font-size: 20px;
     padding-left: 5%;
@@ -201,7 +199,7 @@ body {
     font-family: 'Inter', sans-serif;
     text-shadow: 2px 2px 5px rgb(0, 0, 0);
 }
-
+.log-out-btn,
 .btn-sign-up-register {
     background-color: #2E7AA5;
     margin-bottom: 8%;
@@ -232,3 +230,67 @@ body {
 .login-git {
     width: 14%;
 }
+
+/* POSTS */
+
+.container-title-posts {
+    margin-bottom: 20px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.img-logout-posts {
+    width: 10%;
+    height: auto;
+    margin-top: 5%;
+}
+
+.title-posts {
+    text-align: center;
+    font-size: 25px;
+    font-family: 'Roboto Condensed', sans-serif;
+    margin-left: 8%;
+    margin-right: 8%;
+}
+
+.container-form-post {
+    display: flex;
+    align-items: center;
+}
+
+.want-post {
+    font-size: 20px;
+    width: 80%;
+}
+
+.img-user-posts {
+    margin-right: 5%;
+    width: 20%;
+}
+
+.container-btn-post {
+    display: flex;
+    justify-content: end;
+}
+
+.save-posts {
+    width: 25%;
+    height: 35px;
+    margin-bottom: 15px;
+    background-color: #9F3C95;
+    border-radius: 10px;
+    color: white;
+    font-size: 15px;
+    letter-spacing: 1.5px;
+    font-family: 'Inter', sans-serif;
+    text-shadow: 2px 2px 5px rgb(0, 0, 0);
+}
+
+.form-posts {
+    display: grid;
+}
+
+/* .text-posts {
+    margin: 10%, 0%;
+} */
