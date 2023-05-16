@@ -1,4 +1,5 @@
-// import { loginFirebase } from ".";
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../lib/firebase';
 
 function login(navigateTo) {
   const section = document.createElement('section');
@@ -9,14 +10,11 @@ function login(navigateTo) {
   const inputEmail = document.createElement('input');
   const inputErrorEmail = document.createElement('p');
   const inputPass = document.createElement('input');
-  const inputErrorPass = document.createElement('p');
-  const buttonLogin2 = document.createElement('button');
+  const buttonLogin = document.createElement('button');
   const buttonGoogle = document.createElement('button');
   const buttonReturn = document.createElement('button');
-  // const expresiones = {
-  //   password: /^.{6,12}$/, // 4 a 12 digitos.
-  //   correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
-  // };
+  const paragraph = document.createElement('p');
+  // const paragraphEmail = document.createElement('p');
 
   logo.src = './img/logoSinfondo.png';
   logo.classList.add('logoimg');
@@ -30,25 +28,22 @@ function login(navigateTo) {
   inputEmail.placeholder = 'Email';
   inputEmail.classList.add('email');
   inputEmail.type = 'email';
-  inputErrorEmail.textContent = '';
-  inputErrorEmail.classList.add('inputErrorEmail');
 
   inputPass.placeholder = 'Password';
   inputPass.classList.add('password');
   inputPass.type = 'password';
   inputErrorPass.classList.add('inputErrorPass');
 
-  buttonLogin2.textContent = 'Login';
-  buttonLogin2.classList.add('login2');
-  buttonLogin2.addEventListener('click', () => {
-    navigateTo('/wall');
-    // loginFirebase()
-  });
   buttonGoogle.textContent = 'continue with GOOGLE';
   buttonGoogle.classList.add('google');
   buttonGoogle.addEventListener('click', () => {
     navigateTo('/wall');
   });
+  buttonLogin.textContent = 'Login';
+  buttonLogin.classList.add('login');
+  // buttonLogin.addEventListener('click', () => {
+  //   navigateTo('/wall');
+  // });
   buttonReturn.textContent = '.';
   buttonReturn.classList.add('return');
   buttonReturn.addEventListener('click', () => {
@@ -59,29 +54,41 @@ function login(navigateTo) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (emailRegex.test(e.target.value)) {
       console.log('pasa la validación');
-      document.querySelector('inputErrorEmail').classList.remove('.inputErrorEmail');
-      inputErrorEmail.textContent = '';
+      paragraph.textContent = '';
     } else {
-      document.querySelector('inputErrorEmail').classList.add('.inputErrorEmail');
-      inputErrorEmail.textContent = 'Email no es valido';
-    }console.log(inputErrorEmail, 'esta corriendo');
+      paragraph.textContent = 'Email is not valid';
+    }
   });
 
-  // const validarCampo = (expresion, input, campo) => {
-  //   if(expresion.test(input.value)){
-  //     document.getElementById(`grupo__usuario`).classList.remove('formulario__grupo-incorrecto');
-  //     document.getElementById(`grupo__usuario}`).classList.add('formulario__grupo-correcto');
-  // };
+  inputPass.addEventListener('input', (e) => {
+    const passRegex = /^.{6,12}$/;
+    if (passRegex.test(e.target.value)) {
+      console.log('pasa el pass');
+      paragraph.textContent = '';
+    } else {
+      paragraph.textContent = 'Pass is not valid';
+    }
+  });
 
-  form.append(
-    inputEmail,
-    inputErrorEmail,
-    inputErrorPass,
-    inputPass,
-    buttonLogin2,
-    buttonGoogle,
-    buttonReturn,
-  );
+  buttonLogin.addEventListener('click', async (e) => {
+    e.preventDefault();
+    const email = inputEmail.value;
+    const pass = inputPass.value;
+    try {
+      const credentials = await signInWithEmailAndPassword(auth, email, pass);
+      console.log(credentials, 'valor de los campos');
+    } catch (error) {
+      if (error.code === 'auth/wrong-password') {
+        alert('Contraseña incorrecta');
+      } else if (error.code === 'auth/user-not-found') {
+        alert('Usuario no encontrado');
+      } else {
+        alert('Error al iniciar sesión');
+      }
+    }
+  });
+
+  form.append(inputEmail, inputPass, buttonLogin, buttonGoogle, buttonReturn, paragraph);
   section.append(logo, title, caption, form);
   return section;
 }
