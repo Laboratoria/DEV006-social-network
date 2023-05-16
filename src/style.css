@@ -19,7 +19,6 @@ form{
     display: flex;
     flex-direction: column;
     align-items: center;
-    text-align: center;
     gap: 20px;
 }
 
@@ -99,15 +98,31 @@ input::placeholder {
     width: 60%;
 }
 
-p{
+p {
     font-size:25px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     color: #0A4D68;
 }
 
-#posts{
-    background: rgb(14, 38, 92)(255, 0, 149);
-    width: 80%;
-    justify-content: center;
+#posts {
+    display: flex;
+    flex-direction: column;
+    background: coral;
+    width: 60%;
+    margin-right: 20%;
+    margin-left: 20%;
 
+}
+
+
+
+.avatar {
+    width: 50px;
+    border-radius: 50%;
+    margin-left: 0;
+}
+
+.infoUser {
+    display: flex;
+    flex-direction: row;
 }
