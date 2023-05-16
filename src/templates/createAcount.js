@@ -60,7 +60,7 @@ function createAcount(navigateTo) {
       console.log('pasa la validación');
       paragraphEmail.textContent = '';
     } else {
-      paragraph.textContent = 'Email is not valid';
+      paragraphEmail.textContent = 'Email is not valid';
     }
   });
 
@@ -70,13 +70,13 @@ function createAcount(navigateTo) {
     const pass = inputPass.value;
     const confPass = inputConfPass.value;
 
-    form.appendChild(paragraph);
+    form.appendChild(paragraphEmail);
     if (pass.length < 6) {
-      paragraph.textContent = 'The password must be at least 6 characters';
+      paragraphEmail.textContent = 'The password must be at least 6 characters';
       return;
     }
     if (pass !== confPass) {
-      paragraph.textContent = 'Passwords do not match';
+      paragraphEmail.textContent = 'Passwords do not match';
       return;
     }
     try {
@@ -108,7 +108,6 @@ function createAcount(navigateTo) {
     buttonSingUp,
     buttonGoogle,
     buttonReturn,
-    paragraph,
   );
 
   section.append(logo, title, caption, form);

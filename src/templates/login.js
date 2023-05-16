@@ -8,7 +8,7 @@ function login(navigateTo) {
   const caption = document.createElement('h2');
   const form = document.createElement('form');
   const inputEmail = document.createElement('input');
-  const inputErrorEmail = document.createElement('p');
+  // const inputErrorEmail = document.createElement('p');
   const inputPass = document.createElement('input');
   const buttonLogin = document.createElement('button');
   const buttonGoogle = document.createElement('button');
