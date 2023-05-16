@@ -235,7 +235,7 @@ body {
   margin: 10vh 5vw 10vh 5vw;
 }
 
-.errorContainer {
+.errors {
   color: white;
   background-color: red;
 }

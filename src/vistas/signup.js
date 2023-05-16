@@ -1,4 +1,5 @@
 import { registerUser } from '../lib/auth.js';
+import { errorMessages } from '../lib/error.js';
 
 function signup(navigateTo) {
   // creación de elementos//
@@ -12,7 +13,7 @@ function signup(navigateTo) {
   const inputUser = document.createElement('input');
   const inputEmail = document.createElement('input');
   const inputPassword = document.createElement('input');
-  const errorContainer = document.createElement('div');
+
   const question = document.createElement('h5');
   const yes = document.createElement('h5');
   const no = document.createElement('h5');
@@ -23,12 +24,16 @@ function signup(navigateTo) {
   const showPassword = document.createElement('img');
   const logo = document.createElement('img');
   const header = document.createElement('div');
+  const errorPassword = document.createElement('h2');
+  const errorEmail = document.createElement('h2');
 
   inputEmail.placeholder = 'example@gmail.com';
   inputPassword.placeholder = '***********';
 
   // agregar atributos//
   logo.setAttribute('src', 'images/logo.png');
+  errorPassword.setAttribute('id', 'errorPassword');
+  errorEmail.setAttribute('id', 'errorEmail');
   emailSignup.textContent = 'Correo electrónico';
   passwordSignup.textContent = 'Contraseña';
   UserSignup.textContent = 'Nombre de Usuario';
@@ -65,22 +70,15 @@ function signup(navigateTo) {
     e.preventDefault();
     const email = inputEmail.value;
     const password = inputPassword.value;
+    errorEmail.textContent = '';
+    errorPassword.textContent = '';
     registerUser(email, password)
       .then(() => {
         console.log('signup');
       })
       .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        if (errorCode === 'auth/invalid-email') {
-          errorContainer.textContent = 'El correo electrónico ingresado no es válido';
-        } else if (errorCode === 'auth/weak-password') {
-          errorContainer.textContent = 'La contraseña ingresada es demasiado débil';
-        } else {
-          errorContainer.textContent = `Se produjo un error durante el registro: ${errorMessage}`;
-        }
-        console.log('hola');
-        return errorContainer;
+        const codeError = error.code;
+        errorMessages(codeError, errorEmail, errorPassword);
       });
   });
 
@@ -97,9 +95,8 @@ function signup(navigateTo) {
   passwordSignup.classList.add('subTitlesSignup');
   buttonEnterSignup.classList.add('buttonEnterSignup');
   question.classList.add('question');
-  errorContainer.classList.add('errorContainer');
-
-  
+  errorPassword.classList.add('errors');
+  errorEmail.classList.add('errors');
 
   // agrupar secciones//
   form.append(
@@ -107,8 +104,10 @@ function signup(navigateTo) {
     inputUser,
     emailSignup,
     inputEmail,
+    errorEmail,
     passwordSignup,
     inputPassword,
+    errorPassword,
     buttonEnterSignup,
     question,
     checkboxYes,
@@ -117,7 +116,7 @@ function signup(navigateTo) {
     no,
     showPassword,
   );
-  sectionForm.append(errorContainer, form);
+  sectionForm.append(form);
   sectionHeader.append(header, logo);
   section.append(sectionHeader, buttonReturnSignup, sectionForm, form);
 

@@ -3,7 +3,7 @@
 
 import home from './vistas/home.js';
 import login from './vistas/login.js';
-import error from './vistas/error.js';
+import error404 from './vistas/error404.js';
 import signup from './vistas/signup.js';
 import genderValidation from './vistas/genderValidation.js';
 
@@ -12,7 +12,7 @@ console.log('se carga');
 const routes = [
   { path: '/', component: home },
   { path: '/login', component: login },
-  { path: '/error', component: error },
+  { path: '/error404', component: error404 },
   { path: '/signup', component: signup },
   { path: '/sorry', component: genderValidation },
 
@@ -36,7 +36,7 @@ function navigateTo(hash) {
     }
     container.appendChild(route.component(navigateTo));
   } else {
-    navigateTo('/error');
+    navigateTo('/error404');
   }
 }
 
