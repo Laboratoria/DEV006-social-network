@@ -1,12 +1,17 @@
-export const signUp = (navigateTo) => {
+import { registerUser } from '../lib/firebaseAuth';
+
+const signUp = (navigateTo) => {
   const signUpSection = document.createElement('section');
   signUpSection.classList.add('signUpSection');
 
   const logoArticle = document.createElement('article');
   logoArticle.classList.add('articleLogoSignUp');
 
-  const logoImg = document.createElement('img');
+
+  logoImg.setAttribute('src', './pages/images/LOGO.png');
+
   logoImg.setAttribute('src', '../src/LOGO.png');
+
   logoImg.setAttribute('alt', 'Logo: dos boletos para el cine. Uno morado y uno amarillo. Ambos dicen "Cinergia"');
   logoImg.classList.add('logoSignUp');
 
@@ -32,6 +37,7 @@ export const signUp = (navigateTo) => {
   const userInput = document.createElement('input');
   userInput.classList.add('userInput');
   userInput.setAttribute('type', 'text');
+  userInput.placeholder = 'Crea un nombre de usuario';
 
   const emailLabel = document.createElement('label');
   emailLabel.classList.add('signUp');
@@ -40,6 +46,7 @@ export const signUp = (navigateTo) => {
   emailInput.classList.add('emailInput');
   emailInput.setAttribute('type', 'email');
   emailInput.setAttribute('id', 'userEmail');
+  emailInput.placeholder = 'Introduce tu correo electrónico';
 
   const passwordLabel = document.createElement('label');
   passwordLabel.classList.add('signUp');
@@ -48,6 +55,7 @@ export const signUp = (navigateTo) => {
   passwordInput.classList.add('passwordInput');
   passwordInput.setAttribute('type', 'password');
   passwordInput.setAttribute('id', 'userPassword');
+  passwordInput.placeholder = 'Crea una contraseña';
 
   const readyBtn = document.createElement('button');
   readyBtn.classList.add('readyBtn');
@@ -76,8 +84,16 @@ export const signUp = (navigateTo) => {
   googleLogo.setAttribute('src', './pages/images/googleLogo.png');
   googleLogo.setAttribute('alt', 'Logo de Google');
 
-  readyBtn.addEventListener('click', () => {
-    navigateTo('/home');
+  readyBtn.addEventListener('click', async () => {
+    const email = emailInput.value;
+    const password = passwordInput.value;
+    try {
+      await registerUser(email, password);
+      navigateTo('/home');
+    // Aquí puedes redirigir al usuario a la página de inicio o realizar cualquier acción adicional
+    } catch (error) {
+      console.error(error);
+    }
   });
 
   // googleBtn.addEventListener...
@@ -106,6 +122,13 @@ export const signUp = (navigateTo) => {
   signUpForm.appendChild(passwordInput);
   signUpForm.appendChild(readyBtn);
   signUpSection.appendChild(signUpForm);
+
+  signUpSection.appendChild(foundAccount);
+  signUpSection.appendChild(foundAccountA);
+  googleArticle.appendChild(googleTxt);
+  googleBtn.appendChild(googleLogo);
+  googleArticle.appendChild(googleBtn);
+
   signUpSection.appendChild(divForm);
   divForm.appendChild(signUpForm);
   divForm.appendChild(foundAccountDiv);
@@ -115,5 +138,7 @@ export const signUp = (navigateTo) => {
   googleBtn.appendChild(googleLogo);
   divForm.appendChild(googleBtn);
 
+
   return signUpSection;
 };
+export default signUp;
