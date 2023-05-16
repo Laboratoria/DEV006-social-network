@@ -41,7 +41,7 @@ function login(navigateTo) {
         console.log(error);
       });
   });
-
+  // Ocultar y mostrar contraseña//
   showPassword.addEventListener('click', (e) => {
     e.preventDefault();
     if (inputPassword.type === 'password') {

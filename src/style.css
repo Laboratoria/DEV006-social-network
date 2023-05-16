@@ -50,8 +50,8 @@ body {
   font-size: 2.9vh;
   font-style: italic;
   padding: 2vh 1vh 0vh 1vh;
-  font-family: 'Hind Vadodara', sans-serif;
-  -webkit-text-stroke:1.5px  rgba(0, 0, 0, 0.3);
+  font-family: "Hind Vadodara", sans-serif;
+  -webkit-text-stroke: 1.5px rgba(0, 0, 0, 0.3);
 }
 
 .sectionButton {
@@ -65,7 +65,7 @@ body {
   font-style: oblique;
   font-size: 2.5vh;
   padding: 0vh 1.5vh 3vh 1.5vh;
-  font-family: 'Hind Vadodara', sans-serif;
+  font-family: "Hind Vadodara", sans-serif;
 }
 
 .buttonReturn {
@@ -80,8 +80,8 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-family: 'Hind Vadodara', sans-serif;
-  -webkit-text-stroke:1.5px  rgba(0, 0, 0, 0.3);
+  font-family: "Hind Vadodara", sans-serif;
+  -webkit-text-stroke: 1.5px rgba(0, 0, 0, 0.3);
 }
 
 .buttonEnter {
@@ -94,7 +94,7 @@ body {
   height: 4.9763033175355vh;
   border-radius: 2.6vw;
   color: white !important;
-  -webkit-text-stroke:none;
+  -webkit-text-stroke: none;
   font-family: "Inria Serif";
   font-style: italic;
   font-weight: 700;
@@ -127,7 +127,6 @@ body {
   border-radius: 2.6vw;
   position: absolute;
   align-items: center;
-  
 }
 
 .buttonEnterSignup {
@@ -144,7 +143,7 @@ body {
   font-size: 14px;
   line-height: 17px;
   left: -0.38000000000000256vw;
-  top: 54.56vh;;
+  top: 54.56vh;
   position: absolute;
 }
 
@@ -156,9 +155,9 @@ body {
   line-height: 22px;
   align-items: center;
   width: 34vw;
-  font-family: 'Hind Vadodara', sans-serif;
+  font-family: "Hind Vadodara", sans-serif;
   color: #000000;
-  -webkit-text-stroke:1.5px  rgba(0, 0, 0, 0.3);
+  -webkit-text-stroke: 1.5px rgba(0, 0, 0, 0.3);
 }
 
 .question {
@@ -169,69 +168,74 @@ body {
   display: grid;
   grid-template-columns: 6cm;
   left: -9vw;
-  font-family: 'Hind Vadodara', sans-serif;
- 
+  font-family: "Hind Vadodara", sans-serif;
 }
 
-#Yes{
+#Yes {
   display: flex;
   flex-direction: row;
   position: absolute;
   top: 48.7vh;
   right: 13vh;
-
 }
 
-#No{
+#No {
   display: flex;
   flex-direction: row;
   position: absolute;
-  top:  48.7vh;
+  top: 48.7vh;
   right: 2.2vw;
-
 }
 
-#labelYes{
-position: absolute;
-top: 45.6vh;
-left: -6vw;
-font-family: 'Hind Vadodara', sans-serif;
--webkit-text-stroke:1.5px  rgba(0, 0, 0, 0.3);
+#labelYes {
+  position: absolute;
+  top: 45.6vh;
+  left: -6vw;
+  font-family: "Hind Vadodara", sans-serif;
+  -webkit-text-stroke: 1.5px rgba(0, 0, 0, 0.3);
 }
 
-#labelNo{
+#labelNo {
   position: absolute;
   top: 45.6vh;
   left: 18vw;
-  font-family: 'Hind Vadodara', sans-serif;
-  -webkit-text-stroke:1.5px  rgba(0, 0, 0, 0.3);
+  font-family: "Hind Vadodara", sans-serif;
+  -webkit-text-stroke: 1.5px rgba(0, 0, 0, 0.3);
 }
 
-.buttonReturnSignup{
+.buttonReturnSignup {
   display: flex;
   justify-content: flex-start;
   width: 8vw;
   height: 7vh;
   padding: 5vw;
-  position:absolute;
+  position: absolute;
   left: 11vw;
-
-
 }
 
-#showPassword{
-height: 3vh;
-width: 4vw;
-top: -2.8vh;
-left: 17vw;
-position: relative;
+#showPassword {
+  height: 3vh;
+  width: 4vw;
+  top: -2.8vh;
+  left: 17vw;
+  position: relative;
 }
 
-#showPasswordLogin{
+#showPasswordLogin {
   height: 3vh;
   width: 4vw;
   top: -2vh;
   left: 17vw;
   position: relative;
+}
 
+.textValidation {
+  text-align: center;
+  font-size: 11vw;
+  margin: 10vh 5vw 10vh 5vw;
+}
+
+.errors {
+  color: white;
+  background-color: red;
 }

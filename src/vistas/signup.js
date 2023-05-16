@@ -1,4 +1,5 @@
 import { registerUser } from '../lib/auth.js';
+import { errorMessages } from '../lib/error.js';
 
 function signup(navigateTo) {
   // creación de elementos//
@@ -12,6 +13,7 @@ function signup(navigateTo) {
   const inputUser = document.createElement('input');
   const inputEmail = document.createElement('input');
   const inputPassword = document.createElement('input');
+
   const question = document.createElement('h5');
   const yes = document.createElement('h5');
   const no = document.createElement('h5');
@@ -22,12 +24,16 @@ function signup(navigateTo) {
   const showPassword = document.createElement('img');
   const logo = document.createElement('img');
   const header = document.createElement('div');
+  const errorPassword = document.createElement('h2');
+  const errorEmail = document.createElement('h2');
 
   inputEmail.placeholder = 'example@gmail.com';
   inputPassword.placeholder = '***********';
 
   // agregar atributos//
   logo.setAttribute('src', 'images/logo.png');
+  errorPassword.setAttribute('id', 'errorPassword');
+  errorEmail.setAttribute('id', 'errorEmail');
   emailSignup.textContent = 'Correo electrónico';
   passwordSignup.textContent = 'Contraseña';
   UserSignup.textContent = 'Nombre de Usuario';
@@ -55,30 +61,27 @@ function signup(navigateTo) {
     navigateTo('/');
   });
 
+  checkboxNo.addEventListener('click', () => {
+    navigateTo('/sorry');
+  });
+
   // Registro de usuario//
   buttonEnterSignup.addEventListener('click', (e) => {
     e.preventDefault();
     const email = inputEmail.value;
     const password = inputPassword.value;
+    errorEmail.textContent = '';
+    errorPassword.textContent = '';
     registerUser(email, password)
       .then(() => {
         console.log('signup');
       })
       .catch((error) => {
-        console.log(error);
+        const codeError = error.code;
+        errorMessages(codeError, errorEmail, errorPassword);
       });
   });
 
-  showPassword.addEventListener('click', (e) => {
-    e.preventDefault();
-    if (inputPassword.type === 'password') {
-      inputPassword.type = 'text';
-      showPassword.src = 'images/ojonoOculto.png';
-    } else {
-      inputPassword.type = 'password';
-      showPassword.src = 'images/ojoOculto.png';
-    }
-  });
   // // agregar clases//
 
   header.classList.add('header');
@@ -92,17 +95,19 @@ function signup(navigateTo) {
   passwordSignup.classList.add('subTitlesSignup');
   buttonEnterSignup.classList.add('buttonEnterSignup');
   question.classList.add('question');
+  errorPassword.classList.add('errors');
+  errorEmail.classList.add('errors');
 
   // agrupar secciones//
-  // eslint-disable-next-line max-len
-
   form.append(
     UserSignup,
     inputUser,
     emailSignup,
     inputEmail,
+    errorEmail,
     passwordSignup,
     inputPassword,
+    errorPassword,
     buttonEnterSignup,
     question,
     checkboxYes,
