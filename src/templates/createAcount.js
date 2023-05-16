@@ -26,15 +26,21 @@ function createAcount(navigateTo) {
 
   inputName.placeholder = 'Name';
   inputName.classList.add('name');
+
   inputEmail.placeholder = 'Email';
   inputEmail.classList.add('email2');
   inputEmail.type = 'email';
   inputEmail.name = 'email';
+
   inputPass.placeholder = 'Password';
   inputPass.classList.add('password2');
   inputPass.type = 'password';
+  inputPass.setAttribute('id', 'pass1');
+
   inputConfPass.placeholder = 'Confirm password';
   inputConfPass.classList.add('confirmPass');
+  inputConfPass.type = 'password';
+  inputConfPass.setAttribute('id', 'pass2');
 
   buttonSingUp.textContent = 'Sing Up';
   buttonSingUp.classList.add('loginCreateAcount');
@@ -54,14 +60,40 @@ function createAcount(navigateTo) {
     navigateTo('/');
   });
 
+
   inputEmail.addEventListener('input', (e) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (emailRegex.test(e.target.value)) {
+      console.log(e.target.value)
       console.log('pasa la validación');
       paragraphEmail.textContent = '';
     } else {
       paragraphEmail.textContent = 'Email is not valid';
     }
+  });
+
+  inputPass.addEventListener('input', (e) => {
+    const passRegex = /^.{6,12}$/;
+    if (passRegex.test(e.target.value)) {
+      console.log('pasa el pass');
+      paragraph.textContent = '';
+    } else {
+      paragraph.textContent = 'Pass is not valid';
+    }
+  });
+
+  inputConfPass.addEventListener('input', (e) => {
+    function verificarClave() {
+      const pass1 = document.getElementById('pass1');
+      const pass2 = document.getElementById('pass2');
+      if(pass1.value != pass2.value) {
+        paragraph.textContent = 'Pass not mach';
+        return false
+      } else {
+        paragraph.textContent = ''
+        return true
+      }
+    } verificarClave()
   });
 
   buttonSingUp.addEventListener('click', async (e) => {
@@ -70,13 +102,13 @@ function createAcount(navigateTo) {
     const pass = inputPass.value;
     const confPass = inputConfPass.value;
 
-    form.appendChild(paragraphEmail);
+    form.appendChild(paragraph);
     if (pass.length < 6) {
-      paragraphEmail.textContent = 'The password must be at least 6 characters';
+      paragraph.textContent = 'The password must be at least 6 characters';
       return;
     }
     if (pass !== confPass) {
-      paragraphEmail.textContent = 'Passwords do not match';
+      paragraph.textContent = 'Passwords do not match';
       return;
     }
     try {

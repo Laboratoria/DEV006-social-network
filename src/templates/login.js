@@ -33,6 +33,8 @@ function login(navigateTo) {
   inputPass.classList.add('password');
   inputPass.type = 'password';
 
+
+
   buttonGoogle.textContent = 'continue with GOOGLE';
   buttonGoogle.classList.add('google');
   buttonGoogle.addEventListener('click', () => {
@@ -40,13 +42,33 @@ function login(navigateTo) {
   });
   buttonLogin.textContent = 'Login';
   buttonLogin.classList.add('login');
-  buttonLogin.addEventListener('click', () => {
-    navigateTo('/wall');
-  });
+  // buttonLogin.addEventListener('click', () => {
+  //   navigateTo('/wall');
+  // });
   buttonReturn.textContent = '.';
   buttonReturn.classList.add('return');
   buttonReturn.addEventListener('click', () => {
     navigateTo('/');
+  });
+
+  inputEmail.addEventListener('input', (e) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (emailRegex.test(e.target.value)) {
+      console.log('pasa la validación');
+      paragraph.textContent = '';
+    } else {
+      paragraph.textContent = 'Email is not valid';
+    }
+  });
+
+  inputPass.addEventListener('input', (e) => {
+    const passRegex = /^.{6,12}$/;
+    if (passRegex.test(e.target.value)) {
+      console.log('pasa el pass');
+      paragraph.textContent = '';
+    } else {
+      paragraph.textContent = 'Pass is not valid';
+    }
   });
 
   buttonLogin.addEventListener('click', async (e) => {
@@ -56,7 +78,6 @@ function login(navigateTo) {
     try {
       const credentials = await signInWithEmailAndPassword(auth, email, pass);
       console.log(credentials, 'valor de los campos');
-      navigateTo('/wall');
     } catch (error) {
       if (error.code === 'auth/wrong-password') {
         alert('Contraseña incorrecta');
@@ -68,7 +89,7 @@ function login(navigateTo) {
     }
   });
 
-  form.append(paragraph, inputEmail, inputPass, buttonLogin, buttonGoogle, buttonReturn);
+  form.append(inputEmail, inputPass, buttonLogin, buttonGoogle, buttonReturn, paragraph);
   section.append(logo, title, caption, form);
   return section;
 }

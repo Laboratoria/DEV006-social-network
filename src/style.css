@@ -14,7 +14,7 @@
     width: 166px;
     height: 53px;
     left: 111px;
-    top: 393px;
+    top: 80%;
     background: #f28e13;
     border-radius: 50px;
     border: none;
@@ -64,7 +64,7 @@
     border-bottom: 1px solid #f28e13;
   }
   .email{
-    top: 416px;
+    top: 432px;
   }
   .password {
     top: 469px;
