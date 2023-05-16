@@ -7,13 +7,12 @@ function createAcount(navigateTo) {
   const title = document.createElement('h1');
   const caption = document.createElement('h2');
   const form = document.createElement('form');
+  const paragraph = document.createElement('p');
   const inputName = document.createElement('input');
   const inputEmail = document.createElement('input');
-  const paragraphEmail = document.createElement('p');
   const inputPass = document.createElement('input');
   const inputConfPass = document.createElement('input');
   const buttonSingUp = document.createElement('button');
-  const buttonGoogle = document.createElement('button');
   const buttonReturn = document.createElement('button');
   logo.src = './img/logoSinfondo.png';
   logo.classList.add('logoimg');
@@ -48,32 +47,25 @@ function createAcount(navigateTo) {
     navigateTo('/wall');
   });
 
-  buttonGoogle.textContent = 'continue with GOOGLE';
-  buttonGoogle.classList.add('google');
-  buttonGoogle.addEventListener('click', () => {
-    navigateTo('/wall');
-  });
-
   buttonReturn.textContent = '.';
   buttonReturn.classList.add('return');
   buttonReturn.addEventListener('click', () => {
     navigateTo('/');
   });
 
-
   inputEmail.addEventListener('input', (e) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (emailRegex.test(e.target.value)) {
-      console.log(e.target.value)
+      console.log(e.target.value);
       console.log('pasa la validación');
-      paragraphEmail.textContent = '';
+      paragraph.textContent = '';
     } else {
       paragraph.textContent = 'Email is not valid';
     }
   });
 
   inputPass.addEventListener('input', (e) => {
-    const passRegex = /^.{6,12}$/;
+    const passRegex = /^.{6,20}$/;
     if (passRegex.test(e.target.value)) {
       console.log('pasa el pass');
       paragraph.textContent = '';
@@ -82,39 +74,26 @@ function createAcount(navigateTo) {
     }
   });
 
-  inputConfPass.addEventListener('input', (e) => {
+  inputConfPass.addEventListener('input', () => {
+    // eslint-disable-next-line consistent-return
     function verificarClave() {
       const pass1 = document.getElementById('pass1');
       const pass2 = document.getElementById('pass2');
-      if(pass1.value != pass2.value) {
+      if (pass1.value !== pass2.value) {
         paragraph.textContent = 'Pass not mach';
-        return false
       } else {
-        paragraph.textContent = ''
-        return true
+        paragraph.textContent = '';
+        return true;
       }
-    } verificarClave()
+    } verificarClave();
   });
 
   buttonSingUp.addEventListener('click', async (e) => {
     e.preventDefault();
     const email = inputEmail.value;
     const pass = inputPass.value;
-    const confPass = inputConfPass.value;
+    // const confPass = inputConfPass.value;
 
-  //   form.appendChild(paragraph);
-  //   if (pass.length < 6) {
-  //     paragraph.textContent = 'The password must be at least 6 characters';
-  //     return;
-  //   }
-  //   if (pass !== confPass) {
-  //     paragraph.textContent = 'Passwords do not match';
-  //     return;
-  //   }
-  //   if (pass == confPass) {
-  //     paragraph.textContent = 'Passwords match';
-  //     return;
-  //   }
     try {
       const userCredentials = await create(
         auth,
@@ -137,11 +116,9 @@ function createAcount(navigateTo) {
   form.append(
     inputName,
     inputEmail,
-    paragraphEmail,
     inputPass,
     inputConfPass,
     buttonSingUp,
-    buttonGoogle,
     buttonReturn,
     paragraph,
   );
