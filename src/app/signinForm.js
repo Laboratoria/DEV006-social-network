@@ -17,10 +17,11 @@ export const signInFn = async (navigateTo) => {
 
   try {
     const credentials = await signInWithEmailAndPassword(auth, email, password);
-    console.log(credentials);
+    // console.log(credentials);
     navigateTo('/posts');
   } catch (error) {
     if (error) {
+      console.log(error);
       alert('Algo salió mal, verifica tus datos');
     }
   }
