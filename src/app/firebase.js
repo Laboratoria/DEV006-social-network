@@ -5,8 +5,12 @@ import {
   getFirestore,
   collection,
   addDoc,
-  getDocs,
+  getDoc,
+  updateDoc,
+  // getDocs,
+  deleteDoc,
   onSnapshot,
+  doc,
 }
   from 'https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js';
 
@@ -27,5 +31,8 @@ export const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 const db = getFirestore();
 export const savePost = (post) => addDoc(collection(db, 'publicaciones'), { post });
-export const getPosts = () => getDocs(collection(db, 'publicaciones'));
+// export const getPosts = () => getDocs(collection(db, 'publicaciones'));
 export const onGetPosts = (callback) => onSnapshot(collection(db, 'publicaciones'), callback);
+export const deletePost = (id) => deleteDoc(doc(db, 'publicaciones', id));
+export const getPost = (id) => getDoc(doc(db, 'publicaciones', id));
+export const updatePost = (id, newField) => updateDoc(doc(db, 'publicaciones', id), newField);
