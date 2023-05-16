@@ -74,30 +74,28 @@ describe('Se renderiza el componente para eliminar una publicación nueva', () =
       const auth = { currentUser: { displayName: 'nombreDeUsuario' } };
 
       // Ejecuta el bloque de código
-      if (post.userid === auth.currentUser.displayName) {
-        const divUsersPointsEl = newWall.querySelector('.divUsersPointsEl');
-        const iconoPoints = newWall.querySelector('#iconoPoints');
-        const postArticle = newWall.querySelector('.postArticle');
-        const menuPoints = newWall.querySelector('.menuPoints');
-        const iconClose = newWall.querySelector('#iconClose');
-        const iconTrash = newWall.querySelector('#iconTrash');
-        const iconEdit = newWall.querySelector('#iconEdit');
-        const liDelete = newWall.querySelector('.liDelete');
-        const pPregunta = newWall.querySelector('#pPregunta');
-        const liEdit = newWall.querySelector('.liEdit');
-        const liConfirm = newWall.querySelector('#liConfirm');
-        const liCancel = newWall.querySelector('.liCancel');
-        const modal = newWall.querySelector('#modal');
-        const ulModal = newWall.querySelector('.ulModal');
+      const divUsersPointsEl = newWall.querySelector('.divUsersPointsEl');
+      const iconoPoints = newWall.querySelector('#iconoPoints');
+      const postArticle = newWall.querySelector('.postArticle');
+      const menuPoints = newWall.querySelector('.menuPoints');
+      const iconClose = newWall.querySelector('#iconClose');
+      const iconTrash = newWall.querySelector('#iconTrash');
+      const iconEdit = newWall.querySelector('#iconEdit');
+      const liDelete = newWall.querySelector('.liDelete');
+      const pPregunta = newWall.querySelector('#pPregunta');
+      const liEdit = newWall.querySelector('.liEdit');
+      const liConfirm = newWall.querySelector('#liConfirm');
+      const liCancel = newWall.querySelector('.liCancel');
+      const modal = newWall.querySelector('#modal');
+      const ulModal = newWall.querySelector('.ulModal');
 
-        divUsersPointsEl.append(iconoPoints);
-        postArticle.append(menuPoints);
-        liDelete.append(iconTrash, 'Delete');
-        liEdit.append(iconEdit, 'Edit');
-        menuPoints.append(iconClose, liDelete, liEdit);
-        modal.append(pPregunta, ulModal);
-        ulModal.append(liConfirm, liCancel);
-      }
+      divUsersPointsEl.append(iconoPoints);
+      postArticle.append(menuPoints);
+      liDelete.append(iconTrash, 'Delete');
+      liEdit.append(iconEdit, 'Edit');
+      menuPoints.append(iconClose, liDelete, liEdit);
+      modal.append(pPregunta, ulModal);
+      ulModal.append(liConfirm, liCancel);
 
       // Verifica que los elementos sean agregados correctamente
       expect(newWall.querySelector('.divUsersPointsEl img')).toBeTruthy();

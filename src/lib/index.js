@@ -12,7 +12,9 @@ import {
   updateProfile,
 } from 'firebase/auth';
 import {
-  collection, getFirestore, getDocs, addDoc, serverTimestamp, deleteDoc, updateDoc, doc as newdoc,
+  collection,
+  getFirestore,
+  getDocs, addDoc, serverTimestamp, deleteDoc, updateDoc, doc as newdoc, query, orderBy, onSnapshot,
   // Se importa serveTimestamp para obtener fecha y hora del post
 } from 'firebase/firestore';
 import { firebaseConfig } from '../firebase.config.js';
@@ -40,15 +42,25 @@ getDocs(colRef)
   .catch((error) => {
     console.log(error.message);
   });
+
+// Funcion get post para usar en wall
+const orderedQuery = query(colRef, orderBy('timestamp', 'desc'));
+export const getPost = (callback) => onSnapshot(orderedQuery, callback);
+
 // edit documents
-export const editPosts = (id, petName, petDescription) => {
+export const editPosts = (id, inputEditName, inputEditDescription) => {
   const documentEditDoc = newdoc(colRef, id);
-  console.log(petName);
   return updateDoc(documentEditDoc, {
-    petName,
-    description: petDescription,
+    petName: inputEditName,
+    description: inputEditDescription,
     timestamp: serverTimestamp(),
-  });
+  })
+    .then(() => {
+      console.log('Documento actualizado correctamente');
+    })
+    .catch((error) => {
+      console.error('Error al actualizar el documento: ', error);
+    });
 };
 // delete documents
 export const deletePost = (id) => {
