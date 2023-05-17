@@ -14,7 +14,7 @@ function login(navigateTo) {
   const buttonReturn = document.createElement('img');
   const header = document.createElement('div');
   const logo = document.createElement('img');
-  const showPassword = document.createElement('img');
+  const showPasswordLogin = document.createElement('img');
 
   inputEmail.placeholder = 'example@gmail.com';
   inputPassword.placeholder = '***********';
@@ -42,14 +42,14 @@ function login(navigateTo) {
       });
   });
   // Ocultar y mostrar contraseña//
-  showPassword.addEventListener('click', (e) => {
+  showPasswordLogin.addEventListener('click', (e) => {
     e.preventDefault();
     if (inputPassword.type === 'password') {
       inputPassword.type = 'text';
-      showPassword.src = 'images/ojonoOculto.png';
+      showPasswordLogin.src = 'images/ojonoOculto.png';
     } else {
       inputPassword.type = 'password';
-      showPassword.src = 'images/ojoOculto.png';
+      showPasswordLogin.src = 'images/ojoOculto.png';
     }
   });
 
@@ -68,12 +68,12 @@ function login(navigateTo) {
   inputEmail.setAttribute.id = 'inputEmail';
   inputPassword.setAttribute.id = 'inputPassword';
   inputPassword.setAttribute('type', 'password');
-  showPassword.setAttribute('id', 'showPassword');
-  showPassword.setAttribute('src', 'images/ojoOculto.png');
+  showPasswordLogin.setAttribute('id', 'showPasswordLogin');
+  showPasswordLogin.setAttribute('src', 'images/ojoOculto.png');
 
   // agrupando las secciones//
   sectionHeader.append(header, logo);
-  form.append(emailLogin, inputEmail, passwordLogin, inputPassword, showPassword);
+  form.append(emailLogin, inputEmail, passwordLogin, inputPassword, showPasswordLogin);
   sectionForm.append(form, buttonEnter);
   section.append(sectionHeader, buttonReturn, sectionForm);
 

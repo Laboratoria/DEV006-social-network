@@ -32,7 +32,7 @@ function home(navigateTo) {
   });
   buttonSignin.textContent = 'Registrarme';
   buttonSignin.addEventListener('click', () => {
-    navigateTo('/signup');
+    navigateTo('/question');
   });
   title.textContent = '¡Bienvenida!';
   text.textContent = 'Nuestra comunidad es exclusiva para mujeres. Es un espacio seguro y acogedor donde podrás conectarte con otras chicas, compartir tus experiencias, hacer nuevas amistades, aprender cosas nuevas y sentirte apoyada en todo momento. Esperamos que disfrutes de tu experiencia aquí.';
