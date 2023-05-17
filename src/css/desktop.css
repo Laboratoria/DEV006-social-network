@@ -203,6 +203,14 @@
         height: 30%;
         padding: 2rem;
     }
+    .modalEdit{
+        width: 56rem;
+        height: 36rem;
+    }
+    #inputEditDescription{
+        height: 14rem;
+        width: 42rem;
+    }
     /* footer */
     #footerWall{
         display: none;

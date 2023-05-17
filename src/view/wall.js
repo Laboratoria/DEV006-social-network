@@ -1,5 +1,5 @@
 import {
-  exit, deletePost, auth, editPosts, getPost,
+  exit, deletePost, auth, editPosts, getPost, addLike,
 } from '../lib/index.js';
 
 export const wall = (navigateTo) => {
@@ -177,8 +177,12 @@ export const wall = (navigateTo) => {
       const likeHeart = document.createElement('img');
       likeHeart.setAttribute('src', 'img/like.png');
 
+      const likeCount = document.createElement('span');
+      likeCount.setAttribute('class', 'likeCount');
+
       const pawMatch = document.createElement('img');
       pawMatch.setAttribute('src', 'img/matchvacio.png');
+      pawMatch.setAttribute('id', 'pawMatch');
 
       /* Modal para mensaje de confirmación de eliminar post */
       const modal = document.createElement('dialog');
@@ -224,7 +228,7 @@ export const wall = (navigateTo) => {
       iconCheck.setAttribute('src', '../img/check.png');
 
       divUsersPointsEl.append(username);
-      reactionContainer.append(namePet, likeHeart, pawMatch);
+      reactionContainer.append(namePet, likeHeart, likeCount, pawMatch);
       postArticle.append(
         divUsersPointsEl,
         descriptionPet,
@@ -255,6 +259,11 @@ export const wall = (navigateTo) => {
         }, 3000); // 3000 milisegundos = 3 segundos
       });
 
+      likeHeart.addEventListener('click', (e) => {
+        e.preventDefault();
+        addLike(post.id);
+      });
+
       /* Modal para editar post */
       const modalEdit = document.createElement('dialog');
       modalEdit.setAttribute('class', 'modalEdit');
@@ -274,7 +283,7 @@ export const wall = (navigateTo) => {
       editHr.setAttribute('class', 'editHr');
 
       const profilePic = document.createElement('img');
-      profilePic.setAttribute('src', '../img/Bob.png');
+      profilePic.setAttribute('src', '../img/profilepic.jpg');
       profilePic.setAttribute('class', 'profilePic');
 
       const userName = document.createElement('span');
@@ -291,13 +300,21 @@ export const wall = (navigateTo) => {
 
       const inputEditDescription = document.createElement('textarea');
       inputEditDescription.setAttribute('id', 'inputEditDescription');
-      inputEditDescription.setAttribute('cols', '54');
-      inputEditDescription.setAttribute('rows', '8');
+      inputEditDescription.setAttribute('cols', '15');
+      inputEditDescription.setAttribute('rows', '6');
       inputEditDescription.value = post.data().description;
+
+      const pEdit = document.createElement('p');
+      pEdit.textContent = 'Edited';
+
+      const modalConfirmEdit = document.createElement('dialog');
+      modalConfirmEdit.setAttribute('id', 'modalConfirmEdit');
 
       const buttonEdit = document.createElement('button');
       buttonEdit.setAttribute('id', 'buttonEdit');
       buttonEdit.textContent = 'SAVE';
+
+      modalConfirmEdit.append(pEdit, iconCheck);
 
       liEdit.addEventListener('click', () => {
         menuPoints.close();
@@ -308,6 +325,10 @@ export const wall = (navigateTo) => {
         evento.preventDefault();
         editPosts(post.id, inputEditName.value, inputEditDescription.value);
         modalEdit.close();
+        modalConfirmEdit.open = true;
+        setTimeout(() => {
+          modalConfirmEdit.close();
+        }, 3000);
       });
 
       cancelEdit.addEventListener('click', () => {
@@ -318,7 +339,7 @@ export const wall = (navigateTo) => {
         menuPoints.open = true;
       });
 
-      walldiv.append(modalConfirm);
+      walldiv.append(modalConfirm, modalConfirmEdit);
       postsSection.append(postArticle, modal, modalEdit);
       modalEdit.append(editContainer, editHr, profilePic, userName, formEdit);
       formEdit.append(inputEditName, inputEditDescription, buttonEdit);

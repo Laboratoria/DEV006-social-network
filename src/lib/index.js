@@ -83,7 +83,29 @@ export const addPost = (petName, petDescription) => {
     description: petDescription,
     timestamp: serverTimestamp(), // definimos a timestamp para que se guarde en la colección
     userid: userName, // definimos userid para guardar el nombre de la persona que publica el post
+    like:"",
   });
+};
+
+/* contador de likes */
+export const addLike = (id) => {
+  const docRef = newdoc(colRef, id);
+  console.log(id);
+  return getDocs(docRef)
+    .then((doc) => {
+      const docData = doc.data();
+      console.log(docData);
+      const newLikes = docData.likes + 1;
+      console.log(newLikes);
+      return updateDoc(docRef, {
+        likes: newLikes,
+      });
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      console.log(error);
+      console.log(errorCode);
+    });
 };
 
 // Initialize Firebase Authentication and get a reference to the service
