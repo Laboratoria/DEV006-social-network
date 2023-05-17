@@ -121,7 +121,7 @@
     .formpost #Post {
         font-size: 2rem;
         height: 4.6rem;
-        top: 8rem;
+        top: 6.4rem;
     }
 
     #spanErrorEmail {
@@ -190,11 +190,8 @@
         min-height: 20rem;
         width: 32rem;
         border-radius: 15px;
-    }
-
-    .menuPoints.active {
-        top: 3.6rem;
-        left: 24.4rem;
+        left: 24rem;
+        bottom: -12rem;
     }
 
     .menuPoints .iconClose{
@@ -206,6 +203,18 @@
         height: 12rem;
         z-index: 1;
         padding: 2rem;
+    }
+    .modalEdit{
+        width: 56rem;
+        height: 36rem;
+    }
+    .formEdit{
+        height: 24rem;
+        margin: -1.5rem auto;
+    }
+    #inputEditDescription{
+        height: 14rem;
+        width: 40rem;
     }
 
     /* Fin de formularios*/

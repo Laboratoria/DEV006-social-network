@@ -439,7 +439,7 @@ hr {
 /* Reacciones del post*/
 .reactionContainer {
     display: grid;
-    grid-template-columns: 0.4fr 3fr 0.2fr;
+    grid-template-columns: 2fr 1fr 1fr 12fr 1fr;
     grid-column-gap: 4px;
 }
 
@@ -449,6 +449,14 @@ hr {
     object-fit: contain;
     margin-left: 2rem;
     cursor: pointer;
+}
+#pawMatch{
+    grid-column: 5;
+}
+.likeCount{
+    font-size: 1.4rem;
+    margin: auto 0;
+    text-align: left;
 }
 /* Menu de eliminar y editar post*/
 .divUsersPointsEl{
@@ -476,16 +484,13 @@ hr {
     text-align: center;
     box-shadow:
         0 10px 27px rgba(0, 0, 0, 0.05);
-    bottom: 500%;
     position: fixed;
-    z-index: 1;
+    z-index: 3;
     list-style: none;
     left:0;
     font-size: 2.4rem;
-}
-.menuPoints.active {
-    /* top:85%; */
-    bottom:0;
+    border: none;
+    bottom: 0;
 }
 
 .menuPoints .iconClose{
@@ -538,8 +543,8 @@ hr {
     color: #ff0000;
 }
 
-.postsSection #modalConfirm {
-    position: absolute;
+#modalConfirm, #modalConfirmEdit {
+    position: fixed;
     margin: auto;
     width: 28rem;
     height: 10rem;
@@ -597,14 +602,16 @@ hr {
     box-shadow: none;
     width: 100%;
     margin: unset;
-
 }
 .formEdit #inputEditName, .formEdit #inputEditDescription{
     background-color: #292D32;
     color: white;
     border-color:#EA907A ;
     padding: 0.5rem;
+    font-size: 2rem;
+    font-family: 'Nunito', sans-serif;
 }
+
 #buttonEdit{
     position: absolute;
     width: 7.8rem;
@@ -641,6 +648,7 @@ hr {
     justify-content: space-evenly;
     align-items: center;
     padding: 2.4rem 0;
+    z-index: 2;
 }
 
 /*-------------------------------------------------Inicia crear publicación/post*/

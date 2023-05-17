@@ -1,5 +1,5 @@
 import {
-  exit, deletePost, auth, editPosts, getPost,
+  exit, deletePost, auth, editPosts, getPost, addLike,
 } from '../lib/index.js';
 
 export const wall = (navigateTo) => {
@@ -141,7 +141,7 @@ export const wall = (navigateTo) => {
       iconoPoints.setAttribute('id', 'iconoPoints');
 
       // Menú de opciones Delete y Edit
-      const menuPoints = document.createElement('ul');
+      const menuPoints = document.createElement('dialog');
       menuPoints.setAttribute('class', 'menuPoints');
 
       const iconTrash = document.createElement('img');
@@ -177,8 +177,12 @@ export const wall = (navigateTo) => {
       const likeHeart = document.createElement('img');
       likeHeart.setAttribute('src', 'img/like.png');
 
+      const likeCount = document.createElement('span');
+      likeCount.setAttribute('class', 'likeCount');
+
       const pawMatch = document.createElement('img');
       pawMatch.setAttribute('src', 'img/matchvacio.png');
+      pawMatch.setAttribute('id', 'pawMatch');
 
       /* Modal para mensaje de confirmación de eliminar post */
       const modal = document.createElement('dialog');
@@ -204,13 +208,13 @@ export const wall = (navigateTo) => {
 
       // Al escoger Delete en el menú, se abre el primer modal
       liDelete.addEventListener('click', () => {
-        menuPoints.classList.remove('active');
+        menuPoints.close();
         modal.open = true;
       });
 
       // Al hacer clic en el menú de opciones, se cierra
       iconClose.addEventListener('click', () => {
-        menuPoints.classList.remove('active');
+        menuPoints.close();
       });
 
       /* Mensaje de eliminado confirmado */
@@ -224,7 +228,7 @@ export const wall = (navigateTo) => {
       iconCheck.setAttribute('src', '../img/check.png');
 
       divUsersPointsEl.append(username);
-      reactionContainer.append(namePet, likeHeart, pawMatch);
+      reactionContainer.append(namePet, likeHeart, likeCount, pawMatch);
       postArticle.append(
         divUsersPointsEl,
         descriptionPet,
@@ -253,7 +257,11 @@ export const wall = (navigateTo) => {
         setTimeout(() => {
           modalConfirm.close();
         }, 3000); // 3000 milisegundos = 3 segundos
-        // Eliminar el elemento del post de la vista
+      });
+
+      likeHeart.addEventListener('click', (e) => {
+        e.preventDefault();
+        addLike(post.id);
       });
 
       /* Modal para editar post */
@@ -275,7 +283,7 @@ export const wall = (navigateTo) => {
       editHr.setAttribute('class', 'editHr');
 
       const profilePic = document.createElement('img');
-      profilePic.setAttribute('src', '../img/Bob.png');
+      profilePic.setAttribute('src', '../img/profilepic.jpg');
       profilePic.setAttribute('class', 'profilePic');
 
       const userName = document.createElement('span');
@@ -292,16 +300,24 @@ export const wall = (navigateTo) => {
 
       const inputEditDescription = document.createElement('textarea');
       inputEditDescription.setAttribute('id', 'inputEditDescription');
-      inputEditDescription.setAttribute('cols', '24');
-      inputEditDescription.setAttribute('rows', '12');
+      inputEditDescription.setAttribute('cols', '15');
+      inputEditDescription.setAttribute('rows', '6');
       inputEditDescription.value = post.data().description;
+
+      const pEdit = document.createElement('p');
+      pEdit.textContent = 'Edited';
+
+      const modalConfirmEdit = document.createElement('dialog');
+      modalConfirmEdit.setAttribute('id', 'modalConfirmEdit');
 
       const buttonEdit = document.createElement('button');
       buttonEdit.setAttribute('id', 'buttonEdit');
       buttonEdit.textContent = 'SAVE';
 
+      modalConfirmEdit.append(pEdit, iconCheck);
+
       liEdit.addEventListener('click', () => {
-        menuPoints.classList.remove('active');
+        menuPoints.close();
         modalEdit.open = true;
       });
 
@@ -309,6 +325,10 @@ export const wall = (navigateTo) => {
         evento.preventDefault();
         editPosts(post.id, inputEditName.value, inputEditDescription.value);
         modalEdit.close();
+        modalConfirmEdit.open = true;
+        setTimeout(() => {
+          modalConfirmEdit.close();
+        }, 3000);
       });
 
       cancelEdit.addEventListener('click', () => {
@@ -316,10 +336,11 @@ export const wall = (navigateTo) => {
       });
 
       iconoPoints.addEventListener('click', () => {
-        menuPoints.classList.toggle('active');
+        menuPoints.open = true;
       });
 
-      postsSection.append(postArticle, modal, modalConfirm, modalEdit);
+      walldiv.append(modalConfirm, modalConfirmEdit);
+      postsSection.append(postArticle, modal, modalEdit);
       modalEdit.append(editContainer, editHr, profilePic, userName, formEdit);
       formEdit.append(inputEditName, inputEditDescription, buttonEdit);
       editContainer.append(cancelEdit, pEditPost);
