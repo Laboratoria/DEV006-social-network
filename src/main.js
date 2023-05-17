@@ -1,20 +1,22 @@
 import './lib/firebase.js';
-import home from './templates/home.js';
+// import home from './templates/home.js';
 import login from './templates/login.js';
 import createAcount from './templates/createAcount.js';
+// import buttonGoogle from './lib/buttonGoogle.js';
 import error from './templates/error.js';
 import wall from './templates/wall.js';
 // console.log('HOlA')
 
 const routes = [
-  { path: '/', component: home },
+  // { path: '/', component: home },
   { path: '/login', component: login },
-  { path: '/loginCreate', component: createAcount },
+  { path: '/createAcount', component: createAcount },
   { path: '/wall', component: wall },
   { path: '/error', component: error },
+  // { path: '/buttonGoogle', component: buttonGoogle },
 ];
 
-const defaultRoute = '/';
+const defaultRoute = '/login';
 const root = document.getElementById('root');
 
 function navigateTo(hash) {

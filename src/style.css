@@ -1,13 +1,19 @@
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 600px) and (min-width: 360px) {
   body {
-    background-color: #f9f0ee;
+    /* width: 100%;
+    height: 100%; */
+    background: linear-gradient(
+      274deg,
+      rgba(242, 196, 155, 1) 0%,
+      rgba(240, 240, 242, 1) 100%
+    ) !important;
+    background-repeat: no-repeat;
   }
   .logoimg {
-    position: absolute;
-    width: 278px;
-    height: 257px;
-    left: 57px;
-    top: 20px;
+    width: 180px;
+    height: 170px;
+    left: 58px;
+    position: relative;
   }
   .loginCreateAcount {
     position: absolute;
@@ -24,8 +30,8 @@
     font-size: large;
     font-weight: 600;
   }
-  .createAcount {
-    top: 462px;
+  /* .createAcount {
+    top: 380px;
     position: absolute;
     width: 244px;
     height: 53px;
@@ -38,13 +44,13 @@
     font-size: large;
     font-weight: 600;
     border: none;
-  }
+  } */
   .title {
     position: absolute;
     width: 335px;
     height: 44px;
     left: 70px;
-    top: 280px;
+    top: 189px;
   }
   .caption {
     display: flex;
@@ -52,44 +58,80 @@
     align-items: center;
     margin-top: 100%;
   }
-  .email, 
-  .password{
+  .emailSingIn,
+  .passwordSingIn {
     position: absolute;
-    width: 223px;
-    height: 30px;
-    left: 44px;
-    color: black;
-    background-color: #f9f0ee;
+    width: 300px;
+    height: 34px;
+    left: 30px;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
     border: none;
-    border-bottom: 1px solid #f28e13;
-  }
-  .email{
-    top: 432px;
-  }
-  .password {
-    top: 469px;
   }
 
-  .login,
-  .google {
-    top: 520px;
+  .emailSingIn {
+    top: 340px;
+  }
+  
+  .passwordSingIn {
+    top: 400px;
+  }
+
+  .login {
     position: absolute;
-    width: 244px;
-    height: 53px;
-    left: 72px;
+    width: 300px;
+    height: 45px;
+    left: 30px;
     background: #f28e13;
-    border-radius: 50px;
+    border-radius: 10px;
     color: #fff;
     font-family: system-ui;
     font-size: large;
     font-weight: 600;
     border: none;
+    top: 460px;
   }
-  .login {
-    top: 520px;
+
+  .buttonGoogle {
+    position: absolute;
+    width: 300px;
+    height: 45px;
+    left: 30px;
+    top: 570px;
+    background: #ffffff;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    border: none;
   }
-  .google {
-    top: 600px;
+
+  .paragraph {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    margin-top: 72%;
+    color: #A6290D ;
+  }
+
+  .paragraphGoogle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20%;
+  }
+
+  .haveAcount, .register {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+  }
+
+  .haveAcount {
+    margin-top: 27%;
+  }
+
+  .register {
+    color: #f28e13;
   }
 
   .name,
@@ -120,7 +162,7 @@
     top: 129px;
   }
 
-  .textoerror{
+  .textoerror {
     position: absolute;
     bottom: 100px;
     left: 0;
