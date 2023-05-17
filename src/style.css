@@ -7,6 +7,7 @@
     height: 100%;
     overflow: hidden;
     position: fixed;
+    font-family: "Advent Pro", sans-serif; ;
   }
 
   .welcomeBody {
@@ -125,12 +126,14 @@
   .signUpForm {
     margin: 3%;
     padding: 1%;
+    font-family: "Advent Pro", sans-serif;
   }
   
   .signUp {
     margin-bottom: 60%;
     font-size: 150%;
     text-align: left;
+    font-family: "Advent Pro", sans-serif;
   }
   
   input {
@@ -145,6 +148,7 @@
   input[type="password"]{
     margin-bottom: 5%;
     padding: 2%;
+    font-family: "Advent Pro", sans-serif;
   }
 
   #readyBtn {
@@ -161,6 +165,7 @@
     justify-content: center;
     margin: 3% auto auto;
   }
+
  .foundAccountDiv {
     display: flex;
     flex-direction: row;
@@ -173,8 +178,8 @@
     margin: 0%;
   }
 
-  .foundAccountA{
-    font-size: 130%;
+  #goToSignIn {
+    font-size: 140%;
     color: #510BAB;
     font-weight: bold;
     margin-top: 0.3%;
@@ -197,4 +202,55 @@
     padding-bottom: 5%;
     font-size: 130%;
   }
+
+  .signInSection {
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(#272727 50%, white 50%);
+    font-family: "Advent Pro", sans-serif;
+  }
+  .signInBox{
+    background:white;
+    margin: 7%;
+    box-shadow: 0px 0px 10px 5px rgba(0,0,0,0.3);
+    border-radius: 5%;
+    padding: 8%;
+    font-size: 66%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .signInForm {
+    margin: 3%;
+    padding: 1%;
+  }
+
+  .signIn {
+    margin-bottom: 60%;
+    font-size: 150%;
+    text-align: left;
+  }
+  
+  .forgetPassword{
+    display: flex;
+    flex-direction: column;
+    font-size: 135%;
+    color: #510BAB;
+    text-align: center;
+    margin-top: 5%;
+   }
+
+  .signInTxtSpan {
+    color: #ffffff;
+    padding: 0%;
+    text-align: center;
+    margin-bottom: -10%;
+    font-size: x-large;
+}
+
+  .signInForm {
+   margin: 3%;
+   padding: 1%;
+}
 }
