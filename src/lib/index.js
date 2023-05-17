@@ -89,19 +89,23 @@ export const addPost = (petName, petDescription) => {
 // Initialize Firebase Authentication and get a reference to the service
 
 // Fx para inicio de sesión con Google
-export const signPop = async (/* event */) => {
-/*   event.preventDefault(); */
+export const signPop = async (navigateTo) => {
+  const spanGoogle = document.getElementById('spanErrorGoogle');
   const provider = new GoogleAuthProvider();
   try {
     // Ejecutar la autenticación con Google
     const result = await signInWithPopup(auth, provider);
     const credential = GoogleAuthProvider.credentialFromResult(result);
-
     // Iniciar sesión en Firebase con las credenciales obtenidas
     const userCredential = await signInWithCredential(auth, credential);
     const user = userCredential.user;
+    navigateTo('/wall');
     console.log(user);
   } catch (error) {
+    const errorCode = error.code;
+    if (errorCode === 'auth/popup-closed-by-user') {
+      spanGoogle.textContent = 'No ha ingresado correctamente con google';
+    }
     console.log(error);
   }
 };

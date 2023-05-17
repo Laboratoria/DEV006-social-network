@@ -100,10 +100,13 @@ export const login = (navigateTo) => {
   const btnGoogle = document.createElement('button');
   btnGoogle.setAttribute('class', 'btnGoogle');
   btnGoogle.textContent = 'Google';
-  btnGoogle.addEventListener('click', () => {
-    signPop();
-    navigateTo('/wall');
+  btnGoogle.addEventListener('click', (e) => {
+    e.preventDefault();
+    signPop(navigateTo);
   });
+
+  const spanErrorGoogle = document.createElement('span');
+  spanErrorGoogle.setAttribute('id', 'spanErrorGoogle');
 
   const imgGoogle = document.createElement('img');
   imgGoogle.setAttribute('src', '../img/googleplus.png');
@@ -131,7 +134,7 @@ export const login = (navigateTo) => {
   ul.append(btnHome);
   btnHome.append(homeLink);
   form.append(h2, group1, group2, btnLogin, containerLoginOptions);
-  containerLoginOptions.append(ulPassword, h4, hr, btnGoogle, ulAccount);
+  containerLoginOptions.append(ulPassword, h4, hr, btnGoogle, spanErrorGoogle, ulAccount);
   btnGoogle.append(imgGoogle);
   group1.append(txtEmail, spanErrorEmail);
   group2.append(txtPassword, spanErrorPassword);

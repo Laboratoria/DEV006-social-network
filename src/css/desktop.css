@@ -6,8 +6,8 @@
     header img {
         height: 5.5rem;
         width: 5.3rem;
-        top: 1px;
         margin-left: 10px;
+        margin-top: -0.1rem;
     }
 
     nav {
@@ -159,7 +159,7 @@
 
     .formpost #Post {
         font-size: 2.4rem;
-        top: 7.2rem;
+        top: 6rem;
         width: 10rem;
         height: 4rem;
         padding: 10px;
@@ -178,11 +178,8 @@
         min-height: 20rem;
         width: 32rem;
         border-radius: 15px;
-    }
-
-    .menuPoints.active {
-        top: 3.6rem;
         left: 24.4rem;
+        bottom: -12rem;
     }
 
     .menuPoints li{

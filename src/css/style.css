@@ -476,16 +476,13 @@ hr {
     text-align: center;
     box-shadow:
         0 10px 27px rgba(0, 0, 0, 0.05);
-    bottom: 500%;
     position: fixed;
     z-index: 1;
     list-style: none;
     left:0;
     font-size: 2.4rem;
-}
-.menuPoints.active {
-    /* top:85%; */
-    bottom:0;
+    border: none;
+    bottom: 0;
 }
 
 .menuPoints .iconClose{
@@ -538,8 +535,8 @@ hr {
     color: #ff0000;
 }
 
-.postsSection #modalConfirm {
-    position: absolute;
+#modalConfirm {
+    position: fixed;
     margin: auto;
     width: 28rem;
     height: 10rem;
@@ -597,7 +594,6 @@ hr {
     box-shadow: none;
     width: 100%;
     margin: unset;
-
 }
 .formEdit #inputEditName, .formEdit #inputEditDescription{
     background-color: #292D32;

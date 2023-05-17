@@ -141,7 +141,7 @@ export const wall = (navigateTo) => {
       iconoPoints.setAttribute('id', 'iconoPoints');
 
       // Menú de opciones Delete y Edit
-      const menuPoints = document.createElement('ul');
+      const menuPoints = document.createElement('dialog');
       menuPoints.setAttribute('class', 'menuPoints');
 
       const iconTrash = document.createElement('img');
@@ -204,13 +204,13 @@ export const wall = (navigateTo) => {
 
       // Al escoger Delete en el menú, se abre el primer modal
       liDelete.addEventListener('click', () => {
-        menuPoints.classList.remove('active');
+        menuPoints.close();
         modal.open = true;
       });
 
       // Al hacer clic en el menú de opciones, se cierra
       iconClose.addEventListener('click', () => {
-        menuPoints.classList.remove('active');
+        menuPoints.close();
       });
 
       /* Mensaje de eliminado confirmado */
@@ -253,7 +253,6 @@ export const wall = (navigateTo) => {
         setTimeout(() => {
           modalConfirm.close();
         }, 3000); // 3000 milisegundos = 3 segundos
-        // Eliminar el elemento del post de la vista
       });
 
       /* Modal para editar post */
@@ -292,8 +291,8 @@ export const wall = (navigateTo) => {
 
       const inputEditDescription = document.createElement('textarea');
       inputEditDescription.setAttribute('id', 'inputEditDescription');
-      inputEditDescription.setAttribute('cols', '24');
-      inputEditDescription.setAttribute('rows', '12');
+      inputEditDescription.setAttribute('cols', '54');
+      inputEditDescription.setAttribute('rows', '8');
       inputEditDescription.value = post.data().description;
 
       const buttonEdit = document.createElement('button');
@@ -301,7 +300,7 @@ export const wall = (navigateTo) => {
       buttonEdit.textContent = 'SAVE';
 
       liEdit.addEventListener('click', () => {
-        menuPoints.classList.remove('active');
+        menuPoints.close();
         modalEdit.open = true;
       });
 
@@ -316,10 +315,11 @@ export const wall = (navigateTo) => {
       });
 
       iconoPoints.addEventListener('click', () => {
-        menuPoints.classList.toggle('active');
+        menuPoints.open = true;
       });
 
-      postsSection.append(postArticle, modal, modalConfirm, modalEdit);
+      walldiv.append(modalConfirm);
+      postsSection.append(postArticle, modal, modalEdit);
       modalEdit.append(editContainer, editHr, profilePic, userName, formEdit);
       formEdit.append(inputEditName, inputEditDescription, buttonEdit);
       editContainer.append(cancelEdit, pEditPost);
