@@ -14,7 +14,8 @@ import {
 import {
   collection,
   getFirestore,
-  getDocs, addDoc, serverTimestamp, deleteDoc, updateDoc, doc as newdoc, query, orderBy, onSnapshot,
+  getDocs, addDoc, serverTimestamp, deleteDoc, updateDoc,
+  doc as newdoc, query, orderBy, onSnapshot, arrayUnion,
   // Se importa serveTimestamp para obtener fecha y hora del post
 } from 'firebase/firestore';
 import { firebaseConfig } from '../firebase.config.js';
@@ -83,12 +84,27 @@ export const addPost = (petName, petDescription) => {
     description: petDescription,
     timestamp: serverTimestamp(), // definimos a timestamp para que se guarde en la colección
     userid: userName, // definimos userid para guardar el nombre de la persona que publica el post
-    like:"",
+    like: '',
   });
 };
 
 /* contador de likes */
-export const addLike = (id) => {
+export const likePost = (id) => {
+  const post = newdoc(colRef, id);
+
+  return updateDoc(post, {
+    like: arrayUnion(auth.currentUser.uid),
+    /*  .then(() => {
+      console.log('Like agregado');
+    })
+      .catch(() => {
+        console.log('Error al agregar like');
+      }),
+  }); */
+  });
+};
+
+/* export const addLike = (id) => {
   const docRef = newdoc(colRef, id);
   console.log(id);
   return getDocs(docRef)
@@ -106,7 +122,7 @@ export const addLike = (id) => {
       console.log(error);
       console.log(errorCode);
     });
-};
+}; */
 
 // Initialize Firebase Authentication and get a reference to the service
 

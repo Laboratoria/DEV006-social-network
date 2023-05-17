@@ -1,5 +1,5 @@
 import {
-  exit, deletePost, auth, editPosts, getPost, addLike,
+  exit, deletePost, auth, editPosts, getPost, likePost,
 } from '../lib/index.js';
 
 export const wall = (navigateTo) => {
@@ -261,7 +261,7 @@ export const wall = (navigateTo) => {
 
       likeHeart.addEventListener('click', (e) => {
         e.preventDefault();
-        addLike(post.id);
+        likePost(post.id);
       });
 
       /* Modal para editar post */
