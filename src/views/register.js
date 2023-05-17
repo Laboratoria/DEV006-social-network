@@ -34,9 +34,11 @@ function register(navigateTo) {
   registerGoogle.classList.add('register-google-register');
   registerGit.classList.add('register-git-register');
 
+  nameInput.id = 'name-input';
   form.id = 'signup-form';
   emailInput.id = 'signup-email';
   passwordInput.id = 'signup-password';
+  confirmPasswordInput.id = 'signup-confirm-password';
 
   btnSignUp.type = 'submit';
 
