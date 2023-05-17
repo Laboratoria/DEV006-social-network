@@ -30,7 +30,16 @@ const firebaseConfig = {
 export const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 const db = getFirestore();
-export const savePost = (post) => addDoc(collection(db, 'publicaciones'), { post });
+export const savePost = (postText) => {
+  const user = auth.currentUser;
+  const post = {
+    name: user.displayName, // Obtén el nombre del usuario actual
+    date: new Date().toLocaleDateString(), // Obtiene la fecha actual formateada
+    post: postText,
+  };
+
+  return addDoc(collection(db, 'publicaciones'), post);
+};
 // export const getPosts = () => getDocs(collection(db, 'publicaciones'));
 export const onGetPosts = (callback) => onSnapshot(collection(db, 'publicaciones'), callback);
 export const deletePost = (id) => deleteDoc(doc(db, 'publicaciones', id));

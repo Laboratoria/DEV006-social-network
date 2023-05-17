@@ -36,9 +36,15 @@ function posts(navigateTo) {
       const userPost = doc.data();
       html += `
         <section class="user-posts">
+        <div class="info-post">
+        <div class="user-data-post">
+        <p class="user-name-post">${userPost.name}</p> 
+        <p class="date-post">${userPost.date}</p> 
+        </div>
         <div class="btns-post">
-        <button class='btn-delete' data-id="${doc.id}">Borrar</button>
-        <button class='btn-edit' data-id="${doc.id}">Editar</button>
+        <img class='btn-delete' data-id="${doc.id}" src='img/delete.png' alt='Borrar'>
+        <img class='btn-edit' data-id="${doc.id}" src='img/edit.png' alt='Editar'>
+        </div>
         </div>
         <p class="posts">${userPost.post}</p>
         </section>
