@@ -33,8 +33,6 @@ function login(navigateTo) {
   inputPass.classList.add('password');
   inputPass.type = 'password';
 
-
-
   buttonGoogle.textContent = 'continue with GOOGLE';
   buttonGoogle.classList.add('google');
   buttonGoogle.addEventListener('click', () => {

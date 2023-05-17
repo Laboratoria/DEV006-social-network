@@ -7,9 +7,9 @@ function createAcount(navigateTo) {
   const title = document.createElement('h1');
   const caption = document.createElement('h2');
   const form = document.createElement('form');
+  const paragraph = document.createElement('p');
   const inputName = document.createElement('input');
   const inputEmail = document.createElement('input');
-  const paragraphEmail = document.createElement('p');
   const inputPass = document.createElement('input');
   const inputConfPass = document.createElement('input');
   const buttonSingUp = document.createElement('button');
@@ -60,15 +60,14 @@ function createAcount(navigateTo) {
     navigateTo('/');
   });
 
-
   inputEmail.addEventListener('input', (e) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (emailRegex.test(e.target.value)) {
-      console.log(e.target.value)
+      console.log(e.target.value);
       console.log('pasa la validación');
-      paragraphEmail.textContent = '';
+      paragraph.textContent = '';
     } else {
-      paragraphEmail.textContent = 'Email is not valid';
+      paragraph.textContent = 'Email is not valid';
     }
   });
 
@@ -82,18 +81,18 @@ function createAcount(navigateTo) {
     }
   });
 
-  inputConfPass.addEventListener('input', (e) => {
+  inputConfPass.addEventListener('input', () => {
+    // eslint-disable-next-line consistent-return
     function verificarClave() {
       const pass1 = document.getElementById('pass1');
       const pass2 = document.getElementById('pass2');
-      if(pass1.value != pass2.value) {
+      if (pass1.value !== pass2.value) {
         paragraph.textContent = 'Pass not mach';
-        return false
       } else {
-        paragraph.textContent = ''
-        return true
+        paragraph.textContent = '';
+        return true;
       }
-    } verificarClave()
+    } verificarClave();
   });
 
   buttonSingUp.addEventListener('click', async (e) => {
@@ -127,14 +126,14 @@ function createAcount(navigateTo) {
       } else if (error.code === 'auth/weak-password') {
         alert('Password is too weak');
       }
-      paragraphEmail.textContent = 'Email no es valido';
+      paragraph.textContent = 'Email no es valido';
     }
   });
 
   form.append(
     inputName,
     inputEmail,
-    paragraphEmail,
+    paragraph,
     inputPass,
     inputConfPass,
     buttonSingUp,
