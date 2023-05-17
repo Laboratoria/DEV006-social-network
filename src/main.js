@@ -1,11 +1,11 @@
 import error from './pages/error.js';
 import welcomePage from './pages/home.js';
-// import signIn from './pages/signIn.js';
+import signIn from './pages/signIn.js';
 import signUp from './pages/signUp.js';
 
 const routes = [
   { path: '/', component: welcomePage },
-  // { path: '/signIn', component: signIn },
+  { path: '/signIn', component: signIn },
   { path: '/signup', component: signUp },
   { path: '/error', component: error },
 ];
