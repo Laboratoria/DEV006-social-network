@@ -1,5 +1,4 @@
 import { registerUser } from '../lib/auth.js';
-import { errorMessages } from '../lib/error.js';
 
 function signup(navigateTo) {
   // creación de elementos//
@@ -13,19 +12,14 @@ function signup(navigateTo) {
   const inputUser = document.createElement('input');
   const inputEmail = document.createElement('input');
   const inputPassword = document.createElement('input');
-
-  const question = document.createElement('h5');
-  const yes = document.createElement('h5');
-  const no = document.createElement('h5');
-  const checkboxYes = document.createElement('input');
-  const checkboxNo = document.createElement('input');
+  const passwordBox = document.createElement('div');
   const buttonEnterSignup = document.createElement('button');
   const buttonReturnSignup = document.createElement('img');
   const showPassword = document.createElement('img');
   const logo = document.createElement('img');
   const header = document.createElement('div');
-  const errorPassword = document.createElement('h2');
-  const errorEmail = document.createElement('h2');
+  const errorPassword = document.createElement('span');
+  const errorEmail = document.createElement('span');
 
   inputEmail.placeholder = 'example@gmail.com';
   inputPassword.placeholder = '***********';
@@ -37,33 +31,15 @@ function signup(navigateTo) {
   emailSignup.textContent = 'Correo electrónico';
   passwordSignup.textContent = 'Contraseña';
   UserSignup.textContent = 'Nombre de Usuario';
-  question.textContent = 'Esta aplicación esta pensada para personas que se identifican como mujeres. Por favor responde: ¿Te identificas como mujer?  ';
-  checkboxYes.type = 'radio';
-  checkboxNo.type = 'radio';
-  checkboxYes.id = 'Yes';
-  checkboxNo.id = 'No';
-  checkboxYes.name = 'checkbox';
-  checkboxNo.name = 'checkbox';
-  yes.textContent = 'Si';
-  no.textContent = 'No';
-  yes.id = 'labelYes';
-  no.id = 'labelNo';
+  
   buttonReturnSignup.setAttribute('src', 'images/arrow.png');
   inputEmail.setAttribute('id', 'inputEmail');
   inputPassword.setAttribute('id', 'inputPassword');
   buttonEnterSignup.textContent = 'Registrarte';
   inputPassword.setAttribute('type', 'password');
   inputPassword.setAttribute('src', 'images/ojoOculto.png');
-  showPassword.setAttribute('id', 'showPasswordLogin');
   showPassword.setAttribute('src', 'images/ojoOculto.png');
-
-  buttonReturnSignup.addEventListener('click', () => {
-    navigateTo('/');
-  });
-
-  checkboxNo.addEventListener('click', () => {
-    navigateTo('/sorry');
-  });
+  passwordBox.setAttribute('id', 'passwordBox');
 
   // Registro de usuario//
   buttonEnterSignup.addEventListener('click', (e) => {
@@ -73,13 +49,20 @@ function signup(navigateTo) {
     errorEmail.textContent = '';
     errorPassword.textContent = '';
     registerUser(email, password)
-      .then(() => {
-        console.log('signup');
+      .then((userResult) => {
+        console.log('signup', userResult);
       })
       .catch((error) => {
-        const codeError = error.code;
-        errorMessages(codeError, errorEmail, errorPassword);
+        console.log(error);
+        errorEmail.innerHTML = error;
+        errorPassword.innerHTML = error;
+        //const codeError = error.code;
+        //errorMessages(codeError, errorEmail, errorPassword);
       });
+  });
+
+  buttonReturnSignup.addEventListener('click', () => {
+    navigateTo('/');
   });
 
   // // agregar clases//
@@ -94,11 +77,12 @@ function signup(navigateTo) {
   emailSignup.classList.add('subTitlesSignup');
   passwordSignup.classList.add('subTitlesSignup');
   buttonEnterSignup.classList.add('buttonEnterSignup');
-  question.classList.add('question');
   errorPassword.classList.add('errors');
   errorEmail.classList.add('errors');
+  showPassword.classList.add('showPassword');
 
   // agrupar secciones//
+  passwordBox.append(inputPassword, showPassword);
   form.append(
     UserSignup,
     inputUser,
@@ -106,15 +90,9 @@ function signup(navigateTo) {
     inputEmail,
     errorEmail,
     passwordSignup,
-    inputPassword,
+    passwordBox,
     errorPassword,
     buttonEnterSignup,
-    question,
-    checkboxYes,
-    checkboxNo,
-    yes,
-    no,
-    showPassword,
   );
   sectionForm.append(form);
   sectionHeader.append(header, logo);

@@ -152,7 +152,7 @@ body {
   font-style: normal;
   font-weight: bold;
   font-size: 15px;
-  line-height: 22px;
+  line-height: 13px;
   align-items: center;
   width: 34vw;
   font-family: "Hind Vadodara", sans-serif;
@@ -171,38 +171,6 @@ body {
   font-family: "Hind Vadodara", sans-serif;
 }
 
-#Yes {
-  display: flex;
-  flex-direction: row;
-  position: absolute;
-  top: 48.7vh;
-  right: 13vh;
-}
-
-#No {
-  display: flex;
-  flex-direction: row;
-  position: absolute;
-  top: 48.7vh;
-  right: 2.2vw;
-}
-
-#labelYes {
-  position: absolute;
-  top: 45.6vh;
-  left: -6vw;
-  font-family: "Hind Vadodara", sans-serif;
-  -webkit-text-stroke: 1.5px rgba(0, 0, 0, 0.3);
-}
-
-#labelNo {
-  position: absolute;
-  top: 45.6vh;
-  left: 18vw;
-  font-family: "Hind Vadodara", sans-serif;
-  -webkit-text-stroke: 1.5px rgba(0, 0, 0, 0.3);
-}
-
 .buttonReturnSignup {
   display: flex;
   justify-content: flex-start;
@@ -213,7 +181,7 @@ body {
   left: 11vw;
 }
 
-#showPassword {
+#showPasswordLogin {
   height: 3vh;
   width: 4vw;
   top: -2.8vh;
@@ -221,21 +189,57 @@ body {
   position: relative;
 }
 
-#showPasswordLogin {
-  height: 3vh;
-  width: 4vw;
-  top: -2vh;
-  left: 17vw;
-  position: relative;
+.showPassword {
+  width: 5vw;
+  right: 1vw;
+  transform: translate(-50%);
+  position: absolute;
 }
 
 .textValidation {
   text-align: center;
   font-size: 11vw;
   margin: 10vh 5vw 10vh 5vw;
+  font-family: "Hind Vadodara", sans-serif;
 }
 
 .errors {
-  color: white;
-  background-color: red;
+  color: #ff0b0b;
+  font-weight: bolder;
+  width: 70vw;
+  margin-top: 2vw;
+  font-size: 1.7vh;
+}
+
+#passwordBox {
+  position: relative;
+}
+
+.textQuestion {
+  font-size: 7vw;
+  text-align: center;
+  margin: 10vh 5vw 4vh 5vw;
+  font-family: "Hind Vadodara", sans-serif;
+}
+
+.containerYesNo {
+  display: flex;
+  width: 30vw;
+  /* arriba - derecha - abajo - izquierda */
+  margin: -12vw 10vh 12vw 10vh;
+  font-size: 7vw;
+  gap: 2vw;
+  font-family: "Hind Vadodara", sans-serif;
+}
+
+#Yes,
+#No {
+  transform: scale(1.7);
+  margin-right: 4vw;
+}
+
+.questionWomen {
+  font-size: 7vw;
+  text-align: center;
+  font-family: "Hind Vadodara", sans-serif;
 }

@@ -6,8 +6,7 @@ import login from './vistas/login.js';
 import error404 from './vistas/error404.js';
 import signup from './vistas/signup.js';
 import genderValidation from './vistas/genderValidation.js';
-
-console.log('se carga');
+import questionWomen from './vistas/questionWomen.js';
 
 const routes = [
   { path: '/', component: home },
@@ -15,15 +14,14 @@ const routes = [
   { path: '/error404', component: error404 },
   { path: '/signup', component: signup },
   { path: '/sorry', component: genderValidation },
+  { path: '/question', component: questionWomen },
 
 ];
 const defaultRoute = '/';
 const container = document.getElementById('container');
 
 function navigateTo(hash) {
-  console.log(hash);
   const route = routes.find((routeFound) => routeFound.path === hash);
-  console.log(route);
   if (route) {
     window.history.pushState(
       {},
@@ -43,5 +41,4 @@ function navigateTo(hash) {
 window.onpopstate = () => {
   navigateTo(window.location.pathname);
 };
-console.log(window.location.pathname);
 navigateTo(window.location.pathname || defaultRoute);
