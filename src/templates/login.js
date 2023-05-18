@@ -1,6 +1,5 @@
-/* eslint-disable no-alert */
-/* eslint-disable no-console */
 import { signInWithEmailAndPassword } from 'firebase/auth';
+import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { auth } from '../lib/firebase';
 
 function login(navigateTo) {
@@ -11,9 +10,13 @@ function login(navigateTo) {
   const form = document.createElement('form');
   const inputEmail = document.createElement('input');
   const inputPass = document.createElement('input');
-  const buttonLogin = document.createElement('button');
-  const buttonReturn = document.createElement('button');
+  const buttonSingin = document.createElement('button');
+  const paragraphGoogle = document.createElement('p');
+  const buttonGoogle = document.createElement('button');
+  const paragraphHaveAcount = document.createElement('p');
+  const paragraphRegister = document.createElement('p');
   const paragraph = document.createElement('p');
+  paragraph.classList.add('paragraph');
   // const paragraphEmail = document.createElement('p');
 
   logo.src = './img/logoSinfondo.png';
@@ -22,27 +25,37 @@ function login(navigateTo) {
   title.textContent = 'Welcome to Foodiegram';
   title.classList.add('title');
 
-  caption.textContent = 'Login';
-  caption.classList.add('caption');
-
   inputEmail.placeholder = 'Email';
-  inputEmail.classList.add('email');
+  inputEmail.classList.add('emailSingIn');
   inputEmail.type = 'email';
 
   inputPass.placeholder = 'Password';
-  inputPass.classList.add('password');
+  inputPass.classList.add('passwordSingIn');
   inputPass.type = 'password';
+  inputPass.autocomplete = 'current-password';
 
-  buttonLogin.textContent = 'Login';
-  buttonLogin.classList.add('login');
+  paragraphGoogle.textContent = 'Or Login using an social media';
+  paragraphGoogle.classList.add('paragraphGoogle');
+
+  paragraphHaveAcount.textContent = 'Don´t have acount?';
+  paragraphHaveAcount.classList.add('haveAcount');
+
+  paragraphRegister.textContent = 'Register now';
+  paragraphRegister.classList.add('register');
+  paragraphRegister.setAttribute('id', 'registerNow');
+  paragraphRegister.setAttribute("href", '/createAcount')
+  paragraphRegister.addEventListener('click', () => {
+      navigateTo('/createAcount');
+  });
+
+  
+  buttonSingin.textContent = 'SING IN';
+  buttonSingin.classList.add('login');
   // buttonLogin.addEventListener('click', () => {
   //   navigateTo('/wall');
   // });
-  buttonReturn.textContent = '.';
-  buttonReturn.classList.add('return');
-  buttonReturn.addEventListener('click', () => {
-    navigateTo('/');
-  });
+  
+
 
   inputEmail.addEventListener('input', (e) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -64,7 +77,7 @@ function login(navigateTo) {
     }
   });
 
-  buttonLogin.addEventListener('click', async (e) => {
+  buttonSingin.addEventListener('click', async (e) => {
     e.preventDefault();
     const email = inputEmail.value;
     const pass = inputPass.value;
@@ -83,7 +96,31 @@ function login(navigateTo) {
     }
   });
 
-  form.append(inputEmail, inputPass, buttonLogin, buttonReturn, paragraph);
+  buttonGoogle.textContent = 'SING IN WITH GOOGLE';
+  buttonGoogle.classList.add('buttonGoogle');
+
+  buttonGoogle.addEventListener('click', async (e) => {
+    e.preventDefault();
+    const provider = new GoogleAuthProvider();
+    try {
+      const credential = await signInWithPopup(auth, provider);
+      console.log(credential);
+      navigateTo('/wall');
+    } catch (error) {
+      console.log(error, 'pasa error');
+    }
+  });
+
+  form.append(
+    inputEmail,
+    inputPass,
+    buttonSingin,
+    buttonGoogle,
+    paragraph,
+    paragraphGoogle,
+    paragraphHaveAcount,
+    paragraphRegister
+    );
   section.append(logo, title, caption, form);
   return section;
 }

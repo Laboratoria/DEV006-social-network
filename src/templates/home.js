@@ -13,7 +13,7 @@ function home(navigateTo) {
   logo.src = './img/logoSinfondo.png';
   logo.classList.add('logoimg');
 
-  buttonLogin.textContent = 'Login';
+  buttonLogin.textContent = 'SING IN';
   buttonLogin.classList.add('login');
   buttonLogin.addEventListener('click', () => {
     navigateTo('/login');
