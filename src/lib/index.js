@@ -39,6 +39,9 @@ getDocs(colRef)
       posts.push({ ...doc.data(), id: doc.id });
     });
     console.log(posts);
+    // posts.forEach((post) => {
+    //   console.log(post.like.length);
+    // });
   })
   .catch((error) => {
     console.log(error.message);
@@ -84,35 +87,37 @@ export const addPost = (petName, petDescription) => {
     description: petDescription,
     timestamp: serverTimestamp(), // definimos a timestamp para que se guarde en la colección
     userid: userName, // definimos userid para guardar el nombre de la persona que publica el post
-    like: '',
+    like: [],
+    likeCount: 0,
+  });
+};
+
+export const likePost = (id) => {
+  const post = newdoc(colRef, id);
+  return updateDoc(post, {
+    like: arrayUnion(auth.currentUser.uid),
   });
 };
 
 /* contador de likes */
-export const likePost = (id) => {
-  const post = newdoc(colRef, id);
-
-  return updateDoc(post, {
-    like: arrayUnion(auth.currentUser.uid),
-    /*  .then(() => {
-      console.log('Like agregado');
-    })
-      .catch(() => {
-        console.log('Error al agregar like');
-      }),
-  }); */
-  });
-};
+// export const likePost = (id) => {
+//   let vacio = [];
+//   const post = newdoc(colRef, id);
+//   const usuarios = arrayUnion(auth.currentUser.uid);
+//   const cantidad = vacio.push(usuarios);
+//   return updateDoc(post, {
+//     like: usuarios,
+//     likeCount: cantidad,
+//   });
+// };
 
 /* export const addLike = (id) => {
   const docRef = newdoc(colRef, id);
-  console.log(id);
+
   return getDocs(docRef)
     .then((doc) => {
       const docData = doc.data();
-      console.log(docData);
       const newLikes = docData.likes + 1;
-      console.log(newLikes);
       return updateDoc(docRef, {
         likes: newLikes,
       });

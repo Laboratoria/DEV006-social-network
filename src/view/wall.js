@@ -179,6 +179,7 @@ export const wall = (navigateTo) => {
 
       const likeCount = document.createElement('span');
       likeCount.setAttribute('class', 'likeCount');
+      likeCount.textContent = post.data().like.length;
 
       const pawMatch = document.createElement('img');
       pawMatch.setAttribute('src', 'img/matchvacio.png');
