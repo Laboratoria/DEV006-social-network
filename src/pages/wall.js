@@ -1,7 +1,8 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-console */
 /* eslint-disable import/no-extraneous-dependencies */
-import { collection, getDocs } from 'firebase/firestore';
+import { collection, getDocs,addDoc } from 'firebase/firestore';
+import { async } from 'regenerator-runtime';
 import { db } from '../lib/firebase';
 
 export function wall() {
@@ -10,12 +11,18 @@ export function wall() {
   const navegator = document.createElement('nav');
   const logoRefresh = document.createElement('img');
   const divposts = document.createElement('div');
+  const button = document.createElement('button');
+  const textarea = document.createElement('textarea');
 
   // Establecer atributos y contenido
   logoRefresh.setAttribute('src', './images/logoEasygym.png');
   logoRefresh.setAttribute('onclick', 'location.reload()');
   container.id = 'container';
   divposts.id = 'posts';
+  button.classList.add('bttn');
+  button.textContent = 'Crear Post';
+  textarea.classList.add('textArea');
+
   // exitButton.id = 'exit';
   logoRefresh.classList.add('refresh');
 
@@ -23,10 +30,10 @@ export function wall() {
   navegator.appendChild(logoRefresh);
 
   // Agregar elementos al contenedor (div) especificado
+  container.appendChild(button);
+  container.appendChild(textarea);
   container.appendChild(navegator);
   container.appendChild(divposts);
-
-  const getPost = () => getDocs(collection(db, 'Posts'));
 
   const createPost = (poster) => {
     // crear que va a mostrar
@@ -46,9 +53,9 @@ export function wall() {
     publicDate.className = 'publicDate';
     avatar.src = poster.avatar;
     publicDate.setAttribute('datetime', '2023-05-16');
-    publicDate.textContent = '16 de mayo de 2023';
+    publicDate.textContent = poster.fecha.toLocaleString();
     publicDate.type = poster.fecha;
-    userName.textContent = 'user email';
+    userName.textContent = poster.usuario;
     imagenPost.src = 'ruta/al/imagen2';
     descriptionAndLikes.textContent = poster.descripción;
 
@@ -62,12 +69,31 @@ export function wall() {
     divposts.appendChild(post);
   };
 
-  window.addEventListener('DOMContentLoaded', async () => {
-    const querySnapshot = await getPost();
+  const postPromise = getDocs(collection(db, 'Posts'));
+  postPromise.then((querySnapshot) => {
     querySnapshot.forEach((doc) => {
-      const postdata = doc.data();
-      createPost(postdata);
+      const postData = doc.data();
+      createPost(postData);
     });
   });
+
+  button.addEventListener('click', async () => {
+    const data = {
+      avatar: 'fto',
+      descripción: textarea.value,
+      fecha: 'hoy',
+      usuario: 'yo',
+    };
+    const result = await addDoc(collection(db, 'Posts'), data);
+    console.log(result);
+  });
+  // DOMContentLoaded se dispara cuando se ha cargado  completamente el árbol DOM de una página web por lo q no sirve en este caso ya q se cambia lo q esta en root
+  // window.addEventListener('DOMContentLoaded', async () => {
+  //   const querySnapshot = await getPost();
+  //   querySnapshot.forEach((doc) => {
+  //     const postdata = doc.data();
+  //     createPost(postdata);
+  //   });
+  // });
   return container;
 }
