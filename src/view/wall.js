@@ -1,5 +1,5 @@
 import {
-  exit, deletePost, auth, editPosts, getPost, likePost,
+  exit, deletePost, auth, editPosts, getPost, likePost, dislikePost,
 } from '../lib/index.js';
 
 export const wall = (navigateTo) => {
@@ -132,7 +132,7 @@ export const wall = (navigateTo) => {
       divUsersPointsEl.setAttribute('class', 'divUsersPointsEl');
 
       const username = document.createElement('span');
-      username.textContent = post.data().userid;
+      username.textContent = post.data().username;
       // obtenemos el valor de userid del display name para que se muestre en el post
       username.setAttribute('class', 'wallUsername');
 
@@ -238,7 +238,7 @@ export const wall = (navigateTo) => {
 
       modalConfirm.append(pDeleted, iconCheck);
       // ------------------------------------------condición para menu points
-      if (post.data().userid === auth.currentUser.displayName) {
+      if (post.data().uid === auth.currentUser.uid) {
         divUsersPointsEl.append(iconoPoints);
         postArticle.append(menuPoints);
         liDelete.append(iconTrash, 'Delete');
@@ -263,6 +263,11 @@ export const wall = (navigateTo) => {
       likeHeart.addEventListener('click', (e) => {
         e.preventDefault();
         likePost(post.id);
+        // if (post.like.includes(auth.currentUser.uid)) {
+        //   dislikePost(post.id);
+        // } else {
+        //   likePost(post.id);
+        // }
       });
 
       /* Modal para editar post */
@@ -289,7 +294,7 @@ export const wall = (navigateTo) => {
 
       const userName = document.createElement('span');
       userName.setAttribute('class', 'userName');
-      userName.textContent = post.data().userid;
+      userName.textContent = post.data().username;
 
       const formEdit = document.createElement('form');
       formEdit.setAttribute('class', 'formEdit');

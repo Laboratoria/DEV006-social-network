@@ -15,7 +15,7 @@ import {
   collection,
   getFirestore,
   getDocs, addDoc, serverTimestamp, deleteDoc, updateDoc,
-  doc as newdoc, query, orderBy, onSnapshot, arrayUnion,
+  doc as newdoc, query, orderBy, onSnapshot, arrayUnion, arrayRemove,
   // Se importa serveTimestamp para obtener fecha y hora del post
 } from 'firebase/firestore';
 import { firebaseConfig } from '../firebase.config.js';
@@ -86,7 +86,8 @@ export const addPost = (petName, petDescription) => {
     petName,
     description: petDescription,
     timestamp: serverTimestamp(), // definimos a timestamp para que se guarde en la colección
-    userid: userName, // definimos userid para guardar el nombre de la persona que publica el post
+    username: userName,
+    uid: getAuth().currentUser.uid,
     like: [],
     likeCount: 0,
   });
@@ -99,6 +100,12 @@ export const likePost = (id) => {
   });
 };
 
+export const dislikePost = (id) => {
+  const post = newdoc(colRef, id);
+  return updateDoc(post, {
+    like: arrayRemove(auth.currentUser.uid),
+  });
+};
 /* contador de likes */
 // export const likePost = (id) => {
 //   let vacio = [];
