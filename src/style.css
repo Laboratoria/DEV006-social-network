@@ -121,7 +121,7 @@ p {
 }
 
 .post{
-background-color: #FFFFFF;   
+background-color: #e0b4b4;   
 padding: 10px; 
 }
 
@@ -129,6 +129,8 @@ padding: 10px;
     width: 50px;
     border-radius: 50%;
     margin-left: 0;
+    object-fit: cover;
+    object-position: center;
 
 }
 
