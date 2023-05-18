@@ -2,12 +2,14 @@ import error from './pages/error.js';
 import welcomePage from './pages/home.js';
 import signIn from './pages/signIn.js';
 import signUp from './pages/signUp.js';
+import feed from './pages/feed.js';
 
 const routes = [
   { path: '/', component: welcomePage },
   { path: '/signIn', component: signIn },
   { path: '/signup', component: signUp },
   { path: '/error', component: error },
+  { path: '/feed', component: feed },
 ];
 
 const defaultRoute = '/';

@@ -1,3 +1,5 @@
+import { loginUser, googleLogin } from '../lib/firebaseAuth.js';
+
 const signIn = (navigateTo) => {
   const signInSection = document.createElement('section');
   signInSection.classList.add('signInSection');
@@ -72,8 +74,20 @@ const signIn = (navigateTo) => {
   googleLogo.setAttribute('src', './pages/images/googleLogo.png');
   googleLogo.setAttribute('alt', 'Logo de Google');
 
-  readyBtn.addEventListener('click', () => {
-    navigateTo('/home');
+  readyBtn.addEventListener('click', async () => {
+    const email = emailInput.value;
+    const password = passwordInput.value;
+    try {
+      await loginUser(email, password);
+      navigateTo('/feed');
+      // Aquí puedes redirigir al usuario a la página de inicio
+    } catch (error) {
+      console.error(error);
+    }
+  });
+
+  googleBtn.addEventListener('click', () => {
+    googleLogin(navigateTo);
   });
 
   // googleBtn.addEventListener...

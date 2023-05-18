@@ -1,4 +1,4 @@
-import { registerUser } from '../lib/firebaseAuth.js';
+import { registerUser, googleLogin } from '../lib/firebaseAuth.js';
 
 const signUp = (navigateTo) => {
   const signUpSection = document.createElement('section');
@@ -88,15 +88,15 @@ const signUp = (navigateTo) => {
     const password = passwordInput.value;
     try {
       await registerUser(email, password);
-      navigateTo('/home');
-      // Aquí puedes redirigir al usuario a la página de inicio o realizar cualquier acción adicional
+      navigateTo('/feed');
+      // Aquí puedes redirigir al usuario a la página de inicio
     } catch (error) {
       console.error(error);
     }
   });
 
   googleBtn.addEventListener('click', () => {
-    navigateTo('/');
+    googleLogin(navigateTo);
   });
 
   signUpTxt.textContent = 'Regístrate';
