@@ -1,3 +1,5 @@
+/* eslint-disable no-alert */
+/* eslint-disable no-console */
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../lib/firebase';
 
@@ -8,10 +10,8 @@ function login(navigateTo) {
   const caption = document.createElement('h2');
   const form = document.createElement('form');
   const inputEmail = document.createElement('input');
-  // const inputErrorEmail = document.createElement('p');
   const inputPass = document.createElement('input');
   const buttonLogin = document.createElement('button');
-  const buttonGoogle = document.createElement('button');
   const buttonReturn = document.createElement('button');
   const paragraph = document.createElement('p');
   // const paragraphEmail = document.createElement('p');
@@ -33,11 +33,6 @@ function login(navigateTo) {
   inputPass.classList.add('password');
   inputPass.type = 'password';
 
-  buttonGoogle.textContent = 'continue with GOOGLE';
-  buttonGoogle.classList.add('google');
-  buttonGoogle.addEventListener('click', () => {
-    navigateTo('/wall');
-  });
   buttonLogin.textContent = 'Login';
   buttonLogin.classList.add('login');
   // buttonLogin.addEventListener('click', () => {
@@ -60,7 +55,7 @@ function login(navigateTo) {
   });
 
   inputPass.addEventListener('input', (e) => {
-    const passRegex = /^.{6,12}$/;
+    const passRegex = /^.{6,20}$/;
     if (passRegex.test(e.target.value)) {
       console.log('pasa el pass');
       paragraph.textContent = '';
@@ -76,6 +71,7 @@ function login(navigateTo) {
     try {
       const credentials = await signInWithEmailAndPassword(auth, email, pass);
       console.log(credentials, 'valor de los campos');
+      navigateTo('/wall');
     } catch (error) {
       if (error.code === 'auth/wrong-password') {
         alert('Contraseña incorrecta');
@@ -87,7 +83,7 @@ function login(navigateTo) {
     }
   });
 
-  form.append(inputEmail, inputPass, buttonLogin, buttonGoogle, buttonReturn, paragraph);
+  form.append(inputEmail, inputPass, buttonLogin, buttonReturn, paragraph);
   section.append(logo, title, caption, form);
   return section;
 }
