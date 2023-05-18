@@ -15,7 +15,7 @@ import {
   collection,
   getFirestore,
   getDocs, addDoc, serverTimestamp, deleteDoc, updateDoc,
-  doc as newdoc, query, orderBy, onSnapshot, arrayUnion,
+  doc as newdoc, query, orderBy, onSnapshot, arrayUnion, arrayRemove,
   // Se importa serveTimestamp para obtener fecha y hora del post
 } from 'firebase/firestore';
 import { firebaseConfig } from '../firebase.config.js';
@@ -84,45 +84,26 @@ export const addPost = (petName, petDescription) => {
     description: petDescription,
     timestamp: serverTimestamp(), // definimos a timestamp para que se guarde en la colección
     userid: userName, // definimos userid para guardar el nombre de la persona que publica el post
-    like: '',
+    like: [],
   });
 };
 
 /* contador de likes */
 export const likePost = (id) => {
   const post = newdoc(colRef, id);
-
+  const usuarios = arrayUnion(auth.currentUser.uid);
   return updateDoc(post, {
-    like: arrayUnion(auth.currentUser.uid),
-    /*  .then(() => {
-      console.log('Like agregado');
-    })
-      .catch(() => {
-        console.log('Error al agregar like');
-      }),
-  }); */
+    like: usuarios,
   });
 };
 
-/* export const addLike = (id) => {
-  const docRef = newdoc(colRef, id);
-  console.log(id);
-  return getDocs(docRef)
-    .then((doc) => {
-      const docData = doc.data();
-      console.log(docData);
-      const newLikes = docData.likes + 1;
-      console.log(newLikes);
-      return updateDoc(docRef, {
-        likes: newLikes,
-      });
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      console.log(error);
-      console.log(errorCode);
-    });
-}; */
+export const dislikePost = (id) => {
+  const post = newdoc(colRef, id);
+  const usuarios = arrayRemove(auth.currentUser.uid);
+  return updateDoc(post, {
+    like: usuarios,
+  });
+};
 
 // Initialize Firebase Authentication and get a reference to the service
 

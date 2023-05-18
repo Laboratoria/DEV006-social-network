@@ -1,5 +1,5 @@
 import {
-  exit, deletePost, auth, editPosts, getPost, likePost,
+  exit, deletePost, auth, editPosts, getPost, likePost, dislikePost,
 } from '../lib/index.js';
 
 export const wall = (navigateTo) => {
@@ -123,7 +123,10 @@ export const wall = (navigateTo) => {
   // Recuperamos la colección de los "post"
   getPost((queryData) => {
     postsSection.innerHTML = '';
+    console.log('aqui entramos');
+    console.log(auth.currentUser.uid);
     queryData.forEach((post) => {
+      console.log(post.data().like);
       const postArticle = document.createElement('article');
       postArticle.setAttribute('class', 'postArticle');
       postArticle.setAttribute('data-id', post.id);
@@ -175,10 +178,12 @@ export const wall = (navigateTo) => {
       namePet.setAttribute('class', 'namePet');
 
       const likeHeart = document.createElement('img');
-      likeHeart.setAttribute('src', 'img/like.png');
+      likeHeart.setAttribute('src', post.data().like.includes(auth.currentUser.uid) ? 'img/likeactivo.png' : 'img/like.png');
+      likeHeart.setAttribute('id', 'likeHeart');
 
       const likeCount = document.createElement('span');
       likeCount.setAttribute('class', 'likeCount');
+      likeCount.textContent = post.data().like.length;
 
       const pawMatch = document.createElement('img');
       pawMatch.setAttribute('src', 'img/matchvacio.png');
@@ -261,7 +266,12 @@ export const wall = (navigateTo) => {
 
       likeHeart.addEventListener('click', (e) => {
         e.preventDefault();
-        likePost(post.id);
+
+        if (post.data().like.includes(auth.currentUser.uid)) {
+          dislikePost(post.id);
+        } else {
+          likePost(post.id);
+        }
       });
 
       /* Modal para editar post */
