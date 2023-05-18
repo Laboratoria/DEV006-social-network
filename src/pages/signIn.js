@@ -2,10 +2,9 @@
 /* eslint-disable no-console */
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable no-alert */
-import {
-  signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup,
+import { GoogleAuthProvider, signInWithPopup,
 } from 'firebase/auth';
-import { auth } from '../lib/firebase.js';
+import { auth, login } from '../lib/firebase.js';
 
 export function signIn(navigateTo) {
   // Crear elementos
@@ -73,10 +72,16 @@ export function signIn(navigateTo) {
     console.log(email, password);
     // promesa de la funcion, bloque try.. catch debe ir acompañado de async(funcion asyncrona)
     // await espera que la funcion cumpla con los parametros para ver un resultado o error
-
+    
     try {
-      const userCredentials = await signInWithEmailAndPassword(auth, email, password);
-      console.log(userCredentials);
+      //const userCredentials = await login(email, password);
+      const userEmail = await login(email, password);
+      console.log("#########");
+      console.log('Este es el email: ', userEmail);
+      console.log("$$$$$$$$$");
+      // export { userEmail };
+
+      // console.log(userCredentials);
     } catch (error) {
       console.log(error.message);
       console.log(error.code);
