@@ -262,12 +262,13 @@ export const wall = (navigateTo) => {
 
       likeHeart.addEventListener('click', (e) => {
         e.preventDefault();
-        likePost(post.id);
-        // if (post.like.includes(auth.currentUser.uid)) {
-        //   dislikePost(post.id);
-        // } else {
-        //   likePost(post.id);
-        // }
+        /* Si dentro del array de la key "like" existe el uid del usuario actual,
+        entonces se quita el like */
+        if (post.data().like.includes(auth.currentUser.uid)) {
+          dislikePost(post.id);
+        } else {
+          likePost(post.id);
+        }
       });
 
       /* Modal para editar post */
