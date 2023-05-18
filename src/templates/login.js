@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 // eslint-disable-next-line import/no-duplicates
 import { signInWithEmailAndPassword } from 'firebase/auth';
 // eslint-disable-next-line import/no-duplicates
@@ -18,13 +19,11 @@ function login(navigateTo) {
   const buttonGoogle = document.createElement('button');
   const paragraphHaveAcount = document.createElement('p');
   const paragraphRegister = document.createElement('p');
-  const paragraph = document.createElement('p');
-  paragraph.classList.add('paragraph');
+  const alertEmail = document.createElement('p');
+  const alertPass = document.createElement('p');
 
-  // const paragraphEmail = document.createElement('p');
-
-  logoGoogle.src = './img/logogoogle.png';
-  logoGoogle.classList.add('logoGoogle');
+  alertEmail.classList.add('alertEmail');
+  alertPass.classList.add('alertPass');
 
   logo.src = './img/logoSinfondo.png';
   logo.classList.add('logoimg');
@@ -55,18 +54,15 @@ function login(navigateTo) {
     navigateTo('/createAcount');
   });
   buttonSingin.textContent = 'SING IN';
-  buttonSingin.classList.add('login');
-  // buttonLogin.addEventListener('click', () => {
-  //   navigateTo('/wall');
-  // });
+  buttonSingin.classList.add('singIn');
 
   inputEmail.addEventListener('input', (e) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (emailRegex.test(e.target.value)) {
       console.log('pasa la validación');
-      paragraph.textContent = '';
+      alertEmail.textContent = '';
     } else {
-      paragraph.textContent = 'Email is not valid';
+      alertEmail.textContent = 'Email is not valid';
     }
   });
 
@@ -74,9 +70,9 @@ function login(navigateTo) {
     const passRegex = /^.{6,20}$/;
     if (passRegex.test(e.target.value)) {
       console.log('pasa el pass');
-      paragraph.textContent = '';
+      alertPass.textContent = '';
     } else {
-      paragraph.textContent = 'Pass is not valid';
+      alertPass.textContent = 'Pass is not valid';
     }
   });
 
@@ -101,6 +97,9 @@ function login(navigateTo) {
 
   buttonGoogle.textContent = 'SING IN WITH GOOGLE';
   buttonGoogle.classList.add('buttonGoogle');
+  buttonGoogle.setAttribute('id', 'buttonGoogle');
+  logoGoogle.src = './img/logogoogle.png';
+  logoGoogle.classList.add('logoGoogle');
 
   buttonGoogle.addEventListener('click', async (e) => {
     e.preventDefault();
@@ -116,15 +115,16 @@ function login(navigateTo) {
 
   form.append(
     inputEmail,
+    alertEmail,
     inputPass,
+    alertPass,
     buttonSingin,
     buttonGoogle,
-    paragraph,
     paragraphGoogle,
     paragraphHaveAcount,
     paragraphRegister,
   );
-  section.append(logo, title, caption, form);
+  section.append(logo, logoGoogle, title, caption, form);
   return section;
 }
 
