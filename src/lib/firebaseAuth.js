@@ -44,4 +44,6 @@ export async function loginUser(email, password) {
   } catch (error) {
     console.log(error);
   }
+
+  console.log(firebase)
 }
