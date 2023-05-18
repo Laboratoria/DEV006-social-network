@@ -10,10 +10,14 @@
     background-repeat: no-repeat;
   }
   .logoimg {
-    width: 180px;
-    height: 170px;
-    left: 58px;
+    width: 231px;
+    height: 218px;
+    left: 18%;
     position: relative;
+    top: -18px;
+  }
+  .logoGoogle{
+    top: 10px;
   }
   .loginCreateAcount {
     position: absolute;
@@ -46,10 +50,14 @@
     border: none;
   } */
   .title {
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 23px;
+    color: #757474;
+    line-height: 27px;
     position: absolute;
-    width: 335px;
-    height: 44px;
-    left: 70px;
+    left: 59px;
     top: 189px;
   }
   .caption {
@@ -71,34 +79,35 @@
   }
 
   .emailSingIn {
-    top: 340px;
+    top: 270px;
   }
   
   .passwordSingIn {
-    top: 400px;
+    top: 332px;
   }
 
   .login {
     position: absolute;
     width: 300px;
-    height: 45px;
+    height: 38px;
     left: 30px;
     background: #f28e13;
-    border-radius: 10px;
+    border-radius: 20px;
     color: #fff;
-    font-family: system-ui;
+    font-family: 'Roboto', sans-serif;
     font-size: large;
-    font-weight: 600;
+    font-weight: 400;
     border: none;
-    top: 460px;
+    top: 394px;
   }
 
   .buttonGoogle {
+    background-image: url("./img/logogoogle.png");
     position: absolute;
-    width: 300px;
-    height: 45px;
-    left: 30px;
-    top: 570px;
+    width: 235px;
+    height: 46px;
+    left: 16.1%;
+    top: 491px;
     background: #ffffff;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 5px;
@@ -114,10 +123,19 @@
   }
 
   .paragraphGoogle {
+    font-family: 'Familjen Grotesk', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    color: #757474;
+    position: absolute;
+    width: 268px;
+    height: 22px;
+    left: 11%;
     display: flex;
     justify-content: center;
-    align-items: center;
-    margin-top: 20%;
+    top: 436px;
   }
 
   .haveAcount, .register {
@@ -127,11 +145,29 @@
   }
 
   .haveAcount {
-    margin-top: 27%;
+    font-family: 'Familjen Grotesk';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    color: #757474;
+    top: 557px;
+    position: absolute;
+    padding-bottom: 10%;
+    left: 14%;
   }
 
   .register {
-    color: #f28e13;
+    font-family: 'Familjen Grotesk';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    color: #F25D07;
+    top: 557px;
+    position: absolute;
+    padding-bottom: 10%;
+    left: 58%;
   }
 
   .name,

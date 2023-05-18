@@ -1,10 +1,13 @@
+// eslint-disable-next-line import/no-duplicates
 import { signInWithEmailAndPassword } from 'firebase/auth';
+// eslint-disable-next-line import/no-duplicates
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { auth } from '../lib/firebase';
 
 function login(navigateTo) {
   const section = document.createElement('section');
   const logo = document.createElement('img');
+  const logoGoogle = document.createElement('img');
   const title = document.createElement('h1');
   const caption = document.createElement('h2');
   const form = document.createElement('form');
@@ -17,7 +20,11 @@ function login(navigateTo) {
   const paragraphRegister = document.createElement('p');
   const paragraph = document.createElement('p');
   paragraph.classList.add('paragraph');
+
   // const paragraphEmail = document.createElement('p');
+
+  logoGoogle.src = './img/logogoogle.png';
+  logoGoogle.classList.add('logoGoogle');
 
   logo.src = './img/logoSinfondo.png';
   logo.classList.add('logoimg');
@@ -43,19 +50,15 @@ function login(navigateTo) {
   paragraphRegister.textContent = 'Register now';
   paragraphRegister.classList.add('register');
   paragraphRegister.setAttribute('id', 'registerNow');
-  paragraphRegister.setAttribute("href", '/createAcount')
+  paragraphRegister.setAttribute('href', '/createAcount');
   paragraphRegister.addEventListener('click', () => {
-      navigateTo('/createAcount');
+    navigateTo('/createAcount');
   });
-
-  
   buttonSingin.textContent = 'SING IN';
   buttonSingin.classList.add('login');
   // buttonLogin.addEventListener('click', () => {
   //   navigateTo('/wall');
   // });
-  
-
 
   inputEmail.addEventListener('input', (e) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -119,8 +122,8 @@ function login(navigateTo) {
     paragraph,
     paragraphGoogle,
     paragraphHaveAcount,
-    paragraphRegister
-    );
+    paragraphRegister,
+  );
   section.append(logo, title, caption, form);
   return section;
 }

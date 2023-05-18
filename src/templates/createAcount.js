@@ -1,5 +1,5 @@
 // import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { auth, create } from "../lib/firebase.js";
+import { auth, create } from '../lib/firebase.js';
 
 function createAcount(navigateTo) {
   const section = document.createElement('section');
@@ -13,38 +13,45 @@ function createAcount(navigateTo) {
   const inputPass = document.createElement('input');
   const inputConfPass = document.createElement('input');
   const buttonSingUp = document.createElement('button');
+  const buttonGoogle = document.createElement('button');
   const buttonReturn = document.createElement('button');
   logo.src = './img/logoSinfondo.png';
   logo.classList.add('logoimg');
 
-  title.textContent = "Welcome to Foodiegram";
-  title.classList.add("title");
+  title.textContent = 'Welcome to Foodiegram';
+  title.classList.add('title');
 
-  caption.textContent = "Create Acount";
-  caption.classList.add("caption");
+  caption.textContent = 'Create Acount';
+  caption.classList.add('caption');
 
-  inputName.placeholder = "Name";
-  inputName.classList.add("name");
+  inputName.placeholder = 'Name';
+  inputName.classList.add('name');
 
-  inputEmail.placeholder = "Email";
-  inputEmail.classList.add("email2");
-  inputEmail.type = "email";
-  inputEmail.name = "email";
+  inputEmail.placeholder = 'Email';
+  inputEmail.classList.add('email2');
+  inputEmail.type = 'email';
+  inputEmail.name = 'email';
 
-  inputPass.placeholder = "Password";
-  inputPass.classList.add("password2");
-  inputPass.type = "password";
-  inputPass.setAttribute("id", "pass1");
+  inputPass.placeholder = 'Password';
+  inputPass.classList.add('password2');
+  inputPass.type = 'password';
+  inputPass.setAttribute('id', 'pass1');
 
-  inputConfPass.placeholder = "Confirm password";
-  inputConfPass.classList.add("confirmPass");
-  inputConfPass.type = "password";
-  inputConfPass.setAttribute("id", "pass2");
+  inputConfPass.placeholder = 'Confirm password';
+  inputConfPass.classList.add('confirmPass');
+  inputConfPass.type = 'password';
+  inputConfPass.setAttribute('id', 'pass2');
 
-  buttonSingUp.textContent = "Login";
-  buttonSingUp.classList.add("login");
-  buttonSingUp.addEventListener("submit", () => {
-    navigateTo("/wall");
+  buttonSingUp.textContent = 'Login';
+  buttonSingUp.classList.add('login');
+  buttonSingUp.addEventListener('submit', () => {
+    navigateTo('/wall');
+  });
+
+  buttonGoogle.textContent = 'continue with GOOGLE';
+  buttonGoogle.classList.add('google');
+  buttonGoogle.addEventListener('click', () => {
+    navigateTo('/wall');
   });
 
   buttonReturn.textContent = '.';
@@ -60,17 +67,17 @@ function createAcount(navigateTo) {
       console.log('pasa la validación');
       paragraph.textContent = '';
     } else {
-      paragraph.textContent = "Email is not valid";
+      paragraph.textContent = 'Email is not valid';
     }
   });
 
   inputPass.addEventListener('input', (e) => {
-    const passRegex = /^.{6,20}$/;
+    const passRegex = /^.{6,12}$/;
     if (passRegex.test(e.target.value)) {
-      console.log("pasa el pass");
-      paragraph.textContent = "";
+      console.log('pasa el pass');
+      paragraph.textContent = '';
     } else {
-      paragraph.textContent = "Pass is not valid";
+      paragraph.textContent = 'Pass is not valid';
     }
   });
 
@@ -88,35 +95,47 @@ function createAcount(navigateTo) {
     } verificarClave();
   });
 
-  buttonSingUp.addEventListener("click", async (e) => {
+  buttonSingUp.addEventListener('click', async (e) => {
     e.preventDefault();
     const email = inputEmail.value;
     const pass = inputPass.value;
-    // const confPass = inputConfPass.value;
+    const confPass = inputConfPass.value;
 
+    form.appendChild(paragraph);
+    if (pass.length < 6) {
+      paragraph.textContent = 'The password must be at least 6 characters';
+      return;
+    }
+    if (pass !== confPass) {
+      paragraph.textContent = 'Passwords do not match';
+      return;
+    }
     try {
       const userCredentials = await create(auth, email, pass);
       console.log(userCredentials);
-      navigateTo("/wall");
+      navigateTo('/wall');
     } catch (error) {
-      if (error.code === "auth/email-already-in-use") {
-        alert("Email already in use");
-      } else if (error.code === "auth/invalid-email") {
-        alert("Invalid email");
-      } else if (error.code === "auth/weak-password") {
-        alert("Password is too weak");
+      if (error.code === 'auth/email-already-in-use') {
+        alert('Email already in use');
+      } else if (error.code === 'auth/invalid-email') {
+        alert('Invalid email');
+      } else if (error.code === 'auth/weak-password') {
+        alert('Password is too weak');
       }
+      paragraph.textContent = 'Email no es valido';
     }
   });
 
   form.append(
     inputName,
     inputEmail,
+    paragraph,
     inputPass,
     inputConfPass,
     buttonSingUp,
+    buttonGoogle,
     buttonReturn,
-    paragraph
+    paragraph,
   );
 
   section.append(logo, title, caption, form);
