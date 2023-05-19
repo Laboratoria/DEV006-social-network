@@ -1,4 +1,4 @@
-import { registerUser } from '../lib/auth.js';
+import { registerUser, signInWithGoogle } from '../lib/auth.js';
 
 function signup(navigateTo) {
   // creación de elementos//
@@ -20,6 +20,7 @@ function signup(navigateTo) {
   const header = document.createElement('div');
   const errorPassword = document.createElement('span');
   const errorEmail = document.createElement('span');
+  const buttonGoogleSignup = document.createElement('button');
 
   inputEmail.placeholder = 'example@gmail.com';
   inputPassword.placeholder = '***********';
@@ -28,19 +29,24 @@ function signup(navigateTo) {
   logo.setAttribute('src', 'images/logo.png');
   errorPassword.setAttribute('id', 'errorPassword');
   errorEmail.setAttribute('id', 'errorEmail');
-  emailSignup.textContent = 'Correo electrónico';
-  passwordSignup.textContent = 'Contraseña';
-  UserSignup.textContent = 'Nombre de Usuario';
-  
   buttonReturnSignup.setAttribute('src', 'images/arrow.png');
   inputEmail.setAttribute('id', 'inputEmail');
   inputPassword.setAttribute('id', 'inputPassword');
-  buttonEnterSignup.textContent = 'Registrarte';
   inputPassword.setAttribute('type', 'password');
   inputPassword.setAttribute('src', 'images/ojoOculto.png');
   showPassword.setAttribute('src', 'images/ojoOculto.png');
   passwordBox.setAttribute('id', 'passwordBox');
+  buttonGoogleSignup.textContent = 'Iniciar sesión con Google';
+  emailSignup.textContent = 'Correo electrónico';
+  passwordSignup.textContent = 'Contraseña';
+  UserSignup.textContent = 'Nombre de Usuario';
+  buttonEnterSignup.textContent = 'Registrarte';
 
+  // Registro con Google
+  buttonGoogleSignup.addEventListener('click', (e) => {
+    e.preventDefault();
+    signInWithGoogle();
+  });
   // Registro de usuario//
   buttonEnterSignup.addEventListener('click', (e) => {
     e.preventDefault();
@@ -56,11 +62,12 @@ function signup(navigateTo) {
         console.log(error);
         errorEmail.innerHTML = error;
         errorPassword.innerHTML = error;
-        //const codeError = error.code;
-        //errorMessages(codeError, errorEmail, errorPassword);
+        // const codeError = error.code;
+        // errorMessages(codeError, errorEmail, errorPassword);
       });
   });
 
+  // ruteado para button de retornar
   buttonReturnSignup.addEventListener('click', () => {
     navigateTo('/');
   });
@@ -80,6 +87,7 @@ function signup(navigateTo) {
   errorPassword.classList.add('errors');
   errorEmail.classList.add('errors');
   showPassword.classList.add('showPassword');
+  buttonGoogleSignup.classList.add('buttonGoogleSignup');
 
   // agrupar secciones//
   passwordBox.append(inputPassword, showPassword);
@@ -93,6 +101,7 @@ function signup(navigateTo) {
     passwordBox,
     errorPassword,
     buttonEnterSignup,
+    buttonGoogleSignup,
   );
   sectionForm.append(form);
   sectionHeader.append(header, logo);
