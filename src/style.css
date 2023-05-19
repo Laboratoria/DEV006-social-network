@@ -252,6 +252,69 @@
 
   .signInForm {
    margin: 3%;
-   padding: 1%;
+   padding: 5%;
 }
+
+.profileNav{
+  background: linear-gradient(#510BAB, #161515);
+  margin-bottom: 20px;
+}
+/* Estilos para el contenedor del feed */
+.feedSection {
+  max-width: 600px;
+  height: 100vh;
+  margin: 0 auto;
+  background-color: #161515;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Estilos para el contenedor de los posts */
+.postsContainer {
+  margin-top: 10px;
+  padding: 30px;
+}
+
+/* Estilos para cada contenedor de post individual */
+.postContainer {
+  background-color: #f4f4f4;
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 2px solid #1959ad; /* Agregamos el borde de separación */
+}
+
+/* Estilos para el contenido de cada post */
+.postContainer div {
+  color: #000000;
+  font-size: 16px;
+}
+
+/* Estilos para el formulario de agregar post */
+.postForm {
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Estilos para el botón de agregar post */
+.postBtn {
+  background-color: #7b20af;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+}
+
+/* Estilos para el campo de entrada de texto del post */
+.postInput {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+
 }

@@ -1,5 +1,7 @@
-import { addDoc } from 'firebase/firestore';
-import { colRef } from '../lib/firebaseAuth.js';
+import { addDoc, collection, onSnapshot } from 'firebase/firestore';
+import { db } from '../lib/firebaseConf.js';
+
+const colRef = collection(db, 'posts');
 
 const feed = () => {
   const feedSection = document.createElement('section');
@@ -13,13 +15,16 @@ const feed = () => {
 
   const logoImg = document.createElement('img');
   logoImg.setAttribute('src', './pages/images/LOGO.png');
-  logoImg.setAttribute('alt', 'Logo: dos boletos para el cine. Uno morado y uno amarillo. Ambos dicen "Cinergia"');
+  logoImg.setAttribute(
+    'alt',
+    'Logo: dos boletos para el cine. Uno morado y uno amarillo. Ambos dicen "Cinergia"',
+  );
   logoImg.classList.add('logoSignUp');
 
   const username = document.createElement('p');
   username.classList.add('userSpan');
 
-  const postForm = document.createElement('form');
+  const postForm = document.createElement('div');
   postForm.classList.add('postForm');
 
   const postInput = document.createElement('input');
@@ -30,9 +35,10 @@ const feed = () => {
   const postBtn = document.createElement('button');
   postBtn.classList.add('postBtn');
   postBtn.setAttribute('type', 'button');
+  postBtn.textContent = '¡Publicar!';
 
-  const postsSection = document.createElement('section');
-  postsSection.classList.add('postsSection');
+  const postsContainer = document.createElement('div');
+  postsContainer.classList.add('postsContainer');
 
   postBtn.addEventListener('click', (e) => {
     e.preventDefault();
@@ -41,13 +47,37 @@ const feed = () => {
       post: postInput.value,
     })
       .then(() => {
-        postForm.reset();
+        postInput.value = ''; // Limpiar el campo de entrada después de agregar el post
       });
+  });
+
+  // Obtener y mostrar los posts existentes
+  onSnapshot(colRef, (snapshot) => {
+  // Limpiar el contenido anterior
+    postsContainer.innerHTML = '';
+
+    snapshot.forEach((doc) => {
+      const post = doc.data().post;
+
+      // Crear un contenedor para el post
+      const postContainer = document.createElement('div');
+      postContainer.classList.add('postContainer');
+
+      // Crear un elemento para mostrar el post
+      const postDiv = document.createElement('div');
+      postDiv.textContent = post;
+
+      // Agregar el elemento del post al contenedor del post
+      postContainer.appendChild(postDiv);
+
+      // Agregar el contenedor del post al contenedor de posts
+      postsContainer.appendChild(postContainer);
+    });
   });
 
   feedSection.appendChild(profileNav);
   feedSection.appendChild(postForm);
-  feedSection.appendChild(postsSection);
+  feedSection.appendChild(postsContainer);
   profileNav.appendChild(logoArticle);
   profileNav.appendChild(username);
   logoArticle.appendChild(logoImg);
@@ -56,4 +86,5 @@ const feed = () => {
 
   return feedSection;
 };
+
 export default feed;
