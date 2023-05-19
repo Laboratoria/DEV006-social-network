@@ -4,6 +4,7 @@ export const footer = () => {
   const pFooter = document.createElement('p');
   pFooter.classList.add('footerParagraph');
 
+  // -------------------------------- Enlaces de Github de las tres participantes
   const aGabriela = document.createElement('a');
   aGabriela.textContent = 'Gabriela';
   aGabriela.setAttribute('href', 'https://github.com/gabiestefany24');

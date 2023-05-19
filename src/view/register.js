@@ -137,12 +137,10 @@ export const register = (navigateTo) => {
   btnRegister.setAttribute('class', 'button');
   btnRegister.textContent = 'Sign Up';
 
-  function handleSubmit() {
-    createUser();
-    navigateTo('/wall');
-  }
-
-  form.addEventListener('submit', handleSubmit);
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    createUser(navigateTo);
+  });
 
   // ------------------------------------------------- Fin del formulario de registro
 

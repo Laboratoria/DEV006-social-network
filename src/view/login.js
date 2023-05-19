@@ -119,7 +119,6 @@ export const login = (navigateTo) => {
 
   const aAccount = document.createElement('a');
   aAccount.setAttribute('id', 'btnSignup');
-  aAccount.setAttribute('href', '');
   aAccount.setAttribute('type', 'submit');
   aAccount.setAttribute('class', 'button');
   aAccount.textContent = 'Sign Up';

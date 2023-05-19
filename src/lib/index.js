@@ -25,7 +25,7 @@ export const colRef = collection(dataBase, 'post'); // Referencia de la colecci�
 const orderedQuery = query(colRef, orderBy('timestamp', 'desc')); // Consulta la colección y la ordena los posts por su fecha/hora de publicación
 
 // Fx para crear usuarix
-export const createUser = async () => {
+export const createUser = async (navigateTo) => {
   const email = document.getElementById('txtEmail');
   const password = document.getElementById('txtPasswordAgain');
   const spanEmail = document.getElementById('spanErrorEmail');
@@ -42,6 +42,7 @@ export const createUser = async () => {
       displayName: username,
       // función de firebase para darle valor al displayName el cual va a ser el nombre del usuario
     });
+    navigateTo('/wall');
   } catch (error) {
     const errorCode = error.code;
     // UI para mostrar errores de validación de email y contraseña débil
