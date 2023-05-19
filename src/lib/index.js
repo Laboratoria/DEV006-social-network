@@ -86,7 +86,8 @@ export const addPost = (petName, petDescription) => {
     petName,
     description: petDescription,
     timestamp: serverTimestamp(), // definimos a timestamp para que se guarde en la colección
-    userid: userName, // definimos userid para guardar el nombre de la persona que publica el post
+    username: userName,
+    uid: getAuth().currentUser.uid,
     like: [],
   });
 };
