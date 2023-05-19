@@ -1,10 +1,11 @@
+import { collection, getDocs } from 'firebase/firestore';
 import {
   signInWithPopup,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   GoogleAuthProvider,
 } from 'firebase/auth';
-import { auth } from './firebaseConf.js';
+import { auth, db } from './firebaseConf.js';
 
 function displaySuccessMessage() {
   // Crea un elemento HTML para mostrar el mensaje de éxito
@@ -73,3 +74,16 @@ export const googleLogin = (navigateTo) => {
       // ...
     });
 };
+
+export const colRef = collection(db, 'posts');
+getDocs(colRef)
+  .then((snapshot) => {
+    const posts = [];
+    snapshot.docs.forEach((doc) => {
+      posts.push({ ...doc.data(), id: doc.id });
+    });
+    console.log(posts);
+  })
+  .catch(err => {
+    console.log(err.message);
+  });
