@@ -76,7 +76,7 @@ body {
   padding: 5vw;
 }
 
-.form {
+.form{
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -85,22 +85,19 @@ body {
 }
 
 .buttonEnter {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   background-color: #844ea8;
-  width: 30.76923076923077vw;
-  height: 4.9763033175355vh;
+  width: 35vw;
+  height: 6vh;
   border-radius: 2.6vw;
-  color: white !important;
-  -webkit-text-stroke: none;
+  color: white;
   font-family: "Inria Serif";
   font-style: italic;
   font-weight: 700;
-  font-size: 14px;
+  font-size: 2.3vh;
+  line-height: 17px;
+  position: absolute;
   margin-top: 6vh;
-  margin-left: 22vw;
+  margin-left: -18vw;
 }
 
 .sectionFormSignup {
@@ -117,33 +114,25 @@ body {
 .formSignup {
   display: flex;
   flex-direction: column;
-  margin-left: 1vw;
-  margin-top: -15vh;
-  align-content: center;
-  width: 30.76923076923077vw;
-  height: 4.9763033175355vh;
-  left: 34.62vw;
-  top: 46.56vh;
-  border-radius: 2.6vw;
-  position: absolute;
   align-items: center;
-}
+  font-family: "Hind Vadodara", sans-serif;
+  -webkit-text-stroke: 1.5px rgba(0, 0, 0, 0.3);
+  margin-top: 10vh;
+} 
 
 .buttonEnterSignup {
   background-color: #844ea8;
-  width: 30.76923076923077vw;
-  height: 4.9763033175355vh;
-  left: 34.62vw;
-  top: 46.56vh;
+  width: 35vw;
+  height: 6vh;
   border-radius: 2.6vw;
   color: white;
   font-family: "Inria Serif";
   font-style: italic;
   font-weight: 700;
-  font-size: 14px;
+  font-size: 2.3vh;
   line-height: 17px;
-  left: -0.38000000000000256vw;
-  top: 54.56vh;
+  left: 33.62vw;
+  top: 80.56vh;
   position: absolute;
 }
 
@@ -151,10 +140,10 @@ body {
   font-family: "Hind Vadodara";
   font-style: normal;
   font-weight: bold;
-  font-size: 15px;
-  line-height: 13px;
+  font-size: 2.5vh;
+  line-height: 1vh;
   align-items: center;
-  width: 34vw;
+  width: 56vw;
   font-family: "Hind Vadodara", sans-serif;
   color: #000000;
   -webkit-text-stroke: 1.5px rgba(0, 0, 0, 0.3);
@@ -184,15 +173,15 @@ body {
 #showPasswordLogin {
   height: 3vh;
   width: 4vw;
-  top: -2.8vh;
-  left: 17vw;
+  top: -3.8vh;
+  left: 23vw;
   position: relative;
 }
 
 .showPassword {
   width: 5vw;
   right: 1vw;
-  transform: translate(-50%);
+  transform: translate(-30%, 25%);
   position: absolute;
 }
 
@@ -247,9 +236,50 @@ body {
 .buttonGoogleSignup {
   border: none;
   background-color: transparent;
-  color: blue;
+  position: relative;
+  bottom: 9vh;
+  left: 14.6vh;
+  color: #000000;
+  font-size: 2vh;
+  position: absolute;
 }
 
 .buttonGoogleSignup:hover {
   text-decoration: underline;
+  color: blue;
 }
+
+.buttonGoogleLogin{
+  border: none;
+  background-color: transparent;
+  color: black;
+  position: absolute;
+  bottom: 13vh;
+  left: 12.6vh;
+  font-size: 2vh;
+}
+.buttonGoogleLogin:hover {
+  text-decoration: underline;
+  color: blue;
+}
+
+input{
+  width: 58vw;
+  height: 3.5vh;
+  border-radius: 2.6vw;
+  border-color: #B065DB;
+  text-align: center;
+}
+
+ h4{
+    font-family: "Hind Vadodara";
+    font-style: normal;
+    font-weight: bold;
+    font-size: 2.5vh;
+    line-height: 2.5vh;
+    align-items: center;
+    width: 56vw;
+    font-family: "Hind Vadodara", sans-serif;
+    color: #000000;
+    -webkit-text-stroke: 1.5px rgba(0, 0, 0, 0.3);
+  }

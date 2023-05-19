@@ -4,12 +4,13 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   GoogleAuthProvider,
+  updateProfile,
 } from 'firebase/auth';
 import { auth } from './configFirebase.js';
 
 export function errorMessages(codeError) {
   if (codeError === 'auth/email-already-in-use') {
-    return 'Este correo ya está registrado';
+    return '*Este correo ya está registrado';
   }
   if (codeError === 'auth/weak-password') {
     return '*La contraseña ingresada es demasiado débil, debe tener más de 6 caracteres';
@@ -31,39 +32,51 @@ export function errorMessages(codeError) {
 
 // Se realizo la funcion asincrona para registrar un nuevo usuario
 // y almacenar su contenido a firebase
-export function registerUser(email, password) {
+
+export function registerUser(email, password, user) {
   return createUserWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => userCredential.user)
+    .then((userCredential) => {
+      const currentUser = userCredential.user;
+      return updateProfile(currentUser, { displayName: user })
+        .then(() => currentUser)
+        .catch((error) => {
+          console.log(error);
+          const codeError = error.code;
+          const errorMessage = errorMessages(codeError);
+          throw errorMessage;
+        });
+    })
     .catch((error) => {
       console.log(error);
-      const errorMessage = errorMessages(error.code);
+      const codeError = error.code;
+      const errorMessage = errorMessages(codeError);
       throw errorMessage;
     });
-  // try {
-  //   const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-  //   console.log(userCredential);
-  //   return userCredential;
-  // } catch (error) {
-  //   const codeError = error.code;
-  //   console.log(codeError);
-  //   return codeError;
-  // }
 }
 
-// Funcion asincrona que valida correo y contraseña de un usuario ya registrado.
-export async function loginUser(email, password) {
-  try {
-    const userCredential = await signInWithEmailAndPassword(
-      auth,
-      email,
-      password,
-    );
-    console.log('loggedin', userCredential);
-    return 'loggedin', userCredential;
-  } catch (error) {
-    console.log(error);
-    return error;
-  }
+// try {
+//   const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+//   console.log(userCredential);
+//   return userCredential;
+// } catch (error) {
+//   const codeError = error.code;
+//   console.log(codeError);
+//   return codeError;
+// }
+
+// Funcion que valida correo y contraseña de un usuario ya registrado.
+export function loginUser(email, password) {
+  return signInWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      const user = userCredential.user;
+      return user;
+    })
+    .catch((error) => {
+      console.log(error);
+      const codeError = error.code;
+      const errorMessage = errorMessages(codeError);
+      throw errorMessage;
+    });
 }
 // función para registrarse con Google
 export function signInWithGoogle() {

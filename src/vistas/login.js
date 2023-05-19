@@ -1,5 +1,5 @@
 // file login.js
-import { loginUser } from '../lib/auth.js';
+import { loginUser, signInWithGoogle } from '../lib/auth.js';
 
 function login(navigateTo) {
   const section = document.createElement('section');
@@ -15,6 +15,8 @@ function login(navigateTo) {
   const header = document.createElement('div');
   const logo = document.createElement('img');
   const showPasswordLogin = document.createElement('img');
+  const buttonGoogleLogin = document.createElement('button');
+  const errorPasswordLogin = document.createElement('span');
 
   inputEmail.placeholder = 'example@gmail.com';
   inputPassword.placeholder = '***********';
@@ -23,10 +25,17 @@ function login(navigateTo) {
   buttonEnter.textContent = 'Ingresar';
   emailLogin.textContent = 'Correo electrónico';
   passwordLogin.textContent = 'Contraseña';
+  buttonGoogleLogin.textContent = 'Iniciar sesión con Google';
 
   // evento del click para enviarlo al ulr//
   buttonReturn.addEventListener('click', () => {
     navigateTo('/');
+  });
+
+  // Loguearse  con Google
+  buttonGoogleLogin.addEventListener('click', (e) => {
+    e.preventDefault();
+    signInWithGoogle();
   });
   // Loguearse
   buttonEnter.addEventListener('click', (e) => {
@@ -39,6 +48,7 @@ function login(navigateTo) {
       })
       .catch((error) => {
         console.log(error);
+        errorPasswordLogin.innerHTML = error;
       });
   });
   // Ocultar y mostrar contraseña//
@@ -61,6 +71,8 @@ function login(navigateTo) {
   buttonReturn.classList.add('buttonReturn');
   form.classList.add('form');
   buttonEnter.classList.add('buttonEnter');
+  buttonGoogleLogin.classList.add('buttonGoogleLogin');
+  errorPasswordLogin.classList.add('errors');
 
   // agregar atributos//
   logo.setAttribute('src', 'images/logo.png');
@@ -70,11 +82,19 @@ function login(navigateTo) {
   inputPassword.setAttribute('type', 'password');
   showPasswordLogin.setAttribute('id', 'showPasswordLogin');
   showPasswordLogin.setAttribute('src', 'images/ojoOculto.png');
+  errorPasswordLogin.setAttribute('id', 'errorPasswordLogin');
 
   // agrupando las secciones//
   sectionHeader.append(header, logo);
-  form.append(emailLogin, inputEmail, passwordLogin, inputPassword, showPasswordLogin);
-  sectionForm.append(form, buttonEnter);
+  form.append(
+    emailLogin,
+    inputEmail,
+    passwordLogin,
+    inputPassword,
+    showPasswordLogin,
+    errorPasswordLogin,
+  );
+  sectionForm.append(form, buttonEnter, buttonGoogleLogin);
   section.append(sectionHeader, buttonReturn, sectionForm);
 
   return section;
