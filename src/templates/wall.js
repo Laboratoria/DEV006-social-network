@@ -1,4 +1,4 @@
-function wall() {
+function wall(navigateTo) {
   const form = document.createElement('form');
   const iconoRestaurante = document.createElement('img');
   const contenedor = document.createElement('div');
@@ -14,6 +14,9 @@ function wall() {
 
   iconoAgregar.src = './img/iconoAgregar.png';
   iconoAgregar.classList.add('iconoAgregar');
+  iconoAgregar.addEventListener('click', () => {
+    navigateTo('/newpost');
+  });
 
   iconoMuro.src = './img/iconoMuro.png';
   iconoMuro.classList.add('iconoMuro');

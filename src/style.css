@@ -8,7 +8,12 @@ body {
 
 #root {
   height: 100vh;
-  background: linear-gradient(186deg, rgba(240, 240, 242, 1) 0%, rgba(242, 203, 169, 1) 46%, rgba(242, 196, 155, 1) 100%) !important;
+  background: linear-gradient(
+    186deg,
+    rgba(240, 240, 242, 1) 0%,
+    rgba(242, 203, 169, 1) 46%,
+    rgba(242, 196, 155, 1) 100%
+  ) !important;
   background-repeat: no-repeat;
   margin: 0;
   padding: 0;
@@ -54,7 +59,7 @@ body {
     border: none;
   } */
 .title {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 23px;
@@ -66,7 +71,7 @@ body {
 }
 
 .caption {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 23px;
@@ -84,7 +89,7 @@ body {
   width: 300px;
   height: 34px;
   left: 30px;
-  background: #FFFFFF;
+  background: #ffffff;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 5px;
   margin-bottom: 22px;
@@ -100,7 +105,7 @@ body {
   background: #f28e13;
   border-radius: 20px;
   color: #fff;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: large;
   font-weight: 400;
   border: none;
@@ -115,7 +120,7 @@ body {
   background: #f28e13;
   border-radius: 20px;
   color: #fff;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: large;
   font-weight: 400;
   border: none;
@@ -146,29 +151,29 @@ body {
 }
 
 .alertEmail {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   font-style: normal;
   font-size: 14px;
   position: relative;
   left: 38px;
   top: 2px;
-  color: #FFFFFF;
+  color: #ffffff;
   width: 30%;
 }
 
 .alertPass {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   font-style: normal;
   font-size: 14px;
   position: relative;
   top: 3px;
   left: 38px;
-  color: #FFFFFF;
+  color: #ffffff;
   width: 30%;
 }
 
 .paragraphGoogle {
-  font-family: 'Familjen Grotesk', sans-serif;
+  font-family: "Familjen Grotesk", sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -191,7 +196,7 @@ body {
 }
 
 .haveAcount {
-  font-family: 'Familjen Grotesk';
+  font-family: "Familjen Grotesk";
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
@@ -204,12 +209,12 @@ body {
 }
 
 .register {
-  font-family: 'Familjen Grotesk';
+  font-family: "Familjen Grotesk";
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
   line-height: 22px;
-  color: #F25D07;
+  color: #f25d07;
   top: 537px;
   position: absolute;
   padding-bottom: 5%;
@@ -222,7 +227,7 @@ body {
 .confirmPassCreateacount {
   width: 300px;
   height: 34px;
-  background: #FFFFFF;
+  background: #ffffff;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 5px;
   border: none;
@@ -234,23 +239,23 @@ body {
 
 .alerEmailParagraph,
 .alertPassparagraph {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   font-style: normal;
   font-size: 14px;
   position: relative;
   left: 38px;
   top: -13px;
-  color: #FFFFFF;
+  color: #ffffff;
   width: 30%;
 }
 .alertConfirmPassparagraph {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   font-style: normal;
   font-size: 14px;
   position: relative;
   left: 38px;
   top: -12px;
-  color: #FFFFFF;
+  color: #ffffff;
   width: 30%;
 }
 .img-comida {
@@ -268,11 +273,18 @@ body {
   right: 0;
   text-align: center;
 }
-.return {
-  background: url(./img/arrow.png);
+.returnCreateAcount {
+  background: url(/img/arrow.png);
   position: relative;
-  top: -195px;
-  left: 5px;
+  top: -200px;
+  left: 0px;
+  border: none;
+}
+.returnNewPost {
+  background: url(/img/arrow.png);
+  position: relative;
+  top: 22px;
+  left: 9px;
   border: none;
 }
 .iconoRestaurante {
@@ -281,6 +293,66 @@ body {
   height: 45px;
   left: 292px;
   top: 11px;
+}
+.titleNewPost {
+  position: relative;
+  top: 30px;
+  left: 129px;
+  width: 125px;
+}
+
+.paragraphImg {
+  position: absolute;
+  width: 165px;
+  height: 32px;
+  left: 48px;
+  top: 125px;
+}
+
+.buttonPlus {
+  background: url(/img/iconoplus.gif);
+  position: relative;
+  top: 77px;
+  left: 129px;
+  border: none;
+  width: 20px;
+  height: 20px;
+}
+
+.paragraphReview,
+.paragraphTitle  {
+  position: relative;
+  top: 101px;
+  left: 48px;
+  margin-bottom: 5px;
+  height: 56px;
+  width: 165px
+}
+
+.textAreaTitle,
+.textAreaReview {
+  position: relative;
+  top: 66px;
+  left: 48px;
+  width: 255px;
+  height: 100px;
+  border-radius: 20px;
+  border: none;
+}
+
+.save{
+  position: absolute;
+  width: 300px;
+  height: 38px;
+  left: 30px;
+  background: #f28e13;
+  border-radius: 20px;
+  color: #fff;
+  font-family: "Roboto", sans-serif;
+  font-size: large;
+  font-weight: 400;
+  border: none;
+  top: 500px;
 }
 .contenedor {
   display: flex;
