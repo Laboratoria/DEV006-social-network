@@ -149,9 +149,8 @@ export const register = (navigateTo) => {
   btnRegister.setAttribute('class', 'button');
   btnRegister.textContent = 'Sign Up';
 
-  // ----------------------evento listener submit en btnLogin funcion createUser y navega a wall
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
     createUser(navigateTo);
   });
 
