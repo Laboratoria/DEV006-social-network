@@ -24,7 +24,7 @@
         font-size: 1.8rem;
     }
 
-    /* nav bar en muro/yimeline*/
+    /* nav bar en muro/timeline*/
     .wallNav{
         grid-template-columns: 0.5fr 8fr 0.5fr;
     }
@@ -101,7 +101,6 @@
     }
 
     /* Formularios de login y sign up*/
-
     form {
         width: 60vw;
         margin-bottom: 5rem;
@@ -182,6 +181,7 @@
         font-size: 2.2rem;
         margin-bottom: 3rem;
     }
+    
     /* Menu de eliminar y editar post*/
     .menuPoints {
         position: absolute;

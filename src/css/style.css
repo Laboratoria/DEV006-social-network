@@ -5,6 +5,7 @@
     box-sizing: border-box;
 }
 
+/* Cada décima de rem tendrá valor de un pixel. Viene de (10/16) * 100 = 62.5 */
 html {
     font-size: 62.5%;
 }
@@ -15,12 +16,7 @@ body {
     color: #292D32;
 }
 
-.group {
-    margin-bottom: 1rem;
-    text-align: center;
-}
-
-/* Vista de bienvenida */
+/* Wallpaper */
 .bodyimg {
     background-color: rgba(255, 255, 255, 0.5);
     background-image: url(../img/wallpaper.png);
@@ -51,7 +47,7 @@ nav {
     justify-content: space-between;
 }
 
-/* Navbar de wall.js*/
+/* Navbar del muro/timeline */
 .wallNav{
     display: grid;
     grid-template-columns: 1fr 4fr 1fr;
@@ -59,10 +55,12 @@ nav {
     grid-column-gap: 10px;
     grid-row-gap: 0px;
 }
+
 .navNewpost{
     justify-content: unset;
 }
 
+/* Botones de Home, Log In, Sign Up*/
 nav ul{
     list-style: none;
 }
@@ -88,6 +86,7 @@ nav ul li a{
 .nav-menu.active {
     right: 0;
 }
+
 .nav-menu {
     position: fixed;
     z-index: 1;
@@ -102,6 +101,7 @@ nav ul li a{
     box-shadow:
         0 10px 27px rgba(0, 0, 0, 0.05);
 }
+
 .bar {
     border-radius: 10px;
     display: block;
@@ -112,6 +112,7 @@ nav ul li a{
     transition: all 0.3s ease-in-out;
     background-color: #292D32;
 }
+
 .hamburger.active .bar:nth-child(2) {
     opacity: 0;
 }
@@ -129,6 +130,7 @@ nav ul li a{
     height: 20px;
     font-size: 1.4rem;
 }
+
 .nav-item:hover {
     cursor: pointer;
 }
@@ -138,8 +140,6 @@ nav ul li a{
     cursor: pointer;
     margin: 5px;
 }
-
-
 /* Fin de menú de hamburguesa*/
 
 /* Titulo de wall*/
@@ -152,12 +152,9 @@ nav ul li a{
 
 /* Logo*/
 header img {
-/*     position: absolute; */
     width: 42px;
     height: 40px;
     margin: 4px;
-/*     left: 10px;
-    top: 3px; */
 }
 
 /* Mensaje de bienvenida*/
@@ -172,7 +169,7 @@ header img {
     padding: 3%;
 } 
 
-/* Inputs de forms para log in y sign up*/
+/*-------------------------------------------------Formularios de log in y sign up*/
 form {
     width: 75vw;
     margin: 4rem auto 5rem ;
@@ -182,6 +179,7 @@ form {
     box-shadow: 0px 0px 5px gray;
 }
 
+/* Inputs de forms para log in y sign up*/
 form input {
     border-radius: 5px;
     border-color: #EA907A;
@@ -202,12 +200,20 @@ form ul {
     margin-top: 3px;
 }
 
+/* Contenedor para email y password*/
+.group {
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
 .login{
     height: 100vh;
 }
+
 .register{
     margin-bottom: 5rem;
 }
+
 .containerLoginOptions {
     display: flex;
     flex-direction: column;
@@ -217,6 +223,7 @@ form ul {
     font-size: 1.6rem;
 }
 
+/* Mensajes de error en log in */
 #spanErrorEmail, #spanErrorPassword, #spanErrorPasswordAgain {
     font-size: 1.1rem;
 }
@@ -253,6 +260,7 @@ hr {
     margin: auto;
     font-size: 15px;
     font-weight:500;
+    cursor: pointer;
 }
 
 #btnLogin:hover {
@@ -276,6 +284,7 @@ hr {
     height: 34px;
     margin: auto;
     display: block;
+    cursor: pointer;
 }
 
 #btnRegister:hover {
@@ -287,7 +296,7 @@ hr {
     width: 15rem;
     height: 4rem;
     background-color: white;
-    color: #000000 / 0, 0, 0 (54%);
+    color: rgba(0, 0, 0, 0.54);
     border: 1px solid gray;
     box-shadow: 0px 3px 3px gray;
     border-radius: 5px;
@@ -299,13 +308,14 @@ hr {
     align-items: center;
     flex-direction: row-reverse;
     justify-content: center;
+    cursor: pointer;
 }
 
 .btnGoogle img {
     height: 42px;
 }
 
-/*Email and password validations*/
+/* Validaciones de email y contraseña segura */
 #txtEmail.valid {
     border: 2px solid green;
 }
@@ -387,13 +397,13 @@ hr {
     color: #292D32;
 }
 
-/*Pet cads icons to like and match*/
+/* Íconos para tarjetas en Welcome */
 .interactionpets {
     display: grid;
     grid-template-columns: 1fr 2fr 0.5fr;
 }
 
-/* Testimonies */
+/* Testimonios */
 .testimonies{
     font-family: 'Acme', sans-serif;
     font-size: 2.4rem;
@@ -412,8 +422,7 @@ hr {
 
 /*-------------------------------------------------Inicia muro/timeline*/
 
-/* modal de información de la patita */
-
+/* Modal de información de la patita */
 .modalPaw{
     position: absolute;
     z-index: 2;
@@ -431,12 +440,14 @@ hr {
     color: #292D32;
     font-weight:bold;
 }
+
 .modalPaw img{
     width: 2.4rem;
     height: 2.4rem;
     margin: 1rem;
     vertical-align: middle;
 }
+
 .postsSection {
     max-width: 600px;
     margin: auto;
@@ -473,29 +484,38 @@ hr {
     font-size: 1.6rem;
 }
 
-/* Reacciones del post*/
-.reactionContainer {
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr 12fr 1fr;
-    grid-column-gap: 4px;
-}
-
-.newPostDiv section nav img {
+.newPostDiv section nav img { /* imagen de regreso desde newpost al muro*/
     width: 2.4rem;
     height: 2.4rem;
     object-fit: contain;
     margin-left: 2rem;
     cursor: pointer;
 }
+
+/* Reacciones del post*/
+.postArticle .reactionContainer img {
+    width: 2.4rem;
+    height: 2.4rem;
+}
+
+.reactionContainer {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 12fr 1fr;
+    grid-column-gap: 4px;
+}
+
 #pawMatch{
     grid-column: 5;
 }
+
 .likeCount{
     font-size: 1.4rem;
     margin: auto 0;
     text-align: left;
 }
-/* Menu de eliminar y editar post*/
+
+/* Menú de eliminar y editar post*/
+/* Contenedor de usuario y menú de 3 puntos*/
 .divUsersPointsEl{
     display: flex;
     flex-direction: row;
@@ -507,12 +527,8 @@ hr {
     cursor: pointer;
 }
 
+/* Menú de 3 puntos desplegado */
 .menuPoints{
-    /* right: fixed; */
-   /*  z-index: 1;
-    top: 40rem;
-    bottom: 100%;
-    flex-direction: column; */
     background-color: #292D32;
     color: white;
     width: 100%;
@@ -547,10 +563,21 @@ hr {
     cursor: pointer;
 }
 
+.ulModal li {
+    list-style: none;
+    padding: 1rem;
+    cursor: pointer;
+}
+
+.ulModal li:nth-child(1) {
+    color: #ff0000;
+}
+
 .menuPoints .liDelete {
     color: #ff0000;
 }
 
+/*Modal para confirmar eliminado*/
 #modal{
     position: absolute;
     margin: auto;
@@ -570,36 +597,7 @@ hr {
     padding: 1rem;
 }
 
-.ulModal li {
-    list-style: none;
-    padding: 1rem;
-    cursor: pointer;
-}
-
-.ulModal li:nth-child(1) {
-    color: #ff0000;
-}
-
-#modalConfirm, #modalConfirmEdit {
-    position: fixed;
-    margin: auto;
-    width: 28rem;
-    height: 10rem;
-    padding: 2rem;
-    top: 17rem;
-    background: #292D32;
-    border-radius: 15px;
-    border: none;
-    color: #ffffff;
-    font-size: 2.4rem;
-    text-align: center;
-    z-index: 1;
-}
-.postArticle .reactionContainer img {
-    width: 2.4rem;
-    height: 2.4rem;
-}
-.bodyimg footer img:hover{
+.bodyimg footer img:hover{ /* íconos de navegación*/
     cursor: pointer;
 }
 
@@ -607,8 +605,8 @@ hr {
     margin: 0 1rem;
 }
 
-/* Modal de edición */
-.modalEdit{
+/* Modal/formulario de edición */
+.modalEdit {
     position: absolute;
     margin: 0rem auto;
     width: 30rem;
@@ -622,24 +620,29 @@ hr {
     padding: 2rem;
     z-index: 1;
 }
-.editContainer{
+
+.editContainer {
    display: flex;
    flex-direction: row;
    gap: 1rem;
 }
+
 .editContainer .iconClose{
     object-fit: contain;
     cursor: pointer;
 }
-.editHr{
+
+.editHr {
     margin: 1rem auto;
 }
-.formEdit{
+
+.formEdit {
     background-color: #292D32;
     box-shadow: none;
     width: 100%;
     margin: unset;
 }
+
 .formEdit #inputEditName, .formEdit #inputEditDescription{
     background-color: #292D32;
     color: white;
@@ -665,27 +668,21 @@ hr {
     color: #6E0707;
 }
 
- /* Íconos de navegación*/
- footer {
-    background-color: #EA907A;
-    height: 40px;
-    color:white;    
-    bottom: 0;
-    width: 100%;
-    text-align: center;
-    padding: 10px;
-    font-size: 1.4rem;
-    font-weight: 700;
-}
-
-.bodyimg footer {
+/* Modal de confirmación de eliminado y editado */
+#modalConfirm, #modalConfirmEdit {
     position: fixed;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
-    padding: 2.4rem 0;
-    z-index: 2;
+    margin: auto;
+    width: 28rem;
+    height: 10rem;
+    padding: 2rem;
+    top: 17rem;
+    background: #292D32;
+    border-radius: 15px;
+    border: none;
+    color: #ffffff;
+    font-size: 2.4rem;
+    text-align: center;
+    z-index: 1;
 }
 
 /*-------------------------------------------------Inicia crear publicación/post*/
@@ -706,7 +703,6 @@ hr {
     margin-left: 2rem;
 }
 
-
 .newPostDiv .formpost {
     background-color: #292D32;
     box-shadow: unset;
@@ -720,6 +716,7 @@ hr {
     align-items: center;
 }
 
+/* Reeplicando estilos para forms de crear post y editar post*/
 .formpost .profilePic, .modalEdit .profilePic {
     width: 3.2rem;
     height: 3.2rem;
@@ -766,10 +763,29 @@ hr {
     width: 100%;
 }
 
+/* Íconos de navegación*/
+footer {
+    background-color: #EA907A;
+    height: 40px;
+    color:white;    
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
 .footerParagraph, .gitHubLinks {
     color: #292D32;
 }
 
-#modalEdit {
-    z-index: 1;
+.bodyimg footer {
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 2.4rem 0;
+    z-index: 2;
 }
