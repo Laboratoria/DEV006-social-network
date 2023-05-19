@@ -19,24 +19,25 @@ function signup(navigateTo) {
   const logo = document.createElement('img');
   const header = document.createElement('div');
   const errorPassword = document.createElement('span');
-  const errorEmail = document.createElement('span');
+  // const errorEmail = document.createElement('span');
   const buttonGoogleSignup = document.createElement('button');
 
   inputEmail.placeholder = 'example@gmail.com';
-  inputPassword.placeholder = '***********';
-
+  inputPassword.placeholder = 'Ingresa minimo 6 caracteres';
+  inputUser.placeholder = 'Ingresa nombre usuaria';
   // agregar atributos//
   logo.setAttribute('src', 'images/logo.png');
   errorPassword.setAttribute('id', 'errorPassword');
-  errorEmail.setAttribute('id', 'errorEmail');
+  // errorEmail.setAttribute('id', 'errorEmail');//
   buttonReturnSignup.setAttribute('src', 'images/arrow.png');
   inputEmail.setAttribute('id', 'inputEmail');
   inputPassword.setAttribute('id', 'inputPassword');
+  inputUser.setAttribute('id', 'inputUser');
   inputPassword.setAttribute('type', 'password');
   inputPassword.setAttribute('src', 'images/ojoOculto.png');
   showPassword.setAttribute('src', 'images/ojoOculto.png');
   passwordBox.setAttribute('id', 'passwordBox');
-  buttonGoogleSignup.textContent = 'Iniciar sesión con Google';
+  buttonGoogleSignup.textContent = 'Registrarse con Google';
   emailSignup.textContent = 'Correo electrónico';
   passwordSignup.textContent = 'Contraseña';
   UserSignup.textContent = 'Nombre de Usuario';
@@ -52,15 +53,20 @@ function signup(navigateTo) {
     e.preventDefault();
     const email = inputEmail.value;
     const password = inputPassword.value;
-    errorEmail.textContent = '';
+    const user = inputUser.value;
+    // errorEmail.textContent = '';
     errorPassword.textContent = '';
-    registerUser(email, password)
+    registerUser(email, password, user)
       .then((userResult) => {
         console.log('signup', userResult);
+        inputEmail.value = '';
+        inputPassword.value = '';
+        inputUser.value = '';
       })
+
       .catch((error) => {
         console.log(error);
-        errorEmail.innerHTML = error;
+        // errorEmail.innerHTML = error;
         errorPassword.innerHTML = error;
         // const codeError = error.code;
         // errorMessages(codeError, errorEmail, errorPassword);
@@ -70,6 +76,17 @@ function signup(navigateTo) {
   // ruteado para button de retornar
   buttonReturnSignup.addEventListener('click', () => {
     navigateTo('/');
+  });
+  // Ocultar y mostrar contraseña//
+  showPassword.addEventListener('click', (e) => {
+    e.preventDefault();
+    if (inputPassword.type === 'password') {
+      inputPassword.type = 'text';
+      showPassword.src = 'images/ojonoOculto.png';
+    } else {
+      inputPassword.type = 'password';
+      showPassword.src = 'images/ojoOculto.png';
+    }
   });
 
   // // agregar clases//
@@ -85,7 +102,7 @@ function signup(navigateTo) {
   passwordSignup.classList.add('subTitlesSignup');
   buttonEnterSignup.classList.add('buttonEnterSignup');
   errorPassword.classList.add('errors');
-  errorEmail.classList.add('errors');
+  // errorEmail.classList.add('errors');
   showPassword.classList.add('showPassword');
   buttonGoogleSignup.classList.add('buttonGoogleSignup');
 
@@ -96,16 +113,15 @@ function signup(navigateTo) {
     inputUser,
     emailSignup,
     inputEmail,
-    errorEmail,
+    // errorEmail,
     passwordSignup,
     passwordBox,
     errorPassword,
-    buttonEnterSignup,
-    buttonGoogleSignup,
+
   );
-  sectionForm.append(form);
+  sectionForm.append(form, buttonEnterSignup, buttonGoogleSignup);
   sectionHeader.append(header, logo);
-  section.append(sectionHeader, buttonReturnSignup, sectionForm, form);
+  section.append(sectionHeader, buttonReturnSignup, sectionForm);
 
   return section;
 }
