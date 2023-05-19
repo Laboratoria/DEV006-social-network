@@ -1,12 +1,14 @@
 import {
   createUser,
+} from '../lib/index.js';
+import {
   securePassword,
   validateEmail,
   validatePasswords,
-} from '../lib/index.js';
+} from '../lib/validation.js';
 
 import { footer } from './footer.js';
-
+// argumento de navigateTo para funcionalidad del router
 export const register = (navigateTo) => {
   // ------------------------------------------------- Wallpaper
   const bodyimg = document.createElement('div');
@@ -27,12 +29,13 @@ export const register = (navigateTo) => {
 
   const ul = document.createElement('ul');
 
-  // ------------------------------------------------- Botón de regreso a home/welcome
+  // ------------------------------------------------- Botón de regreso a home/welcome en el nav
   const btnHome = document.createElement('li');
   btnHome.setAttribute('id', 'Home');
 
   const homeLink = document.createElement('a');
   homeLink.textContent = 'Home';
+  // ---------------------------------------------evanto listener para ancla homeLink navega al home
   homeLink.addEventListener('click', () => {
     navigateTo('/');
   });
@@ -57,6 +60,7 @@ export const register = (navigateTo) => {
   userName.setAttribute('id', 'userName');
   userName.required = true;
   userName.setAttribute('aria-required', 'true');
+  // -------------------------- patrón de validación para userName con expresion regular
   userName.setAttribute('pattern', '^[a-zA-Z]{2,}$');
 
   const lastNameLabel = document.createElement('label');
@@ -70,6 +74,7 @@ export const register = (navigateTo) => {
   lastName.setAttribute('id', 'lastName');
   lastName.required = true;
   lastName.setAttribute('aria-required', 'true');
+  // --------------------------  patrón de validación para lastName con expresion regular
   lastName.setAttribute('pattern', '^[a-zA-Z]{2,}$');
 
   // ------------------------------------------------- email
@@ -85,9 +90,11 @@ export const register = (navigateTo) => {
   txtEmail.required = true;
   txtEmail.setAttribute('aria-required', 'true');
 
+  // -----------------------------------mensaje de error User not found
   const spanErrorEmail = document.createElement('span');
   spanErrorEmail.setAttribute('id', 'spanErrorEmail');
 
+  // -------------------------- Evento listener blur(no enfocado) en txtEmail con fx validateEmail
   txtEmail.addEventListener('blur', () => {
     validateEmail(txtEmail, spanErrorEmail);
   });
@@ -105,9 +112,11 @@ export const register = (navigateTo) => {
   txtPassword.required = true;
   txtPassword.setAttribute('aria-required', 'true');
 
+  // ------------------------------------------------mensaje de error Wrong password
   const spanErrorPassword = document.createElement('span');
   spanErrorPassword.setAttribute('id', 'spanErrorPassword');
 
+  // ------------------------Evento listener keyup (tecleado) en txtPassword con fx securePassword
   txtPassword.addEventListener('keyup', () => {
     securePassword(txtPassword, spanErrorPassword);
   });
@@ -124,28 +133,30 @@ export const register = (navigateTo) => {
   txtPasswordAgain.required = true;
   txtPasswordAgain.setAttribute('aria-required', 'true');
 
+  // ------------------------------------------------mensaje de error Passwords are different.
   const spanErrorPasswordAgain = document.createElement('span');
   spanErrorPasswordAgain.setAttribute('id', 'spanErrorPasswordAgain');
 
+  // -------------- Evento listener blur(no enfocado) en txtPasswordAgain con fx validatePasswords
   txtPasswordAgain.addEventListener('blur', () => {
     validatePasswords(txtPassword, txtPasswordAgain, spanErrorPasswordAgain);
   });
 
+  // ------------------------------------------ btnRegister
   const btnRegister = document.createElement('button');
   btnRegister.setAttribute('id', 'btnRegister');
   btnRegister.setAttribute('type', 'submit');
   btnRegister.setAttribute('class', 'button');
   btnRegister.textContent = 'Sign Up';
 
-  function handleSubmit() {
-    createUser();
-    navigateTo('/wall');
-  }
-
-  form.addEventListener('submit', handleSubmit);
+  // ----------------------evento listener submit en btnLogin funcion createUser y navega a wall
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    createUser(navigateTo);
+  });
 
   // ------------------------------------------------- Fin del formulario de registro
-
+  // -------------------------seccion para insertar nodos
   bodyimg.append(registerdiv, footer());
   registerdiv.append(header, h1, form);
   header.append(nav);
