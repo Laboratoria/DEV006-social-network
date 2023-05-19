@@ -295,6 +295,11 @@ body {
   top: 11px;
 }
 .titleNewPost {
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  color: #757474;
   position: relative;
   top: 30px;
   left: 129px;
@@ -302,6 +307,11 @@ body {
 }
 
 .paragraphImg {
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  color: #757474;
   position: absolute;
   width: 165px;
   height: 32px;
@@ -310,17 +320,23 @@ body {
 }
 
 .buttonPlus {
-  background: url(/img/iconoplus.gif);
+  background: url(/img/icons-plus.png);
   position: relative;
   top: 77px;
-  left: 129px;
+  left: 142px;
   border: none;
   width: 20px;
   height: 20px;
+  background-repeat: no-repeat;
 }
 
 .paragraphReview,
 .paragraphTitle  {
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  color: #757474;
   position: relative;
   top: 101px;
   left: 48px;
