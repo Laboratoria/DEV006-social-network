@@ -1,7 +1,11 @@
+/* eslint-disable no-undef */
+/* eslint-disable no-console */
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-alert */
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../lib/firebase.js';
+import { signInWithGoogle, register } from '../lib/functions.js';
 
 export function createAccount(navigateTo) {
   // Crear elementos
@@ -18,7 +22,10 @@ export function createAccount(navigateTo) {
   const questionAccount = document.createElement('p');
   const linkSignIn = document.createElement('a');
   const createButton = document.createElement('button');
+  const or = document.createElement('p');
   const continueWithGoogleButton = document.createElement('button');
+  const logoGoogle = document.createElement('img');
+  logoGoogle.src = './images/logoGoogle.png';
 
   // Establecer atributos y contenido
   container.classList.add('container');
@@ -39,11 +46,17 @@ export function createAccount(navigateTo) {
   linkSignIn.textContent = 'Sign In';
   createButton.classList.add('button');
   createButton.textContent = 'Create account';
+  or.textContent = '───────── OR ─────────';
+  or.classList.add('or');
   continueWithGoogleButton.classList.add('button');
-  continueWithGoogleButton.textContent = 'Continue with Google';
+  continueWithGoogleButton.classList.add('googleButton');
+  logoGoogle.classList.add('logoGoogle');
 
   // Agregar elementos al header
   header.appendChild(logo);
+
+  continueWithGoogleButton.appendChild(logoGoogle);
+  continueWithGoogleButton.insertAdjacentText('beforeend', 'Continue with Google');
 
   // Agregar elementos al formulario
   form.appendChild(nameLabel);
@@ -53,6 +66,7 @@ export function createAccount(navigateTo) {
   form.appendChild(passwordLabel);
   form.appendChild(passwordInput);
   form.appendChild(createButton);
+  form.appendChild(or);
   form.appendChild(continueWithGoogleButton);
   form.appendChild(questionAccount);
   form.appendChild(linkSignIn);
@@ -76,42 +90,41 @@ export function createAccount(navigateTo) {
     // const name = nameInput.value;
     const email = emailInput.value;
     const password = passwordInput.value;
-
+    const registerPromise = register(auth, email, password);
+    registerPromise.then((user) => {
+      alert('your account was created');
+      navigateTo('/wall');
+    }).catch((error) => {
+      alert('Your account wasn´t created');
+    });
     console.log(email, password);
     // promesa de la funcion, bloque try.. catch debe ir acompañado de async(funcion asyncrona)
     // await espera que la funcion cumpla con los parametros para ver un resultado o error
-    try {
-      const userCredentials = await createUserWithEmailAndPassword(auth, email, password);
-      console.log(userCredentials);
-    } catch (error) {
-      console.log(error.message);
-      console.log(error.code);
 
-      if (error.code === 'auth/email-already-in-use') {
-        alert('Email already in use');
-      } else if (error.code === 'auth/missing-email') {
-        alert('Introduce your email');
-      } else if (error.code === 'auth/weak-password') {
-        alert('Your password must have a minimum of 6 characters ');
-      } else if (error.code === 'auth/missing-password') {
-        alert('Introduce your password');
-      } else if (error.code === 'auth/invalid-email') {
-        alert('Invalid email');
-      } else if (error.code) {
-        alert('Something went wrong');
-      }
+    if (error.code === 'auth/email-already-in-use') {
+      alert('Email already in use');
+    } else if (error.code === 'auth/missing-email') {
+      alert('Introduce your email');
+    } else if (error.code === 'auth/weak-password') {
+      alert('Your password must have a minimum of 6 characters ');
+    } else if (error.code === 'auth/missing-password') {
+      alert('Introduce your password');
+    } else if (error.code === 'auth/invalid-email') {
+      alert('Invalid email');
+    } else if (error.code) {
+      alert('Something went wrong');
     }
   });
+
   continueWithGoogleButton.addEventListener('click', async (e) => {
     e.preventDefault();
-    const provider = new GoogleAuthProvider();
-
-    try {
-      const credentials = await signInWithPopup(auth, provider);
-      console.log(credentials);
-    } catch (error) {
-      console.log(error);
-    }
+    const promiseWithGoogle = signInWithGoogle();
+    promiseWithGoogle.then((user) => {
+      alert(`Welcome ${user.displayName}!`);
+      navigateTo('/wall');
+    }).catch((error) => {
+      alert('Registrateee');
+    });
   });
   return container;
 }

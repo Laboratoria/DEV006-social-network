@@ -1,8 +1,8 @@
+/* eslint-disable max-len */
 /* eslint-disable no-undef */
 /* eslint-disable no-console */
 /* eslint-disable import/no-extraneous-dependencies */
 import { collection, getDocs, addDoc } from 'firebase/firestore';
-import { async } from 'regenerator-runtime';
 import { db } from '../lib/firebase';
 // import { userEmail } from './signIn.js';
 

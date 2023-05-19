@@ -21,6 +21,7 @@ form{
     height: 95vh;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
     gap: 20px;
 }
@@ -61,6 +62,7 @@ label {
     display: flex;
     text-align: center;
     margin-bottom: 10px;
+    justify-content: center;
 }
 
 
@@ -117,6 +119,7 @@ p {
     margin-right: 20%;
     margin-left: 20%;
     gap:20px;
+    
 
 }
 
@@ -152,3 +155,25 @@ padding: 10px;
     height: 100%;
     
 }
+
+.logoGoogle {
+    width: 25px;
+}
+
+.googleButton {
+    display: flex;
+    align-items: center;
+    align-content: space-between;
+    justify-content: space-evenly;
+    background-color: aliceblue;
+    color: black;
+    width: 180px ;
+    height: 35px;
+    font-size: 13px;
+}
+
+.or {
+    margin: 0;
+    font-size: 13px;
+}
+
