@@ -109,7 +109,7 @@ export const login = (navigateTo) => {
   spanErrorGoogle.setAttribute('id', 'spanErrorGoogle');
 
   const imgGoogle = document.createElement('img');
-  imgGoogle.setAttribute('src', '../img/googleplus.png');
+  imgGoogle.setAttribute('src', '../img/btn_google_light_normal_ios.svg');
   imgGoogle.setAttribute('alt', 'This is the G logo from Google. It is inside the Google log in button.');
 
   const ulAccount = document.createElement('ul');
