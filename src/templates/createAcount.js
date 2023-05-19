@@ -50,7 +50,7 @@ function createAcount(navigateTo) {
   });
 
   buttonReturn.textContent = '.';
-  buttonReturn.classList.add('return');
+  buttonReturn.classList.add('returnCreateAcount');
   buttonReturn.addEventListener('click', () => {
     navigateTo('/');
   });
