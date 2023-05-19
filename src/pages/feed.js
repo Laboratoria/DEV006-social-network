@@ -1,4 +1,7 @@
-const feed = (navigateTo) => {
+import { addDoc } from 'firebase/firestore';
+import { colRef } from '../lib/firebaseAuth.js';
+
+const feed = () => {
   const feedSection = document.createElement('section');
   feedSection.classList.add('feedSection');
 
@@ -16,13 +19,12 @@ const feed = (navigateTo) => {
   const username = document.createElement('p');
   username.classList.add('userSpan');
 
-  const postDiv = document.createElement('div');
-  postDiv.classList.add('postDiv');
+  const postForm = document.createElement('form');
+  postForm.classList.add('postForm');
 
   const postInput = document.createElement('input');
   postInput.classList.add('postInput');
   postInput.setAttribute('type', 'text');
-
   postInput.setAttribute('placeholder', '¿Qué quieres compartir hoy?');
 
   const postBtn = document.createElement('button');
@@ -32,18 +34,25 @@ const feed = (navigateTo) => {
   const postsSection = document.createElement('section');
   postsSection.classList.add('postsSection');
 
-  // postBtn.addEventListener ('click', () => {
-  // console.log ('TABIEN')
-  // })
+  postBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    addDoc(colRef, {
+      post: postInput.value,
+    })
+      .then(() => {
+        postForm.reset();
+      });
+  });
 
   feedSection.appendChild(profileNav);
-  feedSection.appendChild(postDiv);
+  feedSection.appendChild(postForm);
   feedSection.appendChild(postsSection);
   profileNav.appendChild(logoArticle);
   profileNav.appendChild(username);
   logoArticle.appendChild(logoImg);
-  postDiv.appendChild(postInput);
-  postDiv.appendChild(postBtn);
+  postForm.appendChild(postInput);
+  postForm.appendChild(postBtn);
 
   return feedSection;
 };
