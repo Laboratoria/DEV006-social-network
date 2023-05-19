@@ -1,4 +1,4 @@
-export const register = () => {
+export const adopt = (navigateTo) => {
   const body = document.getElementById('root');
   body.innerHTML = '';
 
@@ -21,9 +21,11 @@ export const register = () => {
   const btnHome = document.createElement('li');
   btnHome.setAttribute('id', 'Home');
 
-  const homeLink = document.createElement('a');
-  homeLink.setAttribute('href', '/');
-  homeLink.textContent = 'Home';
+  const wallLink = document.createElement('a');
+  wallLink.textContent = 'Wall';
+  wallLink.addEventListener('click', () => {
+    navigateTo('/wall');
+  });
 
   const h1 = document.createElement('h1');
   h1.textContent = 'Be My Friend';
@@ -32,7 +34,7 @@ export const register = () => {
   const form = document.createElement('form');
 
   const h2 = document.createElement('h2');
-  h2.textContent = 'Register';
+  h2.textContent = 'Adoption';
 
   const userNameLabel = document.createElement('label');
   userNameLabel.setAttribute('for', 'userName');
@@ -216,79 +218,20 @@ export const register = () => {
   othersInput.setAttribute('id', 'others');
   othersInput.classList.add('radioAndCheckbox');
 
-  const profilePictureLabel = document.createElement('label');
-  profilePictureLabel.setAttribute('for', 'profilePicture');
-  profilePictureLabel.textContent = 'Profile Picture';
-  profilePictureLabel.classList.add('labelQuestions');
-
-  const profilePictureInput = document.createElement('input');
-  profilePictureInput.setAttribute('type', 'file');
-  // profilePictureInput.setAttribute('placeholder', 'Add .jpg, .png');
-  profilePictureInput.setAttribute('id', 'profilePicture');
-  profilePictureInput.setAttribute('accept', 'image/*');
-
-  /* const imgIconCamera = document.createElement('img');
-  imgIconCamera.setAttribute('src','../img/icon _camera_.png'); */
-
-  // const group1 = document.createElement('div');
-  // group1.setAttribute('class','group')
-
-  const txtEmailLabel = document.createElement('label');
-  txtEmailLabel.setAttribute('for', 'profilePicture');
-  txtEmailLabel.textContent = 'Email';
-  txtEmailLabel.classList.add('labelQuestions');
-
-  const txtEmail = document.createElement('input');
-  txtEmail.setAttribute('id', 'txtEmail');
-  txtEmail.setAttribute('type', 'email');
-  txtEmail.setAttribute('placeholder', 'Email');
-
-  const spanErrorEmail = document.createElement('span');
-  spanErrorEmail.setAttribute('id', 'spanErrorEmail');
-
-  // const group2 = document.createElement('div')
-  // group2.setAttribute('class','group')
-
-  const txtPasswordLabel = document.createElement('label');
-  txtPasswordLabel.setAttribute('for', 'txtPassword');
-  txtPasswordLabel.textContent = 'Password';
-  txtPasswordLabel.classList.add('labelQuestions');
-
-  const txtPassword = document.createElement('input');
-  txtPassword.setAttribute('id', 'txtPassword');
-  txtPassword.setAttribute('type', 'password');
-  txtPassword.setAttribute('placeholder', 'Password');
-  /*   txtPassword.addEventListener('keyup', securePassword); */
-
-  const txtPasswordAgainLabel = document.createElement('label');
-  txtPasswordAgainLabel.setAttribute('for', 'txtPasswordAgain');
-  txtPasswordAgainLabel.textContent = 'Password (again)';
-  txtPasswordAgainLabel.classList.add('labelQuestions');
-
-  const txtPasswordAgain = document.createElement('input');
-  txtPasswordAgain.setAttribute('id', 'txtPasswordAgain');
-  txtPasswordAgain.setAttribute('type', 'password');
-  txtPasswordAgain.setAttribute('placeholder', 'Password (again)');
-  // txtPasswordAgain.addEventListener('keyup', securePassword);
-  // Pendiente función para coincidir con contraseña */
-
-  const spanErrorPassword = document.createElement('span');
-  spanErrorPassword.setAttribute('id', 'spanErrorPassword');
-
-  const btnRegister = document.createElement('button');
-  btnRegister.setAttribute('id', 'btnRegister');
-  btnRegister.setAttribute('type', 'button');
-  btnRegister.setAttribute('class', 'button');
+  const btnAdopt = document.createElement('button');
+  btnAdopt.setAttribute('id', 'btnRegister');
+  btnAdopt.setAttribute('type', 'button');
+  btnAdopt.setAttribute('class', 'button');
   /*   btnRegister.addEventListener('click', createUser); */
-  btnRegister.textContent = 'Sign Up';
+  btnAdopt.textContent = 'Adopt';
 
   body.append(bodyimg);
   bodyimg.append(registerdiv);
   registerdiv.append(header, h1, form);
-  header.append(logoImg, nav);
-  nav.append(ul);
+  header.append(nav);
+  nav.append(logoImg, ul);
   ul.append(btnHome);
-  btnHome.append(homeLink);
+  btnHome.append(wallLink);
   form.append(
     h2,
     userNameLabel,
@@ -300,17 +243,7 @@ export const register = () => {
     doYouHavePetsLabel,
     checkAllergies,
     checkAnimalsLooking,
-    profilePictureLabel,
-    profilePictureInput,
-    txtEmailLabel,
-    txtEmail,
-    spanErrorEmail,
-    txtPasswordLabel,
-    txtPassword,
-    spanErrorPassword,
-    txtPasswordAgainLabel,
-    txtPasswordAgain,
-    btnRegister,
+    btnAdopt,
   );
 
   doYouHavePetsLabel.append(yesPetsLabel, noPetsLabel);

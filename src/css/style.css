@@ -12,6 +12,7 @@ html {
 body {
     background-color: #F0DBDB;
     font-family: 'Nunito', sans-serif;
+    color: #292D32;
 }
 
 .group {
@@ -259,6 +260,7 @@ hr {
     display: block;
     font-size: 1.7rem;
     margin: auto 8%;
+    margin-bottom: 2rem;
 }
 
 #btnRegister{
@@ -400,6 +402,32 @@ hr {
 }
 
 /*-------------------------------------------------Inicia muro/timeline*/
+
+/* modal de información de la patita */
+
+.modalPaw{
+    position: absolute;
+    z-index: 2;
+    background-color:#EA907A;
+    border: none;
+    margin: 2rem auto;
+    width: 30rem;
+    height: 14%;
+    font-size: 2.4rem;
+    text-align: center;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #292D32;
+    font-weight:bold;
+}
+.modalPaw img{
+    width: 2.4rem;
+    height: 2.4rem;
+    margin: 1rem;
+    vertical-align: middle;
+}
 .postsSection {
     max-width: 600px;
     margin: auto;
