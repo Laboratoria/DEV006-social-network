@@ -110,8 +110,19 @@ export const wall = (navigateTo) => {
   const iconProfile = document.createElement('img');
   iconProfile.setAttribute('src', '../img/PROFILE.png');
 
+  const modalPaw = document.createElement('dialog');
+  modalPaw.setAttribute('class', 'modalPaw');
+
+  const paw = document.createElement('img');
+  paw.setAttribute('src', 'img/matchvacio.png');
+
+  setTimeout(() => {
+    modalPaw.remove();
+  }, 5000);
+
   bodyimg.append(walldiv, footer);
-  walldiv.append(header, postsSection);
+  walldiv.append(header, modalPaw, postsSection);
+  modalPaw.append('Match to adopt ', paw);
   header.append(nav);
   nav.append(logoImg, h1, containerIcons, divMenu, navMenu);
   divMenu.append(span1, span2, span3);
@@ -175,7 +186,8 @@ export const wall = (navigateTo) => {
       namePet.setAttribute('class', 'namePet');
 
       const likeHeart = document.createElement('img');
-      likeHeart.setAttribute('src', 'img/like.png');
+      likeHeart.setAttribute('src', post.data().like.includes(auth.currentUser.uid) ? 'img/likeactivo.png' : 'img/like.png');
+      likeHeart.setAttribute('id', 'likeHeart');
 
       const likeCount = document.createElement('span');
       likeCount.setAttribute('class', 'likeCount');
@@ -248,6 +260,10 @@ export const wall = (navigateTo) => {
         ulModal.append(liConfirm, liCancel);
       }
 
+      pawMatch.addEventListener('click', () => {
+        navigateTo('/adopt');
+      });
+
       liConfirm.addEventListener('click', () => {
         // Eliminar el post
         deletePost(post.id);
@@ -303,12 +319,14 @@ export const wall = (navigateTo) => {
       const inputEditName = document.createElement('input');
       inputEditName.setAttribute('type', 'text');
       inputEditName.setAttribute('id', 'inputEditName');
+      inputEditName.required = true;
       inputEditName.value = `${post.data().petName}`;
 
       const inputEditDescription = document.createElement('textarea');
       inputEditDescription.setAttribute('id', 'inputEditDescription');
       inputEditDescription.setAttribute('cols', '15');
       inputEditDescription.setAttribute('rows', '6');
+      inputEditDescription.required = true;
       inputEditDescription.value = post.data().description;
 
       const pEdit = document.createElement('p');
@@ -317,11 +335,14 @@ export const wall = (navigateTo) => {
       const modalConfirmEdit = document.createElement('dialog');
       modalConfirmEdit.setAttribute('id', 'modalConfirmEdit');
 
+      const iconCheck2 = document.createElement('img');
+      iconCheck2.setAttribute('src', '../img/check.png');
+
       const buttonEdit = document.createElement('button');
       buttonEdit.setAttribute('id', 'buttonEdit');
       buttonEdit.textContent = 'SAVE';
 
-      modalConfirmEdit.append(pEdit, iconCheck);
+      modalConfirmEdit.append(pEdit, iconCheck2);
 
       liEdit.addEventListener('click', () => {
         menuPoints.close();
@@ -330,12 +351,14 @@ export const wall = (navigateTo) => {
 
       buttonEdit.addEventListener('click', (evento) => {
         evento.preventDefault();
-        editPosts(post.id, inputEditName.value, inputEditDescription.value);
-        modalEdit.close();
-        modalConfirmEdit.open = true;
-        setTimeout(() => {
-          modalConfirmEdit.close();
-        }, 3000);
+        if (inputEditName.value !== '' && inputEditDescription.value !== '') {
+          editPosts(post.id, inputEditName.value, inputEditDescription.value);
+          modalEdit.close();
+          modalConfirmEdit.open = true;
+          setTimeout(() => {
+            modalConfirmEdit.close();
+          }, 3000);
+        }
       });
 
       cancelEdit.addEventListener('click', () => {

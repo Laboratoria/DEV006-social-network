@@ -70,7 +70,7 @@ export const newpost = (navigateTo) => {
 
   formPost.addEventListener('submit', (event) => {
     event.preventDefault();
-    if (petName.value !== '' || petDescription.value !== '') {
+    if (petName.value !== '' && petDescription.value !== '') {
       addPost(petName.value, petDescription.value).then(() => {
         formPost.reset();
         navigateTo('/wall');

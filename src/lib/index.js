@@ -89,7 +89,6 @@ export const addPost = (petName, petDescription) => {
     username: userName,
     uid: getAuth().currentUser.uid,
     like: [],
-    likeCount: 0,
   });
 };
 
@@ -106,35 +105,6 @@ export const dislikePost = (id) => {
     like: arrayRemove(auth.currentUser.uid),
   });
 };
-/* contador de likes */
-// export const likePost = (id) => {
-//   let vacio = [];
-//   const post = newdoc(colRef, id);
-//   const usuarios = arrayUnion(auth.currentUser.uid);
-//   const cantidad = vacio.push(usuarios);
-//   return updateDoc(post, {
-//     like: usuarios,
-//     likeCount: cantidad,
-//   });
-// };
-
-/* export const addLike = (id) => {
-  const docRef = newdoc(colRef, id);
-
-  return getDocs(docRef)
-    .then((doc) => {
-      const docData = doc.data();
-      const newLikes = docData.likes + 1;
-      return updateDoc(docRef, {
-        likes: newLikes,
-      });
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      console.log(error);
-      console.log(errorCode);
-    });
-}; */
 
 // Initialize Firebase Authentication and get a reference to the service
 
