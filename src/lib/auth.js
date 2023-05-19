@@ -2,6 +2,8 @@
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  signInWithPopup,
+  GoogleAuthProvider,
 } from 'firebase/auth';
 import { auth } from './configFirebase.js';
 
@@ -48,7 +50,6 @@ export function registerUser(email, password) {
   // }
 }
 
-
 // Funcion asincrona que valida correo y contraseña de un usuario ya registrado.
 export async function loginUser(email, password) {
   try {
@@ -63,4 +64,17 @@ export async function loginUser(email, password) {
     console.log(error);
     return error;
   }
+}
+// función para registrarse con Google
+export function signInWithGoogle() {
+  const provider = new GoogleAuthProvider();
+  signInWithPopup(auth, provider)
+    .then((result) => {
+      const user = result.user;
+      console.log('Usuario:', user);
+    })
+    .catch((error) => {
+      const errorMessage = error.message;
+      console.error('Error:', errorMessage);
+    });
 }
