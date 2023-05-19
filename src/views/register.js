@@ -1,4 +1,6 @@
 import { signUpFn } from '../app/signupForm';
+import { googleSignInFn } from '../app/googleLogin';
+import { githubSignInFn } from '../app/githubLogin';
 
 function register(navigateTo) {
   const section = document.createElement('section');
@@ -75,13 +77,13 @@ function register(navigateTo) {
   registerGoogle.src = ('img/google.webp');
   registerGoogle.alt = 'Imagen google';
   registerGoogle.addEventListener('click', () => {
-    navigateTo('/login');
+    googleSignInFn(navigateTo);
   });
 
   registerGit.src = ('img/github.png');
   registerGit.alt = 'Imagen github';
   registerGit.addEventListener('click', () => {
-    navigateTo('/login');
+    githubSignInFn(navigateTo);
   });
 
   containerTitle.append(title, imgPaw);

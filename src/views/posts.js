@@ -1,3 +1,6 @@
+/* eslint-disable no-console */
+/* eslint-disable no-shadow */
+/* eslint-disable no-plusplus */
 /* eslint-disable dot-notation */
 // OTRO coment
 import { logoutFn } from '../app/logout.js';
@@ -8,6 +11,14 @@ import {
   deletePost,
   getPost,
   updatePost,
+  // getPosts,
+  // updateLikesCount,
+  getDoc,
+  db,
+  doc,
+  // addLike,
+  // removeLike,
+  auth,
 } from '../app/firebase.js';
 
 function posts(navigateTo) {
@@ -28,18 +39,20 @@ function posts(navigateTo) {
 
   let editPost = false;
   let id = '';
-  // window.addEventListener('DOMContentLoaded', async () => {
+
   onGetPosts((querySnapshot) => {
     let html = '';
-
     querySnapshot.forEach((doc) => {
       const userPost = doc.data();
       html += `
         <section class="user-posts">
+        <div class="img-name-user-post">
         <div class="info-post">
+        <img class='user-img-post' src='img/huellaIcono.png'' alt='Imagen de usuario'>
         <div class="user-data-post">
         <p class="user-name-post">${userPost.name}</p> 
         <p class="date-post">${userPost.date}</p> 
+        </div>
         </div>
         <div class="btns-post">
         <img class='btn-delete' data-id="${doc.id}" src='img/delete.png' alt='Borrar'>
@@ -47,9 +60,17 @@ function posts(navigateTo) {
         </div>
         </div>
         <p class="posts">${userPost.post}</p>
+
+        <div class="container-likes">
+        <p id="contador" class="counter-likes">${userPost.likes ? userPost.likes.length : 0}</p>
+        <img id="likePost-${doc.id}" data-id="${doc.id}" class='like-post' src='img/like.png' alt='Like'>
+        </div>
         </section>
         `;
     });
+
+    // FUNCION EDITAR Y ELIMINAR POST
+
     postsUsers.innerHTML = html;
 
     const btnsDelete = postsUsers.querySelectorAll('.btn-delete');
@@ -73,7 +94,33 @@ function posts(navigateTo) {
         formDoYouWantPost['savingPost'].innerHTML = 'Actualizar';
       });
     });
+
+    // FUNCION LIKE POSTS
+
+    const likeButtons = document.querySelectorAll('.like-post');
+
+    likeButtons.forEach((btn) => {
+      btn.addEventListener('click', async (e) => {
+        const postId = e.target.dataset.id;
+        const user = auth.currentUser;
+        const postRef = doc(db, 'publicaciones', postId);
+        const postSnapshot = await getDoc(postRef);
+        const post = postSnapshot.data();
+
+        if (Array.isArray(post.likes) && post.likes.includes(user.uid)) {
+          const updatedLikes = post.likes.filter((userId) => userId !== user.uid);
+          updatePost(postId, { likes: updatedLikes });
+          console.log('no hay like');
+        } else {
+          const updatedLikes = Array.isArray(post.likes) ? [...post.likes, user.uid] : [user.uid];
+          updatePost(postId, { likes: updatedLikes });
+          console.log('si hay like');
+        }
+      });
+    });
   });
+
+  // ID DE CADA ELEMENTO CREADO
 
   containerPosts.id = 'containerPosts';
   containerTitle.id = 'containerTitle';
@@ -89,6 +136,8 @@ function posts(navigateTo) {
   imgUser.id = 'imgUser';
   savingPost.id = 'savingPost';
 
+  // AGREGAR CLASES PARA DAR ESTILO EN CSS
+
   containerPosts.classList.add('container-posts');
   containerTitle.classList.add('container-title-posts');
   containerFormPost.classList.add('container-form-post');
@@ -102,12 +151,13 @@ function posts(navigateTo) {
   imgUser.classList.add('img-user-posts');
   savingPost.classList.add('saving-posts');
 
+  // NUMERO DE COLUMNAS EN LA TEXTARE PARA HACER UN POST
   wantPost.rows = 3;
 
   imgBack.src = 'img/back.png';
   imgBack.alt = 'imagen regresar';
   imgBack.addEventListener('click', () => {
-    navigateTo('/login');
+    logoutFn(navigateTo);
   });
 
   imgLogout.src = 'img/cerrar.png';
