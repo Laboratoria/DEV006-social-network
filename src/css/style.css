@@ -237,7 +237,11 @@ hr {
     text-align: center;
     font-weight: unset;
 }
-
+#btnSignup{
+    color: #551a8b;
+    cursor: pointer;
+    text-decoration: underline;
+}
 #btnLogin {
     border-radius: 5px;
     background-color: #4285F4;

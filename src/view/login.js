@@ -1,6 +1,7 @@
-import { LoginUser, validateEmail, signPop } from '../lib/index.js';
+import { LoginUser, signPop } from '../lib/index.js';
+import { validateEmail } from '../lib/validation.js';
 import { footer } from './footer.js';
-
+// argumento de navigateTo para funcionalidad del router
 export const login = (navigateTo) => {
   // ------------------------------------------------- Wallpaper
   const bodyimg = document.createElement('div');
@@ -20,10 +21,10 @@ export const login = (navigateTo) => {
   const nav = document.createElement('nav');
 
   const ul = document.createElement('ul');
-
+  // -----------------------------------------Boton de Home en el nav
   const btnHome = document.createElement('li');
   btnHome.setAttribute('id', 'Home');
-
+  // -----------------------------------------Evento listener del Boton Home
   const homeLink = document.createElement('a');
   homeLink.textContent = 'Home';
   homeLink.addEventListener('click', () => {
@@ -49,7 +50,7 @@ export const login = (navigateTo) => {
 
   const spanErrorEmail = document.createElement('span');
   spanErrorEmail.setAttribute('id', 'spanErrorEmail');
-
+  // -------------------------- Evento listener blur(no enfocado) en txtEmail con fx validateEmail
   txtEmail.addEventListener('blur', () => {
     validateEmail(txtEmail, spanErrorEmail);
   });
@@ -64,21 +65,20 @@ export const login = (navigateTo) => {
 
   const spanErrorPassword = document.createElement('span');
   spanErrorPassword.setAttribute('id', 'spanErrorPassword');
-
+  // ------------------------------------btn del login
   const btnLogin = document.createElement('button');
   btnLogin.setAttribute('id', 'btnLogin');
   btnLogin.setAttribute('type', 'button');
   btnLogin.setAttribute('class', 'button');
   btnLogin.textContent = 'Log In';
 
-  function handleSubmit() {
+  // ----------------------evento listener click en btnLogin funcion login y navega a wall
+  btnLogin.addEventListener('click', () => {
     LoginUser(navigateTo);
-  }
-
-  btnLogin.addEventListener('click', handleSubmit);
+  });
   // ------------------------------------------------- Fin de formulario
 
-  // ------------------------------------------------- Otras opciones de log in
+  // --------------------------------------------- Otras opciones de logIn en contenerdor inferior
   const containerLoginOptions = document.createElement('div');
   containerLoginOptions.classList.add('containerLoginOptions');
 
@@ -96,15 +96,16 @@ export const login = (navigateTo) => {
   h4.setAttribute('class', 'logInWith');
 
   const hr = document.createElement('hr');
-
+  // ----------------------------------  btnGoogle para registro
   const btnGoogle = document.createElement('button');
   btnGoogle.setAttribute('class', 'btnGoogle');
   btnGoogle.textContent = 'Google';
+  // ---------------------------------- evento listener btnGoogle registro y navega a wall
   btnGoogle.addEventListener('click', (e) => {
     e.preventDefault();
     signPop(navigateTo);
   });
-
+  // -----------------------------------mensaje de error si no inicia sesion con google
   const spanErrorGoogle = document.createElement('span');
   spanErrorGoogle.setAttribute('id', 'spanErrorGoogle');
 
@@ -119,14 +120,15 @@ export const login = (navigateTo) => {
 
   const aAccount = document.createElement('a');
   aAccount.setAttribute('id', 'btnSignup');
-  aAccount.setAttribute('href', '');
   aAccount.setAttribute('type', 'submit');
   aAccount.setAttribute('class', 'button');
   aAccount.textContent = 'Sign Up';
+
+  // --------------------------------evento listener para ancla Sign Up y navega a register
   aAccount.addEventListener('click', () => {
     navigateTo('/register');
   });
-
+  // -------------------------seccion para insertar nodos
   bodyimg.append(logindiv, footer());
   logindiv.append(header, h1, form);
   header.append(nav);
