@@ -1,4 +1,3 @@
-import { login } from './login';
 import { footer } from './footer';
 
 export const welcome = (navigateTo) => {
@@ -78,7 +77,9 @@ export const welcome = (navigateTo) => {
   inputLike1.setAttribute('type', 'image');
   inputLike1.setAttribute('src', 'img/megusta.png');
   inputLike1.setAttribute('alt', 'Heart icon to like the pet');
-  inputLike1.addEventListener('click', login);// se envia a login ya que no hay usuario registrado
+  inputLike1.addEventListener('click', () => {
+    navigateTo('/login');
+  });// se envia a login ya que no hay usuario registrado
   inputLike1.addEventListener('mouseover', () => {
     inputLike1.src = 'img/megustarojo.png';
   });
@@ -90,7 +91,9 @@ export const welcome = (navigateTo) => {
   inputMatch1.setAttribute('type', 'image');
   inputMatch1.setAttribute('src', 'img/matchvacio.png');
   inputMatch1.setAttribute('alt', 'This footprint icon is to match with a pet, it means you want to adopt it.');
-  inputMatch1.addEventListener('click', login);// se envia a login ya que no hay usuario registrado
+  inputMatch1.addEventListener('click', () => {
+    navigateTo('/login');
+  });// se envia a login ya que no hay usuario registrado
   inputMatch1.addEventListener('mouseover', () => {
     inputMatch1.src = 'img/match.png';
   });
@@ -120,7 +123,9 @@ export const welcome = (navigateTo) => {
   inputLike2.setAttribute('type', 'image');
   inputLike2.setAttribute('src', 'img/megusta.png');
   inputLike2.setAttribute('alt', 'Heart icon to like the pet');
-  inputLike2.addEventListener('click', login);// se envia a login ya que no hay usuario registrado
+  inputLike2.addEventListener('click', () => {
+    navigateTo('/login');
+  });// se envia a login ya que no hay usuario registrado
   inputLike2.addEventListener('mouseover', () => {
     inputLike2.src = 'img/megustarojo.png';
   });
@@ -132,7 +137,9 @@ export const welcome = (navigateTo) => {
   inputMatch2.setAttribute('type', 'image');
   inputMatch2.setAttribute('src', 'img/matchvacio.png');
   inputMatch2.setAttribute('alt', 'This footprint icon is to match with a pet, it means you want to adopt it.');
-  inputMatch2.addEventListener('click', login);// se envia a login ya que no hay usuario registrado
+  inputMatch2.addEventListener('click', () => {
+    navigateTo('/login');
+  });// se envia a login ya que no hay usuario registrado
   inputMatch2.addEventListener('mouseover', () => {
     inputMatch2.src = 'img/match.png';
   });
@@ -162,7 +169,9 @@ export const welcome = (navigateTo) => {
   inputLike3.setAttribute('type', 'image');
   inputLike3.setAttribute('src', 'img/megusta.png');
   inputLike3.setAttribute('alt', 'Heart icon to like the pet');
-  inputLike3.addEventListener('click', login);// se envia a login ya que no hay usuario registrado
+  inputLike3.addEventListener('click', () => {
+    navigateTo('/login');
+  });// se envia a login ya que no hay usuario registrado
   inputLike3.addEventListener('mouseover', () => {
     inputLike3.src = 'img/megustarojo.png';
   });
@@ -174,7 +183,9 @@ export const welcome = (navigateTo) => {
   inputMatch3.setAttribute('type', 'image');
   inputMatch3.setAttribute('src', 'img/matchvacio.png');
   inputMatch3.setAttribute('alt', 'This footprint icon is to match with a pet, it means you want to adopt it.');
-  inputMatch3.addEventListener('click', login);// se envia a login ya que no hay usuario registrado
+  inputMatch3.addEventListener('click', () => {
+    navigateTo('/login');
+  });// se envia a login ya que no hay usuario registrado
   inputMatch3.addEventListener('mouseover', () => {
     inputMatch3.src = 'img/match.png';
   });
@@ -204,7 +215,9 @@ export const welcome = (navigateTo) => {
   inputLike4.setAttribute('type', 'image');
   inputLike4.setAttribute('src', 'img/megusta.png');
   inputLike4.setAttribute('alt', 'Heart icon to like the pet');
-  inputLike4.addEventListener('click', login);// se envia a login ya que no hay usuario registrado
+  inputLike4.addEventListener('click', () => {
+    navigateTo('/login');
+  });// se envia a login ya que no hay usuario registrado
   inputLike4.addEventListener('mouseover', () => {
     inputLike4.src = 'img/megustarojo.png';
   });
@@ -216,7 +229,9 @@ export const welcome = (navigateTo) => {
   inputMatch4.setAttribute('type', 'image');
   inputMatch4.setAttribute('src', 'img/matchvacio.png');
   inputMatch4.setAttribute('alt', 'This footprint icon is to match with a pet, it means you want to adopt it.');
-  inputMatch4.addEventListener('click', login);// se envia a login ya que no hay usuario registrado
+  inputMatch4.addEventListener('click', () => {
+    navigateTo('/login');
+  });// se envia a login ya que no hay usuario registrado
   inputMatch4.addEventListener('mouseover', () => {
     inputMatch4.src = 'img/match.png';
   });
