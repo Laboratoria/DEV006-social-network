@@ -39,6 +39,9 @@ getDocs(colRef)
       posts.push({ ...doc.data(), id: doc.id });
     });
     console.log(posts);
+    // posts.forEach((post) => {
+    //   console.log(post.like.length);
+    // });
   })
   .catch((error) => {
     console.log(error.message);
@@ -88,20 +91,17 @@ export const addPost = (petName, petDescription) => {
   });
 };
 
-/* contador de likes */
 export const likePost = (id) => {
   const post = newdoc(colRef, id);
-  const usuarios = arrayUnion(auth.currentUser.uid);
   return updateDoc(post, {
-    like: usuarios,
+    like: arrayUnion(auth.currentUser.uid),
   });
 };
 
 export const dislikePost = (id) => {
   const post = newdoc(colRef, id);
-  const usuarios = arrayRemove(auth.currentUser.uid);
   return updateDoc(post, {
-    like: usuarios,
+    like: arrayRemove(auth.currentUser.uid),
   });
 };
 
