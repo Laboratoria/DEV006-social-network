@@ -7,7 +7,7 @@ function error(navigateTo) {
   buttonReturn.textContent = '.';
   buttonReturn.classList.add('return');
   buttonReturn.addEventListener('click', () => {
-    navigateTo('/login');
+    navigateTo('/');
   });
 
   imgcomida.src = './img/comidaSinFondo.png';
