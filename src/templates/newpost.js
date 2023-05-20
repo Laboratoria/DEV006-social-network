@@ -1,4 +1,5 @@
-import { saveTask } from '../lib/firebase.js'
+/* eslint-disable no-console */
+import { saveTask } from '../lib/firebase.js';
 
 window.addEventListener('DOMContentLoaded', () => {
   console.log('works');
@@ -20,7 +21,7 @@ function newPost(navigateTo) {
   section.setAttribute('id', 'section');
   textAreaTitle.setAttribute('id', 'textAreaTitle');
   textAreaReview.setAttribute('id', 'textAreaReview');
-  
+
   titleNewPost.textContent = 'New Post';
   titleNewPost.classList.add('titleNewPost');
 
@@ -56,23 +57,22 @@ function newPost(navigateTo) {
     paragraphTitle,
     textAreaTitle,
     paragraphReview,
-    textAreaReview
+    textAreaReview,
   );
-  
+
   section.append(buttonReturn, titleNewPost, form, buttonPlus);
 
-  console.log(section)
+  console.log(section);
 
-  section.addEventListener('submit',  (e) => {
-    e.preventDefault()
-    
-    const title = form['textAreaTitle'];
-    const description = form['textAreaReview'];
+  section.addEventListener('submit', (e) => {
+    e.preventDefault();
 
-    saveTask(title.value, description.value)
-  
-    form.reset()
-    
+    const title = form.textAreaTitle;
+    const description = form.textAreaReview;
+
+    saveTask(title.value, description.value);
+
+    form.reset();
   });
 
   return section;
