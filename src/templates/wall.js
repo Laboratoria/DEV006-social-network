@@ -1,4 +1,4 @@
-import { getTasks, onGetPost } from '../lib/firebase.js';
+import { onGetPost } from '../lib/firebase.js';
 
 function wall(navigateTo) {
   const form = document.createElement('form');
@@ -32,26 +32,20 @@ function wall(navigateTo) {
   form.append(iconoRestaurante, postContenedor, contenedor);
 
   // const mostrarContenedor = document.getElementById('postContenedor');
-
-  window.addEventListener('DOMContentLoaded', async () => {
-    // const querysnapshot = await getTasks();
-    // console.log(querysnapshot);
-    onGetPost((querysnapshot) => {
-      let html = '';
-      querysnapshot.forEach((doc) => {
-        const post = doc.data();
-        html += `
-              <div>
-                  <h3>${post.title}</h3>
-                  <p>${post.description}</p>
-              </div>
-          `;
-      });
-
-      postContenedor.innerHTML = html;
+  onGetPost((querysnapshot) => {
+    let html = '';
+    querysnapshot.forEach((doc) => {
+      const post = doc.data();
+      html += `
+            <div>
+                <h3>${post.title}</h3>
+                <p>${post.description}</p>
+            </div>
+        `;
     });
-  });
 
+    postContenedor.innerHTML = html;
+  });
   return form;
 }
 

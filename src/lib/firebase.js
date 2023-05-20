@@ -26,8 +26,9 @@ export const create = createUserWithEmailAndPassword;
 
 const db = getFirestore();
 
+// eslint-disable-next-line arrow-body-style
 export const saveTask = (title, description) => {
-  addDoc(collection(db, 'post'), { title, description });
+  return addDoc(collection(db, 'post'), { title, description });
 };
 
 export const getTasks = () => getDocs(collection(db, 'post'));

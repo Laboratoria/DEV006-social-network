@@ -1,10 +1,6 @@
 /* eslint-disable no-console */
 import { saveTask } from '../lib/firebase.js';
 
-window.addEventListener('DOMContentLoaded', () => {
-  console.log('works');
-});
-
 function newPost(navigateTo) {
   const section = document.createElement('section');
   const buttonReturn = document.createElement('button');
@@ -70,7 +66,9 @@ function newPost(navigateTo) {
     const title = form.textAreaTitle;
     const description = form.textAreaReview;
 
-    saveTask(title.value, description.value);
+    saveTask(title.value, description.value).then(() => {
+      navigateTo('/wall');
+    });
 
     form.reset();
   });
