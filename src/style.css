@@ -378,3 +378,7 @@ body {
   margin-top: 544px;
   position: fixed;
 }
+ 
+.postContenedor{
+  height: 10px;
+}

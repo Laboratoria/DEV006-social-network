@@ -1,3 +1,5 @@
+import { getTasks, onGetPost } from '../lib/firebase.js';
+
 function wall(navigateTo) {
   const form = document.createElement('form');
   const iconoRestaurante = document.createElement('img');
@@ -6,8 +8,9 @@ function wall(navigateTo) {
   const iconoAgregar = document.createElement('img');
   const iconoMuro = document.createElement('img');
   const iconoPerfil = document.createElement('img');
-
-  // const parrafo = document.createElement('p');
+  const postContenedor = document.createElement('div');
+  postContenedor.setAttribute('id', 'postContenedor');
+  postContenedor.classList.add('postContenedor');
 
   iconoRestaurante.src = './img/iconoRestaurante.png';
   iconoRestaurante.classList.add('iconoRestaurante');
@@ -26,7 +29,29 @@ function wall(navigateTo) {
 
   contenedor.append(iconoMuro, iconoAgregar, iconoPerfil);
 
-  form.append(iconoRestaurante, contenedor);
+  form.append(iconoRestaurante, postContenedor, contenedor);
+
+  // const mostrarContenedor = document.getElementById('postContenedor');
+
+  window.addEventListener('DOMContentLoaded', async () => {
+    // const querysnapshot = await getTasks();
+    // console.log(querysnapshot);
+    onGetPost((querysnapshot) => {
+      let html = '';
+      querysnapshot.forEach((doc) => {
+        const post = doc.data();
+        html += `
+              <div>
+                  <h3>${post.title}</h3>
+                  <p>${post.description}</p>
+              </div>
+          `;
+      });
+
+      postContenedor.innerHTML = html;
+    });
+  });
+
   return form;
 }
 

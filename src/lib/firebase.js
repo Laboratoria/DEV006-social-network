@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app';
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
-import { getFirestore, collection, addDoc } from "firebase/firestore";
+import { getFirestore, collection, addDoc, getDocs, onSnapshot } from "firebase/firestore";
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.descriptiongoogle.com/docs/web/setup#available-libraries
@@ -28,3 +28,6 @@ const db = getFirestore()
 export const saveTask = (title, description) => {
   addDoc(collection(db,'post'),{title, description})
 }
+
+export const getTasks = () => getDocs(collection(db, 'post'));
+export const onGetPost = (retornopost) => onSnapshot(collection(db,'post'), retornopost);
