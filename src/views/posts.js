@@ -1,3 +1,5 @@
+/* eslint-disable indent */
+/* eslint-disable no-alert */
 /* eslint-disable no-console */
 /* eslint-disable no-shadow */
 /* eslint-disable no-plusplus */
@@ -12,12 +14,9 @@ import {
   getPost,
   updatePost,
   // getPosts,
-  // updateLikesCount,
   getDoc,
   db,
   doc,
-  // addLike,
-  // removeLike,
   auth,
 } from '../app/firebase.js';
 
@@ -38,12 +37,17 @@ function posts(navigateTo) {
   const savingPost = document.createElement('button');
 
   let editPost = false;
+  // let isLiked = false;
   let id = '';
 
   onGetPosts((querySnapshot) => {
     let html = '';
     querySnapshot.forEach((doc) => {
       const userPost = doc.data();
+      const user = auth.currentUser;
+      const showBtnDelete = userPost.authorId === user.uid;
+      const showBtnEdit = userPost.authorId === user.uid;
+
       html += `
         <section class="user-posts">
         <div class="img-name-user-post">
@@ -54,9 +58,9 @@ function posts(navigateTo) {
         <p class="date-post">${userPost.date}</p> 
         </div>
         </div>
-        <div class="btns-post">
-        <img class='btn-delete' data-id="${doc.id}" src='img/delete.png' alt='Borrar'>
-        <img class='btn-edit' data-id="${doc.id}" src='img/edit.png' alt='Editar'>
+        <div class='btns-post'>
+        <img class="${showBtnDelete ? 'btn-delete' : ''}" data-id="${doc.id}" src="${showBtnDelete ? 'img/delete.png' : ''}" alt="${showBtnDelete ? 'Borrar' : ''}">
+        <img class="${showBtnEdit ? 'btn-delete' : ''}" data-id="${doc.id}" src="${showBtnEdit ? 'img/edit.png' : ''}" alt="${showBtnEdit ? 'Editar' : ''}">
         </div>
         </div>
         <p class="posts">${userPost.post}</p>
@@ -76,22 +80,40 @@ function posts(navigateTo) {
     const btnsDelete = postsUsers.querySelectorAll('.btn-delete');
 
     btnsDelete.forEach((btn) => {
-      btn.addEventListener('click', ({ target: { dataset } }) => {
-        deletePost(dataset.id);
+      btn.addEventListener('click', async ({ target: { dataset } }) => {
+        const postId = dataset.id;
+        const user = auth.currentUser;
+
+        const post = await getPost(postId);
+
+        if (post.data().authorId === user.uid) {
+        deletePost(postId);
+        } else {
+          console.log('No tienes permiso para eliminar este post');
+          // btn.style.display = 'none';
+        }
       });
     });
     const btnsEdit = postsUsers.querySelectorAll('.btn-edit');
     btnsEdit.forEach((btn) => {
       btn.addEventListener('click', async (e) => {
-        const userPost = await getPost(e.target.dataset.id);
-        const task = userPost.data();
+        const postId = e.target.dataset.id;
+        console.log(postId);
+        const user = auth.currentUser;
+        const userPost = await getPost(postId);
+        console.log(userPost);
 
-        formDoYouWantPost['wantPost'].value = task.post;
+        if (userPost.data().authorId === user.uid) {
+          const task = userPost.data();
+          formDoYouWantPost['wantPost'].value = task.post;
 
-        editPost = true;
-        id = userPost.id;
+          editPost = true;
+          id = userPost.id;
 
-        formDoYouWantPost['savingPost'].innerHTML = 'Actualizar';
+          formDoYouWantPost['savingPost'].innerHTML = 'Actualizar';
+        } else {
+          // btn.style.display = 'none';
+        }
       });
     });
 
@@ -109,13 +131,18 @@ function posts(navigateTo) {
 
         if (Array.isArray(post.likes) && post.likes.includes(user.uid)) {
           const updatedLikes = post.likes.filter((userId) => userId !== user.uid);
-          updatePost(postId, { likes: updatedLikes });
-          console.log('no hay like');
-        } else {
-          const updatedLikes = Array.isArray(post.likes) ? [...post.likes, user.uid] : [user.uid];
-          updatePost(postId, { likes: updatedLikes });
-          console.log('si hay like');
+          console.log('No hay like');
+          // isLiked = false;
+          document.querySelector('.like-post').src = 'img/imagen.png';
+          // console.log(imagenLike);
+          return updatePost(postId, { likes: updatedLikes });
         }
+        const updatedLikes = Array.isArray(post.likes) ? [...post.likes, user.uid] : [user.uid];
+        console.log('si hay like');
+        // isLiked = true;
+        id = postId.id;
+        document.querySelector('.like-post').src = 'img/likeDog.png';
+        return updatePost(postId, { likes: updatedLikes });
       });
     });
   });
@@ -178,16 +205,19 @@ function posts(navigateTo) {
   formDoYouWantPost.addEventListener('submit', (e) => {
     e.preventDefault();
     const postText = formDoYouWantPost['wantPost'].value;
+    if (postText.trim() !== '') {
+      if (!editPost) {
+        savePost(postText);
+      } else {
+        updatePost(id, { post: postText });
 
-    if (!editPost) {
-      savePost(postText);
+        editPost = false;
+        formDoYouWantPost['savingPost'].innerHTML = 'Publicar';
+      }
+      formDoYouWantPost.reset();
     } else {
-      updatePost(id, { post: postText });
-
-      editPost = false;
-      formDoYouWantPost['savingPost'].innerHTML = 'Publicar';
+      alert('No se puede hacer una publicacion sin contenido');
     }
-    formDoYouWantPost.reset();
   });
 
   containerTitle.append(imgBack, title, imgLogout);

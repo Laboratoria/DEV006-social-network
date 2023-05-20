@@ -28,13 +28,10 @@ export const signUpFn = async (navigateTo) => {
     console.log(userNamePost);
     navigateTo('/login');
   } catch (error) {
-    if (error.code === 'auth/invalid-email') {
-      console.log(error.code);
-      alert('Por favor ingresa un email válido');
-    } else if (error.code === 'auth/weak-password') {
-      alert('Ingresa una contraseña válida');
-    } else if (error.code === 'auth/email-already-in-use') {
-      alert('El email ya se encuentra asosiado a una cuenta');
-    }
+    if (error.code === 'auth/invalid-email') alert('Por favor ingresa un email válido');
+
+    if (error.code === 'auth/weak-password') alert('Ingresa una contraseña válida');
+
+    if (error.code === 'auth/email-already-in-use') alert('El email ya se encuentra asosiado a una cuenta');
   }
 };
