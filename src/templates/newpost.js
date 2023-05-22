@@ -1,14 +1,12 @@
-import { saveTask } from '../lib/firebase.js'
-
-window.addEventListener('DOMContentLoaded', () => {
-  console.log('works');
-});
+/* eslint-disable no-console */
+import { saveTask } from '../lib/firebase.js';
 
 function newPost(navigateTo) {
   const section = document.createElement('section');
   const buttonReturn = document.createElement('button');
   const titleNewPost = document.createElement('h1');
-  const form = document.createElement('form');
+  const divNewPost = document.createElement('div');
+  divNewPost.classList.add('divNewPost');
   const paragraphImg = document.createElement('p');
   const buttonPlus = document.createElement('button');
   const paragraphTitle = document.createElement('p');
@@ -20,7 +18,7 @@ function newPost(navigateTo) {
   section.setAttribute('id', 'section');
   textAreaTitle.setAttribute('id', 'textAreaTitle');
   textAreaReview.setAttribute('id', 'textAreaReview');
-  
+
   titleNewPost.textContent = 'New Post';
   titleNewPost.classList.add('titleNewPost');
 
@@ -50,29 +48,31 @@ function newPost(navigateTo) {
   //   navigateTo('/wall');
   //  });
 
-  form.append(
+  divNewPost.append(
     paragraphImg,
-    buttonSave,
+    buttonPlus,
     paragraphTitle,
     textAreaTitle,
     paragraphReview,
-    textAreaReview
+    textAreaReview,
+    buttonSave,
   );
-  
-  section.append(buttonReturn, titleNewPost, form, buttonPlus);
 
-  console.log(section)
+  section.append(buttonReturn, titleNewPost, divNewPost);
 
-  section.addEventListener('submit',  (e) => {
-    e.preventDefault()
-    
-    const title = form['textAreaTitle'];
-    const description = form['textAreaReview'];
+  // console.log(section);
 
-    saveTask(title.value, description.value)
-  
-    form.reset()
-    
+  section.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const title = divNewPost.textAreaTitle;
+    const description = divNewPost.textAreaReview;
+
+    saveTask(title.value, description.value).then(() => {
+      navigateTo('/wall');
+    });
+
+    divNewPost.reset();
   });
 
   return section;

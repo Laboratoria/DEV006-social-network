@@ -1,7 +1,8 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app';
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
-import { getFirestore, collection, addDoc, getDocs, onSnapshot } from "firebase/firestore";
+// eslint-disable-next-line object-curly-newline
+import { getFirestore, collection, addDoc, getDocs, onSnapshot } from 'firebase/firestore';
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.descriptiongoogle.com/docs/web/setup#available-libraries
@@ -23,11 +24,12 @@ export const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const create = createUserWithEmailAndPassword;
 
-const db = getFirestore()
+const db = getFirestore();
 
+// eslint-disable-next-line arrow-body-style
 export const saveTask = (title, description) => {
-  addDoc(collection(db,'post'),{title, description})
-}
+  return addDoc(collection(db, 'post'), { title, description });
+};
 
 export const getTasks = () => getDocs(collection(db, 'post'));
-export const onGetPost = (retornopost) => onSnapshot(collection(db,'post'), retornopost);
+export const onGetPost = (retornopost) => onSnapshot(collection(db, 'post'), retornopost);

@@ -1,7 +1,8 @@
-import { getTasks, onGetPost } from '../lib/firebase.js';
+import { onGetPost } from '../lib/firebase.js';
 
 function wall(navigateTo) {
-  const form = document.createElement('form');
+  const divWall = document.createElement('div');
+  divWall.classList.add('divWall');
   const iconoRestaurante = document.createElement('img');
   const contenedor = document.createElement('div');
   contenedor.classList.add('contenedor');
@@ -29,31 +30,24 @@ function wall(navigateTo) {
 
   contenedor.append(iconoMuro, iconoAgregar, iconoPerfil);
 
-  form.append(iconoRestaurante, postContenedor, contenedor);
+  divWall.append(iconoRestaurante, postContenedor, contenedor);
 
   // const mostrarContenedor = document.getElementById('postContenedor');
-
-  window.addEventListener('DOMContentLoaded', async () => {
-    // const querysnapshot = await getTasks();
-    // console.log(querysnapshot);
-    onGetPost((querysnapshot) => {
-      let html = '';
-      querysnapshot.forEach((doc) => {
-        const post = doc.data();
-        html += `
-              <div>
-                  <h3>${post.title}</h3>
-                  <p>${post.description}</p>
-              </div>
-          `;
-      });
-
-      postContenedor.innerHTML = html;
+  onGetPost((querysnapshot) => {
+    let html = '';
+    querysnapshot.forEach((doc) => {
+      const post = doc.data();
+      html += `
+            <div>
+                <h3>${post.title}</h3>
+                <p>${post.description}</p>
+            </div>
+        `;
     });
+
+    postContenedor.innerHTML = html;
   });
-
-
-  return form;
+  return divWall;
 }
 
 export default wall;
