@@ -9,6 +9,9 @@
     "firebase",
     "jest"
   ],
+  "jest": {
+    "testEnvironment": "jsdom"
+  },
   "license": "MIT",
   "scripts": {
     "htmlhint": "htmlhint dist/*.html ",
@@ -27,8 +30,9 @@
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jest": "^25.3.0",
+    "firebase-mock": "^2.3.2",
     "htmlhint": "^1.0.0",
-    "jest": "^27.0.1",
+    "jest": "^27.5.1",
     "regenerator-runtime": "^0.13.1",
     "stylelint": "^14.1.0",
     "stylelint-config-recommended": "^6.0.0",
@@ -43,6 +47,8 @@
     "commit": "ee8564d1261b2e9c9842d13f9ac49b2624b2ee74"
   },
   "dependencies": {
-    "firebase": "^9.19.1"
+    "firebase": "^9.19.1",
+    "jsdom": "^22.0.0",
+    "mockfirebase": "^0.12.0"
   }
 }

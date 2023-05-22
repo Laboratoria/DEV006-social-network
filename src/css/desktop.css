@@ -1,0 +1,222 @@
+@media screen and  (min-width: 1101px){
+    #root{
+        height: 100%;
+    }
+    /* Logo*/
+    header img {
+        height: 5.5rem;
+        width: 5.3rem;
+        margin-left: 10px;
+        margin-top: -0.1rem;
+    }
+
+    nav {
+        height: 9vh;
+    }
+
+    nav ul li a {
+        padding: 0.5rem 1.6rem;
+        font-size: 1.8rem;
+    }
+    
+    .wallNav{
+        grid-template-columns: 0.5fr 2fr 6fr 0.5fr;
+    } 
+
+    h1 {
+        font-size: 4rem;
+        margin: 2% 9%;
+    }
+    .wallH1{
+        font-size: 4rem;
+        position: relative;
+        top:-3px;
+    }
+
+    /* contenedor de iconos de desktop */
+    .containerIcons{
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+
+    .containerIcons img{
+        width: 30px;
+        height: 30px;
+    }
+
+    .newPostDiv section nav img {
+        width: 3.5rem;
+    }
+
+    .containerIcons img:hover{
+        cursor: pointer;
+    }
+    
+    /* Menú de hamburguesa*/
+    .bar {
+        width: 50px;
+        height: 6px;
+        margin: 6px;
+    }
+
+    .hamburger {
+        margin: 10px;
+    }
+
+    .hamburger.active .bar:nth-child(1) {
+        transform: translateY(13px) rotate(45deg);
+    }
+    
+    .hamburger.active .bar:nth-child(3) {
+        transform: translateY(-12px) rotate(-45deg);
+    }
+
+    .nav-menu {
+        top: 9vh;
+        width: 20vw;
+    }
+
+    .nav-item {
+        font-size: 1.9rem;
+    }
+    /* Fin de menú de hamburguesa*/
+
+    /* welcome.js*/
+    .welcomemessage {
+        font-size: 3rem;
+        margin: -1% auto;
+    } 
+
+    .contenedorcards .cardpet {
+        margin: 2% 1%;
+        gap:0;
+    }
+
+    .testimonies {
+        font-size: 3rem;
+        margin: 2% 9%;
+    }
+
+    .messagetesti p {
+        font-size: 2rem;
+        padding: 3%;
+        margin: -1% auto;
+    }
+
+    /*login.js y register.js*/
+    form{
+        width: 35vw;
+        margin: 2rem auto;
+    }
+
+    form h2{
+        font-size: 3.2rem;
+    }
+
+    .labelQuestions{
+        font-size: 2.2rem
+    }
+
+    form input{
+        height: 6vh;
+        font-size: 1.8rem;
+    }
+
+    .containerLoginOptions{
+        font-size: 2rem;
+    }
+
+    .login form input{
+        margin: 2rem auto;
+    }
+
+    #btnLogin{
+        height: 6vh;
+        font-size: 1.8rem;
+
+    }
+
+    .logInWith {
+        width: 126px;
+        top:12px;
+    }
+
+    .btnGoogle{
+        width: 18rem;
+        margin-top:12px;
+    }
+
+    .newPostDiv section nav #pCreatePost {
+        font-size: 2.4rem;
+    }
+
+    .newPostDiv .formpost {
+        width: 50vw;
+    }
+
+    .userContainer {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .formpost #Post {
+        font-size: 2.4rem;
+        top: 6rem;
+        width: 10rem;
+        height: 4rem;
+        padding: 10px;
+    }
+
+    #btnRegister{
+        height: 6vh;
+        font-size: 1.8rem;
+        margin: 2rem auto;
+    }
+
+    /* Menu de eliminar y editar post*/
+    .menuPoints {
+        position: absolute;
+        z-index: 1;
+        min-height: 20rem;
+        width: 32rem;
+        border-radius: 15px;
+        left: 24.4rem;
+        bottom: -12rem;
+    }
+
+    .menuPoints li{
+        padding: 2rem 4rem;
+    }
+
+    .menuPoints .iconClose{
+        margin-bottom: -1rem;
+    }
+
+    .postsSection #modalConfirm {
+        width: 28rem;
+        height: 16rem;
+        padding: 5rem;
+        z-index: 2;
+    }
+    
+    #modal{
+        top: 20%;
+        width: 30%;
+        height: 30%;
+        padding: 2rem;
+    }
+    .modalEdit{
+        width: 56rem;
+        height: 36rem;
+    }
+    #inputEditDescription{
+        height: 14rem;
+        width: 42rem;
+    }
+    /* footer */
+    #footerWall{
+        display: none;
+    }
+}

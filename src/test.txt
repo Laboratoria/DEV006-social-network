@@ -1,0 +1,123 @@
+/* import jsdom from 'jsdom'; */
+import { securePassword, validatePassowrds, validateEmail } from '../src/lib/index.js';
+
+/* const { JSDOM } = jsdom;
+const dom = new JSDOM('<!DOCTYPE html><html><body></body></html>');
+global.document = dom.window.document; */
+
+describe('securePassword', () => {
+  let passwordInput;
+  let errorSpan;
+
+  beforeEach(() => {
+    passwordInput = {
+      value: '',
+      type: 'password',
+      id: 'txtPassword',
+      classList: {
+        contains: jest.fn().mockReturnValue(true),
+        add: jest.fn(),
+        remove: jest.fn(),
+      },
+    };
+
+    errorSpan = {
+      id: 'spanErrorPassword',
+      textContent: '',
+    };
+  });
+
+  test('should set class to valid and clear error span when password is strong', () => {
+    passwordInput.value = 'Abc123$';
+    securePassword(passwordInput, errorSpan);
+    expect(passwordInput.classList.contains('valid')).toBe(true);
+    expect(errorSpan.textContent).toBe('');
+  });
+
+  test('should set class to invalid and set error message when password is weak', () => {
+    passwordInput.value = 'password123';
+    securePassword(passwordInput, errorSpan);
+    expect(passwordInput.classList.contains('invalid')).toBe(true);
+    expect(errorSpan.innerHTML).toBe('Please enter a strong password that contains 6 to 15 characters, at least one uppercase letter, one lowercase letter, one digit, and one special character. Please make sure there are no spaces.');
+  });
+});
+
+describe('validatePassowrds function', () => {
+  it('returns an error message if the passwords do not match', () => {
+    const passwordValue = 'password1';
+    const passwordAgainValue = 'password2';
+    const passwordAgain = {
+      classList: {
+        remove: jest.fn(),
+        add: jest.fn(),
+      },
+    };
+    const spanErrorPasswordAgain = {
+      textContent: '',
+    };
+    validatePassowrds(passwordValue, passwordAgain, passwordAgainValue, spanErrorPasswordAgain);
+    expect(passwordAgain.classList.remove).toHaveBeenCalledWith('valid');
+    expect(passwordAgain.classList.add).toHaveBeenCalledWith('invalid');
+    expect(spanErrorPasswordAgain.textContent).toBe('Passwords are different.');
+  });
+
+  it('returns an empty string if the passwords match', () => {
+    const passwordValue = 'password1';
+    const passwordAgainValue = 'password1';
+    const passwordAgain = {
+      classList: {
+        remove: jest.fn(),
+        add: jest.fn(),
+      },
+    };
+    const spanErrorPasswordAgain = {
+      textContent: '',
+    };
+    validatePassowrds(passwordValue, passwordAgain, passwordAgainValue, spanErrorPasswordAgain);
+    expect(passwordAgain.classList.remove).toHaveBeenCalledWith('invalid');
+    expect(passwordAgain.classList.add).toHaveBeenCalledWith('valid');
+    expect(spanErrorPasswordAgain.textContent).toBe('');
+  });
+});
+
+describe('validateEmail function', () => {
+  it('returns an empty string if the email is valid', () => {
+    const emailValue = {
+      value: 'email@example.com',
+    };
+    const email = {
+      classList: {
+        remove: jest.fn(),
+        add: jest.fn(),
+      },
+    };
+    const spanErrorEmail = {
+      textContent: '',
+    };
+    validateEmail(email, emailValue, spanErrorEmail);
+
+    expect(email.classList.remove).toHaveBeenCalledWith('invalid');
+    expect(email.classList.add).toHaveBeenCalledWith('valid');
+    expect(spanErrorEmail.textContent).toBe('');
+  });
+
+  it('returns an error message if the email is not valid', () => {
+    const emailValue = {
+      value: 'invalid-email',
+    };
+    const email = {
+      classList: {
+        remove: jest.fn(),
+        add: jest.fn(),
+      },
+    };
+    const spanErrorEmail = {
+      textContent: '',
+    };
+    validateEmail(email, emailValue, spanErrorEmail);
+
+    expect(email.classList.remove).toHaveBeenCalledWith('valid');
+    expect(email.classList.add).toHaveBeenCalledWith('invalid');
+    expect(spanErrorEmail.textContent).toBe('Please enter a valid email.');
+  });
+});

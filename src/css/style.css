@@ -1,160 +1,791 @@
-*{
+/* Quitar estilos default */
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-html{
+/* Cada décima de rem tendrá valor de un pixel. Viene de (10/16) * 100 = 62.5 */
+html {
     font-size: 62.5%;
 }
 
 body {
-    height:100vh;
     background-color: #F0DBDB;
     font-family: 'Nunito', sans-serif;
-    
+    color: #292D32;
 }
 
-@media screen and (max-width:750px){
+/* Wallpaper */
 .bodyimg {
-
     background-color: rgba(255, 255, 255, 0.5);
     background-image: url(../img/wallpaper.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed ;
-    height:100vh;
+    height: 100%;
 }
 
-h1{
+/* Título de la app*/
+h1 {
     font-family: 'Acme', sans-serif;
-    font-size: 24px;
+    font-size: 3.2rem;
     margin: 5%;
-
+    color:#292D32;
 }
 
+/* Contenedor de iconos para desktop */
+.containerIcons{
+    display: none;
+}
 
+/*Nav bar con Log In y Sign Up*/
 nav {
     background-color: #EA907A;
     height: 44px;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
 }
 
+/* Navbar del muro/timeline */
+.wallNav{
+    display: grid;
+    grid-template-columns: 1fr 4fr 1fr;
+    grid-template-rows: 1fr;
+    grid-column-gap: 10px;
+    grid-row-gap: 0px;
+}
+
+.navNewpost{
+    justify-content: unset;
+}
+
+/* Botones de Home, Log In, Sign Up*/
 nav ul{
     list-style: none;
-
-
 }
+
 nav ul li{
-    display: inline-block;
-    
+    display: inline-block; 
 }
 
 nav ul li a{
     display: block;
     text-decoration: none;
-    color:#DE6D5B;
-    background-color: white;
+    color: #6E0707;
+    background: rgba(245, 235, 224, 0.5);
     border-radius: 5px;
     padding: 0.5rem 1rem;
     margin: 1rem;
     font-weight:700;
+    font-size: 15px;
+    cursor: pointer;
 }
 
-header img{
+/* Menú de hamburguesa mobile */
+.nav-menu.active {
+    right: 0;
+}
 
-    position: absolute;
+.nav-menu {
+    position: fixed;
+    z-index: 1;
+    right: 200%;
+    top: 4.4rem;
+    flex-direction: column;
+    background-color: #292D32;
+    color: white;
+    width: 30%;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow:
+        0 10px 27px rgba(0, 0, 0, 0.05);
+}
+
+.bar {
+    border-radius: 10px;
+    display: block;
+    width: 30px;
+    height: 4px;
+    margin: 5px 5px;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    background-color: #292D32;
+}
+
+.hamburger.active .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active .bar:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+}
+
+.hamburger.active .bar:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+}
+
+.nav-item {
+    margin: 1rem 0;
+    height: 20px;
+    font-size: 1.4rem;
+}
+
+.nav-item:hover {
+    cursor: pointer;
+}
+
+.hamburger {
+    display: block;
+    cursor: pointer;
+    margin: 5px;
+}
+/* Fin de menú de hamburguesa*/
+
+/* Titulo de wall*/
+.wallH1{
+    font-size: 24px;
+    position: relative;
+    top:5px;
+    margin: 0;
+}
+
+/* Logo*/
+header img {
     width: 42px;
     height: 40px;
-    left: 10px;
-    top: 3px;
+    margin: 4px;
 }
 
-.welcomemessage{
-    font-size: 15px;
-    background-color:  rgba(240, 219, 219, 0.7) ;
-    width: 288px;
-    height: 81px;
+/* Mensaje de bienvenida*/
+.welcomemessage {
+    font-size: 1.6rem;
+    background-color: rgba(240, 219, 219, 0.7);
+    width: 80vw;
+    height: 12%;
     text-align: center;
-    margin: 5%;
+    margin: 5% auto;
     border-radius: 5px;
     padding: 3%;
 } 
 
-
-.photopets img{
-    width: 119px;
-    height: 105px;
-    left: 29px;
-    top: 185px;
-    margin: 5% 5% 0% 5%;
+/*-------------------------------------------------Formularios de log in y sign up*/
+form {
+    width: 75vw;
+    margin: 4rem auto 5rem ;
+    background-color: white;
+    padding: 1rem;
+    border-radius: 15px;
+    box-shadow: 0px 0px 5px gray;
 }
 
-.contenedorcards div input{
-    width: 19px;
-    height: 19px;
-}
-.contenedorcards .cardpet{
-    width: 135px;
-    height: 141px;
-    background-color: #F0DBDB;
-    left: 174px;
-    top: 178px;
+/* Inputs de forms para log in y sign up*/
+form input {
     border-radius: 5px;
-  
+    border-color: #EA907A;
+    background-color: white;
+    display: block;
+    width: 85%;
+    min-height: 4vh;
+    margin: 1rem auto;
 }
 
-h3 {
-    font-size: 12px;
-    
-    margin: 0;
-    
+form h2{
+    font-size: 24px;
+    text-align: center;
+}
+
+form ul {
+    list-style: none;
+    margin-top: 3px;
+}
+
+/* Contenedor para email y password*/
+.group {
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.login{
+    height: 100vh;
+}
+
+.register{
+    margin-bottom: 5rem;
+}
+
+.containerLoginOptions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    height: 20vh;
+    font-size: 1.6rem;
+}
+
+/* Mensajes de error en log in */
+#spanErrorEmail, #spanErrorPassword, #spanErrorPasswordAgain {
+    font-size: 1.1rem;
+}
+
+#forgotPassword {
+    font-size: 1.4rem;
+}
+
+hr {
+    width: 100%;
+}
+
+.logInWith {
+    background-color: white;
+    width: 105px;
+    position: relative;
+    top: 5px;
+    text-align: center;
+    font-weight: unset;
+}
+#btnSignup{
+    color: #551a8b;
+    cursor: pointer;
+    text-decoration: underline;
+}
+#btnLogin {
+    border-radius: 5px;
+    background-color: #4285F4;
+    border: #4285F4;
+    color: #ffffff;
+    width: 85%;
+    height: 34px;
+    display: block;
+    margin: auto;
+    font-size: 15px;
+    font-weight:500;
+    cursor: pointer;
+}
+
+#btnLogin:hover {
+    background-color: #acccff;
+    color: #292D32;
+}
+
+.labelQuestions {
+    display: block;
+    font-size: 1.7rem;
+    margin: auto 8%;
+    margin-bottom: 2rem;
+}
+
+#btnRegister{
+    border-radius: 5px;
+    background-color: #4285F4;
+    border: #4285F4;
+    color: #ffffff;
+    width: 85%;
+    height: 34px;
+    margin: auto;
+    display: block;
+    cursor: pointer;
+}
+
+#btnRegister:hover {
+    background-color: #acccff;
+    color: #292D32;
+}
+
+.btnGoogle {
+    width: 15rem;
+    height: 4rem;
+    background-color: white;
+    color: rgba(0, 0, 0, 0.54);
+    border: 1px solid gray;
+    box-shadow: 0px 3px 3px gray;
+    border-radius: 5px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.btnGoogle img {
+    height: 42px;
+}
+
+/* Validaciones de email y contraseña segura */
+#txtEmail.valid {
+    border: 2px solid green;
+}
+
+#txtEmail.invalid {
+    border: 2px solid red;
+    color: red;
+    font-style: italic;
+}
+#txtPassword.valid {
+    border: 2px solid green;
+}
+
+#txtPassword.invalid {
+    border: 2px solid red;
+    color: red;
+    font-style: italic;
+}
+
+#txtPasswordAgain.valid {
+    border: 2px solid green;
+}
+
+#txtPasswordAgain.invalid {
+    border: 2px solid red;
+    color: red;
+    font-style: italic;
+}
+
+#spanCreateUser {
+    font-size: 2rem;
+    font-weight: 700;
+    border-radius: 8px;
+    background-color: #10a70eb8;
+    background-color: #DBF0E6;
+    margin: 2rem auto;
+    height: 4rem;
+    padding: 1rem;
+    box-shadow: 1px 1px 4px gray;
+    color: #315B22;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+/* Fin de formularios*/
+
+/* Tarjetas de animales*/
+.contenedorcards div input {
+    width: 2.8rem;
+    height: 2.8rem;
 }
 
 .contenedorcards{
     display: flex;
-    flex-direction: row;
-    gap: 20px;
+    flex-wrap: wrap;
+    gap: 1.2rem;
     justify-content: center;
-    
-
-
 }
 
-.interactionpets{
+.contenedorcards .cardpet {
+    width: 28rem;
+    height: 32rem;
+    background-color: #F0DBDB;
+    border-radius: 8px;
+    margin: 4% auto;
+}
+
+.photopets img {
+    width: 26rem;
+    height: 25rem;
+    margin: 4%;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.petName {
+    font-size: 2rem;
+    margin-left: 12px;
+    color: #292D32;
+}
+
+/* Íconos para tarjetas en Welcome */
+.interactionpets {
     display: grid;
-    grid-template-columns: 3fr 1fr 1fr;
-        
+    grid-template-columns: 1fr 2fr 0.5fr;
 }
 
+/* Testimonios */
 .testimonies{
     font-family: 'Acme', sans-serif;
-    font-size: 14px;
-    margin-top: 10px;
-    margin: 10px;
+    font-size: 2.4rem;
+    margin: 2% 0 0 5%;
+    color: #292D32;
 }
 
-.menssagetesti{
+.messagetesti{
     background-color: #F0DBDB;
     border-radius: 5px;
-    margin: 8px 10px;
-    font-size: 12px;
+    margin: 3% auto;
+    font-size: 1.4rem;
     padding: 7px;
-
+    width: 80vw;
 }
 
-footer {
+/*-------------------------------------------------Inicia muro/timeline*/
 
+/* Modal de información de la patita */
+.modalPaw{
+    position: absolute;
+    z-index: 2;
+    background-color:#EA907A;
+    border: none;
+    margin: 2rem auto;
+    width: 30rem;
+    height: 14%;
+    font-size: 2.4rem;
+    text-align: center;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #292D32;
+    font-weight:bold;
+}
+
+.modalPaw img{
+    width: 2.4rem;
+    height: 2.4rem;
+    margin: 1rem;
+    vertical-align: middle;
+}
+
+.postsSection {
+    max-width: 600px;
+    margin: auto;
+}
+
+/* Tarjetas de posts*/
+.postsSection .postArticle {
+    margin: 3%;
+    background-color: #F0DBDB;
+    box-shadow: 1px 1px 5px 1px gray;
+    border-radius: 16px;
+    padding: 0.8rem 1.2rem;
+    position: relative;
+}
+
+.postArticle .descriptionPet {
+    background-color: rgba(222, 109, 91, 0.3);
+    margin: 2% 0;
+    border-radius: 10px;
+    border: 1px solid #292D32;
+    font-size: 1.6rem;
+    color: #292d32;
+    line-height: 2.7rem;
+    padding: 0.4rem;
+}
+
+.wallUsername, .namePet {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #292d32;
+}
+
+.postArticle .namePet {
+    font-size: 1.6rem;
+}
+
+.newPostDiv section nav img { /* imagen de regreso desde newpost al muro*/
+    width: 2.4rem;
+    height: 2.4rem;
+    object-fit: contain;
+    margin-left: 2rem;
+    cursor: pointer;
+}
+
+/* Reacciones del post*/
+.postArticle .reactionContainer img {
+    width: 2.4rem;
+    height: 2.4rem;
+}
+
+.reactionContainer {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 12fr 1fr;
+    grid-column-gap: 4px;
+}
+
+#pawMatch{
+    grid-column: 5;
+}
+
+.likeCount{
+    font-size: 1.4rem;
+    margin: auto 0;
+    text-align: left;
+}
+
+/* Menú de eliminar y editar post*/
+/* Contenedor de usuario y menú de 3 puntos*/
+.divUsersPointsEl{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#iconoPoints {
+    cursor: pointer;
+}
+
+/* Menú de 3 puntos desplegado */
+.menuPoints{
+    background-color: #292D32;
+    color: white;
+    width: 100%;
+    height: 40%;
+    border-radius: 15px 15px 0 0;
+    text-align: center;
+    box-shadow:
+        0 10px 27px rgba(0, 0, 0, 0.05);
+    position: fixed;
+    z-index: 3;
+    list-style: none;
+    left:0;
+    font-size: 2.4rem;
+    border: none;
+    bottom: 0;
+}
+
+.menuPoints .iconClose{
+    position: relative;
+    margin: 2rem;
+    right: -40%;
+    width: 2rem;
+    height: 2rem;
+    cursor: pointer;
+}
+
+.menuPoints li{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    padding: 2rem 8rem;
+    text-align: left;
+    cursor: pointer;
+}
+
+.ulModal li {
+    list-style: none;
+    padding: 1rem;
+    cursor: pointer;
+}
+
+.ulModal li:nth-child(1) {
+    color: #ff0000;
+}
+
+.menuPoints .liDelete {
+    color: #ff0000;
+}
+
+/*Modal para confirmar eliminado*/
+#modal{
+    position: absolute;
+    margin: auto;
+    width: 80%;
+    height: 34%;
+    background: #292D32;
+    border-radius: 15px;
+    border: none;
+    color: #FFFFFF;
+    font-size: 2.4rem;
+    text-align: center;
+    padding: 2.8rem;
+    z-index: 1;
+}
+
+#modal p {
+    padding: 1rem;
+}
+
+.bodyimg footer img:hover{ /* íconos de navegación*/
+    cursor: pointer;
+}
+
+#modalConfirm img {
+    margin: 0 1rem;
+}
+
+/* Modal/formulario de edición */
+.modalEdit {
+    position: absolute;
+    margin: 0rem auto;
+    width: 30rem;
+    height: 42rem;
+    background: #292D32;
+    border-radius: 15px;
+    border: none;
+    color: #FFFFFF;
+    font-size: 2.4rem;
+    text-align: center;
+    padding: 2rem;
+    z-index: 1;
+}
+
+.editContainer {
+   display: flex;
+   flex-direction: row;
+   gap: 1rem;
+}
+
+.editContainer .iconClose{
+    object-fit: contain;
+    cursor: pointer;
+}
+
+.editHr {
+    margin: 1rem auto;
+}
+
+.formEdit {
+    background-color: #292D32;
+    box-shadow: none;
+    width: 100%;
+    margin: unset;
+}
+
+.formEdit #inputEditName, .formEdit #inputEditDescription{
+    background-color: #292D32;
+    color: white;
+    border-color:#EA907A ;
+    padding: 0.5rem;
+    font-size: 2rem;
+    font-family: 'Nunito', sans-serif;
+}
+
+#buttonEdit{
+    position: absolute;
+    width: 7.8rem;
+    height: 3rem;
+    right: 2rem;
+    top: 2rem;
+    background: #DBA39A;
+    border: 1px solid #EA907A;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 1.6rem;
+    line-height: 20px;
+    letter-spacing: 0.1em;
+    color: #6E0707;
+}
+
+/* Modal de confirmación de eliminado y editado */
+#modalConfirm, #modalConfirmEdit {
+    position: fixed;
+    margin: auto;
+    width: 28rem;
+    height: 10rem;
+    padding: 2rem;
+    top: 17rem;
+    background: #292D32;
+    border-radius: 15px;
+    border: none;
+    color: #ffffff;
+    font-size: 2.4rem;
+    text-align: center;
+    z-index: 1;
+}
+
+/*-------------------------------------------------Inicia crear publicación/post*/
+.newPostDiv {
+    height: 100vh;
+    background-color: #292D32;
+}
+
+.newPostDiv section nav {
+    background-color: #292D32;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.newPostDiv section nav #pCreatePost {
+    font-size: 2rem;
+    color: white;
+    margin-left: 2rem;
+}
+
+.newPostDiv .formpost {
+    background-color: #292D32;
+    box-shadow: unset;
+    display: flex;
+    flex-direction: column;
+}
+
+.formpost .userContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+/* Reeplicando estilos para forms de crear post y editar post*/
+.formpost .profilePic, .modalEdit .profilePic {
+    width: 3.2rem;
+    height: 3.2rem;
+    border-radius: 24px;
+}
+
+.formpost .userName, .modalEdit .userName {
+    font-size: 1.8rem;
+    color: white;
+    font-weight: 700;
+    margin-left: 1rem;
+}
+
+.formpost #Post {
+    position: absolute;
+    width: 7.8rem;
+    height: 3rem;
+    right: 1rem;
+    top: 5rem;
+    background: #DBA39A;
+    border: 1px solid #EA907A;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 1.6rem;
+    line-height: 20px;
+    letter-spacing: 0.1em;
+    color: #6E0707;
+}
+
+.formpost #Post:hover {
+    cursor: pointer;
+    background-color: white;
+    color: #EA907A;
+    border: none;
+}
+
+.newPostDiv .formpost input, .newPostDiv .formpost textarea {
+    background-color: #292D32;
+    color: white;
+    border: 2px solid #EA907A;
+    border-radius: 5px;
+    font-size: 2rem;
+    margin: 2% auto;
+    width: 100%;
+}
+
+/* Íconos de navegación*/
+footer {
     background-color: #EA907A;
     height: 40px;
     color:white;    
-    position: fixed;
     bottom: 0;
     width: 100%;
     text-align: center;
     padding: 10px;
-
+    font-size: 1.4rem;
+    font-weight: 700;
 }
 
+.footerParagraph, .gitHubLinks {
+    color: #292D32;
+}
+
+.bodyimg footer {
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 2.4rem 0;
+    z-index: 2;
 }
