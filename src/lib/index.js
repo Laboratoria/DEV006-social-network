@@ -23,7 +23,7 @@ export const auth = getAuth(app);
 const dataBase = getFirestore(app); // Initialize Firestore
 export const colRef = collection(dataBase, 'post'); // Referencia de la colección de "post"
 const orderedQuery = query(colRef, orderBy('timestamp', 'desc')); // Consulta la colección y la ordena los posts por su fecha/hora de publicación
-
+export const uid = auth.currentUser.uid;
 // Fx para crear usuarix
 export const createUser = async (navigateTo) => {
   const email = document.getElementById('txtEmail');

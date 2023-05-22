@@ -1,23 +1,43 @@
 /* *
  * @jest-environment jsdom
  */
-import { deletePost, getPost, auth } from '../src/lib/index.js';
+import { deletePost, getPost } from '../src/lib/index.js';
 import { wall } from '../src/view/wall.js';
-
-jest.mock('../src/lib/index.js', () => ({
-  getPost: jest.fn().mockResolvedValue,
-  deletePost: jest.fn(),
-  exit: jest.fn(() => Promise.resolve()),
-}));
 
 jest.mock('firebase/auth', () => ({
   getAuth: () => ({
     currentUser: {
-      displayName: 'Jhon Doe',
-      uid: '4yfd', // Simular el displayName del usuario actual
+      displayName: 'John Doe',
+      uid: '787tgftyft',
     },
   }),
 }));
+
+jest.mock('../src/lib/index.js', () => ({
+  getPost: jest.fn(),
+  deletePost: jest.fn(),
+  exit: jest.fn(() => Promise.resolve()),
+}));
+
+/* jest.mock('firebase/auth', () => ({
+  getAuth: () => ({
+    currentUser: {
+      displayName: 'Jhon Doe',
+      uid: '4yfd',
+    },
+  }),
+})); */
+/* jest.mock('firebase/auth', () => {
+  const currentUser = {
+    uid: '1',
+  };
+
+  return {
+    getAuth: () => ({
+      currentUser,
+    }),
+  };
+}); */
 
 describe('Se renderiza el componente del muro', () => {
   let newWall;
@@ -38,8 +58,8 @@ describe('Se renderiza el componente del muro', () => {
     getPost.mockImplementation((callback) => {
       callback(mockQueryData);
     });
+    newWall = wall();
   });
-  newWall = wall();
   afterEach(jest.clearAllMocks);
 
   test('Deben estar los elementos para el wall', () => {

@@ -1,5 +1,5 @@
 import {
-  exit, deletePost, auth, editPosts, getPost, likePost, dislikePost,
+  exit, deletePost, editPosts, getPost, likePost, dislikePost, uid,
 } from '../lib/index.js';
 
 export const wall = (navigateTo) => {
@@ -201,7 +201,7 @@ export const wall = (navigateTo) => {
       const likeHeart = document.createElement('img');
       /* Operador ternario para identificar si existe un usuario en la data de like.
       si existe se mostrara la img de activo, si no cambiara a la imagen de corazón blanco */
-      likeHeart.setAttribute('src', post.data().like.includes(auth.currentUser.uid) ? 'img/likeactivo.png' : 'img/like.png');
+      likeHeart.setAttribute('src', post.data().like.includes(uid) ? 'img/likeactivo.png' : 'img/like.png');
       likeHeart.setAttribute('id', 'likeHeart');
 
       // span para mostrar la cantidad de like que se ha dado al post
@@ -272,7 +272,7 @@ export const wall = (navigateTo) => {
       modalConfirm.append(pDeleted, iconCheck);
 
       // --------------condición para el menu points, solo lo veran en el post del usuario activo
-      if (post.data().uid === auth.currentUser.uid) {
+      if (post.data().uid === uid) {
         divUsersPointsEl.append(iconoPoints);
         postArticle.append(menuPoints);
         liDelete.append(iconTrash, 'Delete');
@@ -303,7 +303,7 @@ export const wall = (navigateTo) => {
         e.preventDefault();
         /* Si dentro del array de la key "like" existe el uid del usuario actual,
         entonces se quita el like */
-        if (post.data().like.includes(auth.currentUser.uid)) {
+        if (post.data().like.includes(uid)) {
           dislikePost(post.id);
         } else {
           likePost(post.id);
