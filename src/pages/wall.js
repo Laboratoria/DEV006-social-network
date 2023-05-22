@@ -1,10 +1,10 @@
-/* eslint-disable max-len */
 /* eslint-disable no-undef */
 /* eslint-disable no-console */
 /* eslint-disable import/no-extraneous-dependencies */
-import { collection, getDocs, addDoc } from 'firebase/firestore';
+import {
+  collection, getDocs, addDoc, doc,
+} from 'firebase/firestore';
 import { db } from '../lib/firebase';
-// import { userEmail } from './signIn.js';
 
 export function wall() {
   // Crear elementos
@@ -12,17 +12,20 @@ export function wall() {
   const navegator = document.createElement('nav');
   const logoRefresh = document.createElement('img');
   const divposts = document.createElement('div');
-  const button = document.createElement('button');
+  const buttonCreatePost = document.createElement('button');
   const textarea = document.createElement('textarea');
+  const writeAndPost = document.createElement('div');
 
   // Establecer atributos y contenido
   logoRefresh.setAttribute('src', './images/logoEasygym.png');
   logoRefresh.setAttribute('onclick', 'location.reload()');
   container.id = 'container';
   divposts.id = 'posts';
-  button.classList.add('bttn');
-  button.textContent = 'Crear Post';
+  buttonCreatePost.classList.add('buttonCreatePost');
+  buttonCreatePost.textContent = 'Post';
   textarea.classList.add('textArea');
+  // textarea.setAttribute('rows', '4');
+  writeAndPost.classList.add('writeAndPost');
 
   // exitButton.id = 'exit';
   logoRefresh.classList.add('refresh');
@@ -30,9 +33,14 @@ export function wall() {
   // Agregar elementos a nav
   navegator.appendChild(logoRefresh);
 
+  // Agregar elementos a divposts
+  divposts.appendChild(writeAndPost);
+
+  // Agregar elementos a writeAndPost
+  writeAndPost.appendChild(textarea);
+  writeAndPost.appendChild(buttonCreatePost);
+
   // Agregar elementos al contenedor (div) especificado
-  container.appendChild(button);
-  container.appendChild(textarea);
   container.appendChild(navegator);
   container.appendChild(divposts);
 
@@ -67,7 +75,7 @@ export function wall() {
     infoUser.appendChild(publicDate);
     post.appendChild(infoUser);
     post.appendChild(descriptionAndLikes);
-    divposts.appendChild(post);
+    divposts.appendChild(post); // return post prepend
   };
 
   const postPromise = getDocs(collection(db, 'Posts'));
@@ -78,7 +86,7 @@ export function wall() {
     });
   });
 
-  button.addEventListener('click', async () => {
+  buttonCreatePost.addEventListener('click', async () => {
     const data = {
       avatar: 'fto',
       descripción: textarea.value,
