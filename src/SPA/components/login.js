@@ -2,8 +2,10 @@ function login(navegateTo) {
 // llamar al DOM y crear cada elemento
 // crear nuestro html usando createElement
   const section = document.createElement('section');
+  const sectionLogin = document.createElement('section');
   const sectionLogo = document.createElement('div');
   const logo = document.createElement('img');
+  const sectionPets = document.createElement('div');
   const animales = document.createElement('img');
   const form = document.createElement('form');
   const contenedorC = document.createElement('article');
@@ -19,18 +21,25 @@ function login(navegateTo) {
   const image = document.createElement('img');
   const contenedorR = document.createElement('section');
   const pregunta = document.createElement('h2');
-  const buttonRegistrate = document.createElement('p');
+  const buttonRegistrate = document.createElement('a');
+  const divIzquierdo = document.createElement('div');
+  const cel = document.createElement('img');
+  const texto = document.createElement('p');
 
   /* agregando imagen al dom dentro de esta seccion
   logo.src = '../assets/logo1.png';
   animales.src = '../assets/imagPets2.jpg'; */
 
-  // Agregar atributos a las imágenes del logo y animales
+  // Agregar atributos a las img del logo
   logo.classList.add('logo');
   logo.setAttribute('src', '../assets/logo1.png');
+  sectionLogo.classList.add('sectionLogo');
+  sectionLogo.append(logo);
+
+  // agregando atributos a la img de los pets
   animales.classList.add('animales');
   animales.setAttribute('src', '../assets/imagPets2.jpg');
-  sectionLogo.append(logo, animales);
+  sectionPets.className = 'sectionPets';
 
   buttonSignGoogle.classList.add('google');
   image.src = '../assets/google.png';
@@ -60,6 +69,13 @@ function login(navegateTo) {
   contenedorR.classList.add('centrado');
   contenedorR.append(pregunta, buttonRegistrate);
 
+  // PANTALLA PC
+  texto.textContent = 'Ingresa a nuestra app y forma parte de esta linda comunidad. Comparte tips, anécdotas y/o fotos de tu  peludito.';
+  cel.classList.add('cel-perro');
+  cel.setAttribute('src', '../assets/celPerrito.png');
+  divIzquierdo.classList.add('div-left');
+  divIzquierdo.append(texto, cel);
+
   // callback a los botones
   buttonLogin.classList.add('login');
   buttonLogin.textContent = 'Iniciar Sesión';
@@ -75,12 +91,17 @@ function login(navegateTo) {
 
   // agregando elementos al form
   form.append(contenedorC, inputCorreo, contenedorP, inputPassword, buttonLogin);
+  sectionPets.append(animales, form, buttonSignGoogle, contenedorR);
+
+  // agregando elementos a toda la seccion login
+  sectionLogin.classList.add('sectionLogin');
+  sectionLogin.append(sectionLogo, sectionPets);
+
   // agregar los elementos al DOM
+  section.classList.add('sectionGeneral');
   section.append(
-    sectionLogo,
-    form,
-    buttonSignGoogle,
-    contenedorR,
+    divIzquierdo,
+    sectionLogin,
   );
 
   return section;
