@@ -35,8 +35,8 @@ export function wall() {
 
   // Agregar elementos a divposts
   divposts.appendChild(writeAndPost);
-
-  // Agregar elementos a writeAndPost
+  
+    // Agregar elementos a divposts
   writeAndPost.appendChild(textarea);
   writeAndPost.appendChild(buttonCreatePost);
 

@@ -35,7 +35,7 @@ header {
 
 nav {
     height: 7vh;
-    width: 100vw;
+    width: 100%;
     background: #dfa0a0;
     display: flex;
     justify-content: center;
@@ -130,6 +130,7 @@ a {
     padding-top: 10px;
     gap: 20px;
     overflow: auto;
+    overflow-x: hidden;
     scrollbar-width: thin;
     /* Oculta la barra de desplazamiento en navegadores compatibles */
     scrollbar-color: transparent transparent;
