@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Limelight&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Ysabeau:wght@600&display=swap');
 
 * {
@@ -10,7 +9,7 @@
 body {
     font-family: 'limelight', sans-serif;
     color: rgb(43, 43, 43);
-    background-color: #9EDEF9;
+    background-color: #C8EFEB;
 }
 
 div{
@@ -18,88 +17,171 @@ div{
     display: flex;
     align-items: center;
     flex-direction: column;
+    width: 100%;
+}
+
+.sectionGeneral {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.div-left{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background-color: #F4FF20;
+  margin: 0 100px 0 0;
+  max-width: 42%;
+  height: 100%;
+}
+
+.div-left p{
+text-align: center;
+font-family: 'Ysabeau', sans-serif;
+font-size: 20px;
+margin: 3.2em 1.5em 2.7em 1.5em;
+color: #4B332A;
+text-shadow: 0 2px 5px #4b3027d8;
+}
+
+.div-left img.cel-perro {
+  width: 330px;
+  padding: 1em;
+}
+
+.sectionLogin {
+  display: block;
+  align-items: center;
+  justify-content: center;
+  margin: 2px 80px 0 100px;
+  height: 100%;
 }
 
 .logo{
-    width: 38em;
-    margin: 3em 0 0 0;
+    width: 15.9em;
+    height: 7em;
+    margin: 0.35em 0 1em 0;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+}
+
+.logo:hover {
+  transform: scale(1.1);
+}
+
+.sectionPets{
+  width: 26em;
+  height: 29.9em;
+  border: 2px solid #c8c7c7c0;
+  box-shadow: 0 11px 11px rgba(112, 112, 112, 0.487);
+  border-radius: 30px;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.sectionPets.active{
+  box-shadow: 0 15px 15px rgba(25, 25, 25, 0.781);
+}
+
+.sectionPets:hover{
+  box-shadow: 0 15px 15px rgba(25, 25, 25, 0.781);
 }
 
 .animales{
-    width: 55em;
-    margin: 2.5em 0 7em 0;
+    width: 25.7em;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    margin-top: -1.8em;
+}
+
+form{
+  margin-top: 4.7em;
 }
 
 article{
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: flex-start;
-    margin-bottom: 1.5em;
+    margin-bottom: 1em;
+    margin-top: -2em;
 }
 
 .icon-heart{
-    width: 1.5em;
-    margin-right: 10px;
+    width: 1.3em;
+    height: 1.25em;
+    margin-right: 3px;
 }
 
 label{
+    width: 12.7em;
     justify-content: left;
-    font-size: 30px;
-    padding: 0.5em;
-    text-shadow: 2px 2px 4px rgba(80, 79, 79, 0.813);
+    font-size: 22px;
+    padding: 0.6em;
+    text-shadow: 1px 4px 5px rgba(80, 79, 79, 0.813);
     font-family: 'Ysabeau', sans-serif;
-
 }
 
     input {
-    width: 85%;
-    height: 2.8em;
+    width: 100%;
+    height: 2.2em;
     box-shadow: 0 7px 7px rgba(112, 112, 112, 0.487);
     border-radius: 10px;
     margin: 0 auto 0 auto; 
     display: block;
-    border: none; 
+    border: none;
+    cursor: text;
+    background-color: white;
 }
 
 #email, #password {
-    margin-top: -2em;
-    margin-bottom: 2.5em;
+    margin-top: -2.1em;
+    margin-bottom: 2em;
 }
 
 #email::placeholder,
 #password::placeholder {
     color: #8e8e8e;
-    font-size: 21px;
+    font-size: 18px;
     font-family: 'Ysabeau', sans-serif;
     text-align: center;
+    margin-left: 1em;
 }
 
 .login{
-    background-color: #EF8421;
-    color: white;
+    background-color: #F4FF20;
+    color: #353131;
+    text-shadow: 2px 2px 7px rgba(80, 79, 79, 0.855);
     font-family: 'Ysabeau', sans-serif;
-    font-size: 20px;
-    font-weight: bold;
-    border: 2px solid #ffffff;
-    width: 50%;
-    height: 2.5em;
+    font-size: 22px;
+    font-weight: bolder;
+    border: 2px solid #353131;
+    width: 100%;
+    height: 1.6em;
     border-radius: 10px;
-    margin: 4em auto 2em auto; 
+    margin: 0.2em auto 0.6em auto; 
     display: block;
-    box-shadow: 2px 2px 7px 7px rgba(255, 255, 255, 0.627);
+    box-shadow: 0 6px 6px rgba(112, 112, 112, 0.487);
     cursor: pointer;
   }
 
+.login:active,
 .login:hover{
-    background-color: #fa5503;
+    background-color: #97ff06;
+    color: #ffffff;
+    border: 2px solid #ffffff;
+    box-shadow: 1px 1px 4px 4px rgba(255, 255, 255, 0.627);
 }
 
   .google{
-    margin: 0 300px 0 300px;
-    border-radius: 10px;
     border: none;
-    box-shadow: 1px 1px 4px 4px rgba(255, 255, 255, 0.627);
+    border-radius: 10px;
   }
 
   @keyframes tambaleo-suave {
@@ -138,16 +220,17 @@ label{
     }
   }
 
+  .google.active,
   .google:hover{
     box-shadow: 1px 1px 5px 5px rgba(0, 10, 196, 0.696);
-    animation: tambaleo-suave 1.5s infinite;
+    animation: tambaleo-suave 1.8s infinite;
   }
 
   .google img { 
     display: flex;
-    width: 590px; 
-    height: 47px;
-    border-radius: 5px;
+    width: 305px; 
+    height: 35px;
+    border-radius: 10px;
     cursor: pointer;
   }
   
@@ -156,23 +239,26 @@ label{
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    margin-top: 2em;
-    font-size: 18px;
+    margin: 1.8em auto 0.8em auto;
+    font-size: 13px;
     font-family: 'Ysabeau', sans-serif;
+    cursor: none;
   }
 
   .button-registrate {
     font-weight: 800;
-    font-size: 30px;
-    padding-left: 50px;
+    font-size: 21px;
+    padding-left: 9px;
     cursor: pointer;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.75);
 
   }
   
+  .button-registrate.active,
   .button-registrate:hover {
     color: #ef6621;
     font-weight: 900;
+    cursor: pointer;
     text-shadow: 2px 2px 4px rgba(255, 106, 7, 0.813);
     animation: tambaleo 0.5s infinite;
   }
@@ -194,3 +280,103 @@ label{
       transform: rotate(0deg);
     }
   }
+
+  a.button-registrate {
+    text-decoration: underline;
+  }
+
+
+
+
+@media (min-width: 1440px) {
+    
+    #root {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+    }
+
+  }
+
+  
+@media only screen and (max-width: 768px) {
+
+#root {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.sectionLogin {
+  text-align: center;
+  justify-content: center;
+}
+
+.logo{
+  width: 18em;
+  height: 9.8em;
+  transition: transform 0.3s ease-in-out;
+  margin: 0 1.25em 1em 0;
+}
+
+.sectionPets {
+  padding: 20px;
+  width: 20em;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  margin: 1em 1.25em 0 0;
+}
+
+.animales {
+  width: 20em;
+  margin-top: -1.5em;
+}
+
+form{
+  margin-top: 5em;
+}
+
+.icon-heart{
+  margin-left: 1px;
+}
+
+label{
+  width: 300px;
+  padding: 0.6em;
+  margin-left: -90px;
+  margin-right: 60px;
+}
+
+article{
+  margin-bottom: 1em;
+  margin-top: -2em;
+}
+
+.div-left{
+  display: none;
+}
+
+.login{
+    margin: 1em auto 0.8em auto; 
+  } 
+
+.google img { 
+    width: 295px; 
+}
+
+.centrado {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin: 2.2em -1em 1em -1em;
+}
+
+.button-registrate {
+  padding-left: 13px;
+}
+}
