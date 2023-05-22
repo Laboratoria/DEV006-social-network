@@ -23,6 +23,7 @@ div{
 .sectionGeneral {
   display: flex;
   flex-wrap: nowrap;
+  height: 100%;
 }
 
 .div-left{
@@ -285,7 +286,13 @@ label{
     text-decoration: underline;
   }
 
-
+.message-error{
+  background-color: red;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+}
 
 
 @media (min-width: 1440px) {
