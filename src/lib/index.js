@@ -110,14 +110,15 @@ export const LoginUser = (navigateTo) => {
 
 // Fx para sign out
 export const exit = (navigateTo) => {
-  signOut(auth).then(() => {
+  signOut(auth)
+    .then(() => {
     // Sign-out successful.
-    console.log('saliendo');
-    navigateTo('/');
-  }).catch((error) => {
-    console.log(error);
+      console.log('saliendo');
+      navigateTo('/');
+    }).catch((error) => {
+      console.log(error);
     // An error happened.
-  });
+    });
 };
 
 // Obtiene los datos de nuestra colección

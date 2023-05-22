@@ -1,28 +1,21 @@
 /* *
  * @jest-environment jsdom
  */
-import { deletePost } from '../src/lib/index.js';
+import { getAuth } from 'firebase/auth';
+import { deletePost, getPost } from '../src/lib/index.js';
 import { wall } from '../src/view/wall.js';
 
-jest.mock('firebase/firestore', () => ({
-  getDocs: jest.fn().mockResolvedValue({
-    docs: [
-      {
-        data: jest.fn().mockReturnValue({}),
-        id: 'mockedId',
-      },
-    ],
-  }),
-  getFirestore: jest.fn().mockResolvedValue,
-  collection: jest.fn().mockResolvedValue,
-  orderBy: jest.fn().mockResolvedValue,
-  query: jest.fn().mockResolvedValue,
+jest.mock('../src/lib/index.js', () => ({
+  getPost: jest.fn().mockResolvedValue,
+  deletePost: jest.fn(),
+  exit: jest.fn(() => Promise.resolve()),
 }));
 
 jest.mock('firebase/auth', () => ({
   getAuth: () => ({
     currentUser: {
-      displayName: 'John Doe', // Simular el displayName del usuario actual
+      displayName: 'Jhon Doe',
+      uid: '4yfd', // Simular el displayName del usuario actual
     },
   }),
 }));
@@ -68,9 +61,21 @@ describe('Se renderiza el componente para eliminar una publicación nueva', () =
     expect(newWall.querySelector('dialog')).toBeTruthy();
   });
 
-  test('si se cumple que post.userid === currentUser', () => {
+  test('al hacer clic en el menú hamburguesa la clase debe cambiar a active', () => {
+    const container = document.createElement('section');
+    container.append(wall());
+    const hamburgerArticle = container.querySelector('.hamburger');
+    const sectionMenu = document.createElement('section-menu');
+
+    hamburgerArticle.dispatchEvent(new Event('click'));
+    expect(sectionMenu.classList.contains('active')).toBe(false);
+
+    expect(sectionMenu.classList.contains('active')).toBe(false);
+  });
+
+  test('si se cumple que post.usename === currentUser', () => {
     setTimeout(() => {
-      const post = { userid: 'nombreDeUsuario' };
+      const post = { username: 'nombreDeUsuario' };
       const auth = { currentUser: { displayName: 'nombreDeUsuario' } };
 
       // Ejecuta el bloque de código
@@ -109,17 +114,17 @@ describe('Se renderiza el componente para eliminar una publicación nueva', () =
       expect(newWall.querySelector('.ulModal li.liCancel')).toBeTruthy();
 
       // Verifica que la condición se cumpla
-      expect(post.userid === auth.currentUser.displayName).toBe(true);
+      expect(post.username === auth.currentUser.displayName).toBe(true);
     }, 1000);
   });
 
   test('si no se cumple que post.userid === currentUser', () => {
     // Simula el escenario estableciendo los valores esperados
-    const post = { userid: 'nombreDeUsuario' };
+    const post = { username: 'nombreDeUsuario' };
     const auth = { currentUser: { displayName: 'otroUsuario' } };
 
     // Verifica que la condición no se cumpla
-    expect(post.userid === auth.currentUser.displayName).toBe(false);
+    expect(post.username === auth.currentUser.displayName).toBe(false);
   });
 
   test('la fx deletePost recibe el id', () => {
