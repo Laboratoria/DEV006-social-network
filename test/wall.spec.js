@@ -1,8 +1,7 @@
 /* *
  * @jest-environment jsdom
  */
-import { getAuth } from 'firebase/auth';
-import { deletePost, getPost } from '../src/lib/index.js';
+import { deletePost, getPost, auth } from '../src/lib/index.js';
 import { wall } from '../src/view/wall.js';
 
 jest.mock('../src/lib/index.js', () => ({
@@ -20,24 +19,27 @@ jest.mock('firebase/auth', () => ({
   }),
 }));
 
-jest.mock('../src/lib/index.js', () => {
-  const originalModule = jest.requireActual('../src/lib/index.js');
-  return {
-    __esModule: true,
-    ...originalModule,
-    deletePost: jest.fn((id) => originalModule.deletePost(id)),
-  };
-});
-
-// Test para rendrización de wall.js
-describe('Se renderiza el componente para eliminar una publicación nueva', () => {
+describe('Se renderiza el componente del muro', () => {
   let newWall;
 
   beforeEach(() => {
-    newWall = wall();
-  });
+    const mockQueryData = [
+      {
+        id: 'postid',
+        data: jest.fn().mockReturnValue({
+          petName: 'Fido',
+          description: 'Perro lindo',
+          username: 'Marissa Vargas',
+          like: [],
+        }),
+      },
+    ];
 
-  /* borrar todos los mocks creados por Jest después de cada prueba, práctica necesaria */
+    getPost.mockImplementation((callback) => {
+      callback(mockQueryData);
+    });
+  });
+  newWall = wall();
   afterEach(jest.clearAllMocks);
 
   test('Deben estar los elementos para el wall', () => {
