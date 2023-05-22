@@ -1,4 +1,4 @@
-main{
+main {
     margin: 0;
     justify-content: center;
 }
@@ -6,9 +6,10 @@ main{
 body {
     height: 100%;
     background: #98DEE9;
-    
+
 }
-form{
+
+form {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -16,7 +17,7 @@ form{
 }
 
 #root {
-    
+
     margin-top: 0;
     height: 95vh;
     display: flex;
@@ -28,7 +29,7 @@ form{
 
 header {
     height: 250px;
-    display:flex;
+    display: flex;
     align-items: flex-end;
 }
 
@@ -38,13 +39,16 @@ nav {
     background: #dfa0a0;
     display: flex;
     justify-content: center;
+    margin-bottom: 10px;
 }
-.refresh{
-    height: 100%;   
+
+.refresh {
+    height: 100%;
 }
-#exit{
- width: 50px;
- height: 200px;   
+
+#exit {
+    width: 50px;
+    height: 200px;
 }
 
 label {
@@ -88,7 +92,7 @@ input::placeholder {
 
 /* CSS DE PAGE HOME */
 
-.container{
+.container {
     margin-top: 5%;
     height: 100%;
     display: flex;
@@ -105,27 +109,45 @@ input::placeholder {
 }
 
 p {
-    font-size:25px;
+    font-size: 17px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     color: #0A4D68;
 }
 
-#posts {
-    display: flex;
-    flex-direction: column;
-    background: coral;
-    width: 60%;
-    height: 100%;
-    margin-right: 20%;
-    margin-left: 20%;
-    gap:20px;
-    
-
+a {
+    font-size: 17px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
-.post{
-background-color: #e0b4b4;   
-padding: 10px; 
+#posts {
+    width: 60%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 20%;
+    margin-left: 20%;
+    padding-top: 10px;
+    gap: 20px;
+    overflow: auto;
+    scrollbar-width: thin;
+    /* Oculta la barra de desplazamiento en navegadores compatibles */
+    scrollbar-color: transparent transparent;
+    /* Establece el color de la barra de desplazamiento transparente */
+}
+
+#posts::-webkit-scrollbar-track {
+    background-color: #6f2121; /* Color de fondo de la barra de desplazamiento */
+  }
+  
+
+.post {
+    width: 90%;
+    background-color: #D9D9D9;
+    padding: 10px;
+    border: 1px solid #000000;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 25px;
 }
 
 .avatar {
@@ -142,18 +164,20 @@ padding: 10px;
     display: flex;
 }
 
-.userName{
+.userName {
     margin-top: 5px;
 }
-.publicDate{
+
+.publicDate {
     margin-top: 25px;
     margin-left: -65px;
 }
-#container{
+
+#container {
     margin-top: 0;
     padding: 0%;
     height: 100%;
-    
+
 }
 
 .logoGoogle {
@@ -167,7 +191,7 @@ padding: 10px;
     justify-content: space-evenly;
     background-color: aliceblue;
     color: black;
-    width: 180px ;
+    width: 180px;
     height: 35px;
     font-size: 13px;
 }
@@ -177,3 +201,31 @@ padding: 10px;
     font-size: 13px;
 }
 
+.writeAndPost {
+    width: 100%;
+    text-align: center;
+}
+
+.textArea {
+    width: 90%;
+    height: 90px;
+    padding: 7px;
+    background-color: #D9D9D9;
+    border-radius: 31px;
+    border: 1px solid #000000;
+}
+
+.buttonCreatePost {
+    Width: 80px;
+    Height: 27px;
+    margin-right: 85px;
+    background-color: #279A82;
+    color: white;
+    border: 1px solid #000000;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 25px;
+    float: left;
+    /* Alinea el botón a la izquierda, para responsive tal vez sea mejor ponerlo en "none" */
+    margin-left: 15px;
+    /* hacer responsive dsps */
+}
