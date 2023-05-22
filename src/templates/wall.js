@@ -52,6 +52,7 @@ function wall(navigateTo) {
     });
   });
 
+
   return form;
 }
 
