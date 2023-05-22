@@ -112,7 +112,7 @@ export function signIn(navigateTo) {
     e.preventDefault();
     const promiseWithGoogle = signInWithGoogle();
     promiseWithGoogle.then((user) => {
-      alert(`Welcome ${user.usuario}!`);
+      alert(`Welcome ${user.displayName}!`);
       navigateTo('/wall');
     }).catch((error) => {
       alert('Registrateee');

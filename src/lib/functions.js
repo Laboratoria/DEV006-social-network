@@ -8,6 +8,7 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
   createUserWithEmailAndPassword,
+  onAuthStateChanged,
 } from 'firebase/auth';
 import { app, auth } from './firebase';
 
@@ -58,3 +59,23 @@ export async function register(email, password) {
     console.log(error.code);
   }
 }
+
+// detecta los cambios en el estado de autenticación
+
+export function authDetector() {
+  const auth2 = getAuth(app);
+  //let userEmail = null;
+  return new Promise((resolve,reject)=>{
+  onAuthStateChanged(auth2, (user) => {
+    if (user) {
+      resolve(user.email);
+      /*userEmail = user.email;
+      console.log(userEmail);*/
+    } else {
+      resolve(null);
+      //userEmail = null;
+    }
+  });
+});
+}
+authDetector();
