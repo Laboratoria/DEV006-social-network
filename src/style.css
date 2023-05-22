@@ -23,6 +23,7 @@ div{
 .sectionGeneral {
   display: flex;
   flex-wrap: nowrap;
+  height: 100%;
 }
 
 .div-left{
@@ -31,8 +32,8 @@ div{
   justify-content: center;
   position: relative;
   background-color: #F4FF20;
-  margin: 0 100px 0 0;
-  max-width: 42%;
+  margin: 0 90px 0 0;
+  max-width: 45%;
   height: 100%;
 }
 
@@ -40,7 +41,7 @@ div{
 text-align: center;
 font-family: 'Ysabeau', sans-serif;
 font-size: 20px;
-margin: 3.2em 1.5em 2.7em 1.5em;
+margin: 3.2em 1.5em 3.2em 1.5em;
 color: #4B332A;
 text-shadow: 0 2px 5px #4b3027d8;
 }
@@ -56,12 +57,13 @@ text-shadow: 0 2px 5px #4b3027d8;
   justify-content: center;
   margin: 2px 80px 0 100px;
   height: 100%;
+  width: 55%;
 }
 
 .logo{
-    width: 15.9em;
-    height: 7em;
-    margin: 0.35em 0 1em 0;
+    width: 20.5em;
+    height: 8em;
+    margin: 1em 4.4em 0.6em 0;
     cursor: pointer;
     transition: transform 0.3s ease-in-out;
 }
@@ -72,7 +74,7 @@ text-shadow: 0 2px 5px #4b3027d8;
 
 .sectionPets{
   width: 26em;
-  height: 29.9em;
+  height: 29em;
   border: 2px solid #c8c7c7c0;
   box-shadow: 0 11px 11px rgba(112, 112, 112, 0.487);
   border-radius: 30px;
@@ -91,14 +93,14 @@ text-shadow: 0 2px 5px #4b3027d8;
 }
 
 .animales{
-    width: 25.7em;
+    width: 25.8em;
     justify-content: center;
     display: flex;
     align-items: center;
     flex-direction: column;
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
-    margin-top: -1.8em;
+    margin: -1.5em 2em;
 }
 
 form{
@@ -239,7 +241,7 @@ label{
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    margin: 1.8em auto 0.8em auto;
+    margin: 1.5em auto 1em auto;
     font-size: 13px;
     font-family: 'Ysabeau', sans-serif;
     cursor: none;
@@ -287,7 +289,6 @@ label{
 
 
 
-
 @media (min-width: 1440px) {
     
     #root {
@@ -317,9 +318,9 @@ label{
 
 .logo{
   width: 18em;
-  height: 9.8em;
+  height: 9em;
   transition: transform 0.3s ease-in-out;
-  margin: 0 1.25em 1em 0;
+  margin: 0 -2em 1em 0;
 }
 
 .sectionPets {
@@ -337,7 +338,7 @@ label{
 }
 
 form{
-  margin-top: 5em;
+  margin-top: 5.2em;
 }
 
 .icon-heart{
