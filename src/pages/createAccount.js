@@ -3,7 +3,6 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-alert */
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../lib/firebase.js';
 import { signInWithGoogle, register } from '../lib/functions.js';
 

@@ -121,7 +121,7 @@ a {
 
 #posts {
     width: 60%;
-    height: 100%;
+    height: fit-content;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -131,7 +131,7 @@ a {
     gap: 20px;
     overflow: auto;
     overflow-x: hidden;
-    scrollbar-width: thin;
+   
     /* Oculta la barra de desplazamiento en navegadores compatibles */
     scrollbar-color: transparent transparent;
     /* Establece el color de la barra de desplazamiento transparente */
