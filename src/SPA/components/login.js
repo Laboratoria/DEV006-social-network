@@ -1,6 +1,9 @@
-function login(navegateTo) {
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import { auth } from '../helpers/lib/firebase';
+
+function login(navigateTo) {
 // llamar al DOM y crear cada elemento
-// crear nuestro html usando createElement
   const section = document.createElement('section');
   const sectionLogin = document.createElement('section');
   const sectionLogo = document.createElement('div');
@@ -79,14 +82,8 @@ function login(navegateTo) {
   // callback a los botones
   buttonLogin.classList.add('login');
   buttonLogin.textContent = 'Iniciar Sesión';
-  buttonLogin.addEventListener('click', () => {
-    navegateTo('/home');
-  });
-  buttonSignGoogle.addEventListener('click', () => {
-    navegateTo('/home');
-  });
   buttonRegistrate.addEventListener('click', () => {
-    navegateTo('/registro');
+    navigateTo('/registro');
   });
 
   // agregando elementos al form
@@ -103,6 +100,50 @@ function login(navegateTo) {
     divIzquierdo,
     sectionLogin,
   );
+
+  form.addEventListener('submit', async(e)=> {
+    e.preventDefault()
+    const email = inputCorreo.value;
+    const password = inputPassword.value;
+
+    try {
+      const User = await signInWithEmailAndPassword(
+       auth,
+      email,
+      password,
+       );
+       console.log(User);
+       navigateTo('/home');
+         
+ } catch (error) {
+  if(error.code === 'auth/wrong-password'){
+    mostrarMensaje('Contraseña incorrecta');
+   } else if(error.code === 'auth/user-not-found') {
+    mostrarMensaje('cuenta no registrada');
+   }
+    }
+  });
+
+
+  function mostrarMensaje(mensaje) { 
+    //Comprobar que exista una alerta
+    const alerta = document.querySelector('.message-error');
+    if(alerta) {
+        alerta.remove();
+    }
+    
+    const mensajeError = document.createElement('p');
+    mensajeError.textContent = mensaje;
+
+    mensajeError.classList.add('message-error');
+
+    //inyectar el mensaje al formulario
+    form.appendChild(mensajeError);
+}
+
+// buttonSignGoogle.addEventListener('click', ()=>{
+
+// })
 
   return section;
 }

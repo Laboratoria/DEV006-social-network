@@ -1,12 +1,12 @@
 import login from './SPA/components/login.js';
 import error from './SPA/components/error.js';
-// import registro from './SPA/components/registro.js';
+import registro from './SPA/components/registro.js';
 import home from './SPA/components/home.js';
 
 // creando una variable para obtener la ruta
 const routes = [
   { path: '/', component: login },
-  // { path: '/registro', component: registro },
+  { path: '/registro', component: registro },
   { path: '/error', component: error },
   { path: '/home', component: home },
 ];
