@@ -27,10 +27,10 @@ function newPost(navigateTo) {
 
   textAreaTitle.classList.add('textAreaTitle');
   textAreaReview.classList.add('textAreaReview');
-  
+
   buttonPlus.src = './img/icons-plus.png';
   buttonPlus.classList.add('buttonPlus');
-  
+
   buttonReturn.textContent = '.';
   buttonReturn.classList.add('returnNewPost');
   buttonReturn.addEventListener('click', () => {
