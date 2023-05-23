@@ -1,4 +1,5 @@
-// file login.js
+// file login.
+import { auth } from '../lib/configFirebase.js';
 import { loginUser, signInWithGoogle } from '../lib/auth.js';
 
 function login(navigateTo) {
@@ -44,7 +45,12 @@ function login(navigateTo) {
     const password = inputPassword.value;
     loginUser(email, password)
       .then(() => {
-        console.log('loggedin');
+        const user = auth.currentUser;
+        // se agrega la validacion de usuario y si es correcta te lleva a wall
+        if (user) {
+          console.log('loggedin');
+          navigateTo('/wall');
+        }
       })
       .catch((error) => {
         console.log(error);

@@ -62,6 +62,7 @@ function signup(navigateTo) {
         inputEmail.value = '';
         inputPassword.value = '';
         inputUser.value = '';
+        navigateTo('/wall');
       })
 
       .catch((error) => {

@@ -30,6 +30,24 @@ function wall(navigateTo) {
   profile.setAttribute('src', 'images/user.png');
   newPost.setAttribute('src', 'images/post.png');
 
+  //clickeado para img de house
+  house.addEventListener('click', () => {
+    navigateTo('/wall');
+  });
+  //clickeado para img de config
+  config.addEventListener('click', () => {
+    navigateTo('/settings');
+  });
+  bell.addEventListener('click', () => {
+    navigateTo('/buildsite');
+  });
+  profile.addEventListener('click', () => {
+    navigateTo('/buildsite');
+  });
+  newPost.addEventListener('click', () => {
+    navigateTo('/buildsite');
+  });
+
   // Agrupar por secciones//
   sectionHeader.append(house, logo, config);
   sectionFooter.append(bell, newPost, profile);
