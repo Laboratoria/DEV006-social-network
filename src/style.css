@@ -76,7 +76,7 @@ body {
   padding: 5vw;
 }
 
-.form{
+.form {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -118,7 +118,7 @@ body {
   font-family: "Hind Vadodara", sans-serif;
   -webkit-text-stroke: 1.5px rgba(0, 0, 0, 0.3);
   margin-top: 10vh;
-} 
+}
 
 .buttonEnterSignup {
   background-color: #844ea8;
@@ -249,7 +249,7 @@ body {
   color: blue;
 }
 
-.buttonGoogleLogin{
+.buttonGoogleLogin {
   border: none;
   background-color: transparent;
   color: black;
@@ -263,23 +263,141 @@ body {
   color: blue;
 }
 
-input{
+input {
   width: 58vw;
   height: 3.5vh;
   border-radius: 2.6vw;
-  border-color: #B065DB;
+  border-color: #b065db;
   text-align: center;
 }
 
- h4{
-    font-family: "Hind Vadodara";
-    font-style: normal;
-    font-weight: bold;
-    font-size: 2.5vh;
-    line-height: 2.5vh;
-    align-items: center;
-    width: 56vw;
-    font-family: "Hind Vadodara", sans-serif;
-    color: #000000;
-    -webkit-text-stroke: 1.5px rgba(0, 0, 0, 0.3);
-  }
+h4 {
+  font-family: "Hind Vadodara";
+  font-style: normal;
+  font-weight: bold;
+  font-size: 2.5vh;
+  line-height: 2.5vh;
+  align-items: center;
+  width: 56vw;
+  font-family: "Hind Vadodara", sans-serif;
+  color: #000000;
+  -webkit-text-stroke: 1.5px rgba(0, 0, 0, 0.3);
+}
+
+/* aqui empieza CSS header y footer wall/settigs y todo lo que tenga footer y header*/
+
+.sectionHeader {
+  position: fixed;
+  width: 100vw;
+  height: 15.75vh;
+  left: 0vw;
+  top: 0vh;
+  background: #69278f;
+  display: flex;
+  justify-content: space-around;
+}
+.house {
+  width: 14vw;
+  height: 6vh;
+  margin-top: 6vh;
+}
+
+.logoWall {
+  width: 28vw;
+  height: 12vh;
+  margin-top: 2vh;
+}
+
+.config {
+  width: 14vw;
+  height: 6vh;
+  margin-top: 6vh;
+}
+
+.sectionFooter {
+  position: fixed;
+  width: 100vw;
+  height: 13vh;
+  left: 0vw;
+  top: 87vh;
+  background: #69278f;
+  display: flex;
+  justify-content: space-around;
+}
+
+.bell {
+  width: 20vw;
+  height: 9vh;
+  margin-top: 2vh;
+}
+
+.newPost {
+  width: 20vw;
+  height: 9vh;
+  margin-top: 2vh;
+}
+.profile {
+  width: 20vw;
+  height: 9vh;
+  margin-top: 2vh;
+}
+
+/*CSS vista buildsite*/
+.imagBuild {
+  width: 73vw;
+}
+
+.textBuild {
+  font-size: 7vw;
+  line-height: 3.5vh;
+  text-align: center;
+  padding: 2vh;
+  width: 53vw;
+  border: solid;
+  background: #69278f63;
+  border-color: #69278f;
+  border-radius: 8vw;
+}
+
+.sectionBuild {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+}
+
+.back {
+  display: flex;
+  justify-content: flex-start;
+  width: 12vw;
+  height: 9vh;
+  padding: 5vw;
+  position: absolute;
+  left: 3vw;
+  top: 9vh;
+}
+
+/*CSS de vista setting*/
+
+.buttonsConfig {
+  width: 76vw;
+  height: 6vh;
+  font-size: 6vw;
+  background-color: rgba(225, 210, 123, 1);
+  border-radius: 5vh;
+  font-family: "Hind Vadodara", sans-serif;
+  border: 1vw solid rgba(168, 36, 244, 1);
+}
+
+.sectionConfig {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 100vw;
+  height: 37vh;
+  position: absolute;
+  top: 31vh;
+}
