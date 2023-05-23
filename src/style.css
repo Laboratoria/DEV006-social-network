@@ -253,3 +253,61 @@ body {
 .buttonGoogleSignup:hover {
   text-decoration: underline;
 }
+
+/* aqui empieza CSS WALL*/
+
+.sectionHeader {
+  position: fixed;
+  width: 100vw;
+  height: 15.75vh;
+  left: 0vw;
+  top: 0vh;
+  background: #69278f;
+  display: flex;
+  justify-content: space-around;
+}
+.house {
+  width: 14vw;
+  height: 6vh;
+  margin-top: 6vh;
+}
+
+.logoWall {
+  width: 28vw;
+  height: 12vh;
+  margin-top: 2vh;
+}
+
+.config {
+  width: 14vw;
+  height: 6vh;
+  margin-top: 6vh;
+}
+
+.sectionFooter {
+  position: fixed;
+  width: 100vw;
+  height: 13vh;
+  left: 0vw;
+  top: 87vh;
+  background: #69278f;
+  display: flex;
+  justify-content: space-around;
+}
+
+.bell {
+  width: 20vw;
+  height: 9vh;
+  margin-top: 2vh;
+}
+
+.newPost {
+  width: 20vw;
+  height: 9vh;
+  margin-top: 2vh;
+}
+.profile {
+  width: 20vw;
+  height: 9vh;
+  margin-top: 2vh;
+}

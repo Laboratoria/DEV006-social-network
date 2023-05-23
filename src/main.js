@@ -7,6 +7,8 @@ import error404 from './vistas/error404.js';
 import signup from './vistas/signup.js';
 import genderValidation from './vistas/genderValidation.js';
 import questionWomen from './vistas/questionWomen.js';
+import wall from './vistas/wall.js';
+import settings from './vistas/settings.js';
 
 const routes = [
   { path: '/', component: home },
@@ -15,6 +17,8 @@ const routes = [
   { path: '/signup', component: signup },
   { path: '/sorry', component: genderValidation },
   { path: '/question', component: questionWomen },
+  { path: '/wall', component: wall },
+  { path: '/settings', component: settings },
 
 ];
 const defaultRoute = '/';
