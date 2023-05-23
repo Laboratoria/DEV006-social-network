@@ -11,6 +11,7 @@ jest.mock('firebase/auth', () => ({
   getAuth: () => ({
     currentUser: {
       displayName: 'John Doe', // Simular el displayName del usuario actual
+      uid: '123',
     },
   }),
 }));

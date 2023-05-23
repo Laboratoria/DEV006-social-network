@@ -42,6 +42,7 @@ export const wall = (navigateTo) => {
   const iconAddHeader = document.createElement('img');
   iconAddHeader.setAttribute('src', '../img/AÑADIRINACTIVO.png');
   iconAddHeader.setAttribute('class', 'containerIcons');
+  iconAddHeader.setAttribute('id', 'containerIcons');
   iconAddHeader.addEventListener('mouseover', () => {
     iconAddHeader.src = 'img/AÑADIRACTIVO.png';
   });
@@ -97,6 +98,7 @@ export const wall = (navigateTo) => {
   iconSearch.setAttribute('src', '../img/LUPA.png');
 
   const iconAdd = document.createElement('img');
+  iconAdd.setAttribute('id', 'iconAdd');
   iconAdd.setAttribute('src', '../img/AÑADIRINACTIVO.png');
 
   iconAdd.addEventListener('mouseover', () => {
@@ -234,18 +236,18 @@ export const wall = (navigateTo) => {
       liCancel.setAttribute('class', 'liCancel ');
       liCancel.textContent = 'Cancel';
       liCancel.addEventListener('click', () => {
-        modal.close(); // al hacer click se cierra el modal
+        modal.remove(); // al hacer click se cierra el modal
       });
 
       // Al escoger Delete en el menú, se abre el primer modal
       liDelete.addEventListener('click', () => {
-        menuPoints.close();
+        menuPoints.remove();
         modal.open = true;
       });
 
       // Al hacer clic en la x , se cierra
       iconClose.addEventListener('click', () => {
-        menuPoints.close();
+        menuPoints.remove();
       });
 
       // ------------------- Mensaje de eliminado confirmado
@@ -291,11 +293,11 @@ export const wall = (navigateTo) => {
         // Eliminar el post
         deletePost(post.id);
         // Cerrar el modal de confirmación
-        modal.close();
+        modal.remove();
         // Mostrar el mensaje de eliminado confirmado
         modalConfirm.open = true;
         setTimeout(() => {
-          modalConfirm.close();
+          modalConfirm.remove();
         }, 3000); // 3000 milisegundos = 3 segundos
       });
 
@@ -313,6 +315,7 @@ export const wall = (navigateTo) => {
       // -------------------------------------------------------- Modal para editar post
       const modalEdit = document.createElement('dialog');
       modalEdit.setAttribute('class', 'modalEdit');
+      modalEdit.setAttribute('id', 'modalEdit');
 
       const editContainer = document.createElement('div');
       editContainer.setAttribute('class', 'editContainer');
@@ -372,7 +375,7 @@ export const wall = (navigateTo) => {
       // Sección de addEventListener
 
       liEdit.addEventListener('click', () => {
-        menuPoints.close();
+        menuPoints.remove();
         modalEdit.open = true;
       });
 
@@ -383,18 +386,18 @@ export const wall = (navigateTo) => {
           // se edita el post, y se envian los valores del input para que sean actualizados
           editPosts(post.id, inputEditName.value, inputEditDescription.value);
           // Cerramos el modal
-          modalEdit.close();
+          modalEdit.remove();
           // Abrimos modal de confirmación
           modalConfirmEdit.open = true;
           // lo cerramos a los 3 sg
           setTimeout(() => {
-            modalConfirmEdit.close();
+            modalConfirmEdit.remove();
           }, 3000);
         }
       });
 
       cancelEdit.addEventListener('click', () => {
-        modalEdit.close();
+        modalEdit.remove();
       });
 
       iconoPoints.addEventListener('click', () => {

@@ -26,6 +26,7 @@ export const newpost = (navigateTo) => {
 
   const iconArrow = document.createElement('img');
   iconArrow.setAttribute('src', '../img/arrow.png');
+  iconArrow.setAttribute('id', 'iconArrow');
   iconArrow.addEventListener('click', () => {
     navigateTo('/wall');
   });

@@ -113,7 +113,6 @@ export const exit = (navigateTo) => {
   signOut(auth)
     .then(() => {
     // Sign-out successful.
-      console.log('saliendo');
       navigateTo('/');
     }).catch((error) => {
       console.log(error);
