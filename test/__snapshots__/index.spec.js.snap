@@ -1,0 +1,90 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`signup snapshot 1`] = `
+<div>
+  <section>
+    <section
+      class="sectionHeaderSignup"
+    >
+      <div
+        class="header"
+      />
+      <img
+        class="logo"
+        src="images/logo.png"
+      />
+    </section>
+    <img
+      class="buttonReturnSignup"
+      src="images/arrow.png"
+    />
+    <section
+      class="sectionFormSignup"
+    />
+    <form
+      class="formSignup"
+    >
+      <h4
+        class="subTitlesSignup"
+      >
+        Nombre de Usuario
+      </h4>
+      <input />
+      <h4
+        class="subTitlesSignup"
+      >
+        Correo electrónico
+      </h4>
+      <input
+        id="inputEmail"
+        placeholder="example@gmail.com"
+      />
+      <h4
+        class="subTitlesSignup"
+      >
+        Contraseña
+      </h4>
+      <input
+        id="inputPassword"
+        placeholder="***********"
+        src="images/ojoOculto.png"
+        type="password"
+      />
+      <button
+        class="buttonEnterSignup"
+      >
+        Registrarte
+      </button>
+      <h5
+        class="question"
+      >
+        Esta aplicación esta pensada para personas que se identifican como mujeres. Por favor responde: ¿Te identificas como mujer?  
+      </h5>
+      <input
+        id="Yes"
+        name="checkbox"
+        type="radio"
+      />
+      <input
+        id="No"
+        name="checkbox"
+        type="radio"
+      />
+      <h5
+        id="labelYes"
+      >
+        Si
+      </h5>
+      <h5
+        id="labelNo"
+      >
+        No
+      </h5>
+      <img
+        id="showPasswordLogin"
+        src="images/ojoOculto.png"
+      />
+    </form>
+  </section>
+</div>
+`;

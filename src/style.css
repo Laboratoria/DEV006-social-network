@@ -1,0 +1,403 @@
+body {
+  background-color: rgba(217, 217, 217, 1);
+}
+
+.header {
+  position: absolute;
+  width: 100vw;
+  height: 15.75vh;
+  left: 0vw;
+  top: 0vh;
+  background: #69278f;
+}
+.buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #844ea8;
+  width: 30.76923076923077vw;
+  height: 4.9763033175355vh;
+  border-radius: 2.6vw;
+  color: white;
+  font-family: "Inria Serif";
+  font-style: italic;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.logo {
+  position: absolute;
+  width: 26vw;
+  height: 11vh;
+  left: 38vw;
+  top: 3.2vh;
+}
+
+.sectionForm,
+.sectionLogin {
+  margin-top: 25vh;
+  margin-left: 8vw;
+  width: 78.2vw;
+  height: 68vh;
+  text-align: center;
+  background-color: rgba(225, 210, 123, 1);
+  border-radius: 8.2vw;
+  border: solid 1.02vw rgba(168, 36, 244, 1);
+}
+
+.title {
+  font-size: 2.9vh;
+  font-style: italic;
+  padding: 2vh 1vh 0vh 1vh;
+  font-family: "Hind Vadodara", sans-serif;
+  -webkit-text-stroke: 1.5px rgba(0, 0, 0, 0.3);
+}
+
+.sectionButton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1vh;
+}
+
+.text {
+  font-style: oblique;
+  font-size: 2.5vh;
+  padding: 0vh 1.5vh 3vh 1.5vh;
+  font-family: "Hind Vadodara", sans-serif;
+}
+
+.buttonReturn {
+  display: flex;
+  justify-content: flex-start;
+  width: 8vw;
+  height: 7vh;
+  padding: 5vw;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Hind Vadodara", sans-serif;
+  -webkit-text-stroke: 1.5px rgba(0, 0, 0, 0.3);
+}
+
+.buttonEnter {
+  background-color: #844ea8;
+  width: 35vw;
+  height: 6vh;
+  border-radius: 2.6vw;
+  color: white;
+  font-family: "Inria Serif";
+  font-style: italic;
+  font-weight: 700;
+  font-size: 2.3vh;
+  line-height: 17px;
+  position: absolute;
+  margin-top: 6vh;
+  margin-left: -18vw;
+}
+
+.sectionFormSignup {
+  margin-top: 25vh;
+  margin-left: 8vw;
+  width: 78.2vw;
+  height: 68vh;
+  text-align: center;
+  background-color: rgba(225, 210, 123, 1);
+  border-radius: 8.2vw;
+  border: solid 1.02vw rgba(168, 36, 244, 1);
+}
+
+.formSignup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Hind Vadodara", sans-serif;
+  -webkit-text-stroke: 1.5px rgba(0, 0, 0, 0.3);
+  margin-top: 10vh;
+}
+
+.buttonEnterSignup {
+  background-color: #844ea8;
+  width: 35vw;
+  height: 6vh;
+  border-radius: 2.6vw;
+  color: white;
+  font-family: "Inria Serif";
+  font-style: italic;
+  font-weight: 700;
+  font-size: 2.3vh;
+  line-height: 17px;
+  left: 33.62vw;
+  top: 80.56vh;
+  position: absolute;
+}
+
+.subTitlesSignup {
+  font-family: "Hind Vadodara";
+  font-style: normal;
+  font-weight: bold;
+  font-size: 2.5vh;
+  line-height: 1vh;
+  align-items: center;
+  width: 56vw;
+  font-family: "Hind Vadodara", sans-serif;
+  color: #000000;
+  -webkit-text-stroke: 1.5px rgba(0, 0, 0, 0.3);
+}
+
+.question {
+  color: #000000;
+  justify-content: center;
+  position: absolute;
+  top: 32vh;
+  display: grid;
+  grid-template-columns: 6cm;
+  left: -9vw;
+  font-family: "Hind Vadodara", sans-serif;
+}
+
+.buttonReturnSignup {
+  display: flex;
+  justify-content: flex-start;
+  width: 8vw;
+  height: 7vh;
+  padding: 5vw;
+  position: absolute;
+  left: 11vw;
+}
+
+#showPasswordLogin {
+  height: 3vh;
+  width: 4vw;
+  top: -3.8vh;
+  left: 23vw;
+  position: relative;
+}
+
+.showPassword {
+  width: 5vw;
+  right: 1vw;
+  transform: translate(-30%, 25%);
+  position: absolute;
+}
+
+.textValidation {
+  text-align: center;
+  font-size: 9vw;
+  margin: 10vh 5vw 10vh 5vw;
+  font-family: "Hind Vadodara", sans-serif;
+}
+
+.errors {
+  color: #ff0b0b;
+  font-weight: bolder;
+  width: 70vw;
+  margin-top: 2vw;
+  font-size: 1.7vh;
+}
+
+#passwordBox {
+  position: relative;
+}
+
+.textQuestion {
+  font-size: 7vw;
+  text-align: center;
+  margin: 10vh 5vw 4vh 5vw;
+  font-family: "Hind Vadodara", sans-serif;
+}
+
+.containerYesNo {
+  display: flex;
+  width: 30vw;
+  /* arriba - derecha - abajo - izquierda */
+  margin: -12vw 10vh 12vw 10vh;
+  font-size: 7vw;
+  gap: 2vw;
+  font-family: "Hind Vadodara", sans-serif;
+}
+
+#Yes,
+#No {
+  transform: scale(1.7);
+  margin-right: 4vw;
+}
+
+.questionWomen {
+  font-size: 7vw;
+  text-align: center;
+  font-family: "Hind Vadodara", sans-serif;
+}
+
+.buttonGoogleSignup {
+  border: none;
+  background-color: transparent;
+  position: relative;
+  bottom: 9vh;
+  left: 14.6vh;
+  color: #000000;
+  font-size: 2vh;
+  position: absolute;
+}
+
+.buttonGoogleSignup:hover {
+  text-decoration: underline;
+  color: blue;
+}
+
+.buttonGoogleLogin {
+  border: none;
+  background-color: transparent;
+  color: black;
+  position: absolute;
+  bottom: 13vh;
+  left: 12.6vh;
+  font-size: 2vh;
+}
+.buttonGoogleLogin:hover {
+  text-decoration: underline;
+  color: blue;
+}
+
+input {
+  width: 58vw;
+  height: 3.5vh;
+  border-radius: 2.6vw;
+  border-color: #b065db;
+  text-align: center;
+}
+
+h4 {
+  font-family: "Hind Vadodara";
+  font-style: normal;
+  font-weight: bold;
+  font-size: 2.5vh;
+  line-height: 2.5vh;
+  align-items: center;
+  width: 56vw;
+  font-family: "Hind Vadodara", sans-serif;
+  color: #000000;
+  -webkit-text-stroke: 1.5px rgba(0, 0, 0, 0.3);
+}
+
+/* aqui empieza CSS header y footer wall/settigs y todo lo que tenga footer y header*/
+
+.sectionHeader {
+  position: fixed;
+  width: 100vw;
+  height: 15.75vh;
+  left: 0vw;
+  top: 0vh;
+  background: #69278f;
+  display: flex;
+  justify-content: space-around;
+}
+.house {
+  width: 14vw;
+  height: 6vh;
+  margin-top: 6vh;
+}
+
+.logoWall {
+  width: 28vw;
+  height: 12vh;
+  margin-top: 2vh;
+}
+
+.config {
+  width: 14vw;
+  height: 6vh;
+  margin-top: 6vh;
+}
+
+.sectionFooter {
+  position: fixed;
+  width: 100vw;
+  height: 13vh;
+  left: 0vw;
+  top: 87vh;
+  background: #69278f;
+  display: flex;
+  justify-content: space-around;
+}
+
+.bell {
+  width: 20vw;
+  height: 9vh;
+  margin-top: 2vh;
+}
+
+.newPost {
+  width: 20vw;
+  height: 9vh;
+  margin-top: 2vh;
+}
+.profile {
+  width: 20vw;
+  height: 9vh;
+  margin-top: 2vh;
+}
+
+/*CSS vista buildsite*/
+.imagBuild {
+  width: 73vw;
+}
+
+.textBuild {
+  font-size: 7vw;
+  line-height: 3.5vh;
+  text-align: center;
+  padding: 2vh;
+  width: 53vw;
+  border: solid;
+  background: #69278f63;
+  border-color: #69278f;
+  border-radius: 8vw;
+}
+
+.sectionBuild {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+}
+
+.back {
+  display: flex;
+  justify-content: flex-start;
+  width: 12vw;
+  height: 9vh;
+  padding: 5vw;
+  position: absolute;
+  left: 3vw;
+  top: 9vh;
+}
+
+/*CSS de vista setting*/
+
+.buttonsConfig {
+  width: 76vw;
+  height: 6vh;
+  font-size: 6vw;
+  background-color: rgba(225, 210, 123, 1);
+  border-radius: 5vh;
+  font-family: "Hind Vadodara", sans-serif;
+  border: 1vw solid rgba(168, 36, 244, 1);
+}
+
+.sectionConfig {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 100vw;
+  height: 37vh;
+  position: absolute;
+  top: 31vh;
+}
