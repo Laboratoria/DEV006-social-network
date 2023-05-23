@@ -2,9 +2,10 @@
  * @jest-environment jsdom
  */
 import {
-  deletePost, getPost, exit, editPosts,
+  deletePost, getPost, exit, editPosts, dislikePost, likePost,
 } from '../src/lib/index.js';
 import { wall } from '../src/view/wall.js';
+/* import { navigateTo } from '../src/main.js'; */
 
 jest.mock('firebase/auth', () => ({
   getAuth: () => ({
@@ -18,8 +19,13 @@ jest.mock('firebase/auth', () => ({
 jest.mock('../src/lib/index.js', () => ({
   getPost: jest.fn(),
   deletePost: jest.fn(),
-  editPosts: jest.fn(),
+  editPosts: jest.fn(() => Promise.resolve()),
   exit: jest.fn(() => Promise.resolve()),
+  likePost: jest.fn(),
+  dislikePost: jest.fn(),
+}));
+jest.mock('../src/main.js', () => ({
+  navigateTo: jest.fn(() => Promise.resolve()),
 }));
 
 describe('Se renderiza el componente del muro', () => {
@@ -33,7 +39,7 @@ describe('Se renderiza el componente del muro', () => {
           petName: 'Fido',
           description: 'Perro lindo',
           username: 'Marissa Vargas',
-          like: [],
+          like: ['787tgftyft'],
         }),
       },
     ];
@@ -132,13 +138,26 @@ describe('Se renderiza el componente del muro', () => {
     expect(post.username === auth.currentUser.displayName).toBe(false);
   });
 
-  test('la fx deletePost recibe el id', () => {
-    setTimeout(() => {
-      const newLiConfirm = newWall.querySelector('#liConfirm');
-      console.log(newLiConfirm);
-      newLiConfirm.dispatchEvent(new Event('click'));
-      expect(deletePost).toHaveBeenCalledWith('mockedId');
-    }, 1000); // Espera 1 segundo antes de seleccionar el elemento
+  test('la fx de editPosts no recibe los parámetros y al hacer click no se ejecuta nada', () => {
+    const buttonEdit = newWall.querySelector('#buttonEdit');
+    const inputEditName = newWall.querySelector('#inputEditName');
+    const inputEditDescription = newWall.querySelector('#inputEditDescription');
+    const modalEdit = newWall.querySelector('#modalEdit');
+    const modalConfirmEdit = newWall.querySelector('#modalConfirmEdit');
+    const closeSpy = jest.spyOn(modalEdit, 'remove');
+
+    // Verificar las condiciones previas
+    inputEditName.value = '';
+    inputEditDescription.value = '';
+
+    buttonEdit.dispatchEvent(new Event('click'));
+
+    // Verificar que no se haya llamado a editPosts y que el modal no se haya cerrado
+    expect(editPosts).not.toHaveBeenCalled();
+    expect(closeSpy).not.toHaveBeenCalled();
+
+    // Verificar que el modal de confirmación no se haya abierto
+    expect(modalConfirmEdit.open).toBe(false);
   });
 
   test('la fx de editPosts recibe los parámetros y al hacer click se cierra el modal de edición y se abre el de confirmación', () => {
@@ -160,9 +179,20 @@ describe('Se renderiza el componente del muro', () => {
     closeSpy.mockRestore();
   });
 
+  /*   test('modal confirm edit', () => {
+    const buttonEdit = newWall.querySelector('#buttonEdit');
+    const modalConfirmEdit = newWall.querySelector('#modalConfirmEdit');
+
+    const closeSpy = jest.spyOn(modalConfirmEdit, 'remove');
+    buttonEdit.dispatchEvent(new Event('click'));
+    setTimeout(() => {
+      expect(closeSpy).toHaveBeenCalled();
+      closeSpy.mockRestore();
+    }, 3000);
+  }); */
+
   test('Prueba de evento de clic en elemento de navegación', () => {
     // Crear un elemento de prueba
-    /* const navigateTo = jest.fn(); */
     const navItem = newWall.querySelector('.btn-log-out');
 
     // Escuchar el evento de clic
@@ -170,7 +200,6 @@ describe('Se renderiza el componente del muro', () => {
 
     // Verificar que las funciones se llamen correctamente
     expect(exit).toHaveBeenCalled();
-    /* expect(navigateTo).toHaveBeenCalled(); */
   });
 
   test('Prueba de evento de mouseover', () => {
@@ -222,17 +251,57 @@ describe('Se renderiza el componente del muro', () => {
     expect(closeSpy).toHaveBeenCalled();
     closeSpy.mockRestore();
   });
-  /* test('debería eliminar el post y cerrar el modal de confirmación', () => {
+
+  test('iconopoints al hacer click se abre el modal de menupoints', () => {
+    const iconoPoints = newWall.querySelector('#iconoPoints');
+    const menuPoints = newWall.querySelector('.menuPoints');
+
+    iconoPoints.dispatchEvent(new Event('click'));
+
+    expect(menuPoints.open).toBe(true);
+  });
+
+  test('Prueba de evento de remove modal en cancelEdit', () => {
+    const cancelEdit = newWall.querySelector('#cancelEdit');
+    const modalEdit = newWall.querySelector('#modalEdit');
+    const closeSpy = jest.spyOn(modalEdit, 'remove');
+    cancelEdit.dispatchEvent(new Event('click'));
+    expect(closeSpy).toHaveBeenCalled();
+    closeSpy.mockRestore();
+  });
+
+  test('la fx de liEdit al hacer click se cierra menupoints  y se abre el de edición', () => {
+    const liEdit = newWall.querySelector('.liEdit');
+    const menuPoints = newWall.querySelector('.menuPoints');
+    const modalEdit = newWall.querySelector('#modalEdit');
+    const closeSpy = jest.spyOn(menuPoints, 'remove');
+
+    liEdit.dispatchEvent(new Event('click'));
+
+    expect(closeSpy).toHaveBeenCalled();
+    expect(modalEdit.open).toBe(true);
+
+    closeSpy.mockRestore();
+  });
+
+  test('la fx deletePost recibe el id', () => {
+    const newLiConfirm = newWall.querySelector('#liConfirm');
+    newLiConfirm.dispatchEvent(new Event('click'));
+    expect(deletePost).toHaveBeenCalledWith('postid');
+    // Espera 1 segundo antes de seleccionar el elemento
+  });
+
+  test('debería eliminar el post y cerrar el modal de confirmación', () => {
     deletePost.mockImplementation((id) => {
     // Crear los elementos necesarios para el test
       const post = { id: 'postid' };
       const modal = {
-        close: jest.fn(),
+        remove: jest.fn(),
         open: false,
       };
       const modalConfirm = {
         open: false,
-        close: jest.fn(),
+        remove: jest.fn(),
       };
       const liConfirm = {
         addEventListener: jest.fn((event, callback) => {
@@ -248,12 +317,33 @@ describe('Se renderiza el componente del muro', () => {
       // Ejecutar el código a probar
       liConfirm.addEventListener('click', () => {
         deletePost(post.id);
-        modal.close();
+        modal.remove();
         modalConfirm.open = true;
         setTimeout(() => {
-          modalConfirm.close();
+          modalConfirm.remove();
         }, 3000);
       });
     });
-  }); */
+  });
+
+  test('Prueba de likeheart', () => {
+    const mockQueryData = [
+      {
+        id: 'postid',
+        data: jest.fn().mockReturnValue({
+          petName: 'Fido',
+          description: 'Perro lindo',
+          username: 'Marissa Vargas',
+          like: ['787tgftyft'],
+        }),
+      },
+    ];
+    const likeHeart = newWall.querySelector('#likeHeart');
+    likeHeart.dispatchEvent(new Event('click'));
+    if (mockQueryData[0].data().like.includes('787tgftyf')) {
+      expect(dislikePost).toHaveBeenCalledWith('postid');
+    } else {
+      expect(likePost).toHaveBeenCalledWith('postid');
+    }
+  });
 });

@@ -1,4 +1,4 @@
-import { exit } from '../src/lib/index.js';
+import { exit, auth } from '../src/lib/index.js';
 // Mock de la función signOut de Firebase
 jest.mock('firebase/auth', () => ({
   auth: jest.fn(() => ({
@@ -13,7 +13,7 @@ describe('exit', () => {
 
     await exit(navigateTo);
 
-    expect(firebase.auth().signOut).toHaveBeenCalled();
+    expect(auth().signOut).toHaveBeenCalled();
     expect(consoleLogSpy).toHaveBeenCalledWith('saliendo');
     expect(navigateTo).toHaveBeenCalledWith('/');
   });
@@ -26,7 +26,7 @@ describe('exit', () => {
 
     await exit(navigateTo);
 
-    expect(firebase.auth().signOut).toHaveBeenCalled();
+    expect(auth().signOut).toHaveBeenCalled();
     expect(consoleLogSpy).toHaveBeenCalledWith(error);
     expect(navigateTo).not.toHaveBeenCalled();
   });
