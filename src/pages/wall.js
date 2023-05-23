@@ -5,7 +5,6 @@
 import { collection, getDocs, addDoc } from 'firebase/firestore';
 import { db } from '../lib/firebase';
 import { authDetector } from '../lib/functions';
-import avatarImage from '../images/Avatar.png';
 
 export function wall() {
   // Crear elementos
@@ -16,12 +15,9 @@ export function wall() {
   const buttonCreatePost = document.createElement('button');
   const textarea = document.createElement('textarea');
   const writeAndPost = document.createElement('div');
-  const avatarPic = document.createElement('img');
 
   // Establecer atributos y contenido
   logoRefresh.setAttribute('src', './images/logoEasygym.png');
-  avatarPic.src = avatarImage;
-  avatarPic.classList.add('avatar');
   logoRefresh.setAttribute('onclick', 'location.reload()');
   container.id = 'container';
   divposts.id = 'posts';
@@ -30,6 +26,8 @@ export function wall() {
   textarea.classList.add('textArea');
   // textarea.setAttribute('rows', '4');
   writeAndPost.classList.add('writeAndPost');
+  
+  
 
   // exitButton.id = 'exit';
   logoRefresh.classList.add('refresh');
@@ -58,6 +56,11 @@ export function wall() {
     const userName = document.createElement('h5');
     const imagenPost = document.createElement('img');
     const descriptionAndLikes = document.createElement('p');
+    const menuLikeSection = document.createElement('section');
+    const likesAndCount = document.createElement('div');
+    const menuOptions = document.createElement('img');
+    const likesPic = document.createElement('img');
+    const likesLab = document.createElement('label');
 
     // Establecer las propiedades de los elementos
 
@@ -66,20 +69,32 @@ export function wall() {
     userName.className = 'userName';
     publicDate.className = 'publicDate';
     avatar.src = poster.avatar;
-    publicDate.setAttribute('datetime', '2023-05-16');
     publicDate.textContent = poster.fecha.toLocaleString();
     publicDate.type = poster.fecha;
     userName.textContent = poster.usuario;
     imagenPost.src = 'ruta/al/imagen2';
     descriptionAndLikes.textContent = poster.descripción;
+    menuLikeSection.classList.add('menuLikeSection');
+    menuOptions.classList.add('menuOptions');
+    menuOptions.setAttribute('src', './images/menuOptions.png');
+    likesAndCount.classList.add('likesAndCount');
+    likesPic.classList.add('likesPic');
+    likesPic.setAttribute('src', './images/Likes.png');
+    likesLab.classList.add('likesLab');
+    likesLab.textContent = '0';
 
     // Armar la estructura del nodo
     infoUser.id = 'infoUser';
     infoUser.appendChild(avatar);
     infoUser.appendChild(userName);
     infoUser.appendChild(publicDate);
+    infoUser.appendChild(descriptionAndLikes);
     post.appendChild(infoUser);
-    post.appendChild(descriptionAndLikes);
+    post.appendChild(menuLikeSection);
+    menuLikeSection.appendChild(menuOptions);
+    menuLikeSection.appendChild(likesAndCount);
+    likesAndCount.appendChild(likesPic);
+    likesAndCount.appendChild(likesLab);
     divposts.insertBefore(post, divposts.firstChild); // Utilizar insertBefore para insertar al principio
   };
 
