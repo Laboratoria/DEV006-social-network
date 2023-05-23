@@ -1,6 +1,6 @@
 import { registerUser, googleLogin } from '../lib/firebaseAuth.js';
 
-const signUp = (navigateTo) => {
+const signup = (navigateTo) => {
   const signUpSection = document.createElement('section');
   signUpSection.classList.add('signUpSection');
 
@@ -95,6 +95,10 @@ const signUp = (navigateTo) => {
     }
   });
 
+  foundAccountA.addEventListener('click', () => {
+    navigateTo('/signin');
+  });
+
   googleBtn.addEventListener('click', () => {
     googleLogin(navigateTo);
   });
@@ -134,4 +138,4 @@ const signUp = (navigateTo) => {
 
   return signUpSection;
 };
-export default signUp;
+export default signup;

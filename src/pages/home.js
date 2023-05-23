@@ -33,7 +33,7 @@ const welcomePage = (navigateTo) => {
   btnSignUp.setAttribute('type', 'button');
 
   btnSignIn.addEventListener('click', () => {
-    navigateTo('/signIn');
+    navigateTo('/signin');
   });
 
   btnSignUp.addEventListener('click', () => {
