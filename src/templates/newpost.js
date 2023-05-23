@@ -1,15 +1,23 @@
+/* eslint-disable no-console */
+import { saveTask } from '../lib/firebase.js';
+
 function newPost(navigateTo) {
   const section = document.createElement('section');
   const buttonReturn = document.createElement('button');
   const titleNewPost = document.createElement('h1');
-  const form = document.createElement('form');
+  const divNewPost = document.createElement('div');
+  divNewPost.classList.add('divNewPost');
   const paragraphImg = document.createElement('p');
-  const buttonPlus = document.createElement('img');
+  const buttonPlus = document.createElement('button');
   const paragraphTitle = document.createElement('p');
   const textAreaTitle = document.createElement('textarea');
   const paragraphReview = document.createElement('p');
   const textAreaReview = document.createElement('textarea');
   const buttonSave = document.createElement('button');
+
+  section.setAttribute('id', 'section');
+  textAreaTitle.setAttribute('id', 'textAreaTitle');
+  textAreaReview.setAttribute('id', 'textAreaReview');
 
   titleNewPost.textContent = 'New Post';
   titleNewPost.classList.add('titleNewPost');
@@ -28,9 +36,6 @@ function newPost(navigateTo) {
   textAreaTitle.classList.add('textAreaTitle');
   textAreaReview.classList.add('textAreaReview');
 
-  buttonPlus.src = './img/icons-plus.png';
-  buttonPlus.classList.add('buttonPlus');
-
   buttonReturn.textContent = '.';
   buttonReturn.classList.add('returnNewPost');
   buttonReturn.addEventListener('click', () => {
@@ -39,24 +44,38 @@ function newPost(navigateTo) {
 
   buttonSave.textContent = 'Save';
   buttonSave.classList.add('save');
-  buttonSave.addEventListener('click', () => {
-    navigateTo('/wall');
-  });
+  //  buttonSave.addEventListener('click', () => {
+  //   navigateTo('/wall');
+  //  });
 
-  form.append(
+  divNewPost.append(
     paragraphImg,
     buttonPlus,
     paragraphTitle,
     textAreaTitle,
     paragraphReview,
     textAreaReview,
+    buttonSave,
   );
 
-  section.append(buttonReturn, titleNewPost, form, buttonSave);
+  section.append(buttonReturn, titleNewPost, divNewPost);
+
+  // console.log(section);
+
+  section.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const title = divNewPost.textAreaTitle;
+    const description = divNewPost.textAreaReview;
+
+    saveTask(title.value, description.value).then(() => {
+      navigateTo('/wall');
+    });
+
+    divNewPost.reset();
+  });
+
   return section;
 }
-export default newPost;
 
-// window.addEventListener('DOMcontentloaded', () => {
-//   console.log('works');
-// });
+export default newPost;

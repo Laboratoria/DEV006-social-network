@@ -1,3 +1,5 @@
+/* eslint-disable no-alert */
+/* eslint-disable no-console */
 // import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth, create } from '../lib/firebase.js';
 

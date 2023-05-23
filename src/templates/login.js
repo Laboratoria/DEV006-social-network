@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 /* eslint-disable no-console */
 // eslint-disable-next-line import/no-duplicates
 import { signInWithEmailAndPassword } from 'firebase/auth';
@@ -43,7 +44,7 @@ function login(navigateTo) {
   paragraphGoogle.textContent = 'Or Login using an social media';
   paragraphGoogle.classList.add('paragraphGoogle');
 
-  paragraphHaveAcount.textContent = 'Don´t have acount?';
+  paragraphHaveAcount.textContent = 'Dont have acount?';
   paragraphHaveAcount.classList.add('haveAcount');
 
   paragraphRegister.textContent = 'Register now';
