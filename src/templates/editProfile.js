@@ -1,13 +1,13 @@
 // import { saveTask } from '../lib/firebase.js';
 
 function editProfile(navigateTo) {
-  const section = document.createElement('section');
+  const sectionEdit = document.createElement('section');
   const buttonReturn = document.createElement('button');
   
 
-  section.setAttribute('id', 'section');
+  sectionEdit.setAttribute('id', 'section');
 
-  return section;
+  return sectionEdit;
 }
 
 export default editProfile;
