@@ -1,3 +1,4 @@
+/* eslint-disable object-shorthand */
 /* eslint-disable no-undef */
 /* eslint-disable no-console */
 /* eslint-disable import/no-extraneous-dependencies */
@@ -100,7 +101,7 @@ export function wall() {
     const formattedDate = `${day}/${month}/${year}`;
 
     const data = {
-      avatar: avatarPic.outerHTML,
+      avatar: '/images/Avatar.png',
       descripción: textarea.value,
       fecha: formattedDate,
       usuario: userDetector, // Asignar el email del usuario a "usuario"
