@@ -1,10 +1,15 @@
 /* eslint-disable no-console */
+<<<<<<< HEAD
 import { saveTask} from '../lib/firebase.js';
 import { ref } from 'firebase/storage';
 import wall from './wall.js';
+=======
+import { saveTask } from '../lib/firebase.js';
+// import { ref } from 'firebase/storage';
+>>>>>>> a40bedd877b1a8c4140b95523c6ed5352bf772c9
 
-
-function newPost(navigateTo) {
+function newPost(navigateTo, data) {
+  console.log(data.post);
   const section = document.createElement('section');
   const buttonReturn = document.createElement('button');
   const titleNewPost = document.createElement('h1');
@@ -12,7 +17,7 @@ function newPost(navigateTo) {
   divNewPost.classList.add('divNewPost');
   const form = document.createElement('form');
   const paragraphImg = document.createElement('p');
-  const getImage = document.createElement('input')
+  const getImage = document.createElement('input');
   // const buttonPlus = document.createElement('button');
   const paragraphTitle = document.createElement('p');
   const textAreaTitle = document.createElement('textarea');
@@ -35,7 +40,7 @@ function newPost(navigateTo) {
 
   // buttonPlus.classList.add('buttonPlus');
   // buttonPlus.setAttribute('id', 'buttonPlus');
-  
+
   paragraphTitle.textContent = 'Add Title';
   paragraphTitle.classList.add('paragraphTitle');
 
@@ -43,8 +48,9 @@ function newPost(navigateTo) {
   paragraphReview.classList.add('paragraphReview');
 
   textAreaTitle.classList.add('textAreaTitle');
+  textAreaTitle.textContent = data.post ? data.post.title : '';
   textAreaReview.classList.add('textAreaReview');
-
+  textAreaReview.textContent = data.post ? data.post.description : '';
   buttonReturn.textContent = '.';
   buttonReturn.classList.add('returnNewPost');
   buttonReturn.addEventListener('click', () => {
@@ -54,7 +60,7 @@ function newPost(navigateTo) {
 
   buttonSave.textContent = 'Save';
   buttonSave.classList.add('save');
-  // buttonSave.onclick = 
+  // buttonSave.onclick =
   // function uploadimg(){
   //   const refi = firebase.storage().refi();
   //   console.log(refi)
@@ -66,9 +72,7 @@ function newPost(navigateTo) {
   //     const metadata = {
   //       contentType: file.type
   //     }
-  
   //     const task = refi.chil(name).put(file, metadata);
-  
   //     task
   //     .then(snapshot => snapshot.refi.getDownloadURL())
   //     .then( url => {
@@ -86,7 +90,6 @@ function newPost(navigateTo) {
   //   navigateTo('/wall');
   //  });
 
-
   form.append(
     paragraphImg,
     getImage,
@@ -98,7 +101,7 @@ function newPost(navigateTo) {
     textAreaReview,
   );
 
-  divNewPost.append(form)
+  divNewPost.append(form);
 
   section.append(buttonReturn, titleNewPost, divNewPost);
 

@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+/* eslint-disable arrow-parens */
 import { onGetPost, deleteTask, getTask } from '../lib/firebase.js';
 
 function wall(navigateTo) {
@@ -50,25 +52,32 @@ function wall(navigateTo) {
     });
 
     postContenedor.innerHTML = html;
-    
-    const btnsDelete = postContenedor.querySelectorAll('.deleteButton')
+
+    const btnsDelete = postContenedor.querySelectorAll('.deleteButton');
 
     btnsDelete.forEach(btn => {
-      btn.addEventListener('click', ({target: {dataset}}) => {
-       deleteTask(dataset.id) 
-      })
+      btn.addEventListener('click', ({ target: { dataset } }) => {
+        deleteTask(dataset.id);
+      });
     });
-    const editButton = postContenedor.querySelectorAll('.editButton')
+    const editButton = postContenedor.querySelectorAll('.editButton');
 
     editButton.forEach(btn => {
       btn.addEventListener('click', async (e) => {
-       const doc = await getTask(e.target.dataset.id);
-       const post = doc.data()
-       const title = post.title
-       const description = post.description
-       console.log(post)
+        const doc = await getTask(e.target.dataset.id);
+        const post = doc.data();
+        // const title = post.title;
+        // const description = post.description;
+        console.log(post);
+        navigateTo('/newpost', { post });
+        // editButton(title.value, description.value).then(() => {
+        //   navigateTo('/newpost');
+        // });
 
+        //  divWall['textAreaTitle'].value = post.title;
+        //  divWall['textAreaReview'].value = post.description;
 
+<<<<<<< HEAD
       //  editButton(title.value, description.value).then(() => {
       //   navigateTo('/newpost');
       // });
@@ -82,10 +91,12 @@ function wall(navigateTo) {
 
        
       })
+=======
+        //  editStatus = true;
+        //  id = e.target.dataset.id;
+      });
+>>>>>>> a40bedd877b1a8c4140b95523c6ed5352bf772c9
     });
-
-
-    
   });
   return divWall;
 }
