@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 import { saveTask} from '../lib/firebase.js';
 import { ref } from 'firebase/storage';
+import wall from './wall.js';
 
 
 function newPost(navigateTo) {
@@ -49,6 +50,7 @@ function newPost(navigateTo) {
   buttonReturn.addEventListener('click', () => {
     navigateTo('/wall');
   });
+
 
   buttonSave.textContent = 'Save';
   buttonSave.classList.add('save');

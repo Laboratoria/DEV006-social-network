@@ -69,9 +69,9 @@ function wall(navigateTo) {
        console.log(post)
 
 
-       editButton(title.value, description.value).then(() => {
-        navigateTo('/newpost');
-      });
+      //  editButton(title.value, description.value).then(() => {
+      //   navigateTo('/newpost');
+      // });
 
 
       //  divWall['textAreaTitle'].value = post.title;
