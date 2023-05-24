@@ -1,4 +1,4 @@
-# Creando una Red Social
+# Estamos Predid@s!!!. Red Social para ti que consideras a tu mascota parte de tu familia.
 
 ## Índice
 
