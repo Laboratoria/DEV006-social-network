@@ -1,4 +1,4 @@
-import {userLogin} from '../helpers/lib/Auth'
+import { userLogin } from '../helpers/lib/Auth';
 
 function login(navigateTo) {
 // llamar al DOM y crear cada elemento
@@ -99,27 +99,24 @@ function login(navigateTo) {
     sectionLogin,
   );
 
-  form.addEventListener('submit', (e)=> {
-    e.preventDefault()
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
     const email = inputCorreo.value;
     const password = inputPassword.value;
-    const promesa = userLogin(email,password);
+    const promesa = userLogin(email, password);
     promesa.then((user) => {
-        navigateTo('/home');
-     }).catch((error)=>{
-        const alerta = document.querySelector('.message-error');
-        if(alerta) {
-            alerta.remove();
-        }
-        const mensajeError = document.createElement('p');
-        mensajeError.textContent = error.code;
-        mensajeError.classList.add('message-error')
-        form.appendChild(mensajeError);
-
-     })
- 
+      navigateTo('/home');
+    }).catch((error) => {
+      const alerta = document.querySelector('.message-error');
+      if (alerta) {
+        alerta.remove();
+      }
+      const mensajeError = document.createElement('p');
+      mensajeError.textContent = error.code;
+      mensajeError.classList.add('message-error');
+      form.appendChild(mensajeError);
+    });
   });
-
 
   return section;
 }
