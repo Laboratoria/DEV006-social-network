@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable import/no-duplicates */
 /* eslint-disable import/no-unresolved */
 import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js';
