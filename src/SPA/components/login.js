@@ -1,6 +1,4 @@
-import { signInWithEmailAndPassword } from 'firebase/auth';
-import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
-import { auth } from '../helpers/lib/firebase';
+import {userLogin} from '../helpers/lib/Auth'
 
 function login(navigateTo) {
 // llamar al DOM y crear cada elemento
@@ -101,49 +99,27 @@ function login(navigateTo) {
     sectionLogin,
   );
 
-  form.addEventListener('submit', async(e)=> {
+  form.addEventListener('submit', (e)=> {
     e.preventDefault()
     const email = inputCorreo.value;
     const password = inputPassword.value;
+    const promesa = userLogin(email,password);
+    promesa.then((user) => {
+        navigateTo('/home');
+     }).catch((error)=>{
+        const alerta = document.querySelector('.message-error');
+        if(alerta) {
+            alerta.remove();
+        }
+        const mensajeError = document.createElement('p');
+        mensajeError.textContent = error.code;
+        mensajeError.classList.add('message-error')
+        form.appendChild(mensajeError);
 
-    try {
-      const User = await signInWithEmailAndPassword(
-       auth,
-      email,
-      password,
-       );
-       console.log(User);
-       navigateTo('/home');
-         
- } catch (error) {
-  if(error.code === 'auth/wrong-password'){
-    mostrarMensaje('Contraseña incorrecta');
-   } else if(error.code === 'auth/user-not-found') {
-    mostrarMensaje('cuenta no registrada');
-   }
-    }
+     })
+ 
   });
 
-
-  function mostrarMensaje(mensaje) { 
-    //Comprobar que exista una alerta
-    const alerta = document.querySelector('.message-error');
-    if(alerta) {
-        alerta.remove();
-    }
-    
-    const mensajeError = document.createElement('p');
-    mensajeError.textContent = mensaje;
-
-    mensajeError.classList.add('message-error');
-
-    //inyectar el mensaje al formulario
-    form.appendChild(mensajeError);
-}
-
-// buttonSignGoogle.addEventListener('click', ()=>{
-
-// })
 
   return section;
 }

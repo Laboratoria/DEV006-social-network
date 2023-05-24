@@ -1,5 +1,4 @@
-import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../helpers/lib/firebase';
+import {registerUser} from '../helpers/lib/Auth'
 
 function registro(navigateTo) {
     const section = document.createElement('section');
@@ -56,48 +55,26 @@ function registro(navigateTo) {
     divDerecho.classList.add('div-left');
     divDerecho.append(dog);
 
-    form.addEventListener('submit', async(e) => {
+    form.addEventListener('submit', (e) => {
         e.preventDefault();
         const email = inputEmail.value;
-        const password = inputPassword.value;
-       console.log(email, password);
+        const contraseña = inputPassword.value;
+        const promesa = registerUser(email,contraseña);
+        promesa.then((user) => {
+            navigateTo('/');
+         }).catch((error)=>{
+            const alerta = document.querySelector('.message-error');
+            if(alerta) {
+                alerta.remove();
+            }
+            const mensajeError = document.createElement('p');
+            mensajeError.textContent = error.code;
+            mensajeError.classList.add('message-error')
+            form.appendChild(mensajeError);
     
-       try {
-           const resultUser = await createUserWithEmailAndPassword(
-            auth,
-           email,
-           password,
-            );
-            mostrarMensaje('Tu cuenta ha sido creada con exito!');
-            setTimeout(() => {
-                navigateTo('/');
-            }, 3000);   
-      } catch (error) {
-        if(error.code === 'auth/email-already-in-use'){
-            mostrarMensaje('El correo ya está creado');
-           } else if(error.code === 'auth/invalid-email') {
-            mostrarMensaje('El correo es inválido');
-           } else if (error.code === 'auth/weak-password'){
-            mostrarMensaje('Contraseña débil, pruebe con mínimo 6 caracteres');
-           }
-         }
+         })
+     
        });
-
-       function mostrarMensaje(mensaje) { 
-        //Comprobar que exista una alerta
-        const alerta = document.querySelector('.message-error');
-        if(alerta) {
-            alerta.remove();
-        }
-        
-        const mensajeError = document.createElement('p');
-        mensajeError.textContent = mensaje;
-
-        mensajeError.classList.add('message-error');
-
-        //inyectar el mensaje al formulario
-        form.appendChild(mensajeError);
-    }
 
        sectionPets.append(animalesR, form, contenedorR);
 
