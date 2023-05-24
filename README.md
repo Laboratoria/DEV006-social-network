@@ -108,13 +108,22 @@ ede ser util a los usuario.
 
 ## 3. Diseño de la Interfaz de Usuario
 ### Sketch: Baja fidelidad.
+![Prototipo Baja Fidelidad](./src/img/Prototipos/PBF1.png)
+![Prototipo Baja Fidelidad](./src/img/Prototipos/PBF2.png)
 ### Sketch: Alta fidelidad.
+![Prototipo Alta Fidelidad](./src/img/Prototipos/PAF1.png)
+![Prototipo Alta Fidelidad](./src/img/Prototipos/PAF2.png)
 
-## 4. Consideraciones del comportamiento de la interfaz de usuario
+## 4. Tests de usabilidad
+Los problemas que se detectaron mediante los test de usabilidad y feedbacks fueron:
 
-## 5. Consideraciones técnicas Front-end
+*Colores de los botones..
+*Tamaño de la letra.
+*Fondo de la App.
+*Uso de iconos en lugar de letras.
+*Dar más información al usuario para el uso de la app.
 
-## 6. Consideraciones técnicas UX
+## 5. Interfaz final
 
-## 7. Interfaz final
-
+![Proyecto Final](./src/img/Prototipos/PF1.png)
+![Proyecto Final](./src/img/Prototipos/PF2.png)
