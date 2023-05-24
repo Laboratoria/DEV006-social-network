@@ -25,6 +25,7 @@ function posts(navigateTo) {
   const containerPosts = document.createElement('div');
   const containerTitle = document.createElement('div');
   const containerFormPost = document.createElement('div');
+  const containerTitleAndPost = document.createElement('div');
   const formDoYouWantPost = document.createElement('form');
   const postsUsers = document.createElement('div');
   const containerBtn = document.createElement('div');
@@ -60,7 +61,7 @@ function posts(navigateTo) {
         </div>
         <div class='btns-post'>
         <img class="${showBtnDelete ? 'btn-delete' : ''}" data-id="${doc.id}" src="${showBtnDelete ? 'img/delete.png' : ''}" alt="${showBtnDelete ? 'Borrar' : ''}">
-        <img class="${showBtnEdit ? 'btn-delete' : ''}" data-id="${doc.id}" src="${showBtnEdit ? 'img/edit.png' : ''}" alt="${showBtnEdit ? 'Editar' : ''}">
+        <img class="${showBtnEdit ? 'btn-edit' : ''}" data-id="${doc.id}" src="${showBtnEdit ? 'img/edit.png' : ''}" alt="${showBtnEdit ? 'Editar' : ''}">
         </div>
         </div>
         <p class="posts">${userPost.post}</p>
@@ -88,9 +89,6 @@ function posts(navigateTo) {
 
         if (post.data().authorId === user.uid) {
         deletePost(postId);
-        } else {
-          console.log('No tienes permiso para eliminar este post');
-          // btn.style.display = 'none';
         }
       });
     });
@@ -111,8 +109,6 @@ function posts(navigateTo) {
           id = userPost.id;
 
           formDoYouWantPost['savingPost'].innerHTML = 'Actualizar';
-        } else {
-          // btn.style.display = 'none';
         }
       });
     });
@@ -152,6 +148,7 @@ function posts(navigateTo) {
   containerPosts.id = 'containerPosts';
   containerTitle.id = 'containerTitle';
   containerFormPost.id = 'containerFormPost';
+  containerTitleAndPost.id = 'containerTitleAndPost';
   postsUsers.id = 'postsUsers';
   formDoYouWantPost.id = 'formDoYouWantPost';
   containerBtn.id = 'containerBtn';
@@ -169,6 +166,7 @@ function posts(navigateTo) {
   containerTitle.classList.add('container-title-posts');
   containerFormPost.classList.add('container-form-post');
   formDoYouWantPost.classList.add('form-do-you-want-post');
+  containerTitleAndPost.classList.add('container-title-and-post');
   containerBtn.classList.add('container-btn-post');
   wantPost.classList.add('want-post');
   imgBack.classList.add('img-back-posts');
@@ -190,6 +188,7 @@ function posts(navigateTo) {
   imgLogout.src = 'img/cerrar.png';
   imgLogout.alt = 'imagen cerrar sesion';
   imgLogout.addEventListener('click', async () => {
+    console.log('hiciste click');
     logoutFn(navigateTo);
   });
 
@@ -197,6 +196,9 @@ function posts(navigateTo) {
 
   imgUser.src = 'img/huellaIcono.png';
   imgUser.alt = 'Imagen usuario';
+  imgUser.addEventListener('click', () => {
+    console.log('Imagen de usuario');
+  });
 
   wantPost.placeholder = 'Deseas contarnos algo?';
 
@@ -220,11 +222,12 @@ function posts(navigateTo) {
     }
   });
 
+  containerTitleAndPost.append(containerTitle, formDoYouWantPost);
   containerTitle.append(imgBack, title, imgLogout);
   formDoYouWantPost.append(containerFormPost, containerBtn);
   containerFormPost.append(imgUser, wantPost);
   containerBtn.appendChild(savingPost);
-  containerPosts.append(containerTitle, formDoYouWantPost, postsUsers);
+  containerPosts.append(containerTitleAndPost, postsUsers);
   section.appendChild(containerPosts);
 
   return section;

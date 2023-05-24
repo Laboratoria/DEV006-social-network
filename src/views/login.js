@@ -91,7 +91,7 @@ function login(navigateTo) {
   passwordInput.setAttribute('required', 'true');
 
   containerTitle.append(title, imgLogin);
-  form.append(emailInput, passwordInput, forgotPassword, btnSignIn);
+  form.append(emailInput, passwordInput, btnSignIn);
   containerbtnsLogin.append(loginGoogle, loginGit);
   containerLogin.append(buttonReturn, containerTitle, form, loginWith, containerbtnsLogin);
   section.appendChild(containerLogin);

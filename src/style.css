@@ -166,7 +166,7 @@ body {
 
 ::placeholder {
     font-size: 20px;
-    padding-left: 5%;
+    padding-left: 10px;
     letter-spacing: 1.5px;
 }
 
@@ -233,7 +233,7 @@ body {
 /* POSTS */
 
 .container-posts {
-    background-color: rgba(224, 223, 223, 0.90);
+    background-color: rgba(224, 223, 223, 0.60);
     width: 100%;
     height: auto ;
     display: flex;
@@ -242,14 +242,17 @@ body {
     margin: auto;
 }
 
+.container-title-and-post {
+    margin-bottom: 240px;
+    display: flex;
+    flex-direction: column;
+}
+
 .container-title-posts {
-    padding: 5px;
-    background-color: #ebe2e9;
-    border-bottom: 1px solid black;
+    background-color: #967a93;
+    border-bottom: 2px solid black;
     margin-bottom: 20px;
-    margin-top: -2%;
-    margin-left: -4.5%;
-    margin-right: -4.5%;
+    margin-top: -5%;
     align-items: center;
     justify-content: center;
     display: flex;
@@ -261,53 +264,61 @@ body {
 }
 
 .img-logout-posts {
-    width: 10%;
+    width: 40px;
     height: auto;
-    margin-top: 9%;
+    margin-top: 5px;
+    margin-right: -10px;
 }
 
 .img-back-posts {
-    width: 10%;
+    width: 40px;
     height: auto;
-    margin-top: 8%;
-    margin-left: 5%;
 }
 
 .title-posts {
     text-align: center;
-    font-size: 25px;
+    font-size: 28px;
     font-family: 'Roboto Condensed', sans-serif;
     margin-top: 12%;
-    margin-left: 8%;
-    margin-right: 8%;
+    margin-left: 35px;
+    margin-right: 35px;
 }
 
-.container-form-post {
+.container-form-post { 
+    background-color: #ebe2e9;
     display: flex;
+    padding: 18px 0px 6px 0px;
     align-items: center;
-    margin-top: 130px;
+    margin-top: 92px;
 }
 
 .want-post {
-    border: 1px solid black;
+    border: 2px solid black;
+    border-radius: 15px;
     box-shadow: 1px 1px 3px rgb(0, 0, 0);
+    padding-left: 10px;
     font-size: 20px;
-    width: 90%;
+    width: 70.5%;
+    margin-bottom: 1px;
 }
 .img-user-posts {
-    margin-right: 5%;
-    width: 20%;
+    margin-left: 5px;
+    margin-right: 13px;
+    width: 18%;
 }
 
 .container-btn-post {
+    background-color: #ebe2e9;
     display: flex;
+    margin-top: -2px;
+    padding-right: 30px;
     justify-content: end;
-}
+ }
 
 .saving-posts {
     width: 25%;
     height: 35px;
-    margin-bottom: 15px;
+    margin-bottom: 5px;
     background-color: #9F3C95;
     border-radius: 10px;
     color: white;
@@ -318,8 +329,14 @@ body {
 }
 
 .form-do-you-want-post {
-    width: 90%;
-    margin: 0% 5%;
+    width: 100%;
+    margin: 0px 10px;
+    margin-bottom: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
 }
 
 .user-posts { 
@@ -328,7 +345,7 @@ body {
     box-shadow: 2px 2px 5px rgb(0, 0, 0);
     border-radius: 8px;
     display: flex;
-    margin: 15px 5%;
+    margin: 15px 20px;
     flex-direction: column;
     background-color: #ebe2e9;
 }
@@ -406,6 +423,5 @@ body {
     width: 10%;
 }
 
-.hidden {
-    display: none;
-}
+
+
