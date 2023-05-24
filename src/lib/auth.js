@@ -79,12 +79,13 @@ export function loginUser(email, password) {
     });
 }
 // función para registrarse con Google
-export function signInWithGoogle() {
+export function signInWithGoogle(navigateTo) {
   const provider = new GoogleAuthProvider();
   signInWithPopup(auth, provider)
     .then((result) => {
       const user = result.user;
       console.log('Usuario:', user);
+      navigateTo('/wall'); // Redireccionar a la ruta protegida después de iniciar sesión con Google
     })
     .catch((error) => {
       const errorMessage = error.message;

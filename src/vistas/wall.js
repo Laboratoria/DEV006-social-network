@@ -9,6 +9,13 @@ function wall(navigateTo) {
   const bell = document.createElement('img');
   const profile = document.createElement('img');
   const newPost = document.createElement('img');
+  const popUp = document.createElement('div');
+  const popUpButton = document.createElement('button');
+  const formPost = document.createElement('form');
+  const postTitle = document.createElement('h3');
+  const postDescription = document.createElement('h3');
+  const textTitle = document.createElement('input');
+  const textDescription = document.createElement('textarea');
 
   // agregar clases//
   section.classList.add('section');
@@ -21,6 +28,13 @@ function wall(navigateTo) {
   logo.classList.add('logoWall');
   house.classList.add('house');
   config.classList.add('config');
+  popUp.classList.add('popUp');
+  popUpButton.classList.add('popUpButton');
+  formPost.classList.add('formPost');
+  postTitle.classList.add('postTitle');
+  postDescription.classList.add('postDescription');
+  textTitle.classList.add('textTitle');
+  textDescription.classList.add('textDescription');
 
   // agregar atributos//
   logo.setAttribute('src', 'images/logo.png');
@@ -30,11 +44,15 @@ function wall(navigateTo) {
   profile.setAttribute('src', 'images/user.png');
   newPost.setAttribute('src', 'images/post.png');
 
-  //clickeado para img de house
+  popUpButton.textContent = 'Post';
+  postTitle.textContent = 'Title';
+  postDescription.textContent = 'Description';
+
+  // clickeado para img de house
   house.addEventListener('click', () => {
     navigateTo('/wall');
   });
-  //clickeado para img de config
+  // clickeado para img de config
   config.addEventListener('click', () => {
     navigateTo('/settings');
   });
@@ -44,12 +62,22 @@ function wall(navigateTo) {
   profile.addEventListener('click', () => {
     navigateTo('/buildsite');
   });
+  // POPUP//
   newPost.addEventListener('click', () => {
-    navigateTo('/buildsite');
+    console.log('hola');
+    popUp.style.display = 'block';
+  });
+
+  popUpButton.addEventListener('click', (e) => {
+    e.preventDefault();
+    popUp.style.display = 'none';
   });
 
   // Agrupar por secciones//
+  popUp.append(formPost);
+  formPost.append(postTitle, textTitle, postDescription, textDescription, popUpButton);
   sectionHeader.append(house, logo, config);
+  sectionPosts.append(popUp);
   sectionFooter.append(bell, newPost, profile);
   section.append(sectionHeader, sectionPosts, sectionFooter);
 

@@ -269,6 +269,16 @@ input {
   border-radius: 2.6vw;
   border-color: #b065db;
   text-align: center;
+  font-size: 2vh;
+}
+
+textarea {
+  width: 58vw;
+  height: 11.5vh;
+  border-radius: 2.6vw;
+  border: solid 0.3vh #b065db;
+  text-align: center;
+  font-size: 2vh;
 }
 
 h4 {
@@ -400,4 +410,55 @@ h4 {
   height: 37vh;
   position: absolute;
   top: 31vh;
+}
+/*CSS PopUp*/
+.popUp{
+  display: none;
+  width: 88vw;
+  height: 42vh;
+  background-color: rgba(225, 210, 123, 1);
+  border-radius: 5vh;
+  font-family: "Hind Vadodara", sans-serif;
+  border: 1vw solid rgba(168, 36, 244, 1);
+  box-shadow: 2vw 2vh 2vw rgba(0, 0, 0, 0.4);
+}
+.sectionPosts{
+
+  width: 100vw;
+  height: 72vh;
+  margin: 15vh 0vw 12vh -2vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.popUpButton{
+  background-color: #844ea8;
+  width: 35vw;
+  height: 4vh;
+  border-radius: 2.6vw;
+  color: white;
+  font-family: "Inria Serif";
+  font-weight: 100;
+  font-size: 3vh;
+  line-height: 17px;
+  margin-top: 3vh;
+}
+
+.formPost{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-top: 2vh;
+}
+
+
+
+.postTitle, .postDescription{
+  font-size: 7vw;
+  font-family: "Hind Vadodara", sans-serif;
+  line-height: 1vh;
 }

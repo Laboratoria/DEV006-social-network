@@ -46,7 +46,7 @@ function signup(navigateTo) {
   // Registro con Google
   buttonGoogleSignup.addEventListener('click', (e) => {
     e.preventDefault();
-    signInWithGoogle();
+    signInWithGoogle(navigateTo);
   });
   // Registro de usuario//
   buttonEnterSignup.addEventListener('click', (e) => {

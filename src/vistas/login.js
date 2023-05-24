@@ -34,10 +34,12 @@ function login(navigateTo) {
   });
 
   // Loguearse  con Google
+  // Loguearse con Google
   buttonGoogleLogin.addEventListener('click', (e) => {
     e.preventDefault();
-    signInWithGoogle();
+    signInWithGoogle(navigateTo);
   });
+
   // Loguearse
   buttonEnter.addEventListener('click', (e) => {
     e.preventDefault();
