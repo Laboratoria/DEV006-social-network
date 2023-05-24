@@ -1,5 +1,7 @@
 /* eslint-disable no-console */
-import { saveTask } from '../lib/firebase.js';
+import { saveTask} from '../lib/firebase.js';
+import { ref } from 'firebase/storage';
+
 
 function newPost(navigateTo) {
   const section = document.createElement('section');
@@ -7,8 +9,10 @@ function newPost(navigateTo) {
   const titleNewPost = document.createElement('h1');
   const divNewPost = document.createElement('div');
   divNewPost.classList.add('divNewPost');
+  const form = document.createElement('form');
   const paragraphImg = document.createElement('p');
-  const buttonPlus = document.createElement('button');
+  const getImage = document.createElement('input')
+  // const buttonPlus = document.createElement('button');
   const paragraphTitle = document.createElement('p');
   const textAreaTitle = document.createElement('textarea');
   const paragraphReview = document.createElement('p');
@@ -25,8 +29,12 @@ function newPost(navigateTo) {
   paragraphImg.textContent = 'Add Image';
   paragraphImg.classList.add('paragraphImg');
 
-  buttonPlus.classList.add('buttonPlus');
+  getImage.classList.add('getImagen');
+  getImage.type = 'file';
 
+  // buttonPlus.classList.add('buttonPlus');
+  // buttonPlus.setAttribute('id', 'buttonPlus');
+  
   paragraphTitle.textContent = 'Add Title';
   paragraphTitle.classList.add('paragraphTitle');
 
@@ -44,35 +52,67 @@ function newPost(navigateTo) {
 
   buttonSave.textContent = 'Save';
   buttonSave.classList.add('save');
+  // buttonSave.onclick = 
+  // function uploadimg(){
+  //   const refi = firebase.storage().refi();
+  //   console.log(refi)
+  //   const file = document.querySelector('#buttonPlus').file[0];
+  //   const name = new Date() +'-'+ file.name;
+  //   if (file == null){
+  //     alert('Seleccionar imagen')
+  //   }else{
+  //     const metadata = {
+  //       contentType: file.type
+  //     }
+  
+  //     const task = refi.chil(name).put(file, metadata);
+  
+  //     task
+  //     .then(snapshot => snapshot.refi.getDownloadURL())
+  //     .then( url => {
+  //       console.log(url);
+  //       alert('imagen upload successful');
+  //       const imageElement = document.querySelector('imagen');
+  //       imageElement.src = url;
+  //     });
+  //   }
+  //   console.log(refi);
+  // }
+
+  // buttonSave.setAttribute('onclick', 'uploadimg()')
   //  buttonSave.addEventListener('click', () => {
   //   navigateTo('/wall');
   //  });
 
-  divNewPost.append(
+
+  form.append(
     paragraphImg,
-    buttonPlus,
+    getImage,
+    // buttonPlus,
+    buttonSave,
     paragraphTitle,
     textAreaTitle,
     paragraphReview,
     textAreaReview,
-    buttonSave,
   );
+
+  divNewPost.append(form)
 
   section.append(buttonReturn, titleNewPost, divNewPost);
 
-  // console.log(section);
+  console.log(section);
 
   section.addEventListener('submit', (e) => {
     e.preventDefault();
 
-    const title = divNewPost.textAreaTitle;
-    const description = divNewPost.textAreaReview;
+    const title = form.textAreaTitle;
+    const description = form.textAreaReview;
 
     saveTask(title.value, description.value).then(() => {
       navigateTo('/wall');
     });
 
-    divNewPost.reset();
+    form.reset();
   });
 
   return section;
