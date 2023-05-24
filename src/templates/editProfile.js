@@ -3,9 +3,14 @@
 function editProfile(navigateTo) {
   const section = document.createElement('section');
   const buttonReturn = document.createElement('button');
-  
 
-  section.setAttribute('id', 'section');
+  buttonReturn.textContent = '.';
+  buttonReturn.classList.add('returnNewPost');
+  buttonReturn.addEventListener('click', () => {
+    navigateTo('/wall');
+  });
+
+  section.append(buttonReturn);
 
   return section;
 }
