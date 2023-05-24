@@ -22,7 +22,7 @@ body {
 }
 
 .divWall{
-  padding: 16px;
+  /* padding: 16px; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -318,7 +318,7 @@ body {
   top: 125px;
 }
 
-.buttonPlus {
+/* .buttonPlus {
   background: url(/img/icons-plus.png);
   position: relative;
   top: 74px;
@@ -327,7 +327,7 @@ body {
   width: 22px;
   height: 26px;
   background-repeat: no-repeat;
-}
+} */
 
 .paragraphReview,
 .paragraphTitle  {
@@ -348,7 +348,7 @@ body {
 .textAreaReview {
   position: relative;
   top: 66px;
-  left: 48px;
+  left: 41px;
   width: 290px;
   height: 100px;
   border-radius: 20px;
@@ -374,21 +374,56 @@ body {
   width: 100%;
   justify-content: space-around;
 }
+
 .postContenedor{
   overflow-y: scroll;
   width: 100%;
 }
 
 .postContenedor > div{
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 15px;
+  color: #595959;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  border: solid;
-
+  background-color: #fff;
+  margin-top: 10px;
+  padding: 10px;
+  gap: 10px;
 }
+
 .iconoMuro,
 .iconoAgregar,
 .iconoPerfil{
   width:45px;
+  height: 45px;
+}
+
+.getImagen{
+  position: relative;
+  top: 100px;
+  left: 45px;
+  border: none;
+  width: 100%;
+  background-repeat: no-repeat;
+  margin-bottom: 15px;
+  margin-top: 10px;
+}
+
+#editDelete{
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+}
+
+.editButton{ 
+  width: 30px;
+  height: 30px;
+}
+
+.deletebutton{
+  width: 45px;
   height: 45px;
 }
