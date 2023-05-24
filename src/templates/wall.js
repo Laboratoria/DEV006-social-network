@@ -1,3 +1,4 @@
+/* eslint-disable arrow-parens */
 import { onGetPost, deleteTask, getTask } from '../lib/firebase.js';
 
 function wall(navigateTo) {
@@ -50,42 +51,35 @@ function wall(navigateTo) {
     });
 
     postContenedor.innerHTML = html;
-    
-    const btnsDelete = postContenedor.querySelectorAll('.deleteButton')
+
+    const btnsDelete = postContenedor.querySelectorAll('.deleteButton');
 
     btnsDelete.forEach(btn => {
-      btn.addEventListener('click', ({target: {dataset}}) => {
-       deleteTask(dataset.id) 
-      })
+      btn.addEventListener('click', ({ target: { dataset } }) => {
+        deleteTask(dataset.id);
+      });
     });
-    const editButton = postContenedor.querySelectorAll('.editButton')
+    const editButton = postContenedor.querySelectorAll('.editButton');
 
     editButton.forEach(btn => {
       btn.addEventListener('click', async (e) => {
-       const doc = await getTask(e.target.dataset.id);
-       const post = doc.data()
-       const title = post.title
-       const description = post.description
-       console.log(post)
+        const doc = await getTask(e.target.dataset.id);
+        const post = doc.data();
+        const title = post.title;
+        const description = post.description;
+        console.log(post);
 
+        editButton(title.value, description.value).then(() => {
+          navigateTo('/newpost');
+        });
 
-       editButton(title.value, description.value).then(() => {
-        navigateTo('/newpost');
+        //  divWall['textAreaTitle'].value = post.title;
+        //  divWall['textAreaReview'].value = post.description;
+
+        //  editStatus = true;
+        //  id = e.target.dataset.id;
       });
-
-
-      //  divWall['textAreaTitle'].value = post.title;
-      //  divWall['textAreaReview'].value = post.description;
-
-      //  editStatus = true;
-      //  id = e.target.dataset.id;
-
-       
-      })
     });
-
-
-    
   });
   return divWall;
 }
