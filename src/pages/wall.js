@@ -1,8 +1,11 @@
+/* eslint-disable max-len */
 /* eslint-disable object-shorthand */
 /* eslint-disable no-undef */
 /* eslint-disable no-console */
 /* eslint-disable import/no-extraneous-dependencies */
-import { collection, getDocs, addDoc } from 'firebase/firestore';
+import {
+  collection, getDocs, addDoc,
+} from 'firebase/firestore';
 import { db } from '../lib/firebase';
 import { authDetector } from '../lib/functions';
 
@@ -24,10 +27,9 @@ export function wall() {
   buttonCreatePost.classList.add('buttonCreatePost');
   buttonCreatePost.textContent = 'Post';
   textarea.classList.add('textArea');
+  textarea.placeholder = 'write your tips today?';
   // textarea.setAttribute('rows', '4');
   writeAndPost.classList.add('writeAndPost');
-  
-  
 
   // exitButton.id = 'exit';
   logoRefresh.classList.add('refresh');
@@ -36,7 +38,7 @@ export function wall() {
   navegator.appendChild(logoRefresh);
 
   // Agregar elementos a divposts
-  //divposts.appendChild(writeAndPost);
+  // divposts.appendChild(writeAndPost);
 
   // Agregar elementos a divposts
   writeAndPost.appendChild(textarea);
@@ -106,10 +108,11 @@ export function wall() {
     });
   });
   console.log(authDetector);
+
   buttonCreatePost.addEventListener('click', async () => {
     const userDetector = await authDetector();// Obtener el email del usuario
 
-    const currentDate = new Date(); //devuelve la fecha local
+    const currentDate = new Date(); // devuelve la fecha local
     const day = currentDate.getDate();// devuelve el día solamente
     const month = currentDate.getMonth() + 1; // Los meses comienzan desde 0
     const year = currentDate.getFullYear();
@@ -121,16 +124,19 @@ export function wall() {
       fecha: formattedDate,
       usuario: userDetector, // Asignar el email del usuario a "usuario"
     };
+
     const result = await addDoc(collection(db, 'Posts'), data);
     console.log(result);
     // Crear el nuevo post y agregarlo al principio
     createPost(data);
+    textarea.value = '';
   });
+
   // DOMContentLoaded se dispara cuando se ha cargado
   //  completamente el árbol DOM de una página web por
   // lo q no sirve en este caso ya q se cambia lo q esta en root
   // window.addEventListener('DOMContentLoaded', async () => {
-  //   const querySnapshot = await getPost();
+  //   const querySnapshot = await getPost();0'+''''''zz
   //   querySnapshot.forEach((doc) => {
   //     const postdata = doc.data();
   //     createPost(postdata);

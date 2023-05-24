@@ -64,18 +64,18 @@ export async function register(email, password) {
 
 export function authDetector() {
   const auth2 = getAuth(app);
-  //let userEmail = null;
-  return new Promise((resolve,reject)=>{
-  onAuthStateChanged(auth2, (user) => {
-    if (user) {
-      resolve(user.email);
-      /*userEmail = user.email;
-      console.log(userEmail);*/
-    } else {
-      resolve(null);
-      //userEmail = null;
-    }
+  // let userEmail = null;
+  return new Promise((resolve, reject) => {
+    onAuthStateChanged(auth2, (user) => {
+      if (user) {
+        resolve(user.email);
+      /* userEmail = user.email;
+      console.log(userEmail); */
+      } else {
+        resolve(null);
+      // userEmail = null;
+      }
+    });
   });
-});
 }
 authDetector();
