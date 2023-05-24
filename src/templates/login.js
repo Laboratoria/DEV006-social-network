@@ -41,7 +41,7 @@ function login(navigateTo) {
   inputPass.type = 'password';
   inputPass.autocomplete = 'current-password';
 
-  paragraphGoogle.textContent = 'Or Login using an social media';
+  paragraphGoogle.textContent = 'Or Login using a social media';
   paragraphGoogle.classList.add('paragraphGoogle');
 
   paragraphHaveAcount.textContent = 'Dont have acount?';
