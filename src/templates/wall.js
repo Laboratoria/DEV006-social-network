@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable arrow-parens */
 import { onGetPost, deleteTask, getTask } from '../lib/firebase.js';
 
@@ -65,13 +66,13 @@ function wall(navigateTo) {
       btn.addEventListener('click', async (e) => {
         const doc = await getTask(e.target.dataset.id);
         const post = doc.data();
-        const title = post.title;
-        const description = post.description;
+        // const title = post.title;
+        // const description = post.description;
         console.log(post);
-
-        editButton(title.value, description.value).then(() => {
-          navigateTo('/newpost');
-        });
+        navigateTo('/newpost', { post });
+        // editButton(title.value, description.value).then(() => {
+        //   navigateTo('/newpost');
+        // });
 
         //  divWall['textAreaTitle'].value = post.title;
         //  divWall['textAreaReview'].value = post.description;

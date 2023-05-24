@@ -16,7 +16,7 @@ const routes = [
 const defaultRoute = '/';
 const root = document.getElementById('root');
 
-function navigateTo(hash) {
+function navigateTo(hash, data = {}) {
   const route = routes.find((routeFound) => routeFound.path === hash);
   if (route && route.component) {
     window.history.pushState(
@@ -28,7 +28,7 @@ function navigateTo(hash) {
     if (root.firstChild) {
       root.removeChild(root.firstChild);
     }
-    root.appendChild(route.component(navigateTo));
+    root.appendChild(route.component(navigateTo, data));
   } else {
     navigateTo('/error');
   }
