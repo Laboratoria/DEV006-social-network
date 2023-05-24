@@ -1,4 +1,5 @@
-function home(navigateTo) {
+
+export function home(navigateTo) {
     const logoGrande = document.createElement('img');
     const divHome = document.createElement('div');
     const loginBtnHome = document.createElement('button');
@@ -7,16 +8,20 @@ function home(navigateTo) {
     const footer = document.createElement('footer');
 
     logoGrande.src='./img/logoLKP_final.png';
-    document.getElementById('root').appendChild(logoGrande);
+   
 
     
     loginBtnHome.textContent = 'Login';
     registerBtnHome.textContent = 'Register';
     
-    divHome.appendChild(loginBtnHome, registerBtnHome);
+    imgFamiliaHome.src= './img/comunidad.png';
+    footer.textContent='Copyright © 2023 Isabel Lira, Kat Bravo & Alejandra Martínez';
+    divHome.append(loginBtnHome, registerBtnHome, imgFamiliaHome,footer);
+    document.getElementById('root').append(logoGrande,divHome);
+    
     return divHome;
 
     
+    
 }
 
-export default home;
