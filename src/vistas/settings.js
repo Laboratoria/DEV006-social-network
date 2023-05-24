@@ -51,10 +51,6 @@ function settings(navigateTo) {
     navigateTo('/buildsite');
   });
 
-  logOut.addEventListener('click', () => {
-    navigateTo('/buildsite');
-  });
-
   contact.addEventListener('click', () => {
     navigateTo('/buildsite');
   });
