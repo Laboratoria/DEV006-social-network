@@ -1,12 +1,6 @@
 /* eslint-disable no-console */
-<<<<<<< HEAD
-import { saveTask} from '../lib/firebase.js';
-import { ref } from 'firebase/storage';
-import wall from './wall.js';
-=======
 import { saveTask } from '../lib/firebase.js';
 // import { ref } from 'firebase/storage';
->>>>>>> a40bedd877b1a8c4140b95523c6ed5352bf772c9
 
 function newPost(navigateTo, data) {
   console.log(data.post);

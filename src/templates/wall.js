@@ -77,25 +77,9 @@ function wall(navigateTo) {
         //  divWall['textAreaTitle'].value = post.title;
         //  divWall['textAreaReview'].value = post.description;
 
-<<<<<<< HEAD
-      //  editButton(title.value, description.value).then(() => {
-      //   navigateTo('/newpost');
-      // });
-
-
-      //  divWall['textAreaTitle'].value = post.title;
-      //  divWall['textAreaReview'].value = post.description;
-
-      //  editStatus = true;
-      //  id = e.target.dataset.id;
-
-       
-      })
-=======
         //  editStatus = true;
         //  id = e.target.dataset.id;
       });
->>>>>>> a40bedd877b1a8c4140b95523c6ed5352bf772c9
     });
   });
   return divWall;
