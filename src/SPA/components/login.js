@@ -104,7 +104,7 @@ function login(navigateTo) {
     const email = inputCorreo.value;
     const password = inputPassword.value;
     const promesa = userLogin(email, password);
-    promesa.then((user) => {
+    promesa.then(() => {
       navigateTo('/home');
     }).catch((error) => {
       const alerta = document.querySelector('.message-error');
