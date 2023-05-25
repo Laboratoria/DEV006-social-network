@@ -3,11 +3,9 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-console */
 /* eslint-disable import/no-extraneous-dependencies */
-import {
-  collection, getDocs, addDoc,
-} from 'firebase/firestore';
-import { db } from '../lib/firebase';
-import { authDetector } from '../lib/functions';
+import { collection, getDocs, addDoc } from 'firebase/firestore';
+import { db, auth } from '../lib/firebase';
+import { authDetector, userEmail, dislikeCounter, likeCounter, verifyLikes } from '../lib/functions';
 
 export function wall() {
   // Crear elementos
@@ -49,7 +47,7 @@ export function wall() {
   container.appendChild(writeAndPost);
   container.appendChild(divposts);
 
-  const createPost = (poster) => {
+  const createPost = (poster, postId) => {
     // crear que va a mostrar
     const post = document.createElement('div');
     const infoUser = document.createElement('div');
@@ -81,9 +79,15 @@ export function wall() {
     menuOptions.setAttribute('src', './images/menuOptions.png');
     likesAndCount.classList.add('likesAndCount');
     likesPic.classList.add('likesPic');
-    likesPic.setAttribute('src', './images/Likes.png');
+    likesPic.setAttribute('src', './images/Like.png');
     likesLab.classList.add('likesLab');
-    likesLab.textContent = '0';
+    likesLab.textContent = poster.likes?.length || 0;// ? si likes no existe q no falle al cargar los posts
+
+    const likesArray = poster.likes;
+      if (likesArray != null && likesArray.includes(userEmail())){
+        likesPic.setAttribute('src', './images/Likes.png');
+      }
+
 
     // Armar la estructura del nodo
     infoUser.id = 'infoUser';
@@ -98,13 +102,34 @@ export function wall() {
     likesAndCount.appendChild(likesPic);
     likesAndCount.appendChild(likesLab);
     divposts.insertBefore(post, divposts.firstChild); // Utilizar insertBefore para insertar al principio
+
+    likesPic.addEventListener('click', async () => {
+     const userLikePost = await verifyLikes(postId, userEmail())
+     console.log(userLikePost)
+       if (userLikePost){
+        await dislikeCounter(postId)
+        likesPic.setAttribute('src', './images/Like.png');
+      }else{
+        await likeCounter(postId)
+        likesPic.setAttribute('src', './images/Likes.png');
+      }
+
+      // const user = auth.currentUser.uid; /* toma el id único del usuario autenticado actualmente */
+      // const likesArray = docss.data().likeCounter;
+
+      // if (!likesArray.includes(user)) {
+      //   likeCounter(docss.id);
+      //   likesPic.setAttribute('src', './images/Likes.png');
+      // }
+    });
   };
 
   const postPromise = getDocs(collection(db, 'Posts'));
-  postPromise.then((querySnapshot) => {
-    querySnapshot.forEach((doc) => {
-      const postData = doc.data();
-      createPost(postData);
+  postPromise.then((postList) => {
+    postList.forEach((postPost) => {
+      const postData = postPost.data();
+      const postId = postPost.id;
+      createPost(postData, postId);
     });
   });
   console.log(authDetector);
@@ -123,6 +148,7 @@ export function wall() {
       descripción: textarea.value,
       fecha: formattedDate,
       usuario: userDetector, // Asignar el email del usuario a "usuario"
+      likes: [],
     };
 
     const result = await addDoc(collection(db, 'Posts'), data);
@@ -131,6 +157,8 @@ export function wall() {
     createPost(data);
     textarea.value = '';
   });
+
+  // damm likes, primero se necesitan 3 cosas: user email, id post, campo likes
 
   // DOMContentLoaded se dispara cuando se ha cargado
   //  completamente el árbol DOM de una página web por

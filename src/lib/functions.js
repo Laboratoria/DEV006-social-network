@@ -10,7 +10,10 @@ import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
 } from 'firebase/auth';
-import { app, auth } from './firebase';
+import {
+  arrayRemove, arrayUnion, doc, updateDoc, getDoc,
+} from 'firebase/firestore';
+import { app, auth, colRef } from './firebase';
 
 // export function login(email, password) {
 //   const auth1 = getAuth(app);
@@ -65,7 +68,7 @@ export async function register(email, password) {
 export function authDetector() {
   const auth2 = getAuth(app);
   // let userEmail = null;
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     onAuthStateChanged(auth2, (user) => {
       if (user) {
         resolve(user.email);
@@ -79,3 +82,31 @@ export function authDetector() {
   });
 }
 authDetector();
+
+// user email
+export const userEmail = () => auth.currentUser.email;
+
+// Dar y quitar Likes
+export const likeCounter = (postId) => {
+  const postDocRef = doc(colRef, postId);
+  return updateDoc(postDocRef, { likes: arrayUnion(auth.currentUser.email) });
+};
+
+export const dislikeCounter = (postId) => {
+  const postDocRef = doc(colRef, postId);
+  return updateDoc(postDocRef, { likes: arrayRemove(auth.currentUser.email) });
+};
+
+// verificar like
+export const verifyLikes = async (postId, emailUser) => {
+  const postDocRef = doc(colRef, postId);
+  const docPost = await getDoc(postDocRef);
+  if (docPost.exists) {
+    const data = docPost.data();
+    const likesArray = data.likes;
+    if (likesArray != null && likesArray.includes(emailUser)) {
+      return true;
+    }
+  }
+  return false;
+};
