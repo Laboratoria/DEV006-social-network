@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Ysabeau:wght@600&display=swap');
-
+/* estilos generales para las vistas de login y registro */
 * {
     padding: 0;
     margin: 0;
@@ -23,18 +23,19 @@ div{
 .sectionGeneral {
   display: flex;
   flex-wrap: nowrap;
-  height: 100%;
+  max-height: 100%;
 }
 
+/* login pc */
 .div-left{
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   background-color: #F4FF20;
-  margin: 0 100px 0 0;
-  max-width: 42%;
-  height: 100%;
+  margin: 0 90px 0 0;
+  max-width: 43%;
+  height: 100vh;
 }
 
 .div-left p{
@@ -54,9 +55,9 @@ text-shadow: 0 2px 5px #4b3027d8;
 .sectionLogin {
   display: block;
   align-items: center;
-  justify-content: center;
-  margin: 2px 80px 0 100px;
-  height: 100%;
+  justify-content: right;
+  margin-top: 20px;
+  height: 100vh;
 }
 
 .logo{
@@ -156,13 +157,13 @@ label{
 }
 
 .login{
-    background-color: #F4FF20;
-    color: #353131;
+    background-color: #ff6f01;
+    color: #ffffff;
     text-shadow: 2px 2px 7px rgba(80, 79, 79, 0.855);
     font-family: 'Ysabeau', sans-serif;
     font-size: 22px;
     font-weight: bolder;
-    border: 2px solid #353131;
+    border: none;
     width: 100%;
     height: 1.6em;
     border-radius: 10px;
@@ -181,7 +182,7 @@ label{
 }
 
   .google{
-    border: none;
+    border: 1px solid rgb(43, 42, 42);
     border-radius: 10px;
   }
 
@@ -240,7 +241,7 @@ label{
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    margin: 1.8em auto 0.8em auto;
+    margin: 1.7em auto 0.7em auto;
     font-size: 13px;
     font-family: 'Ysabeau', sans-serif;
     cursor: none;
@@ -257,7 +258,7 @@ label{
   
   .button-registrate.active,
   .button-registrate:hover {
-    color: #ef6621;
+    color: #fc6215;
     font-weight: 900;
     cursor: pointer;
     text-shadow: 2px 2px 4px rgba(255, 106, 7, 0.813);
@@ -289,42 +290,37 @@ label{
 .message-error{
   background-color: red;
   color: #fff;
+  font-family: 'Ysabeau', sans-serif;
   font-size: 16px;
   font-weight: bold;
   text-align: center;
 }
 
-
-@media (min-width: 1440px) {
-    
-    #root {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      display: flex;
-    }
-
-  }
-
-  
+/* login cel*/  
 @media only screen and (max-width: 768px) {
 
 #root {
   position: fixed;
-  top: 50%;
+  top: 49%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.sectionGeneral {
+  display: flex;
+  flex-wrap: nowrap;
+  height: 100%;
 }
 
 .sectionLogin {
   text-align: center;
   justify-content: center;
+  height: 100%;
 }
 
 .logo{
   width: 18em;
-  height: 9.8em;
+  height: 8.6em;
   transition: transform 0.3s ease-in-out;
   margin: 0 1.25em 1em 0;
 }
@@ -335,11 +331,11 @@ label{
   justify-content: center;
   display: flex;
   align-items: center;
-  margin: 1em 1.25em 0 0;
+  margin: 0.5em 1.25em 0 0;
 }
 
 .animales {
-  width: 20em;
+  width: 19.82em;
   margin-top: -1.5em;
 }
 
@@ -380,10 +376,191 @@ article{
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  margin: 2.2em -1em 1em -1em;
+  margin: 2.1em -1em 1em -1em;
 }
 
 .button-registrate {
   padding-left: 13px;
+}
+}
+
+/* login pantalla pc otros tamaños */
+@media screen and (min-width: 1025px) {
+    
+  #root {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+  }
+
+  .div-left{
+    margin: 0 190px 0 0;
+  }
+
+  .sectionLogin {
+    margin-top: 5px;
+    height: 100%;
+  }
+
+  .logo{
+    width: 16.2em;
+    height: 7em;
+    margin: 0.15em 0 1em 0;
+}
+}
+
+@media screen and (min-width: 1440px) {
+  .sectionLogin {
+    margin-top: 20px;
+    height: 100%;
+  }
+
+  .div-left{
+    margin: 0 205px 0 0;
+    max-height: 100%;
+  }
+
+  .logo{
+    margin: 0.2em 0 1.5em 0;
+}
+}
+
+/* estilos vista registro*/
+
+.sectionGeneralR {
+  display: flex;
+  flex-wrap: nowrap;
+  height: 100vh;
+}
+
+.div-rigth {
+  position: relative;
+  width: 45%;
+  height: 100%;
+  top: 0;
+  right: 6%;
+  z-index: 1;
+}
+
+.img-fondo {
+  position: relative;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100vh;
+}
+
+.huellas {
+  position: absolute;
+  z-index: 2;
+  bottom: 5px;
+  left: 8%;
+  width: 55%;
+  height: 50%;
+}
+
+.sectionPetsR {
+    background-color: #C8EFEB;
+    position: absolute;
+    width: 37%;
+    height: 74%;
+    border: 2px solid #c8c7c7c0;
+    box-shadow: 0 11px 11px rgba(112, 112, 112, 0.487);
+    border-radius: 30px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 7% 17%;
+    z-index: 2;
+  }
+
+.animalesR{
+  width: 23em;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  margin-top: -2.8em;
+}
+
+.seccionLogo-dog{
+  width: 55%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+}
+
+.logoR{
+  width: 22em;
+  margin: 5% 0 5% 0;
+  padding-left: 2%;
+}
+
+.perro{
+  margin-left: 4em;
+}
+
+@media screen and (min-width: 1200px) {
+  .sectionGeneralR {
+    height: 100%;
+    width: 100%;
+  }
+
+  .div-rigth {
+    height: auto;
+    width: auto;
+    right: 0;
+  }
+  
+  .img-fondo{
+    width: auto;
+    height: auto;
+  }
+
+  .huellas {
+    bottom: 0;
+    left: -15px;
+    width: auto;
+    height: auto;
+  }
+
+  .sectionPetsR {
+    margin: 10% 15%;
+    width: 32%;
+    height: 70%;
+  }
+
+  .animalesR {
+    width: 27em;
+    margin-top: -8.8em;
+  }
+ 
+  .seccionLogo-dog {
+  height: auto;
+  margin-top: 5%;
+  }
+
+  .logoR {
+    width: 25em;
+    margin: 0 2% 5% 0;
+  }
+
+  .perro {
+    margin-left: 2em;
+  }
+
+}
+
+@media only screen and (max-width: 768px) {
+.div-rigth{
+  display: none;
 }
 }
