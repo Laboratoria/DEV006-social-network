@@ -1,5 +1,11 @@
 /* eslint-disable no-console */
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  getRedirectResult,
+  GoogleAuthProvider,
+  signInWithRedirect,
+} from 'firebase/auth';
 import { auth } from './firebase';
 
 export function registerUser(email, password) {
@@ -10,4 +16,10 @@ export function registerUser(email, password) {
 
 export function userLogin(email, password) {
   return signInWithEmailAndPassword(auth, email, password);
+}
+
+export function registerGoogle() {
+  const provider = new GoogleAuthProvider();
+  signInWithRedirect(auth, provider);
+  return getRedirectResult(auth);
 }
