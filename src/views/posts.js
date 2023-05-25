@@ -129,7 +129,6 @@ function posts(navigateTo) {
           const updatedLikes = post.likes.filter((userId) => userId !== user.uid);
           console.log('No hay like');
           // isLiked = false;
-          document.querySelector('.like-post').src = 'img/imagen.png';
           // console.log(imagenLike);
           return updatePost(postId, { likes: updatedLikes });
         }
@@ -137,7 +136,6 @@ function posts(navigateTo) {
         console.log('si hay like');
         // isLiked = true;
         id = postId.id;
-        document.querySelector('.like-post').src = 'img/likeDog.png';
         return updatePost(postId, { likes: updatedLikes });
       });
     });

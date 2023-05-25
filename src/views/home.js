@@ -22,6 +22,7 @@ function home(navigateTo) {
   });
 
   btnRegister.textContent = 'Quiero Unirme';
+  btnRegister.id = 'btnRegister';
   btnRegister.classList.add('btn-register');
   btnRegister.addEventListener('click', () => {
     navigateTo('/register');

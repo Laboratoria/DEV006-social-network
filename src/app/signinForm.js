@@ -2,7 +2,7 @@
 /* eslint-disable no-alert */
 /* eslint-disable import/no-unresolved */
 /* eslint-disable no-unused-vars */
-import { signInWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js';
+import { signInWithEmailAndPassword } from 'firebase/auth';
 // import login from '../views/register.js';
 import { auth } from './firebase.js';
 
