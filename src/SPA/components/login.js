@@ -1,4 +1,5 @@
-import { userLogin } from '../helpers/lib/Auth';
+import { GoogleAuthProvider, getRedirectResult } from 'firebase/auth';
+import { userLogin, registerGoogle } from '../helpers/lib/Auth';
 
 function login(navigateTo) {
 // llamar al DOM y crear cada elemento
@@ -115,6 +116,29 @@ function login(navigateTo) {
       mensajeError.textContent = error.code;
       mensajeError.classList.add('message-error');
       form.appendChild(mensajeError);
+    });
+  });
+
+  buttonSignGoogle.addEventListener('click', (e) => {
+    e.preventDefault();
+    registerGoogle().then((result) => {
+      // This gives you a Google Access Token. You can use it to access Google APIs.
+      const credential = GoogleAuthProvider.credentialFromResult(result);
+      const token = credential.accessToken;
+      // The signed-in user info.
+      const user = result.user;
+      navigateTo('/home');
+      // IdP data available using getAdditionalUserInfo(result)
+      // ...
+    }).catch((error) => {
+      // Handle Errors here.
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      // The email of the user's account used.
+      //const email = error.customData.email;
+      // The AuthCredential type that was used.
+      const credential = GoogleAuthProvider.credentialFromError(error);
+      // ...
     });
   });
 
