@@ -34,51 +34,59 @@ function wall(navigateTo) {
 
   divWall.append(iconoRestaurante, postContenedor, contenedor);
 
-  // const mostrarContenedor = document.getElementById('postContenedor');
   onGetPost((querysnapshot) => {
     let html = '';
     querysnapshot.forEach((doc) => {
       const post = doc.data();
       html += `
-            <div>
-                <h3>${post.title}</h3>
-                <p>${post.description}</p>
-                <div id='editDelete'>
-                <img class='deleteButton' data-id = '${doc.id}' src="./img/trash.png" alt="trash"/>
-                <img class='editButton' data-id = '${doc.id}' src="./img/edit.png" alt="edit"/>
-                </div>
+        <div>
+            <h3>${post.title}</h3>
+            <p>${post.description}</p>
+            <div id='editDelete'>
+             <img class='deleteButton' data-id = '${doc.id}' src="./img/trash.png" alt="trash"/>
+             <img class='editButton' data-id = '${doc.id}' src="./img/edit.png" alt="edit"/>
+             <div id='avisoBorrar' style='display:none' >
+              <button id='delete'>Delete</button>
+              <button id='cancel'> Cancel</button>
+             </div>
             </div>
-        `;
+        </div>
+      `;
     });
-
+  
     postContenedor.innerHTML = html;
-
+  
     const btnsDelete = postContenedor.querySelectorAll('.deleteButton');
-
+    const avisoBorra = document.getElementById('avisoBorrar');
+  
     btnsDelete.forEach(btn => {
       btn.addEventListener('click', ({ target: { dataset } }) => {
-        deleteTask(dataset.id);
+        const borrando = avisoBorra.querySelector('#delete');
+        const cancelar = avisoBorra.querySelector('#cancel');
+  
+        borrando.addEventListener('click', () => {
+          deleteTask(dataset.id);
+        });
+  
+        cancelar.addEventListener('click', () => {
+          alert('no borro');
+          avisoBorra.style.display = 'none';
+        });
+  
+        avisoBorra.style.display = 'block';
       });
     });
+
     const editButton = postContenedor.querySelectorAll('.editButton');
 
     editButton.forEach(btn => {
       btn.addEventListener('click', async (e) => {
         const doc = await getTask(e.target.dataset.id);
+        // console.log(e.target.dataset.id, 'hey');
         const post = doc.data();
-        // const title = post.title;
-        // const description = post.description;
-        console.log(post);
+        // console.log(post);
         navigateTo('/newpost', { post });
-        // editButton(title.value, description.value).then(() => {
-        //   navigateTo('/newpost');
-        // });
 
-        //  divWall['textAreaTitle'].value = post.title;
-        //  divWall['textAreaReview'].value = post.description;
-
-        //  editStatus = true;
-        //  id = e.target.dataset.id;
       });
     });
   });

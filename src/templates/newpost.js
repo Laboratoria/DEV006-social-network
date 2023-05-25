@@ -3,7 +3,7 @@ import { saveTask } from '../lib/firebase.js';
 // import { ref } from 'firebase/storage';
 
 function newPost(navigateTo, data) {
-  console.log(data.post);
+  // console.log(data.post);
   const section = document.createElement('section');
   const buttonReturn = document.createElement('button');
   const titleNewPost = document.createElement('h1');
@@ -45,6 +45,7 @@ function newPost(navigateTo, data) {
   textAreaTitle.textContent = data.post ? data.post.title : '';
   textAreaReview.classList.add('textAreaReview');
   textAreaReview.textContent = data.post ? data.post.description : '';
+  
   buttonReturn.textContent = '.';
   buttonReturn.classList.add('returnNewPost');
   buttonReturn.addEventListener('click', () => {
@@ -110,6 +111,7 @@ function newPost(navigateTo, data) {
     saveTask(title.value, description.value).then(() => {
       navigateTo('/wall');
     });
+    console.log(title.value, description.value, 'task');
 
     form.reset();
   });
