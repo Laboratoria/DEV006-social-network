@@ -117,7 +117,8 @@ ede ser util a los usuario.
 ## 4. Tests de usabilidad
 Los problemas que se detectaron mediante los test de usabilidad y feedbacks fueron:
 
-*Colores de los botones..
+*Colores de los botones.
+*Tamaño de los botones.
 *Tamaño de la letra.
 *Fondo de la App.
 *Uso de iconos en lugar de letras.
