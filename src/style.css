@@ -422,6 +422,17 @@ h4 {
   border: 1vw solid rgba(168, 36, 244, 1);
   box-shadow: 2vw 2vh 2vw rgba(0, 0, 0, 0.4);
 }
+
+.sectionPopUp{
+  width: 100vw;
+  height: 72vh;
+  margin: -84vh 0vw 12vh -2vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+}
 .sectionPosts{
 
   width: 100vw;
@@ -462,3 +473,4 @@ h4 {
   font-family: "Hind Vadodara", sans-serif;
   line-height: 1vh;
 }
+

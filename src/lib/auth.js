@@ -89,6 +89,6 @@ export function signInWithGoogle(navigateTo) {
     })
     .catch((error) => {
       const errorMessage = error.message;
-      console.error('Error:', errorMessage);
+      return errorMessage;
     });
 }
