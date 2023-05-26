@@ -71,11 +71,11 @@ function wall(navigateTo) {
     popUp.style.display = 'block';
   });
 
-  popUpButton.addEventListener('click', (e) => {
+  popUpButton.addEventListener('click', async (e) => {
     e.preventDefault();
     popUp.style.display = 'none';
-    savePost(textTitle.value, textDescription.value);
-    console.log(savePost);
+    await savePost(textTitle.value, textDescription.value);
+    console.log(savePost(textTitle.value, textDescription.value));
     formPost.reset();
   });
 
@@ -92,7 +92,7 @@ function wall(navigateTo) {
 
   async function showPosts() {
     try {
-      const resultPosts = await fetchPosts();
+      await fetchPosts();
       console.log(resultPosts);
 
       resultPosts.forEach((post) => {
