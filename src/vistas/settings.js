@@ -1,3 +1,5 @@
+import { logoutUser } from '../lib/auth.js';
+
 function settings(navigateTo) {
   const section = document.createElement('section');
   const sectionHeader = document.createElement('section');
@@ -51,12 +53,19 @@ function settings(navigateTo) {
     navigateTo('/buildsite');
   });
 
-  logOut.addEventListener('click', () => {
+  contact.addEventListener('click', () => {
     navigateTo('/buildsite');
   });
 
-  contact.addEventListener('click', () => {
-    navigateTo('/buildsite');
+  logOut.addEventListener('click', () => {
+    logoutUser()
+      .then(() => {
+        navigateTo('/'); // Redirect to the login or home page
+      })
+      .catch((error) => {
+        console.log(error);
+        // Handle any errors that occur during logout
+      });
   });
 
   // Agrupar por secciones//
