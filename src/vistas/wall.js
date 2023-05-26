@@ -92,7 +92,7 @@ function wall(navigateTo) {
 
   async function showPosts() {
     try {
-      await fetchPosts();
+      const resultPosts = await fetchPosts();
       console.log(resultPosts);
 
       resultPosts.forEach((post) => {
