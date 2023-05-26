@@ -1,4 +1,4 @@
-import { registerUser } from '../helpers/lib/Auth';
+import { registerUser } from '../helpers/lib/Auth.js';
 
 function registro(navigateTo) {
   const section = document.createElement('section');
