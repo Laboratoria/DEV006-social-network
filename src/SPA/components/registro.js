@@ -2,9 +2,12 @@ import { registerUser } from '../helpers/lib/Auth';
 
 function registro(navigateTo) {
   const section = document.createElement('section');
+  const divDerecho = document.createElement('div');
+  const imgFondo = document.createElement('img');
+  const huellas = document.createElement('img');
   const sectionLogoR = document.createElement('div');
-  const sectionRegister = document.createElement('section');
   const logoR = document.createElement('img');
+  const dog = document.createElement('img');
   const sectionPets = document.createElement('div');
   const animalesR = document.createElement('img');
   const form = document.createElement('form');
@@ -13,12 +16,25 @@ function registro(navigateTo) {
   const inputUser = document.createElement('input');
   const inputPassword = document.createElement('input');
   const inputConfirm = document.createElement('input');
-  const buttonCreate = document.createElement('button'); // iniciar sesión
+  const buttonCreate = document.createElement('button');
   const contenedorR = document.createElement('section');
   const textoEnlace = document.createElement('a');
-  const divDerecho = document.createElement('div');
-  const dog = document.createElement('img');
   const textoRegister = document.createElement('p');
+
+  /* div lado izquierdo */
+  imgFondo.classList.add('img-fondo');
+  imgFondo.setAttribute('src', '../assets/vector.png');
+  huellas.classList.add('huellas');
+  huellas.setAttribute('src', '../assets/huellasDiv.png');
+  divDerecho.classList.add('div-rigth');
+  divDerecho.append(imgFondo, huellas);
+
+  logoR.classList.add('logoR');
+  logoR.setAttribute('src', '../assets/logo1.png');
+  dog.classList.add('perro');
+  dog.setAttribute('src', '../assets/perrito.png');
+  sectionLogoR.classList.add('seccionLogo-dog');
+  sectionLogoR.append(logoR, dog);
 
   /* Textos etiquetas */
   inputEmail.placeholder = 'Correo';
@@ -30,28 +46,20 @@ function registro(navigateTo) {
   textoRegister.textContent = '¿Ya tienes una cuenta?';
   textoEnlace.textContent = 'Iniciar Sesión';
 
-  /* imagenes */
-  logoR.setAttribute('src', '../assets/logo1.png');
-  sectionLogoR.append(logoR);
-
   /* Imagen de animales */
-  animalesR.classList.add('animales');
+  animalesR.classList.add('animalesR');
   animalesR.setAttribute('src', '../assets/imagPets2.jpg');
-  sectionPets.className = 'sectionPets';
 
+  sectionPets.className = 'sectionPetsR';
   buttonCreate.classList.add('login');
   inputEmail.setAttribute('id', 'email');
   inputPassword.setAttribute('id', 'password');
 
+  form.classList.add('formulario');
   form.append(inputEmail, inputPassword, inputName, inputUser, inputConfirm, buttonCreate);
   contenedorR.classList.add('centrado');
   textoEnlace.classList.add('button-registrate');
   contenedorR.append(textoRegister, textoEnlace);
-
-  dog.classList.add('cel-perro');
-  dog.setAttribute('src', '../assets/perrito.png');
-  divDerecho.classList.add('div-left');
-  divDerecho.append(dog);
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -74,16 +82,9 @@ function registro(navigateTo) {
 
   sectionPets.append(animalesR, form, contenedorR);
 
-  sectionRegister.classList.add('sectionLogin');
-  sectionRegister.append(sectionLogoR, sectionPets);
-
-  section.classList.add('sectionGeneral');
-  section.append(
-    divDerecho,
-    sectionRegister,
-  );
+  section.classList.add('sectionGeneralR');
+  section.append(divDerecho, sectionPets, sectionLogoR);
 
   return section;
 }
-
 export default registro;
