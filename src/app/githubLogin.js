@@ -1,6 +1,6 @@
 /* eslint-disable import/no-unresolved */
 /* eslint-disable no-console */
-import { GithubAuthProvider, signInWithPopup } from 'https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js';
+import { GithubAuthProvider, signInWithPopup } from 'firebase/auth';
 import { auth } from './firebase.js';
 
 export const githubSignInFn = async (navigateTo) => {

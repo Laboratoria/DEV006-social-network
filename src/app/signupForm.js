@@ -1,7 +1,7 @@
 /* eslint-disable no-alert */
 /* eslint-disable no-console */
 /* eslint-disable import/no-unresolved */
-import { createUserWithEmailAndPassword, updateProfile } from 'https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js';
+import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { auth } from './firebase.js';
 // // eslint-disable-next-line no-unused-vars
 

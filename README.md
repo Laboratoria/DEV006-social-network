@@ -12,7 +12,7 @@
 
 
 ## 1. Definición del producto
-"Estamos Perdid@s!!!" es una aplicación está dirigida a usuarios que son dueños de mascotas o que están planeando adoptar una mascota. Tiene como objetivo proporcionarles información y ayuda cuando han perdido a su mascota o cuando encuentran una mascota situación de calle y buscan encontrarle un hogar. El enfoque de la aplicación surge a partir de una preocupante situación en México ya que según el INEGI, existen cerca de 23 millones de perros y gatos, de los cuales el 70% se encuentra en situación de calle debido a diversos motivos.
+"Estamos Perdid@s!!!" es una aplicación que está dirigida a usuarios que son dueños de mascotas o que están planeando adoptar una mascota. Tiene como objetivo proporcionarles información y ayuda cuando han perdido a su mascota o cuando encuentran una mascota situación de calle y buscan encontrarle un hogar. El enfoque de la aplicación surge a partir de una preocupante situación en México ya que según el INEGI, existen cerca de 23 millones de perros y gatos, de los cuales el 70% se encuentra en situación de calle debido a diversos motivos.
 
 Esta cifra coloca a México como el país número uno en toda Latinoamérica con la mayor población de perros y gatos callejeros. Con este contexto en mente, esta aplicación busca contribuir a reducir, aunque sea en pequeña medida, esta alarmante cifra. Al proporcionar información y recursos a los usuarios, se espera ayudar a los dueños de mascotas a encontrar a sus animales perdidos o bien ayudando a encontrar nuevos hogares para las mascotas encontradas en la calle abordando así este gran problema en el país.
 

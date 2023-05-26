@@ -1,8 +1,8 @@
 /* eslint-disable no-console */
 /* eslint-disable import/no-duplicates */
 /* eslint-disable import/no-unresolved */
-import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js';
-import { signOut } from 'https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js';
+import { onAuthStateChanged } from 'firebase/auth';
+import { signOut } from 'firebase/auth';
 import { auth } from './firebase.js';
 
 onAuthStateChanged(auth, async (user) => {

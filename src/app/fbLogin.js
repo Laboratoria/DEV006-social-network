@@ -2,7 +2,7 @@
 /* eslint-disable prefer-template */
 /* eslint-disable no-alert */
 /* eslint-disable no-console */
-import { FacebookAuthProvider, signInWithPopup } from 'https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js';
+import { FacebookAuthProvider, signInWithPopup } from 'firebase/auth';
 import { auth } from './firebase.js';
 
 export const fbSignInFn = async (navigateTo) => {
