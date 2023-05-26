@@ -1,5 +1,5 @@
 export function login(navigateTo) {
-  const divGrande = document.createElement('div');
+  const LoginSection = document.createElement('section');
   const logoGrande = document.createElement('img');
   const divHome = document.createElement('div');
   const inputUser = document.createElement('input');
@@ -11,15 +11,14 @@ export function login(navigateTo) {
   const imgFamiliaHome = document.createElement('img');
   const footer = document.createElement('footer');
 
-  divGrande.className = 'divGrande';
   logoGrande.className = 'logoGrande';
   inputUser.className = 'inputUser';
   inputPassword.className = 'inputPass';
   loginBtn.className = 'btnOrange';
   loginGoogle.className = 'btnGoogle';
-  textRegister.className = 'textRegister'
-  linkRegister.className = 'linkRegister'
-  imgFamiliaHome.className = 'family';
+  textRegister.className = 'textRegister';
+  linkRegister.className = 'linkRegister';
+  imgFamiliaHome.className = 'familyImg';
   footer.className = 'footer';
   divHome.className = 'divLogin';
   logoGrande.src = './img/logoLKP_final.png';
@@ -33,7 +32,8 @@ export function login(navigateTo) {
   footer.textContent = 'Copyright © 2023 Isabel Lira, Kat Bravo & Alejandra Martínez';
 
   divHome.append(inputUser, inputPassword, loginBtn, loginGoogle, textRegister, linkRegister);
-  divGrande.append(logoGrande, divHome, imgFamiliaHome, footer);
-  document.body.appendChild(divGrande);
-  return divHome;
+  LoginSection.append(logoGrande, divHome,imgFamiliaHome, footer);
+  document.getElementById('root').appendChild(LoginSection);
+  
+  return divGrande;
 }
