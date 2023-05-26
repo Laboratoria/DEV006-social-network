@@ -71,11 +71,11 @@ function wall(navigateTo) {
     popUp.style.display = 'block';
   });
 
-  popUpButton.addEventListener('click', (e) => {
+  popUpButton.addEventListener('click', async (e) => {
     e.preventDefault();
     popUp.style.display = 'none';
-    savePost(textTitle.value, textDescription.value);
-    console.log(savePost);
+    await savePost(textTitle.value, textDescription.value);
+    console.log(savePost(textTitle.value, textDescription.value));
     formPost.reset();
   });
 

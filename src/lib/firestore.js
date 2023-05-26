@@ -3,22 +3,24 @@ import {
 } from 'firebase/firestore';
 import { db } from './configFirebase.js';
 
-export const savePost = (title, description) => {
-  addDoc(collection(db, 'postsWall'), { title, description });
+export const savePost = async (title, description) => {
+  await addDoc(collection(db, 'postsWall'), { title, description });
 };
 
 const getPosts = () => getDocs(collection(db, 'postsWall'));
 getPosts();
 
-export async function fetchPosts() {
-  onSnapshot(collection(db, 'postsWall'), (querySnapshot) => {
-    const resultPosts = [];
+export function fetchPosts() {
+  return new Promise((resolve, reject) => {
+    onSnapshot(collection(db, 'postsWall'), (querySnapshot) => {
+      const resultPosts = [];
 
-    querySnapshot.forEach((doc) => {
-      resultPosts.push(doc.data());
-    });
-    console.log(resultPosts);
-    return resultPosts;
+      querySnapshot.forEach((doc) => {
+        resultPosts.push(doc.data());
+      });
+      console.log(resultPosts);
+      resolve(resultPosts);
+    }, reject);
   });
 }
 
