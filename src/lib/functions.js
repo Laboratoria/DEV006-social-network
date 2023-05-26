@@ -53,14 +53,9 @@ export async function signInWithGoogle() {
 }
 
 // CREATE ACCOUNT CON FIREBASE
-export async function register(email, password) {
-  try {
-    const userCredentials = await createUserWithEmailAndPassword(auth, email, password);
-    console.log(userCredentials);
-  } catch (error) {
-    console.log(error.message);
-    console.log(error.code);
-  }
+export function register(email, password) {
+  const userCredentials = createUserWithEmailAndPassword(auth, email, password);
+  console.log(userCredentials);
 }
 
 // detecta los cambios en el estado de autenticación
