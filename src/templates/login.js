@@ -6,7 +6,7 @@ import { signInWithEmailAndPassword } from 'firebase/auth';
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { auth } from '../lib/firebase';
 
-function login(navigateTo, data) {
+function login(navigateTo) {
   const section = document.createElement('section');
   const logo = document.createElement('img');
   const logoGoogle = document.createElement('img');

@@ -57,7 +57,6 @@ function newPost(navigateTo, data) {
     navigateTo('/wall');
   });
 
-
   buttonSave.textContent = 'Save';
   buttonSave.classList.add('save');
 
