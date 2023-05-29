@@ -19,6 +19,7 @@ function wall(navigateTo) {
   const postDescription = document.createElement('h3');
   const textTitle = document.createElement('input');
   const textDescription = document.createElement('textarea');
+  const containerPost = document.createElement('div');
 
   // agregar clases//
   section.classList.add('section');
@@ -39,6 +40,7 @@ function wall(navigateTo) {
   postDescription.classList.add('postDescription');
   textTitle.classList.add('textTitle');
   textDescription.classList.add('textDescription');
+  containerPost.classList.add('containerPost');
   // agregar atributos//
   logo.setAttribute('src', 'images/logo.png');
   house.setAttribute('src', 'images/home.png');
@@ -81,9 +83,7 @@ function wall(navigateTo) {
 
   function createPostCard(title, description) {
     const resultTitle = document.createElement('h2');
-    const containerPost = document.createElement('div');
     const resultDescription = document.createElement('p');
-
     resultTitle.textContent = title;
     resultDescription.textContent = description;
     containerPost.append(resultTitle, resultDescription);

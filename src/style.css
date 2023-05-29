@@ -474,3 +474,7 @@ h4 {
   line-height: 1vh;
 }
 
+.containerPost{
+  width: 100vw;
+  height: 30vh;
+}
