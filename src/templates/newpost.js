@@ -45,14 +45,12 @@ function newPost(navigateTo, data) {
   textAreaTitle.textContent = data.post ? data.post.title : '';
   textAreaReview.classList.add('textAreaReview');
   textAreaReview.textContent = data.post ? data.post.description : '';
-  
+
   buttonReturn.textContent = '.';
   buttonReturn.classList.add('returnNewPost');
   buttonReturn.addEventListener('click', () => {
     navigateTo('/wall');
   });
-
-
   buttonSave.textContent = 'Save';
   buttonSave.classList.add('save');
   // buttonSave.onclick =
