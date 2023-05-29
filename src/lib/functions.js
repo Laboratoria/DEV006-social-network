@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable no-shadow */
 /* eslint-disable no-console */
 /* eslint-disable consistent-return */
@@ -14,7 +15,7 @@ import {
 import {
   arrayRemove, arrayUnion, doc, updateDoc, getDoc,
 } from 'firebase/firestore';
-import { app, auth, colRef } from './firebase';
+import { app, auth, colRef, db } from './firebase';
 
 // export function login(email, password) {
 //   const auth1 = getAuth(app);
@@ -61,7 +62,7 @@ export async function register(auth, email, password) {
   } catch (error) {
     console.log(error.message);
     console.log(error.code);
-    throw error; 
+    throw error;
   }
 }
 
@@ -89,26 +90,43 @@ authDetector();
 export const userEmail = () => auth.currentUser.email;
 
 // Dar y quitar Likes
-export const likeCounter = (postId) => {
+export const likeCounter = async (postId) => {
   const postDocRef = doc(colRef, postId);
-  return updateDoc(postDocRef, { likes: arrayUnion(auth.currentUser.email) });
+  const docPost = await getDoc(postDocRef);
+  const likesCount = docPost.data().likesCount || 0; // Si no existe la propiedad likesCount, la inicializamos en 0
+  return updateDoc(postDocRef, {
+    likes: arrayUnion(auth.currentUser.email),
+    likesCount: likesCount + 1,
+  });
 };
 
-export const dislikeCounter = (postId) => {
+export const dislikeCounter = async (postId) => {
   const postDocRef = doc(colRef, postId);
-  return updateDoc(postDocRef, { likes: arrayRemove(auth.currentUser.email) });
+  const docPost = await getDoc(postDocRef);
+  const likesCount = docPost.data().likesCount || 0; // Si no existe la propiedad likesCount, la inicializamos en 0
+  if (likesCount > 0) { // Solo disminuimos el conteo si es mayor a 0
+    return updateDoc(postDocRef, {
+      likes: arrayRemove(auth.currentUser.email),
+      likesCount: likesCount - 1,
+    });
+  }
 };
 
 // verificar like
 export const verifyLikes = async (postId, emailUser) => {
-  const postDocRef = doc(colRef, postId);
+  const postDocRef = doc(db, 'Posts', postId);
   const docPost = await getDoc(postDocRef);
+  let userLiked = false;
+  let likesCount = 0;
   if (docPost.exists) {
     const data = docPost.data();
     const likesArray = data.likes;
-    if (likesArray != null && likesArray.includes(emailUser)) {
-      return true;
+    if (likesArray != null) {
+      likesCount = likesArray.length; // Get the likes count
+      if (likesArray.includes(emailUser)) {
+        userLiked = true;
+      }
     }
   }
-  return false;
+  return { userLiked, likesCount };
 };
