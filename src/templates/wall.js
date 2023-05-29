@@ -43,8 +43,8 @@ function wall(navigateTo) {
             <h3>${post.title}</h3>
             <p>${post.description}</p>
             <div id='editDelete'>
-             <img class='deleteButton' data-id = '${doc.id}' src="./img/trash.png" alt="trash"/>
-             <img class='editButton' data-id = '${doc.id}' src="./img/edit.png" alt="edit"/>
+             <img class='deleteButton' data-id = '${doc.id}' src='./img/trash.png' alt='trash'/>
+             <img class='editButton' data-id = '${doc.id}' src='./img/edit.png' alt='edit'/>
             </div>
         </div>
         <div id='avisoBorrar' style='display:none'> 
