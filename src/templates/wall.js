@@ -45,15 +45,17 @@ function wall(navigateTo) {
             <div id='editDelete'>
              <img class='deleteButton' data-id = '${doc.id}' src="./img/trash.png" alt="trash"/>
              <img class='editButton' data-id = '${doc.id}' src="./img/edit.png" alt="edit"/>
-             <div id='avisoBorrar' style='display:none' >
-              <button id='delete'>Delete</button>
-              <button id='cancel'> Cancel</button>
-             </div>
             </div>
         </div>
+        <div id='avisoBorrar' style='display:none'> 
+          <p>Delete post?</p>
+          <button id='delete'>Delete</button>
+          <button id='cancel'> Cancel</button>
+       </div>
       `;
-    });
-  
+      // console.log(doc.id);
+    });  
+
     postContenedor.innerHTML = html;
   
     const btnsDelete = postContenedor.querySelectorAll('.deleteButton');
@@ -69,7 +71,6 @@ function wall(navigateTo) {
         });
   
         cancelar.addEventListener('click', () => {
-          alert('no borro');
           avisoBorra.style.display = 'none';
         });
   
@@ -82,10 +83,12 @@ function wall(navigateTo) {
     editButton.forEach(btn => {
       btn.addEventListener('click', async (e) => {
         const doc = await getTask(e.target.dataset.id);
+        console.log(doc.id)
+        const identidad = doc.id
         // console.log(e.target.dataset.id, 'hey');
         const post = doc.data();
         // console.log(post);
-        navigateTo('/newpost', { post });
+        navigateTo('/newpost', { post, identidad });
 
       });
     });
