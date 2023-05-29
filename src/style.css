@@ -1,8 +1,15 @@
-body {
-    background: #98DEE9;
-    padding: 5px;
+main {
+    margin: 0;
+    justify-content: center;
 }
-form{
+
+body {
+    height: 100%;
+    background: #98DEE9;
+
+}
+
+form {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -10,34 +17,38 @@ form{
 }
 
 #root {
-    margin-top: 5%;
+
+    margin-top: 0;
+    height: 95vh;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
-    text-align: center;
     gap: 20px;
 }
 
 header {
     height: 250px;
-    display:flex;
+    display: flex;
     align-items: flex-end;
 }
 
 nav {
-    height: 7vh;
-    width: 100vw;
-    background: #dfa0a0;
+    
+    height: 70px;
     display: flex;
-    margin-top: -52px;
     justify-content: center;
+    margin-bottom: 20px;
 }
-.refresh{
-    height: 100%;   
+
+.refresh {
+    
+    margin-bottom: 10px;
 }
-#exit{
- width: 50px;
- height: 200px;   
+
+#exit {
+    width: 50px;
+    height: 200px;
 }
 
 label {
@@ -55,6 +66,7 @@ label {
     display: flex;
     text-align: center;
     margin-bottom: 10px;
+    justify-content: center;
 }
 
 
@@ -80,7 +92,9 @@ input::placeholder {
 
 /* CSS DE PAGE HOME */
 
-.container{
+.container {
+    margin-top: 5%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -94,8 +108,182 @@ input::placeholder {
     width: 60%;
 }
 
-p{
-    font-size:25px;
+p {
+    font-size: 17px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     color: #0A4D68;
+    grid-column: 1 / span 2;
+    grid-row: 3 / 3;
+}
+
+a {
+    font-size: 17px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+#posts {
+    width: 70%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5%;
+    margin-left: 15%;
+    padding-top: 10px;
+    gap: 20px;
+    overflow: auto;
+    overflow-x: hidden;
+   
+    /* Oculta la barra de desplazamiento en navegadores compatibles */
+    scrollbar-color: transparent transparent;
+    /* Establece el color de la barra de desplazamiento transparente */
+}
+
+#posts::-webkit-scrollbar-track {
+    background-color: #6f2121; /* Color de fondo de la barra de desplazamiento */
+  }
+  
+
+.post {
+    width: 90%;
+    display: flex;
+    background-color: #D9D9D9;
+    padding: 10px;
+    border: 1px solid #000000;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 25px;
+}
+
+.avatar {
+    width: 50px;
+    border-radius: 50%;
+    margin-left: 0;
+    margin-top: 5px;
+    grid-column: 1;
+    grid-row: 1/2;
+    justify-self: center;
+
+}
+
+#infoUser {
+    width: 90%;
+    /* align-items: flex-start;
+    padding: 10px;
+    display: flex;
+    flex-direction: column; */
+    display: grid;
+    grid-template-columns: 0.3fr 1fr; /* Dos columnas, la primera se ajusta al contenido y la segunda ocupa el espacio restante */
+    /*grid-template-rows: 1fr 1fr 1fr; Tres filas, cada una se ajusta al contenido */
+    grid-auto-rows: min-content;
+    grid-gap: 10px; /* Espacio entre las filas y columnas */
+    align-items: center; /* Alineación vertical centrada */
+}
+
+.userName {
+    margin-top: 9px;
+    grid-column-start: 2;
+    grid-column-end: 2;
+    grid-row: 1 / 2;
+    margin-bottom: 40px;
+    justify-self: left;
+}
+
+
+#container {
+    margin-top: 0;
+    padding: 0%;
+    height: 100%;
+
+}
+
+.logoGoogle {
+    width: 25px;
+}
+
+.googleButton {
+    display: flex;
+    align-items: center;
+    align-content: space-between;
+    justify-content: space-evenly;
+    background-color: aliceblue;
+    color: black;
+    width: 180px;
+    height: 35px;
+    font-size: 13px;
+}
+
+.or {
+    margin: 0;
+    font-size: 13px;
+}
+
+.writeAndPost {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+
+.textArea {
+    width: 60%;
+    height: 60px;
+    padding: 20px;
+    background-color: #D9D9D9;
+    border-radius: 31px;
+    border: 1px solid #000000;
+}
+
+.buttonCreatePost {
+    Width: 30%;
+    Height: 35px;
+    background-color: #279A82;
+    color: white;
+    border: 1px solid #000000;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 25px;
+    cursor: pointer;
+    /*float: left;
+    Alinea el botón a la izquierda, para responsive tal vez sea mejor ponerlo en "none" 
+    margin-left: 15px;
+    hacer responsive dsps*/
+}
+.buttonCreatePost:hover{
+    background-color: #1f836d;
+    
+}
+    .likesPic{
+    width: 28px;
+    right: 10px;
+    bottom: 10px;
+}
+.menuLikeSection{
+    width: 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+.menuOptions{
+    width: 39px;
+    margin-top: 10px;
+}
+.likesAndCount{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 25%;
+    margin-bottom: 15px;
+}
+/* .userNameandDate{
+    grid-column: 2 / span 2;
+    grid-row: 1 / 1;
+} */
+.publicDate{
+    margin-top: 5px;
+    grid-column-start: 2;
+    grid-column-end: 2;
+    grid-row: 1 / 2;
+    justify-self: left;
 }

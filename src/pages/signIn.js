@@ -1,7 +1,11 @@
+/* eslint-disable no-multi-assign */
+/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
+/* eslint-disable max-len */
+/* eslint-disable no-console */
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable no-alert */
-import { signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup,setPersistence, browserLocalPersistence } from 'firebase/auth';
-import { auth } from '../lib/firebase.js';
+import { login, signInWithGoogle } from '../lib/functions.js';
 
 export function signIn(navigateTo) {
   // Crear elementos
@@ -16,7 +20,10 @@ export function signIn(navigateTo) {
   const questionAccount = document.createElement('p');
   const linkSignIn = document.createElement('a');
   const signInButton = document.createElement('button');
+  const or = document.createElement('p');
   const continueWithGoogleButton = document.createElement('button');
+  const logoGoogle = document.createElement('img');
+  logoGoogle.src = './images/logoGoogle.png';
 
   // Establecer atributos y contenido
   container.classList.add('container');
@@ -34,11 +41,17 @@ export function signIn(navigateTo) {
   linkSignIn.textContent = 'Create account';
   signInButton.classList.add('button');
   signInButton.textContent = 'Sign In';
+  or.textContent = '───────── OR ─────────';
+  or.classList.add('or');
   continueWithGoogleButton.classList.add('button');
-  continueWithGoogleButton.textContent = 'Continue with Google';
+  continueWithGoogleButton.classList.add('googleButton');
+  logoGoogle.classList.add('logoGoogle');
 
   // Agregar elementos al header
   header.appendChild(logo);
+
+  continueWithGoogleButton.appendChild(logoGoogle);
+  continueWithGoogleButton.insertAdjacentText('beforeend', 'Continue with Google');
 
   // Agregar elementos al formulario
   form.appendChild(emailLabel);
@@ -46,6 +59,7 @@ export function signIn(navigateTo) {
   form.appendChild(passwordLabel);
   form.appendChild(passwordInput);
   form.appendChild(signInButton);
+  form.appendChild(or);
   form.appendChild(continueWithGoogleButton);
   form.appendChild(questionAccount);
   form.appendChild(linkSignIn);
@@ -62,26 +76,17 @@ export function signIn(navigateTo) {
 
   signInButton.addEventListener('click', async (e) => {
     e.preventDefault();
-
     const email = emailInput.value;
     const password = passwordInput.value;
 
     console.log(email, password);
     // promesa de la funcion, bloque try.. catch debe ir acompañado de async(funcion asyncrona)
     // await espera que la funcion cumpla con los parametros para ver un resultado o error
-    
-    setPersistence(auth, browserLocalPersistence)
-    .then(() => {
-      console.log('Persistence set successfully.');
-      // Continuar con el inicio de sesión
-    })
-    .catch((error) => {
-      console.log('Error setting persistence:', error);
-    });
-
     try {
-      const userCredentials = await signInWithEmailAndPassword(auth, email, password);
-      console.log(userCredentials);
+      const userEmail = await login(email, password);
+      console.log('Este es el email: ', userEmail);
+      // export { userEmail };
+      // console.log(userCredentials);
     } catch (error) {
       console.log(error.message);
       console.log(error.code);
@@ -100,18 +105,18 @@ export function signIn(navigateTo) {
         alert('Something went wrong !');
       }
     }
-    navigateTo('/wall')
+    navigateTo('/wall');
   });
+
   continueWithGoogleButton.addEventListener('click', async (e) => {
     e.preventDefault();
-    const provider = new GoogleAuthProvider();
-
-    try {
-      const credentials = await signInWithPopup(auth, provider);
-      console.log(credentials);
-    } catch (error) {
-      console.log(error);
-    }
+    const promiseWithGoogle = signInWithGoogle();
+    promiseWithGoogle.then((user) => {
+      alert(`Welcome ${user.displayName}!`);
+      navigateTo('/wall');
+    }).catch((error) => {
+      alert('Registrateee');
+    });
   });
   return container;
 }
