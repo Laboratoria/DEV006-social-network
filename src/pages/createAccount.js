@@ -80,12 +80,12 @@ export function createAccount(navigateTo) {
     navigateTo('/signIn');
   });
 
-  linkSignIn.addEventListener('click', () => {
-    navigateTo('/signIn');
-  });
+  // linkSignIn.addEventListener('click', () => {
+  //   navigateTo('/signIn');
+  // });
 
   createButton.addEventListener('click', async (e) => {
-    e.preventDefault();
+     e.preventDefault();
     // const name = nameInput.value;
     const email = emailInput.value;
     const password = passwordInput.value;
@@ -94,25 +94,25 @@ export function createAccount(navigateTo) {
       alert('your account was created');
       navigateTo('/wall');
     }).catch((error) => {
-      alert('Your account wasn´t created');
+      //alert('Your account wasn´t created');
+
+      if (error.code === 'auth/email-already-in-use') {
+        alert('Email already in use');
+      } else if (error.code === 'auth/missing-email') {
+        alert('Introduce your email');
+      } else if (error.code === 'auth/weak-password') {
+        alert('Your password must have a minimum of 6 characters ');
+      } else if (error.code === 'auth/missing-password') {
+        alert('Introduce your password');
+      } else if (error.code === 'auth/invalid-email') {
+        alert('Invalid email');
+      } else if (error.code) {
+        alert('Something went wrong');
+      }
     });
-    console.log(email, password);
     // promesa de la funcion, bloque try.. catch debe ir acompañado de async(funcion asyncrona)
     // await espera que la funcion cumpla con los parametros para ver un resultado o error
-
-    if (error.code === 'auth/email-already-in-use') {
-      alert('Email already in use');
-    } else if (error.code === 'auth/missing-email') {
-      alert('Introduce your email');
-    } else if (error.code === 'auth/weak-password') {
-      alert('Your password must have a minimum of 6 characters ');
-    } else if (error.code === 'auth/missing-password') {
-      alert('Introduce your password');
-    } else if (error.code === 'auth/invalid-email') {
-      alert('Invalid email');
-    } else if (error.code) {
-      alert('Something went wrong');
-    }
+    console.log(email, password);
   });
 
   continueWithGoogleButton.addEventListener('click', async (e) => {
