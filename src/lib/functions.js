@@ -1,3 +1,4 @@
+/* eslint-disable no-shadow */
 /* eslint-disable no-console */
 /* eslint-disable consistent-return */
 /* eslint-disable import/no-extraneous-dependencies */
@@ -53,13 +54,14 @@ export async function signInWithGoogle() {
 }
 
 // CREATE ACCOUNT CON FIREBASE
-export async function register(email, password) {
+export async function register(auth, email, password) {
   try {
     const userCredentials = await createUserWithEmailAndPassword(auth, email, password);
     console.log(userCredentials);
   } catch (error) {
     console.log(error.message);
     console.log(error.code);
+    throw error; 
   }
 }
 
