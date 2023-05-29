@@ -24,7 +24,7 @@ export function register(navigateTo) {
   returnLink.className = 'returnLink';
   imgFamiliaHome.className = 'familyImg';
   
-  logoPeque.src = './img/logoLKPArt_corto.png';
+  logoPeque.src = './img/logoLKP_final.png';
   inputMail.placeholder = 'E-mail';
   inputUserRegister.placeholder = 'User';
   inputPasswordRegister.placeholder = 'Password';

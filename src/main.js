@@ -1,11 +1,13 @@
 // Este es el punto de entrada de tu aplicacion
 
 // import { myFunction } from './lib/index.js';
+import { home } from './vistas/home.js';
 import { login } from './vistas/login.js';
 import { register } from './vistas/register.js';
 
 const routes = [
-  { path: '/', component: login },
+  { path: '/', component: home },
+  { path: '/login', component: login },
   { path: '/register', component: register },
 ];
 
