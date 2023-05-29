@@ -24,4 +24,13 @@ export function fetchPosts() {
   });
 }
 
-export const onGetPosts = () => console.log('onGetPost');
+export const onGetPosts = (drawPosts) => {
+  onSnapshot(collection(db, 'postsWall'), (querySnapshot) => {
+    const resultPosts = [];
+    console.log('snapshot aqui');
+    querySnapshot.forEach((doc) => {
+      resultPosts.push(doc.data());
+    });
+    drawPosts(resultPosts);
+  });
+};

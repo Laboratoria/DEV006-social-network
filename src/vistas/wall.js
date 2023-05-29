@@ -1,4 +1,4 @@
-import { savePost, fetchPosts } from '../lib/firestore.js';
+import { savePost, onGetPosts } from '../lib/firestore.js';
 
 function wall(navigateTo) {
   const section = document.createElement('section');
@@ -77,7 +77,6 @@ function wall(navigateTo) {
     e.preventDefault();
     popUp.style.display = 'none';
     await savePost(textTitle.value, textDescription.value);
-    console.log(savePost(textTitle.value, textDescription.value));
     formPost.reset();
   });
 
@@ -90,21 +89,29 @@ function wall(navigateTo) {
     sectionPosts.append(containerPost);
   }
 
-  async function showPosts() {
-    try {
-      const resultPosts = await fetchPosts();
-      console.log(resultPosts);
-
-      resultPosts.forEach((post) => {
-        createPostCard(post.title, post.description);
-        console.log(createPostCard);
-      });
-    } catch (error) {
-      console.error('Error al obtener los posts:', error);
-    }
+  function showPosts(arrayPosts) {
+    sectionPosts.innerHTML = '';
+    arrayPosts.forEach((post) => {
+      createPostCard(post.title, post.description);
+    });
   }
+  onGetPosts(showPosts);
 
-  showPosts();
+  // async function showPosts() {
+  //   try {
+  //     const resultPosts = await fetchPosts();
+  //     console.log(resultPosts);
+
+  //     resultPosts.forEach((post) => {
+  //       createPostCard(post.title, post.description);
+  //       console.log(createPostCard);
+  //
+  //   } catch (error) {
+  //     console.error('Error al obtener los posts:', error);
+  //   }
+  // }
+
+  // showPosts();
   // Agrupar por secciones//
 
   popUp.append(formPost);
