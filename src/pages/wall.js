@@ -3,7 +3,7 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-console */
 /* eslint-disable import/no-extraneous-dependencies */
-import { collection, getDocs, addDoc } from 'firebase/firestore';
+import { collection, getDocs, addDoc, doc, getDoc } from 'firebase/firestore';
 import { db, auth } from '../lib/firebase';
 import { authDetector, userEmail, dislikeCounter, likeCounter, verifyLikes } from '../lib/functions';
 
@@ -81,7 +81,7 @@ export function wall() {
     likesPic.classList.add('likesPic');
     likesPic.setAttribute('src', './images/Like.png');
     likesLab.classList.add('likesLab');
-    likesLab.textContent = poster.likes?.length || 0;// ? si likes no existe q no falle al cargar los posts
+    likesLab.textContent = poster.likes?.length || 0; // ? si likes no existe q no falle al cargar los posts
 
     // Armar la estructura del nodo
     infoUser.id = 'infoUser';
@@ -102,16 +102,19 @@ export function wall() {
         likesPic.setAttribute('src', './images/Likes.png');
       }
 
-    likesPic.addEventListener('click', async () => {
-     const userLikePost = await verifyLikes(postId, userEmail())
-     console.log(userLikePost)
-       if (userLikePost){
-        await dislikeCounter(postId)
-        likesPic.setAttribute('src', './images/Like.png');
-      }else{
-        await likeCounter(postId)
-        likesPic.setAttribute('src', './images/Likes.png');
-      }
+      likesPic.addEventListener('click', async () => {
+        let { userLiked, likesCount } = await verifyLikes(postId, userEmail());
+        if (userLiked){
+          await dislikeCounter(postId);
+          likesPic.setAttribute('src', './images/Like.png');
+        } else {
+          await likeCounter(postId);
+          likesPic.setAttribute('src', './images/Likes.png');
+        }
+        // Now get the updated likes count and update the UI
+        const updatedLikes = await verifyLikes(postId, userEmail());
+        likesLab.textContent = `${updatedLikes.likesCount}`;
+      });
 
       // const user = auth.currentUser.uid; /* toma el id único del usuario autenticado actualmente */
       // const likesArray = docss.data().likeCounter;
@@ -120,7 +123,7 @@ export function wall() {
       //   likeCounter(docss.id);
       //   likesPic.setAttribute('src', './images/Likes.png');
       // }
-    });
+   
   };
 
   const postPromise = getDocs(collection(db, 'Posts'));
