@@ -15,7 +15,9 @@ import {
 import {
   arrayRemove, arrayUnion, doc, updateDoc, getDoc,
 } from 'firebase/firestore';
-import { app, auth, colRef, db } from './firebase';
+import {
+  app, auth, colRef, db,
+} from './firebase';
 
 // export function login(email, password) {
 //   const auth1 = getAuth(app);
