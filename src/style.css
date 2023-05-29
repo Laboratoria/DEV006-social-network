@@ -427,3 +427,35 @@ body {
   width: 45px;
   height: 45px;
 }
+
+.alertEmptyField {
+  font-family: "Familjen Grotesk", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  color: #595959;
+  position: relative;
+  top: 81px;
+  left: 90px;
+}
+
+#avisoBorrar{
+  font-family: "Familjen Grotesk", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  background-color: #F28E13;
+  color: #ffff;
+  border-radius: 10px;
+  text-align: center;
+  width: 124px;
+  height: 50px;
+}
+

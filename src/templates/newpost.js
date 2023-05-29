@@ -1,9 +1,11 @@
+/* eslint-disable no-else-return */
 /* eslint-disable no-console */
-import { saveTask } from '../lib/firebase.js';
+import { saveTask, updateTask } from '../lib/firebase.js';
 // import { ref } from 'firebase/storage';
 
 function newPost(navigateTo, data) {
-  // console.log(data.post);
+  console.log(data);
+  console.log(data.post);
   const section = document.createElement('section');
   const buttonReturn = document.createElement('button');
   const titleNewPost = document.createElement('h1');
@@ -17,7 +19,10 @@ function newPost(navigateTo, data) {
   const textAreaTitle = document.createElement('textarea');
   const paragraphReview = document.createElement('p');
   const textAreaReview = document.createElement('textarea');
+  const alertEmptyField = document.createElement('p');
   const buttonSave = document.createElement('button');
+
+  alertEmptyField.classList.add('alertEmptyField');
 
   section.setAttribute('id', 'section');
   textAreaTitle.setAttribute('id', 'textAreaTitle');
@@ -51,47 +56,20 @@ function newPost(navigateTo, data) {
   buttonReturn.addEventListener('click', () => {
     navigateTo('/wall');
   });
+
+
   buttonSave.textContent = 'Save';
   buttonSave.classList.add('save');
-  // buttonSave.onclick =
-  // function uploadimg(){
-  //   const refi = firebase.storage().refi();
-  //   console.log(refi)
-  //   const file = document.querySelector('#buttonPlus').file[0];
-  //   const name = new Date() +'-'+ file.name;
-  //   if (file == null){
-  //     alert('Seleccionar imagen')
-  //   }else{
-  //     const metadata = {
-  //       contentType: file.type
-  //     }
-  //     const task = refi.chil(name).put(file, metadata);
-  //     task
-  //     .then(snapshot => snapshot.refi.getDownloadURL())
-  //     .then( url => {
-  //       console.log(url);
-  //       alert('imagen upload successful');
-  //       const imageElement = document.querySelector('imagen');
-  //       imageElement.src = url;
-  //     });
-  //   }
-  //   console.log(refi);
-  // }
-
-  // buttonSave.setAttribute('onclick', 'uploadimg()')
-  //  buttonSave.addEventListener('click', () => {
-  //   navigateTo('/wall');
-  //  });
 
   form.append(
     paragraphImg,
     getImage,
-    // buttonPlus,
     buttonSave,
     paragraphTitle,
     textAreaTitle,
     paragraphReview,
     textAreaReview,
+    alertEmptyField,
   );
 
   divNewPost.append(form);
@@ -102,14 +80,34 @@ function newPost(navigateTo, data) {
 
   section.addEventListener('submit', (e) => {
     e.preventDefault();
-
     const title = form.textAreaTitle;
     const description = form.textAreaReview;
 
-    saveTask(title.value, description.value).then(() => {
+    if (!data.identidad) {
+      if (title.value.trim() === '' || description.value.trim() === '') {
+        alertEmptyField.textContent = 'All text fields must be filled';
+        return;
+      } else {
+        alertEmptyField.textContent = '';
+      }
+
+      saveTask(title.value, description.value);
       navigateTo('/wall');
-    });
-    console.log(title.value, description.value, 'task');
+    } else {
+      if (title.value.trim() === '' || description.value.trim() === '') {
+        alertEmptyField.textContent = 'All text fields must be filled';
+        return;
+      } else {
+        alertEmptyField.textContent = '';
+      }
+
+      console.log(alertEmptyField);
+      updateTask(data.identidad, {
+        title: title.value,
+        description: description.value,
+      });
+      navigateTo('/wall');
+    }
 
     form.reset();
   });
