@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app';
-import { ref } from 'firebase/storage';
+// import { ref } from 'firebase/storage';
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 // eslint-disable-next-line object-curly-newline
 import { getFirestore, collection, addDoc, getDocs, onSnapshot, deleteDoc, doc, getDoc, updateDoc } from 'firebase/firestore';
@@ -20,8 +20,6 @@ const firebaseConfig = {
   measurementId: 'G-59SY6E4Z0D',
 };
 
-
-
 // Initialize Firebase
 export const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
@@ -36,6 +34,6 @@ export const saveTask = (title, description) => {
 
 export const getTasks = () => getDocs(collection(db, 'post'));
 export const onGetPost = (retornopost) => onSnapshot(collection(db, 'post'), retornopost);
-export const deleteTask = (id) => deleteDoc(doc(db,'post',id));
+export const deleteTask = (id) => deleteDoc(doc(db, 'post', id));
 export const getTask = (id) => getDoc(doc(db, 'post', id));
 export const updateTask = (id, newFields) => updateDoc(doc(db, 'post', id), newFields);

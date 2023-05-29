@@ -54,26 +54,26 @@ function wall(navigateTo) {
        </div>
       `;
       // console.log(doc.id);
-    });  
+    });
 
     postContenedor.innerHTML = html;
-  
+
     const btnsDelete = postContenedor.querySelectorAll('.deleteButton');
     const avisoBorra = document.getElementById('avisoBorrar');
-  
+
     btnsDelete.forEach(btn => {
       btn.addEventListener('click', ({ target: { dataset } }) => {
         const borrando = avisoBorra.querySelector('#delete');
         const cancelar = avisoBorra.querySelector('#cancel');
-  
+
         borrando.addEventListener('click', () => {
           deleteTask(dataset.id);
         });
-  
+
         cancelar.addEventListener('click', () => {
           avisoBorra.style.display = 'none';
         });
-  
+
         avisoBorra.style.display = 'block';
       });
     });
@@ -83,17 +83,17 @@ function wall(navigateTo) {
     editButton.forEach(btn => {
       btn.addEventListener('click', async (e) => {
         const doc = await getTask(e.target.dataset.id);
-        console.log(doc.id)
-        const identidad = doc.id
+        console.log(doc.id);
+        const identidad = doc.id;
         // console.log(e.target.dataset.id, 'hey');
         const post = doc.data();
         // console.log(post);
         navigateTo('/newpost', { post, identidad });
-
       });
     });
   });
   return divWall;
 }
 
+// eslint-disable-next-line eol-last
 export default wall;

@@ -1,3 +1,4 @@
+/* eslint-disable no-else-return */
 /* eslint-disable no-console */
 import { saveTask, updateTask } from '../lib/firebase.js';
 // import { ref } from 'firebase/storage';
@@ -67,7 +68,7 @@ function newPost(navigateTo, data) {
     textAreaTitle,
     paragraphReview,
     textAreaReview,
-    alertEmptyField
+    alertEmptyField,
   );
 
   divNewPost.append(form);
@@ -98,6 +99,7 @@ function newPost(navigateTo, data) {
       } else {
         alertEmptyField.textContent = '';
       }
+
       console.log(alertEmptyField);
       updateTask(data.identidad, {
         title: title.value,
