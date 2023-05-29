@@ -83,12 +83,6 @@ export function wall() {
     likesLab.classList.add('likesLab');
     likesLab.textContent = poster.likes?.length || 0;// ? si likes no existe q no falle al cargar los posts
 
-    const likesArray = poster.likes;
-      if (likesArray != null && likesArray.includes(userEmail())){
-        likesPic.setAttribute('src', './images/Likes.png');
-      }
-
-
     // Armar la estructura del nodo
     infoUser.id = 'infoUser';
     infoUser.appendChild(avatar);
@@ -102,6 +96,11 @@ export function wall() {
     likesAndCount.appendChild(likesPic);
     likesAndCount.appendChild(likesLab);
     divposts.insertBefore(post, divposts.firstChild); // Utilizar insertBefore para insertar al principio
+
+    const likesArray = poster.likes;
+      if (likesArray != null && likesArray.includes(userEmail())){
+        likesPic.setAttribute('src', './images/Likes.png');
+      }
 
     likesPic.addEventListener('click', async () => {
      const userLikePost = await verifyLikes(postId, userEmail())

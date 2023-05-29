@@ -1,3 +1,4 @@
+/* eslint-disable no-shadow */
 /* eslint-disable no-console */
 /* eslint-disable consistent-return */
 /* eslint-disable import/no-extraneous-dependencies */
@@ -53,9 +54,21 @@ export async function signInWithGoogle() {
 }
 
 // CREATE ACCOUNT CON FIREBASE
+<<<<<<< HEAD
 export function register(email, password) {
   const userCredentials = createUserWithEmailAndPassword(auth, email, password);
   console.log(userCredentials);
+=======
+export async function register(auth, email, password) {
+  try {
+    const userCredentials = await createUserWithEmailAndPassword(auth, email, password);
+    console.log(userCredentials);
+  } catch (error) {
+    console.log(error.message);
+    console.log(error.code);
+    throw error; 
+  }
+>>>>>>> 8d5e2c7d4cd05a9847f311059d04bb0864784b4f
 }
 
 // detecta los cambios en el estado de autenticación
