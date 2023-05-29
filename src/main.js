@@ -1,12 +1,8 @@
 // Este es el punto de entrada de tu aplicacion
 
 // import { myFunction } from './lib/index.js';
-import { login } from './login.js';
-import { register } from './register.js';
-
-// myFunction();
-login();
-register();
+import { login } from './vistas/login.js';
+import { register } from './vistas/register.js';
 
 const routes = [
   { path: '/', component: login },
@@ -29,13 +25,12 @@ function navigateTo(hash) {
     if (root.firstChild) {
       root.removeChild(root.firstChild);
     }
-    root.appendChild(route.component());
+    root.append(route.component(navigateTo));
+    } else {
+    navigateTo('/error');
+    }
   }
-}
-
-window.onpopstate = () => {
-navigateTo(window.location.pathname);
-};
+  
 
 // root.appendChild(route.component(navigateTo));
 

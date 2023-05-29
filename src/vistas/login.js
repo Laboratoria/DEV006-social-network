@@ -31,9 +31,13 @@ export function login(navigateTo) {
   imgFamiliaHome.src = './img/comunidad.png';
   footer.textContent = 'Copyright © 2023 Isabel Lira, Kat Bravo & Alejandra Martínez';
 
+   linkRegister.addEventListener('click', () => {
+    console.log("funciona")
+    navigateTo('/register');
+  });
+  
   divHome.append(inputUser, inputPassword, loginBtn, loginGoogle, textRegister, linkRegister);
   LoginSection.append(logoGrande, divHome,imgFamiliaHome, footer);
-  document.getElementById('root').appendChild(LoginSection);
-  
-  return divGrande;
+   return LoginSection;
+
 }

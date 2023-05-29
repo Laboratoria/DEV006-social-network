@@ -28,15 +28,18 @@ export function register(navigateTo) {
   inputMail.placeholder = 'E-mail';
   inputUserRegister.placeholder = 'User';
   inputPasswordRegister.placeholder = 'Password';
-  registerBtn.textContent = 'Login';
+  registerBtn.textContent = 'Register';
   registerGoogle.textContent = 'Google';
   returnImg.src = './img/left-arrowOrange.png';
   returnLink.textContent= 'Return';
   imgFamiliaHome.src = './img/comunidad.png';
 
+  returnDiv.addEventListener('click', () => {
+    navigateTo('/');
+  });
+
   returnDiv.append(returnImg,returnLink);
   divRegister.append(inputMail, inputUserRegister, inputPasswordRegister, registerBtn, registerGoogle, returnDiv);
   registerSection.append(logoPeque, divRegister, imgFamiliaHome);
-  document.getElementById('root').appendChild(registerSection);
   return registerSection;
 }
