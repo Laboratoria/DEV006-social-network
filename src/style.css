@@ -386,7 +386,7 @@ body {
   font-weight: 300;
   font-size: 15px;
   color: #595959;
-  /* display: flex; */
+  display: flex;
   flex-direction: column;
   background-color: #fff;
   margin-top: 10px;
@@ -459,7 +459,8 @@ body {
   height: 50px;
 }
 
-/* .btn-like{
+.btn-sinlike,
+.btn-like{
   width: 30px;
   height: 30px;
-} */
+}

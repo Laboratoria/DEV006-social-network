@@ -23,6 +23,7 @@ function wall(navigateTo) {
   iconoAgregar.addEventListener('click', () => {
     navigateTo('/newpost');
   });
+  let mostrar = false;
 
   iconoMuro.src = './img/iconoMuro.png';
   iconoMuro.classList.add('iconoMuro');
@@ -49,8 +50,8 @@ function wall(navigateTo) {
              <img class='editButton' data-id = '${doc.id}' src='./img/edit.png' alt='edit'/>
             </div>
             <div id='editLike'>
-             <img class='btn-sinlike' data-id = '${doc.id}' data-liked='${post.likes.includes(auth.currentUser.uid)}' src='./img/like(1).png' alt='like' / >
-             <img class='btn-like' data-id = '${doc.id}' data-liked='${post.likes.includes(auth.currentUser.uid)}' src='./img/like.png' alt='like' style="display:none" / >
+            ${post.likes.includes(auth.currentUser.uid) ? `<img class='btn-like' data-id = '${doc.id}' data-liked='${post.likes.includes(auth.currentUser.uid)}' src='./img/like.png' alt='like' />`:
+          `<img class='btn-like' data-id = '${doc.id}' data-liked='${post.likes.includes(auth.currentUser.uid)}' src='./img/like(1).png' alt='like'  / >` }
              <span class='count-like'> ${post.likes.length || ''}</span>
             </div>
         </div>
@@ -101,23 +102,26 @@ function wall(navigateTo) {
       });
     });
 
-    const btnLike = postContenedor.querySelectorAll('.btn-sinlike')
+    const btnLike = postContenedor.querySelectorAll('.btn-like')
 
     btnLike.forEach((btn) => {
       btn.addEventListener('click', (e) => {
         // const btnSinLike = e.target;
+        console.log(e.target.dataset.liked, "***")
         // const btnLike = btnSinLike.parentNode.querySelector('.btn-like');
         console.log(btn);
         if (e.target.dataset.liked === 'false') {
           addLike(e.target.dataset.id);
           // btn.src = './img/like.png';
           alert('like');
-          console.log('addLike');
-        } else {
+          mostrar = true;
+          console.log('addLike', mostrar);
+        } else if(e.target.dataset.liked === 'true') {
           removeLike(e.target.dataset.id);
           // btn.src = './img/like(1).png';
           // console.log('removeLike');
-          alert('not-like');
+        
+          alert('not-like', mostrar);
         }
       });
     });
