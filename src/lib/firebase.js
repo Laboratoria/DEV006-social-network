@@ -3,7 +3,7 @@ import { initializeApp } from 'firebase/app';
 // import { ref } from 'firebase/storage';
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 // eslint-disable-next-line object-curly-newline
-import { getFirestore, collection, addDoc, getDocs, onSnapshot, deleteDoc, doc, getDoc, updateDoc } from 'firebase/firestore';
+import { getFirestore, collection, addDoc, getDocs, onSnapshot, deleteDoc, doc, getDoc, updateDoc, arrayUnion, arrayRemove } from 'firebase/firestore';
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.descriptiongoogle.com/docs/web/setup#available-libraries
@@ -28,12 +28,28 @@ export const create = createUserWithEmailAndPassword;
 const db = getFirestore();
 
 // eslint-disable-next-line arrow-body-style
-export const saveTask = (title, description) => {
-  return addDoc(collection(db, 'post'), { title, description });
+export const saveTask = (title, description, likes, username) => {
+  return addDoc(collection(db, 'post'), { title, description, likes: [], username: auth.currentUser.email, });
 };
 
 export const getTasks = () => getDocs(collection(db, 'post'));
-export const onGetPost = (retornopost) => onSnapshot(collection(db, 'post'), retornopost);
+export const onGetPost = () => onSnapshot(collection(db, 'post'));
 export const deleteTask = (id) => deleteDoc(doc(db, 'post', id));
 export const getTask = (id) => getDoc(doc(db, 'post', id));
 export const updateTask = (id, newFields) => updateDoc(doc(db, 'post', id), newFields);
+
+export const addLike = (id) => {
+  const docRef = doc(db, 'post', id);
+  const currentUser = auth.currentUser;
+  updateDoc(docRef, {
+    likes: arrayUnion(currentUser.uid),
+  });
+};
+
+export const removeLike = (id) => {
+  const currentUser = auth.currentUser;
+  const docRef = doc(db, 'post', id);
+  updateDoc(docRef, {
+    likes: arrayRemove(cu.uid),
+  });
+};
