@@ -5,18 +5,18 @@ import { onGetPost, deleteTask, getTask, addLike, removeLike, auth } from '../li
 function wall(navigateTo) {
   const divWall = document.createElement('div');
   divWall.classList.add('divWall');
-  const iconoRestaurante = document.createElement('img');
+  const exit = document.createElement('img');
   const contenedor = document.createElement('div');
   contenedor.classList.add('contenedor');
   const iconoAgregar = document.createElement('img');
-  const iconoMuro = document.createElement('img');
-  const iconoPerfil = document.createElement('img');
+  // const iconoMuro = document.createElement('img');
+  // const iconoPerfil = document.createElement('img');
   const postContenedor = document.createElement('div');
   postContenedor.setAttribute('id', 'postContenedor');
   postContenedor.classList.add('postContenedor');
 
-  iconoRestaurante.src = './img/iconoRestaurante.png';
-  iconoRestaurante.classList.add('iconoRestaurante');
+  exit.src = './img/exit(1).png';
+  exit.classList.add('exit');
 
   iconoAgregar.src = './img/iconoAgregar.png';
   iconoAgregar.classList.add('iconoAgregar');
@@ -25,18 +25,18 @@ function wall(navigateTo) {
   });
   let mostrar = false;
 
-  iconoMuro.src = './img/iconoMuro.png';
-  iconoMuro.classList.add('iconoMuro');
+  // iconoMuro.src = './img/iconoMuro.png';
+  // iconoMuro.classList.add('iconoMuro');
 
-  iconoPerfil.src = './img/iconoPerfil.png';
-  iconoPerfil.classList.add('iconoPerfil');
-  iconoPerfil.addEventListener('click', () => {
-    navigateTo('/editProfile');
-  });
+  // iconoPerfil.src = './img/iconoPerfil.png';
+  // iconoPerfil.classList.add('iconoPerfil');
+  // iconoPerfil.addEventListener('click', () => {
+  //   navigateTo('/editProfile');
+  // });
 
-  contenedor.append(iconoMuro, iconoAgregar, iconoPerfil);
+  contenedor.append( iconoAgregar);
 
-  divWall.append(iconoRestaurante, postContenedor, contenedor);
+  divWall.append(exit, postContenedor, contenedor);
 
   onGetPost((querysnapshot) => {
     // Cuando hacen un click en el like onGetPost se llama de nuevo y jode la interacción
