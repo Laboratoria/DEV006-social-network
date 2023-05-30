@@ -7,11 +7,9 @@ import { collection, getDocs, addDoc, doc, getDoc } from 'firebase/firestore';
 import { db, auth } from '../lib/firebase';
 import { authDetector, userEmail, dislikeCounter, likeCounter, verifyLikes } from '../lib/functions';
 
-//Creación de modal
-const modalDelEditContainer = document.createElement('div');
-modalDelEditContainer.classList.add('modalContainer');
-const modalSection = document.createElement('section');
-modalSection.classList.add('modalSection');
+//CREAR MODAL OPCIONES
+const modalOptions = document.createElement('dialog');
+modalOptions.classList.add('modalOptions');
 const modalImgEdit = document.createElement('img');
 modalImgEdit.setAttribute('src', './images/edit.png');
 modalImgEdit.classList.add('modalImgEdit');
@@ -24,19 +22,59 @@ modalImgDel.classList.add('modalImgDel');
 const deleteLabel = document.createElement('label');
 deleteLabel.classList.add('deleteLabel');
 deleteLabel.textContent=('Delete');
-const modalClose = document.createElement('p');
-modalClose.classList.add('modalClose');
-modalClose.textContent = ('X');
+const xModal = document.createElement('img');
+xModal.setAttribute('src', './images/closeModal.png');
+xModal.classList.add('xModal');
+const space = document.createElement('br');
 
-modalSection.appendChild(modalImgEdit);
-modalSection.appendChild(editLabel);
-modalSection.appendChild(modalImgDel);
-modalSection.appendChild(deleteLabel);
-modalSection.appendChild(modalClose);
-modalSection.appendChild(deleteLabel);
-modalDelEditContainer.appendChild(modalSection);
 
-document.body.appendChild(modalDelEditContainer);
+modalOptions.appendChild(modalImgEdit);
+modalOptions.appendChild(editLabel);
+modalOptions.appendChild(modalImgDel);
+modalOptions.appendChild(deleteLabel);
+deleteLabel.appendChild(space);
+modalOptions.appendChild(xModal);
+
+
+//CREAR MODAL EDIT
+const modalEdit = document.createElement('dialog');
+modalEdit.id = 'modalEdit';
+const txtaEdit = document.createElement('textarea');
+txtaEdit.classList.add('textArea');
+const btnCancel = document.createElement('button');
+btnCancel.textContent = 'Cancel';
+btnCancel.classList.add('button');
+btnCancel.id = 'btn-modal';
+const btnSave = document.createElement('button');
+btnSave.textContent = 'Save';
+btnSave.id = 'btn-modal';
+btnSave.classList.add('button');
+document.body.appendChild(modalEdit);
+  
+modalEdit.appendChild(txtaEdit);
+modalEdit.appendChild(btnCancel);
+modalEdit.appendChild(btnSave);
+
+//CREAR MODAL ELIMINAR
+const modalDelete = document.createElement('dialog');
+modalDelete.id = 'modalDelete';
+const question = document.createElement('p');
+question.textContent = 'Do you want to delete this post?' 
+question.classList.add('question');
+const btnYes = document.createElement('button');
+btnYes.textContent = 'Yes';
+btnYes.classList.add('button');
+btnYes.id = 'btn-modal';
+const btnNo = document.createElement('button');
+btnNo.textContent = 'No';
+btnNo.classList.add('button');
+btnNo.id = 'btn-modal';
+document.body.appendChild(modalDelete);
+
+modalDelete.appendChild(question);
+modalDelete.appendChild(btnYes);
+modalDelete.appendChild(btnNo);
+  
 
 export function wall() {
   // Crear elementos
@@ -129,27 +167,57 @@ export function wall() {
     likesAndCount.appendChild(likesPic);
     likesAndCount.appendChild(likesLab);
     divposts.insertBefore(post, divposts.firstChild); // Utilizar insertBefore para insertar al principio
+    document.body.appendChild(modalOptions);
+    
 
     //Mostrar menuOptions para editar y eliminar cuando los post son propios
     if  (userEmail() == poster.usuario){
       menuOptions.style.visibility = 'visible'; 
-      const openModalDelEdit = document.querySelector('.menuOptions');
-      const modalContainer = document.querySelector('.modalContainer');
-      const modalClose = document.querySelector('.modalClose');
-      openModalDelEdit.addEventListener('click', (e)=>{
-        e.preventDefault();
-        modalContainer.classList.add('modal--show');
-      });
-      modalClose.addEventListener('click',(e)=>{
-        e.preventDefault();
-        modalContainer.classList.remove('modal--show');
-      })
-    }  
-    else {
-      menuOptions.style.visibility = 'hidden'; 
-    }
+    }else{ 
+        menuOptions.style.visibility = 'hidden'; 
+      }
+      // const openModalDelEdit = document.querySelector('.menuOptions');
+      // const modalContainer = document.querySelector('.modalContainer');
+      // const modalClose = document.querySelector('.modalClose');
+      // Listener para mostrar el diálogo de opciones
+    menuOptions.addEventListener('click', (e) => {
+      e.preventDefault();
+      if(modalOptions.isConnected && !modalOptions.hasAttribute('open')){
+          modalOptions.showModal();
+      }
+    });
 
-   
+    // Listener para el cierre del diálogo de opciones
+    xModal.addEventListener('click', () => {
+      modalOptions.close();
+    });
+
+    // Listener para el cambio al diálogo de edición
+    modalImgEdit.addEventListener('click', (e) => {
+      e.preventDefault();
+      modalOptions.close();
+      if(modalEdit.isConnected && !modalEdit.hasAttribute('open')){
+          modalEdit.showModal();
+      }
+    });
+
+    // Listener para el cierre del diálogo de edición
+    btnCancel.addEventListener('click', () => {
+      modalEdit.close();
+    });
+
+     // Listener para llamar pregunta de confirmación eliminar
+     modalImgDel.addEventListener('click', (e)=>{
+        e.preventDefault();
+        modalOptions.close();
+        if(modalDelete.isConnected && !modalDelete.hasAttribute('open')){
+          modalDelete.showModal();
+      }
+     })
+
+     btnNo.addEventListener('click', ()=>{
+      modalDelete.close();
+     })
 
     //Mostrar la imagen antes de hacer like
     const likesArray = poster.likes;
@@ -215,6 +283,7 @@ export function wall() {
     textarea.value = '';
   });
 
+  
   // damm likes, primero se necesitan 3 cosas: user email, id post, campo likes
 
   // DOMContentLoaded se dispara cuando se ha cargado
@@ -229,3 +298,4 @@ export function wall() {
   // });
   return container;
 }
+
