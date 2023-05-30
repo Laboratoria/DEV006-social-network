@@ -28,8 +28,8 @@ export const create = createUserWithEmailAndPassword;
 const db = getFirestore();
 
 // eslint-disable-next-line arrow-body-style
-export const saveTask = (title, description) => {
-  return addDoc(collection(db, 'post'), { title, description });
+export const saveTask = (title, description, likes, username) => {
+  return addDoc(collection(db, 'post'), { title, description, likes: [], username: auth.currentUser.email});
 };
 
 export const getTasks = () => getDocs(collection(db, 'post'));

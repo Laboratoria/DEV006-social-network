@@ -3,7 +3,6 @@
 import { onGetPost, deleteTask, getTask, addLike, removeLike, auth } from '../lib/firebase.js';
 
 function wall(navigateTo) {
-  console.log('/wall')
   const divWall = document.createElement('div');
   divWall.classList.add('divWall');
   const iconoRestaurante = document.createElement('img');
@@ -37,12 +36,12 @@ function wall(navigateTo) {
 
   onGetPost((querysnapshot) => {
     // Cuando hacen un click en el like onGetPost se llama de nuevo y jode la interacción
-    console.log('onGetPost')
     let html = '';
     querysnapshot.forEach((doc) => {
       const post = doc.data();
       html += `
         <div>
+            <h3>${post.username}</h3>
             <h3>${post.title}</h3>
             <p>${post.description}</p>
             <div id='editDelete'>
@@ -50,8 +49,9 @@ function wall(navigateTo) {
              <img class='editButton' data-id = '${doc.id}' src='./img/edit.png' alt='edit'/>
             </div>
             <div id='editLike'>
-            <img class='btn-sinlike' data-id = '${doc.id}' data-liked='${post.likes.includes(auth.currentUser.uid)}' src='./img/like(1).png' alt='like' / >
-            <img class='btn-like' data-id = '${doc.id}' data-liked='${post.likes.includes(auth.currentUser.uid)}' src='./img/like.png' alt='like' style="display:none" / >
+             <img class='btn-sinlike' data-id = '${doc.id}' data-liked='${post.likes.includes(auth.currentUser.uid)}' src='./img/like(1).png' alt='like' / >
+             <img class='btn-like' data-id = '${doc.id}' data-liked='${post.likes.includes(auth.currentUser.uid)}' src='./img/like.png' alt='like' style="display:none" / >
+             <span class='count-like'> ${post.likes.length || ''}</span>
             </div>
         </div>
         <div id='avisoBorrar' style='display:none'> 
