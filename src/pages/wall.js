@@ -97,32 +97,41 @@ export function wall() {
     likesAndCount.appendChild(likesLab);
     divposts.insertBefore(post, divposts.firstChild); // Utilizar insertBefore para insertar al principio
 
+    //Mostrar menuOptions para editar y eliminar cuando los post son propios
+    if  (userEmail() == poster.usuario){
+      menuOptions.style.visibility = 'visible'; 
+    }  
+    else {
+      menuOptions.style.visibility = 'hidden'; 
+    }
+
+    //Mostrar la imagen antes de hacer like
     const likesArray = poster.likes;
-      if (likesArray != null && likesArray.includes(userEmail())){
+    if (likesArray != null && likesArray.includes(userEmail())){
+      likesPic.setAttribute('src', './images/Likes.png');
+    }
+    // Al dar like hacer cambio de imagen y numero
+    likesPic.addEventListener('click', async () => {
+      let { userLiked, likesCount } = await verifyLikes(postId, userEmail());
+      if (userLiked){
+        await dislikeCounter(postId);
+        likesPic.setAttribute('src', './images/Like.png');
+      } else {
+        await likeCounter(postId);
         likesPic.setAttribute('src', './images/Likes.png');
       }
+      // Now get the updated likes count and update the UI
+      const updatedLikes = await verifyLikes(postId, userEmail());
+      likesLab.textContent = `${updatedLikes.likesCount}`;
+    });
 
-      likesPic.addEventListener('click', async () => {
-        let { userLiked, likesCount } = await verifyLikes(postId, userEmail());
-        if (userLiked){
-          await dislikeCounter(postId);
-          likesPic.setAttribute('src', './images/Like.png');
-        } else {
-          await likeCounter(postId);
-          likesPic.setAttribute('src', './images/Likes.png');
-        }
-        // Now get the updated likes count and update the UI
-        const updatedLikes = await verifyLikes(postId, userEmail());
-        likesLab.textContent = `${updatedLikes.likesCount}`;
-      });
+    // const user = auth.currentUser.uid; /* toma el id único del usuario autenticado actualmente */
+    // const likesArray = docss.data().likeCounter;
 
-      // const user = auth.currentUser.uid; /* toma el id único del usuario autenticado actualmente */
-      // const likesArray = docss.data().likeCounter;
-
-      // if (!likesArray.includes(user)) {
-      //   likeCounter(docss.id);
-      //   likesPic.setAttribute('src', './images/Likes.png');
-      // }
+    // if (!likesArray.includes(user)) {
+    //   likeCounter(docss.id);
+    //   likesPic.setAttribute('src', './images/Likes.png');
+    // }
    
   };
 
