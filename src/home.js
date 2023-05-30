@@ -9,7 +9,6 @@ function home(navigateTo){
         navigateTo('/login');
     });
 
-    button.textContent = 'login';
     title.textContent = 'Welcome to my project';
 
     section.append(title,button);
@@ -19,4 +18,3 @@ function home(navigateTo){
 
 export default home;
 
-root.appendChild(route.component(navigateTo));

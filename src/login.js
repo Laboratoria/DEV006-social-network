@@ -1,5 +1,5 @@
 
-function login() {
+function login(navigateTo) {
     const section = document.createElement('section');
     const title = document.createElement('h2');
     const buttonReturn = document.createElement('button');
@@ -27,4 +27,3 @@ function login() {
 
 export default login;
 
-root.appendChild(route.component(navigateTo));

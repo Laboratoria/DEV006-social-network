@@ -1,11 +1,7 @@
 // Este es el punto de entrada de tu aplicacion
-//import home from './home.js';
-//import login from './login.js';
-//import error from './error.js';
+//import { myFunction } from './lib/index.js';
 
-import { myFunction } from './lib/index.js';
-
-myFunction();
+//myFunction();
 
 import home from './home.js';
 import login from './login.js';
@@ -34,7 +30,7 @@ function navigateTo(hash) {
         if (root.firstChild) {
             root.removeChild(root.firstChild);
         }
-        root.appendChild(route.component());
+        root.appendChild(route.component(navigateTo));
     } else {
         navigateTo('/error');
     }
