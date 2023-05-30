@@ -1,10 +1,17 @@
 import {
   collection, addDoc, getDocs, onSnapshot,
 } from 'firebase/firestore';
-import { db } from './configFirebase.js';
+import { db, auth } from './configFirebase.js';
 
 export const savePost = async (title, description) => {
-  await addDoc(collection(db, 'postsWall'), { title, description });
+  console.log(auth.currentUser);
+  const user = auth.currentUser;
+  const name = user.displayName;
+  const email = user.email;
+  const useruid = user.uid;
+  await addDoc(collection(db, 'postsWall'), {
+    title, description, useruid, email, name,
+  });
 };
 
 const getPosts = () => getDocs(collection(db, 'postsWall'));
