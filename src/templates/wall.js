@@ -1,9 +1,11 @@
 /* eslint-disable no-console */
 /* eslint-disable arrow-parens */
-import { onGetPost, deleteTask, getTask, addLike, removeLike, auth } from '../lib/firebase.js';
+import {
+  onGetPost, deleteTask, getTask, addLike, removeLike, auth,
+} from '../lib/firebase.js';
 
 function wall(navigateTo) {
-  console.log('/wall')
+  console.log('/wall');
   const divWall = document.createElement('div');
   divWall.classList.add('divWall');
   const iconoRestaurante = document.createElement('img');
@@ -37,7 +39,7 @@ function wall(navigateTo) {
 
   onGetPost((querysnapshot) => {
     // Cuando hacen un click en el like onGetPost se llama de nuevo y jode la interacción
-    console.log('onGetPost')
+    console.log('onGetPost');
     let html = '';
     querysnapshot.forEach((doc) => {
       const post = doc.data();
@@ -62,7 +64,6 @@ function wall(navigateTo) {
       `;
       // console.log(doc.id);
     });
-    
 
     postContenedor.innerHTML = html;
 
@@ -88,7 +89,6 @@ function wall(navigateTo) {
 
     const editButton = postContenedor.querySelectorAll('.editButton');
 
-
     editButton.forEach(btn => {
       btn.addEventListener('click', async (e) => {
         const doc = await getTask(e.target.dataset.id);
@@ -101,7 +101,7 @@ function wall(navigateTo) {
       });
     });
 
-    const btnLike = postContenedor.querySelectorAll('.btn-sinlike')
+    const btnLike = postContenedor.querySelectorAll('.btn-sinlike');
 
     btnLike.forEach((btn) => {
       btn.addEventListener('click', (e) => {
@@ -110,21 +110,18 @@ function wall(navigateTo) {
         console.log(btn);
         if (e.target.dataset.liked === 'false') {
           addLike(e.target.dataset.id);
-          btn.src = './img/like.png'
+          btn.src = './img/like.png';
           // alert('like');
           console.log('addLike');
         } else {
           removeLike(e.target.dataset.id);
-          btn.src = './img/like(1).png'
+          btn.src = './img/like(1).png';
           console.log('removeLike');
           // alert('not-like');
         }
       });
     });
-    
   });
-
-  
 
   return divWall;
 }

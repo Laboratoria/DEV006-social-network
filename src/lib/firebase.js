@@ -27,10 +27,9 @@ export const create = createUserWithEmailAndPassword;
 
 const db = getFirestore();
 
-// eslint-disable-next-line arrow-body-style
-export const saveTask = (title, description, likes, username) => {
-  return addDoc(collection(db, 'post'), { title, description, likes: [], username: auth.currentUser.email, });
-};
+export const saveTask = (title, description) => addDoc(collection(db, 'post'), {
+  title, description, likes: [], username: auth.currentUser.email,
+});
 
 export const getTasks = () => getDocs(collection(db, 'post'));
 export const onGetPost = () => onSnapshot(collection(db, 'post'));
@@ -50,6 +49,6 @@ export const removeLike = (id) => {
   const currentUser = auth.currentUser;
   const docRef = doc(db, 'post', id);
   updateDoc(docRef, {
-    likes: arrayRemove(cu.uid),
+    likes: arrayRemove(currentUser.uid),
   });
 };
