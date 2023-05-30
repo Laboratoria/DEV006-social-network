@@ -1,6 +1,7 @@
 import { savePost, onGetPosts } from '../lib/firestore.js';
 
 const userName = localStorage.getItem('userName');
+console.log(userName);
 
 function wall(navigateTo) {
   const section = document.createElement('section');
@@ -87,7 +88,10 @@ function wall(navigateTo) {
   popUpButton.addEventListener('click', async (e) => {
     e.preventDefault();
     popUp.style.display = 'none';
-    await savePost(textTitle.value, textDescription.value);
+    await savePost(
+      textTitle.value,
+      textDescription.value,
+    );
     formPost.reset();
   });
 
@@ -98,7 +102,7 @@ function wall(navigateTo) {
     deletePopup.style.display = 'none';
   });
 
-  function createPostCard(title, description) {
+  function createPostCard(title, description, name) {
     const resultTitle = document.createElement('h2');
     const containerPost = document.createElement('div');
     const resultDescription = document.createElement('p');
@@ -108,7 +112,7 @@ function wall(navigateTo) {
 
     resultTitle.textContent = title;
     resultDescription.textContent = description;
-    resultUser.textContent = userName;
+    resultUser.textContent = name;
     // agregar atributos
     deleteButton.setAttribute('src', 'images/delete.png');
 
@@ -139,7 +143,7 @@ function wall(navigateTo) {
   function showPosts(arrayPosts) {
     sectionPosts.innerHTML = '';
     arrayPosts.forEach((post) => {
-      createPostCard(post.title, post.description);
+      createPostCard(post.title, post.description, post.name);
     });
   }
   onGetPosts(showPosts);

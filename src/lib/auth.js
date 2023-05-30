@@ -42,7 +42,6 @@ export function registerUser(email, password, user) {
         .then(() => {
           // Guardar el nombre de usuario en el localStorage
           localStorage.setItem('userName', user.displayName);
-          console.log(currentUser);
           return currentUser;
         })
         .catch((error) => {
