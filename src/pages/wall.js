@@ -7,6 +7,37 @@ import { collection, getDocs, addDoc, doc, getDoc } from 'firebase/firestore';
 import { db, auth } from '../lib/firebase';
 import { authDetector, userEmail, dislikeCounter, likeCounter, verifyLikes } from '../lib/functions';
 
+//Creación de modal
+const modalDelEditContainer = document.createElement('div');
+modalDelEditContainer.classList.add('modalContainer');
+const modalSection = document.createElement('section');
+modalSection.classList.add('modalSection');
+const modalImgEdit = document.createElement('img');
+modalImgEdit.setAttribute('src', './images/edit.png');
+modalImgEdit.classList.add('modalImgEdit');
+const editLabel = document.createElement('label');
+editLabel.classList.add('editLabel');
+editLabel.textContent=('Edit');
+const modalImgDel = document.createElement('img');
+modalImgDel.setAttribute('src', './images/delete.png');
+modalImgDel.classList.add('modalImgDel');
+const deleteLabel = document.createElement('label');
+deleteLabel.classList.add('deleteLabel');
+deleteLabel.textContent=('Delete');
+const modalClose = document.createElement('p');
+modalClose.classList.add('modalClose');
+modalClose.textContent = ('X');
+
+modalSection.appendChild(modalImgEdit);
+modalSection.appendChild(editLabel);
+modalSection.appendChild(modalImgDel);
+modalSection.appendChild(deleteLabel);
+modalSection.appendChild(modalClose);
+modalSection.appendChild(deleteLabel);
+modalDelEditContainer.appendChild(modalSection);
+
+document.body.appendChild(modalDelEditContainer);
+
 export function wall() {
   // Crear elementos
   const container = document.createElement('div');
@@ -62,6 +93,8 @@ export function wall() {
     const likesPic = document.createElement('img');
     const likesLab = document.createElement('label');
 
+    
+
     // Establecer las propiedades de los elementos
 
     post.className = 'post';
@@ -100,10 +133,23 @@ export function wall() {
     //Mostrar menuOptions para editar y eliminar cuando los post son propios
     if  (userEmail() == poster.usuario){
       menuOptions.style.visibility = 'visible'; 
+      const openModalDelEdit = document.querySelector('.menuOptions');
+      const modalContainer = document.querySelector('.modalContainer');
+      const modalClose = document.querySelector('.modalClose');
+      openModalDelEdit.addEventListener('click', (e)=>{
+        e.preventDefault();
+        modalContainer.classList.add('modal--show');
+      });
+      modalClose.addEventListener('click',(e)=>{
+        e.preventDefault();
+        modalContainer.classList.remove('modal--show');
+      })
     }  
     else {
       menuOptions.style.visibility = 'hidden'; 
     }
+
+   
 
     //Mostrar la imagen antes de hacer like
     const likesArray = poster.likes;
