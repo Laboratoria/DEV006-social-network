@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { signInFn } from '../app/signinForm';
 import { googleSignInFn } from '../app/googleLogin';
 import { githubSignInFn } from '../app/githubLogin';
@@ -18,8 +19,6 @@ function login(navigateTo) {
   const loginWith = document.createElement('p');
   const loginGoogle = document.createElement('img');
   const loginGit = document.createElement('img');
-  const viewPassword = document.createElement('img');
-  const viewAndPassword = document.createElement('span');
 
   form.id = 'form-login';
   emailInput.id = 'email-input';
@@ -27,9 +26,9 @@ function login(navigateTo) {
   btnSignIn.id = 'btn-signin';
   loginGoogle.id = 'loginGoogle';
   loginGit.id = 'loginGit';
-  btnSignIn.type = 'submit';
+  // btnSignIn.type = 'submit';
+  forgotPassword.id = 'btnForgotPassword';
 
-  viewAndPassword.classList.add('span-password');
   containerLogin.classList.add('container-login');
   containerTitle.classList.add('container-title');
   containerbtnsLogin.classList.add('container-btns-login');
@@ -49,11 +48,10 @@ function login(navigateTo) {
   btnSignIn.textContent = 'Ingresar';
   forgotPassword.textContent = 'Olvidé mi contraseña';
   loginWith.textContent = 'O ingresa con:';
-
-  forgotPassword.classList.add('btn-forgot');
-  forgotPassword.addEventListener('click', () => {
-    navigateTo('/forgotPassword');
-  });
+  // forgotPassword.classList.add('btn-forgot');
+  // forgotPassword.addEventListener('click', () => {
+  //   navigateTo('/forgotPassword');
+  // });
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -80,9 +78,6 @@ function login(navigateTo) {
   buttonReturn.addEventListener('click', () => {
     navigateTo('/');
   });
-
-  viewPassword.src = ('img/ver.png');
-  viewPassword.alt = 'Imagen ver password';
 
   emailInput.placeholder = 'Email:';
   emailInput.setAttribute('required', 'true');

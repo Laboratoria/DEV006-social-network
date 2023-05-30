@@ -1,4 +1,4 @@
-import home from '../src/views/home.js';
+import home from '../../src/views/home.js';
 
 describe('funcion home', () => {
   const navigateTo = jest.fn();
