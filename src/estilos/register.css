@@ -1,0 +1,135 @@
+body {
+    background-color: #EEF8FF;
+    font-family: 'Montserrat', sans-serif;
+  }
+  
+  .logoGrande {
+    width: 108px;
+    height: 131.51px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+  }
+  
+  .divLogin {
+    position: absolute;
+    width: 300px;
+    height: 341px;
+    left: calc(50% - 300px/2);
+    top: 150px;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px #8AF0D8;
+    border-radius: 15px;
+  }
+  
+  .inputUser {
+    width: 229px;
+    height: 42px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 22px;
+    margin: auto;
+    border: 1px solid #AFACAC;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+    text-align: center;
+  }
+  
+  .inputPass {
+    width: 229px;
+    height: 42px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 78px;
+    margin: auto;
+    border: 1px solid #AFACAC;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+    text-align: center;
+  }
+  
+  .btnOrange {
+    width: 277px;
+    height: 42px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 134px;
+    margin: auto;
+    background-color: #F89626;
+    color: #FFFFFF;
+    border: none;
+    box-shadow: 0px 4px 4px #AFACAC;
+    border-radius: 15px;
+    font-size: medium;
+    ;
+  }
+  
+  .btnGoogle{
+  width: 277px;
+  height: 42px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 190px;
+  margin: auto;
+  }
+  
+  
+  .textRegister {
+    width: 200px;
+    height: 21px; 
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 266px;
+    margin: auto;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 16px;
+    text-align: center;
+    color: #676767;
+  }
+  
+  .linkRegister {
+    width: 87px;
+    height: 22px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 285px;
+    margin: auto;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 20px;
+    text-align: center;
+  
+    color: #F89626;
+  }
+  
+  .familyImg {
+    width: 358px;
+    height: 123.05px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    top: 489px;
+  }
+  
+  .footer {
+    text-align: center;
+    padding: 4px;
+    width: auto;
+    height: 28px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    top: 612px;
+    background: #FFD1F7;
+  }

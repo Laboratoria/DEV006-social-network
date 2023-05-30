@@ -1,0 +1,475 @@
+body {
+  background-color: #EEF8FF;
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* Home */
+.logoGrande {
+  width: 108px;
+  height: 131.51px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.divHome {
+  position: absolute;
+  width: 300px;
+  height: 341px;
+  left: calc(50% - 300px/2);
+  top: 150px;
+  background: #FFFFFF;
+  box-shadow: 0px 4px 4px #8AF0D8;
+  border-radius: 15px;
+}
+
+.textoHome {
+  width: 200px;
+  height: 60px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50px;
+  margin: auto;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 20px;
+  text-align: justify;
+  color: #676767;
+}
+
+/*CORREGIR
+.familiaHome {
+  width: 277px;
+  height: 42px;
+} 
+*/
+
+.btnRegisterHome {
+  width: 277px;
+  height: 42px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 200px;
+  margin: auto;
+  background-color: #F89626;
+  color: #FFFFFF;
+  border: none;
+  box-shadow: 0px 4px 4px #AFACAC;
+  border-radius: 15px;
+  font-size: medium;
+  font-family: 'Montserrat', sans-serif;
+  ;
+}
+
+.btnLoginHome {
+  width: 277px;
+  height: 42px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 256px;
+  margin: auto;
+  background-color: #F89626;
+  color: #FFFFFF;
+  border: none;
+  box-shadow: 0px 4px 4px #AFACAC;
+  border-radius: 15px;
+  font-size: medium;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.familyImg {
+  position: absolute;
+  width: 358px;
+  height: 123px;
+  left: 3px;
+  top: 489px;
+}
+
+.footer {
+  text-align: center;
+  padding: 4px;
+  width: auto;
+  height: 28px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  top: 612px;
+  background: #FFD1F7;
+}
+
+/* Register */
+
+.logoPeque {
+  width: 108px;
+  height: 131.51px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.divRegister {
+  position: absolute;
+  width: 300px;
+  height: 341px;
+  left: calc(50% - 300px/2);
+  top: 150px;
+  background: #FFFFFF;
+  box-shadow: 0px 4px 4px #8AF0D8;
+  border-radius: 15px;
+
+}
+
+.inputMail {
+  width: 229px;
+  height: 42px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 22px;
+  margin: auto;
+  font-family: 'Montserrat', sans-serif;
+  border: 1px solid #AFACAC;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 15px;
+  text-align: center;
+}
+
+.inputUserRegister {
+  width: 229px;
+  height: 42px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 78px;
+  margin: auto;
+  font-family: 'Montserrat', sans-serif;
+  border: 1px solid #AFACAC;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 15px;
+  text-align: center;
+}
+
+.inputPassRegister {
+  width: 229px;
+  height: 42px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 134px;
+  margin: auto;
+  font-family: 'Montserrat', sans-serif;
+  border: 1px solid #AFACAC;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 15px;
+  text-align: center;
+}
+
+.btnRegister {
+  width: 277px;
+  height: 42px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 190px;
+  /*176*/
+  margin: auto;
+  font-family: 'Montserrat', sans-serif;
+  background-color: #F89626;
+  color: #FFFFFF;
+  border: none;
+  box-shadow: 0px 4px 4px #AFACAC;
+  border-radius: 15px;
+  font-size: medium;
+  ;
+}
+
+.btnRegGoogle {
+  width: 277px;
+  height: 42px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 246px;
+  margin: auto;
+}
+
+.returnDiv {
+  position: absolute;
+  width: 65px;
+  height: 19.67px;
+  top: 300px;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.returnImg {
+  position: absolute;
+  width: 11.25px;
+  height: 19.67px;
+  display: inline;
+  margin-right: 10px;
+}
+
+.returnLink {
+  position: absolute;
+  width: 54px;
+  height: 14px;
+  left: 20px;
+  top: -11px;
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 15px;
+  text-align: center;
+  color: #F89626;
+  display: inline;
+}
+
+
+/* Login */
+
+.inputUser {
+  width: 229px;
+  height: 42px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 22px;
+  margin: auto;
+  font-family: 'Montserrat', sans-serif;
+  border: 1px solid #AFACAC;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 15px;
+  text-align: center;
+}
+
+
+.inputPass {
+  width: 229px;
+  height: 42px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 78px;
+  margin: auto;
+  font-family: 'Montserrat', sans-serif;
+  border: 1px solid #AFACAC;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 15px;
+  text-align: center;
+}
+
+.btnLogin {
+  width: 277px;
+  height: 42px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 134px;
+  margin: auto;
+  font-family: 'Montserrat', sans-serif;
+  background-color: #F89626;
+  color: #FFFFFF;
+  border: none;
+  box-shadow: 0px 4px 4px #AFACAC;
+  border-radius: 15px;
+  font-size: medium;
+  ;
+}
+
+.btnGoogle {
+  width: 277px;
+  height: 42px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 190px;
+  margin: auto;
+}
+
+
+.textRegister {
+  width: 200px;
+  height: 21px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 266px;
+  margin: auto;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 16px;
+  text-align: center;
+  color: #676767;
+}
+
+.linkRegister {
+  width: 87px;
+  height: 22px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 285px;
+  margin: auto;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 20px;
+  text-align: center;
+
+  color: #F89626;
+}
+
+*/ @media (max-width: 768px) {
+
+  body {
+    background-color: ;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  /* Home */
+  .logoGrande {
+    width: 15%;
+    max-width: 108px;
+    height: auto;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+  }
+
+  .divHome {
+    position: absolute;
+    width: 80%;
+    max-width: 300px;
+    height: auto;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 150px;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px #8AF0D8;
+    border-radius: 15px;
+  }
+
+  .textoHome {
+    width: 80%;
+    max-width: 200px;
+    height: auto;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50px;
+    margin: auto;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 20px;
+    text-align: justify;
+    color: #676767;
+  }
+
+  .btnRegisterHome,
+  .btnLoginHome {
+    width: 80%;
+    max-width: 277px;
+    height: auto;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 200px;
+    margin: auto;
+    background-color: #F89626;
+    color: #FFFFFF;
+    border: none;
+    box-shadow: 0px 4px 4px #AFACAC;
+    border-radius: 15px;
+    font-size: medium;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .footer {
+    text-align: center;
+    padding: 4px;
+    width: 100%;
+    height: auto;
+    position: fixed;
+    bottom: 0;
+    background: #FFD1F7;
+    display: grid;
+    place-items: center;
+    font-size: auto;
+  }
+
+  /* Register */
+  .logoPeque {
+    width: 15%;
+    max-width: 108px;
+    height: auto;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+  }
+
+  .divRegister {
+    position: absolute;
+    width: 80%;
+    max-width: 300px;
+    height: auto;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 150px;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px #8AF0D8;
+    border-radius: 15px;
+  }
+
+  .inputMail,
+  .inputUserRegister,
+  .inputPassRegister {
+    width: 80%;
+    max-width: 229px;
+    height: auto;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 22px;
+    margin: auto;
+    font-family: 'Montserrat', sans-serif;
+    border: 1px solid #AFACAC;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+    text-align: center;
+  }
+
+  .btnRegister,
+  .btnRegGoogle,
+  .returnDiv,
+  .btnLogin,
+  .btnGoogle {
+    width: 80%;
+    max-width: 277px;
+    height: auto;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top
+  }
+
+  .familyImg {
+    width: 100%;
+    max-width: 358px;
+    height: auto;
+    left: 3px;
+    top: 20%;
+  }
+}
