@@ -11,8 +11,8 @@ function newPost(navigateTo, data) {
   const divNewPost = document.createElement('div');
   divNewPost.classList.add('divNewPost');
   const form = document.createElement('form');
-  const paragraphImg = document.createElement('p');
-  const getImage = document.createElement('input');
+  // const paragraphImg = document.createElement('p');
+  // const getImage = document.createElement('input');
   const paragraphTitle = document.createElement('p');
   const textAreaTitle = document.createElement('textarea');
   const paragraphReview = document.createElement('p');
@@ -53,7 +53,7 @@ function newPost(navigateTo, data) {
   opt10.value = 'inspiring';
   opt10.text = 'inspiring';
 
-  sel.append(opt1,opt2, opt3, opt4, opt5, opt6, opt7, opt8, opt9, opt10)
+  sel.append(opt1, opt2, opt3, opt4, opt5, opt6, opt7, opt8, opt9, opt10);
   // console.log(sel)
 
   alertEmptyField.classList.add('alertEmptyField');
@@ -61,7 +61,7 @@ function newPost(navigateTo, data) {
   contenedorNewPost.setAttribute('id', 'contenedorNewPost');
   textAreaTitle.setAttribute('id', 'textAreaTitle');
   textAreaReview.setAttribute('id', 'textAreaReview');
-  sel.setAttribute('id', 'selectOption')
+  sel.setAttribute('id', 'selectOption');
 
   titleNewPost.textContent = 'New Post';
   titleNewPost.classList.add('titleNewPost');
@@ -69,8 +69,8 @@ function newPost(navigateTo, data) {
   // paragraphImg.textContent = 'Add Image';
   // paragraphImg.classList.add('paragraphImg');
 
-  paragraphMood.textContent= 'Mood';
-  paragraphMood.classList.add('paragraphMood')
+  paragraphMood.textContent = 'Mood';
+  paragraphMood.classList.add('paragraphMood');
 
   // getImage.classList.add('getImagen');
   // getImage.type = 'file';
@@ -117,7 +117,6 @@ function newPost(navigateTo, data) {
   // //   const option = this.options[select.selectedIndex];
   // //   console.log(option.value + ': ' + option.text);
   // // });
-
 
   contenedorNewPost.addEventListener('submit', (e) => {
     e.preventDefault();
