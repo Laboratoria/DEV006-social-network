@@ -25,6 +25,8 @@ function wall(navigateTo) {
   const deletePopup = document.createElement('div');
   const yesDelete = document.createElement('button');
   const noDelete = document.createElement('button');
+  const errorPostTitle = document.createElement('p');
+  const errorPostDescription = document.createElement('p');
 
   // agregar clases//
   section.classList.add('section');
@@ -61,8 +63,8 @@ function wall(navigateTo) {
   yesDelete.textContent = 'SI';
   noDelete.textContent = 'NO';
   popUpButton.textContent = 'Post';
-  postTitle.textContent = 'Title';
-  postDescription.textContent = 'Description';
+  postTitle.textContent = 'Titulo';
+  postDescription.textContent = 'Descripción';
   deletePopup.textContent = '¿Estas segura de que deseas eliminar tu post?';
 
   // clickeado para img de house
@@ -87,12 +89,24 @@ function wall(navigateTo) {
 
   popUpButton.addEventListener('click', async (e) => {
     e.preventDefault();
-    popUp.style.display = 'none';
-    await savePost(
-      textTitle.value,
-      textDescription.value,
-    );
-    formPost.reset();
+
+    if (textTitle.value === '') {
+      errorPostTitle.innerHTML = '*Por favor escribe un título';
+    } else {
+      errorPostTitle.innerHTML = '';
+    }
+
+    if (textDescription.value === '') {
+      errorPostDescription.innerHTML = '*Por favor escribe una descripción';
+    } else {
+      errorPostDescription.innerHTML = '';
+    }
+
+    if (textTitle.value !== '' && textDescription.value !== '') {
+      await savePost(textTitle.value, textDescription.value);
+      formPost.reset();
+      popUp.style.display = 'none';
+    }
   });
 
   popUpClose.addEventListener('click', () => {
@@ -122,6 +136,9 @@ function wall(navigateTo) {
     resultDescription.classList.add('resultDescription');
     deleteButton.classList.add('deleteButton');
     containerReactions.classList.add('containerReactions');
+    resultUser.classList.add('resultUser');
+    errorPostTitle.classList.add('errorsPosts');
+    errorPostDescription.classList.add('errorsPosts');
 
     deleteButton.addEventListener('click', (e) => {
       e.preventDefault();
@@ -131,11 +148,11 @@ function wall(navigateTo) {
 
     deletePopup.append(yesDelete, noDelete);
     containerPost.append(
+      resultUser,
       resultTitle,
       resultDescription,
-      resultUser,
-      deleteButton,
       containerReactions,
+      deleteButton,
     );
     sectionPosts.append(containerPost);
   }
@@ -151,7 +168,16 @@ function wall(navigateTo) {
   // Agrupar por secciones//
 
   popUp.append(formPost);
-  formPost.append(popUpClose, postTitle, textTitle, postDescription, textDescription, popUpButton);
+  formPost.append(
+    popUpClose,
+    postTitle,
+    textTitle,
+    errorPostTitle,
+    postDescription,
+    textDescription,
+    errorPostDescription,
+    popUpButton,
+  );
   sectionHeader.append(house, logo, config);
   sectionFooter.append(bell, newPost, profile);
   section.append(sectionHeader, sectionPosts, popUp, deletePopup, sectionFooter);
