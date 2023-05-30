@@ -54,7 +54,7 @@ function login(navigateTo) {
   paragraphRegister.addEventListener('click', () => {
     navigateTo('/createAcount');
   });
-  buttonSingin.textContent = 'SING IN';
+  buttonSingin.textContent = 'SIGN IN';
   buttonSingin.classList.add('singIn');
 
   inputEmail.addEventListener('input', (e) => {

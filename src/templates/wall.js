@@ -30,6 +30,9 @@ function wall(navigateTo) {
 
   iconoPerfil.src = './img/iconoPerfil.png';
   iconoPerfil.classList.add('iconoPerfil');
+  iconoPerfil.addEventListener('click', () => {
+    navigateTo('/editProfile');
+  });
 
   contenedor.append(iconoMuro, iconoAgregar, iconoPerfil);
 
@@ -41,18 +44,17 @@ function wall(navigateTo) {
     querysnapshot.forEach((doc) => {
       const post = doc.data();
       html += `
-        <div>
-            <h3>${post.username}</h3>
+        <div >
+            <h3>${post.username.charAt(0).toUpperCase() + post.username.split('@')[0].slice(1)}</h3>
             <h3>${post.title}</h3>
             <p>${post.description}</p>
             <div id='editDelete'>
+             ${post.likes.includes(auth.currentUser.uid) ? `<img class='btn-like' data-id = '${doc.id}' data-liked='${post.likes.includes(auth.currentUser.uid)}' src='./img/like.png' alt='like' />`:
+            `<img class='btn-like' data-id = '${doc.id}' data-liked='${post.likes.includes(auth.currentUser.uid)}' src='./img/like(1).png' alt='like'  / >` }
+             <span class='count-like'> ${post.likes.length || ''}</span>
              <img class='deleteButton' data-id = '${doc.id}' src='./img/trash.png' alt='trash'/>
              <img class='editButton' data-id = '${doc.id}' src='./img/edit.png' alt='edit'/>
-            </div>
-            <div id='editLike'>
-            ${post.likes.includes(auth.currentUser.uid) ? `<img class='btn-like' data-id = '${doc.id}' data-liked='${post.likes.includes(auth.currentUser.uid)}' src='./img/like.png' alt='like' />`:
-          `<img class='btn-like' data-id = '${doc.id}' data-liked='${post.likes.includes(auth.currentUser.uid)}' src='./img/like(1).png' alt='like'  / >` }
-             <span class='count-like'> ${post.likes.length || ''}</span>
+
             </div>
         </div>
         <div id='avisoBorrar' style='display:none'> 
@@ -61,7 +63,6 @@ function wall(navigateTo) {
           <button id='cancel'> Cancel</button>
        </div>
       `;
-      // console.log(doc.id);
     });
     
 
@@ -95,9 +96,7 @@ function wall(navigateTo) {
         const doc = await getTask(e.target.dataset.id);
         console.log(doc.id);
         const identidad = doc.id;
-        // console.log(e.target.dataset.id, 'hey');
         const post = doc.data();
-        // console.log(post);
         navigateTo('/newpost', { post, identidad });
       });
     });
@@ -106,22 +105,12 @@ function wall(navigateTo) {
 
     btnLike.forEach((btn) => {
       btn.addEventListener('click', (e) => {
-        // const btnSinLike = e.target;
         console.log(e.target.dataset.liked, "***")
-        // const btnLike = btnSinLike.parentNode.querySelector('.btn-like');
-        console.log(btn);
         if (e.target.dataset.liked === 'false') {
           addLike(e.target.dataset.id);
-          // btn.src = './img/like.png';
-          alert('like');
           mostrar = true;
-          console.log('addLike', mostrar);
         } else if(e.target.dataset.liked === 'true') {
           removeLike(e.target.dataset.id);
-          // btn.src = './img/like(1).png';
-          // console.log('removeLike');
-        
-          alert('not-like', mostrar);
         }
       });
     });
