@@ -3,10 +3,10 @@
 }
 
 body {
-  height: 100vh; 
+  height: 100vh;
   background: linear-gradient(
     186deg,
-    rgba(240, 240, 242, 1) 0%,
+    #F9F0EE 0%,
     rgba(242, 203, 169, 1) 46%,
     rgba(242, 196, 155, 1) 100%
   ) !important;
@@ -19,6 +19,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  
 }
 
 .divWall{
@@ -30,9 +31,13 @@ body {
   justify-content: space-between;
   height: 100vh;
   box-sizing: border-box;
+  background:  #F9F0EE;
 }
 
-
+#contenedorNewPost {
+  background:  #F9F0EE;
+  height: 100vh;
+}
 .logoimg {
   width: 231px;
   height: 218px;
@@ -286,9 +291,9 @@ body {
   left: 9px;
   border: none;
 }
-.iconoRestaurante {
-  width: 45px;
-  height: 45px;
+.exit {
+  width: 35px;
+  height: 35px;
   margin-left: auto;
   display: block;
 }
@@ -318,41 +323,47 @@ body {
   top: 125px;
 }
 
-/* .buttonPlus {
-  background: url(/img/icons-plus.png);
-  position: relative;
-  top: 74px;
-  left: 151px;
-  border: none;
-  width: 22px;
-  height: 26px;
-  background-repeat: no-repeat;
-} */
-
 .paragraphReview,
-.paragraphTitle  {
+.paragraphTitle,
+.paragraphMood  {
   font-family: "Roboto", sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
   color: #757474;
   position: relative;
-  top: 101px;
+  top: 38px;
   left: 48px;
   margin-bottom: 5px;
   height: 56px;
   width: 165px
 }
 
+.paragraphMood {
+  top: 68px;
+  height: 15px;
+}
+
+select { 
+  border-radius: 5px;
+  margin-left: 49px;
+  margin-top: 79px;
+  width: 210px;
+  height: 30px;
+  border: none;
+  box-shadow: 0px 10px 10px -10px #757474
+}
+
 .textAreaTitle,
 .textAreaReview {
   position: relative;
-  top: 66px;
+  top: 6px;
   left: 41px;
   width: 290px;
   height: 100px;
-  border-radius: 20px;
+  border-radius: 10px;
   border: none;
+  box-shadow: 0px 10px 10px -10px #757474;
 }
 
 .save{
@@ -366,7 +377,7 @@ body {
   font-size: large;
   font-weight: 400;
   border: none;
-  top: 555px;
+  top: 575px;
   width: 90%;
 }
 .contenedor {
@@ -386,12 +397,13 @@ body {
   font-weight: 300;
   font-size: 15px;
   color: #595959;
-  /* display: flex; */
+  display: flex;
   flex-direction: column;
   background-color: #fff;
-  margin-top: 10px;
+  margin-top: 15px;
   padding: 10px;
   gap: 10px;
+  box-shadow: 0px 10px 10px -10px #757474;
 }
 
 .iconoMuro,
@@ -414,18 +426,19 @@ body {
 
 #editDelete{
   display: flex;
-  width: 100%;
-  justify-content: flex-end;
+  /* width: 100%; */
+  justify-content: space-between;
 }
 
-.editButton{ 
+.editButton{
   width: 30px;
   height: 30px;
 }
 
-.deletebutton{
-  width: 45px;
-  height: 45px;
+.deleteButton{
+  width: 30px;
+  height: 30px;
+  margin-left: 250px;
 }
 
 .alertEmptyField {
@@ -436,7 +449,7 @@ body {
   line-height: 22px;
   color: #595959;
   position: relative;
-  top: 81px;
+  top: 21px;
   left: 90px;
 }
 
@@ -459,7 +472,25 @@ body {
   height: 50px;
 }
 
-/* .btn-like{
+.btn-like{
   width: 30px;
   height: 30px;
-} */
+}
+
+.count-like{
+  margin-top: 4px;
+  margin-left: 4px;
+  font-size: 20px;
+}
+
+#cancel,
+#delete{
+  font-family: "Familjen Grotesk", sans-serif;
+  font-style: normal;
+  border-radius: 10px;
+  background-color: #fff;
+  color: #595959;
+  border: none;
+  width: 60px;
+  height: 20px;
+}

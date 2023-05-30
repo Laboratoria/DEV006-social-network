@@ -5,55 +5,58 @@ import {
 } from '../lib/firebase.js';
 
 function wall(navigateTo) {
-  console.log('/wall');
   const divWall = document.createElement('div');
   divWall.classList.add('divWall');
-  const iconoRestaurante = document.createElement('img');
+  const exit = document.createElement('img');
   const contenedor = document.createElement('div');
   contenedor.classList.add('contenedor');
   const iconoAgregar = document.createElement('img');
-  const iconoMuro = document.createElement('img');
-  const iconoPerfil = document.createElement('img');
+  // const iconoMuro = document.createElement('img');
+  // const iconoPerfil = document.createElement('img');
   const postContenedor = document.createElement('div');
   postContenedor.setAttribute('id', 'postContenedor');
   postContenedor.classList.add('postContenedor');
 
-  iconoRestaurante.src = './img/iconoRestaurante.png';
-  iconoRestaurante.classList.add('iconoRestaurante');
+  exit.src = './img/exit(1).png';
+  exit.classList.add('exit');
 
   iconoAgregar.src = './img/iconoAgregar.png';
   iconoAgregar.classList.add('iconoAgregar');
   iconoAgregar.addEventListener('click', () => {
     navigateTo('/newpost');
   });
+  let mostrar = false;
 
-  iconoMuro.src = './img/iconoMuro.png';
-  iconoMuro.classList.add('iconoMuro');
+  // iconoMuro.src = './img/iconoMuro.png';
+  // iconoMuro.classList.add('iconoMuro');
 
-  iconoPerfil.src = './img/iconoPerfil.png';
-  iconoPerfil.classList.add('iconoPerfil');
+  // iconoPerfil.src = './img/iconoPerfil.png';
+  // iconoPerfil.classList.add('iconoPerfil');
+  // iconoPerfil.addEventListener('click', () => {
+  //   navigateTo('/editProfile');
+  // });
 
-  contenedor.append(iconoMuro, iconoAgregar, iconoPerfil);
+  contenedor.append(iconoAgregar);
 
-  divWall.append(iconoRestaurante, postContenedor, contenedor);
+  divWall.append(exit, postContenedor, contenedor);
 
   onGetPost((querysnapshot) => {
     // Cuando hacen un click en el like onGetPost se llama de nuevo y jode la interacción
-    console.log('onGetPost');
     let html = '';
     querysnapshot.forEach((doc) => {
       const post = doc.data();
       html += `
-        <div>
+        <div >
+            <h3>${post.username.charAt(0).toUpperCase() + post.username.split('@')[0].slice(1)}</h3>
             <h3>${post.title}</h3>
             <p>${post.description}</p>
             <div id='editDelete'>
+             ${post.likes.includes(auth.currentUser.uid) ? `<img class='btn-like' data-id = '${doc.id}' data-liked='${post.likes.includes(auth.currentUser.uid)}' src='./img/like.png' alt='like' />`
+    : `<img class='btn-like' data-id = '${doc.id}' data-liked='${post.likes.includes(auth.currentUser.uid)}' src='./img/like(1).png' alt='like'  / >`}
+             <span class='count-like'> ${post.likes.length || ''}</span>
              <img class='deleteButton' data-id = '${doc.id}' src='./img/trash.png' alt='trash'/>
              <img class='editButton' data-id = '${doc.id}' src='./img/edit.png' alt='edit'/>
-            </div>
-            <div id='editLike'>
-            <img class='btn-sinlike' data-id = '${doc.id}' data-liked='${post.likes.includes(auth.currentUser.uid)}' src='./img/like(1).png' alt='like' / >
-            <img class='btn-like' data-id = '${doc.id}' data-liked='${post.likes.includes(auth.currentUser.uid)}' src='./img/like.png' alt='like' style="display:none" / >
+
             </div>
         </div>
         <div id='avisoBorrar' style='display:none'> 
@@ -62,7 +65,6 @@ function wall(navigateTo) {
           <button id='cancel'> Cancel</button>
        </div>
       `;
-      // console.log(doc.id);
     });
 
     postContenedor.innerHTML = html;
@@ -94,30 +96,21 @@ function wall(navigateTo) {
         const doc = await getTask(e.target.dataset.id);
         console.log(doc.id);
         const identidad = doc.id;
-        // console.log(e.target.dataset.id, 'hey');
         const post = doc.data();
-        // console.log(post);
         navigateTo('/newpost', { post, identidad });
       });
     });
 
-    const btnLike = postContenedor.querySelectorAll('.btn-sinlike');
+    const btnLike = postContenedor.querySelectorAll('.btn-like');
 
     btnLike.forEach((btn) => {
       btn.addEventListener('click', (e) => {
-        // const btnSinLike = e.target;
-        // const btnLike = btnSinLike.parentNode.querySelector('.btn-like');
-        console.log(btn);
+        console.log(e.target.dataset.liked, '***');
         if (e.target.dataset.liked === 'false') {
           addLike(e.target.dataset.id);
-          btn.src = './img/like.png';
-          // alert('like');
-          console.log('addLike');
-        } else {
+          mostrar = true;
+        } else if (e.target.dataset.liked === 'true') {
           removeLike(e.target.dataset.id);
-          btn.src = './img/like(1).png';
-          console.log('removeLike');
-          // alert('not-like');
         }
       });
     });
