@@ -11,7 +11,7 @@ const routes = [
   { path: '/createAcount', component: createAcount },
   { path: '/wall', component: wall },
   { path: '/newpost', component: newpost },
-  {path: '/editProfile', component: editProfile},
+  { path: '/editProfile', component: editProfile },
   { path: '/error', component: error },
 ];
 

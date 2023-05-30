@@ -1,6 +1,8 @@
 /* eslint-disable no-console */
 /* eslint-disable arrow-parens */
-import { onGetPost, deleteTask, getTask, addLike, removeLike, auth } from '../lib/firebase.js';
+import {
+  onGetPost, deleteTask, getTask, addLike, removeLike, auth,
+} from '../lib/firebase.js';
 
 function wall(navigateTo) {
   const divWall = document.createElement('div');
@@ -23,6 +25,7 @@ function wall(navigateTo) {
   iconoAgregar.addEventListener('click', () => {
     navigateTo('/newpost');
   });
+
   let mostrar = false;
 
   // iconoMuro.src = './img/iconoMuro.png';
@@ -34,7 +37,7 @@ function wall(navigateTo) {
   //   navigateTo('/editProfile');
   // });
 
-  contenedor.append( iconoAgregar);
+  contenedor.append(iconoAgregar);
 
   divWall.append(exit, postContenedor, contenedor);
 
@@ -49,8 +52,8 @@ function wall(navigateTo) {
             <h3>${post.title}</h3>
             <p>${post.description}</p>
             <div id='editDelete'>
-             ${post.likes.includes(auth.currentUser.uid) ? `<img class='btn-like' data-id = '${doc.id}' data-liked='${post.likes.includes(auth.currentUser.uid)}' src='./img/like.png' alt='like' />`:
-            `<img class='btn-like' data-id = '${doc.id}' data-liked='${post.likes.includes(auth.currentUser.uid)}' src='./img/like(1).png' alt='like'  / >` }
+             ${post.likes.includes(auth.currentUser.uid) ? `<img class='btn-like' data-id = '${doc.id}' data-liked='${post.likes.includes(auth.currentUser.uid)}' src='./img/like.png' alt='like' />`
+    : `<img class='btn-like' data-id = '${doc.id}' data-liked='${post.likes.includes(auth.currentUser.uid)}' src='./img/like(1).png' alt='like'  / >`}
              <span class='count-like'> ${post.likes.length || ''}</span>
              <img class='deleteButton' data-id = '${doc.id}' src='./img/trash.png' alt='trash'/>
              <img class='editButton' data-id = '${doc.id}' src='./img/edit.png' alt='edit'/>
@@ -64,7 +67,6 @@ function wall(navigateTo) {
        </div>
       `;
     });
-    
 
     postContenedor.innerHTML = html;
 
@@ -90,7 +92,6 @@ function wall(navigateTo) {
 
     const editButton = postContenedor.querySelectorAll('.editButton');
 
-
     editButton.forEach(btn => {
       btn.addEventListener('click', async (e) => {
         const doc = await getTask(e.target.dataset.id);
@@ -101,23 +102,21 @@ function wall(navigateTo) {
       });
     });
 
-    const btnLike = postContenedor.querySelectorAll('.btn-like')
+    const btnLike = postContenedor.querySelectorAll('.btn-like');
 
     btnLike.forEach((btn) => {
       btn.addEventListener('click', (e) => {
-        console.log(e.target.dataset.liked, "***")
+        // console.log(e.target.dataset.liked, "***");
         if (e.target.dataset.liked === 'false') {
           addLike(e.target.dataset.id);
           mostrar = true;
-        } else if(e.target.dataset.liked === 'true') {
+          console.log(mostrar);
+        } else if (e.target.dataset.liked === 'true') {
           removeLike(e.target.dataset.id);
         }
       });
     });
-    
   });
-
-  
 
   return divWall;
 }
