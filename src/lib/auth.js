@@ -39,7 +39,12 @@ export function registerUser(email, password, user) {
     .then((userCredential) => {
       const currentUser = userCredential.user;
       return updateProfile(currentUser, { displayName: user })
-        .then(() => currentUser)
+        .then(() => {
+          // Guardar el nombre de usuario en el localStorage
+          localStorage.setItem('userName', user.displayName);
+          console.log(currentUser);
+          return currentUser;
+        })
         .catch((error) => {
           console.log(error);
           const codeError = error.code;
@@ -55,11 +60,11 @@ export function registerUser(email, password, user) {
     });
 }
 
-// Funcion que valida correo y contraseña de un usuario ya registrado.
 export function loginUser(email, password) {
   return signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       const user = userCredential.user;
+      localStorage.setItem('userName', user.displayName);
       return user;
     })
     .catch((error) => {
@@ -69,6 +74,7 @@ export function loginUser(email, password) {
       throw errorMessage;
     });
 }
+
 // función para registrarse con Google
 export function signInWithGoogle(navigateTo) {
   const provider = new GoogleAuthProvider();
