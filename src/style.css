@@ -421,26 +421,19 @@ h4 {
   font-family: "Hind Vadodara", sans-serif;
   border: 1vw solid rgba(168, 36, 244, 1);
   box-shadow: 2vw 2vh 2vw rgba(0, 0, 0, 0.4);
-}
-
-.sectionPopUp{
-  width: 100vw;
-  height: 72vh;
-  margin: -84vh 0vw 12vh -2vw;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   position: absolute;
+  top: 30vh;
+  left: 5vw;
+  z-index: 2;
 }
-.sectionPosts{
 
+.sectionPosts{
   width: 100vw;
   height: 72vh;
   margin: 15vh 0vw 12vh -2vw;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
 
 }
@@ -466,6 +459,12 @@ h4 {
   margin-top: 2vh;
 }
 
+.popUpClose{
+  width: 6vw;
+  height: 3vh;
+  position: fixed;
+  left:82vw;
+}
 
 
 .postTitle, .postDescription{
@@ -474,7 +473,87 @@ h4 {
   line-height: 1vh;
 }
 
+.deletePopup {
+  display: none;
+  width: 88vw;
+  height: 17vh;
+  background-color: rgba(225, 210, 123, 1);
+  border-radius: 5vh;
+  font-family: "Hind Vadodara", sans-serif;
+  border: 1vw solid rgba(168, 36, 244, 1);
+  box-shadow: 2vw 2vh 2vw rgba(0, 0, 0, 0.4);
+  position: absolute;
+  top: 42vh;
+  left: 5vw;
+  text-align: center;
+  font-size: 3vh;
+  z-index: 2;
+
+}
+
+.buttonYesDelete{
+  position: absolute;
+  top: 12vh;
+  left: 16vw;
+  width: 28vw;
+  height: 3.5vh;
+  background-color: #844ea8;
+  border-radius: 2.6vw;
+  color: white;
+  font-family: "Inria Serif";
+}
+
+.buttonNoDelete{
+  position: absolute;
+  top: 12vh;
+  left: 44vw;
+  width: 28vw;
+  height: 3.5vh;
+  background-color: #844ea8;
+  border-radius: 2.6vw;
+  color: white;
+  font-family: "Inria Serif";
+}
 .containerPost{
-  width: 100vw;
-  height: 30vh;
+box-sizing: border-box;
+width: 76vw;
+height: 12.1vh;
+background: #E1D27B;
+border-radius: 8.2vw;
+border:1vw solid rgba(168, 36, 244, 1);
+}
+
+.resultTitle{
+  font-size: 2.5vh;
+  width: 55vw;
+  font-weight: 900;
+  position: relative;
+  left: 4vw;
+  
+}
+
+.resultDescription{
+  font-size: 2vh;
+    width: 55vw;
+    position: relative;
+    left: 2vw;
+
+}
+.deleteButton{
+  width: 8vw;
+  left: 61vw;
+  position: relative;
+  top: -10.5vh;
+  z-index: 1;
+}
+
+.containerReactions{
+  background-color: #844ea8;
+  height: 12.1vh;
+  width: 24vw;
+  position: relative;
+  left: 51vw;
+  margin-top: -34.3vw;
+  border-bottom-right-radius: 8.2vw;
+  border-top-right-radius: 8.2vw;
 }
