@@ -117,7 +117,6 @@ function wall(navigateTo) {
       });
     });
   });
-
   return divWall;
 }
 
