@@ -5,7 +5,6 @@ function wall(navigateTo) {
   const sectionHeader = document.createElement('section');
   const sectionPosts = document.createElement('section');
   const sectionFooter = document.createElement('section');
-  const sectionPopUp = document.createElement('section');
   const house = document.createElement('img');
   const logo = document.createElement('img');
   const config = document.createElement('img');
@@ -13,18 +12,21 @@ function wall(navigateTo) {
   const profile = document.createElement('img');
   const newPost = document.createElement('img');
   const popUp = document.createElement('div');
+  const popUpClose = document.createElement('img');
   const popUpButton = document.createElement('button');
   const formPost = document.createElement('form');
   const postTitle = document.createElement('h3');
   const postDescription = document.createElement('h3');
   const textTitle = document.createElement('input');
   const textDescription = document.createElement('textarea');
+  const deletePopup = document.createElement('div');
+  const yesDelete = document.createElement('button');
+  const noDelete = document.createElement('button');
 
   // agregar clases//
   section.classList.add('section');
   sectionHeader.classList.add('sectionHeader');
   sectionPosts.classList.add('sectionPosts');
-  sectionPopUp.classList.add('sectionPopUp');
   sectionFooter.classList.add('sectionFooter');
   bell.classList.add('bell');
   profile.classList.add('profile');
@@ -39,6 +41,11 @@ function wall(navigateTo) {
   postDescription.classList.add('postDescription');
   textTitle.classList.add('textTitle');
   textDescription.classList.add('textDescription');
+  popUpClose.classList.add('popUpClose');
+  deletePopup.classList.add('deletePopup');
+  yesDelete.classList.add('buttonYesDelete');
+  noDelete.classList.add('buttonNoDelete');
+
   // agregar atributos//
   logo.setAttribute('src', 'images/logo.png');
   house.setAttribute('src', 'images/home.png');
@@ -46,10 +53,14 @@ function wall(navigateTo) {
   bell.setAttribute('src', 'images/bell.png');
   profile.setAttribute('src', 'images/user.png');
   newPost.setAttribute('src', 'images/post.png');
+  popUpClose.setAttribute('src', 'images/close.png');
 
+  yesDelete.textContent = 'SI';
+  noDelete.textContent = 'NO';
   popUpButton.textContent = 'Post';
   postTitle.textContent = 'Title';
   postDescription.textContent = 'Description';
+  deletePopup.textContent = '¿Estas segura de que deseas eliminar tu post?';
 
   // clickeado para img de house
   house.addEventListener('click', () => {
@@ -78,14 +89,40 @@ function wall(navigateTo) {
     formPost.reset();
   });
 
+  popUpClose.addEventListener('click', () => {
+    popUp.style.display = 'none';
+  });
+  noDelete.addEventListener('click', () => {
+    deletePopup.style.display = 'none';
+  });
+
   function createPostCard(title, description) {
     const resultTitle = document.createElement('h2');
     const containerPost = document.createElement('div');
     const resultDescription = document.createElement('p');
+    const deleteButton = document.createElement('img');
+    const containerReactions = document.createElement('div');
 
     resultTitle.textContent = title;
     resultDescription.textContent = description;
-    containerPost.append(resultTitle, resultDescription);
+    // agregar atributos
+    deleteButton.setAttribute('src', 'images/delete.png');
+
+    // crear clases
+    resultTitle.classList.add('resultTitle');
+    containerPost.classList.add('containerPost');
+    resultDescription.classList.add('resultDescription');
+    deleteButton.classList.add('deleteButton');
+    containerReactions.classList.add('containerReactions');
+
+    deleteButton.addEventListener('click', (e) => {
+      e.preventDefault();
+      console.log('hola');
+      deletePopup.style.display = 'block';
+    });
+
+    deletePopup.append(yesDelete, noDelete);
+    containerPost.append(resultTitle, resultDescription, deleteButton, containerReactions);
     sectionPosts.append(containerPost);
   }
 
@@ -97,29 +134,13 @@ function wall(navigateTo) {
   }
   onGetPosts(showPosts);
 
-  // async function showPosts() {
-  //   try {
-  //     const resultPosts = await fetchPosts();
-  //     console.log(resultPosts);
-
-  //     resultPosts.forEach((post) => {
-  //       createPostCard(post.title, post.description);
-  //       console.log(createPostCard);
-  //
-  //   } catch (error) {
-  //     console.error('Error al obtener los posts:', error);
-  //   }
-  // }
-
-  // showPosts();
   // Agrupar por secciones//
 
   popUp.append(formPost);
-  formPost.append(postTitle, textTitle, postDescription, textDescription, popUpButton);
-  sectionPopUp.append(popUp);
+  formPost.append(popUpClose, postTitle, textTitle, postDescription, textDescription, popUpButton);
   sectionHeader.append(house, logo, config);
   sectionFooter.append(bell, newPost, profile);
-  section.append(sectionHeader, sectionPosts, sectionPopUp, sectionFooter);
+  section.append(sectionHeader, sectionPosts, popUp, deletePopup, sectionFooter);
 
   return section;
 }
