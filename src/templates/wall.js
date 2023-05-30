@@ -25,6 +25,7 @@ function wall(navigateTo) {
   iconoAgregar.addEventListener('click', () => {
     navigateTo('/newpost');
   });
+
   let mostrar = false;
 
   // iconoMuro.src = './img/iconoMuro.png';
@@ -105,10 +106,11 @@ function wall(navigateTo) {
 
     btnLike.forEach((btn) => {
       btn.addEventListener('click', (e) => {
-        console.log(e.target.dataset.liked, '***');
+        // console.log(e.target.dataset.liked, "***");
         if (e.target.dataset.liked === 'false') {
           addLike(e.target.dataset.id);
           mostrar = true;
+          console.log(mostrar);
         } else if (e.target.dataset.liked === 'true') {
           removeLike(e.target.dataset.id);
         }

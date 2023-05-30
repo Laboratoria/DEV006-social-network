@@ -1,5 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app';
+// import { ref } from 'firebase/storage';
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 // eslint-disable-next-line object-curly-newline
 import { getFirestore, collection, addDoc, getDocs, onSnapshot, deleteDoc, doc, getDoc, updateDoc, arrayUnion, arrayRemove } from 'firebase/firestore';
@@ -26,10 +27,12 @@ export const create = createUserWithEmailAndPassword;
 
 const db = getFirestore();
 
-// eslint-disable-next-line no-unused-vars
-export const saveTask = (title, description, likes, username) => addDoc(collection(db, 'post'), {
-  title, description, likes: [], username: auth.currentUser.email,
-});
+// eslint-disable-next-line arrow-body-style
+export const saveTask = (title, description) => {
+  return addDoc(collection(db, 'post'), {
+    title, description, likes: [], username: auth.currentUser.email,
+  });
+};
 
 export const getTasks = () => getDocs(collection(db, 'post'));
 export const onGetPost = (retornopost) => onSnapshot(collection(db, 'post'), retornopost);
