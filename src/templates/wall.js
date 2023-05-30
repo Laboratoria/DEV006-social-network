@@ -110,14 +110,14 @@ function wall(navigateTo) {
         console.log(btn);
         if (e.target.dataset.liked === 'false') {
           addLike(e.target.dataset.id);
-          btn.src = './img/like.png'
-          // alert('like');
+          // btn.src = './img/like.png';
+          alert('like');
           console.log('addLike');
         } else {
           removeLike(e.target.dataset.id);
-          btn.src = './img/like(1).png'
-          console.log('removeLike');
-          // alert('not-like');
+          // btn.src = './img/like(1).png';
+          // console.log('removeLike');
+          alert('not-like');
         }
       });
     });
