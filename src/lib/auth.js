@@ -41,8 +41,8 @@ export function registerUser(email, password, user) {
       const currentUser = userCredential.user;
       return updateProfile(currentUser, { displayName: user })
         .then(() => {
-          currentUser.displayName = user;
-          // Guardar el nombre de usuario en la propiedad displayName del objeto de usuario
+          // Guardar el nombre de usuario en el localStorage
+          localStorage.setItem('userName', user.displayName);
           return currentUser;
         })
         .catch((error) => {
@@ -64,7 +64,7 @@ export function loginUser(email, password) {
   return signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       const user = userCredential.user;
-      // localStorage.setItem('userName', user.displayName);
+      localStorage.setItem('userName', user.displayName);
       return user;
     })
     .catch((error) => {
