@@ -1,8 +1,7 @@
 /* eslint-disable no-alert */
 /* eslint-disable no-console */
 /* eslint-disable import/no-unresolved */
-import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
-import { auth } from './firebase.js';
+import { auth, createUserWithEmailAndPassword, updateProfile } from './firebase.js';
 // // eslint-disable-next-line no-unused-vars
 
 export const signUpFn = (navigateTo) => {
@@ -16,8 +15,6 @@ export const signUpFn = (navigateTo) => {
     alert('Las contraseñas no coinciden');
     return;
   }
-  console.log(signupForm);
-  console.log(email, password, confirmPassword);
 
   createUserWithEmailAndPassword(auth, email, password)
     .then((userCredentials) => updateProfile(userCredentials.user, { displayName: name }))

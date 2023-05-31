@@ -9,8 +9,6 @@ import { home } from './views/home.js';
 import { login } from './views/login.js';
 import error from './views/error.js';
 import { register } from './views/register.js';
-import forgotPassword from './views/forgotPassword.js';
-import newPassword from './views/newPassword.js';
 import { posts } from './views/posts.js';
 // import { async } from 'regenerator-runtime';
 
@@ -18,8 +16,6 @@ const routes = [
   { path: '/', component: home },
   { path: '/login', component: login },
   { path: '/register', component: register },
-  { path: '/forgotPassword', component: forgotPassword },
-  { path: '/newPassword', component: newPassword },
   { path: '/posts', component: posts },
   { path: '/error', component: error },
 ];

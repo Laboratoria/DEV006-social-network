@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app';
-import { getAuth } from 'firebase/auth';
+import { getAuth, createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import {
   getFirestore,
   collection,
@@ -47,7 +47,13 @@ export const onGetPosts = (callback) => onSnapshot(collection(db, 'publicaciones
 export const deletePost = (id) => deleteDoc(doc(db, 'publicaciones', id));
 export const getPost = (id) => getDoc(doc(db, 'publicaciones', id));
 export const updatePost = (id, newField) => updateDoc(doc(db, 'publicaciones', id), newField);
-export { getDoc, doc };
+export {
+  getDoc,
+  doc,
+  getAuth,
+  createUserWithEmailAndPassword,
+  updateProfile,
+};
 
 // /* eslint-disable import/no-unresolved */
 // import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.10.0/firebase-app.js';

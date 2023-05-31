@@ -1,8 +1,14 @@
+// import { createUserWithEmailAndPassword, updateProfile, auth } from 'firebase/auth';
 import { register } from '../../src/views/register.js';
 import { signUpFn } from '../../src/app/signupForm.js';
 import { googleFn } from '../../src/app/googleFunction.js';
 import { githubFn } from '../../src/app/githubFunction.js';
 
+jest.mock('firebase/auth', () => ({
+  createUserWithEmailAndPassword: jest.fn(),
+  updateProfile: jest.fn(),
+  auth: jest.fn(),
+}));
 jest.mock('../../src/app/signupForm', () => ({
   signUpFn: jest.fn(),
 }));
@@ -28,9 +34,15 @@ describe('register', () => {
     const registerContainer = document.createElement('section');
     registerContainer.append(register(navigateTo));
     const formRegister = registerContainer.querySelector('.form-register');
+    const email = registerContainer.querySelector('#signup-email');
+    const password = registerContainer.querySelector('#signup-password');
     signUpFn.mockResolvedValueOnce();
+    email.value = 'test@test.com';
+    password.value = '123456';
     formRegister.dispatchEvent(new Event('submit'));
     expect(signUpFn).toHaveBeenCalledWith(navigateTo);
+    expect(email.value).toBe('test@test.com');
+    expect(password.value).toBe('123456');
   });
   it('Al dar click en return debe navegar a home', () => {
     const navigateTo = jest.fn();
