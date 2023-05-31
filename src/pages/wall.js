@@ -3,77 +3,15 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-console */
 /* eslint-disable import/no-extraneous-dependencies */
-import { collection, getDocs, addDoc, doc, getDoc } from 'firebase/firestore';
+import { collection, getDocs, addDoc } from 'firebase/firestore';
 import { db, auth } from '../lib/firebase';
-import { authDetector, userEmail, dislikeCounter, likeCounter, verifyLikes } from '../lib/functions';
-
-//CREAR MODAL OPCIONES
-const modalOptions = document.createElement('dialog');
-modalOptions.classList.add('modalOptions');
-const modalImgEdit = document.createElement('img');
-modalImgEdit.setAttribute('src', './images/edit.png');
-modalImgEdit.classList.add('modalImgEdit');
-const editLabel = document.createElement('label');
-editLabel.classList.add('editLabel');
-editLabel.textContent=('Edit');
-const modalImgDel = document.createElement('img');
-modalImgDel.setAttribute('src', './images/delete.png');
-modalImgDel.classList.add('modalImgDel');
-const deleteLabel = document.createElement('label');
-deleteLabel.classList.add('deleteLabel');
-deleteLabel.textContent=('Delete');
-const xModal = document.createElement('img');
-xModal.setAttribute('src', './images/closeModal.png');
-xModal.classList.add('xModal');
-const space = document.createElement('br');
+import { authDetector, userEmail, dislikeCounter, likeCounter, verifyLikes, deletePost } from '../lib/functions';
+import { async } from 'regenerator-runtime';
 
 
-modalOptions.appendChild(modalImgEdit);
-modalOptions.appendChild(editLabel);
-modalOptions.appendChild(modalImgDel);
-modalOptions.appendChild(deleteLabel);
-deleteLabel.appendChild(space);
-modalOptions.appendChild(xModal);
 
 
-//CREAR MODAL EDIT
-const modalEdit = document.createElement('dialog');
-modalEdit.id = 'modalEdit';
-const txtaEdit = document.createElement('textarea');
-txtaEdit.classList.add('textArea');
-const btnCancel = document.createElement('button');
-btnCancel.textContent = 'Cancel';
-btnCancel.classList.add('button');
-btnCancel.id = 'btn-modal';
-const btnSave = document.createElement('button');
-btnSave.textContent = 'Save';
-btnSave.id = 'btn-modal';
-btnSave.classList.add('button');
-document.body.appendChild(modalEdit);
-  
-modalEdit.appendChild(txtaEdit);
-modalEdit.appendChild(btnCancel);
-modalEdit.appendChild(btnSave);
 
-//CREAR MODAL ELIMINAR
-const modalDelete = document.createElement('dialog');
-modalDelete.id = 'modalDelete';
-const question = document.createElement('p');
-question.textContent = 'Do you want to delete this post?' 
-question.classList.add('question');
-const btnYes = document.createElement('button');
-btnYes.textContent = 'Yes';
-btnYes.classList.add('button');
-btnYes.id = 'btn-modal';
-const btnNo = document.createElement('button');
-btnNo.textContent = 'No';
-btnNo.classList.add('button');
-btnNo.id = 'btn-modal';
-document.body.appendChild(modalDelete);
-
-modalDelete.appendChild(question);
-modalDelete.appendChild(btnYes);
-modalDelete.appendChild(btnNo);
   
 
 export function wall() {
@@ -117,6 +55,75 @@ export function wall() {
   container.appendChild(divposts);
 
   const createPost = (poster, postId) => {
+
+        //CREAR MODAL OPCIONES
+    const modalOptions = document.createElement('dialog');
+    modalOptions.classList.add('modalOptions');
+    const modalImgEdit = document.createElement('img');
+    modalImgEdit.setAttribute('src', './images/edit.png');
+    modalImgEdit.classList.add('modalImgEdit');
+    const editLabel = document.createElement('label');
+    editLabel.classList.add('editLabel');
+    editLabel.textContent=('Edit');
+    const modalImgDel = document.createElement('img');
+    modalImgDel.setAttribute('src', './images/delete.png');
+    modalImgDel.classList.add('modalImgDel');
+    const deleteLabel = document.createElement('label');
+    deleteLabel.classList.add('deleteLabel');
+    deleteLabel.textContent=('Delete');
+    const xModal = document.createElement('img');
+    xModal.setAttribute('src', './images/closeModal.png');
+    xModal.classList.add('xModal');
+    const space = document.createElement('br');
+
+
+    modalOptions.appendChild(modalImgEdit);
+    modalOptions.appendChild(editLabel);
+    modalOptions.appendChild(modalImgDel);
+    modalOptions.appendChild(deleteLabel);
+    deleteLabel.appendChild(space);
+    modalOptions.appendChild(xModal);
+    //CREAR MODAL EDIT
+    const modalEdit = document.createElement('dialog');
+    modalEdit.id = 'modalEdit';
+    const txtaEdit = document.createElement('textarea');
+    txtaEdit.classList.add('textArea');
+    const btnCancel = document.createElement('button');
+    btnCancel.textContent = 'Cancel';
+    btnCancel.classList.add('button');
+    btnCancel.id = 'btn-modal';
+    const btnSave = document.createElement('button');
+    btnSave.textContent = 'Save';
+    btnSave.id = 'btn-modal';
+    btnSave.classList.add('button');
+    document.body.appendChild(modalEdit);
+      
+    modalEdit.appendChild(txtaEdit);
+    modalEdit.appendChild(btnCancel);
+    modalEdit.appendChild(btnSave);
+
+    //CREAR MODAL ELIMINAR
+    const modalDelete = document.createElement('dialog');
+    modalDelete.id = 'modalDelete';
+    const question = document.createElement('p');
+    question.textContent = 'Do you want to delete this post?' 
+    question.classList.add('question');
+    const btnYes = document.createElement('button');
+    btnYes.textContent = 'Yes';
+    btnYes.classList.add('button');
+    btnYes.id = 'btn-modal';
+    const btnNo = document.createElement('button');
+    btnNo.textContent = 'No';
+    btnNo.classList.add('button');
+    btnNo.id = 'btn-modal';
+    document.body.appendChild(modalDelete);
+
+    modalDelete.appendChild(question);
+    modalDelete.appendChild(btnYes);
+    modalDelete.appendChild(btnNo);
+
+
+
     // crear que va a mostrar
     const post = document.createElement('div');
     const infoUser = document.createElement('div');
@@ -219,6 +226,14 @@ export function wall() {
       modalDelete.close();
      })
 
+     btnYes.addEventListener('click', async()=>{
+
+       await deletePost(postId);
+       modalDelete.close();
+       post.remove();
+     })
+
+
     //Mostrar la imagen antes de hacer like
     const likesArray = poster.likes;
     if (likesArray != null && likesArray.includes(userEmail())){
@@ -249,6 +264,7 @@ export function wall() {
    
   };
 
+  // Crea el post en Firebase, guarda en postData y le asigna un Id
   const postPromise = getDocs(collection(db, 'Posts'));
   postPromise.then((postList) => {
     postList.forEach((postPost) => {
@@ -279,7 +295,7 @@ export function wall() {
     const result = await addDoc(collection(db, 'Posts'), data);
     console.log(result);
     // Crear el nuevo post y agregarlo al principio
-    createPost(data);
+    createPost(data, result.id);
     textarea.value = '';
   });
 
