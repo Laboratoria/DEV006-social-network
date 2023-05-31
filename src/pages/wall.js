@@ -1,14 +1,17 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-unused-expressions */
 /* eslint-disable max-len */
 /* eslint-disable object-shorthand */
 /* eslint-disable no-undef */
 /* eslint-disable no-console */
 /* eslint-disable import/no-extraneous-dependencies */
-import { collection, getDocs, addDoc, doc, getDoc, updateDoc, onSnapshot } from 'firebase/firestore';
-import { db, auth, colRef } from '../lib/firebase';
-import { authDetector, userEmail, dislikeCounter, likeCounter, verifyLikes } from '../lib/functions';
-
-
-  
+import {
+  collection, getDocs, addDoc, updateDoc, doc,
+} from 'firebase/firestore';
+import { db, colRef } from '../lib/firebase';
+import {
+  authDetector, userEmail, dislikeCounter, likeCounter, verifyLikes, deletePost,
+} from '../lib/functions';
 
 export function wall() {
   // Crear elementos
@@ -51,6 +54,71 @@ export function wall() {
   container.appendChild(divposts);
 
   const createPost = (poster, postId) => {
+    // CREAR MODAL OPCIONES
+    const modalOptions = document.createElement('dialog');
+    modalOptions.classList.add('modalOptions');
+    const modalImgEdit = document.createElement('img');
+    modalImgEdit.setAttribute('src', './images/edit.png');
+    modalImgEdit.classList.add('modalImgEdit');
+    const editLabel = document.createElement('label');
+    editLabel.classList.add('editLabel');
+    editLabel.textContent = ('Edit');
+    const modalImgDel = document.createElement('img');
+    modalImgDel.setAttribute('src', './images/delete.png');
+    modalImgDel.classList.add('modalImgDel');
+    const deleteLabel = document.createElement('label');
+    deleteLabel.classList.add('deleteLabel');
+    deleteLabel.textContent = ('Delete');
+    const xModal = document.createElement('img');
+    xModal.setAttribute('src', './images/closeModal.png');
+    xModal.classList.add('xModal');
+    const space = document.createElement('br');
+
+    modalOptions.appendChild(modalImgEdit);
+    modalOptions.appendChild(editLabel);
+    modalOptions.appendChild(modalImgDel);
+    modalOptions.appendChild(deleteLabel);
+    deleteLabel.appendChild(space);
+    modalOptions.appendChild(xModal);
+    // CREAR MODAL EDIT
+    const modalEdit = document.createElement('dialog');
+    modalEdit.id = 'modalEdit';
+    const txtaEdit = document.createElement('textarea');
+    txtaEdit.classList.add('textArea');
+    const btnCancel = document.createElement('button');
+    btnCancel.textContent = 'Cancel';
+    btnCancel.classList.add('button');
+    btnCancel.id = 'btn-modal';
+    const btnSave = document.createElement('button');
+    btnSave.textContent = 'Save';
+    btnSave.id = 'btn-modal';
+    btnSave.classList.add('button');
+    document.body.appendChild(modalEdit);
+
+    modalEdit.appendChild(txtaEdit);
+    modalEdit.appendChild(btnCancel);
+    modalEdit.appendChild(btnSave);
+
+    // CREAR MODAL ELIMINAR
+    const modalDelete = document.createElement('dialog');
+    modalDelete.id = 'modalDelete';
+    const question = document.createElement('p');
+    question.textContent = 'Do you want to delete this post?';
+    question.classList.add('question');
+    const btnYes = document.createElement('button');
+    btnYes.textContent = 'Yes';
+    btnYes.classList.add('button');
+    btnYes.id = 'btn-modal';
+    const btnNo = document.createElement('button');
+    btnNo.textContent = 'No';
+    btnNo.classList.add('button');
+    btnNo.id = 'btn-modal';
+    document.body.appendChild(modalDelete);
+
+    modalDelete.appendChild(question);
+    modalDelete.appendChild(btnYes);
+    modalDelete.appendChild(btnNo);
+
     // crear que va a mostrar
     const post = document.createElement('div');
     const infoUser = document.createElement('div');
@@ -64,8 +132,6 @@ export function wall() {
     const menuOptions = document.createElement('img');
     const likesPic = document.createElement('img');
     const likesLab = document.createElement('label');
-
-    
 
     // Establecer las propiedades de los elementos
 
@@ -86,77 +152,8 @@ export function wall() {
     likesPic.classList.add('likesPic');
     likesPic.setAttribute('src', './images/Like.png');
     likesLab.classList.add('likesLab');
-    likesLab.textContent = poster.likes?.length || 0; // ? si likes no existe q no falle al cargar los posts
-
-
-//CREAR MODAL OPCIONES
-const modalOptions = document.createElement('dialog');
-modalOptions.classList.add('modalOptions');
-const modalImgEdit = document.createElement('img');
-modalImgEdit.setAttribute('src', './images/edit.png');
-modalImgEdit.classList.add('modalImgEdit');
-const editLabel = document.createElement('label');
-editLabel.classList.add('editLabel');
-editLabel.textContent=('Edit');
-const modalImgDel = document.createElement('img');
-modalImgDel.setAttribute('src', './images/delete.png');
-modalImgDel.classList.add('modalImgDel');
-const deleteLabel = document.createElement('label');
-deleteLabel.classList.add('deleteLabel');
-deleteLabel.textContent=('Delete');
-const xModal = document.createElement('img');
-xModal.setAttribute('src', './images/closeModal.png');
-xModal.classList.add('xModal');
-const space = document.createElement('br');
-
-
-modalOptions.appendChild(modalImgEdit);
-modalOptions.appendChild(editLabel);
-modalOptions.appendChild(modalImgDel);
-modalOptions.appendChild(deleteLabel);
-deleteLabel.appendChild(space);
-modalOptions.appendChild(xModal);
-
-
-//CREAR MODAL EDIT
-const modalEdit = document.createElement('dialog');
-modalEdit.id = 'modalEdit';
-const txtaEdit = document.createElement('textarea');
-txtaEdit.classList.add('textArea');
-const btnCancel = document.createElement('button');
-btnCancel.textContent = 'Cancel';
-btnCancel.classList.add('button');
-btnCancel.id = 'btn-modal';
-const btnSave = document.createElement('button');
-btnSave.textContent = 'Save';
-btnSave.id = 'btn-modal';
-btnSave.classList.add('button');
-document.body.appendChild(modalEdit);
-  
-modalEdit.appendChild(txtaEdit);
-modalEdit.appendChild(btnCancel);
-modalEdit.appendChild(btnSave);
-
-//CREAR MODAL ELIMINAR
-const modalDelete = document.createElement('dialog');
-modalDelete.id = 'modalDelete';
-const question = document.createElement('p');
-question.textContent = 'Do you want to delete this post?' 
-question.classList.add('question');
-const btnYes = document.createElement('button');
-btnYes.textContent = 'Yes';
-btnYes.classList.add('button');
-btnYes.id = 'btn-modal';
-const btnNo = document.createElement('button');
-btnNo.textContent = 'No';
-btnNo.classList.add('button');
-btnNo.id = 'btn-modal';
-document.body.appendChild(modalDelete);
-
-modalDelete.appendChild(question);
-modalDelete.appendChild(btnYes);
-modalDelete.appendChild(btnNo);
-
+    likesLab.textContent = (poster.likes && poster.likes.length) || 0;
+    // likesLab.textContent = poster.likes?.length || 0; // ? si likes no existe q no falle al cargar los posts
 
     // Armar la estructura del nodo
     infoUser.id = 'infoUser';
@@ -172,22 +169,21 @@ modalDelete.appendChild(btnNo);
     likesAndCount.appendChild(likesLab);
     divposts.insertBefore(post, divposts.firstChild); // Utilizar insertBefore para insertar al principio
     document.body.appendChild(modalOptions);
-    
 
-    //Mostrar menuOptions para editar y eliminar cuando los post son propios
-    if  (userEmail() == poster.usuario){
-      menuOptions.style.visibility = 'visible'; 
-    }else{ 
-        menuOptions.style.visibility = 'hidden'; 
-      }
-      // const openModalDelEdit = document.querySelector('.menuOptions');
-      // const modalContainer = document.querySelector('.modalContainer');
-      // const modalClose = document.querySelector('.modalClose');
-      // Listener para mostrar el diálogo de opciones
+    // Mostrar menuOptions para editar y eliminar cuando los post son propios
+    if (userEmail() === poster.usuario) {
+      menuOptions.style.visibility = 'visible';
+    } else {
+      menuOptions.style.visibility = 'hidden';
+    }
+    // const openModalDelEdit = document.querySelector('.menuOptions');
+    // const modalContainer = document.querySelector('.modalContainer');
+    // const modalClose = document.querySelector('.modalClose');
+    // Listener para mostrar el diálogo de opciones
     menuOptions.addEventListener('click', (e) => {
       e.preventDefault();
-      if(modalOptions.isConnected && !modalOptions.hasAttribute('open')){
-          modalOptions.showModal();
+      if (modalOptions.isConnected && !modalOptions.hasAttribute('open')) {
+        modalOptions.showModal();
       }
     });
 
@@ -200,8 +196,8 @@ modalDelete.appendChild(btnNo);
     modalImgEdit.addEventListener('click', (e) => {
       e.preventDefault();
       modalOptions.close();
-      if(modalEdit.isConnected && !modalEdit.hasAttribute('open')){
-          modalEdit.showModal();
+      if (modalEdit.isConnected && !modalEdit.hasAttribute('open')) {
+        modalEdit.showModal();
       }
     });
 
@@ -210,24 +206,32 @@ modalDelete.appendChild(btnNo);
       modalEdit.close();
     });
 
-     // Listener para llamar pregunta de confirmación eliminar
-     modalImgDel.addEventListener('click', (e)=>{
-        e.preventDefault();
-        modalOptions.close();
-        if(modalDelete.isConnected && !modalDelete.hasAttribute('open')){
-          modalDelete.showModal();
+    // Listener para llamar pregunta de confirmación eliminar
+    modalImgDel.addEventListener('click', (e) => {
+      e.preventDefault();
+      modalOptions.close();
+      if (modalDelete.isConnected && !modalDelete.hasAttribute('open')) {
+        modalDelete.showModal();
       }
-     });
+    });
 
-     btnNo.addEventListener('click', ()=>{
+    btnNo.addEventListener('click', () => {
       modalDelete.close();
-     });
+    });
 
-     modalImgEdit.addEventListener('click', ()=>{
-         txtaEdit.innerHTML= poster.descripción;
-     });
-     btnSave.addEventListener('click', async ()=>{
-      const newContent = txtaEdit.value
+    btnYes.addEventListener('click', async () => {
+      await deletePost(postId);
+      modalDelete.close();
+      post.remove();
+    });
+
+    // Editar
+    modalImgEdit.addEventListener('click', () => {
+      txtaEdit.innerHTML = poster.descripción;
+    });
+    btnSave.addEventListener('click', async (e) => {
+      e.preventDefault;
+      const newContent = txtaEdit.value;
       try {
         await updateDoc(doc(colRef, postId), { descripción: newContent });
         modalEdit.close();
@@ -236,15 +240,15 @@ modalDelete.appendChild(btnNo);
       }
     });
 
-    //Mostrar la imagen antes de hacer like
+    // Mostrar la imagen antes de hacer like
     const likesArray = poster.likes;
-    if (likesArray != null && likesArray.includes(userEmail())){
+    if (likesArray != null && likesArray.includes(userEmail())) {
       likesPic.setAttribute('src', './images/Likes.png');
     }
     // Al dar like hacer cambio de imagen y numero
     likesPic.addEventListener('click', async () => {
-      let { userLiked, likesCount } = await verifyLikes(postId, userEmail());
-      if (userLiked){
+      const { userLiked, likesCount } = await verifyLikes(postId, userEmail());
+      if (userLiked) {
         await dislikeCounter(postId);
         likesPic.setAttribute('src', './images/Like.png');
       } else {
@@ -263,9 +267,9 @@ modalDelete.appendChild(btnNo);
     //   likeCounter(docss.id);
     //   likesPic.setAttribute('src', './images/Likes.png');
     // }
-   
   };
 
+  // Crea el post en Firebase, guarda en postData y le asigna un Id
   const postPromise = getDocs(collection(db, 'Posts'));
   postPromise.then((postList) => {
     postList.forEach((postPost) => {
@@ -296,11 +300,10 @@ modalDelete.appendChild(btnNo);
     const result = await addDoc(collection(db, 'Posts'), data);
     console.log(result);
     // Crear el nuevo post y agregarlo al principio
-    createPost(data);
+    createPost(data, result.id);
     textarea.value = '';
   });
 
-  
   // damm likes, primero se necesitan 3 cosas: user email, id post, campo likes
 
   // DOMContentLoaded se dispara cuando se ha cargado
@@ -315,4 +318,3 @@ modalDelete.appendChild(btnNo);
   // });
   return container;
 }
-
