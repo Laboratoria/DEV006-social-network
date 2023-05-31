@@ -48,7 +48,7 @@ function registro(navigateTo) {
 
   /* Imagen de animales */
   animalesR.classList.add('animalesR');
-  animalesR.setAttribute('src', '../assets/imagPets2.jpg');
+  animalesR.setAttribute('src', '../assets/pets.jpg');
 
   sectionPets.className = 'sectionPetsR';
   buttonCreate.classList.add('login');
