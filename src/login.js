@@ -1,29 +1,27 @@
-
 function login(navigateTo) {
-    const section = document.createElement('section');
-    const title = document.createElement('h2');
-    const buttonReturn = document.createElement('button');
-    const form = document.createElement('form');
-    const inputEmail = document.createElement('input');
-    const inputPass = document.createElement('input');
-    const buttonLogin = document.createElement('button');
+  const section = document.createElement("section");
+  const title = document.createElement("h2");
+  const buttonReturn = document.createElement("button");
+  const form = document.createElement("form");
+  const inputEmail = document.createElement("input");
+  const inputPass = document.createElement("input");
+  //const buttonLogin = document.createElement('button');
 
-    inputEmail.placeholder = 'Write email';
-    inputPass.placeholder = 'pass';
+  inputEmail.placeholder = "Write email";
+  inputPass.placeholder = "pass";
 
-    title.textContent = 'Login';
-    buttonLogin.textContent = 'go';
+  title.textContent = "Login";
+  //buttonLogin.textContent = 'go';
 
-    buttonReturn.textContent = 'Return to home';
-    buttonReturn.addEventListener('click', () => {
-        navigateTo('/');
-    });
+  buttonReturn.textContent = "crear";
+  buttonReturn.addEventListener("click", () => {
+    navigateTo("/");
+  });
 
-    form.append(inputEmail, inputPass, buttonLogin);
-    section.append(title, form, buttonReturn);
+  form.append(inputEmail, inputPass);
+  section.append(title, form, buttonReturn);
 
-    return section;
+  return section;
 }
 
 export default login;
-
