@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app';
 // import { ref } from 'firebase/storage';
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
+import { getAuth, createUserWithEmailAndPassword, signOut } from 'firebase/auth';
 // eslint-disable-next-line object-curly-newline
 import { getFirestore, collection, addDoc, getDocs, onSnapshot, deleteDoc, doc, getDoc, updateDoc, arrayUnion, arrayRemove, orderBy, serverTimestamp, query } from 'firebase/firestore';
 
@@ -23,6 +23,20 @@ const firebaseConfig = {
 // Initialize Firebase
 export const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
+export function signOutUser() {
+  return signOut(auth).then(() => {
+  }).catch((error) => {
+    console.log(error, 'error');
+  });
+}
+// export function signOutUser() {
+//   return signOut(auth)
+//     .then(() => {
+//     }).catch((error) => {
+//       const errorSignOut = error.message;
+//     });
+// }
+
 export const create = createUserWithEmailAndPassword;
 
 const db = getFirestore();

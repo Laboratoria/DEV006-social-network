@@ -1,7 +1,13 @@
 /* eslint-disable no-console */
 /* eslint-disable arrow-parens */
 import {
-  onGetPost, deleteTask, getTask, addLike, removeLike, auth,
+  onGetPost,
+  deleteTask,
+  getTask,
+  addLike,
+  removeLike,
+  auth,
+  signOutUser,
 } from '../lib/firebase.js';
 
 function wall(navigateTo) {
@@ -20,6 +26,14 @@ function wall(navigateTo) {
   exit.src = './img/exit(1).png';
   exit.classList.add('exit');
 
+  exit.addEventListener('click', (e) => {
+    e.preventDefault();
+    signOutUser()
+      .then(() => {
+        navigateTo('/');
+      });
+  });
+
   iconoAgregar.src = './img/iconoAgregar.png';
   iconoAgregar.classList.add('iconoAgregar');
   iconoAgregar.addEventListener('click', () => {
@@ -28,18 +42,9 @@ function wall(navigateTo) {
 
   let mostrar = false;
 
-  // iconoMuro.src = './img/iconoMuro.png';
-  // iconoMuro.classList.add('iconoMuro');
+  contenedor.append(iconoAgregar, exit);
 
-  // iconoPerfil.src = './img/iconoPerfil.png';
-  // iconoPerfil.classList.add('iconoPerfil');
-  // iconoPerfil.addEventListener('click', () => {
-  //   navigateTo('/editProfile');
-  // });
-
-  contenedor.append(iconoAgregar);
-
-  divWall.append(exit, postContenedor, contenedor);
+  divWall.append(postContenedor, contenedor);
 
   onGetPost((querysnapshot) => {
     // Cuando hacen un click en el like onGetPost se llama de nuevo y jode la interacción
@@ -51,6 +56,7 @@ function wall(navigateTo) {
             <h3>${post.username.charAt(0).toUpperCase() + post.username.split('@')[0].slice(1)}</h3>
             <h3>${post.title}</h3>
             <p>${post.description}</p>
+            
             <div id='editDelete'>
              ${post.likes.includes(auth.currentUser.uid) ? `<img class='btn-like' data-id = '${doc.id}' data-liked='${post.likes.includes(auth.currentUser.uid)}' src='./img/like.png' alt='like' />`
     : `<img class='btn-like' data-id = '${doc.id}' data-liked='${post.likes.includes(auth.currentUser.uid)}' src='./img/like(1).png' alt='like'  / >`}
