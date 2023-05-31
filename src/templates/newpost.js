@@ -56,17 +56,14 @@ function newPost(navigateTo, data) {
   mood.append(opt1, opt2, opt3, opt4, opt5, opt6, opt7, opt8, opt9, opt10);
   console.log(mood[1].value, mood[1].text);
 
-
   const select = mood;
-  console.log(select, 'select')
-  // const indexSelect = select.selectedIndex;
-  // console.log(indexSelect, "Valor");
-  select.addEventListener('change',(e) => {
-    console.log(e.target.value)
+  console.log(select, 'select');
+  select.addEventListener('change', (e) => {
+    console.log(e.target.value);
     // const option = select.options[indexSelect];
-    //  console.log(option.value + ': ' + option.text);
+    // console.log(`${option.value}: ${option.text}`);
   });
-  
+
   alertEmptyField.classList.add('alertEmptyField');
 
   contenedorNewPost.setAttribute('id', 'contenedorNewPost');
@@ -122,7 +119,6 @@ function newPost(navigateTo, data) {
 
   contenedorNewPost.append(buttonReturn, titleNewPost, form);
 
-
   contenedorNewPost.addEventListener('submit', (e) => {
     e.preventDefault();
     const title = form.textAreaTitle;
@@ -143,7 +139,7 @@ function newPost(navigateTo, data) {
       }
 
       // saveTask(title.value, description.value);
-      // saveTask(title.value, description.value, { mood: moodValue });
+      saveTask(title.value, description.value);
       navigateTo('/wall');
     } else {
       if (title.value.trim() === '' || description.value.trim() === '') {
@@ -157,7 +153,6 @@ function newPost(navigateTo, data) {
       updateTask(data.identidad, {
         title: title.value,
         description: description.value,
-        // mood: moodValue,
       });
       navigateTo('/wall');
     }
