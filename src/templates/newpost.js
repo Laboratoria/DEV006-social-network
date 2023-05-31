@@ -20,7 +20,7 @@ function newPost(navigateTo, data) {
   const alertEmptyField = document.createElement('p');
   const buttonSave = document.createElement('button');
   const paragraphMood = document.createElement('p');
-  const sel = document.createElement('select');
+  const mood = document.createElement('select');
   const opt1 = document.createElement('option');
   const opt2 = document.createElement('option');
   const opt3 = document.createElement('option');
@@ -32,36 +32,48 @@ function newPost(navigateTo, data) {
   const opt9 = document.createElement('option');
   const opt10 = document.createElement('option');
 
-  opt1.value = 'State';
-  opt1.text = 'State';
-  opt2.value = 'Happy';
-  opt2.text = 'Happy';
-  opt3.value = 'sad';
-  opt3.text = 'Sad';
-  opt4.value = 'angry';
-  opt4.text = 'Angry';
-  opt5.value = 'I love';
-  opt5.text = 'I love';
-  opt6.value = 'Whim';
-  opt6.text = 'Whim';
-  opt7.value = 'Blame';
-  opt7.text = 'Blame';
-  opt8.value = 'Satisfied';
-  opt8.text = 'Satisfied';
-  opt9.value = 'Healthy';
-  opt9.text = 'Healthy';
-  opt10.value = 'inspiring';
-  opt10.text = 'inspiring';
+  opt1.value = ['State'];
+  opt1.text = ['State'];
+  opt2.value = ['Happy'];
+  opt2.text = ['Happy'];
+  opt3.value = ['sad'];
+  opt3.text = ['Sad'];
+  opt4.value = ['angry'];
+  opt4.text = ['Angry'];
+  opt5.value = ['I love'];
+  opt5.text = ['I love'];
+  opt6.value = ['Whim'];
+  opt6.text = ['Whim'];
+  opt7.value = ['Blame'];
+  opt7.text = ['Blame'];
+  opt8.value = ['Satisfied'];
+  opt8.text = ['Satisfied'];
+  opt9.value = ['Healthy'];
+  opt9.text = ['Healthy'];
+  opt10.value = ['inspiring'];
+  opt10.text = ['inspiring'];
 
-  sel.append(opt1, opt2, opt3, opt4, opt5, opt6, opt7, opt8, opt9, opt10);
-  // console.log(sel)
+  mood.append(opt1, opt2, opt3, opt4, opt5, opt6, opt7, opt8, opt9, opt10);
+  console.log(mood[1].value, mood[1].text);
 
+
+  const select = mood;
+  console.log(select, 'select')
+  // const indexSelect = select.selectedIndex;
+  // console.log(indexSelect, "Valor");
+  select.addEventListener('change',(e) => {
+    console.log(e.target.value)
+    // const option = select.options[indexSelect];
+    //  console.log(option.value + ': ' + option.text);
+  });
+  
   alertEmptyField.classList.add('alertEmptyField');
 
   contenedorNewPost.setAttribute('id', 'contenedorNewPost');
   textAreaTitle.setAttribute('id', 'textAreaTitle');
   textAreaReview.setAttribute('id', 'textAreaReview');
-  sel.setAttribute('id', 'selectOption');
+  mood.setAttribute('name', 'select');
+  mood.setAttribute('id', 'select');
 
   titleNewPost.textContent = 'New Post';
   titleNewPost.classList.add('titleNewPost');
@@ -97,7 +109,7 @@ function newPost(navigateTo, data) {
 
   form.append(
     paragraphMood,
-    sel,
+    mood,
     // paragraphImg,
     // getImage,
     buttonSave,
@@ -110,19 +122,15 @@ function newPost(navigateTo, data) {
 
   contenedorNewPost.append(buttonReturn, titleNewPost, form);
 
-  // const select = document.getElementById('selectOption');
-  // const value = select.options[select.selectedIndex].value
-  // console.log(value)
-  // // select.addEventListener('change',() => {
-  // //   const option = this.options[select.selectedIndex];
-  // //   console.log(option.value + ': ' + option.text);
-  // // });
 
   contenedorNewPost.addEventListener('submit', (e) => {
     e.preventDefault();
     const title = form.textAreaTitle;
     const description = form.textAreaReview;
-    const mood = form.sel;
+    // const mood = form.sel;
+    // const moodSelect = form.mood;
+    // console.log(moodSelect, "aca esta el estado")
+    // const moodValue = moodSelect.value;
 
     console.log(mood, 'mood');
 
@@ -134,7 +142,8 @@ function newPost(navigateTo, data) {
         alertEmptyField.textContent = '';
       }
 
-      saveTask(title.value, description.value);
+      // saveTask(title.value, description.value);
+      // saveTask(title.value, description.value, { mood: moodValue });
       navigateTo('/wall');
     } else {
       if (title.value.trim() === '' || description.value.trim() === '') {
@@ -148,6 +157,7 @@ function newPost(navigateTo, data) {
       updateTask(data.identidad, {
         title: title.value,
         description: description.value,
+        // mood: moodValue,
       });
       navigateTo('/wall');
     }
