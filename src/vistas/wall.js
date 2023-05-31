@@ -60,6 +60,7 @@ function wall(navigateTo) {
   profile.setAttribute('src', 'images/user.png');
   newPost.setAttribute('src', 'images/post.png');
   popUpClose.setAttribute('src', 'images/close.png');
+  yesDelete.setAttribute('data-id', ${doc.id});
 
   yesDelete.textContent = 'SI';
   noDelete.textContent = 'NO';
@@ -129,9 +130,6 @@ function wall(navigateTo) {
     resultDescription.textContent = description;
     resultUser.textContent = name;
     resultFullDate.textContent = fullDate;
-    console.log(fullDate);
-    console.log(name);
-
     // dateCreated.textContent = dateCreated;
     // agregar atributos
     deleteButton.setAttribute('src', 'images/delete.png');
@@ -169,7 +167,6 @@ function wall(navigateTo) {
     sectionPosts.innerHTML = '';
     arrayPosts.forEach((post) => {
       createPostCard(post.title, post.description, post.name, post.fullDate);
-      console.log(post.fullDate);
     });
   }
   onGetPosts(showPosts);
