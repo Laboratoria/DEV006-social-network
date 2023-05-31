@@ -50,7 +50,7 @@ function wall(navigateTo) {
   deletePopup.classList.add('deletePopup');
   yesDelete.classList.add('buttonYesDelete');
   noDelete.classList.add('buttonNoDelete');
-  //dateCreated.classList.add('dateCreated');
+  // dateCreated.classList.add('dateCreated');
 
   // agregar atributos//
   logo.setAttribute('src', 'images/logo.png');
@@ -117,17 +117,22 @@ function wall(navigateTo) {
     deletePopup.style.display = 'none';
   });
 
-  function createPostCard(title, description, name) {
+  function createPostCard(title, description, name, fullDate) {
     const resultTitle = document.createElement('h2');
     const containerPost = document.createElement('div');
     const resultDescription = document.createElement('p');
     const deleteButton = document.createElement('img');
     const containerReactions = document.createElement('div');
     const resultUser = document.createElement('p');
+    const resultFullDate = document.createElement('p');
 
     resultTitle.textContent = title;
     resultDescription.textContent = description;
     resultUser.textContent = name;
+    resultFullDate.textContent = fullDate;
+    console.log(fullDate);
+    console.log(name);
+
     // dateCreated.textContent = dateCreated;
     // agregar atributos
     deleteButton.setAttribute('src', 'images/delete.png');
@@ -141,6 +146,7 @@ function wall(navigateTo) {
     resultUser.classList.add('resultUser');
     errorPostTitle.classList.add('errorsPosts');
     errorPostDescription.classList.add('errorsPosts');
+    resultFullDate.classList.add('resultFullDate');
 
     deleteButton.addEventListener('click', (e) => {
       e.preventDefault();
@@ -153,6 +159,7 @@ function wall(navigateTo) {
       resultUser,
       resultTitle,
       resultDescription,
+      resultFullDate,
       containerReactions,
       deleteButton,
     );
@@ -162,7 +169,8 @@ function wall(navigateTo) {
   function showPosts(arrayPosts) {
     sectionPosts.innerHTML = '';
     arrayPosts.forEach((post) => {
-      createPostCard(post.title, post.description, post.name);
+      createPostCard(post.title, post.description, post.name, post.fullDate);
+      console.log(post.fullDate);
     });
   }
   onGetPosts(showPosts);
