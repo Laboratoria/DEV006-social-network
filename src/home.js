@@ -1,20 +1,33 @@
+function home(navigateTo) {
+  const section = document.createElement("section");
+  const title = document.createElement("h2");
+  const formLogin = document.createElement("form");
+  const inputAcces = document.createElement("input");
+  const inputPassword = document.createElement("input");
+  const btnLogin = document.createElement("button");
+  const button = document.createElement("button");
 
-function home(navigateTo){
-    const section=document.createElement("section");
-    const title=document.createElement("h2");
-    const button = document.createElement('button');
+  //input home
+  inputAcces.placeholder = "write email";
+  inputPassword.placeholder = "pass";
 
-    button.textContent = 'login';
-    button.addEventListener('click', () => {
-        navigateTo('/login');
-    });
+  //boton de iniciar sesión
+  btnLogin.textContent = "Iniciar sesión";
+  btnLogin.addEventListener("click", () => {
+    navigateTo();
+  });
 
-    title.textContent = 'Welcome to my project';
+  //boton de registrarse
+  button.textContent = "Registrarse";
+  button.addEventListener("click", () => {
+    navigateTo("/login");
+  });
 
-    section.append(title,button);
-    return section;
+  title.textContent = "Welcome to my project";
 
+  form.append(inputAcces, inputPassword);
+  section.append(title, button, btnLogin, formLogin);
+  return section;
 }
 
 export default home;
-
