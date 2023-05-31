@@ -13,7 +13,7 @@ import {
   onAuthStateChanged,
 } from 'firebase/auth';
 import {
-  arrayRemove, arrayUnion, doc, updateDoc, getDoc,
+  arrayRemove, arrayUnion, doc, updateDoc, getDoc, deleteDoc,
 } from 'firebase/firestore';
 import {
   app, auth, colRef, db,
@@ -132,3 +132,12 @@ export const verifyLikes = async (postId, emailUser) => {
   }
   return { userLiked, likesCount };
 };
+
+// Eliminar el post
+export async function deletePost(postId) {
+  try {
+    await deleteDoc(doc(db, 'Posts', postId));
+  } catch (error) {
+    console.log(error);
+  }
+}
