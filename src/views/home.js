@@ -1,4 +1,4 @@
-function home(navigateTo) {
+export const home = (navigateTo) => {
   const containerHome = document.createElement('div');
   const section = document.createElement('section');
   const title = document.createElement('h2');
@@ -38,6 +38,4 @@ function home(navigateTo) {
   containerHome.append(title, imgPets, description, msjHome, btnLogin, btnRegister);
   section.appendChild(containerHome);
   return section;
-}
-
-export default home;
+};

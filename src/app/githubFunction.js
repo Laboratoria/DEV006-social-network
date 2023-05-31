@@ -3,7 +3,7 @@
 import { GithubAuthProvider, signInWithPopup } from 'firebase/auth';
 import { auth } from './firebase.js';
 
-export const githubSignInFn = async (navigateTo) => {
+export const githubFn = async (navigateTo) => {
   const githubLogin = document.querySelector('#loginGit');
   console.log(githubLogin);
 

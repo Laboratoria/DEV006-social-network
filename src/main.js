@@ -1,17 +1,17 @@
 /* eslint-disable import/no-unresolved */
 import './app/signupForm.js';
 import './app/signinForm.js';
-import './app/googleLogin.js';
-import './app/githubLogin.js';
+import './app/googleFunction.js';
+import './app/githubFunction.js';
 import './app/logout.js';
-import './app/firestore.js';
-import home from './views/home.js';
-import login from './views/login.js';
+// import './app/firestore.js';
+import { home } from './views/home.js';
+import { login } from './views/login.js';
 import error from './views/error.js';
-import register from './views/register.js';
+import { register } from './views/register.js';
 import forgotPassword from './views/forgotPassword.js';
 import newPassword from './views/newPassword.js';
-import posts from './views/posts.js';
+import { posts } from './views/posts.js';
 // import { async } from 'regenerator-runtime';
 
 const routes = [
