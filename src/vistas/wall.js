@@ -1,8 +1,5 @@
 import { savePost, onGetPosts } from '../lib/firestore.js';
 
-const userName = localStorage.getItem('userName');
-console.log(userName);
-
 function wall(navigateTo) {
   const section = document.createElement('section');
   const sectionHeader = document.createElement('section');
@@ -25,6 +22,8 @@ function wall(navigateTo) {
   const deletePopup = document.createElement('div');
   const yesDelete = document.createElement('button');
   const noDelete = document.createElement('button');
+  const errorPostTitle = document.createElement('p');
+  const errorPostDescription = document.createElement('p');
 
   // agregar clases//
   section.classList.add('section');
@@ -48,6 +47,7 @@ function wall(navigateTo) {
   deletePopup.classList.add('deletePopup');
   yesDelete.classList.add('buttonYesDelete');
   noDelete.classList.add('buttonNoDelete');
+  // dateCreated.classList.add('dateCreated');
 
   // agregar atributos//
   logo.setAttribute('src', 'images/logo.png');
@@ -61,8 +61,8 @@ function wall(navigateTo) {
   yesDelete.textContent = 'SI';
   noDelete.textContent = 'NO';
   popUpButton.textContent = 'Post';
-  postTitle.textContent = 'Title';
-  postDescription.textContent = 'Description';
+  postTitle.textContent = 'Titulo';
+  postDescription.textContent = 'Descripción';
   deletePopup.textContent = '¿Estas segura de que deseas eliminar tu post?';
   // clickeado para img de house
   house.addEventListener('click', () => {
@@ -86,9 +86,24 @@ function wall(navigateTo) {
 
   popUpButton.addEventListener('click', async (e) => {
     e.preventDefault();
-    popUp.style.display = 'none';
-    await savePost(textTitle.value, textDescription.value);
-    formPost.reset();
+
+    if (textTitle.value === '') {
+      errorPostTitle.innerHTML = '*Por favor escribe un título';
+    } else {
+      errorPostTitle.innerHTML = '';
+    }
+
+    if (textDescription.value === '') {
+      errorPostDescription.innerHTML = '*Por favor escribe una descripción';
+    } else {
+      errorPostDescription.innerHTML = '';
+    }
+
+    if (textTitle.value !== '' && textDescription.value !== '') {
+      await savePost(textTitle.value, textDescription.value);
+      formPost.reset();
+      popUp.style.display = 'none';
+    }
   });
 
   popUpClose.addEventListener('click', () => {
@@ -98,17 +113,23 @@ function wall(navigateTo) {
     deletePopup.style.display = 'none';
   });
 
-  function createPostCard(title, description) {
+  function createPostCard(title, description, name, fullDate) {
     const resultTitle = document.createElement('h2');
     const containerPost = document.createElement('div');
     const resultDescription = document.createElement('p');
     const deleteButton = document.createElement('img');
     const containerReactions = document.createElement('div');
     const resultUser = document.createElement('p');
+    const resultFullDate = document.createElement('p');
 
     resultTitle.textContent = title;
     resultDescription.textContent = description;
-    resultUser.textContent = userName;
+    resultUser.textContent = name;
+    resultFullDate.textContent = fullDate;
+    console.log(fullDate);
+    console.log(name);
+
+    // dateCreated.textContent = dateCreated;
     // agregar atributos
     deleteButton.setAttribute('src', 'images/delete.png');
 
@@ -118,6 +139,10 @@ function wall(navigateTo) {
     resultDescription.classList.add('resultDescription');
     deleteButton.classList.add('deleteButton');
     containerReactions.classList.add('containerReactions');
+    resultUser.classList.add('resultUser');
+    errorPostTitle.classList.add('errorsPosts');
+    errorPostDescription.classList.add('errorsPosts');
+    resultFullDate.classList.add('resultFullDate');
 
     deleteButton.addEventListener('click', (e) => {
       e.preventDefault();
@@ -127,11 +152,12 @@ function wall(navigateTo) {
 
     deletePopup.append(yesDelete, noDelete);
     containerPost.append(
+      resultUser,
       resultTitle,
       resultDescription,
-      resultUser,
-      deleteButton,
+      resultFullDate,
       containerReactions,
+      deleteButton,
     );
     sectionPosts.append(containerPost);
   }
@@ -139,7 +165,8 @@ function wall(navigateTo) {
   function showPosts(arrayPosts) {
     sectionPosts.innerHTML = '';
     arrayPosts.forEach((post) => {
-      createPostCard(post.title, post.description);
+      createPostCard(post.title, post.description, post.name, post.fullDate);
+      console.log(post.fullDate);
     });
   }
   onGetPosts(showPosts);
@@ -147,7 +174,16 @@ function wall(navigateTo) {
   // Agrupar por secciones//
 
   popUp.append(formPost);
-  formPost.append(popUpClose, postTitle, textTitle, postDescription, textDescription, popUpButton);
+  formPost.append(
+    popUpClose,
+    postTitle,
+    textTitle,
+    errorPostTitle,
+    postDescription,
+    textDescription,
+    errorPostDescription,
+    popUpButton,
+  );
   sectionHeader.append(house, logo, config);
   sectionFooter.append(bell, newPost, profile);
   section.append(sectionHeader, sectionPosts, popUp, deletePopup, sectionFooter);
