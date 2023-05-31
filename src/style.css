@@ -627,23 +627,20 @@ article{
   height: 100vh;
 }
 
-.div-huellas img{
+.div-huellas img {
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 80%;
-  height: 80%;
+  width: 60%;
+  object-fit: contain;
 }
 
-.post-constainer{
-  width: 50%;
-  height: 100%;
+.post-container{
   display: flex;
   flex-direction: column;
-  position: relative;
   justify-content: center;
   align-items: center;
-  border-radius: 20px;
+
 }
 
 .div-logo {
@@ -704,10 +701,24 @@ position: absolute;
 }
 
 .perro-img{
+  object-fit: contain;
   position: absolute;
   bottom: 0;
   right: 0;
   width: 25%;
-  height: 55%;
+  
+}
+
+.container-post {
+  display: flex;
+  width: 100%;
+}
+
+.container-post p {
+  display: flex;
+  background-color: #EAE0DA;
+  border-radius: 10%;
+  width: 100%;
+  
 }
 
