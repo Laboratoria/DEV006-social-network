@@ -3,6 +3,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-alert */
 // eslint-disable-next-line import/no-extraneous-dependencies
+import { async } from 'regenerator-runtime';
 import { auth } from '../lib/firebase.js';
 import { signInWithGoogle, register } from '../lib/functions.js';
 
@@ -80,12 +81,9 @@ export function createAccount(navigateTo) {
     navigateTo('/signIn');
   });
 
-  // linkSignIn.addEventListener('click', () => {
-  //   navigateTo('/signIn');
-  // });
-
-  createButton.addEventListener('click', async (e) => {
-     e.preventDefault();
+  /** Crear cuenta */
+  createButton.addEventListener('click', (e) => {
+    e.preventDefault();
     // const name = nameInput.value;
     const email = emailInput.value;
     const password = passwordInput.value;
@@ -94,7 +92,11 @@ export function createAccount(navigateTo) {
       alert('your account was created');
       navigateTo('/wall');
     }).catch((error) => {
-      //alert('Your account wasn´t created');
+      alert('Your account wasn´t created');
+
+      console.log(email, password);
+      // promesa de la funcion, bloque try.. catch debe ir acompañado de async(funcion asyncrona)
+      // await espera que la funcion cumpla con los parametros para ver un resultado o error
 
       if (error.code === 'auth/email-already-in-use') {
         alert('Email already in use');
@@ -110,9 +112,6 @@ export function createAccount(navigateTo) {
         alert('Something went wrong');
       }
     });
-    // promesa de la funcion, bloque try.. catch debe ir acompañado de async(funcion asyncrona)
-    // await espera que la funcion cumpla con los parametros para ver un resultado o error
-    console.log(email, password);
   });
 
   continueWithGoogleButton.addEventListener('click', async (e) => {
