@@ -50,6 +50,7 @@ function wall(navigateTo) {
   deletePopup.classList.add('deletePopup');
   yesDelete.classList.add('buttonYesDelete');
   noDelete.classList.add('buttonNoDelete');
+  //dateCreated.classList.add('dateCreated');
 
   // agregar atributos//
   logo.setAttribute('src', 'images/logo.png');
@@ -127,6 +128,7 @@ function wall(navigateTo) {
     resultTitle.textContent = title;
     resultDescription.textContent = description;
     resultUser.textContent = name;
+    // dateCreated.textContent = dateCreated;
     // agregar atributos
     deleteButton.setAttribute('src', 'images/delete.png');
 
