@@ -4,7 +4,8 @@ import {
 import { db } from './configFirebase.js';
 
 export const savePost = async (title, description) => {
-  await addDoc(collection(db, 'postsWall'), { title, description });
+  const userName = localStorage.getItem('userName');
+  await addDoc(collection(db, 'postsWall'), { title, description, userName });
 };
 
 const getPosts = () => getDocs(collection(db, 'postsWall'));
@@ -29,7 +30,7 @@ export const onGetPosts = (drawPosts) => {
     const resultPosts = [];
     console.log('snapshot aqui');
     querySnapshot.forEach((doc) => {
-      resultPosts.push(doc.data());
+      resultPosts.push({ ...doc.data(), id: doc.id });
     });
     drawPosts(resultPosts);
   });

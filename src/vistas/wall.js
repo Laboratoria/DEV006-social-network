@@ -61,7 +61,6 @@ function wall(navigateTo) {
   postTitle.textContent = 'Title';
   postDescription.textContent = 'Description';
   deletePopup.textContent = '¿Estas segura de que deseas eliminar tu post?';
-
   // clickeado para img de house
   house.addEventListener('click', () => {
     navigateTo('/wall');
@@ -96,14 +95,17 @@ function wall(navigateTo) {
     deletePopup.style.display = 'none';
   });
 
-  function createPostCard(title, description) {
+  function createPostCard(title, description, userName) {
     const resultTitle = document.createElement('h2');
+    const containerPost = document.createElement('div');
     const resultDescription = document.createElement('p');
     const deleteButton = document.createElement('img');
     const containerReactions = document.createElement('div');
+    const resultUser = document.createElement('p');
 
     resultTitle.textContent = title;
     resultDescription.textContent = description;
+    resultUser.textContent = userName;
     // agregar atributos
     deleteButton.setAttribute('src', 'images/delete.png');
 
@@ -121,14 +123,20 @@ function wall(navigateTo) {
     });
 
     deletePopup.append(yesDelete, noDelete);
-    containerPost.append(resultTitle, resultDescription, deleteButton, containerReactions);
+    containerPost.append(
+      resultTitle,
+      resultDescription,
+      resultUser,
+      deleteButton,
+      containerReactions,
+    );
     sectionPosts.append(containerPost);
   }
 
   function showPosts(arrayPosts) {
     sectionPosts.innerHTML = '';
     arrayPosts.forEach((post) => {
-      createPostCard(post.title, post.description);
+      createPostCard(post.title, post.description, post.userName);
     });
   }
   onGetPosts(showPosts);
