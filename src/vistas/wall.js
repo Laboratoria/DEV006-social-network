@@ -1,5 +1,8 @@
 import { savePost, onGetPosts } from '../lib/firestore.js';
 
+const userName = localStorage.getItem('userName');
+console.log(userName);
+
 function wall(navigateTo) {
   const section = document.createElement('section');
   const sectionHeader = document.createElement('section');
@@ -61,7 +64,6 @@ function wall(navigateTo) {
   postTitle.textContent = 'Title';
   postDescription.textContent = 'Description';
   deletePopup.textContent = '¿Estas segura de que deseas eliminar tu post?';
-
   // clickeado para img de house
   house.addEventListener('click', () => {
     navigateTo('/wall');
@@ -102,9 +104,11 @@ function wall(navigateTo) {
     const resultDescription = document.createElement('p');
     const deleteButton = document.createElement('img');
     const containerReactions = document.createElement('div');
+    const resultUser = document.createElement('p');
 
     resultTitle.textContent = title;
     resultDescription.textContent = description;
+    resultUser.textContent = userName;
     // agregar atributos
     deleteButton.setAttribute('src', 'images/delete.png');
 
@@ -122,7 +126,13 @@ function wall(navigateTo) {
     });
 
     deletePopup.append(yesDelete, noDelete);
-    containerPost.append(resultTitle, resultDescription, deleteButton, containerReactions);
+    containerPost.append(
+      resultTitle,
+      resultDescription,
+      resultUser,
+      deleteButton,
+      containerReactions,
+    );
     sectionPosts.append(containerPost);
   }
 
@@ -144,5 +154,4 @@ function wall(navigateTo) {
 
   return section;
 }
-
 export default wall;

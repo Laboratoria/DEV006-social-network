@@ -38,8 +38,13 @@ export function registerUser(email, password, user) {
   return createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       const currentUser = userCredential.user;
+      console.log(updateProfile(currentUser, { displayName: user }));
       return updateProfile(currentUser, { displayName: user })
-        .then(() => currentUser)
+        .then(() => {
+          // Guardar el nombre de usuario en el localStorage
+          localStorage.setItem('userName', user.displayName);
+          return currentUser;
+        })
         .catch((error) => {
           console.log(error);
           const codeError = error.code;
@@ -55,11 +60,11 @@ export function registerUser(email, password, user) {
     });
 }
 
-// Funcion que valida correo y contraseña de un usuario ya registrado.
 export function loginUser(email, password) {
   return signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       const user = userCredential.user;
+      localStorage.setItem('userName', user.displayName);
       return user;
     })
     .catch((error) => {
@@ -69,13 +74,14 @@ export function loginUser(email, password) {
       throw errorMessage;
     });
 }
+
 // función para registrarse con Google
 export function signInWithGoogle(navigateTo) {
   const provider = new GoogleAuthProvider();
   signInWithPopup(auth, provider)
     .then((result) => {
       const user = result.user;
-      console.log('Usuario:', user);
+      console.log('Usuario:', user.displayName);
       navigateTo('/wall'); // Redireccionar a la ruta protegida después de iniciar sesión con Google
     })
     .catch((error) => {
