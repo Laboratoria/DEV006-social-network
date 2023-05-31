@@ -1,5 +1,11 @@
-import { GoogleAuthProvider, getRedirectResult } from 'firebase/auth';
-import { userLogin, registerGoogle } from '../helpers/lib/Auth';
+/* eslint-disable no-console */
+import {
+  signInWithRedirect,
+  getRedirectResult,
+  GoogleAuthProvider,
+} from 'firebase/auth';
+import { userLogin } from '../helpers/lib/Auth';
+import { auth } from '../helpers/lib/firebase';
 
 function login(navigateTo) {
 // llamar al DOM y crear cada elemento
@@ -40,7 +46,7 @@ function login(navigateTo) {
 
   // agregando atributos a la img de los pets
   animales.classList.add('animales');
-  animales.setAttribute('src', '../assets/imagPets2.jpg');
+  animales.setAttribute('src', '../assets/pets.jpg');
   sectionPets.className = 'sectionPets';
 
   buttonSignGoogle.classList.add('google');
@@ -100,6 +106,13 @@ function login(navigateTo) {
     sectionLogin,
   );
 
+  getRedirectResult(auth).then((useCredential) => {
+    console.log(useCredential);
+    if (useCredential) {
+      navigateTo('/home');
+    }
+  });
+
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     const email = inputCorreo.value;
@@ -120,25 +133,8 @@ function login(navigateTo) {
   });
 
   buttonSignGoogle.addEventListener('click', () => {
-    registerGoogle(navigateTo).then((result) => {
-      // This gives you a Google Access Token. You can use it to access Google APIs.
-      const credential = GoogleAuthProvider.credentialFromResult(result);
-      const token = credential.accessToken;
-      // The signed-in user info.
-      const user = result.user;
-      navigateTo('/home');
-      // IdP data available using getAdditionalUserInfo(result)
-      // ...
-    }).catch((error) => {
-      // Handle Errors here.
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      // The email of the user's account used.
-      const email = error.customData.email;
-      // The AuthCredential type that was used.
-      const credential = GoogleAuthProvider.credentialFromError(error);
-      // ...
-    });
+    const provider = new GoogleAuthProvider();
+    signInWithRedirect(auth, provider);
   });
 
   return section;

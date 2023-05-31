@@ -20,6 +20,9 @@ export function userLogin(email, password) {
 
 export function registerGoogle() {
   const provider = new GoogleAuthProvider();
-  signInWithRedirect(auth, provider);
+  return signInWithRedirect(auth, provider);
+}
+
+export function redirectResult() {
   return getRedirectResult(auth);
 }
