@@ -59,11 +59,12 @@ function newPost(navigateTo, data) {
 
   const select = mood;
   console.log(select, 'select')
-  const indexSelect = select.selectedIndex;
-  console.log(indexSelect, "Valor");
-  select.addEventListener('change',() => {
-    const option = select.options[indexSelect];
-     console.log(option.value + ': ' + option.text);
+  // const indexSelect = select.selectedIndex;
+  // console.log(indexSelect, "Valor");
+  select.addEventListener('change',(e) => {
+    console.log(e.target.value)
+    // const option = select.options[indexSelect];
+    //  console.log(option.value + ': ' + option.text);
   });
   
   alertEmptyField.classList.add('alertEmptyField');
