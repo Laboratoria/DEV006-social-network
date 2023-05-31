@@ -415,14 +415,14 @@ h4 {
 .popUp{
   display: none;
   width: 88vw;
-  height: 42vh;
+  height: 54vh;
   background-color: rgba(225, 210, 123, 1);
   border-radius: 5vh;
   font-family: "Hind Vadodara", sans-serif;
   border: 1vw solid rgba(168, 36, 244, 1);
   box-shadow: 2vw 2vh 2vw rgba(0, 0, 0, 0.4);
   position: absolute;
-  top: 30vh;
+  top: 23vh;
   left: 5vw;
   z-index: 2;
 }
@@ -430,13 +430,13 @@ h4 {
 .sectionPosts{
   width: 100vw;
   height: 72vh;
-  margin: 15vh 0vw 12vh -2vw;
+  margin: 16vh 0vw 12vh -2vw;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
   align-items: center;
-
-}
+  overflow-y: auto;
+  overflow-x: auto;
+  }
 
 .popUpButton{
   background-color: #844ea8;
@@ -515,30 +515,14 @@ h4 {
   font-family: "Inria Serif";
 }
 .containerPost{
-box-sizing: border-box;
 width: 76vw;
-height: 12.1vh;
+height: 22.1vh;
 background: #E1D27B;
 border-radius: 8.2vw;
 border:1vw solid rgba(168, 36, 244, 1);
+margin: 6vw 1vh -2vw 0vh;
 }
 
-.resultTitle{
-  font-size: 2.5vh;
-  width: 55vw;
-  font-weight: 900;
-  position: relative;
-  left: 4vw;
-  
-}
-
-.resultDescription{
-  font-size: 2vh;
-    width: 55vw;
-    position: relative;
-    left: 2vw;
-
-}
 .deleteButton{
   width: 8vw;
   left: 61vw;
@@ -549,11 +533,47 @@ border:1vw solid rgba(168, 36, 244, 1);
 
 .containerReactions{
   background-color: #844ea8;
-  height: 12.1vh;
+  height: 22.1vh;
   width: 24vw;
   position: relative;
-  left: 51vw;
-  margin-top: -34.3vw;
+  left: 53vw;
+  margin-top: -19.1vh;
   border-bottom-right-radius: 8.2vw;
   border-top-right-radius: 8.2vw;
+}
+
+.resultUser{
+  font-weight: 800;
+  width:48vw;
+  height: 7vh;
+  font-size: 2.5vh;
+  margin: 1vh 0vw -2vh 3vh;
+}
+
+.resultTitle{
+  font-weight: 800;
+  width:52vw;
+  height: 7vh;
+  font-size: 2vh;
+  margin: -4vh 0vw -4vh -2vh;
+  font-family: "Hind Vadodara", sans-serif;
+  left: 7vw;
+  position: relative;
+}
+
+.resultDescription{
+  font-weight: 400;
+  width:52vw;
+  height: 7vh;
+  font-size: 1.8vh;
+  margin: 5vh 0vw -2vh 1vh;
+  font-family: "Hind Vadodara", sans-serif;
+
+}
+.errorsPosts{
+  color: red;
+  font-weight: 700;
+  margin: 0vh;
+  font-size: 2.2vh;
+  font-family: "Hind Vadodara", sans-serif;
 }
