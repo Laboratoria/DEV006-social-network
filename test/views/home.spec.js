@@ -1,19 +1,21 @@
-import home from '../../src/views/home.js';
+import { home } from '../../src/views/home.js';
 
 describe('funcion home', () => {
-  const navigateTo = jest.fn();
-  document.body.append(home(navigateTo));
   it('consigue renderizar home', () => {
     home();
   });
   it('Al dar click en "Quiero Unirme" me lleva a register', () => {
-    const register = document.querySelector('.btn-register');
-    register.click();
+    const navigateTo = jest.fn();
+    const homeElement = home(navigateTo);
+    const registerBtn = homeElement.querySelector('.btn-register');
+    registerBtn.click();
     expect(navigateTo).toHaveBeenCalledWith('/register');
   });
   it('Al dar click en "Ya soy amigo" me lleva a login', () => {
-    const btn = document.querySelector('.btn-login');
-    btn.click();
+    const navigateTo = jest.fn();
+    const homeElement = home(navigateTo);
+    const loginBtn = homeElement.querySelector('.btn-login');
+    loginBtn.click();
     expect(navigateTo).toHaveBeenCalledWith('/login');
   });
 });

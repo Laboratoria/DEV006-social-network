@@ -1,8 +1,8 @@
 import { signUpFn } from '../app/signupForm';
-import { googleSignInFn } from '../app/googleLogin';
-import { githubSignInFn } from '../app/githubLogin';
+import { googleFn } from '../app/googleFunction';
+import { githubFn } from '../app/githubFunction';
 
-function register(navigateTo) {
+export const register = (navigateTo) => {
   const section = document.createElement('section');
   const containerRegister = document.createElement('div');
   const containerTitle = document.createElement('div');
@@ -42,8 +42,6 @@ function register(navigateTo) {
   passwordInput.id = 'signup-password';
   confirmPasswordInput.id = 'signup-confirm-password';
 
-  btnSignUp.type = 'submit';
-
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     signUpFn(navigateTo);
@@ -77,13 +75,13 @@ function register(navigateTo) {
   registerGoogle.src = ('img/google.webp');
   registerGoogle.alt = 'Imagen google';
   registerGoogle.addEventListener('click', () => {
-    googleSignInFn(navigateTo);
+    googleFn(navigateTo);
   });
 
   registerGit.src = ('img/github.png');
   registerGit.alt = 'Imagen github';
   registerGit.addEventListener('click', () => {
-    githubSignInFn(navigateTo);
+    githubFn(navigateTo);
   });
 
   containerTitle.append(title, imgPaw);
@@ -93,6 +91,4 @@ function register(navigateTo) {
   section.appendChild(containerRegister);
 
   return section;
-}
-
-export default register;
+};

@@ -1,9 +1,9 @@
 /* eslint-disable no-console */
 import { signInFn } from '../app/signinForm';
-import { googleSignInFn } from '../app/googleLogin';
-import { githubSignInFn } from '../app/githubLogin';
+import { googleFn } from '../app/googleFunction';
+import { githubFn } from '../app/githubFunction';
 
-function login(navigateTo) {
+export const login = (navigateTo) => {
   const section = document.createElement('section');
   const containerLogin = document.createElement('div');
   const containerTitle = document.createElement('div');
@@ -24,10 +24,11 @@ function login(navigateTo) {
   emailInput.id = 'email-input';
   passwordInput.id = 'password-input';
   btnSignIn.id = 'btn-signin';
-  loginGoogle.id = 'loginGoogle';
-  loginGit.id = 'loginGit';
+  loginGoogle.id = 'login-google';
+  loginGit.id = 'login-git';
   // btnSignIn.type = 'submit';
   forgotPassword.id = 'btnForgotPassword';
+  buttonReturn.id = 'button-return';
 
   containerLogin.classList.add('container-login');
   containerTitle.classList.add('container-title');
@@ -64,13 +65,13 @@ function login(navigateTo) {
   loginGoogle.src = ('img/google.webp');
   loginGoogle.alt = 'Imagen google';
   loginGoogle.addEventListener('click', () => {
-    googleSignInFn(navigateTo);
+    googleFn(navigateTo);
   });
 
   loginGit.src = ('img/github.png');
   loginGit.alt = 'Imagen github';
   loginGit.addEventListener('click', () => {
-    githubSignInFn(navigateTo);
+    githubFn(navigateTo);
   });
 
   buttonReturn.src = ('img/back.png');
@@ -92,6 +93,4 @@ function login(navigateTo) {
   section.appendChild(containerLogin);
 
   return section;
-}
-
-export default login;
+};

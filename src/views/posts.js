@@ -4,7 +4,6 @@
 /* eslint-disable no-shadow */
 /* eslint-disable no-plusplus */
 /* eslint-disable dot-notation */
-// OTRO coment
 import { logoutFn } from '../app/logout.js';
 // import { postsFn } from '../app/firestore.js';
 import {
@@ -20,7 +19,7 @@ import {
   auth,
 } from '../app/firebase.js';
 
-function posts(navigateTo) {
+export const posts = (navigateTo) => {
   const section = document.createElement('section');
   const containerPosts = document.createElement('div');
   const containerTitle = document.createElement('div');
@@ -38,7 +37,6 @@ function posts(navigateTo) {
   const savingPost = document.createElement('button');
 
   let editPost = false;
-  // let isLiked = false;
   let id = '';
 
   onGetPosts((querySnapshot) => {
@@ -128,13 +126,10 @@ function posts(navigateTo) {
         if (Array.isArray(post.likes) && post.likes.includes(user.uid)) {
           const updatedLikes = post.likes.filter((userId) => userId !== user.uid);
           console.log('No hay like');
-          // isLiked = false;
-          // console.log(imagenLike);
           return updatePost(postId, { likes: updatedLikes });
         }
         const updatedLikes = Array.isArray(post.likes) ? [...post.likes, user.uid] : [user.uid];
         console.log('si hay like');
-        // isLiked = true;
         id = postId.id;
         return updatePost(postId, { likes: updatedLikes });
       });
@@ -229,6 +224,4 @@ function posts(navigateTo) {
   section.appendChild(containerPosts);
 
   return section;
-}
-
-export default posts;
+};
