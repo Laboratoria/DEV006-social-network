@@ -91,11 +91,11 @@ function wall(navigateTo) {
         // console.log(dataset)
         const borrando = avisoBorra.querySelector('#delete');
         const cancelar = avisoBorra.querySelector('#cancel');
-
         borrando.addEventListener('click', () => {
           // const username = id.userid
           const user = auth.currentUser;
           console.log(user.uid, 'user')
+          
           if ( dataset.uid === user.uid) {
           // console.log(userid, 'userid')
           deleteTask(dataset.id);
@@ -118,12 +118,18 @@ function wall(navigateTo) {
     editButton.forEach(btn => {
       btn.addEventListener('click', async (e) => {
         const doc = await getTask(e.target.dataset.id);
-        console.log(doc.id);
+        console.log(doc)
+        let newusuario = e.target.dataset.uid
+        const user = auth.currentUser;
         const identidad = doc.id;
         const post = doc.data();
-        navigateTo('/newpost', { post, identidad });
+        if (newusuario === user.uid) {
+          navigateTo('/newpost', { post, identidad });
+          } else {
+            alert("algo raro tu no eres el usuario")
+          }
+        });
       });
-    });
 
     const btnLike = postContenedor.querySelectorAll('.btn-like');
 
