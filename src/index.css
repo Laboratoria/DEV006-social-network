@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Geologica:wght@100&family=Patua+One&display=swap');
+*{
+   font-family: 'Geologica', sans-serif; 
+}
+html{
+    height: 100%;
+}
+body{
+    background-color: #C6B8EB;
+    height: 100%;
+    
+    
+}
+#root{
+    height: 100%;
+}
+#section-style{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    /*box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);*/
+    padding: 20px;
+    margin: auto;
+    width: 250px;
+    height: 100%;
+     
+}
+#button-home{ 
+    background-color: #EA6F15;
+    margin: 5px;
+    width: 100px;
+
+}
+#button-login{ 
+    background-color: #5735AD;
+    margin: 5px;
+    width: 100px;
+}
+#formLogin-style{
+    display: flex;
+    flex-direction: column;  
+    padding: 15px;
+}
+#form-style{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 15px;
+    
+}
+#section2-style{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    
+     
+}
