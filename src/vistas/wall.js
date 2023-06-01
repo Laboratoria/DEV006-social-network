@@ -1,7 +1,4 @@
-import { savePost, onGetPosts } from '../lib/firestore.js';
-
-const userName = localStorage.getItem('userName');
-console.log(userName);
+import { savePost, onGetPosts, deletePost } from '../lib/firestore.js';
 
 function wall(navigateTo) {
   const section = document.createElement('section');
@@ -43,6 +40,7 @@ function wall(navigateTo) {
   postDescription.classList.add('postDescription');
   textTitle.classList.add('textTitle');
   textDescription.classList.add('textDescription');
+
   popUpClose.classList.add('popUpClose');
 
   // dateCreated.classList.add('dateCreated');
@@ -128,15 +126,18 @@ function wall(navigateTo) {
     noDelete.textContent = 'NO';
     deletePopup.textContent = '¿Estas segura de que deseas eliminar tu post?';
     console.log(id);
-    // dateCreated.textContent = dateCreated;
+
     // agregar atributos
     deleteButton.setAttribute('src', 'images/delete.png');
     noDelete.addEventListener('click', () => {
       deletePopup.style.display = 'none';
     });
-
-    yesDelete.addEventListener('click', (e) => {
-      console.log('eliminando', e.target);
+    // event.target.dataset.id pero se sabe que event es un objeto
+    // con colocar en corchetes el objeto de target, como es objeto se debe colocar dos puntos y
+    // en corchetes se debe colocar database que es lo que queremos extraer
+    // estructurar un objeto , extraer las propiedades de un objeto
+    yesDelete.addEventListener('click', ({ target: { dataset } }) => {
+      deletePost(dataset.id);
     });
 
     // crear clases
@@ -171,6 +172,7 @@ function wall(navigateTo) {
     sectionPosts.append(containerPost);
   }
 
+  // funcion para organizar por post
   function showPosts(arrayPosts) {
     sectionPosts.innerHTML = '';
     arrayPosts.forEach((post) => {
@@ -199,5 +201,4 @@ function wall(navigateTo) {
 
   return section;
 }
-
 export default wall;
