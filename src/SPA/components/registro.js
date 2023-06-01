@@ -67,7 +67,7 @@ function registro(navigateTo) {
     const contraseña = inputPassword.value;
     const promesa = registerUser(email, contraseña);
     promesa.then(() => {
-      navigateTo('/');
+      navigateTo('/home');
     }).catch((error) => {
       const alerta = document.querySelector('.message-error');
       if (alerta) {
