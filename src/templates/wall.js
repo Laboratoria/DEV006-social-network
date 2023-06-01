@@ -119,7 +119,7 @@ function wall(navigateTo) {
       btn.addEventListener('click', async (e) => {
         const doc = await getTask(e.target.dataset.id);
         console.log(doc)
-        let newusuario = e.target.dataset.uid
+        let newusuario = e.target.dataset.uid;
         const user = auth.currentUser;
         const identidad = doc.id;
         const post = doc.data();
