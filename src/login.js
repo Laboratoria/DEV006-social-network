@@ -1,3 +1,5 @@
+import {auth} from "./firebase/config"
+
 function login(navigateTo) {
   const section = document.createElement('section');
   const title = document.createElement('h2');
