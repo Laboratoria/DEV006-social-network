@@ -1,5 +1,5 @@
 import {
-  collection, addDoc, getDocs, query, orderBy, onSnapshot,
+  collection, addDoc, getDocs, query, orderBy, onSnapshot, deleteDoc, doc,
 } from 'firebase/firestore';
 import { db, auth } from './configFirebase.js';
 
@@ -33,6 +33,8 @@ const getPosts = () => {
 };
 
 getPosts();
+// funcion para eliminar los post
+export const deletePost = (id) => deleteDoc(doc(db, 'postsWall', id));
 
 export const onGetPosts = (drawPosts) => {
   const postsQuery = query(collection(db, 'postsWall'), orderBy('createdAt', 'desc'));

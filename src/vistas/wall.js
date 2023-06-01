@@ -1,4 +1,4 @@
-import { savePost, onGetPosts } from '../lib/firestore.js';
+import { savePost, onGetPosts, deletePost } from '../lib/firestore.js';
 
 function wall(navigateTo) {
   const section = document.createElement('section');
@@ -19,8 +19,6 @@ function wall(navigateTo) {
   const postDescription = document.createElement('h3');
   const textTitle = document.createElement('input');
   const textDescription = document.createElement('textarea');
-  const deletePopup = document.createElement('div');
-  const noDelete = document.createElement('button');
   const errorPostTitle = document.createElement('p');
   const errorPostDescription = document.createElement('p');
 
@@ -44,8 +42,9 @@ function wall(navigateTo) {
   textDescription.classList.add('textDescription');
 
   popUpClose.classList.add('popUpClose');
-  deletePopup.classList.add('deletePopup');
-  noDelete.classList.add('buttonNoDelete');
+
+  // dateCreated.classList.add('dateCreated');
+
   // agregar atributos//
   logo.setAttribute('src', 'images/logo.png');
   house.setAttribute('src', 'images/home.png');
@@ -55,11 +54,10 @@ function wall(navigateTo) {
   newPost.setAttribute('src', 'images/post.png');
   popUpClose.setAttribute('src', 'images/close.png');
 
-  noDelete.textContent = 'NO';
   popUpButton.textContent = 'Post';
   postTitle.textContent = 'Titulo';
   postDescription.textContent = 'Descripción';
-  deletePopup.textContent = '¿Estas segura de que deseas eliminar tu post?';
+
   // clickeado para img de house
   house.addEventListener('click', () => {
     navigateTo('/wall');
@@ -105,9 +103,6 @@ function wall(navigateTo) {
   popUpClose.addEventListener('click', () => {
     popUp.style.display = 'none';
   });
-  noDelete.addEventListener('click', () => {
-    deletePopup.style.display = 'none';
-  });
 
   function createPostCard(title, description, name, fullDate, id) {
     const resultTitle = document.createElement('h2');
@@ -118,6 +113,8 @@ function wall(navigateTo) {
     const resultUser = document.createElement('p');
     const resultFullDate = document.createElement('p');
     const yesDelete = document.createElement('button');
+    const deletePopup = document.createElement('div');
+    const noDelete = document.createElement('button');
 
     resultTitle.textContent = title;
     resultDescription.textContent = description;
@@ -126,13 +123,21 @@ function wall(navigateTo) {
     yesDelete.setAttribute('data-id', id);
     yesDelete.textContent = 'SI';
     yesDelete.classList.add('buttonYesDelete');
+    noDelete.textContent = 'NO';
+    deletePopup.textContent = '¿Estas segura de que deseas eliminar tu post?';
     console.log(id);
-  
+
     // agregar atributos
     deleteButton.setAttribute('src', 'images/delete.png');
-
-    yesDelete.addEventListener('click', (e) => {
-      console.log('eliminando', e.target);
+    noDelete.addEventListener('click', () => {
+      deletePopup.style.display = 'none';
+    });
+    // event.target.dataset.id pero se sabe que event es un objeto
+    // con colocar en corchetes el objeto de target, como es objeto se debe colocar dos puntos y
+    // en corchetes se debe colocar database que es lo que queremos extraer
+    // estructurar un objeto , extraer las propiedades de un objeto
+    yesDelete.addEventListener('click', ({ target: { dataset } }) => {
+      deletePost(dataset.id);
     });
 
     // crear clases
@@ -145,6 +150,8 @@ function wall(navigateTo) {
     errorPostTitle.classList.add('errorsPosts');
     errorPostDescription.classList.add('errorsPosts');
     resultFullDate.classList.add('resultFullDate');
+    deletePopup.classList.add('deletePopup');
+    noDelete.classList.add('buttonNoDelete');
 
     deleteButton.addEventListener('click', (e) => {
       e.preventDefault();
@@ -160,9 +167,12 @@ function wall(navigateTo) {
       resultFullDate,
       containerReactions,
       deleteButton,
+      deletePopup,
     );
     sectionPosts.append(containerPost);
   }
+
+  // funcion para organizar por post
   function showPosts(arrayPosts) {
     sectionPosts.innerHTML = '';
     arrayPosts.forEach((post) => {
@@ -187,7 +197,7 @@ function wall(navigateTo) {
   );
   sectionHeader.append(house, logo, config);
   sectionFooter.append(bell, newPost, profile);
-  section.append(sectionHeader, sectionPosts, popUp, deletePopup, sectionFooter);
+  section.append(sectionHeader, sectionPosts, popUp, sectionFooter);
 
   return section;
 }
