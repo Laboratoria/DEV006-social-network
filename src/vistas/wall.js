@@ -23,6 +23,7 @@ function wall(navigateTo) {
   const textDescription = document.createElement('textarea');
   const errorPostTitle = document.createElement('p');
   const errorPostDescription = document.createElement('p');
+  let editStatus = false;
 
   // agregar clases//
   section.classList.add('section');
@@ -81,7 +82,7 @@ function wall(navigateTo) {
   // Boton para publicar nuevo post
   popUpButton.addEventListener('click', async (e) => {
     e.preventDefault();
-    // condicional para validar que los campos de titulo y descripcion tengan contenido
+
     if (textTitle.value === '') {
       errorPostTitle.innerHTML = '*Por favor escribe un título';
     } else {
@@ -93,13 +94,23 @@ function wall(navigateTo) {
     } else {
       errorPostDescription.innerHTML = '';
     }
-    // se valida que los input de textTitle y textDescription no esten vacios
-    if (textTitle.value !== '' && textDescription.value !== '') {
-      await savePost(textTitle.value, textDescription.value);
+
+    if (!editStatus) {
+      if (textTitle.value !== '' && textDescription.value !== '') {
+        await savePost(textTitle.value, textDescription.value);
+        console.log('saved new post'); // Added: Log "saved new post"
+      }
+      formPost.reset();
+      editStatus = false;
+      popUp.style.display = 'none';
+    } else { // Added: Handle editStatus true
+      console.log('edit');
       formPost.reset();
       popUp.style.display = 'none';
     }
+    
   });
+
   // Boton para cerrar pop up de nuevo post
   popUpClose.addEventListener('click', () => {
     popUp.style.display = 'none';
@@ -164,6 +175,8 @@ function wall(navigateTo) {
       const post = (doc.data());
       textTitle.value = post.title;
       textDescription.value = post.description;
+
+      editStatus = true;
     });
     // Agrupar por secciones
     deletePopup.append(yesDelete, noDelete);
