@@ -6,11 +6,8 @@
 /* eslint-disable no-console */
 /* eslint-disable import/no-extraneous-dependencies */
 import {
-  collection, getDocs, addDoc, updateDoc, doc,
-} from 'firebase/firestore';
-import { db, colRef } from '../lib/firebase';
-import {
-  authDetector, userEmail, dislikeCounter, likeCounter, verifyLikes, deletePost,
+  authDetector, userEmail, dislikeCounter, likeCounter, verifyLikes, deletePost, editpost, postPromise,
+  addPost, postCol,
 } from '../lib/functions';
 
 export function wall() {
@@ -40,9 +37,6 @@ export function wall() {
 
   // Agregar elementos a nav
   navegator.appendChild(logoRefresh);
-
-  // Agregar elementos a divposts
-  // divposts.appendChild(writeAndPost);
 
   // Agregar elementos a divposts
   writeAndPost.appendChild(textarea);
@@ -179,6 +173,7 @@ export function wall() {
     // const openModalDelEdit = document.querySelector('.menuOptions');
     // const modalContainer = document.querySelector('.modalContainer');
     // const modalClose = document.querySelector('.modalClose');
+
     // Listener para mostrar el diálogo de opciones
     menuOptions.addEventListener('click', (e) => {
       e.preventDefault();
@@ -233,7 +228,8 @@ export function wall() {
       e.preventDefault;
       const newContent = txtaEdit.value;
       try {
-        await updateDoc(doc(colRef, postId), { descripción: newContent });
+        const result = await editpost(postId, newContent);
+        console.log(result);
         modalEdit.close();
       } catch (error) {
         console.log('Error al actualizar la descripción:', error);
@@ -255,7 +251,7 @@ export function wall() {
         await likeCounter(postId);
         likesPic.setAttribute('src', './images/Likes.png');
       }
-      // Now get the updated likes count and update the UI
+      //  obtén el recuento actualizado de "likes" y actualiza la interfaz de usuario
       const updatedLikes = await verifyLikes(postId, userEmail());
       likesLab.textContent = `${updatedLikes.likesCount}`;
     });
@@ -270,7 +266,6 @@ export function wall() {
   };
 
   // Crea el post en Firebase, guarda en postData y le asigna un Id
-  const postPromise = getDocs(collection(db, 'Posts'));
   postPromise.then((postList) => {
     postList.forEach((postPost) => {
       const postData = postPost.data();
@@ -297,7 +292,7 @@ export function wall() {
       likes: [],
     };
 
-    const result = await addDoc(collection(db, 'Posts'), data);
+    const result = await addPost(postCol, data);
     console.log(result);
     // Crear el nuevo post y agregarlo al principio
     createPost(data, result.id);
