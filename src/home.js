@@ -10,7 +10,8 @@ const getEventDB = async () => {
   return eventsList;
 };
 
-async function home(navigateTo) {
+ function home(navigateTo) {
+  const logo = document.createElement('img')
   const section = document.createElement('section');
   const title = document.createElement('h2');
   const formLogin = document.createElement('form');

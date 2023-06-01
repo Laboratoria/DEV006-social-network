@@ -2,20 +2,29 @@
 *{
    font-family: 'Geologica', sans-serif; 
 }
+html{
+    height: 100%;
+}
 body{
     background-color: #C6B8EB;
+    height: 100%;
     
     
 }
-
+#root{
+    height: 100%;
+}
 #section-style{
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     flex-direction: column;
-    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    /*box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);*/
     padding: 20px;
+    margin: auto;
+    width: 250px;
+    height: 100%;
      
 }
 #button-home{ 
@@ -40,7 +49,7 @@ body{
     justify-content: center;
     flex-direction: column;
     padding: 15px;
-    border: #5735AD;
+    
 }
 #section2-style{
     display: flex;
