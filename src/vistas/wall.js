@@ -126,8 +126,6 @@ function wall(navigateTo) {
     resultDescription.textContent = description;
     resultUser.textContent = name;
     resultFullDate.textContent = fullDate;
-    console.log(fullDate);
-    console.log(name);
 
     // dateCreated.textContent = dateCreated;
     // agregar atributos
@@ -161,12 +159,10 @@ function wall(navigateTo) {
     );
     sectionPosts.append(containerPost);
   }
-
   function showPosts(arrayPosts) {
     sectionPosts.innerHTML = '';
     arrayPosts.forEach((post) => {
       createPostCard(post.title, post.description, post.name, post.fullDate);
-      console.log(post.fullDate);
     });
   }
   onGetPosts(showPosts);
