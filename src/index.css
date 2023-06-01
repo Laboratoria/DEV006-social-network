@@ -40,6 +40,7 @@ body{
     justify-content: center;
     flex-direction: column;
     padding: 15px;
+    border: #5735AD;
 }
 #section2-style{
     display: flex;
@@ -49,5 +50,6 @@ body{
     flex-direction: column;
     box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
     padding: 20px;
+    
      
 }
