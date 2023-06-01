@@ -42,11 +42,10 @@ function wall(navigateTo) {
   postDescription.classList.add('postDescription');
   textTitle.classList.add('textTitle');
   textDescription.classList.add('textDescription');
+
   popUpClose.classList.add('popUpClose');
   deletePopup.classList.add('deletePopup');
   noDelete.classList.add('buttonNoDelete');
-  // dateCreated.classList.add('dateCreated');
-
   // agregar atributos//
   logo.setAttribute('src', 'images/logo.png');
   house.setAttribute('src', 'images/home.png');
@@ -128,7 +127,7 @@ function wall(navigateTo) {
     yesDelete.textContent = 'SI';
     yesDelete.classList.add('buttonYesDelete');
     console.log(id);
-    // dateCreated.textContent = dateCreated;
+  
     // agregar atributos
     deleteButton.setAttribute('src', 'images/delete.png');
 
