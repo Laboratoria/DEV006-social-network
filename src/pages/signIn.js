@@ -85,6 +85,7 @@ export function signIn(navigateTo) {
     try {
       const userEmail = await login(email, password);
       console.log('Este es el email: ', userEmail);
+      navigateTo('/wall');
       // export { userEmail };
       // console.log(userCredentials);
     } catch (error) {
@@ -105,7 +106,6 @@ export function signIn(navigateTo) {
         alert('Something went wrong !');
       }
     }
-    navigateTo('/wall');
   });
 
   continueWithGoogleButton.addEventListener('click', async (e) => {
