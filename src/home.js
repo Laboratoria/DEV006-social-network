@@ -6,10 +6,13 @@ function home(navigateTo) {
   const inputPassword = document.createElement('input');
   const btnLogin = document.createElement('button');
   const button = document.createElement('button');
-
+  button.setAttribute("id", "button-home");
+  btnLogin.setAttribute("id", "button-login");
+  section.setAttribute("id", "section-style");
+  formLogin.setAttribute("id", "formLogin-style");
   // input home
-  inputAcces.placeholder = 'write email';
-  inputPassword.placeholder = 'pass';
+  inputAcces.placeholder = 'escribe tu email';
+  inputPassword.placeholder = 'contraseña';
 
   // boton de iniciar sesión
   btnLogin.textContent = 'Iniciar sesión';
@@ -23,10 +26,10 @@ function home(navigateTo) {
     navigateTo('/login');
   });
 
-  title.textContent = 'Welcome to my project';
+  title.textContent = 'RUNNERS NETWORK';
 
   formLogin.append(inputAcces, inputPassword);
-  section.append(title, button, btnLogin, formLogin);
+  section.append(title, formLogin, button, btnLogin);
   return section;
 }
 

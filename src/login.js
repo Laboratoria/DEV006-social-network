@@ -6,7 +6,10 @@ function login(navigateTo) {
   const inputEmail = document.createElement('input');
   const inputPass = document.createElement('input');
   // const buttonLogin = document.createElement('button');
-
+  inputEmail.setAttribute("id", "inputE-style");
+  inputPass.setAttribute("id", "inputP-style");
+  form.setAttribute("id", "form-style");
+  section.setAttribute("id", "section2-style")
   inputEmail.placeholder = 'Write email';
   inputPass.placeholder = 'pass';
 
