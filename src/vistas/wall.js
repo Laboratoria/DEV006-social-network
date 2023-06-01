@@ -1,4 +1,6 @@
-import { savePost, onGetPosts, deletePost } from '../lib/firestore.js';
+import {
+  savePost, onGetPosts, deletePost, getPost,
+} from '../lib/firestore.js';
 
 function wall(navigateTo) {
   const section = document.createElement('section');
@@ -40,10 +42,7 @@ function wall(navigateTo) {
   postDescription.classList.add('postDescription');
   textTitle.classList.add('textTitle');
   textDescription.classList.add('textDescription');
-
   popUpClose.classList.add('popUpClose');
-
-  // dateCreated.classList.add('dateCreated');
 
   // agregar atributos//
   logo.setAttribute('src', 'images/logo.png');
@@ -54,6 +53,7 @@ function wall(navigateTo) {
   newPost.setAttribute('src', 'images/post.png');
   popUpClose.setAttribute('src', 'images/close.png');
 
+  // se agrega el textContent a botones
   popUpButton.textContent = 'Post';
   postTitle.textContent = 'Titulo';
   postDescription.textContent = 'Descripción';
@@ -66,21 +66,22 @@ function wall(navigateTo) {
   config.addEventListener('click', () => {
     navigateTo('/settings');
   });
+  // clickeado para img de notificaciones
   bell.addEventListener('click', () => {
     navigateTo('/buildsite');
   });
+  // clickeado para img de perfil
   profile.addEventListener('click', () => {
     navigateTo('/buildsite');
   });
-  // POPUP//
+  // Pop up para crear nuevo post
   newPost.addEventListener('click', () => {
-    console.log('hola');
     popUp.style.display = 'block';
   });
-
+  // Boton para publicar nuevo post
   popUpButton.addEventListener('click', async (e) => {
     e.preventDefault();
-
+    // condicional para validar que los campos de titulo y descripcion tengan contenido
     if (textTitle.value === '') {
       errorPostTitle.innerHTML = '*Por favor escribe un título';
     } else {
@@ -92,81 +93,87 @@ function wall(navigateTo) {
     } else {
       errorPostDescription.innerHTML = '';
     }
-
+    // se valida que los input de textTitle y textDescription no esten vacios
     if (textTitle.value !== '' && textDescription.value !== '') {
       await savePost(textTitle.value, textDescription.value);
       formPost.reset();
       popUp.style.display = 'none';
     }
   });
-
+  // Boton para cerrar pop up de nuevo post
   popUpClose.addEventListener('click', () => {
     popUp.style.display = 'none';
   });
-
+  // Funcion para crear el contenedor y tarjeta de cada post
   function createPostCard(title, description, name, fullDate, id) {
     const resultTitle = document.createElement('h2');
     const containerPost = document.createElement('div');
     const resultDescription = document.createElement('p');
     const deleteButton = document.createElement('img');
-    const containerReactions = document.createElement('div');
     const resultUser = document.createElement('p');
     const resultFullDate = document.createElement('p');
     const yesDelete = document.createElement('button');
     const deletePopup = document.createElement('div');
     const noDelete = document.createElement('button');
-
+    const editButton = document.createElement('img');
+    // Insertar textos
     resultTitle.textContent = title;
     resultDescription.textContent = description;
     resultUser.textContent = name;
     resultFullDate.textContent = fullDate;
-    yesDelete.setAttribute('data-id', id);
     yesDelete.textContent = 'SI';
-    yesDelete.classList.add('buttonYesDelete');
     noDelete.textContent = 'NO';
     deletePopup.textContent = '¿Estas segura de que deseas eliminar tu post?';
-    console.log(id);
 
-    // agregar atributos
-    deleteButton.setAttribute('src', 'images/delete.png');
-    noDelete.addEventListener('click', () => {
-      deletePopup.style.display = 'none';
-    });
-    // event.target.dataset.id pero se sabe que event es un objeto
-    // con colocar en corchetes el objeto de target, como es objeto se debe colocar dos puntos y
-    // en corchetes se debe colocar database que es lo que queremos extraer
-    // estructurar un objeto , extraer las propiedades de un objeto
-    yesDelete.addEventListener('click', ({ target: { dataset } }) => {
-      deletePost(dataset.id);
-    });
-
-    // crear clases
+    // Crear clases
     resultTitle.classList.add('resultTitle');
     containerPost.classList.add('containerPost');
     resultDescription.classList.add('resultDescription');
     deleteButton.classList.add('deleteButton');
-    containerReactions.classList.add('containerReactions');
     resultUser.classList.add('resultUser');
     errorPostTitle.classList.add('errorsPosts');
     errorPostDescription.classList.add('errorsPosts');
     resultFullDate.classList.add('resultFullDate');
     deletePopup.classList.add('deletePopup');
     noDelete.classList.add('buttonNoDelete');
+    yesDelete.classList.add('buttonYesDelete');
+    editButton.classList.add('editButton');
 
+    // Agregar atributos
+    deleteButton.setAttribute('src', 'images/delete.png');
+    yesDelete.setAttribute('data-id', id);
+    editButton.setAttribute('data-id', id);
+    editButton.setAttribute('src', 'images/edit.png');
+    // funcion para que al momento de clickear se esconda el popup de delete
+    noDelete.addEventListener('click', () => {
+      deletePopup.style.display = 'none';
+    });
+    // Funcion del yesDelete, se importo deletePost
+    yesDelete.addEventListener('click', ({ target: { dataset } }) => {
+      deletePost(dataset.id);
+    });
+    // Boton para mostrar la confirmacion de eliminar post
     deleteButton.addEventListener('click', (e) => {
       e.preventDefault();
-      console.log('hola');
       deletePopup.style.display = 'block';
     });
 
+    editButton.addEventListener('click', async ({ target: { dataset } }) => {
+      popUp.style.display = 'block';
+      const doc = await getPost(dataset.id);
+      const post = (doc.data());
+      textTitle.value = post.title;
+      textDescription.value = post.description;
+    });
+    // Agrupar por secciones
     deletePopup.append(yesDelete, noDelete);
     containerPost.append(
       resultUser,
       resultTitle,
       resultDescription,
       resultFullDate,
-      containerReactions,
       deleteButton,
+      editButton,
       deletePopup,
     );
     sectionPosts.append(containerPost);
@@ -176,13 +183,12 @@ function wall(navigateTo) {
   function showPosts(arrayPosts) {
     sectionPosts.innerHTML = '';
     arrayPosts.forEach((post) => {
-      console.log(post.id);
       createPostCard(post.title, post.description, post.name, post.fullDate, post.id);
     });
   }
   onGetPosts(showPosts);
 
-  // Agrupar por secciones//
+  // Agrupar por secciones
 
   popUp.append(formPost);
   formPost.append(

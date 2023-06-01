@@ -1,7 +1,7 @@
 import { registerUser, signInWithGoogle } from '../lib/auth.js';
 
 function signup(navigateTo) {
-  // creación de elementos//
+  // Creación de elementos
   const section = document.createElement('section');
   const sectionForm = document.createElement('section');
   const sectionHeader = document.createElement('section');
@@ -19,16 +19,16 @@ function signup(navigateTo) {
   const logo = document.createElement('img');
   const header = document.createElement('div');
   const errorPassword = document.createElement('span');
-  // const errorEmail = document.createElement('span');
   const buttonGoogleSignup = document.createElement('button');
 
+  // Ingresar texto
   inputEmail.placeholder = 'example@gmail.com';
   inputPassword.placeholder = 'Ingresa minimo 6 caracteres';
   inputUser.placeholder = 'Ingresa nombre usuaria';
-  // agregar atributos//
+
+  // Agregar atributos
   logo.setAttribute('src', 'images/logo.png');
   errorPassword.setAttribute('id', 'errorPassword');
-  // errorEmail.setAttribute('id', 'errorEmail');//
   buttonReturnSignup.setAttribute('src', 'images/arrow.png');
   inputEmail.setAttribute('id', 'inputEmail');
   inputPassword.setAttribute('id', 'inputPassword');
@@ -37,6 +37,7 @@ function signup(navigateTo) {
   inputPassword.setAttribute('src', 'images/ojoOculto.png');
   showPassword.setAttribute('src', 'images/ojoOculto.png');
   passwordBox.setAttribute('id', 'passwordBox');
+
   buttonGoogleSignup.textContent = 'Registrarse con Google';
   emailSignup.textContent = 'Correo electrónico';
   passwordSignup.textContent = 'Contraseña';
@@ -54,23 +55,18 @@ function signup(navigateTo) {
     const email = inputEmail.value;
     const password = inputPassword.value;
     const user = inputUser.value;
-    // errorEmail.textContent = '';
     errorPassword.textContent = '';
     registerUser(email, password, user)
       .then((userResult) => {
-        console.log('signup', userResult);
         inputEmail.value = '';
         inputPassword.value = '';
         inputUser.value = '';
         navigateTo('/wall');
+        return userResult;
       })
 
       .catch((error) => {
-        console.log(error);
-        // errorEmail.innerHTML = error;
         errorPassword.innerHTML = error;
-        // const codeError = error.code;
-        // errorMessages(codeError, errorEmail, errorPassword);
       });
   });
 
@@ -103,18 +99,16 @@ function signup(navigateTo) {
   passwordSignup.classList.add('subTitlesSignup');
   buttonEnterSignup.classList.add('buttonEnterSignup');
   errorPassword.classList.add('errors');
-  // errorEmail.classList.add('errors');
   showPassword.classList.add('showPassword');
   buttonGoogleSignup.classList.add('buttonGoogleSignup');
 
-  // agrupar secciones//
+  // Agrupar secciones
   passwordBox.append(inputPassword, showPassword);
   form.append(
     UserSignup,
     inputUser,
     emailSignup,
     inputEmail,
-    // errorEmail,
     passwordSignup,
     passwordBox,
     errorPassword,

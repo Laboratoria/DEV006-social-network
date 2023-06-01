@@ -530,19 +530,22 @@ flex:1;
 .deleteButton{
   width: 8vw;
   left: 61vw;
-  position: relative;
-  top: -10.5vh;
+  flex:  1;
   z-index: 1;
+  background: purple;
+  padding: 2vh;
+  border-radius: 1vh;
+}
+.editButton{
+  width: 8vw;
+  left: 61vw;
+  flex: 1;
+  z-index: 1;
+  background: purple;
+  padding: 2vh;
+  border-radius: 1vh;
 }
 
-.containerReactions{
-  background-color: #844ea8;
-  height: 22.1vh;
-  width: 24vw;
-  border-bottom-right-radius: 8.2vw;
-  border-top-right-radius: 8.2vw;
-  flex:1;
-}
 
 .resultUser{
   font-weight: 800;

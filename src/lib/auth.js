@@ -1,5 +1,4 @@
 // Importamos métodos directamente del auth de frebase.
-// Importamos métodos directamente del auth de frebase.
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -39,7 +38,6 @@ export function registerUser(email, password, user) {
   return createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       const currentUser = userCredential.user;
-      console.log(updateProfile(currentUser, { displayName: user }));
       return updateProfile(currentUser, { displayName: user })
         .then(() => {
           // Guardar el nombre de usuario en el localStorage
@@ -47,14 +45,12 @@ export function registerUser(email, password, user) {
           return currentUser;
         })
         .catch((error) => {
-          console.log(error);
           const codeError = error.code;
           const errorMessage = errorMessages(codeError);
           throw errorMessage;
         });
     })
     .catch((error) => {
-      console.log(error);
       const codeError = error.code;
       const errorMessage = errorMessages(codeError);
       throw errorMessage;
@@ -69,7 +65,6 @@ export function loginUser(email, password) {
       return user;
     })
     .catch((error) => {
-      console.log(error);
       const codeError = error.code;
       const errorMessage = errorMessages(codeError);
       throw errorMessage;
@@ -82,8 +77,8 @@ export function signInWithGoogle(navigateTo) {
   signInWithPopup(auth, provider)
     .then((result) => {
       const user = result.user;
-      console.log('Usuario:', user.displayName);
       navigateTo('/wall'); // Redireccionar a la ruta protegida después de iniciar sesión con Google
+      return user;
     })
     .catch((error) => {
       const errorMessage = error.message;
