@@ -1,8 +1,11 @@
-import { saveTask, onGetPost, deletePost } from "../helpers/lib/Auth";
+/* eslint-disable max-len */
+/* eslint-disable no-console */
+import { saveTask, onGetPost, deletePost } from '../helpers/lib/Auth';
 
 function home(/* navigateTo */) {
   const section = document.createElement('section');
   const menuAr = document.createElement('article');
+  const contenedorIconos = document.createElement('div');
   const divInicio = document.createElement('div');
   const iconInicio = document.createElement('img');
   const labelInicio = document.createElement('label');
@@ -26,6 +29,7 @@ function home(/* navigateTo */) {
   const buttonSend = document.createElement('button');
   const iconSend = document.createElement('img');
   const divPosts = document.createElement('div');
+  const divInferior = document.createElement('div');
   const perroAr = document.createElement('article');
   const perroImg = document.createElement('img');
 
@@ -42,20 +46,24 @@ function home(/* navigateTo */) {
   divCrear.append(iconCrear, labelCrear);
 
   iconPerfil.setAttribute('src', '../assets/iconPerfil.png');
+  labelPerfil.classList.add('text-label');
   labelPerfil.textContent = 'Perfil';
   divPerfil.classList.add('menu-iconos');
   divPerfil.append(iconPerfil, labelPerfil);
 
   iconAlerts.setAttribute('src', '../assets/iconHuella.png');
+  labelAlerts.classList.add('text-label');
   labelAlerts.textContent = 'Notificaciones';
   divAlerts.classList.add('menu-iconos');
   divAlerts.append(iconAlerts, labelAlerts);
+  contenedorIconos.classList.add('contenedor-icons');
+  contenedorIconos.append(divInicio, divCrear, divPerfil, divAlerts);
 
   huellasImg.setAttribute('src', '../assets/huellasDiv.png');
   divHuellasImg.classList.add('div-huellas');
   divHuellasImg.append(huellasImg);
   menuAr.classList.add('menu');
-  menuAr.append(divInicio, divCrear, divPerfil, divAlerts, divHuellasImg);
+  menuAr.append(contenedorIconos, divHuellasImg);
 
   logoPost.setAttribute('src', '../assets/logo-barra.png');
   divLogo.classList.add('div-logo');
@@ -63,7 +71,7 @@ function home(/* navigateTo */) {
 
   usuario.classList.add('usuario-post');
   usuario.setAttribute('id', 'task-user'); /* usuario */
-  usuario.placeholder = 'Ingresa tu nombre de usuario';
+  usuario.placeholder = 'Usuario';
 
   inputPost.classList.add('new-post');
   inputPost.setAttribute('id', 'task-description'); /* editar-post */
@@ -79,21 +87,22 @@ function home(/* navigateTo */) {
   formPost.setAttribute('id', 'task-form');
   formPost.append(usuario, inputPost, buttonSend); /* todo */
 
+  divPosts.classList.add('container-post'); /* comentarios pasados */
   postAr.classList.add('post-container');
-  postAr.append(divLogo, formPost); /* TODO */
+  divInferior.classList.add('inferior');
+  postAr.append(divLogo, formPost, divPosts, divInferior); /* TODO */
 
   perroImg.classList.add('perro-img');
   perroImg.setAttribute('src', '../assets/Perrito.png');
   perroAr.append(perroImg); /* todo */
-  divPosts.classList.add('container-post');
 
   section.classList.add('section-home');
-  section.append(menuAr, postAr,divPosts, perroAr);
+  section.append(menuAr, postAr, perroAr);
 
-  window.addEventListener('DOMContentLoaded',  () =>{
-    const renderPost = (posts) => { //Se ejecuta una función con argumento Posts que es el array de objetos que representa los datos de los Posts en la colección de Firestore
+  window.addEventListener('DOMContentLoaded', () => {
+    const renderPost = (posts) => { // Se ejecuta una función con argumento Posts que es el array de objetos que representa los datos de los Posts en la colección de Firestore
       let html = '';
-      posts.forEach((post) => { //recorro el array de objetos y en cada uno de los Post creo un nuevo elemento P para luego pintarlo en el HTML
+      posts.forEach((post) => { // recorro el array de objetos y en cada uno de los Post creo un nuevo elemento P para luego pintarlo en el HTML
         console.log(post.id);
         html += `
       <div>
@@ -104,36 +113,33 @@ function home(/* navigateTo */) {
     
       `;
       });
-     
-      divPosts.innerHTML = html; //Se pinta el HTML en el div Posts
-      
+
+      divPosts.innerHTML = html; // Se pinta el HTML en el div Posts
+
       const btnDeletPost = document.querySelectorAll('.btn-delete');
-      btnDeletPost.forEach(btn => {
-        btn.addEventListener('click', (e)=> {
+      btnDeletPost.forEach((btn) => {
+        btn.addEventListener('click', (e) => {
           deletePost(e.target.dataset.id);
-        })
-      })
+        });
+      });
     };
     onGetPost(renderPost);
-  })
+  });
 
-
-  formPost.addEventListener('submit',(e)=> {
+  formPost.addEventListener('submit', (e) => {
     e.preventDefault();
     const description = formPost['task-description'];
     const usuarioPost = formPost['task-user'];
-    const postPromise = saveTask(description.value, usuarioPost.value) //Declaro una nueva variable para la promesa, donde invoco la función y como parámetro ingreso el valor que se pone en el textarea
-   //La función saveTask devuelve una promesa que se resuelve cuando la tarea se guarda en la base de datos
-    postPromise.then(() =>{
+    const postPromise = saveTask(description.value, usuarioPost.value); // Declaro una nueva variable para la promesa, donde invoco la función y como parámetro ingreso el valor que se pone en el textarea
+    // La función saveTask devuelve una promesa que se resuelve cuando la tarea se guarda en la base de datos
+    postPromise.then(() => {
       console.log(postPromise);
-    }).catch((error)=> {
+    }).catch((error) => {
       console.log(error);
-    })
+    });
 
-    formPost.reset()
-  }); 
-  
-
+    formPost.reset();
+  });
 
   return section;
 }
