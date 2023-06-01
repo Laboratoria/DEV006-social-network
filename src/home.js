@@ -1,4 +1,16 @@
-function home(navigateTo) {
+import { db, collection, getDocs } from './firebase/config';
+
+const getEventDB = async () => {
+  const eventsCollection = collection(db, 'eventos');
+  console.log('eventsCollection', eventsCollection);
+  const eventsSnapshot = await getDocs(eventsCollection);
+  console.log('eventsSnapshot', eventsSnapshot);
+  const eventsList = eventsSnapshot.docs.map((doc) => doc.data());
+
+  return eventsList;
+};
+
+async function home(navigateTo) {
   const section = document.createElement('section');
   const title = document.createElement('h2');
   const formLogin = document.createElement('form');
@@ -10,6 +22,9 @@ function home(navigateTo) {
   btnLogin.setAttribute("id", "button-login");
   section.setAttribute("id", "section-style");
   formLogin.setAttribute("id", "formLogin-style");
+
+  // const dataEvents = await getEventDB();
+
   // input home
   inputAcces.placeholder = 'escribe tu email';
   inputPassword.placeholder = 'contraseña';
