@@ -137,10 +137,6 @@ function newPost(navigateTo, data) {
         alertEmptyField.textContent = '';
       }
 
-      // select.addEventListener('change', (e) => {
-      //   console.log(e.target.value);
-      // });
-
       // saveTask(title.value, description.value);
       saveTask(title.value, description.value, selectedMood);
       navigateTo('/wall');

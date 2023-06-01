@@ -46,13 +46,19 @@ function wall(navigateTo) {
 
   divWall.append(postContenedor, contenedor);
 
+  // let usuario = "";
+
   onGetPost((querysnapshot) => {
     // Cuando hacen un click en el like onGetPost se llama de nuevo y jode la interacción
     let html = '';
     querysnapshot.forEach((doc) => {
       const post = doc.data();
+      // let usuarioActual = post.userid
+      // console.log(usuarioActual)
+      // usuarioGlobal = usuarioActual
+      // console.log(doc.data(), "pruebaaaaaa");
       html += `
-        <div >
+        <div > ${post.userid}
             <h3>${post.username.charAt(0).toUpperCase() + post.username.split('@')[0].slice(1)}</h3>
             <p>${post.mood}</p>
             <h3>${post.title}</h3>
@@ -61,8 +67,8 @@ function wall(navigateTo) {
              ${post.likes.includes(auth.currentUser.uid) ? `<img class='btn-like' data-id = '${doc.id}' data-liked='${post.likes.includes(auth.currentUser.uid)}' src='./img/like.png' alt='like' />`
     : `<img class='btn-like' data-id = '${doc.id}' data-liked='${post.likes.includes(auth.currentUser.uid)}' src='./img/like(1).png' alt='like'  / >`}
              <span class='count-like'> ${post.likes.length || ''}</span>
-             <img class='deleteButton' data-id = '${doc.id}' src='./img/trash.png' alt='trash'/>
-             <img class='editButton' data-id = '${doc.id}' src='./img/edit.png' alt='edit'/>
+             <img class='deleteButton' data-id = '${doc.id}' data-uid= '${post.userid}' src='./img/trash.png' alt='trash'/>
+             <img class='editButton' data-id = '${doc.id}' data-uid= '${post.userid}' src='./img/edit.png' alt='edit'/>
 
             </div>
         </div>
@@ -73,20 +79,30 @@ function wall(navigateTo) {
        </div>
       `;
     });
-
+    
     postContenedor.innerHTML = html;
+    // console.log(usuarioGlobal, "aca pasa")
 
     const btnsDelete = postContenedor.querySelectorAll('.deleteButton');
     const avisoBorra = document.getElementById('avisoBorrar');
 
     btnsDelete.forEach(btn => {
-      btn.addEventListener('click', ({ target: { dataset } }) => {
+      btn.addEventListener('click', ({ target: {dataset} }) => {
+        // console.log(dataset)
         const borrando = avisoBorra.querySelector('#delete');
         const cancelar = avisoBorra.querySelector('#cancel');
 
         borrando.addEventListener('click', () => {
-          console.log(dataset.id);
+          // const username = id.userid
+          const user = auth.currentUser;
+          console.log(user.uid, 'user')
+          if ( dataset.uid === user.uid) {
+          // console.log(userid, 'userid')
           deleteTask(dataset.id);
+          console.log(deleteTask, 'task')
+          } else {
+            alert("algo raro")
+          }
         });
 
         cancelar.addEventListener('click', () => {

@@ -43,8 +43,8 @@ const db = getFirestore();
 
 // eslint-disable-next-line arrow-body-style
 export const saveTask = (title, description, mood) => {
-  return addDoc(collection(db, 'post'), {
-    title, description, likes: [], username: auth.currentUser.email, timestamp: serverTimestamp(), mood,
+  return addDoc(collection(db,  'post'), {
+    title, description, likes: [], username: auth.currentUser.email, userid: auth.currentUser.uid, timestamp: serverTimestamp(), mood,
   });
 };
 
@@ -55,7 +55,7 @@ export const onGetPost = (callback) => {
   return onSnapshot(ordenar, callback);
 };
 
-export const deleteTask = (id) => deleteDoc(doc(db, 'post', id));
+export const deleteTask = (userid) => deleteDoc(doc(db, 'post', userid));
 export const getTask = (id) => getDoc(doc(db, 'post', id));
 export const updateTask = (id, newFields) => updateDoc(doc(db, 'post', id), newFields);
 
