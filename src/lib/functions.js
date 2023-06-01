@@ -13,7 +13,7 @@ import {
   onAuthStateChanged,
 } from 'firebase/auth';
 import {
-  arrayRemove, arrayUnion, doc, updateDoc, getDoc, deleteDoc,
+  collection, arrayRemove, arrayUnion, doc, updateDoc, getDoc, getDocs, addDoc, deleteDoc,
 } from 'firebase/firestore';
 import {
   app, auth, colRef, db,
@@ -91,6 +91,20 @@ authDetector();
 // user email
 export const userEmail = () => auth.currentUser.email;
 
+// Obtener collección Posts
+export const postPromise = getDocs(collection(db, 'Posts'));
+
+// Agregar un post
+export const postCol = collection(db, 'Posts');
+export async function addPost(postCollection, data) {
+  try {
+    await addDoc(postCollection, data);
+    return addPost;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 // Dar y quitar Likes
 export const likeCounter = async (postId) => {
   const postDocRef = doc(colRef, postId);
@@ -137,6 +151,16 @@ export const verifyLikes = async (postId, emailUser) => {
 export async function deletePost(postId) {
   try {
     await deleteDoc(doc(db, 'Posts', postId));
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+// Edit post
+export async function editpost(postId, textEdit) {
+  try {
+    const updatedPost = await updateDoc(doc(colRef, postId), { descripción: textEdit });
+    return updatedPost;
   } catch (error) {
     console.log(error);
   }
