@@ -1,4 +1,5 @@
 // Importamos métodos directamente del auth de frebase.
+// Importamos métodos directamente del auth de frebase.
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,

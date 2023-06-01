@@ -20,7 +20,6 @@ function wall(navigateTo) {
   const textTitle = document.createElement('input');
   const textDescription = document.createElement('textarea');
   const deletePopup = document.createElement('div');
-  const yesDelete = document.createElement('button');
   const noDelete = document.createElement('button');
   const errorPostTitle = document.createElement('p');
   const errorPostDescription = document.createElement('p');
@@ -45,7 +44,6 @@ function wall(navigateTo) {
   textDescription.classList.add('textDescription');
   popUpClose.classList.add('popUpClose');
   deletePopup.classList.add('deletePopup');
-  yesDelete.classList.add('buttonYesDelete');
   noDelete.classList.add('buttonNoDelete');
   // dateCreated.classList.add('dateCreated');
 
@@ -58,7 +56,6 @@ function wall(navigateTo) {
   newPost.setAttribute('src', 'images/post.png');
   popUpClose.setAttribute('src', 'images/close.png');
 
-  yesDelete.textContent = 'SI';
   noDelete.textContent = 'NO';
   popUpButton.textContent = 'Post';
   postTitle.textContent = 'Titulo';
@@ -113,7 +110,7 @@ function wall(navigateTo) {
     deletePopup.style.display = 'none';
   });
 
-  function createPostCard(title, description, name, fullDate) {
+  function createPostCard(title, description, name, fullDate, id) {
     const resultTitle = document.createElement('h2');
     const containerPost = document.createElement('div');
     const resultDescription = document.createElement('p');
@@ -121,15 +118,23 @@ function wall(navigateTo) {
     const containerReactions = document.createElement('div');
     const resultUser = document.createElement('p');
     const resultFullDate = document.createElement('p');
+    const yesDelete = document.createElement('button');
 
     resultTitle.textContent = title;
     resultDescription.textContent = description;
     resultUser.textContent = name;
     resultFullDate.textContent = fullDate;
-
+    yesDelete.setAttribute('data-id', id);
+    yesDelete.textContent = 'SI';
+    yesDelete.classList.add('buttonYesDelete');
+    console.log(id);
     // dateCreated.textContent = dateCreated;
     // agregar atributos
     deleteButton.setAttribute('src', 'images/delete.png');
+
+    yesDelete.addEventListener('click', (e) => {
+      console.log('eliminando', e.target);
+    });
 
     // crear clases
     resultTitle.classList.add('resultTitle');
@@ -162,7 +167,8 @@ function wall(navigateTo) {
   function showPosts(arrayPosts) {
     sectionPosts.innerHTML = '';
     arrayPosts.forEach((post) => {
-      createPostCard(post.title, post.description, post.name, post.fullDate);
+      console.log(post.id);
+      createPostCard(post.title, post.description, post.name, post.fullDate, post.id);
     });
   }
   onGetPosts(showPosts);
