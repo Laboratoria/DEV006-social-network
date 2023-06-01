@@ -42,9 +42,9 @@ export const create = createUserWithEmailAndPassword;
 const db = getFirestore();
 
 // eslint-disable-next-line arrow-body-style
-export const saveTask = (title, description) => {
+export const saveTask = (title, description, mood) => {
   return addDoc(collection(db, 'post'), {
-    title, description, likes: [], username: auth.currentUser.email, timestamp: serverTimestamp(),
+    title, description, likes: [], username: auth.currentUser.email, timestamp: serverTimestamp(), mood,
   });
 };
 

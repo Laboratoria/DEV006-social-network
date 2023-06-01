@@ -54,15 +54,15 @@ function newPost(navigateTo, data) {
   opt10.text = ['inspiring'];
 
   mood.append(opt1, opt2, opt3, opt4, opt5, opt6, opt7, opt8, opt9, opt10);
-  console.log(mood[1].value, mood[1].text);
+  // console.log(mood[1].value, mood[1].text);
 
-  const select = mood;
+  let select = mood;
+  let selectedMood = '';
   console.log(select, 'select');
   select.addEventListener('change', (e) => {
     console.log(e.target.value);
-    // const option = select.options[indexSelect];
-    // console.log(`${option.value}: ${option.text}`);
-  });
+    selectedMood = e.target.value
+  }); 
 
   alertEmptyField.classList.add('alertEmptyField');
 
@@ -106,7 +106,7 @@ function newPost(navigateTo, data) {
 
   form.append(
     paragraphMood,
-    mood,
+    select,
     // paragraphImg,
     // getImage,
     buttonSave,
@@ -127,8 +127,7 @@ function newPost(navigateTo, data) {
     // const moodSelect = form.mood;
     // console.log(moodSelect, "aca esta el estado")
     // const moodValue = moodSelect.value;
-
-    console.log(mood, 'mood');
+    // console.log(mood, 'mood');
 
     if (!data.identidad) {
       if (title.value.trim() === '' || description.value.trim() === '') {
@@ -138,8 +137,12 @@ function newPost(navigateTo, data) {
         alertEmptyField.textContent = '';
       }
 
+      // select.addEventListener('change', (e) => {
+      //   console.log(e.target.value);
+      // });
+
       // saveTask(title.value, description.value);
-      saveTask(title.value, description.value);
+      saveTask(title.value, description.value, selectedMood);
       navigateTo('/wall');
     } else {
       if (title.value.trim() === '' || description.value.trim() === '') {

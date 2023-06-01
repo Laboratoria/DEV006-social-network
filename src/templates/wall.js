@@ -54,9 +54,9 @@ function wall(navigateTo) {
       html += `
         <div >
             <h3>${post.username.charAt(0).toUpperCase() + post.username.split('@')[0].slice(1)}</h3>
+            <p>${post.mood}</p>
             <h3>${post.title}</h3>
             <p>${post.description}</p>
-            
             <div id='editDelete'>
              ${post.likes.includes(auth.currentUser.uid) ? `<img class='btn-like' data-id = '${doc.id}' data-liked='${post.likes.includes(auth.currentUser.uid)}' src='./img/like.png' alt='like' />`
     : `<img class='btn-like' data-id = '${doc.id}' data-liked='${post.likes.includes(auth.currentUser.uid)}' src='./img/like(1).png' alt='like'  / >`}
