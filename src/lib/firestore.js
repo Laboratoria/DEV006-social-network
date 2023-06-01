@@ -41,8 +41,13 @@ export const onGetPosts = (drawPosts) => {
     const resultPosts = [];
     console.log('snapshot aqui');
     querySnapshot.forEach((doc) => {
-      resultPosts.push(doc.data());
+      const resultData = doc.data();
+      const resultId = doc.id;
+      console.log(resultId);
+
+      resultPosts.push({ ...resultData, id: resultId });
     });
+    console.log(resultPosts);
     drawPosts(resultPosts);
   });
 };
