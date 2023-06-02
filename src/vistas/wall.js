@@ -1,6 +1,8 @@
 import {
   savePost, onGetPosts, deletePost, getPost, updatePost,
+  incrementLikes, decrementLikes,
 } from '../lib/firestore.js';
+import { auth } from '../lib/configFirebase.js';
 
 function wall(navigateTo) {
   const section = document.createElement('section');
@@ -116,8 +118,26 @@ function wall(navigateTo) {
   popUpClose.addEventListener('click', () => {
     popUp.style.display = 'none';
   });
+  // Funcion para dar o quitar like
+  async function updateLikes(postId) {
+    const currentUser = auth.currentUser;
+    const userId = currentUser.uid;
+    const post = await getPost(postId);
+
+    if (post.exists()) {
+      const postData = post.data();
+      const { likes, likedBy } = postData;
+    }
+
+    if (likedBy.includes(userId)) {
+      await decrementLikes(postId, userId);
+    } else {
+      await incrementLikes(postId, userId);
+    }
+  }
+
   // Funcion para crear el contenedor y tarjeta de cada post
-  function createPostCard(title, description, name, fullDate, id) {
+  function createPostCard(title, description, name, fullDate, id, useruid, likes, likedBy) {
     const resultTitle = document.createElement('h2');
     const containerPost = document.createElement('div');
     const resultDescription = document.createElement('p');
@@ -128,6 +148,31 @@ function wall(navigateTo) {
     const deletePopup = document.createElement('div');
     const noDelete = document.createElement('button');
     const editButton = document.createElement('img');
+    const likeButton = document.createElement('img');
+    const likeCounter = document.createElement('span');
+    const currentUser = auth.currentUser;
+    const isOwner = currentUser && currentUser.uid === useruid;
+    // se valida si el usuario es el dueño del post, para que
+    // le aparezca la opcion de edit y delete(isOwner)
+
+    if (isOwner) {
+      containerPost.append(
+        resultUser,
+        resultTitle,
+        resultDescription,
+        resultFullDate,
+        deleteButton,
+        editButton,
+        deletePopup,
+      );
+    } else {
+      containerPost.append(
+        resultUser,
+        resultTitle,
+        resultDescription,
+        resultFullDate,
+      );
+    }
     // Insertar textos
     resultTitle.textContent = title;
     resultDescription.textContent = description;
@@ -137,6 +182,7 @@ function wall(navigateTo) {
     noDelete.textContent = 'NO';
     deletePopup.textContent = '¿Estas segura de que deseas eliminar tu post?';
     popUpButton.innerText = 'Post';
+    likeCounter.textContent = likes.length;
 
     // Crear clases
     resultTitle.classList.add('resultTitle');
@@ -151,12 +197,15 @@ function wall(navigateTo) {
     noDelete.classList.add('buttonNoDelete');
     yesDelete.classList.add('buttonYesDelete');
     editButton.classList.add('editButton');
+    likeButton.classList.add('likeButton');
+    likeCounter.classList.add('likeCounter');
 
     // Agregar atributos
     deleteButton.setAttribute('src', 'images/delete.png');
     yesDelete.setAttribute('data-id', id);
     editButton.setAttribute('data-id', id);
     editButton.setAttribute('src', 'images/edit.png');
+    likeButton.setAttribute('src', 'images/Like.png');
     // funcion para que al momento de clickear se esconda el popup de delete
     noDelete.addEventListener('click', () => {
       deletePopup.style.display = 'none';
@@ -170,17 +219,28 @@ function wall(navigateTo) {
       e.preventDefault();
       deletePopup.style.display = 'block';
     });
+    const userId = currentUser.uid;
+    console.log(userId);
+
+    //Verificar si el usuario ya dio like a un post
+    if (likedBy.includes(userId)) {
+      likeButton.classList.add('liked');
+    }
+    likeButton.addEventListener('click', () => {
+      updateLikes(id);
+    });
 
     editButton.addEventListener('click', async ({ target: { dataset } }) => {
       popUp.style.display = 'block';
       const doc = await getPost(dataset.id);
-      const post = (doc.data());
+      const post = doc.data();
       textTitle.value = post.title;
       textDescription.value = post.description;
       popUpButton.innerText = 'Actualizar';
       editStatus = true;
       idStatus = dataset.id;
     });
+
     // Agrupar por secciones
     deletePopup.append(yesDelete, noDelete);
     containerPost.append(
@@ -188,9 +248,6 @@ function wall(navigateTo) {
       resultTitle,
       resultDescription,
       resultFullDate,
-      deleteButton,
-      editButton,
-      deletePopup,
     );
     sectionPosts.append(containerPost);
   }
@@ -199,7 +256,16 @@ function wall(navigateTo) {
   function showPosts(arrayPosts) {
     sectionPosts.innerHTML = '';
     arrayPosts.forEach((post) => {
-      createPostCard(post.title, post.description, post.name, post.fullDate, post.id);
+      createPostCard(
+        post.title,
+        post.description,
+        post.name,
+        post.fullDate,
+        post.id,
+        post.useruid,
+        post.likes,
+        post.likedBy,
+      );
     });
   }
   onGetPosts(showPosts);
@@ -223,4 +289,5 @@ function wall(navigateTo) {
 
   return section;
 }
+
 export default wall;
