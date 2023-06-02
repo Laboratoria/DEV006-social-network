@@ -10,9 +10,8 @@
 
 import {
   authDetector, userEmail, dislikeCounter, likeCounter, verifyLikes, deletePost, editpost, postPromise,
-  addPost, postCol, signOut,
+  addPost, postCol, signOut, getPost,
 } from '../lib/functions';
-
 export function wall() {
   // Crear elementos
   const container = document.createElement('div');
@@ -59,6 +58,18 @@ export function wall() {
   container.appendChild(divposts);
 
   const createPost = (poster, postId) => {
+    
+      // Llamar a la función getPost para obtener los datos de los posts
+  getPost((querySnapshot) => {
+    // Iterar sobre los documentos en el querySnapshot
+    querySnapshot.forEach((doc) => {
+      // Obtener los datos del documento
+      const post = doc.data();
+      // Hacer algo con los datos del post, por ejemplo:
+      console.log(post);
+    });
+  });
+
     // CREAR MODAL OPCIONES
     const modalOptions = document.createElement('dialog');
     modalOptions.classList.add('modalOptions');

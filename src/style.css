@@ -34,16 +34,35 @@ header {
 }
 
 nav {
-    
+
     height: 70px;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     margin-bottom: 20px;
 }
 
 .refresh {
-    
+    margin: 2px;
     margin-bottom: 10px;
+}
+
+.refresh:hover {
+    margin: 0px;
+    height: 90%;
+    width: auto;
+}
+
+.logOut {
+    margin: 2px;
+    height: 70%;
+    width: auto;
+    transform: scaleX(-1);
+}
+
+.logOut:hover {
+    margin: 0px;
+    height: 80%;
+    width: auto;
 }
 
 #exit {
@@ -133,16 +152,17 @@ a {
     gap: 20px;
     overflow: auto;
     overflow-x: hidden;
-   
+
     /* Oculta la barra de desplazamiento en navegadores compatibles */
     scrollbar-color: transparent transparent;
     /* Establece el color de la barra de desplazamiento transparente */
 }
 
 #posts::-webkit-scrollbar-track {
-    background-color: #6f2121; /* Color de fondo de la barra de desplazamiento */
-  }
-  
+    background-color: #6f2121;
+    /* Color de fondo de la barra de desplazamiento */
+}
+
 
 .post {
     width: 90%;
@@ -172,11 +192,14 @@ a {
     display: flex;
     flex-direction: column; */
     display: grid;
-    grid-template-columns: 0.3fr 1fr; /* Dos columnas, la primera se ajusta al contenido y la segunda ocupa el espacio restante */
+    grid-template-columns: 0.3fr 1fr;
+    /* Dos columnas, la primera se ajusta al contenido y la segunda ocupa el espacio restante */
     /*grid-template-rows: 1fr 1fr 1fr; Tres filas, cada una se ajusta al contenido */
     grid-auto-rows: min-content;
-    grid-gap: 10px; /* Espacio entre las filas y columnas */
-    align-items: center; /* Alineación vertical centrada */
+    grid-gap: 10px;
+    /* Espacio entre las filas y columnas */
+    align-items: center;
+    /* Alineación vertical centrada */
 }
 
 .userName {
@@ -248,39 +271,56 @@ a {
     margin-left: 15px;
     hacer responsive dsps*/
 }
-.buttonCreatePost:hover{
+
+.buttonCreatePost:hover {
     background-color: #1f836d;
-    
+
 }
-    .likesPic{
+
+.likesPic {
     width: 28px;
     right: 10px;
     bottom: 10px;
 }
-.menuLikeSection{
+
+.likesPic:hover {
+    width: 32px;
+    right: 5px;
+    bottom: 5px;
+}
+
+.menuLikeSection {
     width: 10%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    
+
 }
-.menuOptions{
+
+.menuOptions {
     width: 39px;
     margin-top: 10px;
 }
-.likesAndCount{
+
+.menuOptions:hover {
+    width: 43px;
+    margin-top: 7px;
+}
+
+.likesAndCount {
     display: flex;
     flex-direction: column;
     align-items: center;
     height: 25%;
     margin-bottom: 15px;
 }
+
 /* .userNameandDate{
     grid-column: 2 / span 2;
     grid-row: 1 / 1;
 } */
-.publicDate{
+.publicDate {
     margin-top: 5px;
     grid-column-start: 2;
     grid-column-end: 2;
@@ -289,47 +329,47 @@ a {
 }
 
 /* CSS MODAL */
-#modalEdit::backdrop, .modalOptions::backdrop, #modalDelete::backdrop{
+#modalEdit::backdrop,
+.modalOptions::backdrop,
+#modalDelete::backdrop {
     background-color: rgba(0, 0, 0, 0.65);
 }
 
-#modalEdit, #modalDelete {
+#modalEdit,
+#modalDelete {
     text-align: center;
-    background-color:#98DEE9;
+    background-color: #98DEE9;
 }
 
-.modalOptions{
-    background-color:#98DEE9 ;
+.modalOptions {
+    background-color: #98DEE9;
     text-align: center;
-    
+
 }
 
-.modalImgEdit, .modalImgDel{
+.modalImgEdit,
+.modalImgDel {
     width: 50px;
     display: flex;
     align-items: center;
 }
 
-.editLabel, .deleteLabel{
+.editLabel,
+.deleteLabel {
     text-align: center;
 }
 
-.xModal{
+.xModal {
     width: 20px;
     margin-top: 30px;
 }
 
-.modalImgDel{
+.modalImgDel {
     margin-top: 15px;
 }
 
-#btn-modal, #btnYes, #btnNo{
+#btn-modal,
+#btnYes,
+#btnNo {
     margin: 5px;
-}
-
-.logOut{
-    width: 25px;
-    height: 25px;
-    
-    
 }
