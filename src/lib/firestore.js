@@ -1,5 +1,5 @@
 import {
-  collection, addDoc, getDocs, query, orderBy, onSnapshot, deleteDoc, doc, getDoc,
+  collection, addDoc, getDocs, query, orderBy, onSnapshot, deleteDoc, doc, getDoc, updateDoc,
 } from 'firebase/firestore';
 import { db, auth } from './configFirebase.js';
 // Funcion para guardar info de cada post
@@ -34,11 +34,12 @@ getPosts();
 
 // Funcion para eliminar los postS
 export const deletePost = (id) => deleteDoc(doc(db, 'postsWall', id));
+// Funcion para actualizar datos
+export const updatePost = (id, newFields) => updateDoc(doc(db, 'postsWall', id), newFields);
 export const getPost = (id) => getDoc(doc(db, 'postsWall', id));
 // Trae los posts en tiempo real
 export const onGetPosts = (drawPosts) => {
   const postsQuery = query(collection(db, 'postsWall'), orderBy('createdAt', 'desc'));
-
   onSnapshot(postsQuery, (querySnapshot) => {
     const resultPosts = [];
     querySnapshot.forEach((document) => {

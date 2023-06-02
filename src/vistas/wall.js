@@ -1,5 +1,5 @@
 import {
-  savePost, onGetPosts, deletePost, getPost,
+  savePost, onGetPosts, deletePost, getPost, updatePost,
 } from '../lib/firestore.js';
 
 function wall(navigateTo) {
@@ -24,6 +24,7 @@ function wall(navigateTo) {
   const errorPostTitle = document.createElement('p');
   const errorPostDescription = document.createElement('p');
   let editStatus = false;
+  let idStatus = '';
 
   // agregar clases//
   section.classList.add('section');
@@ -101,14 +102,14 @@ function wall(navigateTo) {
         console.log('saved new post'); // Added: Log "saved new post"
       }
       formPost.reset();
-      editStatus = false;
+      // editStatus = false;
       popUp.style.display = 'none';
     } else { // Added: Handle editStatus true
-      console.log('edit');
+      updatePost(idStatus, { title: textTitle.value, description: textDescription.value });
       formPost.reset();
       popUp.style.display = 'none';
+      editStatus = false;
     }
-    
   });
 
   // Boton para cerrar pop up de nuevo post
@@ -135,6 +136,7 @@ function wall(navigateTo) {
     yesDelete.textContent = 'SI';
     noDelete.textContent = 'NO';
     deletePopup.textContent = '¿Estas segura de que deseas eliminar tu post?';
+    popUpButton.innerText = 'Post';
 
     // Crear clases
     resultTitle.classList.add('resultTitle');
@@ -175,8 +177,9 @@ function wall(navigateTo) {
       const post = (doc.data());
       textTitle.value = post.title;
       textDescription.value = post.description;
-
+      popUpButton.innerText = 'Actualizar';
       editStatus = true;
+      idStatus = dataset.id;
     });
     // Agrupar por secciones
     deletePopup.append(yesDelete, noDelete);
