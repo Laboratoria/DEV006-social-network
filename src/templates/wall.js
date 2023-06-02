@@ -17,8 +17,6 @@ function wall(navigateTo) {
   const contenedor = document.createElement('div');
   contenedor.classList.add('contenedor');
   const iconoAgregar = document.createElement('img');
-  // const iconoMuro = document.createElement('img');
-  // const iconoPerfil = document.createElement('img');
   const postContenedor = document.createElement('div');
   postContenedor.setAttribute('id', 'postContenedor');
   postContenedor.classList.add('postContenedor');
@@ -42,11 +40,9 @@ function wall(navigateTo) {
 
   let mostrar = false;
 
-  contenedor.append(iconoAgregar, exit);
+  contenedor.append(iconoAgregar );
 
-  divWall.append(postContenedor, contenedor);
-
-  // let usuario = "";
+  divWall.append(exit, postContenedor, contenedor);
 
   onGetPost((querySnapshot) => {
     let html = '';
@@ -56,20 +52,25 @@ function wall(navigateTo) {
   
       html += `
         <div>
+          <div class='nameUser'>
             <h3>${post.username.charAt(0).toUpperCase() + post.username.split('@')[0].slice(1)}</h3>
             <p class='mood'>${post.mood}</p>
+          </div>
+          <div class='statusUser'>
             <h3>${post.title}</h3>
             <p>${post.description}</p>
-            <div id='editDelete'>
-              ${post.likes.includes(auth.currentUser.uid) ? `
-              <img class='btn-like' data-id='${doc.id}' data-liked='${post.likes.includes(auth.currentUser.uid)}' src='./img/like.png' alt='like' />` : `<img class='btn-like' data-id='${doc.id}' 
-              data-liked='${post.likes.includes(auth.currentUser.uid)}' src='./img/like(1).png' alt='like' />`}
-              <span class='count-like'>${post.likes.length || ''}</span>
-            </div>
-            <div id='acciones'${isCurrentUser === auth.currentUser.uid ? '' : ' class="hidden"'}> 
-              <img class='deleteButton' data-id='${doc.id}' data-uid='${post.userid}' src='./img/trash.png' alt='trash'/>
-              <img class='editButton' data-id='${doc.id}' data-uid='${post.userid}' src='./img/edit.png' alt='edit'/>
-            </div>
+          </div>
+              <div id='editDelete'>
+                ${post.likes.includes(auth.currentUser.uid) ? `
+                <img class='btn-like' data-id='${doc.id}' data-liked='${post.likes.includes(auth.currentUser.uid)}' src='./img/like.png' alt='like' />` : `<img class='btn-like' data-id='${doc.id}' 
+                data-liked='${post.likes.includes(auth.currentUser.uid)}' src='./img/like(1).png' alt='like' />`}
+                <span class='count-like'>${post.likes.length || ''}</span>
+                <div id='acciones'${isCurrentUser === auth.currentUser.uid ? '' : ' class="hidden"'}> 
+                <img class='deleteButton' data-id='${doc.id}' data-uid='${post.userid}' src='./img/trash.png' alt='trash'/>
+                <img class='editButton' data-id='${doc.id}' data-uid='${post.userid}' src='./img/edit.png' alt='edit'/>
+              </div>
+          </div>
+
         </div>
         <div id='avisoBorrar' style='display:none'> 
           <p>Delete post?</p>

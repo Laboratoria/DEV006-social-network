@@ -21,6 +21,7 @@ function newPost(navigateTo, data) {
   const buttonSave = document.createElement('button');
   const paragraphMood = document.createElement('p');
   const mood = document.createElement('select');
+  const opt0 = document.createElement('option');
   const opt1 = document.createElement('option');
   const opt2 = document.createElement('option');
   const opt3 = document.createElement('option');
@@ -30,30 +31,30 @@ function newPost(navigateTo, data) {
   const opt7 = document.createElement('option');
   const opt8 = document.createElement('option');
   const opt9 = document.createElement('option');
-  const opt10 = document.createElement('option');
 
-  opt1.value = ['State'];
-  opt1.text = ['State'];
-  opt2.value = ['Happy'];
-  opt2.text = ['Happy'];
-  opt3.value = ['sad'];
-  opt3.text = ['Sad'];
-  opt4.value = ['angry'];
-  opt4.text = ['Angry'];
-  opt5.value = ['I love'];
-  opt5.text = ['I love'];
-  opt6.value = ['Whim'];
-  opt6.text = ['Whim'];
-  opt7.value = ['Blame'];
-  opt7.text = ['Blame'];
-  opt8.value = ['Satisfied'];
-  opt8.text = ['Satisfied'];
-  opt9.value = ['Healthy'];
-  opt9.text = ['Healthy'];
-  opt10.value = ['inspiring'];
-  opt10.text = ['inspiring'];
+  opt0.disabled = true; // Deshabilitar la opción en blanco
+  opt0.selected = true; // Establecerla como seleccionada
+  opt0.text = 'Select a state'; // Texto de la opción en blanco
+  opt1.value = ['Happy'];
+  opt1.text = ['Happy'];
+  opt2.value = ['Sad'];
+  opt2.text = ['Sad'];
+  opt3.value = ['Angry'];
+  opt3.text = ['Angry'];
+  opt4.value = ['I love'];
+  opt4.text = ['I love'];
+  opt5.value = ['Whim'];
+  opt5.text = ['Whim'];
+  opt6.value = ['Blame'];
+  opt6.text = ['Blame'];
+  opt7.value = ['Satisfied'];
+  opt7.text = ['Satisfied'];
+  opt8.value = ['Healthy'];
+  opt8.text = ['Healthy'];
+  opt9.value = ['Inspiring'];
+  opt9.text = ['inspiring'];
 
-  mood.append(opt1, opt2, opt3, opt4, opt5, opt6, opt7, opt8, opt9, opt10);
+  mood.append(opt0,opt1, opt2, opt3, opt4, opt5, opt6, opt7, opt8, opt9);
   // console.log(mood[1].value, mood[1].text);
 
   let select = mood;
@@ -62,7 +63,8 @@ function newPost(navigateTo, data) {
   select.addEventListener('change', (e) => {
     console.log(e.target.value);
     selectedMood = e.target.value
-  }); 
+    // select.style.display = mood ? 'none' : 'block';
+  });
 
   alertEmptyField.classList.add('alertEmptyField');
 
@@ -75,14 +77,8 @@ function newPost(navigateTo, data) {
   titleNewPost.textContent = 'New Post';
   titleNewPost.classList.add('titleNewPost');
 
-  // paragraphImg.textContent = 'Add Image';
-  // paragraphImg.classList.add('paragraphImg');
-
   paragraphMood.textContent = 'Mood';
   paragraphMood.classList.add('paragraphMood');
-
-  // getImage.classList.add('getImagen');
-  // getImage.type = 'file';
 
   paragraphTitle.textContent = 'Add Title';
   paragraphTitle.classList.add('paragraphTitle');
@@ -107,8 +103,6 @@ function newPost(navigateTo, data) {
   form.append(
     paragraphMood,
     select,
-    // paragraphImg,
-    // getImage,
     buttonSave,
     paragraphTitle,
     textAreaTitle,
@@ -123,11 +117,7 @@ function newPost(navigateTo, data) {
     e.preventDefault();
     const title = form.textAreaTitle;
     const description = form.textAreaReview;
-    // const mood = form.sel;
-    // const moodSelect = form.mood;
-    // console.log(moodSelect, "aca esta el estado")
-    // const moodValue = moodSelect.value;
-    // console.log(mood, 'mood');
+
 
     if (!data.identidad) {
       if (title.value.trim() === '' || description.value.trim() === '') {
