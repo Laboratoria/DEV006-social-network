@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable max-len */
 /* eslint-disable no-shadow */
 /* eslint-disable no-console */
@@ -164,4 +165,14 @@ export async function editpost(postId, textEdit) {
   } catch (error) {
     console.log(error);
   }
+}
+
+export async function signOut() {
+  auth.signOut()
+    .then(() => {
+
+    })
+    .catch((error) => {
+
+    });
 }
