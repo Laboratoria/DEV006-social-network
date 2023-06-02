@@ -50,6 +50,7 @@ nav {
     margin: 0px;
     height: 90%;
     width: auto;
+    cursor: pointer;
 }
 
 .logOut {
@@ -63,6 +64,7 @@ nav {
     margin: 0px;
     height: 80%;
     width: auto;
+    cursor: pointer;
 }
 
 #exit {
@@ -107,6 +109,7 @@ input::placeholder {
 
 .button:hover {
     background-color: #1f836d;
+    cursor: pointer;
 }
 
 /* CSS DE PAGE HOME */
@@ -274,6 +277,7 @@ a {
 
 .buttonCreatePost:hover {
     background-color: #1f836d;
+    cursor: pointer;
 
 }
 
@@ -287,6 +291,7 @@ a {
     width: 32px;
     right: 5px;
     bottom: 5px;
+    cursor: pointer;
 }
 
 .menuLikeSection {
@@ -306,6 +311,7 @@ a {
 .menuOptions:hover {
     width: 43px;
     margin-top: 7px;
+    cursor: pointer;
 }
 
 .likesAndCount {
