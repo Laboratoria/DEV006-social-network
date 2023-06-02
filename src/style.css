@@ -287,3 +287,49 @@ a {
     grid-row: 1 / 2;
     justify-self: left;
 }
+
+/* CSS MODAL */
+#modalEdit::backdrop, .modalOptions::backdrop, #modalDelete::backdrop{
+    background-color: rgba(0, 0, 0, 0.65);
+}
+
+#modalEdit, #modalDelete {
+    text-align: center;
+    background-color:#98DEE9;
+}
+
+.modalOptions{
+    background-color:#98DEE9 ;
+    text-align: center;
+    
+}
+
+.modalImgEdit, .modalImgDel{
+    width: 50px;
+    display: flex;
+    align-items: center;
+}
+
+.editLabel, .deleteLabel{
+    text-align: center;
+}
+
+.xModal{
+    width: 20px;
+    margin-top: 30px;
+}
+
+.modalImgDel{
+    margin-top: 15px;
+}
+
+#btn-modal, #btnYes, #btnNo{
+    margin: 5px;
+}
+
+.logOut{
+    width: 25px;
+    height: 25px;
+    
+    
+}

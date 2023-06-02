@@ -1,17 +1,24 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-unused-expressions */
 /* eslint-disable max-len */
 /* eslint-disable object-shorthand */
 /* eslint-disable no-undef */
 /* eslint-disable no-console */
 /* eslint-disable import/no-extraneous-dependencies */
-import { collection, getDocs, addDoc, doc, getDoc } from 'firebase/firestore';
-import { db, auth } from '../lib/firebase';
-import { authDetector, userEmail, dislikeCounter, likeCounter, verifyLikes } from '../lib/functions';
+
+// import { signOut } from 'firebase/auth';
+
+import {
+  authDetector, userEmail, dislikeCounter, likeCounter, verifyLikes, deletePost, editpost, postPromise,
+  addPost, postCol, signOut,
+} from '../lib/functions';
 
 export function wall() {
   // Crear elementos
   const container = document.createElement('div');
   const navegator = document.createElement('nav');
   const logoRefresh = document.createElement('img');
+  const logOut = document.createElement('img');
   const divposts = document.createElement('div');
   const buttonCreatePost = document.createElement('button');
   const textarea = document.createElement('textarea');
@@ -20,6 +27,8 @@ export function wall() {
   // Establecer atributos y contenido
   logoRefresh.setAttribute('src', './images/logoEasygym.png');
   logoRefresh.setAttribute('onclick', 'location.reload()');
+  logOut.setAttribute('src', './images/logout.png');
+  logOut.classList.add('logOut');
   container.id = 'container';
   divposts.id = 'posts';
   buttonCreatePost.classList.add('buttonCreatePost');
@@ -29,15 +38,17 @@ export function wall() {
   // textarea.setAttribute('rows', '4');
   writeAndPost.classList.add('writeAndPost');
 
-  // exitButton.id = 'exit';
+  // Imagen LogOut
+  logOut.addEventListener('click', () => {
+    signOut();
+  });
+
+  // Logo refresh
   logoRefresh.classList.add('refresh');
 
   // Agregar elementos a nav
   navegator.appendChild(logoRefresh);
-
-  // Agregar elementos a divposts
-  // divposts.appendChild(writeAndPost);
-
+  navegator.appendChild(logOut);
   // Agregar elementos a divposts
   writeAndPost.appendChild(textarea);
   writeAndPost.appendChild(buttonCreatePost);
@@ -48,6 +59,71 @@ export function wall() {
   container.appendChild(divposts);
 
   const createPost = (poster, postId) => {
+    // CREAR MODAL OPCIONES
+    const modalOptions = document.createElement('dialog');
+    modalOptions.classList.add('modalOptions');
+    const modalImgEdit = document.createElement('img');
+    modalImgEdit.setAttribute('src', './images/edit.png');
+    modalImgEdit.classList.add('modalImgEdit');
+    const editLabel = document.createElement('label');
+    editLabel.classList.add('editLabel');
+    editLabel.textContent = ('Edit');
+    const modalImgDel = document.createElement('img');
+    modalImgDel.setAttribute('src', './images/delete.png');
+    modalImgDel.classList.add('modalImgDel');
+    const deleteLabel = document.createElement('label');
+    deleteLabel.classList.add('deleteLabel');
+    deleteLabel.textContent = ('Delete');
+    const xModal = document.createElement('img');
+    xModal.setAttribute('src', './images/closeModal.png');
+    xModal.classList.add('xModal');
+    const space = document.createElement('br');
+
+    modalOptions.appendChild(modalImgEdit);
+    modalOptions.appendChild(editLabel);
+    modalOptions.appendChild(modalImgDel);
+    modalOptions.appendChild(deleteLabel);
+    deleteLabel.appendChild(space);
+    modalOptions.appendChild(xModal);
+    // CREAR MODAL EDIT
+    const modalEdit = document.createElement('dialog');
+    modalEdit.id = 'modalEdit';
+    const txtaEdit = document.createElement('textarea');
+    txtaEdit.classList.add('textArea');
+    const btnCancel = document.createElement('button');
+    btnCancel.textContent = 'Cancel';
+    btnCancel.classList.add('button');
+    btnCancel.id = 'btn-modal';
+    const btnSave = document.createElement('button');
+    btnSave.textContent = 'Save';
+    btnSave.id = 'btn-modal';
+    btnSave.classList.add('button');
+    document.body.appendChild(modalEdit);
+
+    modalEdit.appendChild(txtaEdit);
+    modalEdit.appendChild(btnCancel);
+    modalEdit.appendChild(btnSave);
+
+    // CREAR MODAL ELIMINAR
+    const modalDelete = document.createElement('dialog');
+    modalDelete.id = 'modalDelete';
+    const question = document.createElement('p');
+    question.textContent = 'Do you want to delete this post?';
+    question.classList.add('question');
+    const btnYes = document.createElement('button');
+    btnYes.textContent = 'Yes';
+    btnYes.classList.add('button');
+    btnYes.id = 'btn-modal';
+    const btnNo = document.createElement('button');
+    btnNo.textContent = 'No';
+    btnNo.classList.add('button');
+    btnNo.id = 'btn-modal';
+    document.body.appendChild(modalDelete);
+
+    modalDelete.appendChild(question);
+    modalDelete.appendChild(btnYes);
+    modalDelete.appendChild(btnNo);
+
     // crear que va a mostrar
     const post = document.createElement('div');
     const infoUser = document.createElement('div');
@@ -81,7 +157,8 @@ export function wall() {
     likesPic.classList.add('likesPic');
     likesPic.setAttribute('src', './images/Like.png');
     likesLab.classList.add('likesLab');
-    likesLab.textContent = poster.likes?.length || 0; // ? si likes no existe q no falle al cargar los posts
+    likesLab.textContent = (poster.likes && poster.likes.length) || 0;
+    // likesLab.textContent = poster.likes?.length || 0; // ? si likes no existe q no falle al cargar los posts
 
     // Armar la estructura del nodo
     infoUser.id = 'infoUser';
@@ -96,37 +173,110 @@ export function wall() {
     likesAndCount.appendChild(likesPic);
     likesAndCount.appendChild(likesLab);
     divposts.insertBefore(post, divposts.firstChild); // Utilizar insertBefore para insertar al principio
+    document.body.appendChild(modalOptions);
 
+    // Mostrar menuOptions para editar y eliminar cuando los post son propios
+    if (userEmail() === poster.usuario) {
+      menuOptions.style.visibility = 'visible';
+    } else {
+      menuOptions.style.visibility = 'hidden';
+    }
+    // const openModalDelEdit = document.querySelector('.menuOptions');
+    // const modalContainer = document.querySelector('.modalContainer');
+    // const modalClose = document.querySelector('.modalClose');
+
+    // Listener para mostrar el diálogo de opciones
+    menuOptions.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (modalOptions.isConnected && !modalOptions.hasAttribute('open')) {
+        modalOptions.showModal();
+      }
+    });
+
+    // Listener para el cierre del diálogo de opciones
+    xModal.addEventListener('click', () => {
+      modalOptions.close();
+    });
+
+    // Listener para el cambio al diálogo de edición
+    modalImgEdit.addEventListener('click', (e) => {
+      e.preventDefault();
+      modalOptions.close();
+      if (modalEdit.isConnected && !modalEdit.hasAttribute('open')) {
+        modalEdit.showModal();
+      }
+    });
+
+    // Listener para el cierre del diálogo de edición
+    btnCancel.addEventListener('click', () => {
+      modalEdit.close();
+    });
+
+    // Listener para llamar pregunta de confirmación eliminar
+    modalImgDel.addEventListener('click', (e) => {
+      e.preventDefault();
+      modalOptions.close();
+      if (modalDelete.isConnected && !modalDelete.hasAttribute('open')) {
+        modalDelete.showModal();
+      }
+    });
+
+    btnNo.addEventListener('click', () => {
+      modalDelete.close();
+    });
+
+    btnYes.addEventListener('click', async () => {
+      await deletePost(postId);
+      modalDelete.close();
+      post.remove();
+    });
+
+    // Editar
+    modalImgEdit.addEventListener('click', () => {
+      txtaEdit.innerHTML = poster.descripción;
+    });
+    btnSave.addEventListener('click', async (e) => {
+      e.preventDefault;
+      const newContent = txtaEdit.value;
+      try {
+        const result = await editpost(postId, newContent);
+        console.log(result);
+        modalEdit.close();
+      } catch (error) {
+        console.log('Error al actualizar la descripción:', error);
+      }
+    });
+
+    // Mostrar la imagen antes de hacer like
     const likesArray = poster.likes;
-      if (likesArray != null && likesArray.includes(userEmail())){
+    if (likesArray != null && likesArray.includes(userEmail())) {
+      likesPic.setAttribute('src', './images/Likes.png');
+    }
+    // Al dar like hacer cambio de imagen y numero
+    likesPic.addEventListener('click', async () => {
+      const { userLiked, likesCount } = await verifyLikes(postId, userEmail());
+      if (userLiked) {
+        await dislikeCounter(postId);
+        likesPic.setAttribute('src', './images/Like.png');
+      } else {
+        await likeCounter(postId);
         likesPic.setAttribute('src', './images/Likes.png');
       }
+      //  obtén el recuento actualizado de "likes" y actualiza la interfaz de usuario
+      const updatedLikes = await verifyLikes(postId, userEmail());
+      likesLab.textContent = `${updatedLikes.likesCount}`;
+    });
 
-      likesPic.addEventListener('click', async () => {
-        let { userLiked, likesCount } = await verifyLikes(postId, userEmail());
-        if (userLiked){
-          await dislikeCounter(postId);
-          likesPic.setAttribute('src', './images/Like.png');
-        } else {
-          await likeCounter(postId);
-          likesPic.setAttribute('src', './images/Likes.png');
-        }
-        // Now get the updated likes count and update the UI
-        const updatedLikes = await verifyLikes(postId, userEmail());
-        likesLab.textContent = `${updatedLikes.likesCount}`;
-      });
+    // const user = auth.currentUser.uid; /* toma el id único del usuario autenticado actualmente */
+    // const likesArray = docss.data().likeCounter;
 
-      // const user = auth.currentUser.uid; /* toma el id único del usuario autenticado actualmente */
-      // const likesArray = docss.data().likeCounter;
-
-      // if (!likesArray.includes(user)) {
-      //   likeCounter(docss.id);
-      //   likesPic.setAttribute('src', './images/Likes.png');
-      // }
-   
+    // if (!likesArray.includes(user)) {
+    //   likeCounter(docss.id);
+    //   likesPic.setAttribute('src', './images/Likes.png');
+    // }
   };
 
-  const postPromise = getDocs(collection(db, 'Posts'));
+  // Crea el post en Firebase, guarda en postData y le asigna un Id
   postPromise.then((postList) => {
     postList.forEach((postPost) => {
       const postData = postPost.data();
@@ -153,10 +303,10 @@ export function wall() {
       likes: [],
     };
 
-    const result = await addDoc(collection(db, 'Posts'), data);
+    const result = await addPost(postCol, data);
     console.log(result);
     // Crear el nuevo post y agregarlo al principio
-    createPost(data);
+    createPost(data, result.id);
     textarea.value = '';
   });
 

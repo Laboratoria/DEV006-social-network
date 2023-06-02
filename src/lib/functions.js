@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable max-len */
 /* eslint-disable no-shadow */
 /* eslint-disable no-console */
@@ -13,9 +14,11 @@ import {
   onAuthStateChanged,
 } from 'firebase/auth';
 import {
-  arrayRemove, arrayUnion, doc, updateDoc, getDoc,
+  collection, arrayRemove, arrayUnion, doc, updateDoc, getDoc, getDocs, addDoc, deleteDoc,
 } from 'firebase/firestore';
-import { app, auth, colRef, db } from './firebase';
+import {
+  app, auth, colRef, db,
+} from './firebase';
 
 // export function login(email, password) {
 //   const auth1 = getAuth(app);
@@ -89,6 +92,20 @@ authDetector();
 // user email
 export const userEmail = () => auth.currentUser.email;
 
+// Obtener collección Posts
+export const postPromise = getDocs(collection(db, 'Posts'));
+
+// Agregar un post
+export const postCol = collection(db, 'Posts');
+export async function addPost(postCollection, data) {
+  try {
+    await addDoc(postCollection, data);
+    return addPost;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 // Dar y quitar Likes
 export const likeCounter = async (postId) => {
   const postDocRef = doc(colRef, postId);
@@ -130,3 +147,32 @@ export const verifyLikes = async (postId, emailUser) => {
   }
   return { userLiked, likesCount };
 };
+
+// Eliminar el post
+export async function deletePost(postId) {
+  try {
+    await deleteDoc(doc(db, 'Posts', postId));
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+// Edit post
+export async function editpost(postId, textEdit) {
+  try {
+    const updatedPost = await updateDoc(doc(colRef, postId), { descripción: textEdit });
+    return updatedPost;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function signOut() {
+  auth.signOut()
+    .then(() => {
+
+    })
+    .catch((error) => {
+
+    });
+}
