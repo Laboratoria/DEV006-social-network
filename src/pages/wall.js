@@ -5,9 +5,12 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-console */
 /* eslint-disable import/no-extraneous-dependencies */
+
+// import { signOut } from 'firebase/auth';
+
 import {
   authDetector, userEmail, dislikeCounter, likeCounter, verifyLikes, deletePost, editpost, postPromise,
-  addPost, postCol,
+  addPost, postCol, signOut,
 } from '../lib/functions';
 
 export function wall() {
@@ -15,6 +18,7 @@ export function wall() {
   const container = document.createElement('div');
   const navegator = document.createElement('nav');
   const logoRefresh = document.createElement('img');
+  const logOut = document.createElement('img');
   const divposts = document.createElement('div');
   const buttonCreatePost = document.createElement('button');
   const textarea = document.createElement('textarea');
@@ -23,6 +27,8 @@ export function wall() {
   // Establecer atributos y contenido
   logoRefresh.setAttribute('src', './images/logoEasygym.png');
   logoRefresh.setAttribute('onclick', 'location.reload()');
+  logOut.setAttribute('src', './images/logout.png');
+  logOut.classList.add('logOut');
   container.id = 'container';
   divposts.id = 'posts';
   buttonCreatePost.classList.add('buttonCreatePost');
@@ -32,12 +38,17 @@ export function wall() {
   // textarea.setAttribute('rows', '4');
   writeAndPost.classList.add('writeAndPost');
 
-  // exitButton.id = 'exit';
+  // Imagen LogOut
+  logOut.addEventListener('click', () => {
+    signOut();
+  });
+
+  // Logo refresh
   logoRefresh.classList.add('refresh');
 
   // Agregar elementos a nav
   navegator.appendChild(logoRefresh);
-
+  navegator.appendChild(logOut);
   // Agregar elementos a divposts
   writeAndPost.appendChild(textarea);
   writeAndPost.appendChild(buttonCreatePost);

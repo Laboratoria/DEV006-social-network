@@ -326,3 +326,10 @@ a {
 #btn-modal, #btnYes, #btnNo{
     margin: 5px;
 }
+
+.logOut{
+    width: 25px;
+    height: 25px;
+    
+    
+}

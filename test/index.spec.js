@@ -6,8 +6,8 @@ import { createAccount } from '../src/pages/createAccount.js';
 import { signIn } from '../src/pages/signIn.js';
 import { wall } from '../src/pages/wall.js';
 
-jest.mock('../lib/functions', () => {
-  const originalModule = jest.requireActual('../lib/functions');
+jest.mock('../lib/functions.js', () => {
+  const originalModule = jest.requireActual('../lib/functions.js');
 
   // Mock the default export and named export 'foo'
   return {

@@ -92,8 +92,6 @@ export function createAccount(navigateTo) {
       alert('your account was created');
       navigateTo('/wall');
     }).catch((error) => {
-      alert('Your account wasn´t created');
-
       console.log(email, password);
       // promesa de la funcion, bloque try.. catch debe ir acompañado de async(funcion asyncrona)
       // await espera que la funcion cumpla con los parametros para ver un resultado o error
