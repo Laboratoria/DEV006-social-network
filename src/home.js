@@ -11,9 +11,10 @@ const getEventDB = async () => {
 };
 
  function home(navigateTo) {
-  const logo = document.createElement('img')
+  const ctnImage =document.createElement('div');
+  const logo = document.createElement('img');
   const section = document.createElement('section');
-  const title = document.createElement('h2');
+  //const title = document.createElement('h2');
   const formLogin = document.createElement('form');
   const inputAcces = document.createElement('input');
   const inputPassword = document.createElement('input');
@@ -23,29 +24,38 @@ const getEventDB = async () => {
   btnLogin.setAttribute("id", "button-login");
   section.setAttribute("id", "section-style");
   formLogin.setAttribute("id", "formLogin-style");
+  inputAcces.setAttribute("id", "inputA-style");
+  inputPassword.setAttribute("id", "inputP-style");
+  logo.setAttribute("id", "logo-style");
+  logo.src = './img/logo.png';
+  logo.alt = 'web-logo';
+  ctnImage.appendChild(logo)
+  //logo.innerHTML='<img src="./img/logo.png">';
 
+  //document.getElementById("logo-style").innerHTML='<img src="./Rectangle 24.png" />';  
   // const dataEvents = await getEventDB();
-
+  
   // input home
   inputAcces.placeholder = 'escribe tu email';
   inputPassword.placeholder = 'contraseña';
 
   // boton de iniciar sesión
-  btnLogin.textContent = 'Iniciar sesión';
+  btnLogin.textContent = 'INICIAR SESIÓN';
   btnLogin.addEventListener('click', () => {
     navigateTo();
   });
 
   // boton de registrarse
-  button.textContent = 'Registrarse';
+  button.textContent = 'REGISTRARSE';
   button.addEventListener('click', () => {
     navigateTo('/login');
   });
 
-  title.textContent = 'RUNNERS NETWORK';
+  //title.textContent = 'RUNNERS NETWORK';
 
   formLogin.append(inputAcces, inputPassword);
-  section.append(title, formLogin, button, btnLogin);
+  section.append(ctnImage, formLogin, button, btnLogin);
+  console.log(logo)
   return section;
 }
 
