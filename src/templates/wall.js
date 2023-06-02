@@ -48,40 +48,39 @@ function wall(navigateTo) {
 
   // let usuario = "";
 
-  onGetPost((querysnapshot) => {
-    // Cuando hacen un click en el like onGetPost se llama de nuevo y jode la interacción
+  onGetPost((querySnapshot) => {
     let html = '';
-    querysnapshot.forEach((doc) => {
+    querySnapshot.forEach((doc) => {
       const post = doc.data();
-      // let usuarioActual = post.userid
-      // console.log(usuarioActual)
-      // usuarioGlobal = usuarioActual
-      // console.log(doc.data(), "pruebaaaaaa");
+      const isCurrentUser = post.userid; // Verificar si el usuario actual coincide con el usuario asociado a la publicación
+  
       html += `
-        <div > ${post.userid}
+        <div>
             <h3>${post.username.charAt(0).toUpperCase() + post.username.split('@')[0].slice(1)}</h3>
-            <p>${post.mood}</p>
+            <p class='mood'>${post.mood}</p>
             <h3>${post.title}</h3>
             <p>${post.description}</p>
             <div id='editDelete'>
-             ${post.likes.includes(auth.currentUser.uid) ? `<img class='btn-like' data-id = '${doc.id}' data-liked='${post.likes.includes(auth.currentUser.uid)}' src='./img/like.png' alt='like' />`
-    : `<img class='btn-like' data-id = '${doc.id}' data-liked='${post.likes.includes(auth.currentUser.uid)}' src='./img/like(1).png' alt='like'  / >`}
-             <span class='count-like'> ${post.likes.length || ''}</span>
-             <img class='deleteButton' data-id = '${doc.id}' data-uid= '${post.userid}' src='./img/trash.png' alt='trash'/>
-             <img class='editButton' data-id = '${doc.id}' data-uid= '${post.userid}' src='./img/edit.png' alt='edit'/>
-
+              ${post.likes.includes(auth.currentUser.uid) ? `
+              <img class='btn-like' data-id='${doc.id}' data-liked='${post.likes.includes(auth.currentUser.uid)}' src='./img/like.png' alt='like' />` : `<img class='btn-like' data-id='${doc.id}' 
+              data-liked='${post.likes.includes(auth.currentUser.uid)}' src='./img/like(1).png' alt='like' />`}
+              <span class='count-like'>${post.likes.length || ''}</span>
+            </div>
+            <div id='acciones'${isCurrentUser === auth.currentUser.uid ? '' : ' class="hidden"'}> 
+              <img class='deleteButton' data-id='${doc.id}' data-uid='${post.userid}' src='./img/trash.png' alt='trash'/>
+              <img class='editButton' data-id='${doc.id}' data-uid='${post.userid}' src='./img/edit.png' alt='edit'/>
             </div>
         </div>
         <div id='avisoBorrar' style='display:none'> 
           <p>Delete post?</p>
           <button id='delete'>Delete</button>
-          <button id='cancel'> Cancel</button>
-       </div>
+          <button id='cancel'>Cancel</button>
+        </div>
       `;
     });
+
     
     postContenedor.innerHTML = html;
-    // console.log(usuarioGlobal, "aca pasa")
 
     const btnsDelete = postContenedor.querySelectorAll('.deleteButton');
     const avisoBorra = document.getElementById('avisoBorrar');
@@ -100,9 +99,7 @@ function wall(navigateTo) {
           // console.log(userid, 'userid')
           deleteTask(dataset.id);
           console.log(deleteTask, 'task')
-          } else {
-            alert("algo raro")
-          }
+          } //estaba el else
         });
 
         cancelar.addEventListener('click', () => {
@@ -125,15 +122,13 @@ function wall(navigateTo) {
         const post = doc.data();
         if (newusuario === user.uid) {
           navigateTo('/newpost', { post, identidad });
-          } else {
-            alert("algo raro tu no eres el usuario")
           }
         });
       });
 
-    const btnLike = postContenedor.querySelectorAll('.btn-like');
+      const btnLike = postContenedor.querySelectorAll('.btn-like');
 
-    btnLike.forEach((btn) => {
+     btnLike.forEach((btn) => {
       btn.addEventListener('click', (e) => {
         // console.log(e.target.dataset.liked, "***");
         if (e.target.dataset.liked === 'false') {
@@ -145,7 +140,7 @@ function wall(navigateTo) {
         }
       });
     });
-  });
+  });    
   return divWall;
 }
 
