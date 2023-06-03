@@ -3,7 +3,7 @@ import login from './templates/login.js';
 import createAcount from './templates/createAcount.js';
 import error from './templates/error.js';
 import wall from './templates/wall.js';
-import newpost from './templates/newpost.js'
+import newpost from './templates/newpost.js';
 
 const routes = [
   { path: '/', component: login },

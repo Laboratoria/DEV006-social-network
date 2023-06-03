@@ -13,56 +13,43 @@ body {
   background-repeat: no-repeat;
   margin: 0;
   padding: 0;
-}
-.divNewPost{
-  padding: 0px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  
+} 
+
+/*-------------------------------------- LOGIN--------------------------------------------*/
+
+.alertEmail {
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-size: 14px;
+  position: relative;
+  left: 38px;
+  top: 2px;
+  color: #ffffff;
+  width: 30%;
 }
 
-.divWall{
-  /* padding: 16px; */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 24px;
-  justify-content: space-between;
-  height: 100vh;
-  box-sizing: border-box;
-  background:  #F9F0EE;
-}
+.alertPass {
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-size: 14px;
+  position: relative;
+  top: 3px;
+  left: 38px;
+  color: #ffffff;
+  width: 30%;
+}  
 
-#contenedorNewPost {
-  background:  #F9F0EE;
-  height: 100vh;
-}
-.logoimg {
+  /*-------------- Se repite en create Acount--------------*/
+ .logoimg {
+  display: flex;
   width: 231px;
   height: 218px;
-  left: 17%;
+  left: 600px;
   position: relative;
   top: -18px;
-}
+} 
 
-.loginCreateAcount {
-  position: absolute;
-  width: 166px;
-  height: 53px;
-  left: 111px;
-  top: 80%;
-  background: #f28e13;
-  border-radius: 50px;
-  border: none;
-  color: #fff;
-  font-family: system-ui;
-  font-weight: 100;
-  font-size: large;
-  font-weight: 600;
-}
-
-.title {
+ .title {
   font-family: "Roboto", sans-serif;
   font-style: normal;
   font-weight: 400;
@@ -73,20 +60,7 @@ body {
   left: 59px;
   top: 196px;
 }
-
-.caption {
-  font-family: "Roboto", sans-serif;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 23px;
-  color: #757474;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  top: -22px;
-  position: relative;
-}
-
+ 
 .emailSingIn,
 .passwordSingIn {
   position: relative;
@@ -101,7 +75,57 @@ body {
   top: 18px;
 }
 
-.singIn {
+.paragraphGoogle {
+  font-family: "Familjen Grotesk", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  color: #757474;
+  position: absolute;
+  width: 268px;
+  height: 22px;
+  left: 11%;
+  display: flex;
+  justify-content: center;
+  top: 424px;
+} 
+
+.haveAcount {
+  font-family: "Familjen Grotesk";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  color: #757474;
+  top: 537px;
+  position: absolute;
+  padding-bottom: 5%;
+  left: 14%;
+}
+
+
+.haveAcount,
+.register {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+} 
+
+.register {
+  font-family: "Familjen Grotesk";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  color: #f25d07;
+  top: 537px;
+  position: absolute;
+  padding-bottom: 5%;
+  left: 58%;
+}
+
+  .singIn {
   position: absolute;
   width: 300px;
   height: 38px;
@@ -114,21 +138,6 @@ body {
   font-weight: 400;
   border: none;
   top: 374px;
-}
-
-.login {
-  position: absolute;
-  width: 300px;
-  height: 38px;
-  left: 30px;
-  background: #f28e13;
-  border-radius: 20px;
-  color: #fff;
-  font-family: "Roboto", sans-serif;
-  font-size: large;
-  font-weight: 400;
-  border: none;
-  top: 507px;
 }
 
 .buttonGoogle {
@@ -154,75 +163,19 @@ body {
   z-index: 1;
 }
 
-.alertEmail {
-  font-family: "Roboto", sans-serif;
-  font-style: normal;
-  font-size: 14px;
-  position: relative;
-  left: 38px;
-  top: 2px;
-  color: #ffffff;
-  width: 30%;
-}
+/*-------------------------------------- CREATE ACOUNT--------------------------------------------*/
 
-.alertPass {
+.caption {
   font-family: "Roboto", sans-serif;
-  font-style: normal;
-  font-size: 14px;
-  position: relative;
-  top: 3px;
-  left: 38px;
-  color: #ffffff;
-  width: 30%;
-}
-
-.paragraphGoogle {
-  font-family: "Familjen Grotesk", sans-serif;
   font-style: normal;
   font-weight: 400;
-  font-size: 16px;
-  line-height: 22px;
+  font-size: 23px;
   color: #757474;
-  position: absolute;
-  width: 268px;
-  height: 22px;
-  left: 11%;
   display: flex;
   justify-content: center;
-  top: 424px;
-}
-
-.haveAcount,
-.register {
-  display: flex;
-  justify-content: left;
   align-items: center;
-}
-
-.haveAcount {
-  font-family: "Familjen Grotesk";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 22px;
-  color: #757474;
-  top: 537px;
-  position: absolute;
-  padding-bottom: 5%;
-  left: 14%;
-}
-
-.register {
-  font-family: "Familjen Grotesk";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 22px;
-  color: #f25d07;
-  top: 537px;
-  position: absolute;
-  padding-bottom: 5%;
-  left: 58%;
+  top: -22px;
+  position: relative;
 }
 
 .nameCreateacount,
@@ -262,21 +215,22 @@ body {
   color: #ffffff;
   width: 30%;
 }
-.img-comida {
+
+.login {
   position: absolute;
-  width: 453px;
-  height: 290px;
-  left: -35px;
-  top: 129px;
+  width: 300px;
+  height: 38px;
+  left: 30px;
+  background: #f28e13;
+  border-radius: 20px;
+  color: #fff;
+  font-family: "Roboto", sans-serif;
+  font-size: large;
+  font-weight: 400;
+  border: none;
+  top: 507px;
 }
 
-.textoerror {
-  position: absolute;
-  bottom: 100px;
-  left: 0;
-  right: 0;
-  text-align: center;
-}
 .returnCreateAcount {
   background: url(/img/arrow.png);
   position: relative;
@@ -284,102 +238,21 @@ body {
   left: 0px;
   border: none;
 }
-.returnNewPost {
-  background: url(/img/arrow.png);
-  position: relative;
-  top: 22px;
-  left: 9px;
-  border: none;
-}
-.exit {
-  width: 35px;
-  height: 35px;
-  margin-left: auto;
-  display: block;
+
+/*-------------------------------------- WALL --------------------------------------------*/
+
+.divWall{
+  /* padding: 16px; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  justify-content: space-between;
+  height: 100vh;
+  box-sizing: border-box;
+  background:  #F9F0EE;
 }
 
-.titleNewPost {
-  font-family: "Roboto", sans-serif;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 24px;
-  color: #757474;
-  position: relative;
-  top: 30px;
-  left: 129px;
-  width: 125px;
-}
-
-/* .paragraphImg {
-  font-family: "Roboto", sans-serif;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 18px;
-  color: #757474;
-  position: absolute;
-  width: 165px;
-  height: 32px;
-  left: 48px;
-  top: 125px;
-} */
-
-.paragraphReview,
-.paragraphTitle,
-.paragraphMood  {
-  font-family: "Roboto", sans-serif;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 18px;
-  color: #757474;
-  position: relative;
-  top: 38px;
-  left: 48px;
-  margin-bottom: 5px;
-  height: 56px;
-  width: 165px
-}
-
-.paragraphMood {
-  top: 68px;
-  height: 15px;
-}
-
-select { 
-  border-radius: 5px;
-  margin-left: 49px;
-  margin-top: 79px;
-  width: 210px;
-  height: 30px;
-  border: none;
-  box-shadow: 0px 10px 10px -10px #757474
-}
-
-.textAreaTitle,
-.textAreaReview {
-  position: relative;
-  top: 6px;
-  left: 41px;
-  width: 290px;
-  height: 100px;
-  border-radius: 10px;
-  border: none;
-  box-shadow: 0px 10px 10px -10px #757474;
-}
-
-.save{
-  position: absolute;
-  height: 38px;
-  left: 16px;
-  background: #F25D07;
-  border-radius: 20px;
-  color: #fff;
-  font-family: "Roboto", sans-serif;
-  font-size: large;
-  font-weight: 400;
-  border: none;
-  top: 575px;
-  width: 90%;
-}
 .contenedor {
   display: flex;
   width: 100%;
@@ -406,24 +279,70 @@ select {
   box-shadow: 0px 10px 10px -10px #757474;
 }
 
+.exit {
+  width: 35px;
+  height: 35px;
+  margin-left: auto;
+  display: block;
+}
+
 .iconoAgregar{
   width:45px;
   height: 45px;
 }
 
-/* .getImagen{
-  position: relative;
-  top: 100px;
-  left: 45px;
-  border: none;
-  width: 100%;
-  background-repeat: no-repeat;
-  margin-bottom: 15px;
-  margin-top: 10px;
-} */
+.nameUser{
+  display: flex;
+}
+
+.mood {
+  font-family: "Familjen Grotesk", sans-serif;
+  font-style: normal;
+  border-radius: 5px;
+  background-color: #ffffff;
+  border: 1px solid #D9D9D9;
+  width: 60px;
+  height: 20px;
+  margin-left: 20px;
+  display: flex;
+  justify-content: center;
+  box-shadow: inset 0 0 5px 0 #D9D9D9;
+}
+
+.statusUser{
+ box-shadow: inset 0 0 5px 0 #D9D9D9;
+ border: 1px solid #D9D9D9;
+ /* width: 355px;
+ left: -11px; */
+ position: relative;
+ padding: 10px;
+}
+
+.statusUser p {
+  word-wrap: break-word ;
+}
+
+.statusUser h3 {
+  word-wrap: break-word ;
+} 
 
 #editDelete{
   display: flex;
+}
+
+.btn-like{
+  width: 30px;
+  height: 30px;
+}
+
+.count-like{
+  margin-top: 4px;
+  margin-left: 4px;
+  font-size: 20px;
+}
+
+.hidden {
+  display: none;
 }
 
 .editButton{
@@ -435,18 +354,6 @@ select {
   width: 30px;
   height: 30px;
   margin-left: 223px;
-}
-
-.alertEmptyField {
-  font-family: "Familjen Grotesk", sans-serif;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 22px;
-  color: #f25d07;
-  position: relative;
-  top: 21px;
-  left: 90px;
 }
 
 #avisoBorrar{
@@ -469,17 +376,6 @@ select {
   z-index: 3;
 }
 
-.btn-like{
-  width: 30px;
-  height: 30px;
-}
-
-.count-like{
-  margin-top: 4px;
-  margin-left: 4px;
-  font-size: 20px;
-}
-
 #cancel,
 #delete{
   font-family: "Familjen Grotesk", sans-serif;
@@ -492,39 +388,144 @@ select {
   height: 20px;
 }
 
-.hidden {
-  display: none;
+/*-------------------------------------- NEW POST --------------------------------------------*/
+
+.divNewPost{
+  padding: 0px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
-.nameUser{
-  display: flex;
-}
-.mood {
+.alertEmptyField {
   font-family: "Familjen Grotesk", sans-serif;
   font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  color: #f25d07;
+  position: relative;
+  top: 21px;
+  left: 90px;
+}
+
+.titleNewPost {
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  color: #757474;
+  position: relative;
+  top: 30px;
+  left: 129px;
+  width: 125px;
+} 
+
+select { 
   border-radius: 5px;
-  background-color: #ffffff;
-  border: 1px solid #D9D9D9;
-  width: 60px;
-  height: 20px;
-  margin-left: 20px;
-  display: flex;
-  justify-content: center;
-  box-shadow: inset 0 0 5px 0 #D9D9D9;
-}
-.statusUser{
- box-shadow: inset 0 0 5px 0 #D9D9D9;
- border: 1px solid #D9D9D9;
- /* width: 355px;
- left: -11px; */
- position: relative;
- padding: 10px;
+  margin-left: 49px;
+  margin-top: 79px;
+  width: 210px;
+  height: 30px;
+  border: none;
+  box-shadow: 0px 10px 10px -10px #757474
 }
 
-.statusUser p {
-  word-wrap: break-word ;
+.paragraphReview,
+.paragraphTitle,
+.paragraphMood  {
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  color: #757474;
+  position: relative;
+  top: 38px;
+  left: 48px;
+  margin-bottom: 5px;
+  height: 56px;
+  width: 165px
 }
 
-.statusUser h3 {
-  word-wrap: break-word ;
+.paragraphMood {
+  top: 68px;
+  height: 15px;
 }
+  
+#contenedorNewPost {
+  background:  #F9F0EE;
+  height: 100vh;
+}
+
+.textAreaTitle,
+.textAreaReview {
+  position: relative;
+  top: 6px;
+  left: 41px;
+  width: 290px;
+  height: 100px;
+  border-radius: 10px;
+  border: none;
+  box-shadow: 0px 10px 10px -10px #757474;
+}
+
+.returnNewPost {
+  background: url(/img/arrow.png);
+  position: relative;
+  top: 22px;
+  left: 9px;
+  border: none;
+}
+
+.save{
+  position: absolute;
+  height: 38px;
+  left: 16px;
+  background: #F25D07;
+  border-radius: 20px;
+  color: #fff;
+  font-family: "Roboto", sans-serif;
+  font-size: large;
+  font-weight: 400;
+  border: none;
+  top: 575px;
+  width: 90%;
+}
+
+
+/*-------------------------------------- 404 --------------------------------------------*/
+
+
+.img-comida {
+  position: absolute;
+  width: 453px;
+  height: 290px;
+  left: -35px;
+  top: 129px;
+}
+
+.textoerror {
+  position: absolute;
+  bottom: 100px;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+
+
+/* .loginCreateAcount {
+  position: absolute;
+  width: 166px;
+  height: 53px;
+  left: 111px;
+  top: 80%;
+  background: #f28e13;
+  border-radius: 50px;
+  border: none;
+  color: #fff;
+  font-family: system-ui;
+  font-weight: 100;
+  font-size: large;
+  font-weight: 600;
+} */
+

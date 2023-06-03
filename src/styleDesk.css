@@ -1,0 +1,543 @@
+* {
+    margin: 0;
+  }
+  
+  body {
+    height: 100vh;
+    background: linear-gradient(
+      186deg,
+      #F9F0EE 0%,
+      rgba(242, 203, 169, 1) 46%,
+      rgba(242, 196, 155, 1) 100%
+    ) !important;
+    background-repeat: no-repeat;
+    margin: 0;
+    padding: 0;
+  } 
+
+  /*-------------------------------------- LOGIN--------------------------------------------*/
+
+  .alertEmail {
+    font-family: "Roboto", sans-serif;
+    font-style: normal;
+    font-size: 14px;
+    position: relative;
+    left: 38px;
+    top: 2px;
+    color: #ffffff;
+    width: 30%;
+  }
+  
+  .alertPass {
+    font-family: "Roboto", sans-serif;
+    font-style: normal;
+    font-size: 14px;
+    position: relative;
+    top: 3px;
+    left: 38px;
+    color: #ffffff;
+    width: 30%;
+  }  
+
+    /*-------------- Se repite en create Acount--------------*/
+   .logoimg {
+    display: flex;
+    width: 231px;
+    height: 218px;
+    left: 600px;
+    position: relative;
+    top: -18px;
+  } 
+
+   .title {
+    font-family: "Roboto", sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 23px;
+    color: #757474;
+    line-height: 27px;
+    position: absolute;
+    left: 59px;
+    top: 196px;
+  }
+   
+  .emailSingIn,
+  .passwordSingIn {
+    position: relative;
+    width: 300px;
+    height: 34px;
+    left: 30px;
+    background: #ffffff;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    margin-bottom: 22px;
+    border: none;
+    top: 18px;
+  }
+
+  .paragraphGoogle {
+    font-family: "Familjen Grotesk", sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    color: #757474;
+    position: absolute;
+    width: 268px;
+    height: 22px;
+    left: 11%;
+    display: flex;
+    justify-content: center;
+    top: 424px;
+  } 
+  
+  .haveAcount {
+    font-family: "Familjen Grotesk";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    color: #757474;
+    top: 537px;
+    position: absolute;
+    padding-bottom: 5%;
+    left: 14%;
+  }
+  
+
+  .haveAcount,
+  .register {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+  } 
+  
+  .register {
+    font-family: "Familjen Grotesk";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    color: #f25d07;
+    top: 537px;
+    position: absolute;
+    padding-bottom: 5%;
+    left: 58%;
+  }
+
+    .singIn {
+    position: absolute;
+    width: 300px;
+    height: 38px;
+    left: 30px;
+    background: #f28e13;
+    border-radius: 20px;
+    color: #fff;
+    font-family: "Roboto", sans-serif;
+    font-size: large;
+    font-weight: 400;
+    border: none;
+    top: 374px;
+  }
+  
+  .buttonGoogle {
+    background-image: url("./img/logogoogle.png");
+    position: absolute;
+    width: 203px;
+    height: 40px;
+    left: 20%;
+    top: 459px;
+    background: #ffffff;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    border: none;
+    text-indent: 30px;
+  }
+  
+  .logoGoogle {
+    position: absolute;
+    width: 34px;
+    height: 32px;
+    left: 77px;
+    top: 463px;
+    z-index: 1;
+  }
+  
+  /*-------------------------------------- CREATE ACOUNT--------------------------------------------*/
+
+  .caption {
+    font-family: "Roboto", sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 23px;
+    color: #757474;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: -22px;
+    position: relative;
+  }
+
+  .nameCreateacount,
+  .emailCreateacount,
+  .passCreateacount,
+  .confirmPassCreateacount {
+    width: 300px;
+    height: 34px;
+    background: #ffffff;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    border: none;
+    margin-bottom: 22px;
+    position: relative;
+    left: 30px;
+    top: 3px;
+  }
+
+  .alerEmailParagraph,
+  .alertPassparagraph {
+    font-family: "Roboto", sans-serif;
+    font-style: normal;
+    font-size: 14px;
+    position: relative;
+    left: 38px;
+    top: -13px;
+    color: #ffffff;
+    width: 30%;
+  }
+  .alertConfirmPassparagraph {
+    font-family: "Roboto", sans-serif;
+    font-style: normal;
+    font-size: 14px;
+    position: relative;
+    left: 38px;
+    top: -12px;
+    color: #ffffff;
+    width: 30%;
+  }
+
+  .login {
+    position: absolute;
+    width: 300px;
+    height: 38px;
+    left: 30px;
+    background: #f28e13;
+    border-radius: 20px;
+    color: #fff;
+    font-family: "Roboto", sans-serif;
+    font-size: large;
+    font-weight: 400;
+    border: none;
+    top: 507px;
+  }
+
+  .returnCreateAcount {
+    background: url(/img/arrow.png);
+    position: relative;
+    top: -200px;
+    left: 0px;
+    border: none;
+  }
+
+ /*-------------------------------------- WALL --------------------------------------------*/
+
+  .divWall{
+    /* padding: 16px; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    justify-content: space-between;
+    height: 100vh;
+    box-sizing: border-box;
+    background:  #F9F0EE;
+  }
+
+  .contenedor {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+  }
+
+  .postContenedor{
+    overflow-y: scroll;
+    width: 100%;
+  }
+  
+  .postContenedor > div{
+    font-family: "Roboto", sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 15px;
+    color: #595959;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    margin-top: 15px;
+    padding: 10px;
+    gap: 10px;
+    box-shadow: 0px 10px 10px -10px #757474;
+  }
+
+ .exit {
+    width: 35px;
+    height: 35px;
+    margin-left: auto;
+    display: block;
+  }
+
+  .iconoAgregar{
+    width:45px;
+    height: 45px;
+  }
+  
+  .nameUser{
+    display: flex;
+  }
+
+  .mood {
+    font-family: "Familjen Grotesk", sans-serif;
+    font-style: normal;
+    border-radius: 5px;
+    background-color: #ffffff;
+    border: 1px solid #D9D9D9;
+    width: 60px;
+    height: 20px;
+    margin-left: 20px;
+    display: flex;
+    justify-content: center;
+    box-shadow: inset 0 0 5px 0 #D9D9D9;
+  }
+
+  .statusUser{
+   box-shadow: inset 0 0 5px 0 #D9D9D9;
+   border: 1px solid #D9D9D9;
+   /* width: 355px;
+   left: -11px; */
+   position: relative;
+   padding: 10px;
+  }
+  
+  .statusUser p {
+    word-wrap: break-word ;
+  }
+  
+  .statusUser h3 {
+    word-wrap: break-word ;
+  } 
+
+  #editDelete{
+    display: flex;
+  }
+  
+  .btn-like{
+    width: 30px;
+    height: 30px;
+  }
+  
+  .count-like{
+    margin-top: 4px;
+    margin-left: 4px;
+    font-size: 20px;
+  }
+  
+  .hidden {
+    display: none;
+  }
+
+  .editButton{
+    width: 30px;
+    height: 30px;
+  }
+  
+  .deleteButton{
+    width: 30px;
+    height: 30px;
+    margin-left: 223px;
+  }
+
+  #avisoBorrar{
+    font-family: "Familjen Grotesk", sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    background-color: #F28E13;
+    color: #ffff;
+    border-radius: 10px;
+    text-align: center;
+    width: 124px;
+    height: 50px;
+    z-index: 3;
+  }
+
+  #cancel,
+  #delete{
+    font-family: "Familjen Grotesk", sans-serif;
+    font-style: normal;
+    border-radius: 10px;
+    background-color: #fff;
+    color: #595959;
+    border: none;
+    width: 60px;
+    height: 20px;
+  }
+ 
+/*-------------------------------------- NEW POST --------------------------------------------*/
+
+  .divNewPost{
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .alertEmptyField {
+    font-family: "Familjen Grotesk", sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    color: #f25d07;
+    position: relative;
+    top: 21px;
+    left: 90px;
+  }
+  
+ .titleNewPost {
+    font-family: "Roboto", sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    color: #757474;
+    position: relative;
+    top: 30px;
+    left: 129px;
+    width: 125px;
+  } 
+  
+  select { 
+    border-radius: 5px;
+    margin-left: 49px;
+    margin-top: 79px;
+    width: 210px;
+    height: 30px;
+    border: none;
+    box-shadow: 0px 10px 10px -10px #757474
+  }
+  
+  .paragraphReview,
+  .paragraphTitle,
+  .paragraphMood  {
+    font-family: "Roboto", sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    color: #757474;
+    position: relative;
+    top: 38px;
+    left: 48px;
+    margin-bottom: 5px;
+    height: 56px;
+    width: 165px
+  }
+  
+  .paragraphMood {
+    top: 68px;
+    height: 15px;
+  }
+    
+  #contenedorNewPost {
+    background:  #F9F0EE;
+    height: 100vh;
+  }
+
+  .textAreaTitle,
+  .textAreaReview {
+    position: relative;
+    top: 6px;
+    left: 41px;
+    width: 290px;
+    height: 100px;
+    border-radius: 10px;
+    border: none;
+    box-shadow: 0px 10px 10px -10px #757474;
+  }
+
+  .returnNewPost {
+    background: url(/img/arrow.png);
+    position: relative;
+    top: 22px;
+    left: 9px;
+    border: none;
+  }
+
+  .save{
+    position: absolute;
+    height: 38px;
+    left: 16px;
+    background: #F25D07;
+    border-radius: 20px;
+    color: #fff;
+    font-family: "Roboto", sans-serif;
+    font-size: large;
+    font-weight: 400;
+    border: none;
+    top: 575px;
+    width: 90%;
+  }
+
+
+/*-------------------------------------- 404 --------------------------------------------*/
+
+
+  .img-comida {
+    position: absolute;
+    width: 453px;
+    height: 290px;
+    left: -35px;
+    top: 129px;
+  }
+  
+  .textoerror {
+    position: absolute;
+    bottom: 100px;
+    left: 0;
+    right: 0;
+    text-align: center;
+  }
+
+  
+  /* .loginCreateAcount {
+    position: absolute;
+    width: 166px;
+    height: 53px;
+    left: 111px;
+    top: 80%;
+    background: #f28e13;
+    border-radius: 50px;
+    border: none;
+    color: #fff;
+    font-family: system-ui;
+    font-weight: 100;
+    font-size: large;
+    font-weight: 600;
+  } */
+  
+
+
+
+  
+
+
+
+  
+  
+
+  
+ 
