@@ -56,13 +56,13 @@ function newPost(navigateTo, data) {
   mood.append(opt1, opt2, opt3, opt4, opt5, opt6, opt7, opt8, opt9, opt10);
   // console.log(mood[1].value, mood[1].text);
 
-  let select = mood;
+  const select = mood;
   let selectedMood = '';
   console.log(select, 'select');
   select.addEventListener('change', (e) => {
     console.log(e.target.value);
-    selectedMood = e.target.value
-  }); 
+    selectedMood = e.target.value;
+  });
 
   alertEmptyField.classList.add('alertEmptyField');
 

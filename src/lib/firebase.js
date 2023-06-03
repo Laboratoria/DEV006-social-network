@@ -43,9 +43,18 @@ const db = getFirestore();
 
 // eslint-disable-next-line arrow-body-style
 export const saveTask = (title, description, mood) => {
-  return addDoc(collection(db,  'post'), {
-    title, description, likes: [], username: auth.currentUser.email, userid: auth.currentUser.uid, timestamp: serverTimestamp(), mood,
-  });
+  return addDoc(
+    collection(db, 'post'),
+    {
+      title,
+      description,
+      likes: [],
+      username: auth.currentUser.email,
+      userid: auth.currentUser.uid,
+      timestamp: serverTimestamp(),
+      mood,
+    },
+  );
 };
 
 export const getTasks = () => getDocs(collection(db, 'post'));
