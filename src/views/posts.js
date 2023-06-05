@@ -76,7 +76,8 @@ export const posts = (navigateTo) => {
 
     postsUsers.innerHTML = html;
 
-    const btnsDelete = postsUsers.querySelectorAll('.btn-delete');
+    const btnsDelete = postsUsers.querySelectorAll('.btn-delete'); // Toma todos los botones
+    console.log(btnsDelete);
 
     btnsDelete.forEach((btn) => {
       btn.addEventListener('click', async ({ target: { dataset } }) => {
@@ -160,6 +161,7 @@ export const posts = (navigateTo) => {
   containerFormPost.classList.add('container-form-post');
   formDoYouWantPost.classList.add('form-do-you-want-post');
   containerTitleAndPost.classList.add('container-title-and-post');
+  postsUsers.classList.add('.post-users');
   containerBtn.classList.add('container-btn-post');
   wantPost.classList.add('want-post');
   imgBack.classList.add('img-back-posts');
