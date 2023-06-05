@@ -1,6 +1,7 @@
 import {
   savePost, onGetPosts, deletePost, getPost, updatePost,
 } from '../lib/firestore.js';
+import { auth } from '../lib/configFirebase.js';
 
 function wall(navigateTo) {
   const section = document.createElement('section');
@@ -116,8 +117,9 @@ function wall(navigateTo) {
   popUpClose.addEventListener('click', () => {
     popUp.style.display = 'none';
   });
+  // Funcion para dar o quitar like
   // Funcion para crear el contenedor y tarjeta de cada post
-  function createPostCard(title, description, name, fullDate, id) {
+  function createPostCard(title, description, name, fullDate, id, useruid) {
     const resultTitle = document.createElement('h2');
     const containerPost = document.createElement('div');
     const resultDescription = document.createElement('p');
@@ -128,6 +130,29 @@ function wall(navigateTo) {
     const deletePopup = document.createElement('div');
     const noDelete = document.createElement('button');
     const editButton = document.createElement('img');
+    const currentUser = auth.currentUser;
+    const isOwner = currentUser && currentUser.uid === useruid;
+    // se valida si el usuario es el dueño del post, para que
+    // le aparezca la opcion de edit y delete(isOwner)
+
+    if (isOwner) {
+      containerPost.append(
+        resultUser,
+        resultTitle,
+        resultDescription,
+        resultFullDate,
+        deleteButton,
+        editButton,
+        deletePopup,
+      );
+    } else {
+      containerPost.append(
+        resultUser,
+        resultTitle,
+        resultDescription,
+        resultFullDate,
+      );
+    }
     // Insertar textos
     resultTitle.textContent = title;
     resultDescription.textContent = description;
@@ -171,16 +196,20 @@ function wall(navigateTo) {
       deletePopup.style.display = 'block';
     });
 
+    // Verificar si el usuario ya dio like a un post
+ 
+
     editButton.addEventListener('click', async ({ target: { dataset } }) => {
       popUp.style.display = 'block';
       const doc = await getPost(dataset.id);
-      const post = (doc.data());
+      const post = doc.data();
       textTitle.value = post.title;
       textDescription.value = post.description;
       popUpButton.innerText = 'Actualizar';
       editStatus = true;
       idStatus = dataset.id;
     });
+
     // Agrupar por secciones
     deletePopup.append(yesDelete, noDelete);
     containerPost.append(
@@ -188,9 +217,6 @@ function wall(navigateTo) {
       resultTitle,
       resultDescription,
       resultFullDate,
-      deleteButton,
-      editButton,
-      deletePopup,
     );
     sectionPosts.append(containerPost);
   }
@@ -199,7 +225,14 @@ function wall(navigateTo) {
   function showPosts(arrayPosts) {
     sectionPosts.innerHTML = '';
     arrayPosts.forEach((post) => {
-      createPostCard(post.title, post.description, post.name, post.fullDate, post.id);
+      createPostCard(
+        post.title,
+        post.description,
+        post.name,
+        post.fullDate,
+        post.id,
+        post.useruid,
+      );
     });
   }
   onGetPosts(showPosts);
@@ -223,4 +256,5 @@ function wall(navigateTo) {
 
   return section;
 }
+
 export default wall;
