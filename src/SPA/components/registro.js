@@ -65,12 +65,14 @@ function registro(navigateTo) {
   contenedorR.classList.add('centradoR');
   textoEnlace.classList.add('button-ingresar');
   contenedorR.append(textoRegister, textoEnlace);
+
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     const email = inputEmail.value;
     const contraseña = inputPassword.value;
     const promesa = registerUser(email, contraseña);
     promesa.then(() => {
+      sessionStorage.setItem('user', JSON.stringify(email));
       navigateTo('/home');
     }).catch((error) => {
       const alerta = document.querySelector('.message-error');

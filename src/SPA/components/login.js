@@ -119,6 +119,7 @@ function login(navigateTo) {
     const password = inputPassword.value;
     const promesa = userLogin(email, password);
     promesa.then(() => {
+      sessionStorage.setItem('user', JSON.stringify(email));
       navigateTo('/home');
     }).catch((error) => {
       const alerta = document.querySelector('.message-error');

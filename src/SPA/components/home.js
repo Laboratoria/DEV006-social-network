@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 /* eslint-disable no-console */
-import { saveTask, onGetPost, deletePost } from '../helpers/lib/Auth';
+import { saveTask, onGetPost, deletePost, getPost, updatePost } from "../helpers/lib/Auth";
 
 function home(/* navigateTo */) {
   const section = document.createElement('section');
@@ -41,6 +41,59 @@ function home(/* navigateTo */) {
   const perroAr = document.createElement('article');
   const perroImg = document.createElement('img');
   const footerHome = document.createElement('footer');
+
+  const user = JSON.parse(sessionStorage.getItem('user'));
+
+  let editStatus = false; 
+  let id = '';
+  window.addEventListener('load',  () =>{
+    const renderPost = (posts) => { //Se ejecuta una función con argumento Posts que es el array de objetos que representa los datos de los Posts en la colección de Firestore
+     
+      divPosts.innerHTML = '';
+      posts.forEach((post) => { //recorro el array de objetos y en cada uno de los Post creo un nuevo elemento P para luego pintarlo en el HTML
+        console.log(post.id);
+
+        const deleteButton = (user === post.usuarioPost)? `<button class = 'btn-delete' data-id= '${post.id}'>Borrar Post</button>` : '';
+        const editarButton = (user === post.usuarioPost)? `<button class = 'btn-edit' data-id = '${post.id}'> Edit</button>` : '';
+
+        divPosts.innerHTML += `
+      <div>
+      <h3>${post.usuarioPost}</h3>
+      <p>${post.description}</p>
+      ${deleteButton}
+      ${editarButton}
+      </div>
+      `;
+      });
+      /*  <button class = 'btn-delete' data-id= '${post.id}'>Borrar Post</button> */
+     
+      
+      const btnDeletePost = document.querySelectorAll('.btn-delete');
+      btnDeletePost.forEach(btn => {
+        btn.addEventListener('click', (e)=> {
+          deletePost(e.target.dataset.id);
+        })
+      })
+
+      const btnEdit = document.querySelectorAll('.btn-edit')
+      btnEdit.forEach((btn)=>{
+        btn.addEventListener('click', async(e)=>{
+          const doc = await getPost(e.target.dataset.id);
+          const postEdit = doc.data();
+          formPost['task-description'].value = postEdit.description
+         
+          editStatus = true;
+         id = doc.id;
+        //  formPost['btn-savePost'].innerText = 'Actualizar'
+
+      
+        })
+      })
+    };
+    onGetPost(renderPost);
+  })
+
+
 
   iconInicio.setAttribute('src', '../assets/iconHome.png');
   labelInicio.classList.add('text-label');
@@ -129,47 +182,44 @@ function home(/* navigateTo */) {
   section.classList.add('section-home');
   section.append(menuAr, postAndFooter, perroAr);
 
-  window.addEventListener('DOMContentLoaded', () => {
-    const renderPost = (posts) => { // Se ejecuta una función con argumento Posts que es el array de objetos que representa los datos de los Posts en la colección de Firestore
-      let html = '';
-      posts.forEach((post) => { // recorro el array de objetos y en cada uno de los Post creo un nuevo elemento P para luego pintarlo en el HTML
-        console.log(post.id);
-        html += `
-      <div>
-      <h3>${post.usuarioPost}</h3>
-      <p>${post.description}</p>
-      <button class = 'btn-delete' data-id= '${post.id}'>Borrar Post</button>
-      </div>
-    
-      `;
-      });
 
-      divPosts.innerHTML = html; // Se pinta el HTML en el div Posts
-
-      const btnDeletPost = document.querySelectorAll('.btn-delete');
-      btnDeletPost.forEach((btn) => {
-        btn.addEventListener('click', (e) => {
-          deletePost(e.target.dataset.id);
-        });
-      });
-    };
-    onGetPost(renderPost);
-  });
-
-  formPost.addEventListener('submit', (e) => {
+  formPost.addEventListener('submit',(e)=> {
     e.preventDefault();
     const description = formPost['task-description'];
-    const usuarioPost = formPost['task-user'];
-    const postPromise = saveTask(description.value, usuarioPost.value); // Declaro una nueva variable para la promesa, donde invoco la función y como parámetro ingreso el valor que se pone en el textarea
-    // La función saveTask devuelve una promesa que se resuelve cuando la tarea se guarda en la base de datos
-    postPromise.then(() => {
-      console.log(postPromise);
-    }).catch((error) => {
-      console.log(error);
-    });
-
-    formPost.reset();
-  });
+    if(editStatus) {
+      updatePost(id, {description: description.value}).then(()=>{
+        editStatus = false;
+      }).catch((error)=>{
+        console.log(error)
+      });
+    }else {
+      saveTask(description.value, user).then(()=>{
+        formPost.reset();
+      }).catch((error)=>{
+        console.log(error)
+      })
+    }
+   
+    // const description = formPost['task-description'];
+    // if(editStatus) {
+    //   const postPromise = saveTask(description.value, user)
+    //   postPromise.then(() => {
+    //  updatePost(id, {description: description.value});
+    //   editStatus = false
+    //   }).catch((error)=>{
+    //   console.log(error);
+    //   })
+    //   } else {
+    //     const postPromise = saveTask(description.value, user)
+    //     postPromise.then(()=> {
+    //       saveTask(description.value, user)
+    //     }).catch((error)=>{
+    //       console.log(error);
+    //     })   
+    // }
+    formPost.reset()
+  }); 
+  
 
   return section;
 }
