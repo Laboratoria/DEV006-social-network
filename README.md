@@ -36,10 +36,6 @@ Esta es la pantalla inicial dónde podemos encontrar una breve descripción del 
 
 ![](src/images/home.png)
 
-### HTML
-
-- [ ] **Uso de HTML semántico**
-
 ## 4. Pantalla Sign In
 
 En esta sección podemos ingresar a la página con el usuario y contraseña que previamente creamos. También nos da la opción de ingresar con nuestra cuenta de Google. Finalmente, mediante este sitio, podemos irnos a crear una cuenta si así lo deseamos.
