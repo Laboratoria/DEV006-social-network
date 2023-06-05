@@ -1,5 +1,5 @@
 import {
-  savePost, onGetPosts, deletePost, getPost, updatePost,
+  savePost, onGetPosts, deletePost, getPost, updatePost, addLike, removeLike,
 } from '../lib/firestore.js';
 import { auth } from '../lib/configFirebase.js';
 
@@ -119,7 +119,7 @@ function wall(navigateTo) {
   });
   // Funcion para dar o quitar like
   // Funcion para crear el contenedor y tarjeta de cada post
-  function createPostCard(title, description, name, fullDate, id, useruid) {
+  function createPostCard(title, description, name, fullDate, id, useruid, likes) {
     const resultTitle = document.createElement('h2');
     const containerPost = document.createElement('div');
     const resultDescription = document.createElement('p');
@@ -132,6 +132,7 @@ function wall(navigateTo) {
     const editButton = document.createElement('img');
     const currentUser = auth.currentUser;
     const isOwner = currentUser && currentUser.uid === useruid;
+    const like = document.createElement('img');
     // se valida si el usuario es el dueño del post, para que
     // le aparezca la opcion de edit y delete(isOwner)
 
@@ -162,6 +163,7 @@ function wall(navigateTo) {
     noDelete.textContent = 'NO';
     deletePopup.textContent = '¿Estas segura de que deseas eliminar tu post?';
     popUpButton.innerText = 'Post';
+    like.textContent = `Likes: ${likes}`;
 
     // Crear clases
     resultTitle.classList.add('resultTitle');
@@ -176,12 +178,14 @@ function wall(navigateTo) {
     noDelete.classList.add('buttonNoDelete');
     yesDelete.classList.add('buttonYesDelete');
     editButton.classList.add('editButton');
+    like.classList.add('like');
 
     // Agregar atributos
     deleteButton.setAttribute('src', 'images/delete.png');
     yesDelete.setAttribute('data-id', id);
     editButton.setAttribute('data-id', id);
     editButton.setAttribute('src', 'images/edit.png');
+    like.setAttribute('src', 'images/Like.png');
     // funcion para que al momento de clickear se esconda el popup de delete
     noDelete.addEventListener('click', () => {
       deletePopup.style.display = 'none';
@@ -196,9 +200,19 @@ function wall(navigateTo) {
       deletePopup.style.display = 'block';
     });
 
-    // Verificar si el usuario ya dio like a un post
- 
+    like.addEventListener('click', () => {
+      const postId = id;
 
+      if (likes && likes.includes(useruid)) {
+        removeLike(postId);
+        console.log('like removed');
+      } else {
+        addLike(postId);
+        console.log('like added');
+      }
+    });
+
+    // Verificar si el usuario ya dio like a un post
     editButton.addEventListener('click', async ({ target: { dataset } }) => {
       popUp.style.display = 'block';
       const doc = await getPost(dataset.id);
@@ -217,6 +231,7 @@ function wall(navigateTo) {
       resultTitle,
       resultDescription,
       resultFullDate,
+      like,
     );
     sectionPosts.append(containerPost);
   }
@@ -232,6 +247,7 @@ function wall(navigateTo) {
         post.fullDate,
         post.id,
         post.useruid,
+        post.likes,
       );
     });
   }

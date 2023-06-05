@@ -587,3 +587,12 @@ background-color:coral;
   font-size: 2.2vh;
   font-family: "Hind Vadodara", sans-serif;
 }
+
+.like{
+  width: 8vw;
+  left: 61vw;
+  flex: 1;
+  z-index: 1;
+  padding: 2vh;
+  border-radius: 1vh;
+}
