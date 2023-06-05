@@ -26,7 +26,7 @@ En este proyecto construímos una red social dedicada a una comunidad que puede 
 * Qué cada usuario cree una cuenta.
 * Comparta rutinas.
 * Revise tips del resto de los usuarios.
-* Pueda dar likes  cualquier publicación.
+* Pueda dar likes a cualquier publicación.
 
 ## 3. Pantalla Principal
 
