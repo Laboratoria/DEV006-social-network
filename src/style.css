@@ -595,4 +595,15 @@ background-color:coral;
   z-index: 1;
   padding: 2vh;
   border-radius: 1vh;
-}
+  display: block;
+ }
+
+ .likeLiked{
+  width: 8vw;
+  left: 61vw;
+  flex: 1;
+  z-index: 2;
+  padding: 2vh;
+  border-radius: 1vh;
+  display: none;
+ }

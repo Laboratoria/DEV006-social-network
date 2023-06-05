@@ -2,7 +2,7 @@ import {
   savePost, onGetPosts, deletePost, getPost, updatePost, addLike, removeLike,
 } from '../lib/firestore.js';
 import { auth } from '../lib/configFirebase.js';
-import { doc } from 'firebase/firestore';
+// import { doc } from 'firebase/firestore';
 
 function wall(navigateTo) {
   const section = document.createElement('section');
@@ -134,6 +134,7 @@ function wall(navigateTo) {
     const currentUser = auth.currentUser;
     const isOwner = currentUser && currentUser.uid === useruid;
     const like = document.createElement('img');
+    const likeLiked = document.createElement('img');
     // se valida si el usuario es el dueño del post, para que
     // le aparezca la opcion de edit y delete(isOwner)
 
@@ -180,6 +181,7 @@ function wall(navigateTo) {
     yesDelete.classList.add('buttonYesDelete');
     editButton.classList.add('editButton');
     like.classList.add('like');
+    likeLiked.classList.add('likeLiked');
 
     // Agregar atributos
     deleteButton.setAttribute('src', 'images/delete.png');
@@ -188,6 +190,8 @@ function wall(navigateTo) {
     like.setAttribute('data-id', id);
     editButton.setAttribute('src', 'images/edit.png');
     like.setAttribute('src', 'images/Like.png');
+    likeLiked.setAttribute('src', 'images/LikeColor.png');
+
     // funcion para que al momento de clickear se esconda el popup de delete
     noDelete.addEventListener('click', () => {
       deletePopup.style.display = 'none';
@@ -204,11 +208,18 @@ function wall(navigateTo) {
       deletePopup.style.display = 'block';
     });
 
-    like.addEventListener('click', () => {
+    like.addEventListener('click', (e) => {
+      e.preventDefault();
       if (likes.includes(currentUser.uid)) {
         removeLike(id);
+        like.style.display = 'none';
+        likeLiked.style.display = 'block';
         console.log('like removed');
       } else {
+        //like.remove.style
+        
+        like.style.display = 'block';
+        likeLiked.style.display = 'none';
         addLike(id);
         console.log('like added');
       }
@@ -234,6 +245,7 @@ function wall(navigateTo) {
       resultDescription,
       resultFullDate,
       like,
+      likeLiked,
     );
     sectionPosts.append(containerPost);
   }
