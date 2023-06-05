@@ -41,11 +41,11 @@ export const deletePost = (id) => deleteDoc(doc(db, 'postsWall', id));
 export const updatePost = (id, newFields) => updateDoc(doc(db, 'postsWall', id), newFields);
 // Funcion para dar like
 export const addLike = async (postId) => updateDoc(doc(db, 'postsWall', postId), {
-  likes: arrayUnion(auth.currentUser.useruid),
+  likes: arrayUnion(auth.currentUser.uid),
 });
 // Funcion para quitar un like
 export const removeLike = async (postId) => updateDoc(doc(db, 'postsWall', postId), {
-  likes: arrayRemove(auth.currentUser.useruid),
+  likes: arrayRemove(auth.currentUser.uid),
 });
 // Funcion para obtener los posts
 export const getPost = (id) => getDoc(doc(db, 'postsWall', id));

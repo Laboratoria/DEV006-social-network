@@ -2,6 +2,7 @@ import {
   savePost, onGetPosts, deletePost, getPost, updatePost, addLike, removeLike,
 } from '../lib/firestore.js';
 import { auth } from '../lib/configFirebase.js';
+import { doc } from 'firebase/firestore';
 
 function wall(navigateTo) {
   const section = document.createElement('section');
@@ -184,6 +185,7 @@ function wall(navigateTo) {
     deleteButton.setAttribute('src', 'images/delete.png');
     yesDelete.setAttribute('data-id', id);
     editButton.setAttribute('data-id', id);
+    like.setAttribute('data-id', id);
     editButton.setAttribute('src', 'images/edit.png');
     like.setAttribute('src', 'images/Like.png');
     // funcion para que al momento de clickear se esconda el popup de delete
@@ -193,7 +195,9 @@ function wall(navigateTo) {
     // Funcion del yesDelete, se importo deletePost
     yesDelete.addEventListener('click', ({ target: { dataset } }) => {
       deletePost(dataset.id);
+      console.log(dataset.id);
     });
+
     // Boton para mostrar la confirmacion de eliminar post
     deleteButton.addEventListener('click', (e) => {
       e.preventDefault();
@@ -201,13 +205,11 @@ function wall(navigateTo) {
     });
 
     like.addEventListener('click', () => {
-      const postId = id;
-
-      if (likes && likes.includes(useruid)) {
-        removeLike(postId);
+      if (likes.includes(currentUser.uid)) {
+        removeLike(id);
         console.log('like removed');
       } else {
-        addLike(postId);
+        addLike(id);
         console.log('like added');
       }
     });
