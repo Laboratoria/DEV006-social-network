@@ -14,12 +14,16 @@ import {
   onAuthStateChanged,
 } from 'firebase/auth';
 import {
-  collection, arrayRemove, arrayUnion, doc, updateDoc, getDoc, getDocs, addDoc, deleteDoc,
+  collection, arrayRemove, arrayUnion, doc, updateDoc, getDoc, getDocs, addDoc, deleteDoc, onSnapshot, query, orderBy, serverTimestamp,
 } from 'firebase/firestore';
 import {
   app, auth, colRef, db,
 } from './firebase';
 
+export const timeStamp = serverTimestamp;
+const orderedQuery = query(colRef, orderBy('fecha', 'asc'));// Consulta la colección y la ordena los posts por su fecha/hora de publicación// Consulta la colección y la ordena los posts por su fecha/hora de publicación
+//const orderedQuery = query(colRef);
+export const getPost = (callback) => onSnapshot(orderedQuery, callback);
 // export function login(email, password) {
 //   const auth1 = getAuth(app);
 //   const resultPromise = signInWithEmailAndPassword(auth1, email, password);

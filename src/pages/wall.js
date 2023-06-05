@@ -10,7 +10,7 @@
 
 import {
   authDetector, userEmail, dislikeCounter, likeCounter, verifyLikes, deletePost, editpost, postPromise,
-  addPost, postCol, signOut,
+  addPost, postCol, signOut, getPost, timeStamp,
 } from '../lib/functions';
 
 export function wall() {
@@ -145,7 +145,17 @@ export function wall() {
     userName.className = 'userName';
     publicDate.className = 'publicDate';
     avatar.src = poster.avatar;
-    publicDate.textContent = poster.fecha.toLocaleString();
+
+    const currentDate = poster.fecha.toDate(); // devuelve la fecha local
+    const day = currentDate.getDate();// devuelve el día solamente
+    const month = currentDate.getMonth() + 1; // Los meses comienzan desde 0
+    const year = currentDate.getFullYear();
+    const formattedDate = `${day}/${month}/${year}`;
+
+    // const dateObject = timestamp.toDate(); // Convert to Date object
+    // const dateString = dateObject.toISOString(); // Convert to string in ISO format
+
+    publicDate.textContent = formattedDate;
     publicDate.type = poster.fecha;
     userName.textContent = poster.usuario;
     imagenPost.src = 'ruta/al/imagen2';
@@ -276,31 +286,37 @@ export function wall() {
     // }
   };
 
-  // Crea el post en Firebase, guarda en postData y le asigna un Id
-  postPromise.then((postList) => {
-    postList.forEach((postPost) => {
+  // Llamar a la función getPost para obtener los datos de los posts
+  getPost((queryData) => {
+    console.log('Current data: ', queryData);
+    divposts.innerHTML = '';
+    queryData.forEach((postPost) => {
       const postData = postPost.data();
       const postId = postPost.id;
       createPost(postData, postId);
     });
   });
+
+  // Crea el post en Firebase, guarda en postData y le asigna un Id
+  // postPromise.then((postList) => {
+  //   postList.forEach((postPost) => {
+  //     const postData = postPost.data();
+  //     const postId = postPost.id;
+  //     createPost(postData, postId);
+  //   });
+  // });
   console.log(authDetector);
 
   buttonCreatePost.addEventListener('click', async () => {
     const userDetector = await authDetector();// Obtener el email del usuario
 
-    const currentDate = new Date(); // devuelve la fecha local
-    const day = currentDate.getDate();// devuelve el día solamente
-    const month = currentDate.getMonth() + 1; // Los meses comienzan desde 0
-    const year = currentDate.getFullYear();
-    const formattedDate = `${day}/${month}/${year}`;
-
     const data = {
       avatar: '/images/Avatar.png',
       descripción: textarea.value,
-      fecha: formattedDate,
+      fecha: timeStamp(),
       usuario: userDetector, // Asignar el email del usuario a "usuario"
       likes: [],
+
     };
 
     const result = await addPost(postCol, data);
