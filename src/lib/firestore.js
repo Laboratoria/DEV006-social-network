@@ -1,7 +1,6 @@
 import {
   collection, addDoc, getDocs,
   query, orderBy, onSnapshot, deleteDoc, doc, getDoc, updateDoc,
-  arrayUnion, arrayRemove,
 } from 'firebase/firestore';
 import { db, auth } from './configFirebase.js';
 // Funcion para guardar info de cada post
@@ -25,8 +24,7 @@ export const savePost = async (title, description) => {
     name,
     createdAt: currentDate, // Agrega una propiedad 'createdAt' con la fecha de creación actual
     fullDate,
-    likes: [],
-    likedBy: [], // Agrega los likes, inicializa array vacio
+    // Agrega los likes, inicializa array vacio
   });
 };
 // Ordena de manera descendente los post, primero los nuevos a los más antiguos
@@ -41,20 +39,9 @@ export const deletePost = (id) => deleteDoc(doc(db, 'postsWall', id));
 // Funcion para actualizar datos
 export const updatePost = (id, newFields) => updateDoc(doc(db, 'postsWall', id), newFields);
 // Funcion para dar like
-export const incrementLikes = async (postId, userId) => {
-  await updateDoc(doc(db, 'postsWall', postId), {
-    likes: arrayUnion(userId),
-    likedBy: arrayUnion(userId),
-  });
-};
+
 // Funcion para quitar un like
 
-export const decrementLikes = async (postId, userId) => {
-  await updateDoc(doc(db, 'postsWall', postId), {
-    likes: arrayRemove(userId),
-    likedBy: arrayRemove(userId),
-  });
-};
 // Funcion para obtener los posts
 export const getPost = (id) => getDoc(doc(db, 'postsWall', id));
 // Trae los posts en tiempo real

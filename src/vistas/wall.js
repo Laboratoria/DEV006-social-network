@@ -1,6 +1,5 @@
 import {
   savePost, onGetPosts, deletePost, getPost, updatePost,
-  incrementLikes, decrementLikes,
 } from '../lib/firestore.js';
 import { auth } from '../lib/configFirebase.js';
 
@@ -119,25 +118,8 @@ function wall(navigateTo) {
     popUp.style.display = 'none';
   });
   // Funcion para dar o quitar like
-  async function updateLikes(postId) {
-    const currentUser = auth.currentUser;
-    const userId = currentUser.uid;
-    const post = await getPost(postId);
-
-    if (post.exists()) {
-      const postData = post.data();
-      const { likes, likedBy } = postData;
-    }
-
-    if (likedBy.includes(userId)) {
-      await decrementLikes(postId, userId);
-    } else {
-      await incrementLikes(postId, userId);
-    }
-  }
-
   // Funcion para crear el contenedor y tarjeta de cada post
-  function createPostCard(title, description, name, fullDate, id, useruid, likes, likedBy) {
+  function createPostCard(title, description, name, fullDate, id, useruid) {
     const resultTitle = document.createElement('h2');
     const containerPost = document.createElement('div');
     const resultDescription = document.createElement('p');
@@ -148,8 +130,6 @@ function wall(navigateTo) {
     const deletePopup = document.createElement('div');
     const noDelete = document.createElement('button');
     const editButton = document.createElement('img');
-    const likeButton = document.createElement('img');
-    const likeCounter = document.createElement('span');
     const currentUser = auth.currentUser;
     const isOwner = currentUser && currentUser.uid === useruid;
     // se valida si el usuario es el dueño del post, para que
@@ -182,7 +162,6 @@ function wall(navigateTo) {
     noDelete.textContent = 'NO';
     deletePopup.textContent = '¿Estas segura de que deseas eliminar tu post?';
     popUpButton.innerText = 'Post';
-    likeCounter.textContent = likes.length;
 
     // Crear clases
     resultTitle.classList.add('resultTitle');
@@ -197,15 +176,12 @@ function wall(navigateTo) {
     noDelete.classList.add('buttonNoDelete');
     yesDelete.classList.add('buttonYesDelete');
     editButton.classList.add('editButton');
-    likeButton.classList.add('likeButton');
-    likeCounter.classList.add('likeCounter');
 
     // Agregar atributos
     deleteButton.setAttribute('src', 'images/delete.png');
     yesDelete.setAttribute('data-id', id);
     editButton.setAttribute('data-id', id);
     editButton.setAttribute('src', 'images/edit.png');
-    likeButton.setAttribute('src', 'images/Like.png');
     // funcion para que al momento de clickear se esconda el popup de delete
     noDelete.addEventListener('click', () => {
       deletePopup.style.display = 'none';
@@ -219,16 +195,9 @@ function wall(navigateTo) {
       e.preventDefault();
       deletePopup.style.display = 'block';
     });
-    const userId = currentUser.uid;
-    console.log(userId);
 
-    //Verificar si el usuario ya dio like a un post
-    if (likedBy.includes(userId)) {
-      likeButton.classList.add('liked');
-    }
-    likeButton.addEventListener('click', () => {
-      updateLikes(id);
-    });
+    // Verificar si el usuario ya dio like a un post
+ 
 
     editButton.addEventListener('click', async ({ target: { dataset } }) => {
       popUp.style.display = 'block';
@@ -263,8 +232,6 @@ function wall(navigateTo) {
         post.fullDate,
         post.id,
         post.useruid,
-        post.likes,
-        post.likedBy,
       );
     });
   }
