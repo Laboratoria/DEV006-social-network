@@ -1,4 +1,4 @@
-import {auth} from "./firebase/config"
+import {createEmail} from "./firebase/config"
 
 function login(navigateTo) {
   const section = document.createElement('section');
@@ -20,6 +20,17 @@ function login(navigateTo) {
 
   buttonReturn.textContent = 'crear';
   buttonReturn.addEventListener('click', () => {
+    createEmail("odettdpo@gmail.com", "12345")
+    .then((userCredential) => {
+      // Signed in
+      const user = userCredential.user;
+      // ...
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      // ..
+    });
     navigateTo('/');
   });
 
@@ -30,3 +41,4 @@ function login(navigateTo) {
 }
 
 export default login;
+
