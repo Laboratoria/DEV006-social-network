@@ -20,9 +20,13 @@ function home(/* navigateTo */) {
   const labelAlerts = document.createElement('label');
   const divHuellasImg = document.createElement('div');
   const huellasImg = document.createElement('img');
+  const postAndFooter = document.createElement('div');
   const postAr = document.createElement('article'); /* toda la sección */
   const divLogo = document.createElement('div');
   const logoPost = document.createElement('img');
+  const divIconosLogo = document.createElement('div');
+  const search = document.createElement('img');
+  const comment = document.createElement('img');
   const formPost = document.createElement('form');
   const usuario = document.createElement('input');
   const inputPost = document.createElement('textarea');
@@ -30,8 +34,13 @@ function home(/* navigateTo */) {
   const iconSend = document.createElement('img');
   const divPosts = document.createElement('div');
   const divInferior = document.createElement('div');
+  const divIconosInferior = document.createElement('div');
+  const iconoHomeInf = document.createElement('img');
+  const iconoCreateInf = document.createElement('img');
+  const iconoPerfilInf = document.createElement('img');
   const perroAr = document.createElement('article');
   const perroImg = document.createElement('img');
+  const footerHome = document.createElement('footer');
 
   iconInicio.setAttribute('src', '../assets/iconHome.png');
   labelInicio.classList.add('text-label');
@@ -66,8 +75,14 @@ function home(/* navigateTo */) {
   menuAr.append(contenedorIconos, divHuellasImg);
 
   logoPost.setAttribute('src', '../assets/logo-barra.png');
+  search.classList.add('search-lupa');
+  search.setAttribute('src', '../assets/iconSearch.png');
+  comment.classList.add('comment-img');
+  comment.setAttribute('src', '../assets/iconComment.png');
+  divIconosLogo.classList.add('div-icons-logo');
+  divIconosLogo.append(search, comment);
   divLogo.classList.add('div-logo');
-  divLogo.append(logoPost); /* TODO */
+  divLogo.append(logoPost, divIconosLogo); /* TODO */
 
   usuario.classList.add('usuario-post');
   usuario.setAttribute('id', 'task-user'); /* usuario */
@@ -89,15 +104,30 @@ function home(/* navigateTo */) {
 
   divPosts.classList.add('container-post'); /* comentarios pasados */
   postAr.classList.add('post-container');
+  iconoHomeInf.classList.add('icono-home-inf');
+  iconoHomeInf.setAttribute('src', '../assets/iconHome.png');
+  iconoCreateInf.classList.add('icono-create-inf');
+  iconoCreateInf.setAttribute('src', '../assets/iconCrear.png');
+  iconoPerfilInf.classList.add('icono-perfil-inf');
+  iconoPerfilInf.setAttribute('src', '../assets/iconPerfil.png');
+  divIconosInferior.classList.add('iconos-inferior-img');
+  divIconosInferior.append(iconoHomeInf, iconoCreateInf, iconoPerfilInf);
   divInferior.classList.add('inferior');
+  divInferior.append(divIconosInferior);
   postAr.append(divLogo, formPost, divPosts, divInferior); /* TODO */
+
+  postAndFooter.classList.add('postAndFooter');
+  postAndFooter.append(postAr, footerHome); /* todo */
+
+  footerHome.classList.add('footer-home');
+  footerHome.textContent = '@WebDulValLeo';
 
   perroImg.classList.add('perro-img');
   perroImg.setAttribute('src', '../assets/Perrito.png');
   perroAr.append(perroImg); /* todo */
 
   section.classList.add('section-home');
-  section.append(menuAr, postAr, perroAr);
+  section.append(menuAr, postAndFooter, perroAr);
 
   window.addEventListener('DOMContentLoaded', () => {
     const renderPost = (posts) => { // Se ejecuta una función con argumento Posts que es el array de objetos que representa los datos de los Posts en la colección de Firestore
