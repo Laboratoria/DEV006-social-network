@@ -197,7 +197,6 @@ function wall(navigateTo) {
     });
 
     // Verificar si el usuario ya dio like a un post
- 
 
     editButton.addEventListener('click', async ({ target: { dataset } }) => {
       popUp.style.display = 'block';
