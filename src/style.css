@@ -1,3 +1,5 @@
+@media only screen and (min-width: 375px)  and (max-width: 767px){
+ 
 * {
   margin: 0;
 }
@@ -9,23 +11,32 @@ body {
     #F9F0EE 0%,
     rgba(242, 203, 169, 1) 46%,
     rgba(242, 196, 155, 1) 100%
-  ) !important;
+  );
   background-repeat: no-repeat;
   margin: 0;
   padding: 0;
 } 
 
 /*-------------------------------------- LOGIN--------------------------------------------*/
+.sectionLogin{
+  max-width: 767px;
+  /* height: 768px; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
 
 .alertEmail {
   font-family: "Roboto", sans-serif;
-  font-style: normal;
-  font-size: 14px;
-  position: relative;
-  left: 38px;
-  top: 2px;
-  color: #ffffff;
-  width: 30%;
+    font-style: normal;
+    font-size: 14px;
+    position: relative;
+    left: 1%;
+    top: 259px;
+    color: #ffffff;
+    width: 35%;
+
 }
 
 .alertPass {
@@ -33,20 +44,21 @@ body {
   font-style: normal;
   font-size: 14px;
   position: relative;
-  top: 3px;
-  left: 38px;
+  top: 306px;
+  left: 1%;
   color: #ffffff;
-  width: 30%;
+  width: 35%;
 }  
 
   /*-------------- Se repite en create Acount--------------*/
  .logoimg {
-  display: flex;
+  position: relative;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
   width: 231px;
   height: 218px;
-  left: 600px;
-  position: relative;
-  top: -18px;
 } 
 
  .title {
@@ -57,22 +69,37 @@ body {
   color: #757474;
   line-height: 27px;
   position: absolute;
-  left: 59px;
-  top: 196px;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 220px;
+  width: 250px;
 }
  
-.emailSingIn,
-.passwordSingIn {
+.emailSingIn {
+  display: flex;
   position: relative;
   width: 300px;
   height: 34px;
-  left: 30px;
+  left: 50%;
+  transform: translateX(-50%);
   background: #ffffff;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 5px;
-  margin-bottom: 22px;
+  margin-bottom: 26px;
   border: none;
-  top: 18px;
+  top: 281px;
+}
+.passwordSingIn {
+  position: absolute;
+  width: 300px;
+  height: 34px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #ffffff;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+  border: none;
+  top: 342px;
 }
 
 .paragraphGoogle {
@@ -85,23 +112,26 @@ body {
   position: absolute;
   width: 268px;
   height: 22px;
-  left: 11%;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
   justify-content: center;
-  top: 424px;
+  top: 60%;
 } 
 
 .haveAcount {
   font-family: "Familjen Grotesk";
   font-style: normal;
   font-weight: 400;
-  font-size: 18px;
+  font-size: 17px;
   line-height: 22px;
   color: #757474;
-  top: 537px;
   position: absolute;
+  left: 34%;
+  transform: translateX(-50%);
+  text-align: center;
+  top: 75%;
   padding-bottom: 5%;
-  left: 14%;
 }
 
 
@@ -119,62 +149,75 @@ body {
   font-size: 18px;
   line-height: 22px;
   color: #f25d07;
-  top: 537px;
+  width: 27%;
   position: absolute;
-  padding-bottom: 5%;
-  left: 58%;
+  right: 71px;
+  bottom: 22%;
+  text-align: center;
+  /* padding-bottom: 5%;*/
 }
 
   .singIn {
-  position: absolute;
-  width: 300px;
-  height: 38px;
-  left: 30px;
-  background: #f28e13;
-  border-radius: 20px;
-  color: #fff;
-  font-family: "Roboto", sans-serif;
-  font-size: large;
-  font-weight: 400;
-  border: none;
-  top: 374px;
+    position: absolute;
+    width: 300px;
+    height: 38px;
+    background: #f28e13;
+    border-radius: 20px;
+    color: #fff;
+    font-family: "Roboto", sans-serif;
+    font-size: large;
+    font-weight: 400;
+    border: none;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .buttonGoogle {
-  background-image: url("./img/logogoogle.png");
   position: absolute;
   width: 203px;
   height: 40px;
-  left: 20%;
-  top: 459px;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 30%;
   background: #ffffff;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 5px;
   border: none;
   text-indent: 30px;
+  background-image: url(/img/logogoogle.png);
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
+  background-position: 10px center;
 }
 
-.logoGoogle {
+/* .logoGoogle {
   position: absolute;
   width: 34px;
   height: 32px;
-  left: 77px;
-  top: 463px;
+  left: 29%;
+  transform: translateX(-50%) translateY(-50%);
+  bottom: 16%;
   z-index: 1;
-}
+  background-image: url(/img/logogoogle.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  /* background-size: contain; 
+} */
 
 /*-------------------------------------- CREATE ACOUNT--------------------------------------------*/
 
 .caption {
   font-family: "Roboto", sans-serif;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 400px;
   font-size: 23px;
   color: #757474;
   display: flex;
   justify-content: center;
   align-items: center;
-  top: -22px;
+  top: 200px;
   position: relative;
 }
 
@@ -182,16 +225,19 @@ body {
 .emailCreateacount,
 .passCreateacount,
 .confirmPassCreateacount {
+  position: relative;
   width: 300px;
   height: 34px;
+  left: 50%;
+  transform: translateX(-50%);
   background: #ffffff;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 5px;
-  border: none;
   margin-bottom: 22px;
-  position: relative;
-  left: 30px;
-  top: 3px;
+  border: none;
+  top: 230px;
+  display: flex;
+  justify-content: center;
 }
 
 .alerEmailParagraph,
@@ -220,7 +266,8 @@ body {
   position: absolute;
   width: 300px;
   height: 38px;
-  left: 30px;
+  left: 50%;
+  transform: translateX(-50%);
   background: #f28e13;
   border-radius: 20px;
   color: #fff;
@@ -228,14 +275,18 @@ body {
   font-size: large;
   font-weight: 400;
   border: none;
-  top: 507px;
+  top: 530px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .returnCreateAcount {
-  background: url(/img/arrow.png);
+  background: url(/img/arrow.png) no-repeat;
+  background-position: top left;
   position: relative;
-  top: -200px;
-  left: 0px;
+  top: 0;
+  left: 0;
   border: none;
 }
 
@@ -346,14 +397,15 @@ body {
 }
 
 .editButton{
+  margin-left: -2px;
   width: 30px;
   height: 30px;
 }
 
 .deleteButton{
+  margin-left: 248px;
   width: 30px;
   height: 30px;
-  margin-left: 223px;
 }
 
 #avisoBorrar{
@@ -391,23 +443,40 @@ body {
 /*-------------------------------------- NEW POST --------------------------------------------*/
 
 .divNewPost{
-  padding: 0px;
   display: flex;
-  flex-direction: column;
   gap: 10px;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center; 
 }
 
 .alertEmptyField {
   font-family: "Familjen Grotesk", sans-serif;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 300;
   font-size: 18px;
   line-height: 22px;
   color: #f25d07;
-  position: relative;
-  top: 21px;
-  left: 90px;
+  position: absolute;
+  top: 82%;
+  left: 50%;
+  width: 200px;
+  transform: translate(-50%, -50%);
 }
+
+/* .divNewPostewpost{
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  width: 80%;
+  margin-top: 0px;   
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+} */
 
 .titleNewPost {
   font-family: "Roboto", sans-serif;
@@ -415,41 +484,54 @@ body {
   font-weight: 400;
   font-size: 24px;
   color: #757474;
-  position: relative;
-  top: 30px;
-  left: 129px;
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: 125px;
+  margin-top: -30px;
 } 
 
 select { 
+  position: relative;
+  width: 250px;
+  height: 35px;
+  /* left: 10%; */
+  transform: translateX(-50%);
+  background: #ffffff;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 5px;
-  margin-left: 49px;
-  margin-top: 79px;
-  width: 210px;
-  height: 30px;
   border: none;
-  box-shadow: 0px 10px 10px -10px #757474
+  top: 121px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: nowrap;
+  align-content: center;
+  align-items: center;
+  flex-direction: row;
+  margin-left: 250px;
 }
 
 .paragraphReview,
 .paragraphTitle,
 .paragraphMood  {
+  transform: translate(-20px, 100px);
   font-family: "Roboto", sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
   color: #757474;
-  position: relative;
-  top: 38px;
-  left: 48px;
-  margin-bottom: 5px;
-  height: 56px;
-  width: 165px
+  width: 150px;
+  margin-left: 100px;
 }
 
 .paragraphMood {
-  top: 68px;
+  top: 100px;
   height: 15px;
+}
+
+.paragraphTitle {
+  margin-top: 50px;
 }
   
 #contenedorNewPost {
@@ -460,13 +542,18 @@ select {
 .textAreaTitle,
 .textAreaReview {
   position: relative;
-  top: 6px;
-  left: 41px;
-  width: 290px;
+  width: 400px;
   height: 100px;
-  border-radius: 10px;
+  left: 200px;
+  margin-bottom: 39px;
+  transform: translateX(-50%);
+  background: #ffffff;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
   border: none;
-  box-shadow: 0px 10px 10px -10px #757474;
+  top: 115px;
+  display: flex;
+  justify-content: center;
 }
 
 .returnNewPost {
@@ -478,9 +565,11 @@ select {
 }
 
 .save{
-  position: absolute;
+  position: fixed;
+  top: 89%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   height: 38px;
-  left: 16px;
   background: #F25D07;
   border-radius: 20px;
   color: #fff;
@@ -488,8 +577,8 @@ select {
   font-size: large;
   font-weight: 400;
   border: none;
-  top: 575px;
-  width: 90%;
+  width: 400px;
+  max-width: 600px;
 }
 
 
@@ -512,7 +601,7 @@ select {
   text-align: center;
 }
 
-
+}
 /* .loginCreateAcount {
   position: absolute;
   width: 166px;

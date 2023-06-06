@@ -7,6 +7,7 @@ function createAcount(navigateTo) {
   const section = document.createElement('section');
   const logo = document.createElement('img');
   const caption = document.createElement('h2');
+  const backgroundCreate = document.createElement('div');
   const form = document.createElement('form');
   const alertEmailParagraph = document.createElement('p');
   const alertPassparagraph = document.createElement('p');
@@ -23,6 +24,8 @@ function createAcount(navigateTo) {
 
   caption.textContent = 'Create Acount';
   caption.classList.add('caption');
+
+  backgroundCreate.classList.add('backgroundCreate')
 
   inputName.placeholder = 'Name';
   inputName.classList.add('nameCreateacount');
@@ -135,7 +138,7 @@ function createAcount(navigateTo) {
     // paragraph,
   );
 
-  section.append(buttonReturn, logo, caption, form);
+  section.append(buttonReturn, logo, caption, form, backgroundCreate);
   return section;
 }
 

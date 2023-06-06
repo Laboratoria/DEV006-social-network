@@ -11,8 +11,8 @@ function login(navigateTo) {
   const logo = document.createElement('img');
   const logoGoogle = document.createElement('img');
   const title = document.createElement('h1');
-  const caption = document.createElement('h2');
-  const form = document.createElement('form');
+  const backgroundLogin = document.createElement('div');
+  const form = document.createElement('div');
   const inputEmail = document.createElement('input');
   const inputPass = document.createElement('input');
   const buttonSingin = document.createElement('button');
@@ -23,8 +23,13 @@ function login(navigateTo) {
   const alertEmail = document.createElement('p');
   const alertPass = document.createElement('p');
 
+  section.classList.add('sectionLogin');
+
   alertEmail.classList.add('alertEmail');
   alertPass.classList.add('alertPass');
+  form.classList.add('divLogin')
+
+  backgroundLogin.classList.add('backgroundLogin');
 
   logo.src = './img/logoSinfondo.png';
   logo.classList.add('logoimg');
@@ -99,8 +104,8 @@ function login(navigateTo) {
   buttonGoogle.textContent = 'SING IN WITH GOOGLE';
   buttonGoogle.classList.add('buttonGoogle');
   buttonGoogle.setAttribute('id', 'buttonGoogle');
-  logoGoogle.src = './img/logogoogle.png';
-  logoGoogle.classList.add('logoGoogle');
+  // logoGoogle.src = './img/logogoogle.png';
+  // logoGoogle.classList.add('logoGoogle');
 
   buttonGoogle.addEventListener('click', async (e) => {
     e.preventDefault();
@@ -115,6 +120,7 @@ function login(navigateTo) {
   });
 
   form.append(
+    title,
     inputEmail,
     alertEmail,
     inputPass,
@@ -124,8 +130,9 @@ function login(navigateTo) {
     paragraphGoogle,
     paragraphHaveAcount,
     paragraphRegister,
+    // logoGoogle,
   );
-  section.append(logo, logoGoogle, title, caption, form);
+  section.append(logo, form, backgroundLogin);
   return section;
 }
 

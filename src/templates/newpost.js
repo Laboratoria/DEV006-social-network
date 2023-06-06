@@ -8,11 +8,8 @@ function newPost(navigateTo, data) {
   const contenedorNewPost = document.createElement('div');
   const buttonReturn = document.createElement('button');
   const titleNewPost = document.createElement('h1');
-  const divNewPost = document.createElement('div');
-  divNewPost.classList.add('divNewPost');
   const form = document.createElement('form');
-  // const paragraphImg = document.createElement('p');
-  // const getImage = document.createElement('input');
+  form.classList.add('divNewPost');
   const paragraphTitle = document.createElement('p');
   const textAreaTitle = document.createElement('textarea');
   const paragraphReview = document.createElement('p');
@@ -102,13 +99,13 @@ function newPost(navigateTo, data) {
 
   form.append(
     paragraphMood,
-    select,
-    buttonSave,
+    select,    
     paragraphTitle,
     textAreaTitle,
     paragraphReview,
     textAreaReview,
     alertEmptyField,
+    buttonSave,
   );
 
   contenedorNewPost.append(buttonReturn, titleNewPost, form);
