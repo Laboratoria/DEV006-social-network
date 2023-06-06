@@ -12,7 +12,7 @@ export function home(navigateTo) {
 
   // Establecer atributos y contenido
   container.classList.add('container');
-  logo.setAttribute('src', './images/logoEasygymOnly.png');
+  logo.setAttribute('src', '/images/logoEasygymOnly.png');
   divButtons.classList.add('descriptionPage');
   description.textContent = 'We are a community where you can view and share quick routines to perform from anywhere in the world.';
   signInButton.classList.add('button');

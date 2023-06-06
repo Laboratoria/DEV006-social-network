@@ -23,11 +23,11 @@ export function signIn(navigateTo) {
   const or = document.createElement('p');
   const continueWithGoogleButton = document.createElement('button');
   const logoGoogle = document.createElement('img');
-  logoGoogle.src = './images/logoGoogle.png';
+  logoGoogle.src = '/images/logoGoogle.png';
 
   // Establecer atributos y contenido
   container.classList.add('container');
-  logo.setAttribute('src', './images/logoNameEasygym.png');
+  logo.setAttribute('src', '/images/logoNameEasygym.png');
   emailLabel.textContent = 'Email';
   emailInput.classList.add('insertInfo');
   emailInput.setAttribute('placeholder', 'example@gmail.com');

@@ -22,7 +22,7 @@ import {
 
 export const timeStamp = serverTimestamp;
 const orderedQuery = query(colRef, orderBy('fecha', 'asc'));// Consulta la colección y la ordena los posts por su fecha/hora de publicación// Consulta la colección y la ordena los posts por su fecha/hora de publicación
-//const orderedQuery = query(colRef);
+// const orderedQuery = query(colRef);
 export const getPost = (callback) => onSnapshot(orderedQuery, callback);
 // export function login(email, password) {
 //   const auth1 = getAuth(app);
