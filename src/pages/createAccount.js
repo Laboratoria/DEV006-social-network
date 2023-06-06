@@ -25,11 +25,11 @@ export function createAccount(navigateTo) {
   const or = document.createElement('p');
   const continueWithGoogleButton = document.createElement('button');
   const logoGoogle = document.createElement('img');
-  logoGoogle.src = './images/logoGoogle.png';
+  logoGoogle.src = '/images/logoGoogle.png';
 
   // Establecer atributos y contenido
   container.classList.add('container');
-  logo.setAttribute('src', './images/logoNameEasygym.png');
+  logo.setAttribute('src', '/images/logoNameEasygym.png');
   nameLabel.textContent = 'Name';
   nameInput.classList.add('insertInfo');
   nameInput.setAttribute('placeholder', 'My name');

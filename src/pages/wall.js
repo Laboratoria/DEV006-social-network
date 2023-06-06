@@ -6,8 +6,6 @@
 /* eslint-disable no-console */
 /* eslint-disable import/no-extraneous-dependencies */
 
-// import { signOut } from 'firebase/auth';
-
 import {
   authDetector, userEmail, dislikeCounter, likeCounter, verifyLikes, deletePost, editpost, postPromise,
   addPost, postCol, signOut, getPost, timeStamp,
@@ -25,9 +23,9 @@ export function wall() {
   const writeAndPost = document.createElement('div');
 
   // Establecer atributos y contenido
-  logoRefresh.setAttribute('src', './images/logoEasygym.png');
+  logoRefresh.setAttribute('src', '/images/logoEasygym.png');
   logoRefresh.setAttribute('onclick', 'location.reload()');
-  logOut.setAttribute('src', './images/logout.png');
+  logOut.setAttribute('src', '/images/logout.png');
   logOut.classList.add('logOut');
   container.id = 'container';
   divposts.id = 'posts';
@@ -63,19 +61,19 @@ export function wall() {
     const modalOptions = document.createElement('dialog');
     modalOptions.classList.add('modalOptions');
     const modalImgEdit = document.createElement('img');
-    modalImgEdit.setAttribute('src', './images/edit.png');
+    modalImgEdit.setAttribute('src', '/images/edit.png');
     modalImgEdit.classList.add('modalImgEdit');
     const editLabel = document.createElement('label');
     editLabel.classList.add('editLabel');
     editLabel.textContent = ('Edit');
     const modalImgDel = document.createElement('img');
-    modalImgDel.setAttribute('src', './images/delete.png');
+    modalImgDel.setAttribute('src', '/images/delete.png');
     modalImgDel.classList.add('modalImgDel');
     const deleteLabel = document.createElement('label');
     deleteLabel.classList.add('deleteLabel');
     deleteLabel.textContent = ('Delete');
     const xModal = document.createElement('img');
-    xModal.setAttribute('src', './images/closeModal.png');
+    xModal.setAttribute('src', '/images/closeModal.png');
     xModal.classList.add('xModal');
     const space = document.createElement('br');
 
@@ -162,10 +160,10 @@ export function wall() {
     descriptionAndLikes.textContent = poster.descripción;
     menuLikeSection.classList.add('menuLikeSection');
     menuOptions.classList.add('menuOptions');
-    menuOptions.setAttribute('src', './images/menuOptions.png');
+    menuOptions.setAttribute('src', '/images/menuOptions.png');
     likesAndCount.classList.add('likesAndCount');
     likesPic.classList.add('likesPic');
-    likesPic.setAttribute('src', './images/Like.png');
+    likesPic.setAttribute('src', '/images/Like.png');
     likesLab.classList.add('likesLab');
     likesLab.textContent = (poster.likes && poster.likes.length) || 0;
     // likesLab.textContent = poster.likes?.length || 0; // ? si likes no existe q no falle al cargar los posts
@@ -260,17 +258,17 @@ export function wall() {
     // Mostrar la imagen antes de hacer like
     const likesArray = poster.likes;
     if (likesArray != null && likesArray.includes(userEmail())) {
-      likesPic.setAttribute('src', './images/Likes.png');
+      likesPic.setAttribute('src', '/images/Likes.png');
     }
     // Al dar like hacer cambio de imagen y numero
     likesPic.addEventListener('click', async () => {
       const { userLiked, likesCount } = await verifyLikes(postId, userEmail());
       if (userLiked) {
         await dislikeCounter(postId);
-        likesPic.setAttribute('src', './images/Like.png');
+        likesPic.setAttribute('src', '/images/Like.png');
       } else {
         await likeCounter(postId);
-        likesPic.setAttribute('src', './images/Likes.png');
+        likesPic.setAttribute('src', '/images/Likes.png');
       }
       //  obtén el recuento actualizado de "likes" y actualiza la interfaz de usuario
       const updatedLikes = await verifyLikes(postId, userEmail());
