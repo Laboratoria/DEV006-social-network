@@ -509,7 +509,7 @@ select {
   align-content: center;
   align-items: center;
   flex-direction: row;
-  margin-left: 250px;
+  margin-left: 113px;
 }
 
 .paragraphReview,
@@ -522,7 +522,7 @@ select {
   font-size: 18px;
   color: #757474;
   width: 150px;
-  margin-left: 100px;
+  margin-left: -174px;
 }
 
 .paragraphMood {

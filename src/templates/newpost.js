@@ -99,7 +99,7 @@ function newPost(navigateTo, data) {
 
   form.append(
     paragraphMood,
-    select,    
+    select,
     paragraphTitle,
     textAreaTitle,
     paragraphReview,
