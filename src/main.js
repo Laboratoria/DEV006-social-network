@@ -29,6 +29,7 @@ function navigateTo(hash) {
       root.removeChild(root.firstChild);
     }
     root.appendChild(route.component(navigateTo));
+    console.log (navigateTo);
   } else {
     navigateTo('/error');
   }
