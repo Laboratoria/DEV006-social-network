@@ -3,11 +3,13 @@
 import home from './home.js';
 import login from './login.js';
 import error from './error.js';
+import wall from './wall.js';
 
 const routes = [
   { path: '/', component: home },
   { path: '/login', component: login },
   { path: '/error', component: error },
+  { path: '/wall', component: wall },
 ];
 
 const defaultRoute = '/';
