@@ -1,4 +1,6 @@
 import { db, collection, getDocs } from './firebase/config';
+import {signIn} from "./firebase/config"
+
 
 const getEventDB = async () => {
   const eventsCollection = collection(db, 'eventos');
@@ -50,8 +52,26 @@ const getEventDB = async () => {
   // boton de iniciar sesión
   btnLogin.textContent = 'INICIAR SESIÓN';
   btnLogin.addEventListener('click', () => {
-    navigateTo();
+    const email = inputAcces.value;
+    const password = inputPassword.value;
+    //const auth = getAuth();
+  signIn( email, password)
+  .then((userCredential) => {
+    inputAcces.value="";
+    inputPassword.value="";
+    return userCredential
+    // Signed in
+    //const user = userCredential.user;
+    // ...
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    alert(errorCode,errorMessage);
   });
+    navigateTo('/wall');
+  });
+  
 
   // boton de registrarse
   btnRegister.textContent = 'REGISTRARSE';
