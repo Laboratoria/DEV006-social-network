@@ -24,18 +24,26 @@ function login(navigateTo) {
   //title.textContent = 'Login';
   // buttonLogin.textContent = 'go';
 
+  // una constante para tomar el input email y contraseña
+  
+
   buttonReturn.textContent = 'CREAR';
   buttonReturn.addEventListener('click', () => {
-    createEmail("odettdpo@gmail.com", "12345")
+    //capturar valor de input contraseña y usuario
+    const email= inputEmail.value;
+    const pass= inputPass.value;
+    createEmail(email,pass)
     .then((userCredential) => {
+      inputEmail.value="";
+      inputPass.value="";
       // Signed in
-      const user = userCredential.user;
-      // ...
+      //const user = userCredential.user;
+      return userCredential
     })
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
-      // ..
+      alert (errorCode,errorMessage);
     });
     navigateTo('/');
   });
