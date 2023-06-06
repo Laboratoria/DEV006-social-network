@@ -1,9 +1,8 @@
 /* eslint-disable import/no-extraneous-dependencies */
 // Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app';
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
 import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
-import {  signInWithEmailAndPassword } from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: 'AIzaSyAwDENqtqqClEQU0v75FqVs3HAI6i2-YWI',

@@ -1,5 +1,3 @@
-
-
 import home from './home.js';
 import login from './login.js';
 import error from './error.js';
@@ -29,7 +27,6 @@ function navigateTo(hash) {
       root.removeChild(root.firstChild);
     }
     root.appendChild(route.component(navigateTo));
-    console.log (navigateTo);
   } else {
     navigateTo('/error');
   }
