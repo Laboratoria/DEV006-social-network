@@ -244,7 +244,7 @@ export function wall() {
       txtaEdit.innerHTML = poster.descripción;
     });
     btnSave.addEventListener('click', async (e) => {
-      e.preventDefault;
+      e.preventDefault();
       const newContent = txtaEdit.value;
       try {
         const result = await editpost(postId, newContent);
