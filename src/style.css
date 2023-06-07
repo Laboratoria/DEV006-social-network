@@ -16,14 +16,13 @@ body {
   align-items: center;
   justify-content: center;
   background-color: #844ea8;
-  width: 30.76923076923077vw;
-  height: 4.9763033175355vh;
+  width: auto;
+  height: auto;
   border-radius: 2.6vw;
   color: white;
-  font-family: "Inria Serif";
-  font-style: italic;
-  font-weight: 700;
-  font-size: 14px;
+  font-family: "Hind Vadodara", sans-serif;
+  font-size: 2.5vh;
+  padding: 1vh 8vw 1vh 7vw;
 }
 
 .logo {
@@ -34,24 +33,40 @@ body {
   top: 3.2vh;
 }
 
-.sectionForm,
-.sectionLogin {
-  margin-top: 25vh;
-  margin-left: 8vw;
-  width: 78.2vw;
-  height: 68vh;
+.sectionForm{
+  display: flex;
+  width: auto;
+  height: auto;
   text-align: center;
+  padding: 2vw;
   background-color: rgba(225, 210, 123, 1);
   border-radius: 8.2vw;
   border: solid 1.02vw rgba(168, 36, 244, 1);
+  margin: 18vh 3vw 18vh 3vw;
+  flex-direction: column;
+}
+
+.sectionLogin {
+  display: flex;
+  width: auto;
+  height: 67vh;
+  text-align: center;
+  padding: 2vw;
+  background-color: rgba(225, 210, 123, 1);
+  border-radius: 8.2vw;
+  border: solid 1.02vw rgba(168, 36, 244, 1);
+  margin: 22vh 3vw 18vh 3vw;
+  flex-direction: column;
 }
 
 .title {
-  font-size: 2.9vh;
+  font-size: 3.5vh;
   font-style: italic;
   padding: 2vh 1vh 0vh 1vh;
   font-family: "Hind Vadodara", sans-serif;
   -webkit-text-stroke: 1.5px rgba(0, 0, 0, 0.3);
+  flex: 1;
+  line-height: 13vh;
 }
 
 .sectionButton {
@@ -59,6 +74,7 @@ body {
   flex-direction: column;
   align-items: center;
   gap: 1vh;
+  margin: -2vh 2vw 3vh 1vw;
 }
 
 .text {
@@ -66,6 +82,9 @@ body {
   font-size: 2.5vh;
   padding: 0vh 1.5vh 3vh 1.5vh;
   font-family: "Hind Vadodara", sans-serif;
+  flex: 1;
+  margin-top: -4vh;
+  line-height: 4vh;
 }
 
 .buttonReturn {
@@ -81,34 +100,45 @@ body {
   flex-direction: column;
   align-items: center;
   font-family: "Hind Vadodara", sans-serif;
+}
+
+.containerEmailAndPassword{
   -webkit-text-stroke: 1.5px rgba(0, 0, 0, 0.3);
 }
 
+.containerButtons{
+  display:flex;
+  flex-direction: column;
+}
+
 .buttonEnter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   background-color: #844ea8;
-  width: 35vw;
-  height: 6vh;
+  width: auto;
+  height: auto;
   border-radius: 2.6vw;
   color: white;
-  font-family: "Inria Serif";
-  font-style: italic;
-  font-weight: 700;
-  font-size: 2.3vh;
-  line-height: 17px;
-  position: absolute;
-  margin-top: 6vh;
-  margin-left: -18vw;
+  font-family: "Hind Vadodara", sans-serif;
+  font-size: 2.5vh;
+  padding: 1vh 2vw 1vh 2vw ;
+  margin:4vh 2vw 2vh 2vw;
 }
 
 .sectionFormSignup {
-  margin-top: 25vh;
-  margin-left: 8vw;
   width: 78.2vw;
   height: 68vh;
   text-align: center;
   background-color: rgba(225, 210, 123, 1);
   border-radius: 8.2vw;
   border: solid 1.02vw rgba(168, 36, 244, 1);
+  margin: 24vh 13vw 25vh 9vw;
+}
+.containerButtonsSignUp{
+  display: flex;
+  flex-direction: column;
 }
 
 .formSignup {
@@ -121,19 +151,19 @@ body {
 }
 
 .buttonEnterSignup {
+  
+  margin: 2vh 12vw 2vh 11vw;
+  align-items: center;
+  justify-content: center;
   background-color: #844ea8;
-  width: 35vw;
-  height: 6vh;
+  width: auto;
+  height: auto;
   border-radius: 2.6vw;
   color: white;
-  font-family: "Inria Serif";
-  font-style: italic;
-  font-weight: 700;
-  font-size: 2.3vh;
-  line-height: 17px;
-  left: 33.62vw;
-  top: 80.56vh;
-  position: absolute;
+  font-family: "Hind Vadodara", sans-serif;
+  font-size: 2.5vh;
+  padding: 1vh 2vw 1vh 2vw ;
+
 }
 
 .subTitlesSignup {
@@ -173,9 +203,8 @@ body {
 #showPasswordLogin {
   height: 3vh;
   width: 4vw;
-  top: -3.8vh;
-  left: 23vw;
-  position: relative;
+  position: absolute;
+  margin: 0.5vh 22vw 16vh -8vw;
 }
 
 .showPassword {
@@ -188,16 +217,16 @@ body {
 .textValidation {
   text-align: center;
   font-size: 9vw;
-  margin: 10vh 5vw 10vh 5vw;
+  margin: 14vh 5vw 10vh 5vw;
   font-family: "Hind Vadodara", sans-serif;
 }
 
 .errors {
-  color: #ff0b0b;
+  color: red;
   font-weight: bolder;
   width: 70vw;
   margin-top: 2vw;
-  font-size: 1.7vh;
+  font-size: 2vh;
 }
 
 #passwordBox {
@@ -213,18 +242,17 @@ body {
 
 .containerYesNo {
   display: flex;
-  width: 30vw;
-  /* arriba - derecha - abajo - izquierda */
-  margin: -12vw 10vh 12vw 10vh;
-  font-size: 7vw;
-  gap: 2vw;
+  width: 52vw;
+  margin: 10vw 3vh 12vw 7vh;
+  font-size: 8vw;
+  gap: 6vw;
   font-family: "Hind Vadodara", sans-serif;
 }
+  
 
-#Yes,
-#No {
-  transform: scale(1.7);
-  margin-right: 4vw;
+.labels{
+  margin: 0vh -4vw 2vh 2vw;
+  display: flex;
 }
 
 .questionWomen {
@@ -236,12 +264,8 @@ body {
 .buttonGoogleSignup {
   border: none;
   background-color: transparent;
-  position: relative;
-  bottom: 9vh;
-  left: 14.6vh;
   color: #000000;
-  font-size: 2vh;
-  position: absolute;
+  font-size: 2.5vh;
 }
 
 .buttonGoogleSignup:hover {
@@ -253,10 +277,7 @@ body {
   border: none;
   background-color: transparent;
   color: black;
-  position: absolute;
-  bottom: 13vh;
-  left: 12.6vh;
-  font-size: 2vh;
+  font-size: 2.5vh;
 }
 .buttonGoogleLogin:hover {
   text-decoration: underline;
@@ -530,18 +551,16 @@ flex:1;
 .deleteButton{
   width: 8vw;
   left: 61vw;
-  flex:  1;
   z-index: 1;
-  background: purple;
+  background: #69278f;
   padding: 2vh;
   border-radius: 1vh;
 }
 .editButton{
   width: 8vw;
   left: 61vw;
-  flex: 1;
   z-index: 1;
-  background: purple;
+  background: #69278f;
   padding: 2vh;
   border-radius: 1vh;
 }
@@ -553,7 +572,7 @@ flex:1;
   height: 7vh;
   font-size: 2.5vh;
 flex:1;
-background-color:coral;
+
 }
 
 .resultTitle{
@@ -563,7 +582,7 @@ background-color:coral;
   font-size: 2vh;
   font-family: "Hind Vadodara", sans-serif;
   flex: 1;
-  background-color: aqua;
+
 }
 
 .resultDescription{
@@ -572,13 +591,12 @@ background-color:coral;
   height: 7vh;
   font-size: 1.8vh;
   flex: 1;
-  background-color:red;
   font-family: "Hind Vadodara", sans-serif;
 
 }
 
 .resultFullDate{
-  background-color: rgb(0, 4, 255);
+
 }
 .errorsPosts{
   color: red;
@@ -588,22 +606,42 @@ background-color:coral;
   font-family: "Hind Vadodara", sans-serif;
 }
 
-.like{
-  width: 8vw;
+#likeButton{
+  width: 13vw;
   left: 61vw;
-  flex: 1;
+  border-radius: 1vh;
   z-index: 1;
-  padding: 2vh;
-  border-radius: 1vh;
-  display: block;
- }
+}
 
- .likeLiked{
-  width: 8vw;
-  left: 61vw;
-  flex: 1;
-  z-index: 2;
-  padding: 2vh;
-  border-radius: 1vh;
-  display: none;
- }
+.titleError{
+  font-size: 9vw;
+  line-height: 4.5vh;
+  text-align: center;
+  padding: 4vh;
+  width: 53vw;
+  border: solid;
+  background: #69278f63;
+  border-color: #69278f;
+  border-radius: 8vw;
+  margin: 41vh 29vw 26vh 13vw;
+}
+
+.containerReactions{
+  justify-content: flex-end;
+  display: flex;
+  margin: 1vh 2vw 2vh 2vw;
+  gap: 0.5vh;
+}
+
+.likeContainer{
+  display: flex;
+  justify-content: flex-end;
+  margin: 2vh 12vw 3vh 51vw;
+  width: 22vw;
+}
+
+.likeCounter {
+font-size: 5.5vw;
+font-weight: bold;
+margin: -1vh 2vw 2vh 2vw
+}
