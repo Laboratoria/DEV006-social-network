@@ -27,7 +27,7 @@ body{
 #button-home{ 
     background-color: #ED914E;
     margin: 8px;
-    width: 130px;
+    width: 135px;
     border-radius: 9px;
     padding: 8px;
     border-color:#EA6F15;
@@ -40,7 +40,7 @@ body{
 #button-login{ 
     background-color: #6A4DB2;
     margin: 8px ;
-    width: 130px;
+    width: 135px;
     border-radius: 9px;
     padding: 8px;
     border-color: #5735AD;
@@ -51,8 +51,10 @@ body{
     font-family: 'Inter', sans-serif;
 }
 #button-google{
+    display: flex;
     margin: 8px;
-    width: 130px;
+    width: 135px;
+    height: 30px;
     border-radius: 9px;
     padding: 8px;  
     font-size: 9px; 
@@ -60,8 +62,16 @@ body{
     border-color: #A6A4A7;
     font-family: 'Inter', sans-serif;
     font-weight: 600;
-    
+    background-image: url(./img/search.png);
+    background-position:5% 50%;
+    background-repeat: no-repeat;
+    background-size: 16px 16px;;
+    padding: 8px 6px 8px 27px;
 }
+/*#imgG-style{
+    max-width: 50%;
+    max-height: 50%;
+}*/
 #formLogin-style{
     display: flex;
     flex-direction: column;  
