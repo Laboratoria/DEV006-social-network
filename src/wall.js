@@ -47,8 +47,4 @@ function wall(navigateTo) {
 // const btnPost = document.getElementById('btnPost');
 // const idNewPost = document.getElementById('newPost');
 
-/* btnPost.addEventListener('click',()=>{
-    console.log(btnPost);
-}); */
-
 export default wall;
