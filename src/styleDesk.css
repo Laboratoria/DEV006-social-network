@@ -450,7 +450,7 @@
   .deleteButton{
     width: 30px;
     height: 30px;
-    left: 471px;
+    left: 713px;
     position: relative;
   }
 
@@ -534,20 +534,24 @@
   width: 136px;
   top: 96px;
   margin-left: 40%;
-  margin-top: 100px;
+  margin-top: 31px;
 } 
   
   select { 
     border-radius: 5px;
     margin-top: 90px;
-    width: 600px;
+    width: 303px;
     height: 30px;
     border: none;
     box-shadow: 0px 10px 10px -10px #757474;
     top: 63px;
     /* margin-right: 329px; */
     font-size: 18px;
+<<<<<<< HEAD
     /* margin-left: 100px; */
+=======
+    margin-left: -301px;
+>>>>>>> 915866881a04234f69da6e1fe3e2e626aa21d9eb
   }
   
   .paragraphReview,
@@ -562,7 +566,11 @@
     /* top: 30px; */
     height: 13px;
     width: 187px;
+<<<<<<< HEAD
     margin-right: 500px;
+=======
+    margin-right: 39%;
+>>>>>>> 915866881a04234f69da6e1fe3e2e626aa21d9eb
   }
   
   .paragraphMood {
@@ -580,8 +588,13 @@
   .textAreaReview {
     position: relative;
     top: 6px;
+<<<<<<< HEAD
     left: 41px;
     width: 700px;
+=======
+    left: 19px;
+    width: 631px;
+>>>>>>> 915866881a04234f69da6e1fe3e2e626aa21d9eb
     height: 100px;
     border-radius: 10px;
     border: none;
@@ -605,8 +618,8 @@
     font-size: 23px;
     font-weight: 400;
     border: none;
-    width: 730px;
-    /* margin-right: 449px; */
+    width: 638px;
+    margin-right: -39px;
     /* top: 673px; */
     margin-top: 45px;
     margin-left: 100px;
