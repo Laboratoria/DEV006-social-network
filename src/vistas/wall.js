@@ -247,14 +247,15 @@ function wall(navigateTo) {
     // Agrupar por secciones
     deletePopup.append(yesDelete, noDelete);
     likeContainer.append(
+      resultFullDate,
       like,
       likeCounter,
+  
     );
     containerPost.append(
       resultUser,
       resultTitle,
       resultDescription,
-      resultFullDate,
       likeContainer,
     );
     sectionPosts.append(containerPost);
