@@ -18,6 +18,8 @@ function login(navigateTo) {
   const showPasswordLogin = document.createElement('img');
   const buttonGoogleLogin = document.createElement('button');
   const errorPasswordLogin = document.createElement('span');
+  const containerEmailAndPassword = document.createElement('div');
+  const containerButtons= document.createElement('div');
 
   inputEmail.placeholder = 'example@gmail.com';
   inputPassword.placeholder = '***********';
@@ -81,6 +83,8 @@ function login(navigateTo) {
   buttonEnter.classList.add('buttonEnter');
   buttonGoogleLogin.classList.add('buttonGoogleLogin');
   errorPasswordLogin.classList.add('errors');
+  containerEmailAndPassword.classList.add('containerEmailAndPassword');
+  containerButtons.classList.add('containerButtons');
 
   // agregar atributos//
   logo.setAttribute('src', 'images/logo.png');
@@ -94,15 +98,16 @@ function login(navigateTo) {
 
   // agrupando las secciones//
   sectionHeader.append(header, logo);
-  form.append(
+  form.append(containerEmailAndPassword,errorPasswordLogin,containerButtons);
+  containerEmailAndPassword.append(
     emailLogin,
     inputEmail,
     passwordLogin,
     inputPassword,
     showPasswordLogin,
-    errorPasswordLogin,
   );
-  sectionForm.append(form, buttonEnter, buttonGoogleLogin);
+  containerButtons.append(buttonEnter, buttonGoogleLogin);
+  sectionForm.append(form);
   section.append(sectionHeader, buttonReturn, sectionForm);
 
   return section;

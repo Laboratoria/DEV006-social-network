@@ -22,6 +22,8 @@ function questionWomen(navigateTo) {
   buttonReturnSignup.classList.add('buttonReturnSignup');
   containerYesNo.classList.add('containerYesNo');
   question.classList.add('questionWomen');
+  yes.classList.add('labels');
+  no.classList.add('labels');
 
   // agregar atributos//
   logo.setAttribute('src', 'images/logo.png');
@@ -35,8 +37,7 @@ function questionWomen(navigateTo) {
   checkboxNo.name = 'checkbox';
   yes.textContent = 'Si';
   no.textContent = 'No';
-  yes.id = 'labelYes';
-  no.id = 'labelNo';
+ 
   buttonReturnSignup.setAttribute('src', 'images/arrow.png');
 
   // agregar texto a los botones//

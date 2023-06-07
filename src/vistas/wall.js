@@ -2,7 +2,7 @@ import {
   savePost, onGetPosts, deletePost, getPost, updatePost, addLike, removeLike,
 } from '../lib/firestore.js';
 import { auth } from '../lib/configFirebase.js';
-import { doc } from 'firebase/firestore';
+// import { doc } from 'firebase/firestore';
 
 function wall(navigateTo) {
   const section = document.createElement('section');
@@ -134,18 +134,24 @@ function wall(navigateTo) {
     const currentUser = auth.currentUser;
     const isOwner = currentUser && currentUser.uid === useruid;
     const like = document.createElement('img');
+    const likeCounter = document.createElement('span');
+    const likeContainer = document.createElement('div');
+    const containerReactions = document.createElement('div');
     // se valida si el usuario es el dueño del post, para que
     // le aparezca la opcion de edit y delete(isOwner)
-
+    containerReactions.append(
+      deleteButton,
+      editButton,
+      deletePopup,
+    );
     if (isOwner) {
       containerPost.append(
         resultUser,
         resultTitle,
         resultDescription,
         resultFullDate,
-        deleteButton,
-        editButton,
-        deletePopup,
+        containerReactions,
+        like,
       );
     } else {
       containerPost.append(
@@ -153,6 +159,7 @@ function wall(navigateTo) {
         resultTitle,
         resultDescription,
         resultFullDate,
+        like,
       );
     }
     // Insertar textos
@@ -164,7 +171,7 @@ function wall(navigateTo) {
     noDelete.textContent = 'NO';
     deletePopup.textContent = '¿Estas segura de que deseas eliminar tu post?';
     popUpButton.innerText = 'Post';
-    like.textContent = `Likes: ${likes}`;
+    likeCounter.textContent = likes.length;
 
     // Crear clases
     resultTitle.classList.add('resultTitle');
@@ -180,6 +187,10 @@ function wall(navigateTo) {
     yesDelete.classList.add('buttonYesDelete');
     editButton.classList.add('editButton');
     like.classList.add('like');
+    likeCounter.classList.add('likeCounter');
+    likeContainer.classList.add('likeContainer');
+    containerReactions.classList.add('containerReactions');
+    // likeLiked.classList.add('likeLiked');
 
     // Agregar atributos
     deleteButton.setAttribute('src', 'images/delete.png');
@@ -188,6 +199,12 @@ function wall(navigateTo) {
     like.setAttribute('data-id', id);
     editButton.setAttribute('src', 'images/edit.png');
     like.setAttribute('src', 'images/Like.png');
+    like.setAttribute('id', 'likeButton');
+    // likeLiked.setAttribute('src', 'images/LikeColor.png');
+    if (likes.includes(currentUser.uid)) {
+      like.setAttribute('src', 'images/LikeColor.png');
+    }
+
     // funcion para que al momento de clickear se esconda el popup de delete
     noDelete.addEventListener('click', () => {
       deletePopup.style.display = 'none';
@@ -204,7 +221,8 @@ function wall(navigateTo) {
       deletePopup.style.display = 'block';
     });
 
-    like.addEventListener('click', () => {
+    like.addEventListener('click', (e) => {
+      e.preventDefault();
       if (likes.includes(currentUser.uid)) {
         removeLike(id);
         console.log('like removed');
@@ -228,12 +246,16 @@ function wall(navigateTo) {
 
     // Agrupar por secciones
     deletePopup.append(yesDelete, noDelete);
+    likeContainer.append(
+      like,
+      likeCounter,
+    );
     containerPost.append(
       resultUser,
       resultTitle,
       resultDescription,
       resultFullDate,
-      like,
+      likeContainer,
     );
     sectionPosts.append(containerPost);
   }

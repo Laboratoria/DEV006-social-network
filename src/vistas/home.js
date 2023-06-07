@@ -26,11 +26,11 @@ function home(navigateTo) {
   logo.setAttribute('src', 'images/logo.png');
 
   // agregar texto a los botones//
-  buttonLogin.textContent = 'Iniciar sesión';
+  buttonLogin.textContent = ' Iniciar sesión ';
   buttonLogin.addEventListener('click', () => {
     navigateTo('/login');
   });
-  buttonSignin.textContent = 'Registrarme';
+  buttonSignin.textContent = '  Registrarme  ';
   buttonSignin.addEventListener('click', () => {
     navigateTo('/question');
   });
