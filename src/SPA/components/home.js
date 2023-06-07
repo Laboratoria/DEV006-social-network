@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 /* eslint-disable no-console */
-import { saveTask, onGetPost, deletePost, getPost, updatePost } from "../helpers/lib/Auth";
+import { saveTask, onGetPost, deletePost, getPost, updatePost, giveLikes, removeLikes } from "../helpers/lib/Auth";
 
 function home(/* navigateTo */) {
   const section = document.createElement('section');
@@ -42,7 +42,8 @@ function home(/* navigateTo */) {
   const perroImg = document.createElement('img');
   const footerHome = document.createElement('footer');
 
-  const user = JSON.parse(sessionStorage.getItem('user'));
+   const userid = sessionStorage.getItem('user');
+   const email = sessionStorage.getItem('email');
 
   let editStatus = false; 
   let id = '';
@@ -53,25 +54,30 @@ function home(/* navigateTo */) {
       posts.forEach((post) => { //recorro el array de objetos y en cada uno de los Post creo un nuevo elemento P para luego pintarlo en el HTML
         console.log(post.id);
 
-        const deleteButton = (user === post.usuarioPost)? `<button class = 'btn-delete' data-id= '${post.id}'>Borrar Post</button>` : '';
-        const editarButton = (user === post.usuarioPost)? `<button class = 'btn-edit' data-id = '${post.id}'> Edit</button>` : '';
-
-        divPosts.innerHTML += `
+        const deleteButton = (post.isOwn)? `<button class = 'btn-delete' data-id= '${post.id}'>Borrar Post</button>` : '';
+        const editarButton = (post.isOwn)? `<button class = 'btn-edit' data-id = '${post.id}'> Edit</button>` : '';
+          const likeButton = (post.hasLike)? `<button class='btn-like' ><i class="material-icons"  data-id='${post.id}'>favorite</i></button> `: `<button class='btn-like' ><i class="material-icons"  data-id='${post.id}'>check</i></button> `;
+      
+          divPosts.innerHTML += `
       <div>
-      <h3>${post.usuarioPost}</h3>
+      <h3>${post.displayName}</h3>
       <p>${post.description}</p>
+      <p>${post.likeCount}</p>
       ${deleteButton}
       ${editarButton}
       </div>
+      <div>
+      ${likeButton}
+      </div>  
       `;
       });
       /*  <button class = 'btn-delete' data-id= '${post.id}'>Borrar Post</button> */
      
-      
       const btnDeletePost = document.querySelectorAll('.btn-delete');
       btnDeletePost.forEach(btn => {
         btn.addEventListener('click', (e)=> {
-          deletePost(e.target.dataset.id);
+           deletePost(e.target.dataset.id);
+        
         })
       })
 
@@ -84,16 +90,28 @@ function home(/* navigateTo */) {
          
           editStatus = true;
          id = doc.id;
-        //  formPost['btn-savePost'].innerText = 'Actualizar'
 
-      
-        })
+       })
       })
-    };
-    onGetPost(renderPost);
-  })
 
-
+      const btnLike = document.querySelectorAll('.btn-like');
+      btnLike.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          console.log(e.target.dataset.id);
+          const post = posts.find(p=> p.id==e.target.dataset.id);
+           if(post.hasLike) {
+            removeLikes(post.id, userid)
+            console.log('le di like')
+           }else {
+            giveLikes(post.id,userid)
+            console.log('le di dislike')
+           }
+        
+         })
+        })
+  };
+  onGetPost(renderPost,userid);
+  });
 
   iconInicio.setAttribute('src', '../assets/iconHome.png');
   labelInicio.classList.add('text-label');
@@ -189,35 +207,20 @@ function home(/* navigateTo */) {
     if(editStatus) {
       updatePost(id, {description: description.value}).then(()=>{
         editStatus = false;
+        formPost.reset();
       }).catch((error)=>{
         console.log(error)
       });
     }else {
-      saveTask(description.value, user).then(()=>{
+      saveTask(description.value, userid, email).then(()=>{
         formPost.reset();
       }).catch((error)=>{
         console.log(error)
       })
+
     }
    
-    // const description = formPost['task-description'];
-    // if(editStatus) {
-    //   const postPromise = saveTask(description.value, user)
-    //   postPromise.then(() => {
-    //  updatePost(id, {description: description.value});
-    //   editStatus = false
-    //   }).catch((error)=>{
-    //   console.log(error);
-    //   })
-    //   } else {
-    //     const postPromise = saveTask(description.value, user)
-    //     postPromise.then(()=> {
-    //       saveTask(description.value, user)
-    //     }).catch((error)=>{
-    //       console.log(error);
-    //     })   
-    // }
-    formPost.reset()
+  
   }); 
   
 
