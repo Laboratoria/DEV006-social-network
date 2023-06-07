@@ -9,7 +9,9 @@ function login(navigateTo) {
 
   const buttonReturn = document.createElement('button');
   const form = document.createElement('form');
+  const textEmail = document.createElement('p');
   const inputEmail = document.createElement('input');
+  const textPassword = document.createElement('p');
   const inputPass = document.createElement('input');
   logo.src = './img/logo.png';
   logo.alt = 'web-logo';
@@ -20,8 +22,10 @@ function login(navigateTo) {
   form.setAttribute('id', 'form-style');
   section.setAttribute('id', 'section2-style');
   buttonReturn.setAttribute('id', 'buttonR-style');
-  inputEmail.placeholder = 'Write email';
-  inputPass.placeholder = 'pass';
+  textEmail.setAttribute('id', 'textEmail-style');
+  textPassword.setAttribute('id', 'textP-style');
+  textEmail.textContent = 'INGRESA TU CORREO';
+  textPassword.textContent = 'CREA UNA CONTRASEÑA';
 
   // title.textContent = 'Login';
   // buttonLogin.textContent = 'go';
@@ -49,7 +53,7 @@ function login(navigateTo) {
     navigateTo('/');
   });
 
-  form.append(inputEmail, inputPass);
+  form.append(textEmail, inputEmail, textPassword, inputPass);
   section.append(ctnImage, form, buttonReturn);
 
   return section;
