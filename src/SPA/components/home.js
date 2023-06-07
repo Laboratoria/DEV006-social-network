@@ -1,6 +1,8 @@
 /* eslint-disable max-len */
 /* eslint-disable no-console */
-import { saveTask, onGetPost, deletePost, getPost, updatePost, giveLikes, removeLikes } from "../helpers/lib/Auth";
+import {
+  saveTask, onGetPost, deletePost, getPost, updatePost, giveLikes, removeLikes,
+} from '../helpers/lib/Auth';
 
 function home(/* navigateTo */) {
   const section = document.createElement('section');
@@ -42,75 +44,75 @@ function home(/* navigateTo */) {
   const perroImg = document.createElement('img');
   const footerHome = document.createElement('footer');
 
-   const userid = sessionStorage.getItem('user');
-   const email = sessionStorage.getItem('email');
+  const userid = sessionStorage.getItem('user');
+  const email = sessionStorage.getItem('email');
 
-  let editStatus = false; 
+  let editStatus = false;
   let id = '';
-  window.addEventListener('load',  () =>{
-    const renderPost = (posts) => { //Se ejecuta una función con argumento Posts que es el array de objetos que representa los datos de los Posts en la colección de Firestore
-     
+  window.addEventListener('load', () => {
+    const renderPost = (posts) => { // Se ejecuta una función con argumento Posts que es el array de objetos que representa los datos de los Posts en la colección de Firestore
       divPosts.innerHTML = '';
-      posts.forEach((post) => { //recorro el array de objetos y en cada uno de los Post creo un nuevo elemento P para luego pintarlo en el HTML
+      posts.forEach((post) => { // recorro el array de objetos y en cada uno de los Post creo un nuevo elemento P para luego pintarlo en el HTML
         console.log(post.id);
 
-        const deleteButton = (post.isOwn)? `<button class = 'btn-delete' data-id= '${post.id}'>Borrar Post</button>` : '';
-        const editarButton = (post.isOwn)? `<button class = 'btn-edit' data-id = '${post.id}'> Edit</button>` : '';
-          const likeButton = (post.hasLike)? `<button class='btn-like' ><i class="material-icons"  data-id='${post.id}'>favorite</i></button> `: `<button class='btn-like' ><i class="material-icons"  data-id='${post.id}'>check</i></button> `;
-      
-          divPosts.innerHTML += `
+        const deleteButton = (post.isOwn) ? `<button class = 'btn-delete'><i class="material-icons" data-id='${post.id}'>delete_forever</i></button>` : '';
+        const editarButton = (post.isOwn) ? `<button class = 'btn-edit'><i class="material-icons" data-id='${post.id}'>edit</i></button>` : '';
+        const likeButton = (post.hasLike) ? `<button class='btn-like' ><i class="material-icons"  data-id='${post.id}'>pets</i></button> ` : `<button class='btn-like'><i class="material-icons"  data-id='${post.id}'>favorite_border</i></button> `;
+        divPosts.innerHTML += `
       <div>
-      <h3>${post.displayName}</h3>
-      <p>${post.description}</p>
-      <p>${post.likeCount}</p>
+      <h3>${post.displayName}</h3>    
+      <div class= "comentarios">${post.description}</div>
+
+      <section class= "botones-post">
+      <div class= "div-likes">
+      <p class= "conteo-likes">${post.likeCount}</p>
+      ${likeButton}
+      </div>
+      <div class= "div-edit-delete">
       ${deleteButton}
       ${editarButton}
       </div>
-      <div>
-      ${likeButton}
-      </div>  
+      </section>
+      </div>
       `;
       });
       /*  <button class = 'btn-delete' data-id= '${post.id}'>Borrar Post</button> */
-     
-      const btnDeletePost = document.querySelectorAll('.btn-delete');
-      btnDeletePost.forEach(btn => {
-        btn.addEventListener('click', (e)=> {
-           deletePost(e.target.dataset.id);
-        
-        })
-      })
 
-      const btnEdit = document.querySelectorAll('.btn-edit')
-      btnEdit.forEach((btn)=>{
-        btn.addEventListener('click', async(e)=>{
+      const btnDeletePost = document.querySelectorAll('.btn-delete');
+      btnDeletePost.forEach((btn) => {
+        btn.addEventListener('click', (e) => {
+          deletePost(e.target.dataset.id);
+        });
+      });
+
+      const btnEdit = document.querySelectorAll('.btn-edit');
+      btnEdit.forEach((btn) => {
+        btn.addEventListener('click', async (e) => {
           const doc = await getPost(e.target.dataset.id);
           const postEdit = doc.data();
-          formPost['task-description'].value = postEdit.description
-         
-          editStatus = true;
-         id = doc.id;
+          formPost['task-description'].value = postEdit.description;
 
-       })
-      })
+          editStatus = true;
+          id = doc.id;
+        });
+      });
 
       const btnLike = document.querySelectorAll('.btn-like');
-      btnLike.forEach(btn => {
+      btnLike.forEach((btn) => {
         btn.addEventListener('click', (e) => {
           console.log(e.target.dataset.id);
-          const post = posts.find(p=> p.id==e.target.dataset.id);
-           if(post.hasLike) {
-            removeLikes(post.id, userid)
-            console.log('le di like')
-           }else {
-            giveLikes(post.id,userid)
-            console.log('le di dislike')
-           }
-        
-         })
-        })
-  };
-  onGetPost(renderPost,userid);
+          const post = posts.find((p) => p.id == e.target.dataset.id);
+          if (post.hasLike) {
+            removeLikes(post.id, userid);
+            console.log('le di like');
+          } else {
+            giveLikes(post.id, userid);
+            console.log('le di dislike');
+          }
+        });
+      });
+    };
+    onGetPost(renderPost, userid);
   });
 
   iconInicio.setAttribute('src', '../assets/iconHome.png');
@@ -200,29 +202,24 @@ function home(/* navigateTo */) {
   section.classList.add('section-home');
   section.append(menuAr, postAndFooter, perroAr);
 
-
-  formPost.addEventListener('submit',(e)=> {
+  formPost.addEventListener('submit', (e) => {
     e.preventDefault();
     const description = formPost['task-description'];
-    if(editStatus) {
-      updatePost(id, {description: description.value}).then(()=>{
+    if (editStatus) {
+      updatePost(id, { description: description.value }).then(() => {
         editStatus = false;
         formPost.reset();
-      }).catch((error)=>{
-        console.log(error)
+      }).catch((error) => {
+        console.log(error);
       });
-    }else {
-      saveTask(description.value, userid, email).then(()=>{
+    } else {
+      saveTask(description.value, userid, email).then(() => {
         formPost.reset();
-      }).catch((error)=>{
-        console.log(error)
-      })
-
+      }).catch((error) => {
+        console.log(error);
+      });
     }
-   
-  
-  }); 
-  
+  });
 
   return section;
 }

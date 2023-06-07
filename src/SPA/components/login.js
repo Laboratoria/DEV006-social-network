@@ -33,6 +33,8 @@ function login(navigateTo) {
   const divIzquierdo = document.createElement('div');
   const cel = document.createElement('img');
   const texto = document.createElement('p');
+  const divFooterLogin = document.createElement('div');
+  const footerLogin = document.createElement('footer');
 
   /* agregando imagen al dom dentro de esta seccion
   logo.src = '../assets/logo1.png';
@@ -77,6 +79,11 @@ function login(navigateTo) {
   contenedorR.classList.add('centrado');
   contenedorR.append(pregunta, buttonRegistrate);
 
+  footerLogin.classList.add('footer-login');
+  footerLogin.textContent = '@WebDulValLeo';
+  divFooterLogin.classList.add('div-footer-login');
+  divFooterLogin.append(footerLogin);
+
   // PANTALLA PC
   texto.textContent = 'Ingresa a nuestra app y forma parte de esta linda comunidad. Comparte tips, anécdotas y/o fotos de tu  peludito.';
   cel.classList.add('cel-perro');
@@ -91,20 +98,20 @@ function login(navigateTo) {
     navigateTo('/registro');
   });
 
-  // agregando elementos al form
-  form.append(contenedorC, inputCorreo, contenedorP, inputPassword, buttonLogin);
-  sectionPets.append(animales, form, buttonSignGoogle, contenedorR);
+ // agregando elementos al form
+ form.append(contenedorC, inputCorreo, contenedorP, inputPassword, buttonLogin);
+ sectionPets.append(animales, form, buttonSignGoogle, contenedorR);
 
-  // agregando elementos a toda la seccion login
-  sectionLogin.classList.add('sectionLogin');
-  sectionLogin.append(sectionLogo, sectionPets);
+ // agregando elementos a toda la seccion login
+ sectionLogin.classList.add('sectionLogin');
+ sectionLogin.append(sectionLogo, sectionPets, divFooterLogin);
 
-  // agregar los elementos al DOM
-  section.classList.add('sectionGeneral');
-  section.append(
-    divIzquierdo,
-    sectionLogin,
-  );
+ // agregar los elementos al DOM
+ section.classList.add('sectionGeneral');
+ section.append(
+   divIzquierdo,
+   sectionLogin,
+ );
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -128,7 +135,6 @@ function login(navigateTo) {
   });
 
   buttonSignGoogle.addEventListener('click', () => {
-  
     const provider = new GoogleAuthProvider();
     signInWithRedirect(auth, provider);
   });

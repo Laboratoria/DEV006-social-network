@@ -22,6 +22,7 @@ function registro(navigateTo) {
   const textoEnlace = document.createElement('a');
   const textoRegister = document.createElement('p');
   const footerRegister = document.createElement('footer');
+
   /* div lado izquierdo */
   imgFondo.classList.add('img-fondo');
   imgFondo.setAttribute('src', '../assets/vector.png');
