@@ -39,7 +39,7 @@ function wall(navigateTo) {
 
   liPost.appendChild(ctnPost);
 
-  headerWall.append(ctnHeader, btnLogOut);
+  headerWall.append(ctnHeader,btnLogOut);
   mainWall.append(headerWall, section1, newPost, inputPost, btnPost, ctnPost, liPost);
   return mainWall;
 }
