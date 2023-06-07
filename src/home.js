@@ -23,6 +23,8 @@ function home(navigateTo) {
   const btnLogin = document.createElement('button');
   const btnRegister = document.createElement('button');
   const buttonGoogle = document.createElement('button');
+  const imgGoogle = document.createElement('img');
+
   btnRegister.setAttribute('id', 'button-home');
   btnLogin.setAttribute('id', 'button-login');
   buttonGoogle.setAttribute('id', 'button-google');
@@ -32,10 +34,14 @@ function home(navigateTo) {
   textPass.setAttribute('id', 'textPass-style');
   inputAcces.setAttribute('id', 'inputA-style');
   inputPassword.setAttribute('id', 'inputP-style');
+  imgGoogle.setAttribute('id', 'imgG-style');
   logo.setAttribute('id', 'logo-style');
   logo.src = './img/logo.png';
   logo.alt = 'web-logo';
   ctnImage.appendChild(logo);
+  imgGoogle.src = './img/search.png';
+  imgGoogle.alt = 'goo-logo';
+  buttonGoogle.appendChild(imgGoogle);
 
   // logo.innerHTML='<img src="./img/logo.png">';
   // document.getElementById("logo-style").innerHTML='<img src="./Rectangle 24.png" />';
