@@ -52,7 +52,6 @@
     
       /*-------------- Se repite en create Acount--------------*/
      .logoimg {
-      position: relative;
       position: absolute;
       top: 0;
       left: 50%;
@@ -146,7 +145,7 @@
       color: #f25d07;
       width: 27%;
       position: absolute;
-      right: 170px;
+      right: 156px;
       bottom: 19.2%;
       text-align: center;
       top: 598px;
@@ -219,44 +218,61 @@
     }
     
     .nameCreateacount,
-    .emailCreateacount,
-    .passCreateacount,
-    .confirmPassCreateacount {
-      position: relative;
-      width: 300px;
-      height: 34px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: #ffffff;
-      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-      border-radius: 5px;
-      margin-bottom: 22px;
-      border: none;
-      top: 230px;
-      display: flex;
-      justify-content: center;
+.emailCreateacount,
+.passCreateacount,
+.confirmPassCreateacount {
+  /* position: relative; */
+  width: 300px;
+  height: 34px;
+   left: 50%;
+  transform: translateX(-50%);
+  background: #ffffff;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+  /* margin-bottom: 22px; */
+  border: none;
+  display: flex;
+  justify-content: center;
+}
+
+    .nameCreateacount{
+      position: absolute; 
+      top: 271px;
     }
-    
+
+    .emailCreateacount{
+      position: absolute;
+      top: 333px;
+    }
+
+    .passCreateacount{
+     position: absolute;
+     top: 397px;
+    }
+
+    .confirmPassCreateacount {
+      position: absolute;
+      top: 460px;
+    }
     .alerEmailParagraph,
-    .alertPassparagraph {
+    .alertPassparagraph,
+    .alertConfirmPassparagraph {
       font-family: "Roboto", sans-serif;
       font-style: normal;
-      font-size: 14px;
-      position: relative;
-      left: 269px;
-      top: 218px;
+      font-size: 15px;
+      position: absolute;
+      left: 34%;
       color: #ffffff;
       width: 30%;
     }
+    .alerEmailParagraph {
+      top: 374px;
+    }
+    .alertPassparagraph {  
+      top: 438px;
+    }
     .alertConfirmPassparagraph {
-      font-family: "Roboto", sans-serif;
-    font-style: normal;
-    font-size: 14px;
-    position: relative;
-    left: 269px;
-    top: 217px;
-    color: #ffffff;
-    width: 30%;
+      top: 502px;
     }
     
     .login {
@@ -575,10 +591,15 @@
     
     .img-comida {
       position: absolute;
-      width: 453px;
+      width: 100%;
       height: 290px;
-      left: -35px;
       top: 129px;
+      display: flex;
+      justify-content: center;
+      align-content: center;
+      align-items: center;
+      left: 0px;
+      right: 0px;
     }
     
     .textoerror {
@@ -588,22 +609,28 @@
       right: 0;
       text-align: center;
     }
+
+    .return {
+      background: url(/img/arrow.png);
+      position: relative;
+      top: 22px;
+      left: 9px;
+      border: none;
+  }
+
+    /*-------------------------------------- FOOTER --------------------------------------------*/
+    .footer {
+      top: 339px;
+      position: relative;
+      left: 29.5%;
+      font-family: "Familjen Grotesk", sans-serif;
+      font-style: normal;
+      font-size: 16px;
+      color: white;
+      width: 342px;
+    }
     
     }
-    /* .loginCreateAcount {
-      position: absolute;
-      width: 166px;
-      height: 53px;
-      left: 111px;
-      top: 80%;
-      background: #f28e13;
-      border-radius: 50px;
-      border: none;
-      color: #fff;
-      font-family: system-ui;
-      font-weight: 100;
-      font-size: large;
-      font-weight: 600;
-    } */
+
     
     

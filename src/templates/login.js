@@ -22,8 +22,12 @@ function login(navigateTo) {
   const paragraphRegister = document.createElement('p');
   const alertEmail = document.createElement('p');
   const alertPass = document.createElement('p');
+  const footer = document.createElement('footer')
 
   section.classList.add('sectionLogin');
+
+  footer.classList.add('footer');
+  footer.textContent = 'Copyright©️ 2023 SN11/Bootcamp Laboratoria.';
 
   alertEmail.classList.add('alertEmail');
   alertPass.classList.add('alertPass');
@@ -132,7 +136,7 @@ function login(navigateTo) {
     paragraphRegister,
     // logoGoogle,
   );
-  section.append(logo, form, backgroundLogin);
+  section.append(logo, form, backgroundLogin, footer);
   return section;
 }
 

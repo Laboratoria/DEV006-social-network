@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-// import './lib/firebase.js';
-=======
->>>>>>> 915866881a04234f69da6e1fe3e2e626aa21d9eb
 import { auth } from './lib/firebase';
 import login from './templates/login.js';
 import createAcount from './templates/createAcount.js';

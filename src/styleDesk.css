@@ -256,6 +256,8 @@
     font-size: 18px;
   }
 
+  
+
   .alerEmailParagraph {
     font-family: "Roboto", sans-serif;
     font-style: normal;
@@ -302,7 +304,7 @@
     border: none;
     position: fixed;
     left: 50%;
-    bottom: 159px;
+    bottom: 126px;
     transform: translateX(-50%);
   }
 
@@ -443,7 +445,7 @@
   .editButton{
     width: 30px;
     height: 30px;
-    left: 468px;
+    left: 714px;
     position: relative;
   }
   
@@ -521,7 +523,7 @@
     line-height: 22px;
     color: #f25d07;
     position: absolute;
-    top: 590px;
+    top: 524px;
     left: 450px;
   }
   
@@ -545,13 +547,8 @@
     border: none;
     box-shadow: 0px 10px 10px -10px #757474;
     top: 63px;
-    /* margin-right: 329px; */
     font-size: 18px;
-<<<<<<< HEAD
-    /* margin-left: 100px; */
-=======
     margin-left: -301px;
->>>>>>> 915866881a04234f69da6e1fe3e2e626aa21d9eb
   }
   
   .paragraphReview,
@@ -566,11 +563,7 @@
     /* top: 30px; */
     height: 13px;
     width: 187px;
-<<<<<<< HEAD
-    margin-right: 500px;
-=======
     margin-right: 39%;
->>>>>>> 915866881a04234f69da6e1fe3e2e626aa21d9eb
   }
   
   .paragraphMood {
@@ -588,13 +581,8 @@
   .textAreaReview {
     position: relative;
     top: 6px;
-<<<<<<< HEAD
-    left: 41px;
-    width: 700px;
-=======
     left: 19px;
     width: 631px;
->>>>>>> 915866881a04234f69da6e1fe3e2e626aa21d9eb
     height: 100px;
     border-radius: 10px;
     border: none;
@@ -631,10 +619,15 @@
 
   .img-comida {
     position: absolute;
-    width: 453px;
+    width: 70%;
     height: 290px;
-    left: -35px;
     top: 129px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    left: 18%;
+    right: 0px;
   }
   
   .textoerror {
@@ -645,21 +638,23 @@
     text-align: center;
   }
 
-  
-  /* .loginCreateAcount {
-    position: absolute;
-    width: 166px;
-    height: 53px;
-    left: 111px;
-    top: 80%;
-    background: #f28e13;
-    border-radius: 50px;
-    border: none;
-    color: #fff;
-    font-family: system-ui;
-    font-weight: 100;
-    font-size: large;
-    font-weight: 600;
-  } */
+  .return {
+      background: url(/img/arrow.png);
+      position: relative;
+      top: 22px;
+      left: 9px;
+      border: none;
+  }
+
+  /*-------------------------------------- FOOTER --------------------------------------------*/
+
+.footer {
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+  /* height: 20%; */
+  position: absolute;
+  left: 37%;
+}
   
 }
