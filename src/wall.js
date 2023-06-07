@@ -23,6 +23,10 @@ function wall(navigateTo) {
   liPost.setAttribute('id', 'newPost');
   btnPost.setAttribute('id', 'btnPost');
 
+  imgHeader.src = './img/header-mobile2.png';
+  imgHeader.alt = 'header-logo';
+  ctnHeader.appendChild(imgHeader);
+
   inputPost.placeholder = '¡Comparte tus eventos!';
   btnLogOut.textContent = 'CERRAR SESION';
 
@@ -35,7 +39,7 @@ function wall(navigateTo) {
 
   liPost.appendChild(ctnPost);
 
-  headerWall.append(imgHeader, btnLogOut);
+  headerWall.append(ctnHeader, btnLogOut);
   mainWall.append(headerWall, section1, newPost, inputPost, btnPost, ctnPost, liPost);
   return mainWall;
 }
