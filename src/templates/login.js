@@ -9,7 +9,6 @@ import { auth } from '../lib/firebase';
 function login(navigateTo) {
   const section = document.createElement('section');
   const logo = document.createElement('img');
-  const logoGoogle = document.createElement('img');
   const title = document.createElement('h1');
   const backgroundLogin = document.createElement('div');
   const form = document.createElement('div');
@@ -27,7 +26,7 @@ function login(navigateTo) {
 
   alertEmail.classList.add('alertEmail');
   alertPass.classList.add('alertPass');
-  form.classList.add('divLogin')
+  form.classList.add('divLogin');
 
   backgroundLogin.classList.add('backgroundLogin');
 

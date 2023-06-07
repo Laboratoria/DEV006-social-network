@@ -1,5 +1,4 @@
-import './lib/firebase.js';
-import { auth } from './lib/firebase';
+import { auth } from './lib/firebase.js';
 import login from './templates/login.js';
 import createAcount from './templates/createAcount.js';
 import error from './templates/error.js';
@@ -27,7 +26,7 @@ function navigateTo(hash, data = {}) {
     window.history.pushState(
       {},
       route.path,
-      window.location.origin + route.path
+      window.location.origin + route.path,
     );
 
     if (root.firstChild) {
