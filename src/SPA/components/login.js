@@ -106,20 +106,14 @@ function login(navigateTo) {
     sectionLogin,
   );
 
-  getRedirectResult(auth).then((useCredential) => {
-    console.log(useCredential);
-    if (useCredential) {
-      navigateTo('/home');
-    }
-  });
-
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     const email = inputCorreo.value;
     const password = inputPassword.value;
     const promesa = userLogin(email, password);
-    promesa.then(() => {
-      sessionStorage.setItem('user', JSON.stringify(email));
+    promesa.then((userCredential) => {
+      sessionStorage.setItem('user', userCredential.user.uid);
+      sessionStorage.setItem('email', userCredential.user.email);
       navigateTo('/home');
     }).catch((error) => {
       const alerta = document.querySelector('.message-error');
@@ -134,8 +128,19 @@ function login(navigateTo) {
   });
 
   buttonSignGoogle.addEventListener('click', () => {
+  
     const provider = new GoogleAuthProvider();
     signInWithRedirect(auth, provider);
+  });
+
+  getRedirectResult(auth).then((userCredential) => {
+    console.log(userCredential);
+    if (userCredential) {
+      // // GUARDAR LA INFO EN EL SESION STORAGE
+      sessionStorage.setItem('user', userCredential.user.uid);
+      sessionStorage.setItem('email', userCredential.user.email);
+      navigateTo('/home');
+    }
   });
 
   return section;
