@@ -21,13 +21,30 @@ function wall(navigateTo) {
   inputPost.setAttribute('id', 'inputNewPost');
   ctnPost.setAttribute('id', 'post');
   liPost.setAttribute('id', 'newPost');
+  btnPost.setAttribute('id', 'btnPost');
 
   inputPost.placeholder = '¡Comparte tus eventos!';
   btnLogOut.textContent = 'CERRAR SESION';
+
+  // cerrar sesión
+  btnLogOut.addEventListener('click', () => {
+    navigateTo('/');
+  });
+
   btnPost.textContent = 'PUBLICAR';
+
+  liPost.appendChild(ctnPost);
 
   headerWall.append(imgHeader, btnLogOut);
   mainWall.append(headerWall, section1, newPost, inputPost, btnPost, ctnPost, liPost);
   return mainWall;
 }
+
+// const btnPost = document.getElementById('btnPost');
+// const idNewPost = document.getElementById('newPost');
+
+/* btnPost.addEventListener('click',()=>{
+    console.log(btnPost);
+}); */
+
 export default wall;

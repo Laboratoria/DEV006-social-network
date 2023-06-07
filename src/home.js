@@ -1,14 +1,14 @@
 import {
-  db, collection, getDocs, signIn,
+  /* db, collection, getDocs, */ signIn,
 } from './firebase/config';
 
-const getEventDB = async () => {
+/* const getEventDB = async () => {
   const eventsCollection = collection(db, 'eventos');
   const eventsSnapshot = await getDocs(eventsCollection);
   const eventsList = eventsSnapshot.docs.map((doc) => doc.data());
 
   return eventsList;
-};
+}; */
 
 function home(navigateTo) {
   const ctnImage = document.createElement('div');
