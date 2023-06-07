@@ -1,4 +1,4 @@
-import { auth } from './lib/firebase.js';
+import { auth } from './lib/firebase';
 import login from './templates/login.js';
 import createAcount from './templates/createAcount.js';
 import error from './templates/error.js';

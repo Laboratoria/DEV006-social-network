@@ -21,7 +21,7 @@ function login(navigateTo) {
   const paragraphRegister = document.createElement('p');
   const alertEmail = document.createElement('p');
   const alertPass = document.createElement('p');
-  const footer = document.createElement('footer')
+  const footer = document.createElement('footer');
 
   section.classList.add('sectionLogin');
 

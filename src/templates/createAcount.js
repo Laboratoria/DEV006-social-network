@@ -25,7 +25,7 @@ function createAcount(navigateTo) {
   caption.textContent = 'Create Acount';
   caption.classList.add('caption');
 
-  backgroundCreate.classList.add('backgroundCreate')
+  backgroundCreate.classList.add('backgroundCreate');
 
   inputName.placeholder = 'Name';
   inputName.classList.add('nameCreateacount');
