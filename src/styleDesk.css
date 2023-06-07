@@ -256,6 +256,8 @@
     font-size: 18px;
   }
 
+  
+
   .alerEmailParagraph {
     font-family: "Roboto", sans-serif;
     font-style: normal;
@@ -302,7 +304,7 @@
     border: none;
     position: fixed;
     left: 50%;
-    bottom: 159px;
+    bottom: 126px;
     transform: translateX(-50%);
   }
 
@@ -443,7 +445,7 @@
   .editButton{
     width: 30px;
     height: 30px;
-    left: 468px;
+    left: 714px;
     position: relative;
   }
   
@@ -521,8 +523,8 @@
     line-height: 22px;
     color: #f25d07;
     position: absolute;
-    top: 770px;
-    left: 500px;
+    top: 524px;
+    left: 450px;
   }
   
  .titleNewPost {
@@ -545,7 +547,6 @@
     border: none;
     box-shadow: 0px 10px 10px -10px #757474;
     top: 63px;
-    /* margin-right: 329px; */
     font-size: 18px;
     margin-left: -301px;
   }
@@ -559,8 +560,8 @@
     font-size: 25px;
     color: #757474;
     position: relative;
-    top: 13px;
-    height: 56px;
+    /* top: 30px; */
+    height: 13px;
     width: 187px;
     margin-right: 39%;
   }
@@ -608,7 +609,8 @@
     width: 638px;
     margin-right: -39px;
     /* top: 673px; */
-    margin-top: 40px;
+    margin-top: 45px;
+    margin-left: 100px;
   }
 
 
@@ -617,10 +619,15 @@
 
   .img-comida {
     position: absolute;
-    width: 453px;
+    width: 70%;
     height: 290px;
-    left: -35px;
     top: 129px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    left: 18%;
+    right: 0px;
   }
   
   .textoerror {
@@ -631,21 +638,23 @@
     text-align: center;
   }
 
-  
-  /* .loginCreateAcount {
-    position: absolute;
-    width: 166px;
-    height: 53px;
-    left: 111px;
-    top: 80%;
-    background: #f28e13;
-    border-radius: 50px;
-    border: none;
-    color: #fff;
-    font-family: system-ui;
-    font-weight: 100;
-    font-size: large;
-    font-weight: 600;
-  } */
+  .return {
+      background: url(/img/arrow.png);
+      position: relative;
+      top: 22px;
+      left: 9px;
+      border: none;
+  }
+
+  /*-------------------------------------- FOOTER --------------------------------------------*/
+
+.footer {
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+  /* height: 20%; */
+  position: absolute;
+  left: 37%;
+}
   
 }

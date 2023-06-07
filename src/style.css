@@ -52,7 +52,6 @@ body {
 
   /*-------------- Se repite en create Acount--------------*/
  .logoimg {
-  position: relative;
   position: absolute;
   top: 0;
   left: 50%;
@@ -225,7 +224,7 @@ body {
 .emailCreateacount,
 .passCreateacount,
 .confirmPassCreateacount {
-  position: relative;
+  /* position: relative; */
   width: 300px;
   height: 34px;
   left: 50%;
@@ -233,34 +232,59 @@ body {
   background: #ffffff;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 5px;
-  margin-bottom: 22px;
+  /* margin-bottom: 22px; */
   border: none;
-  top: 230px;
   display: flex;
   justify-content: center;
 }
 
+.nameCreateacount{
+  position: absolute;
+  top: 258px;
+}
+
+.emailCreateacount{
+  position: absolute;
+  top: 323px;
+}
+
+.passCreateacount{
+  position: absolute;
+  top: 393px;
+}
+
+.confirmPassCreateacount{
+  position: absolute;
+  top: 458px;
+}
+
+
 .alerEmailParagraph,
-.alertPassparagraph {
+.alertPassparagraph,
+.alertConfirmPassparagraph{
   font-family: "Roboto", sans-serif;
   font-style: normal;
   font-size: 14px;
-  position: relative;
-  left: 38px;
-  top: -13px;
+  position: absolute;
+  left: 35%;
   color: #ffffff;
   width: 30%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
 }
-.alertConfirmPassparagraph {
-  font-family: "Roboto", sans-serif;
-  font-style: normal;
-  font-size: 14px;
-  position: relative;
-  left: 38px;
-  top: -12px;
-  color: #ffffff;
-  width: 30%;
+
+.alerEmailParagraph{
+  top: 365px;
 }
+
+.alertPassparagraph{
+  top: 434px;
+}
+.alertConfirmPassparagraph{
+  top: 498px;
+}
+
 
 .login {
   position: absolute;
@@ -587,7 +611,7 @@ select {
 
 .img-comida {
   position: absolute;
-  width: 453px;
+  width: 100%;
   height: 290px;
   left: -35px;
   top: 129px;
@@ -601,20 +625,22 @@ select {
   text-align: center;
 }
 
-}
-/* .loginCreateAcount {
-  position: absolute;
-  width: 166px;
-  height: 53px;
-  left: 111px;
-  top: 80%;
-  background: #f28e13;
-  border-radius: 50px;
+.return {
+  background: url(/img/arrow.png);
+  position: relative;
+  top: 22px;
+  left: 9px;
   border: none;
-  color: #fff;
-  font-family: system-ui;
-  font-weight: 100;
-  font-size: large;
-  font-weight: 600;
-} */
+}
 
+ /*-------------------------------------- FOOTER --------------------------------------------*/
+}
+
+.footer {
+    font-family: "Familjen Grotesk", sans-serif;
+    color: #ffff;
+    position: relative;
+    top: 651px;
+    left: 0%;
+    font-size: 15px;
+}
