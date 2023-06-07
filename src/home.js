@@ -1,5 +1,6 @@
 import {
   /* db, collection, getDocs, */ signIn,
+  loginGoogle,
 } from './firebase/config';
 
 /* const getEventDB = async () => {
@@ -37,13 +38,6 @@ function home(navigateTo) {
   logo.alt = 'web-logo';
   ctnImage.appendChild(logo);
 
-  // logo.innerHTML='<img src="./img/logo.png">';
-  // document.getElementById("logo-style").innerHTML='<img src="./Rectangle 24.png" />';
-  // const dataEvents = await getEventDB();
-  // input home
-  // inputAcces.placeholder = 'escribe tu email';
-  // inputPassword.placeholder = 'contraseña';
-
   textAcces.textContent = 'INGRESA TU CORREO';
   textPass.textContent = 'CONTRASEÑA';
 
@@ -79,7 +73,20 @@ function home(navigateTo) {
   });
   // boton de google
   buttonGoogle.textContent = 'INICIAR CON GOOGLE';
-  // title.textContent = 'RUNNERS NETWORK';
+  buttonGoogle.addEventListener('click', () => {
+    const google = loginGoogle();
+    google.then((result) => {
+      const user = result.user;
+
+      return user;
+      // navigateTo("/wall");
+    })
+      .catch((error) => {
+        console.log(error);
+        alert('Error');
+      });
+     navigateTo("/wall");
+  });
 
   formLogin.append(textAcces, inputAcces, textPass, inputPassword);
   section.append(ctnImage, formLogin, btnLogin, btnRegister, buttonGoogle);

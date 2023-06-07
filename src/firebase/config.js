@@ -1,7 +1,13 @@
 /* eslint-disable import/no-extraneous-dependencies */
 // Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app';
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithPopup,
+} from 'firebase/auth';
 import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
 
 const firebaseConfig = {
@@ -19,6 +25,14 @@ const auth = getAuth(app);
 const db = getFirestore(app);
 const createEmail = (email, password) => createUserWithEmailAndPassword(auth, email, password);
 const signIn = (email, password) => signInWithEmailAndPassword(auth, email, password);
+const provider = new GoogleAuthProvider();
+
+const loginGoogle = () => {
+  // const auth = getAuth();
+
+  const promesa1 = signInWithPopup(auth, provider);
+  return promesa1;
+};
 
 export {
   auth,
@@ -27,4 +41,6 @@ export {
   getDocs,
   createEmail,
   signIn,
+  provider,
+  loginGoogle,
 };
