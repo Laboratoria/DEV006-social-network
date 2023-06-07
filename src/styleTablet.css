@@ -293,7 +293,7 @@
       flex-direction: column;
       align-items: center;
       gap: 24px;
-      height: 768px;
+      height: 800px;
       box-sizing: border-box;
       background:  #F9F0EE;
     }
@@ -511,7 +511,6 @@
       font-size: 18px;
       color: #757474;
       width: 150px;
-          margin-left: -240px;
     }
     
     .paragraphMood {
