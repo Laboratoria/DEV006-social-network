@@ -17,13 +17,11 @@ div{
     display: flex;
     align-items: center;
     flex-direction: column;
-    width: 100%;
 }
 
 .sectionGeneral {
   display: flex;
   flex-wrap: nowrap;
-  max-height: 100%;
 }
 
 /* login pc */
@@ -57,7 +55,7 @@ text-shadow: 0 2px 5px #4b3027d8;
   align-items: center;
   justify-content: right;
   margin-top: 20px;
-  height: 100vh;
+  height: 100%;
 }
 
 .logo{
@@ -297,14 +295,64 @@ label{
   text-align: center;
 }
 
-/* login cel*/  
-@media only screen and (max-width: 768px) {
+.footer-login{
+    position: absolute;
+    font-size: 14px;
+    font-family: 'Ysabeau', sans-serif;
+    margin-bottom: -170px;
+    margin-left: -42%;
+  }
 
+/*login cel */
+@media only screen and (max-width: 767px) {
+  
+.div-left{
+  display: none;
+}
+
+.sectionGeneral {
+  display: flex;
+  flex-wrap: nowrap;
+  height: 100%;
+  transform: translate(7%, -3%);
+}
+
+.sectionLogin {
+  height: 100%;
+  transform: translate(-14%, 16%);
+}
+
+.logo{
+  transition: transform 0.3s ease-in-out;
+  margin: 0 -2.8em 1em 0;
+}
+
+.sectionPets {
+  width: 22em;
+  margin: 0.7em -2.5em 0 0;
+}
+
+.animales {
+  width: 21.8em;
+  margin-top: -1.8em;
+}
+
+.message-error{
+  margin: 3% 0;
+}
+
+.footer-login{
+  display: none;
+}
+}
+
+/* login tablet*/  
+@media only screen and (max-width: 1023px) and (min-width: 768px) {
 #root {
   position: fixed;
   top: 49%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-46%, -50%);
 }
 
 .sectionGeneral {
@@ -383,6 +431,13 @@ article{
 .button-registrate {
   padding-left: 13px;
 }
+.message-error{
+  margin: 2% 0;
+}
+
+.footer-login{
+  display: none;
+}
 }
 
 /* login pantalla pc otros tamaños */
@@ -397,34 +452,56 @@ article{
   }
 
   .div-left{
-    margin: 0 190px 0 0;
+    width: 26em;
+    margin: 0 110px 0 0;
   }
 
   .sectionLogin {
-    margin-top: 5px;
-    height: 100%;
+    margin-top: 2em;
+    margin-right: 5em;
   }
 
   .logo{
     width: 16.2em;
     height: 7em;
-    margin: 0.15em 0 1em 0;
+    margin: 0.15em 0 2em 0;
 }
 }
 
-@media screen and (min-width: 1440px) {
+@media screen and (min-width: 1366px) {
   .sectionLogin {
     margin-top: 20px;
-    height: 100%;
   }
 
   .div-left{
-    margin: 0 205px 0 0;
-    max-height: 100%;
+    width: 42em;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 0 195px 0 0;
+  }
+
+  .div-left p{
+    margin: 3.2em 1em 2.7em 1em;
   }
 
   .logo{
-    margin: 0.2em 0 1.5em 0;
+    width: 16em;
+    height: 7em;
+    margin: -0.8em 0.1em 1.3em 0;
+}
+
+.sectionPets{
+  height: 30.5em;
+}
+
+.footer-login{
+  margin-bottom: -20px;
+  margin-left: -44%;
+}
+
+.animales{
+  width: 25.6em;
+  margin-top: -1.5em;
 }
 }
 
@@ -456,7 +533,7 @@ article{
   position: relative;
   width: 16em;
   bottom: 0;
-  transform: translate(-54%, 70%);
+  transform: translate(-50%, 70%);
   z-index: 2;
 }
 
@@ -472,8 +549,8 @@ article{
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 5% 0% 2% 13%;
-    margin-right: 20%;
+    margin: 5% 0% 2% 0;
+    transform: translate(35%,0);
     z-index: 2;
   }
 
@@ -582,8 +659,6 @@ a.button-ingresar {
 }
 
 .seccionLogo-dog{
-  width: 55%;
-  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -622,19 +697,6 @@ a.button-ingresar {
 }
 
 @media only screen and (max-width: 767px) {
-  #root {
-    position: fixed;
-    top: 49%;
-    left: 39%;
-    transform: translate(-50%, -50%);
-  }
-  
-  .sectionGeneralR {
-    display: flex;
-    flex-wrap: nowrap;
-    height: 100%;
-  }
-
   .div-rigth,
   .logoR,
   .perro {
@@ -643,9 +705,9 @@ a.button-ingresar {
 
   .sectionPetsR {
     width: 85%;
-    margin: 7% auto 2% -31%;
     height: auto;
     align-self: center;
+    transform: translate( -50%, 0%);
   }
 
   .animalesR{
@@ -673,10 +735,7 @@ a.button-ingresar {
   }
 
   .footer-register {
-    position: fixed;
-    bottom: 0%;
-    left: 50%;
-    transform: translate(0, 1750%);
+   display: none;
   }
 
   .message-error{
@@ -686,37 +745,35 @@ a.button-ingresar {
 
 @media (min-width: 768px) and (max-width: 1023px) {
   .sectionPetsR {
-    transform: translate(-59%, 8%);
+    transform: translate(-48%, 12%);
     width: 24em;
-    height: 80%;
-    object-fit: contain;
+    height: 84%;
   }
 
   .animalesR{
     width: 100%;
-    margin-top: -2em;
+    margin-top: 4em;
   }
 
   .formulario {
-  margin-top: 1.5em;
+  margin-top: 1em;
   }
 
   .inputs-registro{
     width: 23em;
-    height: 2.6em;
+    height: 2.9em;
   }
 
   .crearcuenta{
-  margin: 15% 0 4% 0 ;
+  margin: 15% 0 13% 0 ;
   }
 
   .centradoR {
-  margin: 1.3em auto 1em auto;
+  margin: 1.5em auto 6em auto;
   }
   
   .footer-register{
-    font-size: 14px;
-    transform: translate(15%, 0);
+    display: none;
   }
 
   .div-rigth, .logoR, .perro{
@@ -724,170 +781,29 @@ a.button-ingresar {
   }
 
   .message-error{
-    margin-top: 4%;
+    margin-top: 2%;
   }
-}
-
-@media screen and (min-width: 1025px) {
-.div-rigth {
-  transform: translate(45%, 0);
-}
-
-.huellas {
-  transform: translate(-105%, 70%);
-}
-
-.sectionPetsR {
-  margin: 6% 0% 2% 16%;
-  height: 82%;
-  width: 35%;
-  height: 80%;
-}
-
-.animalesR{
-  margin-top: 0.2em;
-}
-
-.formulario {
-  margin-top: 3em;
-}
-
-.perro{
-  width: 38%;
-}
-
-.logoR {
-  width: 85%;
-  margin: 0 0 78% 93%;
-} 
-
-.crearcuenta{
-  margin: 17% 0 7% 0 ;
-}
-
-.centradoR {
-  margin: 1.8em auto 2.2em auto;
-}
-
-.footer-register{
-  font-size: 18px;
-  transform: translate( -240%, 0);
-}
-
-.message-error{
-  margin-top: 2%;
-}
-}
-
-@media screen and (min-width: 1200px) {
-.div-rigth {
-  transform: translate(15%, 0);
-}
-
-.huellas {
-  transform: translate(-100%, 68%);
-}
-
-.sectionPetsR {
-  margin: 4% 0% 2% 7%;
-  width: 35%;
-  height: 84%;
-}
-
-.animalesR{
-  width: 100%;
-  margin-top: -1.4em;
-}
-
-.formulario {
-  margin-top: 2.8em;
-}
-
-.inputs-registro{
-  width: 25em;
-}
-
-.crearcuenta{
-  margin: 15% 0 8% 0 ;
-}
-
-.centradoR {
-  margin: 0.8em auto 2em auto;
-}
-
-.logoR {
-  width: 85%;
-  margin: 0 -100% 88% 7%;
-} 
-
-.perro{
-  width: 34%;
-}
-
-.footer-register{
-  transform: translate( -260%, 0);
-}
-
-.message-error{
-  margin-top: 2%;
-}
-}
-
-@media screen and (min-width: 1280px) {
-
-.div-rigth {
-  transform: translate(8%, 0);
-  height: 100vh;
-}
-
-.huellas {
-  transform: translate(-105%, 70%);
-}
-
-.sectionPetsR {
-  margin: 4% 0% 2% 4%;
-}
-
-.animalesR{
-  margin-top: -1em;
-}
-
-.formulario {
-  margin-top: 3em;
-}
-
-.inputs-registro{
-  width: 26m;
-}
-
-.logoR {
-  margin: 0 -100% 88% 13%;
-} 
-
-.perro{
-  width: 33%;
-}
 }
 
 @media only screen and (min-width: 1366px){
   .div-rigth {
-    transform: translate(-35%, 0);
-    object-fit: cover;
+    transform: translate(-44%, 0);
   }
   
   .huellas {
-    transform: translate(-67%, 49%);
+    transform: translate(-90%, 53%);
   }
 
   .sectionPetsR {
-    margin: 2.5% 0% 2% -1%;
-    width: 32%;
+    margin-top: 4%;
+    width: 60%;
     height: 86%;
+    transform: translate(-27%, 0);
   }
   
   .animalesR{
     width: 100%;
-    margin-top: 2.2em;
+    margin-top: -0.5em;
   }
 
   .formulario {
@@ -907,16 +823,17 @@ a.button-ingresar {
   }
 
   .logoR {
-    width: 80%;
-    margin: 0 -79% 88% 25%;
+    width: 100%;
+    margin: 0 -99% 98% 45%;
   } 
   
   .perro{
-    width: 29%;
+    width: 55%;
+    transform: translate( 90%, 0);
   }
 
   .footer-register{
-    transform: translate( -310%, 0);
+    transform: translate( -360%, 0);
   }
 
   .message-error{
@@ -958,7 +875,6 @@ a.button-ingresar {
     width: 90%;
     margin: 0 -92% 88% 28%;
   } 
-
 }
 
 /* estilos vista HOME pc */ 
@@ -993,7 +909,6 @@ a.button-ingresar {
 .contenedor-icons{
   margin-left: 30%;
   margin-top: 10%;
-
 }
 
 .menu-iconos img{
@@ -1007,14 +922,15 @@ font-size: 18px;
 .div-huellas{
   position: relative;
   height: 100vh;
+  z-index: 1;
 }
 
 .div-huellas img {
   position: absolute;
   bottom: 0;
-  left: 0;
-  width: 60%;
+  width: 250px;
   object-fit: contain;
+  z-index: 1;
 }
 
 .postAndFooter{
@@ -1023,6 +939,7 @@ font-size: 18px;
   position: fixed;
   height: 100%;
 }
+
 .post-container{
   position: fixed;
   width: 39%;
@@ -1071,7 +988,7 @@ display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
-border-bottom: 4px solid #D9D9D9;
+border-bottom: 4px solid #dddcdc;
 margin-top: -1em;
 }
 
@@ -1082,8 +999,11 @@ margin-top: -1em;
 }
 
 .new-post{
-  width: 94%;
+  width: 83%;
   height: 70px;
+  border: none;
+  overflow: scroll;
+  transform: translate(-2%, 0);
 }
 
 .new-post::placeholder{
@@ -1097,7 +1017,7 @@ background-color: transparent;
 transform: rotate(45deg);
 position: fixed;
 align-self: flex-end;
-margin-right: 21px;
+margin-right: 14px;
 }
 
 .icon-send{
@@ -1117,10 +1037,6 @@ margin-right: 21px;
 
 .usuario-post::placeholder{
   color: #3e4140;
-}
-
-.new-post{
-  border: none;
 }
 
 .new-post:focus {
@@ -1144,29 +1060,64 @@ margin-right: 21px;
 .container-post {
   display: flex;
   width: 100%;
-  padding: 5px 25px;
-  margin: 12px 0;
+  margin: 12px;
   height: 450px;
+  padding: 5px 25px;
   overflow: scroll;
   align-items: flex-start;
   justify-content: flex-start;
 }
 
-.container-post p {
+.botones-post{
+  width: 90%;
+  display: inline-flex;
+  justify-content: space-between;
+  height: auto;
+}
+
+.div-likes{
   display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.div-edit-delete{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin-top: -1em;
+}
+
+.comentarios {
+  display: block;
   background-color: #EAE0DA;
   border-radius: 10px;
-  width: 100%;
-  height: 2.2em;
-  margin-bottom: 3px;
-  align-items: center;
-  justify-content: center;
+  width: 24em;
+  height: auto;
+  padding: 5px;
+  margin-bottom: 11px;
   font-size: 15px;
+  overflow: auto;
+  word-wrap: break-word;
+}
+
+button{
+  background-color: transparent;
+  border: none;
+}
+
+.conteo-likes {
+  font-size: 18px;
+  margin-top: -21px;
+}
+
+.btn-like{
+  margin-bottom: 18px;
 }
 
 .container-post h3 {
   display: flex;
-  margin-bottom: 7px;
+  margin-bottom: 3px;
 }
 
 .btn-delete{
@@ -1176,8 +1127,12 @@ margin-right: 21px;
 .inferior{
   background-color: #C8EFEB;
   border-radius: 0 0 30px 30px;
-  height: 4.3em;
+  height: 4em;
+  width: 25em;
   margin-top: -1.4em;
+  display: flex;
+  position: relative;
+  z-index: 1;
 }
 
 .iconos-inferior-img{
@@ -1200,75 +1155,100 @@ margin-right: 21px;
     display: none;
   }
 
-  .postAndFooter{
-    bottom: 0;
-    left: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transform: translate(9%, 2%);
+  .post-container:not(:hover){
+    box-shadow: none;
   }
 
   .post-container{
     width: 100%;
     height: 100%;
-    justify-content: center;
-    align-items: center;
     border-radius: 0;
-  }
-
-  .post-container:not(:hover){
+    margin-left: 0;
+    margin-top: 0;
+    margin-bottom: 0;
     box-shadow: none;
   }
 
-  .div-logo {
-    width: 100%;
-    height: 5em;
-    flex-direction: row;
-    justify-content: space-between;
-    margin-bottom: 20px;
-    border-radius: 0;
-  }
-  
-  .div-logo img {
-    width: 57%;
-    margin-left: 15px;
-    margin-top: 20px;
-  }
+.div-logo {
+  width: 100%;
+  height: 6em;
+  margin-top: 0;
+  border-radius: 0;
+}
 
-  .div-icons-logo{
+.div-logo img {
+  width: 55%;
+  align-self: flex-start;
+  margin-left: 15px;
+}
+
+ .div-icons-logo{
     display: flex;
-    flex-direction: row;;
-    width: 20%;
-    margin-top: -16px;
-    margin-right: 20px;
+    flex-direction: row;
+    width: 14%;
+    margin-top: -30px;
+    margin-left: 270px;
   }
 
-  .div-icons-logo img{
-    width: 25px;
+  .usuario-post{
+    margin-left: 14px;
+  }
+
+  .container-post {
+    height: 565px;
+    padding: 5px 23px;
+  }
+
+  .comentarios {
+    width: 23em;
+  }
+
+  .botones-post{
+    width: 85%;
   }
   
-  .container-post {
-    height: 580px;
+  .div-edit-delete{
+    margin-right: 0;
   }
 
-  #task-user{
-  width: 95%;
+  .div .inferior{
+    border-radius: 0;
   }
 
   .inferior{
     border-radius: 0;
-    height: 5.2em;
+    height: 5.3em;
+    width: 100%;
   }
 
   .iconos-inferior-img{
     display: flex;
   }
 
+  .iconos-inferior-img{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 90%;
+  }
+  .icono-home-inf{
+    width: 7%;
+    cursor: pointer;
+  }
+
+  .icono-create-inf{
+    width: 10%;
+    cursor: pointer;
+  }
+
+  .icono-perfil-inf{
+    width: 9%;
+    cursor: pointer;
+  }
+
   .footer-home{
    display: none;
   }
-  
 }
 
 @media only screen and (max-width: 1023px) and (min-width: 768px) {
@@ -1280,56 +1260,68 @@ margin-right: 21px;
     display: none;
   }
 
+  .div-icons-logo{
+    width: 34%;
+  }
+
   .post-container{
     width: 65%;
+    transform: translate(-7%, 0);
   }
-  .div-logo {
+
+  .comentarios {
+    margin-left: -8px;
+    width: 31em;
+  }
+
+  .inferior{
+    height: 4.8em;
     width: 100%;
-    height: 6em;
-    flex-direction: row;
-    justify-content: space-between;
-    margin-bottom: 20px;
-    border-radius: 0;
-  }
-  
-  .div-logo img {
-    width: 57%;
-    margin-left: 15px;
-    margin-top: 20px;
-  }
-
-  .div-icons-logo{
-    display: flex;
-    flex-direction: row;;
-    width: 20%;
-    margin-top: -16px;
-    margin-right: 20px;
-  }
-
-  .div-icons-logo img{
-    width: 35px;
   }
 
   .iconos-inferior-img{
     display: flex;
+  }
+
+  .iconos-inferior-img{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 90%;
+  }
+
+  .icono-home-inf{
+    width: 6%;
+    cursor: pointer;
+  }
+
+  .icono-create-inf{
+    width: 9%;
+    cursor: pointer;
+  }
+  
+  .icono-perfil-inf{
+    width: 8%;
+    cursor: pointer;
   }
 
 } 
 
-
 @media only screen and (min-width: 1366px){
-  .div-icons-logo{
-    display: none;
+  .comentarios {
+    margin-left: -8px;
+    width: 32.5em;
   }
   
-  .post-container{
-    width: 34%;
-  }
   .footer-home{
-    margin-bottom: -580px;
+    margin-bottom: -615px;
+  }
+
+  .inferior{
+    width: 100%;
   }
 
   .iconos-inferior-img{
     display: none;
   }
-}
+} 
