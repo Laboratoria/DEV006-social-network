@@ -1,7 +1,8 @@
 // file error.js
 function error404() {
   const title = document.createElement('h2');
-  title.textContent = 'Error 404 page no found, please go home';
+  title.textContent = 'Error 404. Pagina no encontrada';
+  title.classList.add('titleError');
   return title;
 }
 

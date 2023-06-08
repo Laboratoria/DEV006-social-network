@@ -20,10 +20,11 @@ function signup(navigateTo) {
   const header = document.createElement('div');
   const errorPassword = document.createElement('span');
   const buttonGoogleSignup = document.createElement('button');
+  const containerButtonsSignUp = document.createElement('div');
 
   // Ingresar texto
   inputEmail.placeholder = 'example@gmail.com';
-  inputPassword.placeholder = 'Ingresa minimo 6 caracteres';
+  inputPassword.placeholder = 'Minimo 6 caracteres';
   inputUser.placeholder = 'Ingresa nombre usuaria';
 
   // Agregar atributos
@@ -101,6 +102,7 @@ function signup(navigateTo) {
   errorPassword.classList.add('errors');
   showPassword.classList.add('showPassword');
   buttonGoogleSignup.classList.add('buttonGoogleSignup');
+  containerButtonsSignUp.classList.add('containerButtonsSignUp');
 
   // Agrupar secciones
   passwordBox.append(inputPassword, showPassword);
@@ -114,7 +116,8 @@ function signup(navigateTo) {
     errorPassword,
 
   );
-  sectionForm.append(form, buttonEnterSignup, buttonGoogleSignup);
+  containerButtonsSignUp.append(buttonEnterSignup, buttonGoogleSignup);
+  sectionForm.append(form, containerButtonsSignUp);
   sectionHeader.append(header, logo);
   section.append(sectionHeader, buttonReturnSignup, sectionForm);
 

@@ -54,6 +54,7 @@ export const onGetPosts = (drawPosts) => {
   const postsQuery = query(collection(db, 'postsWall'), orderBy('createdAt', 'desc'));
   onSnapshot(postsQuery, (querySnapshot) => {
     const resultPosts = [];
+    console.log('AQUI EL ONSNAPSHOT');
     querySnapshot.forEach((document) => {
       const resultData = document.data();
       const resultId = document.id;
