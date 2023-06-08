@@ -91,7 +91,7 @@ function home(navigateTo) {
         console.log(error);
         alert('Error');
       });
-     navigateTo("/wall");
+    navigateTo('/wall');
   });
 
   formLogin.append(textAcces, inputAcces, textPass, inputPassword);
