@@ -45,11 +45,11 @@ Para la organización y/o planificación de este proyecto utilizamos la herramie
 ## 4. Diseño UX
 ### Historias de Usuarios
 En el desarrollo de este proyecto realizamos cinco historias de usuarios las cuales se separan en las siguientes: 
-![HU 1]()
-![HU 2]()
-![HU 3]()
-![HU 4]()
-![HU 5]()
+![HU 1](https://github.com/ValenParaguatey/DEV006-social-network/blob/main/src/assets/readme/HU%201.png?raw=true)
+![HU 2](https://github.com/ValenParaguatey/DEV006-social-network/blob/main/src/assets/readme/HU%202.png?raw=true)
+![HU 3](https://github.com/ValenParaguatey/DEV006-social-network/blob/main/src/assets/readme/HU%203.png?raw=true)
+![HU 4](https://github.com/ValenParaguatey/DEV006-social-network/blob/main/src/assets/readme/HU%204.png?raw=true)
+![HU 5](https://github.com/ValenParaguatey/DEV006-social-network/blob/main/src/assets/readme/HU%205.png?raw=true)
 ## 5. Diseño UI
 ### Proceso del diseño [🎨]
 #### Estilo
@@ -61,9 +61,9 @@ Utilizamos una herramienta para generar una paleta de colores que sea similar a 
 ### Prototipos
 Para la creación de los prototipos de baja y alta fidelidad nos apoyamos con la herramienta llamada Figma. Se diseñó la app priorizando el formato de la pantalla móvil, la cual cuenta con tres vistas (login, registro y home). Además, se realizó el formato para pantalla de computador.
 #### Prototipo de baja fidelidad
-![prototipo de baja]()
+![prototipo de baja](https://github.com/ValenParaguatey/DEV006-social-network/blob/main/src/assets/readme/prototipo%20de%20baja.png?raw=true)
 #### Prototipo de alta fidelidad
-![prototipo de alta]()
+![prototipo de alta](https://github.com/ValenParaguatey/DEV006-social-network/blob/main/src/assets/readme/prototipo%20de%20alta.png?raw=true)
 ## 6. Consideraciones generales
 
 * Este proyecto se realizó en triada.
