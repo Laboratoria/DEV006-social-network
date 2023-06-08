@@ -85,7 +85,7 @@ function login(navigateTo) {
   divFooterLogin.append(footerLogin);
 
   // PANTALLA PC
-  texto.textContent = 'Ingresa a nuestra app y forma parte de esta linda comunidad. Comparte tips, anécdotas y/o fotos de tu  peludito.';
+  texto.textContent = 'Ingresa a nuestra app y forma parte de esta linda comunidad. Comparte tips, anécdotas y/o recetas para tus mascotas.';
   cel.classList.add('cel-perro');
   cel.setAttribute('src', '../assets/celPerrito.png');
   divIzquierdo.classList.add('div-left');
@@ -98,20 +98,20 @@ function login(navigateTo) {
     navigateTo('/registro');
   });
 
- // agregando elementos al form
- form.append(contenedorC, inputCorreo, contenedorP, inputPassword, buttonLogin);
- sectionPets.append(animales, form, buttonSignGoogle, contenedorR);
+  // agregando elementos al form
+  form.append(contenedorC, inputCorreo, contenedorP, inputPassword, buttonLogin);
+  sectionPets.append(animales, form, buttonSignGoogle, contenedorR);
 
- // agregando elementos a toda la seccion login
- sectionLogin.classList.add('sectionLogin');
- sectionLogin.append(sectionLogo, sectionPets, divFooterLogin);
+  // agregando elementos a toda la seccion login
+  sectionLogin.classList.add('sectionLogin');
+  sectionLogin.append(sectionLogo, sectionPets, divFooterLogin);
 
- // agregar los elementos al DOM
- section.classList.add('sectionGeneral');
- section.append(
-   divIzquierdo,
-   sectionLogin,
- );
+  // agregar los elementos al DOM
+  section.classList.add('sectionGeneral');
+  section.append(
+    divIzquierdo,
+    sectionLogin,
+  );
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
