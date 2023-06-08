@@ -37,10 +37,14 @@ function wall(navigateTo) {
 
   btnPost.textContent = 'PUBLICAR';
 
-  liPost.appendChild(ctnPost);
+  ctnPost.appendChild(liPost);
+  newPost.append(inputPost, btnPost);
+  
+
+  section1.append(newPost, ctnPost);
 
   headerWall.append(ctnHeader,btnLogOut);
-  mainWall.append(headerWall, section1, newPost, inputPost, btnPost, ctnPost, liPost);
+  mainWall.append(headerWall, section1);
   return mainWall;
 }
 

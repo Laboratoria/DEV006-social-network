@@ -28,7 +28,7 @@ const signIn = (email, password) => signInWithEmailAndPassword(auth, email, pass
 const provider = new GoogleAuthProvider();
 
 const loginGoogle = () => {
-  // const auth = getAuth();
+   
 
   const promesa1 = signInWithPopup(auth, provider);
   return promesa1;

@@ -211,3 +211,52 @@ body{
     position: absolute;
     top: 4px; right: 10px;
 }
+
+#inputNewPost{
+    width: 85%;   
+    height: 45px;
+    border-radius: 10px;
+    background-color: #e0dce2;
+    border: none;
+    text-align: left;
+    padding-left: 20px;
+    padding-right:20px ;
+    white-space: wrap;
+
+    
+    
+    
+}
+
+#divNewPost{
+    
+    display: flex;    
+    justify-content: center;
+    margin-top: 20px;
+    width: 100%;
+    
+    
+    
+}
+
+#btnPost{
+    width: 70px;
+    height: 20px;    
+    color: white;
+    background-color:#6A4DB2;
+    border-color: #5735AD;
+    border-width: 1px;
+    border-radius: 9px;
+    border-radius: 4px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+    padding: 4px;
+    font-size:10px;
+    position: absolute;
+    right: 7.5%;
+    top:125px;
+    
+
+
+    
+}
