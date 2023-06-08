@@ -23,27 +23,29 @@ Nos hemos enfocado en crear una experiencia intuitiva y fácil de usar en MWUnit
 # 2. Prototipos Alta y baja fidelidad
 
 Para la realización del proyecto se hizo la maquetación de baja y alta fidelidad. A continuación la maquetación de baja fidelidad:
-![Baja fidelidad](https://github.com/Mariana-Sanchez21/DEV006-social-network/assets/116685936/4844e9c1-9e83-4290-ad31-dee7df37b185)
+![Baja fidelidad](https://github.com/Mariana-Sanchez21/DEV006-cipher/assets/116685936/db47c7cf-280f-4f7f-8a9e-b913bd486cd4)
 
 Se pensó en un diseño amigable para la interfaz de usuario, en el cual se pudiera acceeder a las distintas vistas por medio de un solo botón. A continuación el prototipo de baja fidelidad para posts en el cual se encuentran tambien botones para ir a configuración, notificaciones, creacion de nuevo post, y perfil.
-![Baja posts](https://github.com/Mariana-Sanchez21/DEV006-social-network/assets/116685936/c3e135ba-e689-4632-96c4-43f7c1a81cf7)
+![Baja posts](https://github.com/Mariana-Sanchez21/DEV006-cipher/assets/116685936/2106954c-2ae3-4df1-97da-5c8b7cc01799)
 
 Despues de los tests de usabilidad se implementaron cambios que tenian que ver con tamaños de inputs y de iconos intuitivos. Posteriormente, implementamos la paleta de colores, iconos especificos y este fue el resultado del prototipo de alta fidelidad.
 
-### Home: <br> ![Home ](https://github.com/Mariana-Sanchez21/DEV006-social-network/assets/116685936/a3586a2a-2393-452e-bca3-acafa33c2f8d)
-### Login: <br> ![Login de usuario](https://github.com/Mariana-Sanchez21/DEV006-social-network/assets/116685936/f01358e7-5bd6-4cdd-8d0a-e2f6a2a88263)
-### Pregunta:  <br>![Pregunta](https://github.com/Mariana-Sanchez21/DEV006-social-network/assets/116685936/b11f61f9-0c73-402e-ab0e-f9aa5c958880)
-### Registro: <br>![Registro de usuario nuevo](https://github.com/Mariana-Sanchez21/DEV006-social-network/assets/116685936/b2e7cf1c-3936-4fa2-b9d0-c0605f4cdb4b)
+### Home: <br> ![Home ](https://github.com/Mariana-Sanchez21/DEV006-cipher/assets/116685936/675240d5-681d-4aab-bc28-1cd3b85790ed)
+### Login: <br> ![Login de usuario](https://github.com/Mariana-Sanchez21/DEV006-cipher/assets/116685936/bf71246f-c511-464a-953e-95dbef716adf)
+### Pregunta:  <br>![Pregunta](https://github.com/Mariana-Sanchez21/DEV006-cipher/assets/116685936/184426be-7959-4b4e-9ffb-e19d2c523ae3)
+### Registro: <br>![Registro de usuario nuevo](https://github.com/Mariana-Sanchez21/DEV006-cipher/assets/116685936/204cfb37-12dd-4907-a127-67a9d411261c)
 ### Respuesta: <br>
-![Respuesta a negativa](https://github.com/Mariana-Sanchez21/DEV006-social-network/assets/116685936/1f26774c-933e-44ff-b4dc-076f93f68a2a)
+
+![Respuesta a negativa](https://github.com/Mariana-Sanchez21/DEV006-cipher/assets/116685936/54d32ce2-6e98-4942-a117-3c69cac238e6)
 
 
 Finalmente, y despues de retroalimentación con respecto a colores, tamaño de letra y usablidad realizamos la programación de la red social.
 
 
-### Home: <br> ![Home real](https://github.com/Mariana-Sanchez21/DEV006-social-network/assets/116685936/79ad7da6-99c6-4034-b967-589cc43ceaf1)
-### Login: <br>![login real](https://github.com/Mariana-Sanchez21/DEV006-social-network/assets/116685936/d2b56786-78c0-415a-8f53-9b9856d3bfa9)
-### Posts: <br> ![posts real](https://github.com/Mariana-Sanchez21/DEV006-social-network/assets/116685936/d3a809a8-680e-4025-9c4e-f3d3cda3327a)
+### Home: <br>![Home real](https://github.com/Mariana-Sanchez21/DEV006-cipher/assets/116685936/d35b5581-6934-4f77-889f-65bc29307ed7)
+### Login: <br>![login real](https://github.com/Mariana-Sanchez21/DEV006-cipher/assets/116685936/f1cd6acb-a74d-4b9e-bed8-bc4ae0014460)
+### Posts: <br> 
+![posts real](https://github.com/Mariana-Sanchez21/DEV006-cipher/assets/116685936/23e16318-a90e-40e9-8b32-915df391ae04) 
 
 
 
