@@ -59,17 +59,19 @@ function home(navigateTo) {
       .then((userCredential) => {
         inputAcces.value = '';
         inputPassword.value = '';
+
+        navigateTo("/wall");
         return userCredential;
         // Signed in
         // const user = userCredential.user;
-        // ...
+        
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
         alert(errorCode, errorMessage);
       });
-    navigateTo('/wall');
+    
   });
 
   // boton de registrarse
@@ -82,16 +84,19 @@ function home(navigateTo) {
   buttonGoogle.addEventListener('click', () => {
     const google = loginGoogle();
     google.then((result) => {
-      const user = result.user;
+      const user = result.user.accessToken;
+      localStorage.setItem("token", result.user.accessToken);
+      console.log(user);
+       navigateTo("/wall");
 
       return user;
-      // navigateTo("/wall");
+      
     })
       .catch((error) => {
         console.log(error);
         alert('Error');
       });
-    navigateTo('/wall');
+    
   });
 
   formLogin.append(textAcces, inputAcces, textPass, inputPassword);

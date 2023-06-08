@@ -35,5 +35,8 @@ function navigateTo(hash) {
 window.onpopstate = () => {
   navigateTo(window.location.pathname);
 };
-
+// verificar si el ususario esta guardado en el localStorage
+//si el usuario esta logeado deberia poder ir a cualquier pagina
+//si el usuario no esta logeado deberia llevarlo al defaultRoute
+//defaultRoute puede ser login o wall
 navigateTo(window.location.pathname || defaultRoute);
