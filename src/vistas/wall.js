@@ -2,7 +2,6 @@ import {
   savePost, onGetPosts, deletePost, getPost, updatePost, addLike, removeLike,
 } from '../lib/firestore.js';
 import { auth } from '../lib/configFirebase.js';
-import { doc } from 'firebase/firestore';
 
 function wall(navigateTo) {
   const section = document.createElement('section');
