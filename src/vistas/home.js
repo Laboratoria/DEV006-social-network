@@ -1,3 +1,7 @@
+import logoimg from '../images/logo.png';
+
+
+
 function home(navigateTo) {
   // creación//
   const section = document.createElement('section');
@@ -23,7 +27,8 @@ function home(navigateTo) {
   sectionButton.classList.add('sectionButton');
   text.classList.add('text');
   // agregar atributos//
-  logo.setAttribute('src', 'images/logo.png');
+  console.log(logoimg);
+  logo.setAttribute('src', logoimg);
 
   // agregar texto a los botones//
   buttonLogin.textContent = ' Iniciar sesión ';

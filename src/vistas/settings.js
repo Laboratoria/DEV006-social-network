@@ -1,4 +1,10 @@
 import { logoutUser } from '../lib/auth.js';
+import imageLogo from '../images/logo.png';
+import homeImage from '../images/home.png';
+import bellImage from '../images/bell.png';
+import userImage from '../images/user.png';
+import postImage from '../images/post.png';
+import settingImage from '../images/Settings.png';
 
 function settings(navigateTo) {
   const section = document.createElement('section');
@@ -33,12 +39,12 @@ function settings(navigateTo) {
   contact.classList.add('buttonsConfig');
 
   // agregar atributos//
-  logo.setAttribute('src', 'images/logo.png');
-  house.setAttribute('src', 'images/home.png');
-  bell.setAttribute('src', 'images/bell.png');
-  profile.setAttribute('src', 'images/user.png');
-  newPost.setAttribute('src', 'images/post.png');
-  config.setAttribute('src', 'images/Settings.png');
+  logo.setAttribute('src', imageLogo);
+  house.setAttribute('src', homeImage);
+  bell.setAttribute('src', bellImage);
+  profile.setAttribute('src', userImage);
+  newPost.setAttribute('src', postImage);
+  config.setAttribute('src', settingImage);
   config.classList.add('config');
   privacy.textContent = ('Privacidad');
   account.textContent = ('Cuenta');
@@ -60,11 +66,11 @@ function settings(navigateTo) {
   logOut.addEventListener('click', () => {
     logoutUser()
       .then(() => {
-        navigateTo('/'); // Redirect to the login or home page
+        navigateTo('/'); // Redireccionar a login
       })
       .catch((error) => {
         console.log(error);
-        // Handle any errors that occur during logout
+        // Manejar error
       });
   });
 
