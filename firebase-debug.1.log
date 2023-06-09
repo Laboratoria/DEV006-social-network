@@ -1,0 +1,41 @@
+[debug] [2023-06-08T17:48:44.535Z] ----------------------------------------------------------------------
+[debug] [2023-06-08T17:48:44.537Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Samsung\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2023-06-08T17:48:44.538Z] CLI Version:   12.3.1
+[debug] [2023-06-08T17:48:44.538Z] Platform:      win32
+[debug] [2023-06-08T17:48:44.538Z] Node Version:  v18.15.0
+[debug] [2023-06-08T17:48:44.539Z] Time:          Thu Jun 08 2023 12:48:44 GMT-0500 (hora de verano central)
+[debug] [2023-06-08T17:48:44.539Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-06-08T17:48:44.612Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-06-08T17:48:44.613Z] > authorizing via signed-in user (socialnetwork10dev006@gmail.com)
+[debug] [2023-06-08T17:48:44.613Z] [iam] checking project socialnetwork10-395ce for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2023-06-08T17:48:44.615Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/socialnetwork10-395ce:testIamPermissions [none]
+[debug] [2023-06-08T17:48:44.615Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/socialnetwork10-395ce:testIamPermissions x-goog-quota-user=projects/socialnetwork10-395ce
+[debug] [2023-06-08T17:48:44.615Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/socialnetwork10-395ce:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2023-06-08T17:48:45.718Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/socialnetwork10-395ce:testIamPermissions 200
+[debug] [2023-06-08T17:48:45.719Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/socialnetwork10-395ce:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2023-06-08T17:48:45.720Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/socialnetwork10-395ce [none]
+[debug] [2023-06-08T17:48:46.208Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/socialnetwork10-395ce 200
+[debug] [2023-06-08T17:48:46.208Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/socialnetwork10-395ce {"projectId":"socialnetwork10-395ce","projectNumber":"272306479782","displayName":"SocialNetwork10","name":"projects/socialnetwork10-395ce","resources":{"hostingSite":"socialnetwork10-395ce"},"state":"ACTIVE","etag":"1_46c3b08a-5038-454e-92fb-e384993e85ed"}
+[info] 
+[info] === Deploying to 'socialnetwork10-395ce'...
+[info] 
+[info] i  deploying hosting 
+[debug] [2023-06-08T17:48:46.218Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/socialnetwork10-395ce/versions [none]
+[debug] [2023-06-08T17:48:46.218Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/socialnetwork10-395ce/versions {"status":"CREATED","labels":{"deployment-tool":"cli-firebase"}}
+[debug] [2023-06-08T17:48:47.396Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/socialnetwork10-395ce/versions 200
+[debug] [2023-06-08T17:48:47.396Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/socialnetwork10-395ce/versions {"name":"projects/272306479782/sites/socialnetwork10-395ce/versions/d7426e5f71fc5e80","status":"CREATED","config":{},"labels":{"deployment-tool":"cli-firebase"}}
+[info] i  hosting[socialnetwork10-395ce]: beginning deploy... 
+[debug] [2023-06-08T17:48:47.838Z] Error: EPERM: operation not permitted, scandir 'C:/Users/Samsung/Desktop/Laboratoria/TercerProyecto/DEV006-social-network/firebase-debug.log'
+    at Object.readdirSync (node:fs:1452:3)
+    at GlobSync._readdir (C:\Users\Samsung\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\glob\sync.js:288:46)
+    at GlobSync._readdirInGlobStar (C:\Users\Samsung\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\glob\sync.js:245:17)
+    at GlobSync._readdir (C:\Users\Samsung\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\glob\sync.js:276:17)
+    at GlobSync._processReaddir (C:\Users\Samsung\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\glob\sync.js:137:22)
+    at GlobSync._process (C:\Users\Samsung\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\glob\sync.js:132:10)
+    at GlobSync._processGlobStar (C:\Users\Samsung\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\glob\sync.js:380:10)
+    at GlobSync._process (C:\Users\Samsung\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\glob\sync.js:130:10)
+    at new GlobSync (C:\Users\Samsung\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\glob\sync.js:45:10)
+    at globSync (C:\Users\Samsung\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\glob\sync.js:23:10)
+[error] 
+[error] Error: An unexpected error has occurred.

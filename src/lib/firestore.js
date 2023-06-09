@@ -49,7 +49,7 @@ export const removeLike = async (postId) => updateDoc(doc(db, 'postsWall', postI
 });
 // Funcion para obtener los posts
 export const getPost = (id) => getDoc(doc(db, 'postsWall', id));
-// Trae los posts en tiempo real
+// Escucha los posts en tiempo real
 export const onGetPosts = (drawPosts) => {
   const postsQuery = query(collection(db, 'postsWall'), orderBy('createdAt', 'desc'));
   onSnapshot(postsQuery, (querySnapshot) => {

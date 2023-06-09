@@ -1,3 +1,5 @@
+import imgLogo from '../images/logo.png';
+
 function genderValidation(navigateTo) {
   const section = document.createElement('section');
   const sectionForm = document.createElement('section');
@@ -14,7 +16,7 @@ function genderValidation(navigateTo) {
   text.classList.add('textValidation');
 
   // agregar atributos//
-  logo.setAttribute('src', 'images/logo.png');
+  logo.setAttribute('src', imgLogo);
   text.textContent = 'Lo sentimos, no puedes ingresar a nuestra aplicación debido a que está dirigida solo a mujeres.';
 
   sectionHeader.append(header, logo);
