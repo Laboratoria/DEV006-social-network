@@ -1,0 +1,381 @@
+main {
+    margin: 0;
+    justify-content: center;
+}
+
+body {
+    height: 100%;
+    background: #98DEE9;
+
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+#root {
+
+    margin-top: 0;
+    height: 95vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+header {
+    height: 250px;
+    display: flex;
+    align-items: flex-end;
+}
+
+nav {
+
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.refresh {
+    margin: 2px;
+    margin-bottom: 10px;
+}
+
+.refresh:hover {
+    margin: 0px;
+    height: 90%;
+    width: auto;
+    cursor: pointer;
+}
+
+.logOut {
+    margin: 2px;
+    height: 70%;
+    width: auto;
+    transform: scaleX(-1);
+}
+
+.logOut:hover {
+    margin: 0px;
+    height: 80%;
+    width: auto;
+    cursor: pointer;
+}
+
+#exit {
+    width: 50px;
+    height: 200px;
+}
+
+label {
+    font-size: 20px;
+    color: #0A4D68;
+}
+
+.insertInfo {
+    background: #D9D9D9;
+    width: 250px;
+    height: 35px;
+    border: 1px solid #000000;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 25px;
+    display: flex;
+    text-align: center;
+    margin-bottom: 10px;
+    justify-content: center;
+}
+
+
+input::placeholder {
+    font-size: 15px;
+}
+
+.button {
+    font-size: 17px;
+    background: #279A82;
+    width: 230px;
+    height: 40px;
+    border: 1px solid #000000;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 25px;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #1f836d;
+    cursor: pointer;
+}
+
+/* CSS DE PAGE HOME */
+
+.container {
+    margin-top: 5%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.descriptionPage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 60%;
+}
+
+p {
+    font-size: 17px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: #0A4D68;
+    grid-column: 1 / span 2;
+    grid-row: 3 / 3;
+}
+
+a {
+    font-size: 17px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+#posts {
+    width: 70%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5%;
+    margin-left: 15%;
+    padding-top: 10px;
+    gap: 20px;
+    overflow: auto;
+    overflow-x: hidden;
+
+    /* Oculta la barra de desplazamiento en navegadores compatibles */
+    scrollbar-color: transparent transparent;
+    /* Establece el color de la barra de desplazamiento transparente */
+}
+
+#posts::-webkit-scrollbar-track {
+    background-color: #6f2121;
+    /* Color de fondo de la barra de desplazamiento */
+}
+
+
+.post {
+    width: 90%;
+    display: flex;
+    background-color: #D9D9D9;
+    padding: 10px;
+    border: 1px solid #000000;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 25px;
+}
+
+.avatar {
+    width: 50px;
+    border-radius: 50%;
+    margin-left: 0;
+    margin-top: 5px;
+    grid-column: 1;
+    grid-row: 1/2;
+    justify-self: center;
+
+}
+
+#infoUser {
+    width: 90%;
+    /* align-items: flex-start;
+    padding: 10px;
+    display: flex;
+    flex-direction: column; */
+    display: grid;
+    grid-template-columns: 0.3fr 1fr;
+    /* Dos columnas, la primera se ajusta al contenido y la segunda ocupa el espacio restante */
+    /*grid-template-rows: 1fr 1fr 1fr; Tres filas, cada una se ajusta al contenido */
+    grid-auto-rows: min-content;
+    grid-gap: 10px;
+    /* Espacio entre las filas y columnas */
+    align-items: center;
+    /* Alineación vertical centrada */
+}
+
+.userName {
+    margin-top: 9px;
+    grid-column-start: 2;
+    grid-column-end: 2;
+    grid-row: 1 / 2;
+    margin-bottom: 40px;
+    justify-self: left;
+}
+
+
+#container {
+    margin-top: 0;
+    padding: 0%;
+    height: 100%;
+
+}
+
+.logoGoogle {
+    width: 25px;
+}
+
+.googleButton {
+    display: flex;
+    align-items: center;
+    align-content: space-between;
+    justify-content: space-evenly;
+    background-color: aliceblue;
+    color: black;
+    width: 180px;
+    height: 35px;
+    font-size: 13px;
+}
+
+.or {
+    margin: 0;
+    font-size: 13px;
+}
+
+.writeAndPost {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+
+.textArea {
+    width: 60%;
+    height: 60px;
+    padding: 20px;
+    background-color: #D9D9D9;
+    border-radius: 31px;
+    border: 1px solid #000000;
+}
+
+.buttonCreatePost {
+    Width: 30%;
+    Height: 35px;
+    background-color: #279A82;
+    color: white;
+    border: 1px solid #000000;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 25px;
+    cursor: pointer;
+    /*float: left;
+    Alinea el botón a la izquierda, para responsive tal vez sea mejor ponerlo en "none" 
+    margin-left: 15px;
+    hacer responsive dsps*/
+}
+
+.buttonCreatePost:hover {
+    background-color: #1f836d;
+    cursor: pointer;
+
+}
+
+.likesPic {
+    width: 28px;
+    right: 10px;
+    bottom: 10px;
+}
+
+.likesPic:hover {
+    width: 32px;
+    right: 5px;
+    bottom: 5px;
+    cursor: pointer;
+}
+
+.menuLikeSection {
+    width: 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.menuOptions {
+    width: 39px;
+    margin-top: 10px;
+}
+
+.menuOptions:hover {
+    width: 43px;
+    margin-top: 7px;
+    cursor: pointer;
+}
+
+.likesAndCount {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 25%;
+    margin-bottom: 15px;
+}
+
+/* .userNameandDate{
+    grid-column: 2 / span 2;
+    grid-row: 1 / 1;
+} */
+.publicDate {
+    margin-top: 5px;
+    grid-column-start: 2;
+    grid-column-end: 2;
+    grid-row: 1 / 2;
+    justify-self: left;
+}
+
+/* CSS MODAL */
+#modalEdit::backdrop,
+.modalOptions::backdrop,
+#modalDelete::backdrop {
+    background-color: rgba(0, 0, 0, 0.65);
+}
+
+#modalEdit,
+#modalDelete {
+    text-align: center;
+    background-color: #98DEE9;
+}
+
+.modalOptions {
+    background-color: #98DEE9;
+    text-align: center;
+
+}
+
+.modalImgEdit,
+.modalImgDel {
+    width: 50px;
+    display: flex;
+    align-items: center;
+}
+
+.editLabel,
+.deleteLabel {
+    text-align: center;
+}
+
+.xModal {
+    width: 20px;
+    margin-top: 30px;
+}
+
+.modalImgDel {
+    margin-top: 15px;
+}
+
+#btn-modal,
+#btnYes,
+#btnNo {
+    margin: 5px;
+}
