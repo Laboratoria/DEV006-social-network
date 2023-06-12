@@ -27,6 +27,7 @@ const defaultRoute = '/';
 const container = document.getElementById('container');
 
 function navigateTo(hash) {
+  // valida la primer aparicion
   const route = routes.find((routeFound) => routeFound.path === hash);
   if (route) {
     // Verificar si la ruta es "/wall" y si el usuario está autenticado
@@ -34,7 +35,7 @@ function navigateTo(hash) {
       navigateTo('/login'); // Redireccionar a la página de inicio de sesión si no está autenticado
       return;
     }
-
+    // state, title , url
     window.history.pushState({}, route.path, window.location.origin + route.path);
 
     if (container.firstChild) {

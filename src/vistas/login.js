@@ -19,7 +19,7 @@ function login(navigateTo) {
   const buttonGoogleLogin = document.createElement('button');
   const errorPasswordLogin = document.createElement('span');
   const containerEmailAndPassword = document.createElement('div');
-  const containerButtons= document.createElement('div');
+  const containerButtons = document.createElement('div');
 
   inputEmail.placeholder = 'example@gmail.com';
   inputPassword.placeholder = '***********';
@@ -98,7 +98,7 @@ function login(navigateTo) {
 
   // agrupando las secciones//
   sectionHeader.append(header, logo);
-  form.append(containerEmailAndPassword,errorPasswordLogin,containerButtons);
+  form.append(containerEmailAndPassword, errorPasswordLogin, containerButtons);
   containerEmailAndPassword.append(
     emailLogin,
     inputEmail,

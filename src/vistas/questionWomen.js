@@ -37,7 +37,7 @@ function questionWomen(navigateTo) {
   checkboxNo.name = 'checkbox';
   yes.textContent = 'Si';
   no.textContent = 'No';
- 
+
   buttonReturnSignup.setAttribute('src', 'images/arrow.png');
 
   // agregar texto a los botones//

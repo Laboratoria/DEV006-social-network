@@ -117,7 +117,7 @@ function wall(navigateTo) {
   popUpClose.addEventListener('click', () => {
     popUp.style.display = 'none';
   });
-  // Funcion para dar o quitar like
+
   // Funcion para crear el contenedor y tarjeta de cada post
   function createPostCard(title, description, name, fullDate, id, useruid, likes) {
     const resultTitle = document.createElement('h2');
@@ -219,7 +219,7 @@ function wall(navigateTo) {
       e.preventDefault();
       deletePopup.style.display = 'block';
     });
-
+    // Verificar si el usuario ya dio like a un post
     like.addEventListener('click', (e) => {
       e.preventDefault();
       if (likes.includes(currentUser.uid)) {
@@ -231,7 +231,7 @@ function wall(navigateTo) {
       }
     });
 
-    // Verificar si el usuario ya dio like a un post
+    // boton de editar post
     editButton.addEventListener('click', async ({ target: { dataset } }) => {
       popUp.style.display = 'block';
       const doc = await getPost(dataset.id);
