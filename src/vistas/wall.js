@@ -2,6 +2,18 @@ import {
   savePost, onGetPosts, deletePost, getPost, updatePost, addLike, removeLike,
 } from '../lib/firestore.js';
 import { auth } from '../lib/configFirebase.js';
+// import { doc } from 'firebase/firestore';
+import logoimg from '../images/logo.png';
+import houseimg from '../images/Home.png';
+import configimg from '../images/Settings.png';
+import bellimg from '../images/bell.png';
+import userimg from '../images/user.png';
+import postimg from '../images/post.png';
+import closeimg from '../images/close.png';
+import deleteimg from '../images/delete.png';
+import editimg from '../images/edit.png';
+import likeimg from '../images/Like.png';
+import likecolorimg from '../images/LikeColor.png';
 
 function wall(navigateTo) {
   const section = document.createElement('section');
@@ -48,13 +60,13 @@ function wall(navigateTo) {
   popUpClose.classList.add('popUpClose');
 
   // agregar atributos//
-  logo.setAttribute('src', 'images/logo.png');
-  house.setAttribute('src', 'images/home.png');
-  config.setAttribute('src', 'images/Settings.png');
-  bell.setAttribute('src', 'images/bell.png');
-  profile.setAttribute('src', 'images/user.png');
-  newPost.setAttribute('src', 'images/post.png');
-  popUpClose.setAttribute('src', 'images/close.png');
+  logo.setAttribute('src', logoimg);
+  house.setAttribute('src', houseimg);
+  config.setAttribute('src', configimg);
+  bell.setAttribute('src', bellimg);
+  profile.setAttribute('src', userimg);
+  newPost.setAttribute('src', postimg);
+  popUpClose.setAttribute('src', closeimg);
 
   // se agrega el textContent a botones
   popUpButton.textContent = 'Post';
@@ -192,16 +204,16 @@ function wall(navigateTo) {
     // likeLiked.classList.add('likeLiked');
 
     // Agregar atributos
-    deleteButton.setAttribute('src', 'images/delete.png');
+    deleteButton.setAttribute('src', deleteimg);
     yesDelete.setAttribute('data-id', id);
     editButton.setAttribute('data-id', id);
     like.setAttribute('data-id', id);
-    editButton.setAttribute('src', 'images/edit.png');
-    like.setAttribute('src', 'images/Like.png');
+    editButton.setAttribute('src', editimg);
+    like.setAttribute('src', likeimg);
     like.setAttribute('id', 'likeButton');
     // likeLiked.setAttribute('src', 'images/LikeColor.png');
     if (likes.includes(currentUser.uid)) {
-      like.setAttribute('src', 'images/LikeColor.png');
+      like.setAttribute('src', likecolorimg);
     }
 
     // funcion para que al momento de clickear se esconda el popup de delete

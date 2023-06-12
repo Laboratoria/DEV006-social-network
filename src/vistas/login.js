@@ -1,6 +1,10 @@
 // file login.
 import { auth } from '../lib/configFirebase.js';
 import { loginUser, signInWithGoogle } from '../lib/auth.js';
+import returnbutton from '../images/arrow.png';
+import logoImage from '../images/logo.png';
+import imageOjoOculto from '../images/ojoOculto.png';
+import ojonoocultoimg from '../images/ojonoOculto.png';
 
 function login(navigateTo) {
   const section = document.createElement('section');
@@ -66,10 +70,10 @@ function login(navigateTo) {
     e.preventDefault();
     if (inputPassword.type === 'password') {
       inputPassword.type = 'text';
-      showPasswordLogin.src = 'images/ojonoOculto.png';
+      showPasswordLogin.src = ojonoocultoimg;
     } else {
       inputPassword.type = 'password';
-      showPasswordLogin.src = 'images/ojoOculto.png';
+      showPasswordLogin.src = imageOjoOculto;
     }
   });
 
@@ -87,13 +91,13 @@ function login(navigateTo) {
   containerButtons.classList.add('containerButtons');
 
   // agregar atributos//
-  logo.setAttribute('src', 'images/logo.png');
-  buttonReturn.setAttribute('src', 'images/arrow.png');
+  logo.setAttribute('src', logoImage);
+  buttonReturn.setAttribute('src', returnbutton);
   inputEmail.setAttribute.id = 'inputEmail';
   inputPassword.setAttribute.id = 'inputPassword';
   inputPassword.setAttribute('type', 'password');
   showPasswordLogin.setAttribute('id', 'showPasswordLogin');
-  showPasswordLogin.setAttribute('src', 'images/ojoOculto.png');
+  showPasswordLogin.setAttribute('src', imageOjoOculto);
   errorPasswordLogin.setAttribute('id', 'errorPasswordLogin');
 
   // agrupando las secciones//

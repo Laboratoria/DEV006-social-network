@@ -1,3 +1,5 @@
+import logoImage from '../images/logo.png';
+import arrowImage from '../images/arrow.png';
 function questionWomen(navigateTo) {
   const section = document.createElement('section');
   const sectionForm = document.createElement('section');
@@ -26,7 +28,7 @@ function questionWomen(navigateTo) {
   no.classList.add('labels');
 
   // agregar atributos//
-  logo.setAttribute('src', 'images/logo.png');
+  logo.setAttribute('src', logoImage);
   text.textContent = 'Esta aplicación está pensada para personas que se identifican como mujeres. Por favor responde:';
   question.textContent = ' ¿Te identificas como mujer?';
   checkboxYes.type = 'radio';
@@ -37,8 +39,13 @@ function questionWomen(navigateTo) {
   checkboxNo.name = 'checkbox';
   yes.textContent = 'Si';
   no.textContent = 'No';
+<<<<<<< HEAD
 
   buttonReturnSignup.setAttribute('src', 'images/arrow.png');
+=======
+ 
+  buttonReturnSignup.setAttribute('src', arrowImage);
+>>>>>>> socialNetwork/main
 
   // agregar texto a los botones//
   buttonReturnSignup.addEventListener('click', () => {

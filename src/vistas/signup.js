@@ -1,4 +1,8 @@
 import { registerUser, signInWithGoogle } from '../lib/auth.js';
+import logoimg from '../images/logo.png';
+import returnimg from '../images/arrow.png';
+import ojoocultoimg from '../images/ojoOculto.png';
+import ojonoocultoimg from '../images/ojonoOculto.png';
 
 function signup(navigateTo) {
   // Creación de elementos
@@ -28,15 +32,15 @@ function signup(navigateTo) {
   inputUser.placeholder = 'Ingresa nombre usuaria';
 
   // Agregar atributos
-  logo.setAttribute('src', 'images/logo.png');
+  logo.setAttribute('src', logoimg);
   errorPassword.setAttribute('id', 'errorPassword');
-  buttonReturnSignup.setAttribute('src', 'images/arrow.png');
+  buttonReturnSignup.setAttribute('src', returnimg);
   inputEmail.setAttribute('id', 'inputEmail');
   inputPassword.setAttribute('id', 'inputPassword');
   inputUser.setAttribute('id', 'inputUser');
   inputPassword.setAttribute('type', 'password');
-  inputPassword.setAttribute('src', 'images/ojoOculto.png');
-  showPassword.setAttribute('src', 'images/ojoOculto.png');
+  inputPassword.setAttribute('src', ojonoocultoimg);
+  showPassword.setAttribute('src', ojoocultoimg);
   passwordBox.setAttribute('id', 'passwordBox');
 
   buttonGoogleSignup.textContent = 'Registrarse con Google';

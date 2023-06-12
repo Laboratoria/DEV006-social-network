@@ -1,12 +1,14 @@
+import pagconstruction from '../images/inConstruction.png';
+import backimg from '../images/arrow.png';
 function buildsite(navigateTo) {
   const section = document.createElement('section');
   const imagBuild = document.createElement('img');
   const textBuild = document.createElement('h4');
   const back = document.createElement('img');
 
-  imagBuild.setAttribute('src', 'images/inConstruction.png');
+  imagBuild.setAttribute('src', pagconstruction);
   textBuild.textContent = ('Página en construcción.');
-  back.setAttribute('src', 'images/arrow.png');
+  back.setAttribute('src', backimg );
 
   imagBuild.classList.add('imagBuild');
   textBuild.classList.add('textBuild');
