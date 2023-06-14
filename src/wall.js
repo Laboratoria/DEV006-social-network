@@ -1,4 +1,6 @@
-import { eventsCollection } from './firebase/config';
+//import { async } from 'regenerator-runtime';
+import { doc } from 'firebase/firestore/lite';
+import { eventsCollection,getPost,  } from './firebase/config';
 
 function wall(navigateTo) {
   const headerWall = document.createElement('header');
@@ -38,7 +40,7 @@ function wall(navigateTo) {
   });
 
   btnPost.textContent = 'PUBLICAR';
-  btnPost.addEventListener('click', () => {
+  btnPost.addEventListener('click', async() => {
     const newPosts = inputPost.value;
     console.log(newPosts);
     eventsCollection(newPosts)
@@ -47,6 +49,19 @@ function wall(navigateTo) {
         // console.log(inputPost);
         return posts;
       });
+
+   const eventsSnapshot= await getPost()
+   
+
+   eventsSnapshot.forEach(doc => {
+    console.log(doc);
+   })
+   //const eventsList = eventsSnapshot.docs.map((doc) => doc.data()); 
+   
+
+
+   //return eventsList;
+   
   });
 
   ctnPost.appendChild(liPost);
