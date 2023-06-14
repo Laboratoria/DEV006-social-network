@@ -8,7 +8,9 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
 } from 'firebase/auth';
-import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
+import {
+  getFirestore, collection, getDocs, addDoc,
+} from 'firebase/firestore/lite';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyAwDENqtqqClEQU0v75FqVs3HAI6i2-YWI',
@@ -28,11 +30,13 @@ const signIn = (email, password) => signInWithEmailAndPassword(auth, email, pass
 const provider = new GoogleAuthProvider();
 
 const loginGoogle = () => {
-   
-
   const promesa1 = signInWithPopup(auth, provider);
   return promesa1;
 };
+// firestore
+const eventsCollection = (publicaciones) => addDoc(collection(db, 'eventos'), { publicaciones });
+
+// mostar publicaciones
 
 export {
   auth,
@@ -43,4 +47,5 @@ export {
   signIn,
   provider,
   loginGoogle,
+  eventsCollection,
 };

@@ -1,3 +1,5 @@
+import { eventsCollection } from './firebase/config';
+
 function wall(navigateTo) {
   const headerWall = document.createElement('header');
   const ctnHeader = document.createElement('div');
@@ -8,8 +10,8 @@ function wall(navigateTo) {
   const newPost = document.createElement('div');
   const inputPost = document.createElement('input');
   const btnPost = document.createElement('button');
-  const ctnPost = document.createElement('ul');
-  const liPost = document.createElement('li');
+  const ctnPost = document.createElement('div');
+  const liPost = document.createElement('p');
 
   headerWall.setAttribute('id', 'header');
   ctnHeader.setAttribute('id', 'container-1');
@@ -36,19 +38,35 @@ function wall(navigateTo) {
   });
 
   btnPost.textContent = 'PUBLICAR';
+  btnPost.addEventListener('click', () => {
+    const newPosts = inputPost.value;
+    console.log(newPosts);
+    eventsCollection(newPosts)
+      .then((posts) => {
+        inputPost.value = '';
+        // console.log(inputPost);
+        return posts;
+      });
+  });
 
   ctnPost.appendChild(liPost);
   newPost.append(inputPost, btnPost);
-  
 
   section1.append(newPost, ctnPost);
 
-  headerWall.append(ctnHeader,btnLogOut);
+  headerWall.append(ctnHeader, btnLogOut);
   mainWall.append(headerWall, section1);
   return mainWall;
 }
 
 // const btnPost = document.getElementById('btnPost');
 // const idNewPost = document.getElementById('newPost');
+/* const getEventDB = async () => {
+  const eventsCollection = collection(db, 'eventos');
+  const eventsSnapshot = await getDocs(eventsCollection);
+  const eventsList = eventsSnapshot.docs.map((doc) => doc.data());
+
+  return eventsList;
+}; */
 
 export default wall;
