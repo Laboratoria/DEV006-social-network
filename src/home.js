@@ -60,18 +60,16 @@ function home(navigateTo) {
         inputAcces.value = '';
         inputPassword.value = '';
 
-        navigateTo("/wall");
+        navigateTo('/wall');
         return userCredential;
         // Signed in
         // const user = userCredential.user;
-        
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
         alert(errorCode, errorMessage);
       });
-    
   });
 
   // boton de registrarse
@@ -85,18 +83,18 @@ function home(navigateTo) {
     const google = loginGoogle();
     google.then((result) => {
       const user = result.user.accessToken;
-      localStorage.setItem("token", result.user.accessToken);
+      localStorage.setItem('token', result.user.accessToken);
       console.log(user);
-       navigateTo("/wall");
+      navigateTo('/wall');
 
       return user;
-      
     })
       .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
         console.log(error);
-        alert('Error');
+        alert(errorCode, errorMessage);
       });
-    
   });
 
   formLogin.append(textAcces, inputAcces, textPass, inputPassword);

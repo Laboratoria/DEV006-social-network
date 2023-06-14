@@ -41,8 +41,8 @@ function login(navigateTo) {
       .then((userCredential) => {
         inputEmail.value = '';
         inputPass.value = '';
-        // Signed in
-        // const user = userCredential.user;
+        // guardar el token del ususario que esta en la variable user en el localStorage
+        // const user = userCredential.user.accessToken;
         return userCredential;
       })
       .catch((error) => {
