@@ -1,6 +1,7 @@
-//import { async } from 'regenerator-runtime';
-import { doc } from 'firebase/firestore/lite';
-import { eventsCollection,getPost,  } from './firebase/config';
+// import { async } from 'regenerator-runtime';
+// import { doc } from 'firebase/firestore/lite';
+// import { async } from 'regenerator-runtime';
+import { eventsCollection, getPost } from './firebase/config';
 
 function wall(navigateTo) {
   const headerWall = document.createElement('header');
@@ -13,7 +14,6 @@ function wall(navigateTo) {
   const inputPost = document.createElement('input');
   const btnPost = document.createElement('button');
   const ctnPost = document.createElement('div');
-  const liPost = document.createElement('p');
 
   headerWall.setAttribute('id', 'header');
   ctnHeader.setAttribute('id', 'container-1');
@@ -24,7 +24,6 @@ function wall(navigateTo) {
   newPost.setAttribute('id', 'divNewPost');
   inputPost.setAttribute('id', 'inputNewPost');
   ctnPost.setAttribute('id', 'post');
-  liPost.setAttribute('id', 'newPost');
   btnPost.setAttribute('id', 'btnPost');
 
   imgHeader.src = './img/header-mobile2.png';
@@ -39,32 +38,33 @@ function wall(navigateTo) {
     navigateTo('/');
   });
 
+  window.addEventListener('DOMContentLoaded', async () => {
+    const eventsSnapshot = await getPost();
+
+    eventsSnapshot.forEach((doc) => {
+      const liPost = document.createElement('p');
+      liPost.setAttribute('id', 'newPost');
+      const postData = doc.data();
+      console.log(postData);
+
+      liPost.textContent = postData.publicaciones;
+      ctnPost.appendChild(liPost);
+    });
+  });
+
   btnPost.textContent = 'PUBLICAR';
-  btnPost.addEventListener('click', async() => {
+  btnPost.addEventListener('click', () => {
     const newPosts = inputPost.value;
     console.log(newPosts);
     eventsCollection(newPosts)
       .then((posts) => {
         inputPost.value = '';
-        // console.log(inputPost);
+
         return posts;
       });
-
-   const eventsSnapshot= await getPost()
-   
-
-   eventsSnapshot.forEach(doc => {
-    console.log(doc);
-   })
-   //const eventsList = eventsSnapshot.docs.map((doc) => doc.data()); 
-   
-
-
-   //return eventsList;
-   
   });
 
-  ctnPost.appendChild(liPost);
+  // ctnPost.appendChild(liPost);
   newPost.append(inputPost, btnPost);
 
   section1.append(newPost, ctnPost);
@@ -73,15 +73,5 @@ function wall(navigateTo) {
   mainWall.append(headerWall, section1);
   return mainWall;
 }
-
-// const btnPost = document.getElementById('btnPost');
-// const idNewPost = document.getElementById('newPost');
-/* const getEventDB = async () => {
-  const eventsCollection = collection(db, 'eventos');
-  const eventsSnapshot = await getDocs(eventsCollection);
-  const eventsList = eventsSnapshot.docs.map((doc) => doc.data());
-
-  return eventsList;
-}; */
 
 export default wall;

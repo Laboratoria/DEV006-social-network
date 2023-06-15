@@ -9,7 +9,7 @@ import {
   signInWithPopup,
 } from 'firebase/auth';
 import {
-  getFirestore, collection, getDocs, addDoc, doc,
+  getFirestore, collection, getDocs, addDoc,
 } from 'firebase/firestore/lite';
 
 const firebaseConfig = {
@@ -35,10 +35,10 @@ const loginGoogle = () => {
 };
 // firestore
 const eventsCollection = (publicaciones) => addDoc(collection(db, 'eventos'), { publicaciones });
-//const collectionPost = doc(db, 'eventos');
+// const collectionPost = doc(db, 'eventos');
 // mostar publicaciones
-const getPost= ()=> getDocs(collection(db,'eventos'));
-//const eventsSnapshot = await getDocs(eventsCollection);
+const getPost = () => getDocs(collection(db, 'eventos'));
+// const eventsSnapshot = await getDocs(eventsCollection);
 
 export {
   auth,
@@ -51,5 +51,5 @@ export {
   loginGoogle,
   eventsCollection,
   getPost,
-  
+
 };
