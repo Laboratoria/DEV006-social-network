@@ -9,8 +9,16 @@ import {
   signInWithPopup,
 } from 'firebase/auth';
 import {
-  getFirestore, collection, getDocs, addDoc,
-} from 'firebase/firestore/lite';
+  getFirestore,
+  collection,
+  getDocs,
+  addDoc,
+  deleteDoc,
+  doc,
+  onSnapshot,
+  query,
+} from "firebase/firestore";
+import { async } from 'regenerator-runtime';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyAwDENqtqqClEQU0v75FqVs3HAI6i2-YWI',
@@ -38,7 +46,16 @@ const eventsCollection = (publicaciones) => addDoc(collection(db, 'eventos'), { 
 // const collectionPost = doc(db, 'eventos');
 // mostar publicaciones
 const getPost = () => getDocs(collection(db, 'eventos'));
-// const eventsSnapshot = await getDocs(eventsCollection);
+
+// borrar datos o publicaciones
+
+const fetchPost= ()=>  query(collection(db, "eventos"));
+
+
+const deleteDocument = async (id) =>  await deleteDoc(doc(db, 'eventos',id));
+
+
+
 
 export {
   auth,
@@ -51,5 +68,10 @@ export {
   loginGoogle,
   eventsCollection,
   getPost,
+  deleteDocument,
+  fetchPost,
+  onSnapshot,
+  
+  
 
 };
