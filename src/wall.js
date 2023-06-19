@@ -1,8 +1,6 @@
 // import { async } from 'regenerator-runtime';
 // import { doc } from 'firebase/firestore/lite';
-// import { async } from 'regenerator-runtime';
-// import { async } from 'regenerator-runtime';
-// import { async } from 'regenerator-runtime';
+
 import {
   deleteDocument,
   eventsCollection, fetchPost, onSnapshot,
@@ -47,7 +45,7 @@ function wall(navigateTo) {
       const liPost = document.createElement('p');
       liPost.setAttribute('id', 'newPost');
       const postData = doc.data();
-      // console.log(postData);
+      
 
       liPost.textContent = postData.publicaciones;
       ctnPost.appendChild(liPost);
@@ -64,7 +62,7 @@ function wall(navigateTo) {
         const idPost = doc.id;
 
         deleteDocument(idPost);
-        console.log(deleteDocument);
+        
       });
     });
   });
@@ -73,7 +71,7 @@ function wall(navigateTo) {
   btnPost.textContent = 'PUBLICAR';
   btnPost.addEventListener('click', () => {
     const newPosts = inputPost.value;
-    console.log(newPosts);
+    
 
     eventsCollection(newPosts).then((posts) => {
       inputPost.value = '';
@@ -82,15 +80,11 @@ function wall(navigateTo) {
     });
   });
 
-  // borrar publicaciones
-
   // cerrar sesión
   btnLogOut.addEventListener('click', () => {
     navigateTo('/');
   });
-
-  // borrar publicaciones
-
+ 
   // ctnPost.appendChild(liPost);
   newPost.append(inputPost, btnPost);
 

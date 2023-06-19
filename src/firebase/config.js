@@ -1,5 +1,4 @@
-/* eslint-disable import/no-extraneous-dependencies */
-// Import the functions you need from the SDKs you need
+
 import { initializeApp } from 'firebase/app';
 import {
   getAuth,
@@ -42,7 +41,7 @@ const loginGoogle = () => {
 };
 // firestore
 const eventsCollection = (publicaciones) => addDoc(collection(db, 'eventos'), { publicaciones });
-// const collectionPost = doc(db, 'eventos');
+
 // mostar publicaciones
 const getPost = () => getDocs(collection(db, 'eventos'));
 

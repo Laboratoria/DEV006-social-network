@@ -62,8 +62,7 @@ function home(navigateTo) {
 
         navigateTo('/wall');
         return userCredential;
-        // Signed in
-        // const user = userCredential.user;
+        
       })
       .catch((error) => {
         const errorCode = error.code;
