@@ -84,7 +84,7 @@ function home(navigateTo) {
     google.then((result) => {
       const user = result.user.accessToken;
       localStorage.setItem('token', result.user.accessToken);
-      console.log(user);
+      
       navigateTo('/wall');
 
       return user;
