@@ -17,8 +17,7 @@ import {
   doc,
   onSnapshot,
   query,
-} from "firebase/firestore";
-import { async } from 'regenerator-runtime';
+} from 'firebase/firestore';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyAwDENqtqqClEQU0v75FqVs3HAI6i2-YWI',
@@ -49,13 +48,9 @@ const getPost = () => getDocs(collection(db, 'eventos'));
 
 // borrar datos o publicaciones
 
-const fetchPost= ()=>  query(collection(db, "eventos"));
+const fetchPost = query(collection(db, 'eventos'));
 
-
-const deleteDocument = async (id) =>  await deleteDoc(doc(db, 'eventos',id));
-
-
-
+const deleteDocument = (id) => deleteDoc(doc(db, 'eventos', id));
 
 export {
   auth,
@@ -71,7 +66,5 @@ export {
   deleteDocument,
   fetchPost,
   onSnapshot,
-  
-  
 
 };
