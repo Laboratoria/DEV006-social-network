@@ -40,6 +40,8 @@ function wall(navigateTo) {
 
   // actualizar datos
   onSnapshot(fetchPost, (querySnapshot) => {
+    ctnPost.innerHTML= "";
+    
     querySnapshot.forEach((doc) => {
       // crear elementos de publicaciones
       const liPost = document.createElement('p');
@@ -72,6 +74,7 @@ function wall(navigateTo) {
   btnPost.addEventListener('click', () => {
     const newPosts = inputPost.value;
     console.log(newPosts);
+
     eventsCollection(newPosts).then((posts) => {
       inputPost.value = '';
 
