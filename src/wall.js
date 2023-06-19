@@ -31,7 +31,7 @@ function wall(navigateTo) {
   ctnPost.setAttribute('id', 'post');
   btnPost.setAttribute('id', 'btnPost');
 
-  imgHeader.src = './img/header-mobile2.png';
+  imgHeader.src = './img/logo-title33.png';
   imgHeader.alt = 'header-logo';
   ctnHeader.appendChild(imgHeader);
 
@@ -53,7 +53,8 @@ function wall(navigateTo) {
       // crear boton borrar
       const buttonDelete = document.createElement('button');
       buttonDelete.setAttribute('class', 'deletePublication');
-      buttonDelete.textContent = 'borrar';
+      
+      //buttonDelete.textContent = 'borrar';
       liPost.appendChild(buttonDelete);
 
       // borrar publicacion
