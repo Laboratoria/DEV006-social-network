@@ -38,14 +38,13 @@ function wall(navigateTo) {
 
   // actualizar datos
   onSnapshot(fetchPost, (querySnapshot) => {
-    ctnPost.innerHTML= "";
-    
+    ctnPost.innerHTML = '';
+
     querySnapshot.forEach((doc) => {
       // crear elementos de publicaciones
       const liPost = document.createElement('p');
       liPost.setAttribute('id', 'newPost');
       const postData = doc.data();
-      
 
       liPost.textContent = postData.publicaciones;
       ctnPost.appendChild(liPost);
@@ -53,8 +52,8 @@ function wall(navigateTo) {
       // crear boton borrar
       const buttonDelete = document.createElement('button');
       buttonDelete.setAttribute('class', 'deletePublication');
-      
-      //buttonDelete.textContent = 'borrar';
+
+      // buttonDelete.textContent = 'borrar';
       liPost.appendChild(buttonDelete);
 
       // borrar publicacion
@@ -62,7 +61,6 @@ function wall(navigateTo) {
         const idPost = doc.id;
 
         deleteDocument(idPost);
-        
       });
     });
   });
@@ -71,7 +69,6 @@ function wall(navigateTo) {
   btnPost.textContent = 'PUBLICAR';
   btnPost.addEventListener('click', () => {
     const newPosts = inputPost.value;
-    
 
     eventsCollection(newPosts).then((posts) => {
       inputPost.value = '';
@@ -84,7 +81,7 @@ function wall(navigateTo) {
   btnLogOut.addEventListener('click', () => {
     navigateTo('/');
   });
- 
+
   // ctnPost.appendChild(liPost);
   newPost.append(inputPost, btnPost);
 
