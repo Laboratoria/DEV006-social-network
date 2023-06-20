@@ -1,15 +1,7 @@
 import {
-  /* db, collection, getDocs, */ signIn,
+  signIn,
   loginGoogle,
 } from './firebase/config';
-
-/* const getEventDB = async () => {
-  const eventsCollection = collection(db, 'eventos');
-  const eventsSnapshot = await getDocs(eventsCollection);
-  const eventsList = eventsSnapshot.docs.map((doc) => doc.data());
-
-  return eventsList;
-}; */
 
 function home(navigateTo) {
   const ctnImage = document.createElement('div');
@@ -62,8 +54,6 @@ function home(navigateTo) {
 
         navigateTo('/wall');
         return userCredential;
-        // Signed in
-        // const user = userCredential.user;
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -84,7 +74,7 @@ function home(navigateTo) {
     google.then((result) => {
       const user = result.user.accessToken;
       localStorage.setItem('token', result.user.accessToken);
-      
+
       navigateTo('/wall');
 
       return user;
@@ -92,7 +82,6 @@ function home(navigateTo) {
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        console.log(error);
         alert(errorCode, errorMessage);
       });
   });
