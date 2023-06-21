@@ -27,6 +27,7 @@ function home(navigateTo) {
   textPass.setAttribute('id', 'textPass-style');
   inputAcces.setAttribute('id', 'inputA-style');
   inputPassword.setAttribute('id', 'inputP-style');
+  inputPassword.setAttribute('type', 'password');
   imgGoogle.setAttribute('id', 'imgG-style');
   logo.setAttribute('id', 'logo-style');
   logo.src = './img/logo.png';
@@ -39,14 +40,16 @@ function home(navigateTo) {
   textAcces.textContent = 'INGRESA TU CORREO';
   textPass.textContent = 'CONTRASEÑA';
 
+  inputAcces.placeholder = 'example@gmail.com';
+  inputPassword.placeholder = '********';
+
   // boton de iniciar sesión
   btnLogin.textContent = 'INICIAR SESIÓN';
   btnLogin.addEventListener('click', () => {
     const email = inputAcces.value;
     const password = inputPassword.value;
 
-    // const auth = getAuth();
-
+    // Iniciar sesion
     signIn(email, password)
       .then((userCredential) => {
         inputAcces.value = '';
