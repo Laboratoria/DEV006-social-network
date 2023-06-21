@@ -1,0 +1,296 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;600;800&display=swap');  
+
+html{
+    height: 100%;
+}
+body{
+    background-color: #fff;
+    height: 100%;    
+    margin: 0;
+}
+#root{
+    height: 100%;
+
+/*HOME*/
+}
+#section-style{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    padding: 20px;
+    margin: auto;
+    width: 250px;
+    height: 100%;
+}
+#button-home{ 
+    background-color: #ED914E;
+    margin: 8px;
+    width: 135px;
+    border-radius: 9px;
+    padding: 8px;
+    border-color:#EA6F15;
+    border-width: 1px;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 800;
+    font-family: 'Inter', sans-serif;
+}
+#button-login{ 
+    background-color: #6A4DB2;
+    margin: 8px ;
+    width: 135px;
+    border-radius: 9px;
+    padding: 8px;
+    border-color: #5735AD;
+    border-width: 1px;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 800;
+    font-family: 'Inter', sans-serif;
+}
+#button-google{
+    display: flex;
+    margin: 8px;
+    width: 135px;
+    height: 30px;
+    border-radius: 9px;
+    padding: 8px;  
+    font-size: 9px; 
+    border-width: 1px;
+    border-color: #A6A4A7;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    background-image: url(./img/search.png);
+    background-position:5% 50%;
+    background-repeat: no-repeat;
+    background-size: 16px 16px;;
+    padding: 8px 6px 8px 27px;
+}
+
+#formLogin-style{
+    display: flex;
+    flex-direction: column;  
+    padding: 15px;
+}
+#textAcces-style{
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 10px;
+    margin: 0;
+    position: relative;
+    left: -30px;
+
+} 
+#textPass-style{
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 10px;
+    margin: 0;
+    position: relative;
+    right: 50px;
+}
+#inputA-style{
+    border-radius: 4px;
+    border-color: #A6A4A7;
+    border-width: 0.3px;
+    margin: 5px 20px 20px 20px;
+    width: 170px;
+    height: 22px; 
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.5);
+}
+
+#inputP-style{ 
+    border-radius: 4px; 
+    border-color: #A6A4A7;
+    border-width: 0.3px;
+    margin: 5px 20px 10px 20px ;
+    width: 170px;
+    height: 22px;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.5);   
+}
+/*LOGIN*/
+#form-style{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 15px;    
+}
+#section2-style{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    padding: 20px;
+    margin: auto;    
+}
+#textEmail-style{
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 10px;
+    margin: 0;
+    position: relative;
+    right: 30px;
+
+}
+#textP-style{
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 10px;
+    margin: 0;
+    position: relative;
+    right: 23px;
+    
+}
+#inputPL-style{
+    font-size: 10px; 
+    font-weight: 600; 
+    font-family: 'Inter', sans-serif;
+    border-radius: 4px; 
+    border-color: #A6A4A7;
+    border-width: 0.3px;
+    margin: 5px 20px 20px 20px;
+    width: 170px;
+    height: 22px;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.5);    
+}
+#inputE-style{
+    font-size: 10px; 
+    font-weight: 600; 
+    font-family: 'Inter', sans-serif;
+    border-radius: 4px; 
+    border-color: #A6A4A7;
+    border-width: 0.3px;
+    margin: 5px 20px 20px 20px;
+    width: 170px;
+    height: 22px;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.5);
+    
+}
+#buttonR-style{ 
+    background-color: #6A4DB2;
+    margin: 5px;
+    width: 130px;
+    border-radius: 9px;
+    padding: 8px;
+    border-color: #5735AD;
+    border-width: 1px;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 800;
+    font-family: 'Inter', sans-serif;
+}
+/*WALL*/
+#container-1{   
+    margin: 0;
+    height: 50px;
+    width: 100% ;
+    background-color: #886dca;
+}
+#header{
+    height: 50px;
+    width: 100% 
+}
+#img-logo{
+    width: 40%;
+    height: 90%;
+    position: relative;
+    left: 15px;
+}
+#logOut{
+    background-color: #ED914E;
+    width: 70px;
+    border-radius: 9px;
+    padding: 7px;
+    border-color:#EA6F15;
+    border-width: 1px;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 800;
+    font-family: 'Inter', sans-serif;
+    position: absolute;
+    top: 4px; right: 10px;
+}
+
+#inputNewPost{
+    width: 85%;   
+    height: 45px;
+    border-radius: 10px;
+    background-color: #e0dce2;
+    border: none;
+    text-align: left;
+    padding-left: 20px;
+    padding-right:20px ;
+    white-space: wrap;
+    
+}
+
+#divNewPost{
+    
+    display: flex;    
+    justify-content: center;
+    margin-top: 20px;
+    width: 100%; 
+}
+
+#btnPost{
+    width: 70px;
+    height: 20px;    
+    color: white;
+    background-color:#6A4DB2;
+    border-color: #5735AD;
+    border-width: 1px;
+    border-radius: 9px;
+    border-radius: 4px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+    padding: 4px;
+    font-size:10px;
+    position: absolute;
+    right: 7.5%;
+    top:125px;
+}
+#post{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    margin-top:25px ;
+    
+}
+#newPost{
+    box-sizing: border-box;
+    height: 35px;
+    width: 50%;
+    background-color: #e0dce2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-left: 20px;
+    padding-right:20px ;
+    border-radius: 10px;
+    box-shadow: 0px 4px 4px 0px #00000040;
+    border: 0.5px solid #5735AD
+    
+
+
+}
+.deletePublication{
+    position: absolute;
+    width: 34px;
+    height: 20px;
+    left: 68%;
+    border-radius: 5px;
+    border-color:  #A6A4A7;
+    border-width: 0.5px;
+    background-image: url(./img/323811.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    
+}
