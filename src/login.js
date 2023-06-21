@@ -15,6 +15,7 @@ function login(navigateTo) {
   ctnImage.appendChild(logo);
   inputEmail.setAttribute('id', 'inputE-style');
   inputPass.setAttribute('id', 'inputPL-style');
+  inputPass.setAttribute('type', 'password');
   form.setAttribute('id', 'form-style');
   section.setAttribute('id', 'section2-style');
   buttonReturn.setAttribute('id', 'buttonR-style');
